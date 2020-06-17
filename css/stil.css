@@ -118,8 +118,19 @@ body {
   width: 200px;
   position: fixed;
   bottom: 0px;
+  left: 0px;
+  z-index: 1;
+  /*background: #f2f2f2;*/
+  color: #414b56;
+  font-size: small;
+}
+
+.razmjera {
+  width: 200px;
+  position: fixed;
+  bottom: 0px;
   right: 0px;
-  z-index: 15;
+  z-index: 1;
   /*background: #f2f2f2;*/
   color: #414b56;
   font-size: small;

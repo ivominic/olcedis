@@ -237,13 +237,12 @@ function onMouseMove(evt) {
   map.getTargetElement().style.cursor = "";
   let pixel = map.getEventPixel(evt.originalEvent);
   //let hit = map.forEachLayerAtPixel(pixel, function (layer) {
-  map.forEachLayerAtPixel(pixel, function (layer) {
-    if (layer.N.name === layername) {
-      //if (layer.B.name === layername) {
+  /*map.forEachLayerAtPixel(pixel, function (layer) {
+    if (layer.N.name === layername) {      
       map.getTargetElement().style.cursor = "pointer";
       return false;
     }
-  });
+  });*/
 }
 
 /**Omogućava dodavanje novog vektor lejera drag-drop metodom */

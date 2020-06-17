@@ -2,8 +2,8 @@
 const domainUrl = location.origin;
 //const domainUrl = "http://localhost:8088";
 //const domainUrl = "http://167.172.171.249";
-const wmsUrl = domainUrl + "/geoserver/ekip/wms";
-const wfsUrl = domainUrl + "/geoserver/ekip/wfs";
+const wmsUrl = domainUrl + "/geoserver/geonode/wms";
+const wfsUrl = domainUrl + "/geoserver/geonode/wfs";
 const imageUrl = domainUrl + "/slike/";
 const point = "Point",
   lineString = "LineString",
