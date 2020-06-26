@@ -22,8 +22,21 @@ function popuniKontrole(odgovor) {
   let atributi = odgovor.features[0]["properties"];
   idObjekta = atributi["id"];
   document.querySelector("#idObjekta").value = idObjekta;
-  document.querySelector("#visina").value = atributi["visina"];
+  document.querySelector("#gps").value = atributi["gps"];
+  document.querySelector("#ts").value = atributi["ts"];
+  document.querySelector("#izvod_ts").value = atributi["izvod_ts"];
+  document.querySelector("#id").value = atributi["id"];
   document.querySelector("#tip").value = atributi["tip"];
+  document.querySelector("#osiguraci").value = atributi["osiguraci"];
+  document.querySelector("#br_pretplatnika").value = atributi["br_pretplatnika"];
+  document.querySelector("#vlasnistvo").value = atributi["vlasnistvo"];
+  document.querySelector("#opstina").value = atributi["opstina"];
+  document.querySelector("#datum_azuriranja").value = atributi["datum_azuriranja"];
+  document.querySelector("#korisnik").value = atributi["korisnik"]
+  document.querySelector("#posjeduje_sliku").value = atributi["posjeduje_sliku"]
+  document.querySelector("#Napon").value = atributi["Napon"]
+  document.querySelector("#").value = atributi[""]
+
 
   //setujDdlVrijednost("#tip", atributi["tip"]);
 
@@ -53,8 +66,20 @@ function sacuvaj() {
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", akcija);
   podaciForme.append("geom", geometrijaZaBazuWkt);
-  podaciForme.append("visina", document.querySelector("#visina").value);
+  podaciForme.append("gps", document.querySelector("#gps").value);
+  podaciForme.append("ts", document.querySelector("#ts").value);
+  podaciForme.append("izvod_ts", document.querySelector("#izvod_ts").value);
+  podaciForme.append("id", document.querySelector("#id").value);
   podaciForme.append("tip", document.querySelector("#tip").value);
+  podaciForme.append("osiguraci", document.querySelector("#osiguraci").value);
+  podaciForme.append("br_pretplatnika", document.querySelector("#br_pretplatnika").value);
+  podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
+  podaciForme.append("opstina", document.querySelector("#opstina").value);
+  podaciForme.append("datum_azuriranja", document.querySelector("#datum_azuriranja").value);
+  podaciForme.append("korisnik", document.querySelector("#korisnik").value);
+  podaciForme.append("posjeduje_sliku", document.querySelector("#posjeduje_sliku").value);
+  podaciForme.append("napon", document.querySelector("#napon").value);
+
 
   if (document.querySelector("#dodavanjeSlike").files.length > 0) {
     podaciForme.append("file", document.querySelector("#dodavanjeSlike").files[0]);
@@ -91,9 +116,21 @@ function sacuvaj() {
 function restartovanje() {
   idObjekta = 0;
   document.querySelector("#idObjekta").value = "";
-  document.querySelector("#visina").value = "";
+  document.querySelector("#gps").value = "";
+  document.querySelector("#ts").value = "";
+  document.querySelector("#izvod_ts").value = "";
+  document.querySelector("#id").value = "";
   document.querySelector("#tip").value = "";
-  document.querySelector("#dodavanjeSlike").value = "";
+  document.querySelector("#osiguraci").value = "";
+  document.querySelector("#br_pretplatnika").value = "";
+  document.querySelector("#vlasnistvo").value = "";
+  document.querySelector("#opstina").value = "";
+  document.querySelector("#datum_azuriranja").value = "";
+  document.querySelector("#korisnik").value = "";
+  document.querySelector("#posjeduje_sliku").value = "";
+  document.querySelector("#napon").value = "";
+  document.querySelector("#").value = "";
+
   slikaUrl = "";
   opisSlike = "";
   slikeUrl = [];
@@ -354,9 +391,19 @@ function filtriranje() {
 function kreiranjeCqlFilteraAtributi() {
   let retVal = "";
 
-  document.querySelector("#pretragaIdObjekta").value !== "" && (retVal += "id = " + document.querySelector("#pretragaIdObjekta").value + " AND ");
-  document.querySelector("#pretragaVisina").value !== "" && (retVal += "visina = " + document.querySelector("#pretragaVisina").value + " AND ");
-  document.querySelector("#pretragaTip").value !== "" && (retVal += "tip = '" + document.querySelector("#pretragaTip").value + "' AND ");
+  document.querySelector("#pretraga_gps").value !== "" && (retVal += "gps = " + document.querySelector("#pretraga_gps").value + " AND ");
+  document.querySelector("#pretraga_ts").value !== "" && (retVal += "ts = " + document.querySelector("#pretraga_ts").value + " AND ");
+  document.querySelector("#pretrga_izvod_ts").value !== "" && (retVal += "izvod_ts = " + document.querySelector("#pretrga_izvod_ts").value + " AND ");
+  document.querySelector("#pretraga_id").value !== "" && (retVal += "id = " + document.querySelector("#pretraga_id").value + " AND ");
+  document.querySelector("#pretraga_tip").value !== "" && (retVal += "tip = " + document.querySelector("#pretraga_tip").value + " AND ");
+  document.querySelector("#pretraga_osiguraci").value !== "" && (retVal += "osiguraci = " + document.querySelector("#pretraga_osiguraci").value + " AND ");
+  document.querySelector("#pretraga_br_pretplatnika").value !== "" && (retVal += "br_pretplatnika = " + document.querySelector("#pretraga_br_pretplatnika").value + " AND ");
+  document.querySelector("#pretraga_vlasnistvo").value !== "" && (retVal += "vlasnistvo = " + document.querySelector("#pretraga_vlasnistvo").value + " AND ");
+  document.querySelector("#pretraga_opstina").value !== "" && (retVal += "opstina = " + document.querySelector("#pretraga_opstina").value + " AND ");
+  document.querySelector("#pretraga_datum_azuriranja").value !== "" && (retVal += "datum_azuriranja = " + document.querySelector("#pretraga_datum_azuriranja").value + " AND ");
+  document.querySelector("#pretraga_korisnik").value !== "" && (retVal += "korisnik = " + document.querySelector("#pretraga_korisnik").value + " AND ");
+  document.querySelector("#pretraga_posjeduje_sliku").value !== "" && (retVal += "posjeduje_sliku = " + document.querySelector("#pretraga_posjeduje_sliku").value + " AND ");
+  document.querySelector("#pretraga_napon").value !== "" && (retVal += "napon = " + document.querySelector("#pretraga_napon").value + " AND ");
 
 
   retVal.length > 5 && (retVal = retVal.substring(0, retVal.length - 5));

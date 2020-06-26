@@ -63,22 +63,82 @@
       <h1>Atributi objekta</h1>
       <div class="row">
         <div class="column">
-          <label for="idObjekta">Id stuba:</label>
-          <input type="text" id="idObjekta" readonly />
+          <label for="gps">Redni br. Tacke u GPS:</label>
+          <input type="text" id="gps" readonly />
         </div>
         <div class="column">
-          <label for="tip">Tip stuba:</label>
-          <input type="text" id="tip" />
+          <label for="ts">Napojna TS 10/0,4kV:</label>
+          <input type="text" id="ts" />
         </div>
       </div>
       <div class="row">
         <div class="column">
-          <label for="visina">Visina stuba:</label>
-          <input type="text" id="visina" />
+          <label for="izvod_ts">Ime izvoda u TS 10/0,4:</label>
+          <input type="text" id="izvod_ts" />
         </div>
         <div class="column">
-          <label for="materijal">Materijal:</label>
+          <label for="id">Identifikacioni broj - ime:</label>
+          <input type="text" id="id" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="materijal">Vrsta materijala:</label>
           <input type="text" id="materijal" />
+        </div>
+        <div class="column">
+          <label for="montaza">Montaža:</label>
+          <input type="text" id="montaza" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="vrata">Vrata:</label>
+          <input type="text" id="vrata" />
+        </div>
+        <div class="column">
+          <label for="br_izvoda">Broj izvoda:</label>
+          <input type="text" id="br_izvoda" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="br_prikljucaka">Broj priključaka:</label>
+          <input type="text" id="vrata" />
+        </div>
+        <div class="column">
+          <label for="pog_sprem">Pogonska spremnost:</label>
+          <input type="text" id="pog_sprem" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="vlasnistvo">Vlasništvo:</label>
+          <input type="text" id="vlasnistvo" />
+        </div>
+        <div class="column">
+          <label for="opstina">Opština:</label>
+          <input type="text" id="opstina" readonly />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="datum_azuriranja">Datum ažuriranja:</label>
+          <input type="text" id="datum_azuriranja" />
+        </div>
+        <div class="column">
+          <label for="korisnik">Korisnik:</label>
+          <input type="text" id="korisnik" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="posjeduje_sliku">Posjeduje sliku:</label>
+          <input type="text" id="posjeduje_sliku" />
+        </div>
+        <div class="column">
+          <label for="napon">Napon:</label>
+          <input type="text" id="napon" />
         </div>
       </div>
       <div class="row">
@@ -136,22 +196,82 @@
       </div>
       <div class="row">
         <div class="column">
-          <label for="pretragaIdObjekta">Id stuba:</label>
-          <input type="text" id="pretragaIdObjekta" />
+          <label for="pretraga_gps">Redni br. Tacke u GPS:</label>
+          <input type="text" id="pretraga_gps" readonly />
         </div>
         <div class="column">
-          <label for="pretragaTip">Tip stuba:</label>
-          <input type="text" id="pretragaTip" />
+          <label for="pretraga_ts">Napojna TS 10/0,4kV:</label>
+          <input type="text" id="pretraga_ts" />
         </div>
       </div>
       <div class="row">
         <div class="column">
-          <label for="pretragaVisina">Visina stuba:</label>
-          <input type="text" id="pretragaVisina" />
+          <label for="pretraga_izvod_ts">Ime izvoda u TS 10/0,4:</label>
+          <input type="text" id="pretraga_izvod_ts" />
         </div>
         <div class="column">
-          <label for="pretragaMaterijal">Materijal:</label>
-          <input type="text" id="pretragaMaterijal" />
+          <label for="pretraga_id">Identifikacioni broj - ime:</label>
+          <input type="text" id="pretraga_id" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_materijal">Vrsta materijala:</label>
+          <input type="text" id="pretraga_materijal" />
+        </div>
+        <div class="column">
+          <label for="pretraga_montaza">Montaža:</label>
+          <input type="text" id="pretraga_montaza" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_vrata">Vrata:</label>
+          <input type="text" id="pretraga_vrata" />
+        </div>
+        <div class="column">
+          <label for="pretraga_br_izvoda">Broj izvoda:</label>
+          <input type="text" id="pretraga_br_izvoda" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_br_prikljucaka">Broj priključaka:</label>
+          <input type="text" id="pretraga_vrata" />
+        </div>
+        <div class="column">
+          <label for="pretraga_pog_sprem">Pogonska spremnost:</label>
+          <input type="text" id="pretraga_pog_sprem" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_vlasnistvo">Vlasništvo:</label>
+          <input type="text" id="pretraga_vlasnistvo" />
+        </div>
+        <div class="column">
+          <label for="pretraga_opstina">Opština:</label>
+          <input type="text" id="pretraga_opstina" readonly />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_datum_azuriranja">Datum ažuriranja:</label>
+          <input type="text" id="pretraga_datum_azuriranja" />
+        </div>
+        <div class="column">
+          <label for="pretraga_korisnik">Korisnik:</label>
+          <input type="text" id="pretraga_korisnik" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_posjeduje_sliku">Posjeduje sliku:</label>
+          <input type="text" id="pretraga_posjeduje_sliku" />
+        </div>
+        <div class="column">
+          <label for="pretraga_napon">Napon:</label>
+          <input type="text" id="pretraga_napon" />
         </div>
       </div>
       <div class="row"></div>

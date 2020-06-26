@@ -63,22 +63,148 @@
       <h1>Atributi objekta</h1>
       <div class="row">
         <div class="column">
-          <label for="idObjekta">Id stuba:</label>
-          <input type="text" id="idObjekta" readonly />
+          <label for="gps">Početak dionice:</label>
+          <input type="text" id="gps" readonly />
         </div>
         <div class="column">
-          <label for="tip">Tip stuba:</label>
-          <input type="text" id="tip" />
+          <label for="dionica">Početak dionice je povezan na GPS tačku:</label>
+          <input type="text" id="dionica" readonly />
         </div>
       </div>
       <div class="row">
         <div class="column">
-          <label for="visina">Visina stuba:</label>
-          <input type="text" id="visina" />
+          <label for="id_br">Identifikacioni broj:</label>
+          <input type="text" id="id_br" />
         </div>
         <div class="column">
-          <label for="materijal">Materijal:</label>
+          <label for="naziv">Naziv:</label>
+          <input type="text" id="naziv" readonly />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="dionica_nn">Dionica:</label>
+          <input type="text" id="dionica_nn" />
+        </div>
+        <div class="column">
+          <label for="ts">Vod se napaja iz TS:</label>
+          <input type="text" id="ts" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="izvod_ts">Ime izvoda u TS:</label>
+          <input type="text" id="izvod_ts" />
+        </div>
+        <div class="column">
+          <label for="napon">Napon (kV):</label>
+          <input type="text" id="napon" readonly />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="br_faza">Broj faza:</label>
+          <input type="text" id="br_faza" />
+        </div>
+        <div class="column">
+          <label for="vrsta">Vrsta voda:</label>
+          <input type="text" id="vrsta" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="tip">Tip voda:</label>
+          <input type="text" id="tip" />
+        </div>
+        <div class="column">
+          <label for="presjek">Presjek voda (mm2):</label>
+          <input type="text" id="presjek" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="materijal">Materijal voda:</label>
           <input type="text" id="materijal" />
+        </div>
+        <div class="column">
+          <label for="duzina">Dužina voda na crtežu (m):</label>
+          <input type="text" id="duzina" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="rac_duzina">Računska dužina voda (m):</label>
+          <input type="text" id="rac_duzina" />
+        </div>
+        <div class="column">
+          <label for="br_spojnica">Broj spojnica:</label>
+          <input type="text" id="br_spojnica" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="rasvjeta">Javna rasvjeta:</label>
+          <input type="text" id="rasvjeta" />
+        </div>
+        <div class="column">
+          <label for="pog_sprem">Pogonska spremnost:</label>
+          <input type="text" id="pog_sprem" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="god_izg">Godina izgradnje:</label>
+          <input type="text" id="god_izg" />
+        </div>
+        <div class="column">
+          <label for="vlasnistvo">Vlasništvo:</label>
+          <input type="text" id="vlasnistvo" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="opstina">Opština :</label>
+          <input type="text" id="opstina" readonly />
+        </div>
+        <div class="column">
+          <label for="datum_azuriranja">Datum ažuriranja:</label>
+          <input type="text" id="datum_azuriranja" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="korisnik">Korisnik:</label>
+          <input type="text" id="korisnik" />
+        </div>
+        <div class="column">
+          <label for="posjeduje_sliku">Posjeduje sliku:</label>
+          <input type="text" id="posjeduje_sliku" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="poc_dion">Početak dionice:</label>
+          <input type="text" id="poc_dion" />
+        </div>
+        <div class="column">
+          <label for="kraj_dion">Kraj dionice:</label>
+          <input type="text" id="kraj_dion" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="uze_presjek">Zaštitno uže presjek mm2:</label>
+          <input type="text" id="uze_presjek" />
+        </div>
+        <div class="column">
+          <label for="uze">Zaštitno uže materijal:</label>
+          <input type="text" id="uze" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="zajednicka_dion">NN vod na dijelu dionice 10kV voda:</label>
+          <input type="text" id="zajednicka_dion" />
         </div>
       </div>
       <div class="row">
@@ -136,22 +262,148 @@
       </div>
       <div class="row">
         <div class="column">
-          <label for="pretragaIdObjekta">Id stuba:</label>
-          <input type="text" id="pretragaIdObjekta" />
+          <label for="pretraga_gps">Početak dionice:</label>
+          <input type="text" id="pretraga_gps" readonly />
         </div>
         <div class="column">
-          <label for="pretragaTip">Tip stuba:</label>
-          <input type="text" id="pretragaTip" />
+          <label for="pretraga_dionica">Početak dionice je povezan na GPS tačku:</label>
+          <input type="text" id="pretraga_dionica" readonly />
         </div>
       </div>
       <div class="row">
         <div class="column">
-          <label for="pretragaVisina">Visina stuba:</label>
-          <input type="text" id="pretragaVisina" />
+          <label for="pretraga_id_br">Identifikacioni broj:</label>
+          <input type="text" id="pretraga_id_br" />
         </div>
         <div class="column">
-          <label for="pretragaMaterijal">Materijal:</label>
-          <input type="text" id="pretragaMaterijal" />
+          <label for="pretraga_naziv">Naziv:</label>
+          <input type="text" id="pretraga_naziv" readonly />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_dionica_nn">Dionica:</label>
+          <input type="text" id="pretraga_dionica_nn" />
+        </div>
+        <div class="column">
+          <label for="pretraga_ts">Vod se napaja iz TS:</label>
+          <input type="text" id="pretraga_ts" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_izvod_ts">Ime izvoda u TS:</label>
+          <input type="text" id="pretraga_izvod_ts" />
+        </div>
+        <div class="column">
+          <label for="pretraga_napon">Napon (kV):</label>
+          <input type="text" id="pretraga_napon" readonly />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_br_faza">Broj faza:</label>
+          <input type="text" id="pretraga_br_faza" />
+        </div>
+        <div class="column">
+          <label for="pretraga_vrsta">Vrsta voda:</label>
+          <input type="text" id="pretraga_vrsta" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_tip">Tip voda:</label>
+          <input type="text" id="pretraga_tip" />
+        </div>
+        <div class="column">
+          <label for="pretraga_presjek">Presjek voda (mm2):</label>
+          <input type="text" id="pretraga_presjek" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_materijal">Materijal voda:</label>
+          <input type="text" id="pretraga_materijal" />
+        </div>
+        <div class="column">
+          <label for="pretraga_duzina">Dužina voda na crtežu (m):</label>
+          <input type="text" id="pretraga_duzina" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_rac_duzina">Računska dužina voda (m):</label>
+          <input type="text" id="pretraga_rac_duzina" />
+        </div>
+        <div class="column">
+          <label for="pretraga_br_spojnica">Broj spojnica:</label>
+          <input type="text" id="pretraga_br_spojnica" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_rasvjeta">Javna rasvjeta:</label>
+          <input type="text" id="pretraga_rasvjeta" />
+        </div>
+        <div class="column">
+          <label for="pretraga_pog_sprem">Pogonska spremnost:</label>
+          <input type="text" id="pretraga_pog_sprem" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_god_izg">Godina izgradnje:</label>
+          <input type="text" id="pretraga_god_izg" />
+        </div>
+        <div class="column">
+          <label for="pretraga_vlasnistvo">Vlasništvo:</label>
+          <input type="text" id="pretraga_vlasnistvo" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_opstina">Opština :</label>
+          <input type="text" id="pretraga_opstina" readonly />
+        </div>
+        <div class="column">
+          <label for="pretraga_datum_azuriranja">Datum ažuriranja:</label>
+          <input type="text" id="pretraga_datum_azuriranja" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_korisnik">Korisnik:</label>
+          <input type="text" id="pretraga_korisnik" />
+        </div>
+        <div class="column">
+          <label for="pretraga_posjeduje_sliku">Posjeduje sliku:</label>
+          <input type="text" id="pretraga_posjeduje_sliku" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_poc_dion">Početak dionice:</label>
+          <input type="text" id="pretraga_poc_dion" />
+        </div>
+        <div class="column">
+          <label for="pretraga_kraj_dion">Kraj dionice:</label>
+          <input type="text" id="pretraga_kraj_dion" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_uze_presjek">Zaštitno uže presjek mm2:</label>
+          <input type="text" id="pretraga_uze_presjek" />
+        </div>
+        <div class="column">
+          <label for="pretraga_uze">Zaštitno uže materijal:</label>
+          <input type="text" id="pretraga_uze" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <label for="pretraga_zajednicka_dion">NN vod na dijelu dionice 10kV voda:</label>
+          <input type="text" id="pretraga_zajednicka_dion" />
         </div>
       </div>
       <div class="row"></div>

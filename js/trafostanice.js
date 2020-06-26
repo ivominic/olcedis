@@ -22,8 +22,30 @@ function popuniKontrole(odgovor) {
   let atributi = odgovor.features[0]["properties"];
   idObjekta = atributi["id"];
   document.querySelector("#idObjekta").value = idObjekta;
-  document.querySelector("#visina").value = atributi["visina"];
+  document.querySelector("#gps").value = atributi["gps"];
+  document.querySelector("#id_billing").value = atributi["id_billing"];
+  document.querySelector("#naziv").value = atributi["naziv"];
+  document.querySelector("#funkcija").value = atributi["funkcija"];
   document.querySelector("#tip").value = atributi["tip"];
+  document.querySelector("#napojna_ts").value = atributi["napojna_ts"];
+  document.querySelector("#izvod_celija").value = atributi["izvod_celija"];
+  document.querySelector("#prenos_odnos").value = atributi["prenos_odnos"];
+  document.querySelector("#inst_snaga_t1").value = atributi["inst_snaga_t1"];
+  document.querySelector("#inst_snaga_t2").value = atributi["inst_snaga_t2"];
+  document.querySelector("#inst_snaga_t3").value = atributi["inst_snaga_t3"];
+  document.querySelector("#inst_snaga_t4").value = atributi["inst_snaga_t4"];
+  document.querySelector("#projek_snaga").value = atributi["projek_snaga"];
+  document.querySelector("#celije_10").value = atributi["celije_10"];
+  document.querySelector("#br_nn_izvoda").value = atributi["br_nn_izvoda"];
+  document.querySelector("#god_izg").value = atributi["god_izg"];
+  document.querySelector("#pog_sprem").value = atributi["pog_sprem"];
+  document.querySelector("#vlasnistvo").value = atributi["vlasnistvo"];
+  document.querySelector("#korisnik").value = atributi["korisnik"];
+  document.querySelector("#posjeduje_sliku").value = atributi["posjeduje_sliku"];
+  document.querySelector("#opština").value = atributi["opština"];
+  document.querySelector("#napon").value = atributi["napon"];
+  document.querySelector("#datum_ažuriranja").value = atributi["datum_ažuriranja"];
+
 
   //setujDdlVrijednost("#tip", atributi["tip"]);
 
@@ -53,8 +75,30 @@ function sacuvaj() {
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", akcija);
   podaciForme.append("geom", geometrijaZaBazuWkt);
-  podaciForme.append("visina", document.querySelector("#visina").value);
+  podaciForme.append("gps", document.querySelector("#gps").value);
+  podaciForme.append("id_billing", document.querySelector("#id_billing").value);
+  podaciForme.append("naziv", document.querySelector("#naziv").value);
+  podaciForme.append("funkcija", document.querySelector("#funkcija").value);
   podaciForme.append("tip", document.querySelector("#tip").value);
+  podaciForme.append("napojna_ts", document.querySelector("#napojna_ts").value);
+  podaciForme.append("izvod_celija", document.querySelector("#izvod_celija").value);
+  podaciForme.append("prenos_odnos", document.querySelector("#prenos_odnos").value);
+  podaciForme.append("inst_snaga_t1", document.querySelector("#inst_snaga_t1").value);
+  podaciForme.append("inst_snaga_t2", document.querySelector("#inst_snaga_t2").value);
+  podaciForme.append("inst_snaga_t3", document.querySelector("#inst_snaga_t3").value);
+  podaciForme.append("inst_snaga_t4", document.querySelector("#inst_snaga_t4").value);
+  podaciForme.append("projek_snaga", document.querySelector("#projek_snaga").value);
+  podaciForme.append("celije_10", document.querySelector("#celije_10").value);
+  podaciForme.append("br_nn_izvoda", document.querySelector("#br_nn_izvoda").value);
+  podaciForme.append("god_izg", document.querySelector("#god_izg").value);
+  podaciForme.append("pog_sprem", document.querySelector("#pog_sprem").value);
+  podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
+  podaciForme.append("korisnik", document.querySelector("#korisnik").value);
+  podaciForme.append("posjeduje_sliku", document.querySelector("#posjeduje_sliku").value);
+  podaciForme.append("opština", document.querySelector("#opština").value);
+  podaciForme.append("napon", document.querySelector("#napon").value);
+  podaciForme.append("datum_ažuriranja", document.querySelector("#datum_ažuriranja").value);
+
 
   if (document.querySelector("#dodavanjeSlike").files.length > 0) {
     podaciForme.append("file", document.querySelector("#dodavanjeSlike").files[0]);
@@ -91,9 +135,30 @@ function sacuvaj() {
 function restartovanje() {
   idObjekta = 0;
   document.querySelector("#idObjekta").value = "";
-  document.querySelector("#visina").value = "";
+  document.querySelector("#gps").value = "";
+  document.querySelector("#id_billing").value = "";
+  document.querySelector("#naziv").value = "";
+  document.querySelector("#funkcija").value = "";
   document.querySelector("#tip").value = "";
-  document.querySelector("#dodavanjeSlike").value = "";
+  document.querySelector("#napojna_ts").value = "";
+  document.querySelector("#izvod_celija").value = "";
+  document.querySelector("#prenos_odnos").value = "";
+  document.querySelector("#inst_snaga_t1").value = "";
+  document.querySelector("#inst_snaga_t2").value = "";
+  document.querySelector("#inst_snaga_t3").value = "";
+  document.querySelector("#inst_snaga_t4").value = "";
+  document.querySelector("#projek_snaga").value = "";
+  document.querySelector("#celije_10").value = "";
+  document.querySelector("#br_nn_izvoda").value = "";
+  document.querySelector("#god_izg").value = "";
+  document.querySelector("#pog_sprem").value = "";
+  document.querySelector("#vlasnistvo").value = "";
+  document.querySelector("#korisnik").value = "";
+  document.querySelector("#posjeduje_sliku").value = "";
+  document.querySelector("#opština").value = "";
+  document.querySelector("#napon").value = "";
+  document.querySelector("#datum_ažuriranja").value = "";
+
   slikaUrl = "";
   opisSlike = "";
   slikeUrl = [];
@@ -355,8 +420,31 @@ function kreiranjeCqlFilteraAtributi() {
   let retVal = "";
 
   document.querySelector("#pretragaIdObjekta").value !== "" && (retVal += "id = " + document.querySelector("#pretragaIdObjekta").value + " AND ");
-  document.querySelector("#pretragaVisina").value !== "" && (retVal += "visina = " + document.querySelector("#pretragaVisina").value + " AND ");
-  document.querySelector("#pretragaTip").value !== "" && (retVal += "tip = '" + document.querySelector("#pretragaTip").value + "' AND ");
+  document.querySelector("#pretraga_gps").value !== "" && (retVal += "gps = " + document.querySelector("#pretraga_gps").value + " AND ");
+  document.querySelector("#pretraga_id_billing").value !== "" && (retVal += "id_billing = " + document.querySelector("#pretraga_id_billing").value + " AND ");
+  document.querySelector("#pretraga_naziv").value !== "" && (retVal += "naziv = " + document.querySelector("#pretraga_naziv").value + " AND ");
+  document.querySelector("#pretraga_funkcija").value !== "" && (retVal += "funkcija = " + document.querySelector("#pretraga_funkcija").value + " AND ");
+  document.querySelector("#pretraga_tip").value !== "" && (retVal += "tip = " + document.querySelector("#pretraga_tip").value + " AND ");
+  document.querySelector("#pretraga_napojna_ts").value !== "" && (retVal += "napojna_ts = " + document.querySelector("#pretraga_napojna_ts").value + " AND ");
+  document.querySelector("#pretraga_izvod_celija").value !== "" && (retVal += "izvod_celija = " + document.querySelector("#pretraga_izvod_celija").value + " AND ");
+  document.querySelector("#pretraga_prenos_odnos").value !== "" && (retVal += "prenos_odnos = " + document.querySelector("#pretraga_prenos_odnos").value + " AND ");
+  document.querySelector("#pretraga_inst_snaga_t1").value !== "" && (retVal += "inst_snaga_t1 = " + document.querySelector("#pretraga_inst_snaga_t1").value + " AND ");
+  document.querySelector("#pretraga_inst_snaga_t2").value !== "" && (retVal += "inst_snaga_t2 = " + document.querySelector("#pretraga_inst_snaga_t2").value + " AND ");
+  document.querySelector("#pretraga_inst_snaga_t3").value !== "" && (retVal += "inst_snaga_t3 = " + document.querySelector("#pretraga_inst_snaga_t3").value + " AND ");
+  document.querySelector("#pretraga_inst_snaga_t4").value !== "" && (retVal += "inst_snaga_t4 = " + document.querySelector("#pretraga_inst_snaga_t4").value + " AND ");
+  document.querySelector("#pretraga_projek_snaga").value !== "" && (retVal += "projek_snaga = " + document.querySelector("#pretraga_projek_snaga").value + " AND ");
+  document.querySelector("#pretraga_celije_10").value !== "" && (retVal += "celije_10 = " + document.querySelector("#pretraga_celije_10").value + " AND ");
+  document.querySelector("#pretraga_br_nn_izvoda").value !== "" && (retVal += "br_nn_izvoda = " + document.querySelector("#pretraga_br_nn_izvoda").value + " AND ");
+  document.querySelector("#pretraga_god_izg").value !== "" && (retVal += "god_izg = " + document.querySelector("#pretraga_god_izg").value + " AND ");
+  document.querySelector("#pretraga_pog_sprem").value !== "" && (retVal += "pog_sprem = " + document.querySelector("#pretraga_pog_sprem").value + " AND ");
+  document.querySelector("#pretraga_vlasnistvo").value !== "" && (retVal += "vlasnistvo = " + document.querySelector("#pretraga_vlasnistvo").value + " AND ");
+  document.querySelector("#pretraga_korisnik").value !== "" && (retVal += "korisnik = " + document.querySelector("#pretraga_korisnik").value + " AND ");
+  document.querySelector("#pretraga_posjeduje_sliku").value !== "" && (retVal += "posjeduje_sliku = " + document.querySelector("#pretraga_posjeduje_sliku").value + " AND ");
+  document.querySelector("#pretraga_opština").value !== "" && (retVal += "opština = " + document.querySelector("#pretraga_opština").value + " AND ");
+  document.querySelector("#pretraga_napon").value !== "" && (retVal += "napon = " + document.querySelector("#pretraga_napon").value + " AND ");
+  document.querySelector("#pretraga_datum_ažuriranja").value !== "" && (retVal += "datum_ažuriranja = " + document.querySelector("#pretraga_datum_ažuriranja").value + " AND ");
+
+
 
 
   retVal.length > 5 && (retVal = retVal.substring(0, retVal.length - 5));
