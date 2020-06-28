@@ -1,4 +1,4 @@
-/**Inicijalna deklaracija promjenljivih koje su vezane za konretan lejer */
+/**Inicijalna deklaracija promjenljivih koje su vezane za konkretan lejer */
 const layername = "nkro",
   layertitle = "NKRO";
 const tipGeometrije = point;
@@ -84,10 +84,6 @@ function sacuvaj() {
   podaciForme.append("posjeduje_sliku", document.querySelector("#posjeduje_sliku").value);
   podaciForme.append("napon", document.querySelector("#napon").value);
   podaciForme.append("", document.querySelector("#").value);
-
-  if (document.querySelector("#dodavanjeSlike").files.length > 0) {
-    podaciForme.append("file", document.querySelector("#dodavanjeSlike").files[0]);
-  }
 
   let xhr = new XMLHttpRequest();
   xhr.open('POST', sacuvajZapisUrl, true);
@@ -397,8 +393,8 @@ function filtriranje() {
 function kreiranjeCqlFilteraAtributi() {
   let retVal = "";
 
-  document.querySelector("#pretragaIdObjekta").value !== "" && (retVal += "id = " + document.querySelector("#pretragaIdObjekta").value + " AND ");
-  document.querySelector("#pretraga_gps").value !== "" && (retVal += "gps = " + document.querySelector("#pretraga_gps").value + " AND ");
+  document.querySelector("#pretragaIdObjekta").value !== "" && (retVal += "id = '" + document.querySelector("#pretragaIdObjekta").value + "' AND ");
+  document.querySelector("#pretraga_gps").value !== "" && (retVal += "gps = '" + document.querySelector("#pretraga_gps").value + "' AND ");
   document.querySelector("#pretraga_ts").value !== "" && (retVal += "ts = '" + document.querySelector("#pretraga_ts").value + "' AND ");
   document.querySelector("#pretraga_izvod_ts").value !== "" && (retVal += "izvod_ts = '" + document.querySelector("#pretraga_izvod_ts").value + "' AND ");
   document.querySelector("#pretraga_id").value !== "" && (retVal += "id = '" + document.querySelector("#pretraga_id").value + "' AND ");

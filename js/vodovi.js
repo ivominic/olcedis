@@ -1,7 +1,7 @@
-/**Inicijalna deklaracija promjenljivih koje su vezane za konretan lejer */
-const layername = "stubovi",
-  layertitle = "Stubovi";
-const tipGeometrije = point;
+/**Inicijalna deklaracija promjenljivih koje su vezane za konkretan lejer */
+const layername = "vodovi",
+  layertitle = "Vodovi";
+const tipGeometrije = lineString;
 let opisSlike = "";
 
 let rasterLayer = new ol.layer.Image({
@@ -109,10 +109,6 @@ function sacuvaj() {
   podaciForme.append("uze_presjek", document.querySelector("#uze_presjek").value);
   podaciForme.append("uze", document.querySelector("#uze").value);
   podaciForme.append("zajednicka_dion", document.querySelector("#zajednicka_dion").value);
-
-  if (document.querySelector("#dodavanjeSlike").files.length > 0) {
-    podaciForme.append("file", document.querySelector("#dodavanjeSlike").files[0]);
-  }
 
   let xhr = new XMLHttpRequest();
   xhr.open('POST', sacuvajZapisUrl, true);
@@ -435,8 +431,8 @@ function filtriranje() {
 function kreiranjeCqlFilteraAtributi() {
   let retVal = "";
 
-  document.querySelector("#pretragaIdObjekta").value !== "" && (retVal += "id = " + document.querySelector("#pretragaIdObjekta").value + " AND ");
-  document.querySelector("#pretraga_gps").value !== "" && (retVal += "gps = " + document.querySelector("#pretraga_gps").value + " AND ");
+  document.querySelector("#pretragaIdObjekta").value !== "" && (retVal += "id = '" + document.querySelector("#pretragaIdObjekta").value + "' AND ");
+  document.querySelector("#pretraga_gps").value !== "" && (retVal += "gps = '" + document.querySelector("#pretraga_gps").value + "' AND ");
   document.querySelector("#pretraga_dionica").value !== "" && (retVal += "dionica = '" + document.querySelector("#pretraga_dionica").value + "' AND ");
   document.querySelector("#pretraga_id_br").value !== "" && (retVal += "id_br = '" + document.querySelector("#pretraga_id_br").value + "' AND ");
   document.querySelector("#pretraga_naziv").value !== "" && (retVal += "naziv = '" + document.querySelector("#pretraga_naziv").value + "' AND ");

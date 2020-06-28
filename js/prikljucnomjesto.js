@@ -1,6 +1,6 @@
 /**Inicijalna deklaracija promjenljivih koje su vezane za konretan lejer */
-const layername = "stubovi",
-  layertitle = "Stubovi";
+const layername = "nkro",
+  layertitle = "NKRO";
 const tipGeometrije = point;
 let opisSlike = "";
 
@@ -34,8 +34,7 @@ function popuniKontrole(odgovor) {
   document.querySelector("#datum_azuriranja").value = atributi["datum_azuriranja"];
   document.querySelector("#korisnik").value = atributi["korisnik"]
   document.querySelector("#posjeduje_sliku").value = atributi["posjeduje_sliku"]
-  document.querySelector("#Napon").value = atributi["Napon"]
-  document.querySelector("#").value = atributi[""]
+  document.querySelector("#napon").value = atributi["napon"]
 
 
   //setujDdlVrijednost("#tip", atributi["tip"]);
@@ -79,11 +78,6 @@ function sacuvaj() {
   podaciForme.append("korisnik", document.querySelector("#korisnik").value);
   podaciForme.append("posjeduje_sliku", document.querySelector("#posjeduje_sliku").value);
   podaciForme.append("napon", document.querySelector("#napon").value);
-
-
-  if (document.querySelector("#dodavanjeSlike").files.length > 0) {
-    podaciForme.append("file", document.querySelector("#dodavanjeSlike").files[0]);
-  }
 
   let xhr = new XMLHttpRequest();
   xhr.open('POST', sacuvajZapisUrl, true);
@@ -129,7 +123,6 @@ function restartovanje() {
   document.querySelector("#korisnik").value = "";
   document.querySelector("#posjeduje_sliku").value = "";
   document.querySelector("#napon").value = "";
-  document.querySelector("#").value = "";
 
   slikaUrl = "";
   opisSlike = "";
@@ -391,19 +384,19 @@ function filtriranje() {
 function kreiranjeCqlFilteraAtributi() {
   let retVal = "";
 
-  document.querySelector("#pretraga_gps").value !== "" && (retVal += "gps = " + document.querySelector("#pretraga_gps").value + " AND ");
-  document.querySelector("#pretraga_ts").value !== "" && (retVal += "ts = " + document.querySelector("#pretraga_ts").value + " AND ");
-  document.querySelector("#pretrga_izvod_ts").value !== "" && (retVal += "izvod_ts = " + document.querySelector("#pretrga_izvod_ts").value + " AND ");
-  document.querySelector("#pretraga_id").value !== "" && (retVal += "id = " + document.querySelector("#pretraga_id").value + " AND ");
-  document.querySelector("#pretraga_tip").value !== "" && (retVal += "tip = " + document.querySelector("#pretraga_tip").value + " AND ");
-  document.querySelector("#pretraga_osiguraci").value !== "" && (retVal += "osiguraci = " + document.querySelector("#pretraga_osiguraci").value + " AND ");
-  document.querySelector("#pretraga_br_pretplatnika").value !== "" && (retVal += "br_pretplatnika = " + document.querySelector("#pretraga_br_pretplatnika").value + " AND ");
-  document.querySelector("#pretraga_vlasnistvo").value !== "" && (retVal += "vlasnistvo = " + document.querySelector("#pretraga_vlasnistvo").value + " AND ");
-  document.querySelector("#pretraga_opstina").value !== "" && (retVal += "opstina = " + document.querySelector("#pretraga_opstina").value + " AND ");
-  document.querySelector("#pretraga_datum_azuriranja").value !== "" && (retVal += "datum_azuriranja = " + document.querySelector("#pretraga_datum_azuriranja").value + " AND ");
-  document.querySelector("#pretraga_korisnik").value !== "" && (retVal += "korisnik = " + document.querySelector("#pretraga_korisnik").value + " AND ");
-  document.querySelector("#pretraga_posjeduje_sliku").value !== "" && (retVal += "posjeduje_sliku = " + document.querySelector("#pretraga_posjeduje_sliku").value + " AND ");
-  document.querySelector("#pretraga_napon").value !== "" && (retVal += "napon = " + document.querySelector("#pretraga_napon").value + " AND ");
+  document.querySelector("#pretraga_gps").value !== "" && (retVal += "gps = '" + document.querySelector("#pretraga_gps").value + "' AND ");
+  document.querySelector("#pretraga_ts").value !== "" && (retVal += "ts = '" + document.querySelector("#pretraga_ts").value + "' AND ");
+  document.querySelector("#pretrga_izvod_ts").value !== "" && (retVal += "izvod_ts = '" + document.querySelector("#pretrga_izvod_ts").value + "' AND ");
+  document.querySelector("#pretraga_id").value !== "" && (retVal += "id = '" + document.querySelector("#pretraga_id").value + "' AND ");
+  document.querySelector("#pretraga_tip").value !== "" && (retVal += "tip = '" + document.querySelector("#pretraga_tip").value + "' AND ");
+  document.querySelector("#pretraga_osiguraci").value !== "" && (retVal += "osiguraci = '" + document.querySelector("#pretraga_osiguraci").value + "' AND ");
+  document.querySelector("#pretraga_br_pretplatnika").value !== "" && (retVal += "br_pretplatnika = '" + document.querySelector("#pretraga_br_pretplatnika").value + "' AND ");
+  document.querySelector("#pretraga_vlasnistvo").value !== "" && (retVal += "vlasnistvo = '" + document.querySelector("#pretraga_vlasnistvo").value + "' AND ");
+  document.querySelector("#pretraga_opstina").value !== "" && (retVal += "opstina = '" + document.querySelector("#pretraga_opstina").value + "' AND ");
+  document.querySelector("#pretraga_datum_azuriranja").value !== "" && (retVal += "datum_azuriranja = '" + document.querySelector("#pretraga_datum_azuriranja").value + "' AND ");
+  document.querySelector("#pretraga_korisnik").value !== "" && (retVal += "korisnik = '" + document.querySelector("#pretraga_korisnik").value + "' AND ");
+  document.querySelector("#pretraga_posjeduje_sliku").value !== "" && (retVal += "posjeduje_sliku = '" + document.querySelector("#pretraga_posjeduje_sliku").value + "' AND ");
+  document.querySelector("#pretraga_napon").value !== "" && (retVal += "napon = '" + document.querySelector("#pretraga_napon").value + "' AND ");
 
 
   retVal.length > 5 && (retVal = retVal.substring(0, retVal.length - 5));
