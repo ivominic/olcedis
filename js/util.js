@@ -31,7 +31,7 @@ let osmBaseMap = new ol.layer.Tile({
 let satelitBaseMap = new ol.layer.Tile({
   title: "Satelitski snimak",
   source: new ol.source.XYZ({
-    url: "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    url: "http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}",
     maxZoom: 23,
   }),
 });
@@ -406,3 +406,40 @@ document.querySelector("#excel").addEventListener("click", excelDownload);
 
 document.querySelector("#confirmPotvrdi").addEventListener("click", confirmPotvrdi);
 document.querySelector("#confirmOdustani").addEventListener("click", confirmOdustani);
+
+/**
+ * Metoda koja popunjava zadati ddl vrijednostima atributa koje vrate servisi za predati objekat, naziv atributa i 
+ * @param {*} ddl - naziv select-a "#napon"
+ * @param {*} objekat - stubovi, trafostanice, vodovi...
+ * @param {*} atribut - napon, visina...
+ * @param {*} key_param - dodatni parametar, ako postoji
+ * @param {*} value_param - vrijednost dodatnog parametra, ako postoji
+ */
+function popuniDdlAtributima(ddl, objekat, atribut, key_param, value_param) {
+  $(ddl).empty();
+  let urlServisa = window.location.protocol + "//" + window.location.hostname + "/portal/services/_getObjectAttributes.php?objekat=" + objekat + "&atribut=" + atribut;
+  if (key_param !== "" && value_param !== "") {
+    urlServisa += "&" + key_param + "=" + value_param;
+  }
+  $(ddl).append($("<option>", {
+    value: "",
+    text: ""
+  }));
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "GET",
+    success: function (data) {
+      data.data.vrijednosti.forEach(function (response) {
+        $(ddl).append($("<option>", {
+          value: response,
+          text: response
+        }));
+      });
+    },
+    error: function (x, y, z) {
+      //alert(x.responseText +"  " +x.status);
+      console.log("greška popuniDdlAtributima", x.responseText);
+    }
+  });
+}

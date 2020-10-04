@@ -64,7 +64,7 @@
       <div class="row">
         <div class="column">
           <label for="gps">Redni broj u GPS:</label>
-          <input type="text" id="gps" readonly />
+          <input type="text" id="gps" readonly disabled />
         </div>
         <div class="column">
           <label for="broj">Broj stuba:</label>
@@ -84,31 +84,31 @@
       <div class="row">
         <div class="column">
           <label for="tip">Tip stuba:</label>
-          <input type="text" id="tip" />
+          <select id="tip" class="select-css"></select>
         </div>
         <div class="column">
           <label for="vrsta_namjena">Vrsta stuba po namjeni:</label>
-          <input type="text" id="vrsta_namjena" />
+          <select id="vrsta_namjena" class="select-css"></select>
         </div>
       </div>
       <div class="row">
         <div class="column">
           <label for="vrsta_materijal">Vrsta stuba po materijalu:</label>
-          <input type="text" id="vrsta_materijal" />
+          <select id="vrsta_materijal" class="select-css"></select>
         </div>
         <div class="column">
           <label for="vrsta_drvenog">Vrsta drvenog stuba:</label>
-          <input type="text" id="vrsta_drvenog" />
+          <select id="vrsta_drvenog" class="select-css"></select>
         </div>
       </div>
       <div class="row">
         <div class="column">
           <label for="nad_visina">Nadmorska visina (m):</label>
-          <input type="text" id="nad_visina" />
+          <input type="number" id="nad_visina" />
         </div>
         <div class="column">
           <label for="visina">Visina stuba(m):</label>
-          <input type="text" id="visina" />
+          <input type="number" id="visina" />
         </div>
       </div>
       <div class="row">
@@ -118,13 +118,13 @@
         </div>
         <div class="column">
           <label for="izolator_vrsta">Vrsta izolatora:</label>
-          <input type="text" id="izolator_vrsta" />
+          <select id="izolator_vrsta" class="select-css"></select>
         </div>
       </div>
       <div class="row">
         <div class="column">
           <label for="izolator_funkcija">Vrsta izolatora po funkciji:</label>
-          <input type="text" id="izolator_funkcija" />
+          <select id="izolator_funkcija" class="select-css"></select>
         </div>
         <div class="column">
           <label for="br_izol_faza">Broj izolatora po fazi:</label>
@@ -134,17 +134,17 @@
       <div class="row">
         <div class="column">
           <label for="tip_nosac_izol">Tip izolatora:</label>
-          <input type="text" id="tip_nosac_izol" />
+          <select id="tip_nosac_izol" class="select-css"></select>
         </div>
         <div class="column">
           <label for="odvodnik_prenapona">Tip odvodnika prenapona:</label>
-          <input type="text" id="odvodnik_prenapona" />
+          <select id="odvodnik_prenapona" class="select-css"></select>
         </div>
       </div>
       <div class="row">
         <div class="column">
           <label for="uzemljivac">Uzemljivač:</label>
-          <input type="text" id="uzemljivac" />
+          <select id="uzemljivac" class="select-css"></select>
         </div>
         <div class="column">
           <label for="uzemljivac_otpor">Otpor uzemljivača:</label>
@@ -154,11 +154,11 @@
       <div class="row">
         <div class="column">
           <label for="optika">Optika:</label>
-          <input type="text" id="optika" />
+          <select id="optika" class="select-css"></select>
         </div>
         <div class="column">
           <label for="rasvjeta">Lampa javne rasvjete:</label>
-          <input type="text" id="rasvjeta" />
+          <select id="rasvjeta" class="select-css"></select>
         </div>
       </div>
       <div class="row">
@@ -178,37 +178,37 @@
         </div>
         <div class="column">
           <label for="vlasnistvo">Vlasnistvo:</label>
-          <input type="text" id="vlasnistvo" />
+          <select id="vlasnistvo" class="select-css"></select>
         </div>
       </div>
       <div class="row">
         <div class="column">
           <label for="opstina">Opština:</label>
-          <input type="text" id="opstina" readonly />
+          <input type="text" id="opstina" readonly disabled />
         </div>
         <div class="column">
           <label for="napon">Napon:</label>
-          <input type="text" id="napon" readonly />
+          <input type="text" id="napon" readonly disabled />
         </div>
       </div>
       <div class="row">
         <div class="column">
           <label for="prikljucak_otcjep">10kV kabal(prikljucak/otcjep):</label>
-          <input type="text" id="prikljucak_otcjep" readonly />
+          <select id="prikljucak_otcjep" class="select-css"></select>
         </div>
         <div class="column">
           <label for="nn_vod">NN vod :</label>
-          <input type="text" id="nn_vod" readonly />
+          <select id="nn_vod" class="select-css"></select>
         </div>
       </div>
       <div class="row">
         <div class="column">
           <label for="rastavljac">Rastavljač:</label>
-          <input type="text" id="rastavljac" readonly />
+          <select id="rastavljac" class="select-css"></select>
         </div>
         <div class="column">
           <label for="10_vod">10 kV vod:</label>
-          <input type="text" id="10_vod" readonly />
+          <select id="10_vod" class="select-css"></select>
         </div>
       </div>
       <div class="row">
@@ -264,7 +264,7 @@
       <div class="row">
         <div class="column">
           <label for="pretraga_gps">Redni broj u GPS:</label>
-          <input type="text" id="pretraga_gps" readonly />
+          <input type="text" id="pretraga_gps" />
         </div>
         <div class="column">
           <label for="pretraga_broj">Broj stuba:</label>
@@ -284,31 +284,31 @@
       <div class="row">
         <div class="column">
           <label for="pretraga_tip">Tip stuba:</label>
-          <input type="text" id="pretraga_tip" />
+          <select id="pretraga_tip" class="select-css"></select>
         </div>
         <div class="column">
           <label for="pretraga_vrsta_namjena">Vrsta stuba po namjeni:</label>
-          <input type="text" id="pretraga_vrsta_namjena" />
+          <select id="pretraga_vrsta_namjena" class="select-css"></select>
         </div>
       </div>
       <div class="row">
         <div class="column">
           <label for="pretraga_vrsta_materijal">Vrsta stuba po materijalu:</label>
-          <input type="text" id="pretraga_vrsta_materijal" />
+          <select id="pretraga_vrsta_materijal" class="select-css"></select>
         </div>
         <div class="column">
           <label for="pretraga_vrsta_drvenog">Vrsta drvenog stuba:</label>
-          <input type="text" id="pretraga_vrsta_drvenog" />
+          <select id="pretraga_vrsta_drvenog" class="select-css"></select>
         </div>
       </div>
       <div class="row">
         <div class="column">
           <label for="pretraga_nad_visina">Nadmorska visina (m):</label>
-          <input type="text" id="pretraga_nad_visina" />
+          <input type="number" id="pretraga_nad_visina" />
         </div>
         <div class="column">
           <label for="pretraga_visina">Visina stuba(m):</label>
-          <input type="text" id="pretraga_visina" />
+          <input type="number" id="pretraga_visina" />
         </div>
       </div>
       <div class="row">
@@ -318,13 +318,13 @@
         </div>
         <div class="column">
           <label for="pretraga_izolator_vrsta">Vrsta izolatora:</label>
-          <input type="text" id="pretraga_izolator_vrsta" />
+          <select id="pretraga_izolator_vrsta" class="select-css"></select>
         </div>
       </div>
       <div class="row">
         <div class="column">
           <label for="pretraga_izolator_funkcija">Vrsta izolatora po funkciji:</label>
-          <input type="text" id="pretraga_izolator_funkcija" />
+          <select id="pretraga_izolator_funkcija" class="select-css"></select>
         </div>
         <div class="column">
           <label for="pretraga_br_izol_faza">Broj izolatora po fazi:</label>
@@ -334,17 +334,17 @@
       <div class="row">
         <div class="column">
           <label for="pretraga_tip_nosac_izol">Tip izolatora:</label>
-          <input type="text" id="pretraga_tip_nosac_izol" />
+          <select id="pretraga_tip_nosac_izol" class="select-css"></select>
         </div>
         <div class="column">
           <label for="pretraga_odvodnik_prenapona">Tip odvodnika prenapona:</label>
-          <input type="text" id="pretraga_odvodnik_prenapona" />
+          <select id="pretraga_odvodnik_prenapona" class="select-css"></select>
         </div>
       </div>
       <div class="row">
         <div class="column">
           <label for="pretraga_uzemljivac">Uzemljivač:</label>
-          <input type="text" id="pretraga_uzemljivac" />
+          <select id="pretraga_uzemljivac" class="select-css"></select>
         </div>
         <div class="column">
           <label for="pretraga_uzemljivac_otpor">Otpor uzemljivača:</label>
@@ -354,11 +354,11 @@
       <div class="row">
         <div class="column">
           <label for="pretraga_optika">Optika:</label>
-          <input type="text" id="pretraga_optika" />
+          <select id="pretraga_optika" class="select-css"></select>
         </div>
         <div class="column">
           <label for="pretraga_rasvjeta">Lampa javne rasvjete:</label>
-          <input type="text" id="pretraga_rasvjeta" />
+          <select id="pretraga_rasvjeta" class="select-css"></select>
         </div>
       </div>
       <div class="row">
@@ -378,37 +378,37 @@
         </div>
         <div class="column">
           <label for="pretraga_vlasnistvo">Vlasnistvo:</label>
-          <input type="text" id="pretraga_vlasnistvo" />
+          <select id="pretraga_vlasnistvo" class="select-css"></select>
         </div>
       </div>
       <div class="row">
         <div class="column">
           <label for="pretraga_opstina">Opština:</label>
-          <input type="text" id="pretraga_opstina" readonly />
+          <select id="pretraga_opstina" class="select-css"></select>
         </div>
         <div class="column">
           <label for="pretraga_napon">Napon:</label>
-          <input type="text" id="pretraga_napon" readonly />
+          <input type="text" id="pretraga_napon" />
         </div>
       </div>
       <div class="row">
         <div class="column">
           <label for="pretraga_prikljucak_otcjep">10kV kabal(prikljucak/otcjep):</label>
-          <input type="text" id="pretraga_prikljucak_otcjep" readonly />
+          <select id="pretraga_prikljucak_otcjep" class="select-css"></select>
         </div>
         <div class="column">
           <label for="pretraga_nn_vod">NN vod :</label>
-          <input type="text" id="pretraga_nn_vod" readonly />
+          <select id="pretraga_nn_vod" class="select-css"></select>
         </div>
       </div>
       <div class="row">
         <div class="column">
           <label for="pretraga_rastavljac">Rastavljač:</label>
-          <input type="text" id="pretraga_rastavljac" readonly />
+          <select id="pretraga_rastavljac" class="select-css"></select>
         </div>
         <div class="column">
           <label for="pretraga_10_vod">10 kV vod:</label>
-          <input type="text" id="pretraga_10_vod" readonly />
+          <select id="pretraga_10_vod" class="select-css"></select>
         </div>
       </div>
       <div class="row"></div>

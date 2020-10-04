@@ -25,29 +25,32 @@ function popuniKontrole(odgovor) {
   document.querySelector("#gps").value = atributi["gps"];
   document.querySelector("#id_billing").value = atributi["id_billing"];
   document.querySelector("#naziv").value = atributi["naziv"];
-  document.querySelector("#funkcija").value = atributi["funkcija"];
-  document.querySelector("#tip").value = atributi["tip"];
+  //document.querySelector("#funkcija").value = atributi["funkcija"];
+  //document.querySelector("#tip").value = atributi["tip"];
   document.querySelector("#napojna_ts").value = atributi["napojna_ts"];
   document.querySelector("#izvod_celija").value = atributi["izvod_celija"];
-  document.querySelector("#prenos_odnos").value = atributi["prenos_odnos"];
-  document.querySelector("#inst_snaga_t1").value = atributi["inst_snaga_t1"];
-  document.querySelector("#inst_snaga_t2").value = atributi["inst_snaga_t2"];
-  document.querySelector("#inst_snaga_t3").value = atributi["inst_snaga_t3"];
-  document.querySelector("#inst_snaga_t4").value = atributi["inst_snaga_t4"];
+  //document.querySelector("#prenos_odnos").value = atributi["prenos_odnos"];
+  //document.querySelector("#inst_snaga_t1").value = atributi["inst_snaga_t1"];
+  //document.querySelector("#inst_snaga_t2").value = atributi["inst_snaga_t2"];
+  //document.querySelector("#inst_snaga_t3").value = atributi["inst_snaga_t3"];
+  //document.querySelector("#inst_snaga_t4").value = atributi["inst_snaga_t4"];
   document.querySelector("#projek_snaga").value = atributi["projek_snaga"];
   document.querySelector("#celije_10").value = atributi["celije_10"];
   document.querySelector("#br_nn_izvoda").value = atributi["br_nn_izvoda"];
   document.querySelector("#god_izg").value = atributi["god_izg"];
   document.querySelector("#pog_sprem").value = atributi["pog_sprem"];
-  document.querySelector("#vlasnistvo").value = atributi["vlasnistvo"];
-  document.querySelector("#korisnik").value = atributi["korisnik"];
-  document.querySelector("#posjeduje_sliku").value = atributi["posjeduje_sliku"];
-  document.querySelector("#opština").value = atributi["opština"];
-  document.querySelector("#napon").value = atributi["napon"];
-  document.querySelector("#datum_ažuriranja").value = atributi["datum_ažuriranja"];
+  //document.querySelector("#vlasnistvo").value = atributi["vlasnistvo"];
+  //document.querySelector("#opstina").value = atributi["opstina"];
 
-
-  //setujDdlVrijednost("#tip", atributi["tip"]);
+  setujDdlVrijednost("#funkcija", atributi["funkcija"]);
+  setujDdlVrijednost("#tip", atributi["tip"]);
+  setujDdlVrijednost("#prenos_odnos", atributi["prenos_odnos"]);
+  setujDdlVrijednost("#inst_snaga_t1", atributi["inst_snaga_t1"]);
+  setujDdlVrijednost("#inst_snaga_t2", atributi["inst_snaga_t2"]);
+  setujDdlVrijednost("#inst_snaga_t3", atributi["inst_snaga_t3"]);
+  setujDdlVrijednost("#inst_snaga_t4", atributi["inst_snaga_t4"]);
+  setujDdlVrijednost("#vlasnistvo", atributi["vlasnistvo"]);
+  setujDdlVrijednost("#opstina", atributi["opstina"]);
 
   if (akcija === "izmijeni") {
     //Ako se radi o izmjeni geometrije, čita objekad za idObjekta i postavlja ga kao vektor na mapi
@@ -93,11 +96,7 @@ function sacuvaj() {
   podaciForme.append("god_izg", document.querySelector("#god_izg").value);
   podaciForme.append("pog_sprem", document.querySelector("#pog_sprem").value);
   podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
-  podaciForme.append("korisnik", document.querySelector("#korisnik").value);
-  podaciForme.append("posjeduje_sliku", document.querySelector("#posjeduje_sliku").value);
-  podaciForme.append("opština", document.querySelector("#opština").value);
-  podaciForme.append("napon", document.querySelector("#napon").value);
-  podaciForme.append("datum_ažuriranja", document.querySelector("#datum_ažuriranja").value);
+  podaciForme.append("opstina", document.querySelector("#opstina").value);
 
   let xhr = new XMLHttpRequest();
   xhr.open('POST', sacuvajZapisUrl, true);
@@ -148,11 +147,7 @@ function restartovanje() {
   document.querySelector("#god_izg").value = "";
   document.querySelector("#pog_sprem").value = "";
   document.querySelector("#vlasnistvo").value = "";
-  document.querySelector("#korisnik").value = "";
-  document.querySelector("#posjeduje_sliku").value = "";
-  document.querySelector("#opština").value = "";
-  document.querySelector("#napon").value = "";
-  document.querySelector("#datum_ažuriranja").value = "";
+  document.querySelector("#opstina").value = "";
 
   slikaUrl = "";
   opisSlike = "";
@@ -433,11 +428,8 @@ function kreiranjeCqlFilteraAtributi() {
   document.querySelector("#pretraga_god_izg").value !== "" && (retVal += "god_izg = '" + document.querySelector("#pretraga_god_izg").value + "' AND ");
   document.querySelector("#pretraga_pog_sprem").value !== "" && (retVal += "pog_sprem = '" + document.querySelector("#pretraga_pog_sprem").value + "' AND ");
   document.querySelector("#pretraga_vlasnistvo").value !== "" && (retVal += "vlasnistvo = '" + document.querySelector("#pretraga_vlasnistvo").value + "' AND ");
-  document.querySelector("#pretraga_korisnik").value !== "" && (retVal += "korisnik = '" + document.querySelector("#pretraga_korisnik").value + "' AND ");
-  document.querySelector("#pretraga_posjeduje_sliku").value !== "" && (retVal += "posjeduje_sliku = '" + document.querySelector("#pretraga_posjeduje_sliku").value + "' AND ");
-  document.querySelector("#pretraga_opština").value !== "" && (retVal += "opština = '" + document.querySelector("#pretraga_opština").value + "' AND ");
+  document.querySelector("#pretraga_opstina").value !== "" && (retVal += "opština = '" + document.querySelector("#pretraga_opstina").value + "' AND ");
   document.querySelector("#pretraga_napon").value !== "" && (retVal += "napon = '" + document.querySelector("#pretraga_napon").value + "' AND ");
-  document.querySelector("#pretraga_datum_ažuriranja").value !== "" && (retVal += "datum_ažuriranja = '" + document.querySelector("#pretraga_datum_ažuriranja").value + "' AND ");
 
   retVal.length > 5 && (retVal = retVal.substring(0, retVal.length - 5));
   return retVal;
@@ -516,3 +508,23 @@ function wfsDownload(format) {
 document.querySelector("#btnSacuvaj").addEventListener("click", sacuvaj);
 document.querySelector("#btnIzbrisi").addEventListener("click", izbrisi);
 document.querySelector("#btnFilter").addEventListener("click", filtriranje);
+
+popuniDdlAtributima("#funkcija", "trafostanice", "funkcija", "", "");
+popuniDdlAtributima("#tip", "trafostanice", "tip", "", "");
+popuniDdlAtributima("#prenos_odnos", "trafostanice", "prenos_odnos", "", "");
+popuniDdlAtributima("#inst_snaga_t1", "trafostanice", "inst_snaga_t1", "", "");
+popuniDdlAtributima("#inst_snaga_t2", "trafostanice", "inst_snaga_t2", "", "");
+popuniDdlAtributima("#inst_snaga_t3", "trafostanice", "inst_snaga_t3", "", "");
+popuniDdlAtributima("#inst_snaga_t4", "trafostanice", "inst_snaga_t4", "", "");
+popuniDdlAtributima("#vlasnistvo", "trafostanice", "vlasnistvo", "", "");
+popuniDdlAtributima("#opstina", "trafostanice", "opstina", "", "");
+
+popuniDdlAtributima("#pretraga_funkcija", "trafostanice", "funkcija", "", "");
+popuniDdlAtributima("#pretraga_tip", "trafostanice", "tip", "", "");
+popuniDdlAtributima("#pretraga_prenos_odnos", "trafostanice", "prenos_odnos", "", "");
+popuniDdlAtributima("#pretraga_inst_snaga_t1", "trafostanice", "inst_snaga_t1", "", "");
+popuniDdlAtributima("#pretraga_inst_snaga_t2", "trafostanice", "inst_snaga_t2", "", "");
+popuniDdlAtributima("#pretraga_inst_snaga_t3", "trafostanice", "inst_snaga_t3", "", "");
+popuniDdlAtributima("#pretraga_inst_snaga_t4", "trafostanice", "inst_snaga_t4", "", "");
+popuniDdlAtributima("#pretraga_vlasnistvo", "trafostanice", "vlasnistvo", "", "");
+popuniDdlAtributima("#pretraga_opstina", "trafostanice", "opstina", "", "");

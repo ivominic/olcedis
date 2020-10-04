@@ -21,42 +21,56 @@ let rasterLayer = new ol.layer.Image({
 function popuniKontrole(odgovor) {
   let atributi = odgovor.features[0]["properties"];
   idObjekta = atributi["id"];
-  document.querySelector("#gps").value = idObjekta;
-  document.querySelector("#broj").value = idObjekta;
-  document.querySelector("#sifra").value = idObjekta;
-  document.querySelector("#pripadnost").value = idObjekta;
-  document.querySelector("#tip").value = idObjekta;
-  document.querySelector("#vrsta_namjena").value = idObjekta;
-  document.querySelector("#vrsta_materijal").value = idObjekta;
-  document.querySelector("#vrsta_drvenog").value = idObjekta;
-  document.querySelector("#nad_visina").value = idObjekta;
-  document.querySelector("#visina").value = idObjekta;
-  document.querySelector("#rasp_prov").value = idObjekta;
-  document.querySelector("#izolator_vrsta").value = idObjekta;
-  document.querySelector("#izolator_funkcija").value = idObjekta;
-  document.querySelector("#br_izol_faza").value = idObjekta;
-  document.querySelector("#tip_nosac_izol").value = idObjekta;
-  document.querySelector("#odvodnik_prenapona").value = idObjekta;
-  document.querySelector("#uzemljivac").value = idObjekta;
-  document.querySelector("#uzemljivac_otpor").value = idObjekta;
-  document.querySelector("#optika").value = idObjekta;
-  document.querySelector("#rasvjeta").value = idObjekta;
-  document.querySelector("#br_pmo").value = idObjekta;
-  document.querySelector("#br_nnv").value = idObjekta;
-  document.querySelector("#pog_sprem").value = idObjekta;
-  document.querySelector("#vlasnistvo").value = idObjekta;
-  document.querySelector("#opstina").value = idObjekta;
-  document.querySelector("#napon").value = idObjekta;
-  document.querySelector("#prikljucak_otcjep").value = idObjekta;
-  document.querySelector("#nn_vod").value = idObjekta;
-  document.querySelector("#rastavljac").value = idObjekta;
-  document.querySelector("#10_vod").value = idObjekta;
+  document.querySelector("#gps").value = atributi["gps"];
+  document.querySelector("#broj").value = atributi["broj"];
+  document.querySelector("#sifra").value = atributi["sifra"];
+  document.querySelector("#pripadnost").value = atributi["pripadnost"];
+  //document.querySelector("#tip").value = atributi["tip"];
+  //document.querySelector("#vrsta_namjena").value = atributi["vrsta_namjena"];
+  //document.querySelector("#vrsta_materijal").value = atributi["vrsta_materijal"];
+  //document.querySelector("#vrsta_drvenog").value = atributi["vrsta_drvenog"];
+  document.querySelector("#nad_visina").value = atributi["nad_visina"];
+  document.querySelector("#visina").value = atributi["visina"];
+  document.querySelector("#rasp_prov").value = atributi["rasp_prov"];
+  //document.querySelector("#izolator_vrsta").value = atributi["izolator_vrsta"];
+  //document.querySelector("#izolator_funkcija").value = atributi["izolator_funkcija"];
+  document.querySelector("#br_izol_faza").value = atributi["br_izol_faza"];
+  //document.querySelector("#tip_nosac_izol").value = atributi["tip_nosac_izol"];
+  //document.querySelector("#odvodnik_prenapona").value = atributi["odvodnik_prenapona"];
+  //document.querySelector("#uzemljivac").value = atributi["uzemljivac"];
+  document.querySelector("#uzemljivac_otpor").value = atributi["uzemljivac_otpor"];
+  //document.querySelector("#optika").value = atributi["optika"];
+  //document.querySelector("#rasvjeta").value = atributi["rasvjeta"];
+  document.querySelector("#br_pmo").value = atributi["br_pmo"];
+  document.querySelector("#br_nnv").value = atributi["br_nnv"];
+  document.querySelector("#pog_sprem").value = atributi["pog_sprem"];
+  //document.querySelector("#vlasnistvo").value = atributi["vlasnistvo"];
+  document.querySelector("#opstina").value = atributi["opstina"];
+  document.querySelector("#napon").value = atributi["napon"];
+  //document.querySelector("#prikljucak_otcjep").value = atributi["prikljucak_otcjep"];
+  //document.querySelector("#nn_vod").value = atributi["nn_vod"];
+  //document.querySelector("#rastavljac").value = atributi["rastavljac"];
+  //document.querySelector("#10_vod").value = atributi["10_vod"];
 
-
-  //setujDdlVrijednost("#tip", atributi["tip"]);
+  setujDdlVrijednost("#tip", atributi["tip"]);
+  setujDdlVrijednost("#vrsta_namjena", atributi["vrsta_namjena"]);
+  setujDdlVrijednost("#vrsta_materijal", atributi["vrsta_materijal"]);
+  setujDdlVrijednost("#vrsta_drvenog", atributi["vrsta_drvenog"]);
+  setujDdlVrijednost("#izolator_vrsta", atributi["izolator_vrsta"]);
+  setujDdlVrijednost("#izolator_funkcija", atributi["izolator_funkcija"]);
+  setujDdlVrijednost("#tip_nosac_izol", atributi["tip_nosac_izol"]);
+  setujDdlVrijednost("#odvodnik_prenapona", atributi["odvodnik_prenapona"]);
+  setujDdlVrijednost("#uzemljivac", atributi["uzemljivac"]);
+  setujDdlVrijednost("#optika", atributi["optika"]);
+  setujDdlVrijednost("#rasvjeta", atributi["rasvjeta"]);
+  setujDdlVrijednost("#vlasnistvo", atributi["vlasnistvo"]);
+  setujDdlVrijednost("#prikljucak_otcjep", atributi["prikljucak_otcjep"]);
+  setujDdlVrijednost("#nn_vod", atributi["nn_vod"]);
+  setujDdlVrijednost("#rastavljac", atributi["rastavljac"]);
+  setujDdlVrijednost("#10_vod", atributi["10_vod"]);
 
   if (akcija === "izmijeni") {
-    //Ako se radi o izmjeni geometrije, čita objekad za idObjekta i postavlja ga kao vektor na mapi
+    //Ako se radi o izmjeni geometrije, čita objekat za idObjekta i postavlja ga kao vektor na mapi
     wfsZaEdit(idObjekta);
   }
 }
@@ -515,3 +529,40 @@ function wfsDownload(format) {
 document.querySelector("#btnSacuvaj").addEventListener("click", sacuvaj);
 document.querySelector("#btnIzbrisi").addEventListener("click", izbrisi);
 document.querySelector("#btnFilter").addEventListener("click", filtriranje);
+
+/**Popunjavanje ddl-ova */
+
+popuniDdlAtributima("#tip", "stubovi", "tip", "", "");
+popuniDdlAtributima("#vrsta_namjena", "stubovi", "vrsta_namjena", "", "");
+popuniDdlAtributima("#vrsta_materijal", "stubovi", "vrsta_materijal", "", "");
+popuniDdlAtributima("#vrsta_drvenog", "stubovi", "vrsta_drvenog", "", "");
+popuniDdlAtributima("#izolator_vrsta", "stubovi", "izolator_vrsta", "", "");
+popuniDdlAtributima("#izolator_funkcija", "stubovi", "izolator_funkcija", "", "");
+popuniDdlAtributima("#tip_nosac_izol", "stubovi", "tip_nosac_izol", "", "");
+popuniDdlAtributima("#odvodnik_prenapona", "stubovi", "odvodnik_prenapona", "", "");
+popuniDdlAtributima("#uzemljivac", "stubovi", "uzemljivac", "", "");
+popuniDdlAtributima("#optika", "stubovi", "optika", "", "");
+popuniDdlAtributima("#rasvjeta", "stubovi", "rasvjeta", "", "");
+popuniDdlAtributima("#vlasnistvo", "stubovi", "vlasnistvo", "", "");
+popuniDdlAtributima("#prikljucak_otcjep", "stubovi", "prikljucak_otcjep", "", "");
+popuniDdlAtributima("#nn_vod", "stubovi", "nn_vod", "", "");
+popuniDdlAtributima("#rastavljac", "stubovi", "rastavljac", "", "");
+popuniDdlAtributima("#10_vod", "stubovi", "10_vod", "", "");
+
+popuniDdlAtributima("#pretraga_tip", "stubovi", "tip", "", "");
+popuniDdlAtributima("#pretraga_vrsta_namjena", "stubovi", "vrsta_namjena", "", "");
+popuniDdlAtributima("#pretraga_vrsta_materijal", "stubovi", "vrsta_materijal", "", "");
+popuniDdlAtributima("#pretraga_vrsta_drvenog", "stubovi", "vrsta_drvenog", "", "");
+popuniDdlAtributima("#pretraga_izolator_vrsta", "stubovi", "izolator_vrsta", "", "");
+popuniDdlAtributima("#pretraga_izolator_funkcija", "stubovi", "izolator_funkcija", "", "");
+popuniDdlAtributima("#pretraga_tip_nosac_izol", "stubovi", "tip_nosac_izol", "", "");
+popuniDdlAtributima("#pretraga_odvodnik_prenapona", "stubovi", "odvodnik_prenapona", "", "");
+popuniDdlAtributima("#pretraga_uzemljivac", "stubovi", "uzemljivac", "", "");
+popuniDdlAtributima("#pretraga_optika", "stubovi", "optika", "", "");
+popuniDdlAtributima("#pretraga_rasvjeta", "stubovi", "rasvjeta", "", "");
+popuniDdlAtributima("#pretraga_vlasnistvo", "stubovi", "vlasnistvo", "", "");
+popuniDdlAtributima("#pretraga_opstina", "stubovi", "opstina", "", "");
+popuniDdlAtributima("#pretraga_prikljucak_otcjep", "stubovi", "prikljucak_otcjep", "", "");
+popuniDdlAtributima("#pretraga_nn_vod", "stubovi", "nn_vod", "", "");
+popuniDdlAtributima("#pretraga_rastavljac", "stubovi", "rastavljac", "", "");
+popuniDdlAtributima("#pretraga_10_vod", "stubovi", "10_vod", "", "");

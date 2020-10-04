@@ -31,13 +31,11 @@ function popuniKontrole(odgovor) {
   document.querySelector("#br_pretplatnika").value = atributi["br_pretplatnika"];
   document.querySelector("#vlasnistvo").value = atributi["vlasnistvo"];
   document.querySelector("#opstina").value = atributi["opstina"];
-  document.querySelector("#datum_azuriranja").value = atributi["datum_azuriranja"];
-  document.querySelector("#korisnik").value = atributi["korisnik"]
-  document.querySelector("#posjeduje_sliku").value = atributi["posjeduje_sliku"]
   document.querySelector("#napon").value = atributi["napon"]
 
-
-  //setujDdlVrijednost("#tip", atributi["tip"]);
+  setujDdlVrijednost("#osiguraci", atributi["osiguraci"]);
+  setujDdlVrijednost("#vlasnistvo", atributi["vlasnistvo"]);
+  setujDdlVrijednost("#opstina", atributi["opstina"]);
 
   if (akcija === "izmijeni") {
     //Ako se radi o izmjeni geometrije, čita objekad za idObjekta i postavlja ga kao vektor na mapi
@@ -74,9 +72,6 @@ function sacuvaj() {
   podaciForme.append("br_pretplatnika", document.querySelector("#br_pretplatnika").value);
   podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
   podaciForme.append("opstina", document.querySelector("#opstina").value);
-  podaciForme.append("datum_azuriranja", document.querySelector("#datum_azuriranja").value);
-  podaciForme.append("korisnik", document.querySelector("#korisnik").value);
-  podaciForme.append("posjeduje_sliku", document.querySelector("#posjeduje_sliku").value);
   podaciForme.append("napon", document.querySelector("#napon").value);
 
   let xhr = new XMLHttpRequest();
@@ -119,9 +114,6 @@ function restartovanje() {
   document.querySelector("#br_pretplatnika").value = "";
   document.querySelector("#vlasnistvo").value = "";
   document.querySelector("#opstina").value = "";
-  document.querySelector("#datum_azuriranja").value = "";
-  document.querySelector("#korisnik").value = "";
-  document.querySelector("#posjeduje_sliku").value = "";
   document.querySelector("#napon").value = "";
 
   slikaUrl = "";
@@ -393,11 +385,7 @@ function kreiranjeCqlFilteraAtributi() {
   document.querySelector("#pretraga_br_pretplatnika").value !== "" && (retVal += "br_pretplatnika = '" + document.querySelector("#pretraga_br_pretplatnika").value + "' AND ");
   document.querySelector("#pretraga_vlasnistvo").value !== "" && (retVal += "vlasnistvo = '" + document.querySelector("#pretraga_vlasnistvo").value + "' AND ");
   document.querySelector("#pretraga_opstina").value !== "" && (retVal += "opstina = '" + document.querySelector("#pretraga_opstina").value + "' AND ");
-  document.querySelector("#pretraga_datum_azuriranja").value !== "" && (retVal += "datum_azuriranja = '" + document.querySelector("#pretraga_datum_azuriranja").value + "' AND ");
-  document.querySelector("#pretraga_korisnik").value !== "" && (retVal += "korisnik = '" + document.querySelector("#pretraga_korisnik").value + "' AND ");
-  document.querySelector("#pretraga_posjeduje_sliku").value !== "" && (retVal += "posjeduje_sliku = '" + document.querySelector("#pretraga_posjeduje_sliku").value + "' AND ");
   document.querySelector("#pretraga_napon").value !== "" && (retVal += "napon = '" + document.querySelector("#pretraga_napon").value + "' AND ");
-
 
   retVal.length > 5 && (retVal = retVal.substring(0, retVal.length - 5));
   return retVal;
@@ -476,3 +464,11 @@ function wfsDownload(format) {
 document.querySelector("#btnSacuvaj").addEventListener("click", sacuvaj);
 document.querySelector("#btnIzbrisi").addEventListener("click", izbrisi);
 document.querySelector("#btnFilter").addEventListener("click", filtriranje);
+
+popuniDdlAtributima("#osiguraci", "prikljucnomjesto", "osiguraci", "", "");
+popuniDdlAtributima("#vlasnistvo", "prikljucnomjesto", "vlasnistvo", "", "");
+popuniDdlAtributima("#opstina", "prikljucnomjesto", "opstina", "", "");
+
+popuniDdlAtributima("#pretraga_osiguraci", "prikljucnomjesto", "osiguraci", "", "");
+popuniDdlAtributima("#pretraga_vlasnistvo", "prikljucnomjesto", "vlasnistvo", "", "");
+popuniDdlAtributima("#pretraga_opstina", "prikljucnomjesto", "opstina", "", "");

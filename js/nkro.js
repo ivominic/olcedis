@@ -26,20 +26,22 @@ function popuniKontrole(odgovor) {
   document.querySelector("#ts").value = atributi["ts"];
   document.querySelector("#izvod_ts").value = atributi["izvod_ts"];
   document.querySelector("#id").value = atributi["id"];
-  document.querySelector("#materijal").value = atributi["materijal"];
-  document.querySelector("#montaza").value = atributi["montaza"];
-  document.querySelector("#vrata").value = atributi["vrata"];
+  //document.querySelector("#materijal").value = atributi["materijal"];
+  //document.querySelector("#montaza").value = atributi["montaza"];
+  //document.querySelector("#vrata").value = atributi["vrata"];
   document.querySelector("#br_izvoda").value = atributi["br_izvoda"];
   document.querySelector("#br_prikljucaka").value = atributi["br_prikljucaka"];
-  document.querySelector("#pog_sprem").value = atributi["pog_sprem"];
-  document.querySelector("#vlasnistvo").value = atributi["vlasnistvo"];
-  document.querySelector("#opstina").value = atributi["opstina"];
-  document.querySelector("#datum_azuriranja").value = atributi["datum_azuriranja"];
-  document.querySelector("#korisnik").value = atributi["korisnik"];
-  document.querySelector("#posjeduje_sliku").value = atributi["posjeduje_sliku"];
+  //document.querySelector("#pog_sprem").value = atributi["pog_sprem"];
+  //document.querySelector("#vlasnistvo").value = atributi["vlasnistvo"];
+  //document.querySelector("#opstina").value = atributi["opstina"];
   document.querySelector("#napon").value = atributi["napon"];
 
-  //setujDdlVrijednost("#tip", atributi["tip"]);
+  setujDdlVrijednost("#materijal", atributi["materijal"]);
+  setujDdlVrijednost("#montaza", atributi["montaza"]);
+  setujDdlVrijednost("#vrata", atributi["vrata"]);
+  setujDdlVrijednost("#pog_sprem", atributi["pog_sprem"]);
+  setujDdlVrijednost("#vlasnistvo", atributi["vlasnistvo"]);
+  setujDdlVrijednost("#opstina", atributi["opstina"]);
 
   if (akcija === "izmijeni") {
     //Ako se radi o izmjeni geometrije, čita objekad za idObjekta i postavlja ga kao vektor na mapi
@@ -79,9 +81,6 @@ function sacuvaj() {
   podaciForme.append("pog_sprem", document.querySelector("#pog_sprem").value);
   podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
   podaciForme.append("opstina", document.querySelector("#opstina").value);
-  podaciForme.append("datum_azuriranja", document.querySelector("#datum_azuriranja").value);
-  podaciForme.append("korisnik", document.querySelector("#korisnik").value);
-  podaciForme.append("posjeduje_sliku", document.querySelector("#posjeduje_sliku").value);
   podaciForme.append("napon", document.querySelector("#napon").value);
   podaciForme.append("", document.querySelector("#").value);
 
@@ -128,9 +127,6 @@ function restartovanje() {
   document.querySelector("#pog_sprem").value = "";
   document.querySelector("#vlasnistvo").value = "";
   document.querySelector("#opstina").value = "";
-  document.querySelector("#datum_azuriranja").value = "";
-  document.querySelector("#korisnik").value = "";
-  document.querySelector("#posjeduje_sliku").value = "";
   document.querySelector("#napon").value = "";
 
   slikaUrl = "";
@@ -406,9 +402,6 @@ function kreiranjeCqlFilteraAtributi() {
   document.querySelector("#pretraga_pog_sprem").value !== "" && (retVal += "pog_sprem = '" + document.querySelector("#pretraga_pog_sprem").value + "' AND ");
   document.querySelector("#pretraga_vlasnistvo").value !== "" && (retVal += "vlasnistvo = '" + document.querySelector("#pretraga_vlasnistvo").value + "' AND ");
   document.querySelector("#pretraga_opstina").value !== "" && (retVal += "opstina = '" + document.querySelector("#pretraga_opstina").value + "' AND ");
-  document.querySelector("#pretraga_datum_azuriranja").value !== "" && (retVal += "datum_azuriranja = '" + document.querySelector("#pretraga_datum_azuriranja").value + "' AND ");
-  document.querySelector("#pretraga_korisnik").value !== "" && (retVal += "korisnik = '" + document.querySelector("#pretraga_korisnik").value + "' AND ");
-  document.querySelector("#pretraga_posjeduje_sliku").value !== "" && (retVal += "posjeduje_sliku = '" + document.querySelector("#pretraga_posjeduje_sliku").value + "' AND ");
   document.querySelector("#pretraga_napon").value !== "" && (retVal += "napon = '" + document.querySelector("#pretraga_napon").value + "' AND ");
 
 
@@ -490,3 +483,17 @@ function wfsDownload(format) {
 document.querySelector("#btnSacuvaj").addEventListener("click", sacuvaj);
 document.querySelector("#btnIzbrisi").addEventListener("click", izbrisi);
 document.querySelector("#btnFilter").addEventListener("click", filtriranje);
+
+popuniDdlAtributima("#materijal", "nkro", "materijal", "", "");
+popuniDdlAtributima("#montaza", "nkro", "montaza", "", "");
+popuniDdlAtributima("#vrata", "nkro", "vrata", "", "");
+popuniDdlAtributima("#pog_sprem", "nkro", "pog_sprem", "", "");
+popuniDdlAtributima("#vlasnistvo", "nkro", "vlasnistvo", "", "");
+popuniDdlAtributima("#opstina", "nkro", "opstina", "", "");
+
+popuniDdlAtributima("#pretraga_materijal", "nkro", "materijal", "", "");
+popuniDdlAtributima("#pretraga_montaza", "nkro", "montaza", "", "");
+popuniDdlAtributima("#pretraga_vrata", "nkro", "vrata", "", "");
+popuniDdlAtributima("#pretraga_pog_sprem", "nkro", "pog_sprem", "", "");
+popuniDdlAtributima("#pretraga_vlasnistvo", "nkro", "vlasnistvo", "", "");
+popuniDdlAtributima("#pretraga_opstina", "nkro", "opstina", "", "");
