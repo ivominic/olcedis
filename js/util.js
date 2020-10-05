@@ -81,6 +81,16 @@ function wktGeometrije(feature) {
   });
 }
 
+/**Kreiranje vektorskih lejera za snaponvanje */
+function kreirajVektorLejerZaSnap(olCollection) {
+  return new ol.layer.Vector({
+    source: new ol.source.Vector({
+      features: olCollection,
+    }),
+    style: vectorStyle,
+  });
+}
+
 /**Kreiranje vektorskih lejera za crtanje i kreiranje nove geometrije ili edit postojeće (point, linestring, polygon, new i edit) */
 function kreirajVektorLejerZaCrtanje(olCollection) {
   return new ol.layer.Vector({
@@ -94,10 +104,12 @@ function kreirajVektorLejerZaCrtanje(olCollection) {
 let featuresPoint = new ol.Collection(),
   featuresLine = new ol.Collection(),
   featuresPolygon = new ol.Collection(),
-  featuresTekuci = new ol.Collection();
+  featuresSnap = new ol.Collection()
+featuresTekuci = new ol.Collection();
 let featurePointOverlay = kreirajVektorLejerZaCrtanje(featuresPoint),
   featureLineOverlay = kreirajVektorLejerZaCrtanje(featuresLine),
   featurePolygonOverlay = kreirajVektorLejerZaCrtanje(featuresPolygon),
+  featureSnapOverlay = kreirajVektorLejerZaSnap(featuresSnap),
   featureTekuciOverlay = kreirajVektorLejerZaCrtanje(featuresTekuci);
 featureLineOverlay.getSource().on("addfeature", (evt) => linije.push(wktGeometrije(evt.feature)));
 featurePointOverlay.getSource().on("addfeature", (evt) => tacke.push(wktGeometrije(evt.feature)));
@@ -403,6 +415,7 @@ document.querySelector("#podloga_satelit").addEventListener("click", satelitPodl
 document.querySelector("#shp").addEventListener("click", shpDownload);
 document.querySelector("#kml").addEventListener("click", kmlDownload);
 document.querySelector("#excel").addEventListener("click", excelDownload);
+document.querySelector("#btnPrikaziVektor").addEventListener("click", prikaziVektor);
 
 document.querySelector("#confirmPotvrdi").addEventListener("click", confirmPotvrdi);
 document.querySelector("#confirmOdustani").addEventListener("click", confirmOdustani);
@@ -441,5 +454,55 @@ function popuniDdlAtributima(ddl, objekat, atribut, key_param, value_param) {
       //alert(x.responseText +"  " +x.status);
       console.log("greška popuniDdlAtributima", x.responseText);
     }
+  });
+}
+
+function prikaziVektor() {
+  let tekstFiltera = ""
+  poligoni.forEach((item) => {
+    if (tekstFiltera === "") {
+      tekstFiltera = "INTERSECTS(geom," + item + ") ";
+    } else {
+      tekstFiltera += " OR INTERSECTS(geom," + item + ") ";
+    }
+  });
+
+  if (document.querySelector("#ddl_vektor").value === "") {
+    poruka("Upozorenje", "Nije odabran sloj za prikaz.")
+    return false
+  }
+  if (tekstFiltera === "") {
+    poruka("Upozorenje", "Nije kreiran nijedan poligon.")
+    return false
+  }
+
+  console.log("tekst filtera", tekstFiltera);
+  tekstFiltera = "";
+
+  //TODO: brisati poligone
+
+  let nazivLejera = "geonode:" + document.querySelector("#ddl_vektor").value;
+
+  $.ajax({
+    method: "POST",
+    url: wfsUrl,
+    data: {
+      service: "WFS",
+      request: "GetFeature",
+      typename: nazivLejera,
+      outputFormat: "application/json",
+      srsname: "EPSG:3857",
+      CQL_FILTER: tekstFiltera,
+    },
+    success: function (response) {
+      console.log(response);
+      let features = new ol.format.GeoJSON().readFeatures(response);
+      console.log("fičeri", features);
+      featureSnapOverlay.getSource().clear(); //Ispraznimo prethodne zapise da bi imali samo jedan koji ćemo editovati
+      featureSnapOverlay.getSource().addFeatures(features);
+    },
+    fail: function (jqXHR, textStatus) {
+      console.log("Request failed: " + textStatus);
+    },
   });
 }

@@ -203,6 +203,7 @@ map.addControl(razmjera);
 featureLineOverlay.setMap(map);
 featurePointOverlay.setMap(map);
 featurePolygonOverlay.setMap(map);
+featureSnapOverlay.setMap(map);
 featureTekuciOverlay.setMap(map);
 
 /**Podešava kada da se omogući crtanje i izmjena i na kojim lejerima */
