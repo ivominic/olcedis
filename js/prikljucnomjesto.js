@@ -217,6 +217,10 @@ function podesiInterakciju() {
       geometrijaZaBazuWkt = wktGeometrije(e.features.getArray()[0]);
       console.log("feature geometrija", wktGeometrije(e.features.getArray()[0]));
     });
+    var snap = new ol.interaction.Snap({
+      source: featureSnapOverlay.getSource(),
+    });
+    map.addInteraction(snap);
   }
   if (akcija === "dodaj") {
     draw = new ol.interaction.Draw({
@@ -246,6 +250,10 @@ function podesiInterakciju() {
     });
     map.addInteraction(draw);
     map.addInteraction(modify);
+    var snap = new ol.interaction.Snap({
+      source: featureSnapOverlay.getSource(),
+    });
+    map.addInteraction(snap);
   }
 }
 
