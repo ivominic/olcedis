@@ -332,6 +332,23 @@ let dragAndDrop = new ol.interaction.DragAndDrop({
   formatConstructors: [ol.format.GPX, ol.format.GeoJSON, ol.format.IGC, ol.format.KML, ol.format.TopoJSON],
 });
 dragAndDrop.on("addfeatures", function (event) {
+  console.log("aaaa", event.features)
+  let nizKml=[];
+  event.features.forEach(function(feature){
+    /*console.log("feat", feature);
+    console.log("feat1", feature.values_);
+    console.log("feat2", feature.values_.name);
+    console.log("feat3", feature.values_.geometry.flatCoordinates);
+    let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
+    console.log("4326", position);
+    nizKml.push({
+      lat: position[1],
+      lng: position[0],
+      name: feature.values_.name,
+      description: feature.values_.description,
+    });*/
+  });
+  console.log("niz", nizKml);    
   let vectorSource = new ol.source.Vector({
     features: event.features,
     projection: event.projection,
@@ -345,6 +362,52 @@ dragAndDrop.on("addfeatures", function (event) {
   view.fit(vectorSource.getExtent(), map.getSize());
 });
 map.addInteraction(dragAndDrop);
+
+var select = new ol.interaction.Select({
+  wrapX: false,
+});
+
+var modifyV = new ol.interaction.Modify({
+  condition: false,
+  features: select.getFeatures(),
+});
+
+modifyV.on('modifyend', function (e) {
+  /*modifikovan = true;
+  geometrijaZaBazuWkt = wktGeometrije(e.features.getArray()[0]);
+  console.log("feature geometrija", wktGeometrije(e.features.getArray()[0]));*/
+
+  //console.log("select m", e.features.getArray()[0].values_);
+  //console.log("ime tačke m", e.features.getArray()[0].values_.name);
+  //console.log("koordinate", e.selected[0].values_.geometry.flatCoordinates);
+  let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
+  console.log("koordinate m", position);
+});
+
+modifyV.on('change', function (e) {
+  let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
+  console.log("koordinate c", position);
+});
+
+
+map.addInteraction(select);
+map.addInteraction(modifyV);
+
+select.on('select', function (e) {
+  /*document.getElementById('status').innerHTML =
+    '&nbsp;' +
+    e.target.getFeatures().getLength() +
+    ' selected features (last operation selected ' +
+    e.selected.length +
+    ' and deselected ' +
+    e.deselected.length +
+    ' features)';*/
+    console.log("select", e.selected[0].values_);
+    console.log("ime tačke", e.selected[0].values_.name);
+    //console.log("koordinate", e.selected[0].values_.geometry.flatCoordinates);
+    let position = ol.proj.transform(e.selected[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
+    console.log("koordinate", position);
+});
 
 //Klik na feature
 map.on("click", onMouseClick);
