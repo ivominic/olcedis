@@ -56,10 +56,10 @@ var vectorStyle = new ol.style.Style({
 });
 
 /**Setovanje centra mape */
-let center = ol.proj.transform([19.26, 42.443], "EPSG:4326", "EPSG:3857");
+let center = ol.proj.transform([19.26, 42.56], "EPSG:4326", "EPSG:3857");
 let view = new ol.View({
   center: center,
-  zoom: 17,
+  zoom: 9,
 });
 
 /** Prikaz razmjernika na mapi*/
@@ -181,17 +181,27 @@ function slika() {
 
 function crtajTacku() {
   akcija = point;
-  setujAktivnu("#marker");
+  setujAktivnu("#crtanje");
 }
 
 function crtajLiniju() {
   akcija = lineString;
-  setujAktivnu("#linija");
+  setujAktivnu("#crtanje");
 }
 
 function crtajPoligon() {
   akcija = polygon;
-  setujAktivnu("#poligon");
+  setujAktivnu("#crtanje");
+}
+
+function brisanje() {
+  //vectorSelektovaniObjekat.getSource().clear();
+  poligoni.length = 0;
+  linije.length = 0;
+  tacke.length = 0;
+  featureLineOverlay.getSource().clear();
+  featurePointOverlay.getSource().clear();
+  featurePolygonOverlay.getSource().clear();
 }
 
 /**Funkcija koja prolazi kroz nizove tačaka, linija i polgiona i kreira CQL uslov u zavisnosti od odabranih opcija */
@@ -408,17 +418,42 @@ document.querySelector("#slika").addEventListener("click", slika);
 document.querySelector("#marker").addEventListener("click", crtajTacku);
 document.querySelector("#linija").addEventListener("click", crtajLiniju);
 document.querySelector("#poligon").addEventListener("click", crtajPoligon);
+document.querySelector("#brisanje").addEventListener("click", brisanje);
 document.querySelector("#pretraga").addEventListener("click", pretraga);
+document.querySelector("#selekcijaPocetnogStuba").addEventListener("click", selekcijaPocetnogStuba);
+document.querySelector("#selekcijaZavrsnogStuba").addEventListener("click", selekcijaZavrsnogStuba);
 document.querySelector("#restart").addEventListener("click", restart);
 document.querySelector("#podloga_osm").addEventListener("click", osmPodloga);
 document.querySelector("#podloga_satelit").addEventListener("click", satelitPodloga);
 document.querySelector("#shp").addEventListener("click", shpDownload);
 document.querySelector("#kml").addEventListener("click", kmlDownload);
 document.querySelector("#excel").addEventListener("click", excelDownload);
-document.querySelector("#btnPrikaziVektor").addEventListener("click", prikaziVektor);
+//document.querySelector("#btnPrikaziVektor").addEventListener("click", prikaziVektor);
+//Ovo otkomentarisati za snap
 
 document.querySelector("#confirmPotvrdi").addEventListener("click", confirmPotvrdi);
 document.querySelector("#confirmOdustani").addEventListener("click", confirmOdustani);
+
+let blnPocetniStub = false, blnZavrsniStub = false;
+/**Metoda koja bira prvi stub voda */
+function selekcijaPocetnogStuba(){
+  if(blnZavrsniStub){
+    poruka("Upozorenje", "Potrebno je odabrati završni stub.");
+  }else{
+    poruka("Uspjeh", "Odaberite početni stub voda koji želite da uvezete.");
+    blnPocetniStub = true;
+  }  
+}
+
+/**Metoda koja bira prvi stub */
+function selekcijaZavrsnogStuba(){
+  if(blnPocetniStub){
+    poruka("Upozorenje", "Potrebno je odabrati početni stub.");
+  }else{
+    poruka("Uspjeh", "Odaberite završni stub voda koji želite da uvezete.");
+    blnZavrsniStub = true;
+  }  
+}
 
 /**
  * Metoda koja popunjava zadati ddl vrijednostima atributa koje vrate servisi za predati objekat, naziv atributa i 

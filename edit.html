@@ -71,6 +71,29 @@
             <a href="#" id="poligon">Poligon</a>
           </div>
         </div>
+        <a href="#" id="brisanje" class="tooltip" data-tool="Uklanjanje"><i class="fas fa-eraser" aria-hidden="true"></i></a>
+        <div class="dropdown">
+          <button class="dropbtn" id="izmjeneGeometrija">
+            <i class="fas fa-tasks"></i>
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#" id="selekcijaPocetnogStuba">Početni stub</a>
+            <a href="#" id="selekcijaZavrsnogStuba">Krajnji stub</a>
+            <a href="#" id="dijeljenjeVoda">Dijeljenje voda</a>
+            <a href="#" id="spajanjeVoda">Spajanje voda</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn" id="bilingUparivanje">
+            <i class="fas fa-arrows-alt-h"></i>
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#" id="bilingTrafostanice">Biling - trafostanice</a>
+            <a href="#" id="logickeVeze">Logičke veze</a>
+          </div>
+        </div>
         <a href="#" id="pretraga" class="tooltip" data-tool="Pretraga"><i class="fa fa-search" aria-hidden="true"></i></a>
         <div class="dropdown">
           <button class="dropbtn">
@@ -93,7 +116,7 @@
             <a href="#" id="excel">Excel</a>
           </div>
         </div>
-        <a href="#" id="restart" class="tooltip" data-tool="Restart"><i class="fas fa-power-off"></i></a>
+        <a href="#" id="restart" class="tooltip" data-tool="Restart"><i class="fa fa-repeat" aria-hidden="true"></i></a>
         <a href="naslovnaStranaUrl" id="home" class="tooltip" data-tool="Početna"><i class="fas fa-home"></i></a>
         <a href="javascript:void(0);" class="icon" onclick="zatvoriHamburger()">&#9776;</a>
       </div>
@@ -308,7 +331,7 @@
       </div>
       <div class="row">
         <div class="column">
-          <label for="ddl_vektor">Vektorski lejer:</label>
+          <label for="ddl_vektor">Lejer:</label>
           <select id="ddl_vektor" class="select-css">
             <option value=""></option>
             <option value="stubovi">Stubovi</option>
@@ -318,7 +341,7 @@
             <option value="nkro">NKRO</option>
           </select>
         </div>
-        <button type="button" class="btn" id="btnPrikaziVektor">Prikaz</button>
+        <!--<button type="button" class="btn" id="btnPrikaziVektor">Prikaz</button>-->
       </div>
       <div class="row">
         <div class="column">

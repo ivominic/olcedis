@@ -361,6 +361,57 @@ dragAndDrop.on("addfeatures", function (event) {
 });
 map.addInteraction(dragAndDrop);
 
+/** Selekcija i modifikacija */
+
+var select = new ol.interaction.Select({
+  wrapX: false,
+});
+
+select.on('select', function (e) {
+  //console.log("select target", e.target.getFeatures().array_[0].values_.name);
+  console.log("select target", e.target.getFeatures());
+  if(blnZavrsniStub){
+    blnZavrsniStub = false;
+    poruka("Uspjeh", "Završni stub voda je " + e.target.getFeatures().array_[0].values_.name);
+  }
+  if(blnPocetniStub){
+    blnPocetniStub = false;
+    poruka("Uspjeh", "Početni stub voda je " + e.target.getFeatures().array_[0].values_.name);
+  }
+});
+
+var modifyV = new ol.interaction.Modify({
+  condition: false,
+  features: select.getFeatures(),
+});
+
+modifyV.on('modifyend', function (e) {
+  /*modifikovan = true;
+  geometrijaZaBazuWkt = wktGeometrije(e.features.getArray()[0]);
+  console.log("feature geometrija", wktGeometrije(e.features.getArray()[0]));*/
+
+  //console.log("select m", e.features.getArray()[0].values_);
+  //console.log("ime tačke m", e.features.getArray()[0].values_.name);
+  //console.log("koordinate", e.selected[0].values_.geometry.flatCoordinates);
+  let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
+  console.log("koordinate m", position);
+});
+
+modifyV.on('change', function (e) {
+  let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
+  console.log("koordinate c", position);
+});
+
+
+map.addInteraction(select);
+map.addInteraction(modifyV);
+
+/*** Završena selekcija i modifikacija */
+
+
+
+
+
 //Klik na feature
 map.on("click", onMouseClick);
 
