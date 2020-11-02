@@ -22,13 +22,55 @@
     <div class="pocetni-div">
       <div class="topnav" id="topNav">
         <a href="#" class="active tooltip" id="pan" data-tool="Pan"><i class="far fa-hand-paper"></i></a>
-        <a href="#" id="dodaj" class="tooltip" data-tool="Novi objekat"><i class="far fa-plus-square"></i></a>
-        <a href="#" id="izmijeni" class="tooltip" data-tool="Izmjena geometrije"><i class="fas fa-edit"></i></a>
+        <div class="dropdown" id="dodaj">
+          <button class="dropbtn">
+            <i class="far fa-plus-square"></i>
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#" id="noviStub35">Stub 35KV</a>
+            <a href="#" id="noviStub10Kv">Stub 10KV</a>
+            <a href="#" id="noviVod35">Vod 35KV</a>
+            <a href="#" id="noviVod10Kv">Vod 10KV</a>
+            <a href="#" id="novaTrafostanica35">Trafostanica 35KV</a>
+            <a href="#" id="novaTrafostanica10Kv">Trafostanica 10KV</a>
+            <a href="#" id="noviNKRO">NKRO</a>
+            <a href="#" id="novoPrikljucnoMjesto">Priključno mjesto</a>
+            <a href="#" id="noviPotrosac">Potrošač</a>
+            <a href="#" id="noviPOD">POD</a>
+          </div>
+        </div>
+        <div class="dropdown" id="izmijeni">
+          <button class="dropbtn">
+            <i class="far fa-plus-square"></i>
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#" id="editStub35">Stub 35KV</a>
+            <a href="#" id="editStub10Kv">Stub 10KV</a>
+            <a href="#" id="editVod35">Vod 35KV</a>
+            <a href="#" id="editVod10Kv">Vod 10KV</a>
+            <a href="#" id="editTrafostanica35">Trafostanica 35KV</a>
+            <a href="#" id="editTrafostanica10Kv">Trafostanica 10KV</a>
+            <a href="#" id="editNKRO">NKRO</a>
+            <a href="#" id="editPrikljucnoMjesto">Priključno mjesto</a>
+            <a href="#" id="editPotrosac">Potrošač</a>
+            <a href="#" id="editPOD">POD</a>
+          </div>
+        </div>
         <a href="#" id="atributi" class="tooltip" data-tool="Atributi"><i class="fas fa-info-circle"></i></a>
         <a href="#" id="slika" class="tooltip" data-tool="Fotografija"><i class="fas fa-camera-retro"></i></a>
-        <a href="#" id="marker" class="tooltip" data-tool="Crtanje tačke"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
-        <a href="#" id="linija" class="tooltip" data-tool="Crtanje linije"><i class="fas fa-route"></i></a>
-        <a href="#" id="poligon" class="tooltip" data-tool="Crtanje poligona"><i class="fas fa-draw-polygon"></i></a>
+        <div class="dropdown" id="crtanje">
+          <button class="dropbtn">
+            <i class="fas fa-pencil-alt"></i>
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#" id="marker">Tačka</a>
+            <a href="#" id="linija">Linija</a>
+            <a href="#" id="poligon">Poligon</a>
+          </div>
+        </div>
         <a href="#" id="pretraga" class="tooltip" data-tool="Pretraga"><i class="fa fa-search" aria-hidden="true"></i></a>
         <div class="dropdown">
           <button class="dropbtn">
@@ -210,6 +252,9 @@
           <label for="10_vod">10 kV vod:</label>
           <select id="10_vod" class="select-css"></select>
         </div>
+      </div>
+      <div class="row">
+        <input type="file" class="sama" accept="image/*" capture="environment" id="dodavanjeSlike" />
       </div>
       <div class="row">
         <button type="button" class="btn" id="btnSacuvaj"><i class="fas fa-check-circle"></i> Sačuvaj</button>
@@ -473,7 +518,7 @@
     </script>
 
     <script src="js/ol.js"></script>
-    <script src="js/util.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/editUtil.js"></script>
+    <script src="js/edit.js"></script>
   </body>
 </html>

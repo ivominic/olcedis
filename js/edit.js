@@ -200,6 +200,7 @@ featurePolygonOverlay.setMap(map);
 featureSnapOverlay.setMap(map);
 featureTekuciOverlay.setMap(map);
 
+let blnFreeHandDraw = true;
 /**Podešava kada da se omogući crtanje i izmjena i na kojim lejerima */
 function podesiInterakciju() {
   //uklanja draw i modify
@@ -224,6 +225,7 @@ function podesiInterakciju() {
     draw = new ol.interaction.Draw({
       features: featuresLine,
       type: lineString,
+      freehand: blnFreeHandDraw,
     });
     modify = new ol.interaction.Modify({
       features: featuresLine,
@@ -238,6 +240,7 @@ function podesiInterakciju() {
     draw = new ol.interaction.Draw({
       features: featuresPolygon,
       type: polygon,
+      freehand: blnFreeHandDraw,
     });
     modify = new ol.interaction.Modify({
       features: featuresPolygon,
