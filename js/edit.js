@@ -418,6 +418,11 @@ modifyV.on('modifyend', function (e) {
     e.features.getArray()[0].getGeometry().setCoordinates(pocetnaTacka.flatCoordinates);
     poruka("Upozorenje", 'Tačka ne može biti pomjerena više od ' + (dozvoljeniPomjeraj*1000).toString() + 'm od snimljene pozicije.')
   }  
+  //let boundingExtent = map.getView().calculateExtent(map.getSize());
+  //console.log(map.getView());
+  //boundingExtent = ol.proj.transformExtent(boundingExtent, ol.proj.get("EPSG:4326"), ol.proj.get("EPSG:3857"));
+  //console.log(boundingExtent);
+  citajExtent();
 });
 
 modifyV.on('change', function (e) {

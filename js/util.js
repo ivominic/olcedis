@@ -55,6 +55,25 @@ var vectorStyle = new ol.style.Style({
   image: circle,
 });
 
+/**Stilizacija vektora */
+var fillSnap = new ol.style.Fill({
+  color: "rgba(255,0,0,0.3)",
+});
+var strokeSnap = new ol.style.Stroke({
+  color: "#ff0000",
+  width: 2,
+});
+var circleSnap = new ol.style.Circle({
+  radius: 7,
+  fill: fill,
+  stroke: stroke,
+});
+var vectorStyleSnap = new ol.style.Style({
+  fill: fillSnap,
+  stroke: strokeSnap,
+  image: circleSnap,
+});
+
 /**Setovanje centra mape */
 let center = ol.proj.transform([19.26, 42.443], "EPSG:4326", "EPSG:3857");
 let view = new ol.View({
@@ -87,7 +106,7 @@ function kreirajVektorLejerZaSnap(olCollection) {
     source: new ol.source.Vector({
       features: olCollection,
     }),
-    style: vectorStyle,
+    style: vectorStyleSnap,
   });
 }
 
@@ -457,7 +476,7 @@ function popuniDdlAtributima(ddl, objekat, atribut, key_param, value_param) {
   });
 }
 
-function prikaziVektor() {
+/*function prikaziVektor() {
   let tekstFiltera = ""
   poligoni.forEach((item) => {
     if (tekstFiltera === "") {
@@ -505,4 +524,4 @@ function prikaziVektor() {
       console.log("Request failed: " + textStatus);
     },
   });
-}
+}*/
