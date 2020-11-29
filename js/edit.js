@@ -414,7 +414,7 @@ modifyV.on('modifyend', function (e) {
   let distanca = turf.distance(distancaOd, distancaDo, mjera);
   console.log("distanca", distanca);
   if(distanca > dozvoljeniPomjeraj){
-    console.log("vrati na početno");
+    //console.log("vrati na početno");
     e.features.getArray()[0].getGeometry().setCoordinates(pocetnaTacka.flatCoordinates);
     poruka("Upozorenje", 'Tačka ne može biti pomjerena više od ' + (dozvoljeniPomjeraj*1000).toString() + 'm od snimljene pozicije.')
   }  
@@ -434,6 +434,10 @@ modifyV.on('change', function (e) {
 
 map.addInteraction(select);
 map.addInteraction(modifyV);
+let snap = new ol.interaction.Snap({
+  source: featureSnapOverlay.getSource(),
+});
+map.addInteraction(snap);
 
 /*** Završena selekcija i modifikacija */
 

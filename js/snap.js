@@ -39,7 +39,10 @@ function snapPOD(){
   citajExtent("pod");
 }
 
-
+/**
+ * 
+ * @param {Prikazuje objekte iz lejera na vidljivom dijelu ekrana} lejer 
+ */
 function citajExtent(lejer){
   //extentSource.clear();
   var extentMap = map.getView().calculateExtent(map.getSize());
@@ -86,11 +89,12 @@ function citajExtent(lejer){
  * Metoda koja za zadati lejer i poligon (bounding box) prikazuje lejere za snap
  */
 function prikaziSnapVektor(lejer, poligon) {
-  let tekstFiltera = "INTERSECTS(geom," + poligon + ") "
+  //let tekstFiltera = "INTERSECTS(geom," + poligon + ") "
+  let tekstFiltera = "INTERSECTS(Geometry," + poligon + ") "
 
-  //let nazivLejera = "geonode:" + lejer;
-  let nazivLejera = "winsoft:drvece";
-  const wfsUrl = domainUrl + "/geoserver/winsoft/wfs";
+  let nazivLejera = "geonode:" + lejer;
+  //let nazivLejera = "winsoft:drvece";
+  //const wfsUrl = domainUrl + "/geoserver/winsoft/wfs";
   console.log("wfs putanja", wfsUrl);  
   console.log("wfs cql", tekstFiltera);  
 
@@ -103,7 +107,7 @@ function prikaziSnapVektor(lejer, poligon) {
       request: "GetFeature",
       typeName: nazivLejera,
       outputFormat: "application/json",
-      SrsName: "EPSG:4326",
+      SrsName: "EPSG:3857",
       CQL_FILTER: tekstFiltera
     },
     success: function (response) {
