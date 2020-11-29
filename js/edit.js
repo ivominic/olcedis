@@ -389,15 +389,38 @@ modifyV.on('modifyend', function (e) {
   /*modifikovan = true;
   geometrijaZaBazuWkt = wktGeometrije(e.features.getArray()[0]);
   console.log("feature geometrija", wktGeometrije(e.features.getArray()[0]));*/
+  let featureName = e.features.getArray()[0].values_.name;
 
-  //console.log("select m", e.features.getArray()[0].values_);
-  //console.log("ime tačke m", e.features.getArray()[0].values_.name);
+  console.log("select m", e.features.getArray()[0].values_);
+  console.log("ime tačke m", e.features.getArray()[0].values_.name);
   //console.log("koordinate", e.selected[0].values_.geometry.flatCoordinates);
   let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
   console.log("koordinate m", position);
+  let pocetniElement;
+  nizKml.forEach((el) => {
+    if(el.name === featureName){
+      pocetniElement = el;
+      //console.log("Obj", el);
+      //console.log("Objname", el.name);
+    }    
+  })
+  let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat]));
+  //console.log("pocetnaTacka", pocetnaTacka);
+  //console.log("pocetnaTacka transform", ol.proj.transform(pocetnaTacka.flatCoordinates, "EPSG:3857", "EPSG:4326"));
+  let distancaOd = turf.point([position[0], position[1]]);
+  let distancaDo = turf.point([pocetniElement.lng, pocetniElement.lat]);
+  let mjera = {units: 'kilometers'};
+  let distanca = turf.distance(distancaOd, distancaDo, mjera);
+  console.log("distanca", distanca);
+  if(distanca > 0.01){
+    console.log("vrati na početno");
+    e.features.getArray()[0].getGeometry().setCoordinates(pocetnaTacka.flatCoordinates);
+    poruka("Upozorenje", "Tačka ne može biti pomjerena više od 10m od snimljene pozicije.")
+  }  
 });
 
 modifyV.on('change', function (e) {
+  console.log("koordinate", e.selected[0].values_.geometry.flatCoordinates);
   let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
   console.log("koordinate c", position);
 });
