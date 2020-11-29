@@ -3,6 +3,7 @@ const layername = "stubovi",
   layertitle = "Stubovi";
 const tipGeometrije = point;
 let opisSlike = "";
+const dozvoljeniPomjeraj = 0.01; //0.01km
 
 let rasterLayer = new ol.layer.Image({
   title: layertitle,
@@ -412,10 +413,10 @@ modifyV.on('modifyend', function (e) {
   let mjera = {units: 'kilometers'};
   let distanca = turf.distance(distancaOd, distancaDo, mjera);
   console.log("distanca", distanca);
-  if(distanca > 0.01){
+  if(distanca > dozvoljeniPomjeraj){
     console.log("vrati na početno");
     e.features.getArray()[0].getGeometry().setCoordinates(pocetnaTacka.flatCoordinates);
-    poruka("Upozorenje", "Tačka ne može biti pomjerena više od 10m od snimljene pozicije.")
+    poruka("Upozorenje", 'Tačka ne može biti pomjerena više od ' + (dozvoljeniPomjeraj*1000).toString() + 'm od snimljene pozicije.')
   }  
 });
 
