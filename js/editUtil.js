@@ -299,6 +299,18 @@ function setujAktivnu(element) {
   if (element === "#pretraga") {
     showDiv("#pretragaDiv");
   }
+  if (element === "#selekcijaPocetnogStuba") {
+        
+  }
+  if (element === "#selekcijaZavrsnogStuba") {
+    
+  }
+  if (element === "#dijeljenjeVoda") {
+        
+  }
+  if (element === "#spajanjeVoda") {
+    
+  }
   podesiInterakciju();
   zatvoriHamburger();
 }
@@ -437,6 +449,8 @@ document.querySelector("#confirmOdustani").addEventListener("click", confirmOdus
 let blnPocetniStub = false, blnZavrsniStub = false;
 /**Metoda koja bira prvi stub voda */
 function selekcijaPocetnogStuba(){
+  akcija = "pocetniStub";
+  setujAktivnu("#selekcijaPocetnogStuba");
   if(blnZavrsniStub){
     poruka("Upozorenje", "Potrebno je odabrati završni stub.");
   }else{
@@ -447,6 +461,8 @@ function selekcijaPocetnogStuba(){
 
 /**Metoda koja bira prvi stub */
 function selekcijaZavrsnogStuba(){
+  akcija = "zavrsniStub";
+  setujAktivnu("#selekcijaZavrsnogStuba");
   if(blnPocetniStub){
     poruka("Upozorenje", "Potrebno je odabrati početni stub.");
   }else{
