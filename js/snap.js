@@ -55,7 +55,8 @@ function citajExtent(lejer){
       [bottomLeft[0], bottomLeft[1]], 
       [topLeft[0], topLeft[1]] , 
       [topRight[0], topRight[1]],
-      [bottomRight[0], bottomRight[1]]
+      [bottomRight[0], bottomRight[1]],
+      [bottomLeft[0], bottomLeft[1]]
   ];
  var polygon = new ol.geom.Polygon([ring]);
 
@@ -76,6 +77,7 @@ function citajExtent(lejer){
  /*var feature = new ol.Feature(polygon);
  extentSource.addFeature(feature);
  feature.setStyle(extentStyle);*/
+ prikaziSnapVektor(lejer, wktPoligon);
 }
 
 /**
@@ -84,8 +86,10 @@ function citajExtent(lejer){
 function prikaziSnapVektor(lejer, poligon) {
   let tekstFiltera = "INTERSECTS(geom," + poligon + ") "
 
-  console.log("tekst filtera", tekstFiltera);
-  let nazivLejera = "geonode:" + lejer;
+  //let nazivLejera = "geonode:" + lejer;
+  let nazivLejera = "winsoft:drvece";
+  const wfsUrl = domainUrl + "/geoserver/winsoft/wfs";
+  console.log("wfs putanja", wfsUrl);  
 
   $.ajax({
     method: "POST",
