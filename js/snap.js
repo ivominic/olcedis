@@ -9,22 +9,22 @@ document.querySelector("#snapPrikljucnoMjesto").addEventListener("click", snapPr
 document.querySelector("#snapPotrosac").addEventListener("click", snapPotrosac);
 document.querySelector("#snapPOD").addEventListener("click", snapPOD);
 function snapStub35(){
-  citajExtent("stub35");
+  citajExtent("stubovi");
 }
 function snapStub10Kv(){
-  citajExtent("stub10Kv");
+  citajExtent("stubovi");
 }
 function snapVod35(){
-  citajExtent("vod35");
+  citajExtent("vodovi");
 }
 function snapVod10Kv(){
-  citajExtent("vod10Kv");
+  citajExtent("vodovi");
 }
 function snapTrafostanica35(){
-  citajExtent("trafostanica35");
+  citajExtent("trafostanice");
 }
 function snapTrafostanica10Kv(){
-  citajExtent("trafostanica10Kv");
+  citajExtent("trafostanice");
 }
 function snapNKRO(){
   citajExtent("nkro");
@@ -45,23 +45,23 @@ function snapPOD(){
  */
 function citajExtent(lejer){
   //extentSource.clear();
-  var extentMap = map.getView().calculateExtent(map.getSize());
-  var bottomLeft = ol.proj.transform(ol.extent.getBottomLeft(extentMap),
+  let extentMap = map.getView().calculateExtent(map.getSize());
+  let bottomLeft = ol.proj.transform(ol.extent.getBottomLeft(extentMap),
     'EPSG:3857', 'EPSG:4326');
-  var topRight = ol.proj.transform(ol.extent.getTopRight(extentMap),
+  let topRight = ol.proj.transform(ol.extent.getTopRight(extentMap),
     'EPSG:3857', 'EPSG:4326');
-  var bottomRight = ol.proj.transform(ol.extent.getBottomRight(extentMap),
+  let bottomRight = ol.proj.transform(ol.extent.getBottomRight(extentMap),
     'EPSG:3857', 'EPSG:4326');
-  var topLeft  = ol.proj.transform(ol.extent.getTopLeft(extentMap),
+  let topLeft  = ol.proj.transform(ol.extent.getTopLeft(extentMap),
     'EPSG:3857', 'EPSG:4326');
-  var ring = [ 
+  let ring = [ 
       [bottomLeft[0], bottomLeft[1]], 
       [topLeft[0], topLeft[1]] , 
       [topRight[0], topRight[1]],
       [bottomRight[0], bottomRight[1]],
       [bottomLeft[0], bottomLeft[1]]
   ];
- var polygon = new ol.geom.Polygon([ring]);
+ let polygon = new ol.geom.Polygon([ring]);
 
  let format = new ol.format.WKT();
  /*let wktPoligon = format.writeGeometry(polygon, {
@@ -114,7 +114,7 @@ function prikaziSnapVektor(lejer, poligon) {
       console.log("response servisa", response);
       let features = new ol.format.GeoJSON().readFeatures(response);
       console.log("fičeri", features);
-      featureSnapOverlay.getSource().clear(); //Ispraznimo prethodne zapise da bi imali samo jedan koji ćemo editovati
+      featureSnapOverlay.getSource().clear(); //Ispraznimo prethodne zapise
       featureSnapOverlay.getSource().addFeatures(features);
     },
     fail: function (jqXHR, textStatus) {

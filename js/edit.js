@@ -4,6 +4,8 @@ const layername = "stubovi",
 const tipGeometrije = point;
 let opisSlike = "";
 const dozvoljeniPomjeraj = 0.01; //0.01km
+let nizKml = [];
+let vrijednostPocetneTacke = 0, vrijednostKrajnjeTacke = 0;
 
 let rasterLayer = new ol.layer.Image({
   title: layertitle,
@@ -327,19 +329,18 @@ function onMouseMove(evt) {
 /**Omogućava dodavanje novog vektor lejera drag-drop metodom */
 let vektorSource = new ol.source.Vector();
 let vectorSource;
-let nizKml = [];
 let dragAndDrop = new ol.interaction.DragAndDrop({
   formatConstructors: [ol.format.GPX, ol.format.GeoJSON, ol.format.IGC, ol.format.KML, ol.format.TopoJSON],
 });
 dragAndDrop.on("addfeatures", function (event) {
   console.log("aaaa", event.features)
   event.features.forEach(function(feature){
-    console.log("feat", feature);
+    /*console.log("feat", feature);
     console.log("feat1", feature.values_);
     console.log("feat2", feature.values_.name);
-    console.log("feat3", feature.values_.geometry.flatCoordinates);
+    console.log("feat3", feature.values_.geometry.flatCoordinates);*/
     let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
-    console.log("4326", position);
+    //console.log("4326", position);
     nizKml.push({
       lat: position[1],
       lng: position[0],
@@ -373,11 +374,16 @@ select.on('select', function (e) {
   console.log("select target", e.target.getFeatures());
   if(blnZavrsniStub){
     blnZavrsniStub = false;
+    vrijednostKrajnjeTacke = parseInt(e.target.getFeatures().array_[0].values_.name);
     poruka("Uspjeh", "Završni stub voda je " + e.target.getFeatures().array_[0].values_.name);
   }
   if(blnPocetniStub){
     blnPocetniStub = false;
+    vrijednostPocetneTacke = parseInt(e.target.getFeatures().array_[0].values_.name);
     poruka("Uspjeh", "Početni stub voda je " + e.target.getFeatures().array_[0].values_.name);
+  }
+  if(vrijednostPocetneTacke > 0 && vrijednostKrajnjeTacke > 0 && vrijednostPocetneTacke !== vrijednostKrajnjeTacke){
+    kreirajVod(vrijednostPocetneTacke, vrijednostKrajnjeTacke);
   }
 });
 
