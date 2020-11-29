@@ -65,14 +65,16 @@ function citajExtent(lejer){
    dataProjection: "EPSG:4326",
    featureProjection: "EPSG:3857",
  });*/
+
+
+ console.log("snap", polygon);
+ //polygon.transform('EPSG:4326', 'EPSG:3857');
+ 
  let wktPoligon = format.writeGeometry(polygon, {
   
 });
  console.log("wkt", wktPoligon);
 
- console.log("snap", polygon);
- polygon.transform('EPSG:4326', 'EPSG:3857');
- 
  // Add the polygon to the layer and style it
  /*var feature = new ol.Feature(polygon);
  extentSource.addFeature(feature);
@@ -90,20 +92,22 @@ function prikaziSnapVektor(lejer, poligon) {
   let nazivLejera = "winsoft:drvece";
   const wfsUrl = domainUrl + "/geoserver/winsoft/wfs";
   console.log("wfs putanja", wfsUrl);  
+  console.log("wfs cql", tekstFiltera);  
 
   $.ajax({
     method: "POST",
     url: wfsUrl,
     data: {
       service: "WFS",
+      version: "1.0.0",
       request: "GetFeature",
-      typename: nazivLejera,
+      typeName: nazivLejera,
       outputFormat: "application/json",
-      srsname: "EPSG:3857",
-      CQL_FILTER: tekstFiltera,
+      SrsName: "EPSG:4326",
+      CQL_FILTER: tekstFiltera
     },
     success: function (response) {
-      console.log(response);
+      console.log("response servisa", response);
       let features = new ol.format.GeoJSON().readFeatures(response);
       console.log("fičeri", features);
       featureSnapOverlay.getSource().clear(); //Ispraznimo prethodne zapise da bi imali samo jedan koji ćemo editovati

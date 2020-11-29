@@ -55,6 +55,25 @@ var vectorStyle = new ol.style.Style({
   image: circle,
 });
 
+/**Stilizacija vektora za snap*/
+var fillSnap = new ol.style.Fill({
+  color: "rgba(128,0,128,0.3)",
+});
+var strokeSnap = new ol.style.Stroke({
+  color: "#C807FE",
+  width: 2,
+});
+var circleSnap = new ol.style.Circle({
+  radius: 7,
+  fill: fillSnap,
+  stroke: strokeSnap,
+});
+var vectorStyleSnap = new ol.style.Style({
+  fill: fillSnap,
+  stroke: strokeSnap,
+  image: circleSnap,
+});
+
 /**Setovanje centra mape */
 let center = ol.proj.transform([19.26, 42.56], "EPSG:4326", "EPSG:3857");
 let view = new ol.View({
@@ -87,7 +106,7 @@ function kreirajVektorLejerZaSnap(olCollection) {
     source: new ol.source.Vector({
       features: olCollection,
     }),
-    style: vectorStyle,
+    style: vectorStyleSnap,
   });
 }
 

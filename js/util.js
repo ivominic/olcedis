@@ -55,18 +55,18 @@ var vectorStyle = new ol.style.Style({
   image: circle,
 });
 
-/**Stilizacija vektora */
+/**Stilizacija vektora za snap*/
 var fillSnap = new ol.style.Fill({
-  color: "rgba(255,0,0,0.3)",
+  color: "rgba(128,0,128,0.3)",
 });
 var strokeSnap = new ol.style.Stroke({
-  color: "#ff0000",
+  color: "#C807FE",
   width: 2,
 });
 var circleSnap = new ol.style.Circle({
-  radius: 7,
-  fill: fill,
-  stroke: stroke,
+  radius: 4,
+  fill: fillSnap,
+  stroke: strokeSnap,
 });
 var vectorStyleSnap = new ol.style.Style({
   fill: fillSnap,
