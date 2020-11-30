@@ -1,3 +1,5 @@
+//Vrati trafostanicu i izvode
+
 function pretragaTrafostanica(sifraTS) {
   let urlServisa = window.location.protocol + "//" + window.location.hostname + "/novi_portal/api/trafostanice?objekat=" + sifraTS;
   $.ajax({
@@ -20,7 +22,8 @@ function pretragaTrafostanica(sifraTS) {
   });
 }
 
-
+//Poslati kao string sa uglastim zagradama
+//U unos podataka/izmjenu da prikaže dostupne trafostance u polje atributa
 function uparivanjeTrafostanica(nizTS) {//Niz id-jeva trafostanica
   let urlServisa = window.location.protocol + "//" + window.location.hostname + "/novi_portal/api/upari_trafostanice?trafostanice=" + nizTS;
   $.ajax({
