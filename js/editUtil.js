@@ -1,9 +1,11 @@
 /**Inicijalna deklaracija vrijednosti koje se korite u stranici*/
-const domainUrl = location.origin;
-//const domainUrl = "http://localhost:8088";
+//const domainUrl = location.origin;
+const domainUrl = "http://localhost";
 //const domainUrl = "http://167.172.171.249";
-const wmsUrl = domainUrl + "/geoserver/geonode/wms";
-const wfsUrl = domainUrl + "/geoserver/geonode/wfs";
+//const wmsUrl = domainUrl + "/geoserver/geonode/wms";
+const wmsUrl = domainUrl + "/geoserver/winsoft/wms";
+//const wfsUrl = domainUrl + "/geoserver/geonode/wfs";
+const wfsUrl = domainUrl + "/geoserver/winsoft/wfs";
 const imageUrl = domainUrl + "/slike/";
 const point = "Point",
   lineString = "LineString",
@@ -159,43 +161,7 @@ function prikaziSliku(n) {
 function slika() {
   slikeIndex = 0;
   slikeUrl = [];
-
-  if (idObjekta > 0) {
-    let parametri = new FormData();
-    parametri.append("id", idObjekta);
-    let xhr = new XMLHttpRequest();
-    xhr.open('POST', citajSlikeUrl, true);
-    xhr.send(parametri);
-    xhr.onreadystatechange = function () {
-      if (this.readyState === 4) {
-        if (this.status === 200) {
-          let jsonResponse = JSON.parse(xhr.responseText);
-          console.log(jsonResponse);
-          if (jsonResponse["success"] === true && jsonResponse["data"].length > 0) {
-            for (let i = 0; i < jsonResponse["data"].length; i++) {
-              let tmpSlika = jsonResponse["data"][i].fotografija;
-              tmpSlika.length && (tmpSlika = tmpSlika.substring(tmpSlika.lastIndexOf("/") + 1, tmpSlika.length));
-              slikeUrl[i] = imageUrl + tmpSlika;
-              console.log(i, slikeUrl[i]);
-            }
-            //akcija = "slika";
-            document.querySelector("#modalFotografija").style.display = "block";
-            prikaziSliku(0);
-            document.querySelector("#naslovFotografija").innerHTML = opisSlike;
-
-            document.querySelector("#zatvoriModalFotografija").onclick = function () {
-              document.querySelector("#modalFotografija").style.display = "none";
-            };
-            //setujAktivnu("#slika"); //Da ne zatvara stranicu sa atributima
-          }
-        } else {
-          poruka("Greska", xhr.statusText);
-        }
-      }
-    };
-  } else {
-    poruka("Upozorenje", "Nije odabran objekat na mapi za koji želite da se prikaže fotografija.");
-  }
+  akcija = "slika";
 }
 
 function crtajTacku() {

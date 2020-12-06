@@ -96,3 +96,32 @@ function procitajVlasnika(username) {
     }
   };
 }
+
+function prikazFotografija(lejer, id) { 
+  let urlServisa = window.location.protocol + "//" + window.location.hostname + "/novi_portal/api/slike?tip_objekta=" + lejer + "&id_objekta=" + id;
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "GET",
+    success: function (data) {
+      console.log("response", data)      
+      for (let i = 0; i < data.length; i++) {
+        slikeUrl[i] = data[i];
+        console.log(i, slikeUrl[i]);
+      }
+      //akcija = "slika";
+      document.querySelector("#modalFotografija").style.display = "block";
+      prikaziSliku(0);
+      document.querySelector("#naslovFotografija").innerHTML = opisSlike;
+
+      document.querySelector("#zatvoriModalFotografija").onclick = function () {
+        document.querySelector("#modalFotografija").style.display = "none";
+      };
+      //setujAktivnu("#slika"); //Da ne zatvara stranicu sa atributima      
+    },
+    error: function (x, y, z) {
+      //alert(x.responseText +"  " +x.status);
+      console.log("greška popuniDdlAtributima", x.responseText);
+    }
+  });
+}

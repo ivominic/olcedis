@@ -1,24 +1,24 @@
 /**Inicijalna deklaracija promjenljivih koje su vezane za konkretan lejer */
-const layername = "stubovi",
-  layertitle = "Stubovi";
-const tipGeometrije = point;
+let layername = "trafostanice", fulllayername = "winsoft:trafostanice"
+  layertitle = "Trafostanice";
+let tipGeometrije = point;
 let opisSlike = "";
 const dozvoljeniPomjeraj = 0.01; //0.01km
 let nizKml = [];
 let vrijednostPocetneTacke = 0, vrijednostKrajnjeTacke = 0;
 
-let rasterLayer = new ol.layer.Image({
+/*let rasterLayer = new ol.layer.Image({
   title: layertitle,
   name: layername,
   source: new ol.source.ImageWMS({
     url: wmsUrl,
     params: {
-      LAYERS: "geonode:" + layername,
+      LAYERS: fulllayername
     },
     ratio: 1,
     serverType: "geoserver",
   }),
-});
+});*/
 
 /**Popunjavanje komponenti u divu za prikaz atributa, nakon pročitanog odgovora za WMS objekat */
 function popuniKontrole(odgovor) {
@@ -176,8 +176,8 @@ function isprazniGeometrije() {
   geometrijaZaBazuWkt = "";
   nacrtan = false;
   modifikovan = false;
-  let paramsRestart = rasterLayer.getSource().getParams();
-  rasterLayer.getSource().updateParams(paramsRestart);
+  //let paramsRestart = rasterLayer.getSource().getParams();
+  //rasterLayer.getSource().updateParams(paramsRestart);
 }
 
 
@@ -185,7 +185,8 @@ function isprazniGeometrije() {
 let map = new ol.Map({
   target: "map",
   interactions: ol.interaction.defaults().extend([new ol.interaction.PinchZoom(), new ol.interaction.DragPan()]),
-  layers: [osmBaseMap, rasterLayer],
+  //layers: [osmBaseMap, rasterLayer],
+  layers: [osmBaseMap],
   view: view,
 });
 
@@ -317,13 +318,6 @@ function onMouseMove(evt) {
   }
   map.getTargetElement().style.cursor = "";
   let pixel = map.getEventPixel(evt.originalEvent);
-  //let hit = map.forEachLayerAtPixel(pixel, function (layer) {
-  /*map.forEachLayerAtPixel(pixel, function (layer) {
-    if (layer.N.name === layername) {      
-      map.getTargetElement().style.cursor = "pointer";
-      return false;
-    }
-  });*/
 }
 
 /**Omogućava dodavanje novog vektor lejera drag-drop metodom */
@@ -455,6 +449,46 @@ map.addInteraction(snap);
 map.on("click", onMouseClick);
 
 function onMouseClick(browserEvent) {
+  let coordinate = browserEvent.coordinate;
+  let pixel = map.getPixelFromCoordinate(coordinate);
+  map.forEachLayerAtPixel(pixel, function (layer) {
+    if (layer instanceof ol.layer.Image) {
+      console.log(layer);
+      let title = layer.get("title");
+      console.log("title", title);
+      let vidljivost = layer.get("visible");
+      console.log("vidljivost", vidljivost);
+        if (vidljivost) {
+            let url = layer.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
+                INFO_FORMAT: "application/json",
+            });
+            if (url) {
+                fetch(url)
+                    .then(function (response) {
+                        //restartovanje();
+                        return response.text();
+                    })
+                    .then(function (json) {
+                        let odgovor = JSON.parse(json);
+                        if (odgovor.features.length > 0) {
+                            console.log("odgovor klika", odgovor);
+                            //popuniKontrole(odgovor);
+                            //showDiv("#atributiDiv");                            
+                            if(akcija == "slika"){
+                              console.log("slika title", title);
+                            console.log("slika id", odgovor[0].id);
+                              prikazFotografija(title, odgovor[0].id);
+                            }
+                        }
+                    });
+            }
+        }
+    }
+  });  
+}
+
+
+/*function onMouseClick(browserEvent) {
   if (akcija === "atributi" || akcija === "izmijeni") {
     //let coordinate = browserEvent.coordinate;
     //let pixel = map.getPixelFromCoordinate(coordinate);
@@ -477,7 +511,7 @@ function onMouseClick(browserEvent) {
         });
     }
   }
-}
+}*/
 
 function izbrisi() {
   console.log("kml", vectorSource);
@@ -653,7 +687,7 @@ document.querySelector("#btnFilter").addEventListener("click", filtriranje);
 
 /**Popunjavanje ddl-ova */
 
-popuniDdlAtributima("#tip", "stubovi", "tip", "", "");
+/*popuniDdlAtributima("#tip", "stubovi", "tip", "", "");
 popuniDdlAtributima("#vrsta_namjena", "stubovi", "vrsta_namjena", "", "");
 popuniDdlAtributima("#vrsta_materijal", "stubovi", "vrsta_materijal", "", "");
 popuniDdlAtributima("#vrsta_drvenog", "stubovi", "vrsta_drvenog", "", "");
@@ -686,4 +720,4 @@ popuniDdlAtributima("#pretraga_opstina", "stubovi", "opstina", "", "");
 popuniDdlAtributima("#pretraga_prikljucak_otcjep", "stubovi", "prikljucak_otcjep", "", "");
 popuniDdlAtributima("#pretraga_nn_vod", "stubovi", "nn_vod", "", "");
 popuniDdlAtributima("#pretraga_rastavljac", "stubovi", "rastavljac", "", "");
-popuniDdlAtributima("#pretraga_10_vod", "stubovi", "10_vod", "", "");
+popuniDdlAtributima("#pretraga_10_vod", "stubovi", "10_vod", "", "");*/
