@@ -471,13 +471,13 @@ function onMouseClick(browserEvent) {
                     .then(function (json) {
                         let odgovor = JSON.parse(json);
                         if (odgovor.features.length > 0) {
-                            console.log("odgovor klika", odgovor);
+                            console.log("odgovor klika", odgovor.features);
                             //popuniKontrole(odgovor);
                             //showDiv("#atributiDiv");                            
                             if(akcija == "slika"){
                               console.log("slika title", title);
-                            console.log("slika id", odgovor[0].id);
-                              prikazFotografija(title, odgovor[0].id);
+                            console.log("slika id", odgovor.features[0].id);
+                              prikazFotografija(title, odgovor.features[0][0].id);
                             }
                         }
                     });

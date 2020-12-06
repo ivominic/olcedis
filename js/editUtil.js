@@ -96,10 +96,12 @@ const razmjera = new ol.control.ScaleLine({
 /** Vraća well known tekst reprezentaciju geometrije za predati feature */
 function wktGeometrije(feature) {
   let format = new ol.format.WKT();
-  return format.writeGeometry(feature.getGeometry(), {
+  let wktgeom = format.writeGeometry(feature.getGeometry(), {
     dataProjection: "EPSG:4326",
     featureProjection: "EPSG:3857",
   });
+  console.log("wkt geom", wktgeom);
+  return wktgeom;
 }
 
 /**Kreiranje vektorskih lejera za snaponvanje */
