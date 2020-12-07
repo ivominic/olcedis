@@ -4,6 +4,8 @@ let layernameTS = "trafostanice",
   layertitleTS = "trafostanice";
 let tipGeometrijeTS = point;
 let opisSlikeTS = "";
+let sifraNapojneTrafostanice = '';
+let blnSelekcijaNapojneTS = false;
 
 let wmsTrafostanice = new ol.layer.Image({
   title: layertitleTS,
@@ -23,6 +25,9 @@ console.log("dodao lejer na mapu");
 
 
 document.querySelector("#selekecijaTrafostanicaPoligon").addEventListener("click", trafostaniceUpoligonu);
+document.querySelector("#uparivanjeTrafostanica").addEventListener("click", prikazUparivanje);
+document.querySelector("#selekcijaNapojneTrafostanice").addEventListener("click", selektujNapojnuTS);
+document.querySelector("#btnPoveziTS").addEventListener("click", poveziTS);
 
 
 function trafostaniceUpoligonu(){
@@ -45,6 +50,7 @@ function trafostaniceUpoligonu(){
   console.log("url filter", urlZaFilter);
 
   let trafostaniceZaWS = '';
+  $("#ddlPovezivanjeTSselektovane").empty();
 
   $.ajax({
     method: "POST",
@@ -65,10 +71,10 @@ function trafostaniceUpoligonu(){
             console.log("feature i tip", features[i].values_.tip);
             console.log("feature id", features[i].id_);
             trafostaniceZaWS += features[i].id_ + ',';
-            /*let option = document.createElement("option");
-            option.text = response.naziv;
-            option.value = response.idOperato;
-            document.querySelector(idDdl).appendChild(option);*/
+            let option = document.createElement("option");
+            option.text = features[i].values_.tip;
+            option.value = features[i].id_;
+            document.querySelector("#ddlPovezivanjeTSselektovane").appendChild(option);
           }
           trafostaniceZaWS = trafostaniceZaWS.substring(0, trafostaniceZaWS.length - 1);
           trafostaniceZaWS = '[' + trafostaniceZaWS + ']';
@@ -93,4 +99,24 @@ function trafostaniceUpoligonu(){
     },
 }); 
 
+}
+
+
+function prikazUparivanje(){
+  if(sifraNapojneTrafostanice === ""){
+    poruka("Upozorenje", "Potrebno je odabrati napojnu trafostanicu");
+    return false;
+  }
+  showDiv("#povezivanjeTSdiv");
+}
+
+function selektujNapojnuTS(){
+  sifraNapojneTrafostanice = "";
+  blnSelekcijaNapojneTS = true;
+}
+
+function poveziTS(){
+  let odabranaTS = document.querySelector("#ddlPovezivanjeTSselektovane").value;
+  let tsIzSistema = document.querySelector("#ddlPovezivanjeTSpronadjene").value;
+  alert("Povezivanje trafostanica " + odabranaTS + " i " + tsIzSistema);
 }

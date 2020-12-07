@@ -560,6 +560,26 @@
     <div class="razmjera" id="razmjera"></div>
     <div class="koordinate" id="koordinate"></div>
 
+    <div id="povezivanjeTSdiv" class="sidenav draggable">
+      <div class="titleAndClose">
+        <h1>Povezivanje trafostanica</h1>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeDiv('#povezivanjeTSdiv')">&times;</a>
+      </div>
+      <div class="items-padd">
+        <div class="flex-row pb-8">
+          <label for="ddlPovezivanjeTSselektovane">Selektovane trafostanice:</label>
+          <select id="ddlPovezivanjeTSselektovane" class="select-css"></select>
+        </div>
+        <div class="flex-row pb-8">
+          <label for="ddlPovezivanjeTSpronadjene">Pronađene trafostanice:</label>
+          <select id="ddlPovezivanjeTSpronadjene" class="select-css"></select>
+        </div>
+      </div>
+      <div class="items-padd-sm d-flex-end">
+        <button type="button" class="btn" id="btnPoveziTS">Povezivanje</button>
+      </div>
+    </div>
+
     <script type="text/javascript">
       const citajSlikeUrl = "urlZaCitanjeFotografija",
         izbrisiZapisUrl = "urlZaBrisanjeZapisa",

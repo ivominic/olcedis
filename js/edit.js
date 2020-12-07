@@ -451,40 +451,76 @@ map.on("click", onMouseClick);
 function onMouseClick(browserEvent) {
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
-  map.forEachLayerAtPixel(pixel, function (layer) {
-    if (layer instanceof ol.layer.Image) {
-      console.log(layer);
-      let title = layer.get("title");
-      console.log("title", title);
-      let vidljivost = layer.get("visible");
-      console.log("vidljivost", vidljivost);
-        if (vidljivost) {
-            let url = layer.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
-                INFO_FORMAT: "application/json",
+  console.log("jeste selekcija ts", blnSelekcijaNapojneTS);
+  if(blnSelekcijaNapojneTS){
+    blnSelekcijaNapojneTS = false;    
+    let url = wmsTrafostanice.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
+      INFO_FORMAT: "application/json",
+    });
+    if (url) {
+        fetch(url)
+            .then(function (response) {
+                //restartovanje();
+                return response.text();
+            })
+            .then(function (json) {
+                let odgovor = JSON.parse(json);
+
+                if (odgovor.features.length > 0) {                    
+                    console.log("odgovor napojna", odgovor);
+                    console.log("napojna properties",odgovor.features[0]["properties"]);
+                    console.log("napojna id", odgovor.features[0]["id"]);
+                    sifraNapojneTrafostanice = odgovor.features[0]["id"]
+                    //vectorNaselje.getSource().addFeatures(odgovor.features);
+                    //odgovor.features[0]["properties"]
+                    let atributi = odgovor.features[0]["properties"];                  
+                    let nekiID = atributi["id"];
+                    poruka("Uspjeh", "Šifra napojne trafostanice je: " + sifraNapojneTrafostanice);
+                    pretragaTrafostanica(sifraNapojneTrafostanice);
+                }
             });
-            if (url) {
-                fetch(url)
-                    .then(function (response) {
-                        //restartovanje();
-                        return response.text();
-                    })
-                    .then(function (json) {
-                        let odgovor = JSON.parse(json);
-                        if (odgovor.features.length > 0) {
-                            console.log("odgovor klika", odgovor.features);
-                            //popuniKontrole(odgovor);
-                            //showDiv("#atributiDiv");                            
-                            if(akcija == "slika"){
-                              console.log("slika title", title);
-                            console.log("slika id", odgovor.features[0].id);
-                              prikazFotografija(title, odgovor.features[0][0].id);
-                            }
-                        }
-                    });
-            }
-        }
     }
-  });  
+
+
+
+
+  }else{
+    map.forEachLayerAtPixel(pixel, function (layer) {
+      if (layer instanceof ol.layer.Image) {
+        console.log(layer);
+        let title = layer.get("title");
+        console.log("title", title);
+        let vidljivost = layer.get("visible");
+        console.log("vidljivost", vidljivost);
+          if (vidljivost) {
+              let url = layer.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
+                  INFO_FORMAT: "application/json",
+              });
+              if (url) {
+                  fetch(url)
+                      .then(function (response) {
+                          //restartovanje();
+                          return response.text();
+                      })
+                      .then(function (json) {
+                          let odgovor = JSON.parse(json);
+                          if (odgovor.features.length > 0) {
+                              console.log("odgovor klika", odgovor.features);
+                              //popuniKontrole(odgovor);
+                              //showDiv("#atributiDiv");                            
+                              if(akcija == "slika"){
+                                console.log("slika title", title);
+                              console.log("slika id", odgovor.features[0].id);
+                                prikazFotografija(title, odgovor.features[0][0].id);
+                              }
+                          }
+                      });
+              }
+          }
+      }
+    });
+  }
+  
 }
 
 

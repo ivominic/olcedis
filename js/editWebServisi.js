@@ -1,19 +1,20 @@
 //Vrati trafostanicu i izvode
 
-function pretragaTrafostanica(sifraTS) {
+function pretragaTrafostanica(sifraTS) {  
   let urlServisa = window.location.protocol + "//" + window.location.hostname + "/novi_portal/api/trafostanice?objekat=" + sifraTS;
+  $("#ddlPovezivanjeTSpronađene").empty()
   $.ajax({
     url: urlServisa,
     data: "",
     type: "GET",
     success: function (data) {
       console.log("response", data)
-      /*data.data.vrijednosti.forEach(function (response) {
-        $(ddl).append($("<option>", {
+      data.data.vrijednosti.forEach(function (response) {
+        $("#ddlPovezivanjeTSpronađene").append($("<option>", {
           value: response,
           text: response
         }));
-      });*/
+      });
     },
     error: function (x, y, z) {
       //alert(x.responseText +"  " +x.status);
@@ -24,20 +25,21 @@ function pretragaTrafostanica(sifraTS) {
 
 //Poslati kao string sa uglastim zagradama
 //U unos podataka/izmjenu da prikaže dostupne trafostance u polje atributa
-function uparivanjeTrafostanica(nizTS) {//Niz id-jeva trafostanica
+function trafostaniceIzBilingaZaUparivanje(nizTS) {//Niz id-jeva trafostanica
   let urlServisa = window.location.protocol + "//" + window.location.hostname + "/novi_portal/api/upari_trafostanice?trafostanice=" + nizTS;
+  $("#ddlPovezivanjeTSpronadjene").empty();
   $.ajax({
     url: urlServisa,
     data: "",
     type: "GET",
     success: function (data) {
       console.log("response", data)
-      /*data.data.vrijednosti.forEach(function (response) {
-        $(ddl).append($("<option>", {
+      data.data.vrijednosti.forEach(function (response) {
+        $("#ddlPovezivanjeTSpronadjene").append($("<option>", {
           value: response,
           text: response
         }));
-      });*/
+      });
     },
     error: function (x, y, z) {
       //alert(x.responseText +"  " +x.status);
