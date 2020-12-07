@@ -100,7 +100,7 @@ function wktGeometrije(feature) {
     dataProjection: "EPSG:4326",
     featureProjection: "EPSG:3857",
   });
-  console.log("wkt geom", wktgeom);
+  //console.log("wkt geom", wktgeom);
   return wktgeom;
 }
 
