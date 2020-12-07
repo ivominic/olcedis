@@ -1,6 +1,5 @@
 /**Inicijalna deklaracija promjenljivih koje su vezane za konkretan lejer */
-let layername = "trafostanice", fulllayername = "winsoft:trafostanice"
-  layertitle = "Trafostanice";
+let layername = "trafostanice", fulllayername = "geonode:trafostanice",layertitle = "Trafostanice";
 let tipGeometrije = point;
 let opisSlike = "";
 const dozvoljeniPomjeraj = 0.01; //0.01km

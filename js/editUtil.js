@@ -1,11 +1,11 @@
 /**Inicijalna deklaracija vrijednosti koje se korite u stranici*/
-//const domainUrl = location.origin;
-const domainUrl = "http://localhost";
+const domainUrl = location.origin;
+//const domainUrl = "http://localhost";
 //const domainUrl = "http://167.172.171.249";
-//const wmsUrl = domainUrl + "/geoserver/geonode/wms";
-const wmsUrl = domainUrl + "/geoserver/winsoft/wms";
-//const wfsUrl = domainUrl + "/geoserver/geonode/wfs";
-const wfsUrl = domainUrl + "/geoserver/winsoft/wfs";
+const wmsUrl = domainUrl + "/geoserver/geonode/wms";
+//const wmsUrl = domainUrl + "/geoserver/winsoft/wms";
+const wfsUrl = domainUrl + "/geoserver/geonode/wfs";
+//const wfsUrl = domainUrl + "/geoserver/winsoft/wfs";
 const imageUrl = domainUrl + "/slike/";
 const point = "Point",
   lineString = "LineString",

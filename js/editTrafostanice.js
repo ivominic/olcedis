@@ -1,7 +1,6 @@
 /**Inicijalna deklaracija promjenljivih koje su vezane za konkretan lejer */
-let layernameTS = "trafostanice",
-  fulllayernameTS = "winsoft:trafostanice",
-  layertitleTS = "trafostanice";
+//let layernameTS = "trafostanice", fulllayernameTS = "winsoft:trafostanice", layertitleTS = "trafostanice";
+let layernameTS = "trafostanice", fulllayernameTS = "geonode:trafostanice", layertitleTS = "trafostanice";
 let tipGeometrijeTS = point;
 let opisSlikeTS = "";
 let sifraNapojneTrafostanice = '';
@@ -29,7 +28,6 @@ document.querySelector("#uparivanjeTrafostanica").addEventListener("click", prik
 document.querySelector("#selekcijaNapojneTrafostanice").addEventListener("click", selektujNapojnuTS);
 document.querySelector("#btnPoveziTS").addEventListener("click", poveziTS);
 
-
 function trafostaniceUpoligonu(){
   if(poligoni.length === 0){
     poruka("Upozorenje", "Potrebno je nacrtati poligon");
@@ -39,9 +37,11 @@ function trafostaniceUpoligonu(){
 
   poligoni.forEach((item) => {
     if (cqlText === "") {
-      cqlText = "INTERSECTS(geom," + item + ") ";
+      //cqlText = "INTERSECTS(geom," + item + ") ";
+      cqlText = "INTERSECTS(Geometry," + item + ") ";
     } else {
-      cqlText += " OR INTERSECTS(geom," + item + ") ";
+      //cqlText += " OR INTERSECTS(geom," + item + ") ";
+      cqlText += " OR INTERSECTS(Geometry," + item + ") ";
     }
   });
 

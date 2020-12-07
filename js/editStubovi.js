@@ -1,7 +1,6 @@
 /**Inicijalna deklaracija promjenljivih koje su vezane za konkretan lejer */
-let layernameS = "stubovi",
-  fulllayernameS = "winsoft:stubovi",
-  layertitleS = "stubovi";
+let layernameS = "stubovi", fulllayernameS = "geonode:stubovi", layertitleS = "stubovi";
+//let layernameS = "stubovi", fulllayernameS = "winsoft:stubovi", layertitleS = "stubovi";
 let tipGeometrijeS = point;
 let opisSlikeS = "";
 
@@ -18,5 +17,5 @@ let wmsStubovi = new ol.layer.Image({
   }),
 });
 
-//map.addLayer(wmsStubovi);
+map.addLayer(wmsStubovi);
 console.log("dodao stubove");
