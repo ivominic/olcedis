@@ -72,8 +72,8 @@ function trafostaniceUpoligonu(){
             console.log("feature id", features[i].id_);
             trafostaniceZaWS += features[i].id_ + ',';
             let option = document.createElement("option");
-            option.text = features[i].values_.tip;
-            option.value = features[i].id_;
+            option.text = features[i].values_.naziv + '-' + features[i].values_.id_biling;
+            option.value = features[i].values_.originalId;
             document.querySelector("#ddlPovezivanjeTSselektovane").appendChild(option);
           }
           trafostaniceZaWS = trafostaniceZaWS.substring(0, trafostaniceZaWS.length - 1);
