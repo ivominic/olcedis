@@ -1,5 +1,6 @@
 /**Inicijalna deklaracija vrijednosti koje se korite u stranici*/
-const domainUrl = location.origin;
+//const domainUrl = location.origin;
+const domainUrl = "https://razvojgis.cedis.me";
 //const domainUrl = "http://localhost";
 //const domainUrl = "http://167.172.171.249";
 const wmsUrl = domainUrl + "/geoserver/geonode/wms";

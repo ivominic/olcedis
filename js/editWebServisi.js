@@ -1,7 +1,23 @@
-//Vrati trafostanicu i izvode
+/**
+ * Metode koje pozivaju Jovanove web servise
+ */
 
+//const wsServerOriginLocation = window.location.protocol + "//" + window.location.hostname;
+const wsServerOriginLocation = "https://razvojgis.cedis.me";
+
+let paroviTS = [];
+
+//pretragaTrafostanica("150838"); //id_billing
+trafostaniceIzBilingaZaUparivanje([17991,17992,17993,18003,18004,17996,17995,17994,17990,18005,18006,18002,18010,18009,18001,17999,18000,18007,17989,18008,17998]);
+
+showDiv("#povezivanjeTSdiv");
+
+/**
+ * Metoda koja za predatu šifru iz bilinga trafostanice vrati naziv trafostanice i niz izvoda
+ * @param {id_billing vrijednost iz GIS-a} sifraTS 
+ */
 function pretragaTrafostanica(sifraTS) {  
-  let urlServisa = window.location.protocol + "//" + window.location.hostname + "/novi_portal/api/trafostanice?objekat=" + sifraTS;
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice?sifra=" + sifraTS;
   $("#ddlPovezivanjeTSpronađene").empty()
   $.ajax({
     url: urlServisa,
@@ -9,10 +25,13 @@ function pretragaTrafostanica(sifraTS) {
     type: "GET",
     success: function (data) {
       console.log("response", data)
-      data.data.vrijednosti.forEach(function (response) {
+      console.log("naziv", data.ts.naziv);//Naziv trafostanice
+      console.log("izvodi", data.ts.izvodi); //izvodi trafostanice - niz
+      data.ts.izvodi.forEach(function (vrijednost) {
+        console.log("vrijednost niza", vrijednost);
         $("#ddlPovezivanjeTSpronađene").append($("<option>", {
-          value: response,
-          text: response
+          value: vrijednost,
+          text: vrijednost
         }));
       });
     },
@@ -23,33 +42,75 @@ function pretragaTrafostanica(sifraTS) {
   });
 }
 
-//Poslati kao string sa uglastim zagradama
+
 //U unos podataka/izmjenu da prikaže dostupne trafostance u polje atributa
+/**
+ * Za predati niz trafostanica (originalId) vrati napojnu trafostanicu, izvod, spisak uparenih i neuparenih,
+ *  kao i poruku o grešci ukoliko nisu selektovane sve trafostanice koje pripadaju tom izvodu
+ * Niz treba prevesti u strinh oblika "[originalId1,originalId2,originalId3]" i tako ga predati pozivu servisa
+ * @param {*} nizTS 
+ */
 function trafostaniceIzBilingaZaUparivanje(nizTS) {//Niz id-jeva trafostanica
-  let urlServisa = window.location.protocol + "//" + window.location.hostname + "/novi_portal/api/upari_trafostanice?trafostanice=" + nizTS;
+  if(nizTS.length === 0){
+    poruka("Upozorenje", "Nije odabrana nijedna trafostanica")
+    return false;
+  }
+  let stringNiz = "[" + nizTS.join(",") + "]";
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/upari_trafostanice?trafostanice=" + stringNiz;
   $("#ddlPovezivanjeTSpronadjene").empty();
   $.ajax({
     url: urlServisa,
     data: "",
     type: "GET",
     success: function (data) {
-      console.log("response", data)
-      data.data.vrijednosti.forEach(function (response) {
+      console.log("responseTSuparivanje", data);
+      console.log("niz neuparenih TS", data.neuparene);
+      console.log("niz uparenih TS", data.uparene);
+      console.log("niz predlozenih TS za uparivanje", data.predlog);
+      console.log("šifra napojne TS", data.sifra_napojne);
+      console.log("naziv izvoda TS", data.naziv_izvoda);
+      console.log("poruka", data.poruka);
+      document.querySelector("#uparivanjeTxtSifraTS").value = data.sifra_napojne;
+      document.querySelector("#uparivanjeTxtNazivIzvodaTS").value = data.naziv_izvoda;
+
+      data.neuparene.forEach(function (vrijednost) {
+        console.log("trafostanice za uparivanje", vrijednost);
+        //TODO: Ovim podacima napuniti listu trafostanica za uparivanje ili iz spiska uparenih brisati one koje se tamo nađu
+
+      });
+      data.uparene.forEach(function (vrijednost) {
+        console.log("uparene TS - brisati iz liste", vrijednost);
+        for (let i=0; i<document.querySelector("#ddlPovezivanjeTSselektovane").length; i++) {
+          if (document.querySelector("#ddlPovezivanjeTSselektovane").options[i].value === vrijednost){
+            document.querySelector("#ddlPovezivanjeTSselektovane").remove(i);
+          }
+        }
+      });
+      data.predlog.forEach(function (vrijednost) {
+        console.log("predlog TS za uparivanje", vrijednost);
+        //TODO: Ovim podacima napuniti listu trafostanica za uparivanje ili iz spiska uparenih brisati one koje se tamo nađu
         $("#ddlPovezivanjeTSpronadjene").append($("<option>", {
-          value: response,
-          text: response
+          value: vrijednost.sifra_biling,
+          text: vrijednost.sifra_biling + " - " + vrijednost.naziv_trafostanice
         }));
       });
+      /*data.data.vrijednosti.forEach(function (response) {
+        $("#ddlPovezivanjeTSpronadjene").append($("<option>", {
+          value: vrijednost,
+          text: vrijednost
+        }));
+      });*/
     },
     error: function (x, y, z) {
       //alert(x.responseText +"  " +x.status);
-      console.log("greška popuniDdlAtributima", x.responseText);
+      poruka("Greska", x.responseJSON["error"]);
+      //TODO: onemogućiti dalji nastavak rada na mapi - pošto se radi o nepoklapanju broja trafostanica ili nekoj sličnoj grešci
     }
   });
 }
 
 function generisiGeohashId(lejer, wkt) { 
-  let urlServisa = window.location.protocol + "//" + window.location.hostname + "/novi_portal/api/geohash_id";
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/geohash_id";
   let podaciForme = new FormData();
   podaciForme.append("tip_objekta", lejer);
   podaciForme.append("geometry", wkt);
@@ -75,7 +136,7 @@ function generisiGeohashId(lejer, wkt) {
 }
 
 function procitajVlasnika(username) { 
-  let urlServisa = window.location.protocol + "//" + window.location.hostname + "/novi_portal/api/vlasnik";
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/vlasnik";
   let podaciForme = new FormData();
   podaciForme.append("user", username);
   let xhr = new XMLHttpRequest();
@@ -100,7 +161,7 @@ function procitajVlasnika(username) {
 }
 
 function prikazFotografija(lejer, id) { 
-  let urlServisa = window.location.protocol + "//" + window.location.hostname + "/novi_portal/api/slike?tip_objekta=" + lejer + "&id_objekta=" + id;
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/slike?tip_objekta=" + lejer + "&id_objekta=" + id;
   $.ajax({
     url: urlServisa,
     data: "",

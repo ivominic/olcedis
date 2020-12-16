@@ -20,7 +20,7 @@ let wmsTrafostanice = new ol.layer.Image({
 });
 
 map.addLayer(wmsTrafostanice);
-console.log("dodao lejer na mapu");
+//console.log("dodao lejer na mapu");
 
 
 document.querySelector("#selekecijaTrafostanicaPoligon").addEventListener("click", trafostaniceUpoligonu);
@@ -118,5 +118,24 @@ function selektujNapojnuTS(){
 function poveziTS(){
   let odabranaTS = document.querySelector("#ddlPovezivanjeTSselektovane").value;
   let tsIzSistema = document.querySelector("#ddlPovezivanjeTSpronadjene").value;
-  alert("Povezivanje trafostanica " + odabranaTS + " i " + tsIzSistema);
+  if(!odabranaTS || !tsIzSistema){
+    alert("Potrebno je odabrati trafostanice iz oba sistema");
+    return false;
+  }
+  for (let i=0; i<document.querySelector("#ddlPovezivanjeTSselektovane").length; i++) {
+    if (document.querySelector("#ddlPovezivanjeTSselektovane").options[i].value === odabranaTS){
+      document.querySelector("#ddlPovezivanjeTSselektovane").remove(i);
+    }
+  }
+  for (let i=0; i<document.querySelector("#ddlPovezivanjeTSpronadjene").length; i++) {
+    if (document.querySelector("#ddlPovezivanjeTSpronadjene").options[i].value === tsIzSistema){
+      document.querySelector("#ddlPovezivanjeTSpronadjene").remove(i);
+    }
+  }
+  paroviTS.push({"gis": odabranaTS, "tbp": tsIzSistema})
+  console.log("povezane trafostanice", paroviTS);
+  if(document.querySelector("#ddlPovezivanjeTSselektovane").length === 0 && document.querySelector("#ddlPovezivanjeTSpronadjene").length === 0){
+    alert("Uspješno uparene sve trafostanice: \n" + paroviTS.join(",") + "\n Prelazak na sljedeći korak wizard-a");
+    console.log("Uspješno uparene sve trafostanice:", paroviTS);
+  }
 }
