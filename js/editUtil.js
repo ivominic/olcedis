@@ -318,7 +318,7 @@ function closeDiv(nazivDiva) {
 
 function showDiv(nazivDiva) {
   if (screen.width < 700) {
-    document.querySelector(nazivDiva).style.width = "340px";
+    document.querySelector(nazivDiva).style.width = "270px";
   } else {
     document.querySelector(nazivDiva).style.width = "500px";
   }
