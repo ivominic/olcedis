@@ -322,6 +322,31 @@ function showDiv(nazivDiva) {
   }
 }
 
+/**Prenosivi sidenav */
+var windows = document.querySelectorAll('.draggable');
+[].forEach.call(windows,function(win){
+    let title = win.querySelector('.titleAndClose');
+    title.addEventListener('mousedown',function(evt){
+        let real = window.getComputedStyle(win),
+            winX = parseFloat(real.left),
+            winY = parseFloat(real.top);
+        let mX = evt.clientX,
+            mY = evt.clientY;
+        document.body.addEventListener('mousemove',drag,false);
+        document.body.addEventListener('mouseup',function(){
+            document.body.removeEventListener('mousemove',drag,false);
+        },false);
+        function drag(evt){
+            win.style.left = winX + evt.clientX-mX + 'px';
+            win.style.top  = winY + evt.clientY-mY + 'px';
+            if (winY + evt.clientY-mY < 60) {
+                win.style.left = winX + evt.clientX-mX + 'px';
+                win.style.top = 60 + "px";
+            }
+        }
+    },false);
+});
+
 /**Tri funkcije koje rade sa konfirm modalom - za potvrdu akcija/brisanja */
 function confirmModal(naslov, text, funkcija) {
   document.querySelector("#modalConfirmHeader").innerHTML = naslov;

@@ -99,9 +99,9 @@ input[type] {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Chivo', sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #f2f2f2;
-  background: #f2f2f2;
+  background: #CA2129;
   /*display: flex;
   flex-direction: column;*/
 }
@@ -251,6 +251,30 @@ a.active {
   display: block;
 }
 
+.titleAndClose {
+  margin-left: 16px;
+  margin-right: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 3px solid #CA2129;
+  padding: 30px 0;
+}
+
+.titleAndClose a.closebtn:hover {
+  color: #CA2129;
+}
+
+.titleAndClose h1 {
+  font-size: 24px;
+  margin: 16px 0;
+}
+
+.titleAndClose:hover {
+  cursor: move;
+}
+
 
 /* Na ekranima manjim od 600px skriva sve ikonice osim prve i prikazuje hamburger (icon) */
 @media screen and (max-width: 1150px){
@@ -322,23 +346,13 @@ a.active {
     width: 98%;
   }
 
+  .titleAndClose h1 {
+    width: 50px;
+    font-size: 18px;
+    margin: 16px 0;
+  }
 }
 
-.titleAndClose {
-  margin-left: 16px;
-  margin-right: 16px;
-  margin-bottom: 8px;
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  justify-content: space-between;
-  border-bottom: 3px solid #CA2129;
-}
-
-.titleAndClose h1 {
-  font-size: 24px;
-  margin: 16px 0;
-}
 
 /** paddings and margins*/
 .mb-16 {
@@ -358,6 +372,9 @@ a.active {
 }
 .mr-8 {
   margin-right: 8px;
+}
+.pr-8 {
+  padding-right: 8px;
 }
 .mr-16 {
   margin-right: 16px;
@@ -407,22 +424,48 @@ a.active {
 
 /******* SIDEBAR*/
 .sidenav {
-  height: 88%;
-  overflow-y: scroll;
   width: 0;
   /* 0 width - ovo se podešava javascriptom */
-  position: fixed;
   z-index: 2;
-  top: 55px;
   /* prikazuje se na vrhu, gore, a sljedeći parametar postavlja lijevo*/
   left: 0;
   background-color: #f2f2f2;
   color: #333;
   overflow-x: hidden;
   /* uklanja horizontalni skrol*/
-  padding-top: 60px;
-  /* Kreće da popunjava sadržaj 60px od vrha */
   transition: 0.3s;
+  border-radius: 5px;
+  font-size: 16px;
+  position: absolute;
+  z-index: 10;
+  top: 60px;
+  left: 5px;
+  margin-bottom: 5px;
+}
+
+.sadrzaj-scroll{
+  overflow-y: scroll;
+  height: 450px;
+}
+
+.style-2::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.style-2::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.style-2::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #CA2129;
 }
 
 .sidenav h1 {
