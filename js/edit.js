@@ -1,10 +1,13 @@
 /**Inicijalna deklaracija promjenljivih koje su vezane za konkretan lejer */
-let layername = "trafostanice", fulllayername = "geonode:trafostanice",layertitle = "Trafostanice";
+let layername = "trafostanice",
+  fulllayername = "geonode:trafostanice",
+  layertitle = "Trafostanice";
 let tipGeometrije = point;
 let opisSlike = "";
 const dozvoljeniPomjeraj = 0.01; //0.01km
 let nizKml = [];
-let vrijednostPocetneTacke = 0, vrijednostKrajnjeTacke = 0;
+let vrijednostPocetneTacke = 0,
+  vrijednostKrajnjeTacke = 0;
 
 /*let rasterLayer = new ol.layer.Image({
   title: layertitle,
@@ -203,7 +206,7 @@ featurePolygonOverlay.setMap(map);
 featureSnapOverlay.setMap(map);
 featureTekuciOverlay.setMap(map);
 
-let blnFreeHandDraw = true;
+let blnFreeHandDraw = false;
 /**Podešava kada da se omogući crtanje i izmjena i na kojim lejerima */
 function podesiInterakciju() {
   //uklanja draw i modify
@@ -327,7 +330,7 @@ let dragAndDrop = new ol.interaction.DragAndDrop({
 });
 dragAndDrop.on("addfeatures", function (event) {
   console.log("aaaa", event.features)
-  event.features.forEach(function(feature){
+  event.features.forEach(function (feature) {
     /*console.log("feat", feature);
     console.log("feat1", feature.values_);
     console.log("feat2", feature.values_.name);
@@ -365,17 +368,17 @@ var select = new ol.interaction.Select({
 select.on('select', function (e) {
   //console.log("select target", e.target.getFeatures().array_[0].values_.name);
   console.log("select target", e.target.getFeatures());
-  if(blnZavrsniStub){
+  if (blnZavrsniStub) {
     blnZavrsniStub = false;
     vrijednostKrajnjeTacke = parseInt(e.target.getFeatures().array_[0].values_.name);
     poruka("Uspjeh", "Završni stub voda je " + e.target.getFeatures().array_[0].values_.name);
   }
-  if(blnPocetniStub){
+  if (blnPocetniStub) {
     blnPocetniStub = false;
     vrijednostPocetneTacke = parseInt(e.target.getFeatures().array_[0].values_.name);
     poruka("Uspjeh", "Početni stub voda je " + e.target.getFeatures().array_[0].values_.name);
   }
-  if(vrijednostPocetneTacke > 0 && vrijednostKrajnjeTacke > 0 && vrijednostPocetneTacke !== vrijednostKrajnjeTacke){
+  if (vrijednostPocetneTacke > 0 && vrijednostKrajnjeTacke > 0 && vrijednostPocetneTacke !== vrijednostKrajnjeTacke) {
     kreirajVod(vrijednostPocetneTacke, vrijednostKrajnjeTacke);
   }
 });
@@ -398,25 +401,27 @@ modifyV.on('modifyend', function (e) {
   console.log("koordinate m", position);
   let pocetniElement;
   nizKml.forEach((el) => {
-    if(el.name === featureName){
+    if (el.name === featureName) {
       pocetniElement = el;
       //console.log("Obj", el);
       //console.log("Objname", el.name);
-    }    
+    }
   })
   let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat]));
   //console.log("pocetnaTacka", pocetnaTacka);
   //console.log("pocetnaTacka transform", ol.proj.transform(pocetnaTacka.flatCoordinates, "EPSG:3857", "EPSG:4326"));
   let distancaOd = turf.point([position[0], position[1]]);
   let distancaDo = turf.point([pocetniElement.lng, pocetniElement.lat]);
-  let mjera = {units: 'kilometers'};
+  let mjera = {
+    units: 'kilometers'
+  };
   let distanca = turf.distance(distancaOd, distancaDo, mjera);
   console.log("distanca", distanca);
-  if(distanca > dozvoljeniPomjeraj){
+  if (distanca > dozvoljeniPomjeraj) {
     //console.log("vrati na početno");
     e.features.getArray()[0].getGeometry().setCoordinates(pocetnaTacka.flatCoordinates);
-    poruka("Upozorenje", 'Tačka ne može biti pomjerena više od ' + (dozvoljeniPomjeraj*1000).toString() + 'm od snimljene pozicije.')
-  }  
+    poruka("Upozorenje", 'Tačka ne može biti pomjerena više od ' + (dozvoljeniPomjeraj * 1000).toString() + 'm od snimljene pozicije.')
+  }
   //let boundingExtent = map.getView().calculateExtent(map.getSize());
   //console.log(map.getView());
   //boundingExtent = ol.proj.transformExtent(boundingExtent, ol.proj.get("EPSG:4326"), ol.proj.get("EPSG:3857"));
@@ -451,39 +456,39 @@ function onMouseClick(browserEvent) {
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
   console.log("jeste selekcija ts", blnSelekcijaNapojneTS);
-  if(blnSelekcijaNapojneTS){
-    blnSelekcijaNapojneTS = false;    
+  if (blnSelekcijaNapojneTS) {
+    blnSelekcijaNapojneTS = false;
     let url = wmsTrafostanice.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
       INFO_FORMAT: "application/json",
     });
     if (url) {
-        fetch(url)
-            .then(function (response) {
-                //restartovanje();
-                return response.text();
-            })
-            .then(function (json) {
-                let odgovor = JSON.parse(json);
+      fetch(url)
+        .then(function (response) {
+          //restartovanje();
+          return response.text();
+        })
+        .then(function (json) {
+          let odgovor = JSON.parse(json);
 
-                if (odgovor.features.length > 0) {                    
-                    console.log("odgovor napojna", odgovor);
-                    console.log("napojna properties",odgovor.features[0]["properties"]);
-                    console.log("napojna id", odgovor.features[0]["id"]);
-                    sifraNapojneTrafostanice = odgovor.features[0]["id"]
-                    //vectorNaselje.getSource().addFeatures(odgovor.features);
-                    //odgovor.features[0]["properties"]
-                    let atributi = odgovor.features[0]["properties"];                  
-                    let nekiID = atributi["id"];
-                    poruka("Uspjeh", "Šifra napojne trafostanice je: " + sifraNapojneTrafostanice);
-                    pretragaTrafostanica(sifraNapojneTrafostanice);
-                }
-            });
+          if (odgovor.features.length > 0) {
+            console.log("odgovor napojna", odgovor);
+            console.log("napojna properties", odgovor.features[0]["properties"]);
+            console.log("napojna id", odgovor.features[0]["id"]);
+            sifraNapojneTrafostanice = odgovor.features[0]["id"]
+            //vectorNaselje.getSource().addFeatures(odgovor.features);
+            //odgovor.features[0]["properties"]
+            let atributi = odgovor.features[0]["properties"];
+            let nekiID = atributi["id"];
+            poruka("Uspjeh", "Šifra napojne trafostanice je: " + sifraNapojneTrafostanice);
+            pretragaTrafostanica(sifraNapojneTrafostanice);
+          }
+        });
     }
 
 
 
 
-  }else{
+  } else {
     map.forEachLayerAtPixel(pixel, function (layer) {
       if (layer instanceof ol.layer.Image) {
         console.log(layer);
@@ -491,35 +496,35 @@ function onMouseClick(browserEvent) {
         console.log("title", title);
         let vidljivost = layer.get("visible");
         console.log("vidljivost", vidljivost);
-          if (vidljivost) {
-              let url = layer.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
-                  INFO_FORMAT: "application/json",
+        if (vidljivost) {
+          let url = layer.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
+            INFO_FORMAT: "application/json",
+          });
+          if (url) {
+            fetch(url)
+              .then(function (response) {
+                //restartovanje();
+                return response.text();
+              })
+              .then(function (json) {
+                let odgovor = JSON.parse(json);
+                if (odgovor.features.length > 0) {
+                  console.log("odgovor klika", odgovor.features);
+                  //popuniKontrole(odgovor);
+                  //showDiv("#atributiDiv");                            
+                  if (akcija == "slika") {
+                    console.log("slika title", title);
+                    console.log("slika id", odgovor.features[0].id);
+                    prikazFotografija(title, odgovor.features[0][0].id);
+                  }
+                }
               });
-              if (url) {
-                  fetch(url)
-                      .then(function (response) {
-                          //restartovanje();
-                          return response.text();
-                      })
-                      .then(function (json) {
-                          let odgovor = JSON.parse(json);
-                          if (odgovor.features.length > 0) {
-                              console.log("odgovor klika", odgovor.features);
-                              //popuniKontrole(odgovor);
-                              //showDiv("#atributiDiv");                            
-                              if(akcija == "slika"){
-                                console.log("slika title", title);
-                              console.log("slika id", odgovor.features[0].id);
-                                prikazFotografija(title, odgovor.features[0][0].id);
-                              }
-                          }
-                      });
-              }
           }
+        }
       }
     });
   }
-  
+
 }
 
 
