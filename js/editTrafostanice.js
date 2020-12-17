@@ -8,6 +8,7 @@ let opisSlikeTS = "";
 let sifraNapojneTrafostanice = "";
 let blnSelekcijaNapojneTS = false;
 let selektovaneTSfeatures;
+let nizSelektovanihOriginalId = [];
 
 let wmsTrafostanice = new ol.layer.Image({
   title: layertitleTS,
@@ -53,6 +54,7 @@ function trafostaniceUpoligonu() {
 
   let trafostaniceZaWS = "";
   $("#ddlPovezivanjeTSselektovane").empty();
+  nizSelektovanihOriginalId.length = 0;
 
   $.ajax({
     method: "POST",
@@ -71,14 +73,18 @@ function trafostaniceUpoligonu() {
           console.log("feature i", features[i].values_);
           console.log("feature i tip", features[i].values_.tip);
           console.log("feature id", features[i].id_);
-          trafostaniceZaWS += features[i].id_ + ",";
+          //trafostaniceZaWS += features[i].id_ + ",";
+          trafostaniceZaWS += features[i].values_.originalId + ",";
           let option = document.createElement("option");
           option.text = features[i].values_.naziv + "-" + features[i].values_.id_biling;
           option.value = features[i].values_.originalId;
           document.querySelector("#ddlPovezivanjeTSselektovane").appendChild(option);
+          nizSelektovanihOriginalId.push(features[i].values_.originalId);
         }
         trafostaniceZaWS = trafostaniceZaWS.substring(0, trafostaniceZaWS.length - 1);
         trafostaniceZaWS = "[" + trafostaniceZaWS + "]";
+
+        trafostaniceIzBilingaZaUparivanje(nizSelektovanihOriginalId);
 
         //vectorIzvjestaj.setSource(new ol.source.Vector({features: features}));
         //console.log(vectorIzvjestaj.getSource().getExtent());

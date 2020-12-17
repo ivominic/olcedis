@@ -8,7 +8,7 @@ const wsServerOriginLocation = "https://razvojgis.cedis.me";
 let paroviTS = [];
 
 //pretragaTrafostanica("150838"); //id_billing
-trafostaniceIzBilingaZaUparivanje([
+/*trafostaniceIzBilingaZaUparivanje([
   17991,
   17992,
   17993,
@@ -32,7 +32,7 @@ trafostaniceIzBilingaZaUparivanje([
   17998,
 ]);
 
-showDiv("#povezivanjeTSdiv");
+showDiv("#povezivanjeTSdiv");*/
 
 /**
  * Metoda koja za predatu šifru iz bilinga trafostanice vrati naziv trafostanice i niz izvoda
@@ -77,6 +77,7 @@ function pretragaTrafostanica(sifraTS) {
  */
 function trafostaniceIzBilingaZaUparivanje(nizTS) {
   //Niz id-jeva trafostanica
+  console.log("Poziva trafostanice za uparivanje ws", nizTS);
   if (nizTS.length === 0) {
     poruka("Upozorenje", "Nije odabrana nijedna trafostanica");
     return false;
@@ -106,7 +107,7 @@ function trafostaniceIzBilingaZaUparivanje(nizTS) {
       data.uparene.forEach(function (vrijednost) {
         console.log("uparene TS - brisati iz liste", vrijednost);
         for (let i = 0; i < document.querySelector("#ddlPovezivanjeTSselektovane").length; i++) {
-          if (document.querySelector("#ddlPovezivanjeTSselektovane").options[i].value === vrijednost) {
+          if (document.querySelector("#ddlPovezivanjeTSselektovane").options[i].value === vrijednost.toString()) {
             document.querySelector("#ddlPovezivanjeTSselektovane").remove(i);
           }
         }

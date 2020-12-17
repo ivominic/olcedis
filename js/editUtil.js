@@ -79,6 +79,7 @@ var vectorStyleSnap = new ol.style.Style({
 
 /**Setovanje centra mape */
 let center = ol.proj.transform([19.26, 42.56], "EPSG:4326", "EPSG:3857");
+//let center = ol.proj.transform([19.2381, 43.1271], "EPSG:4326", "EPSG:3857");
 let view = new ol.View({
   center: center,
   zoom: 9,
@@ -91,7 +92,7 @@ const razmjera = new ol.control.ScaleLine({
   bar: true,
   steps: 4,
   text: true,
-  minWidth: 100
+  minWidth: 100,
 });
 
 /** Vraća well known tekst reprezentaciju geometrije za predati feature */
@@ -128,7 +129,7 @@ function kreirajVektorLejerZaCrtanje(olCollection) {
 let featuresPoint = new ol.Collection(),
   featuresLine = new ol.Collection(),
   featuresPolygon = new ol.Collection(),
-  featuresSnap = new ol.Collection()
+  featuresSnap = new ol.Collection();
 featuresTekuci = new ol.Collection();
 let featurePointOverlay = kreirajVektorLejerZaCrtanje(featuresPoint),
   featureLineOverlay = kreirajVektorLejerZaCrtanje(featuresLine),
@@ -236,21 +237,21 @@ function kreiranjeCqlFilteraProstorno() {
     });
 
   (pretragaPoligonObuhvata || pretragaPoligonPresijeca) &&
-  poligoni.forEach((item) => {
-    if (retVal === "") {
-      if (pretragaPoligonPresijeca) {
-        retVal = "INTERSECTS(geom," + item + ") ";
+    poligoni.forEach((item) => {
+      if (retVal === "") {
+        if (pretragaPoligonPresijeca) {
+          retVal = "INTERSECTS(geom," + item + ") ";
+        } else {
+          retVal = "WITHIN(geom," + item + ") ";
+        }
       } else {
-        retVal = "WITHIN(geom," + item + ") ";
+        if (pretragaPoligonPresijeca) {
+          retVal += " OR INTERSECTS(geom," + item + ") ";
+        } else {
+          retVal += " OR WITHIN(geom," + item + ") ";
+        }
       }
-    } else {
-      if (pretragaPoligonPresijeca) {
-        retVal += " OR INTERSECTS(geom," + item + ") ";
-      } else {
-        retVal += " OR WITHIN(geom," + item + ") ";
-      }
-    }
-  });
+    });
 
   return retVal;
 }
@@ -288,16 +289,12 @@ function setujAktivnu(element) {
     showDiv("#pretragaDiv");
   }
   if (element === "#selekcijaPocetnogStuba") {
-        
   }
   if (element === "#selekcijaZavrsnogStuba") {
-    
   }
   if (element === "#dijeljenjeVoda") {
-        
   }
   if (element === "#spajanjeVoda") {
-    
   }
   podesiInterakciju();
   zatvoriHamburger();
@@ -323,7 +320,6 @@ function showDiv(nazivDiva) {
   } else {
     document.querySelector(nazivDiva).style.width = "500px";
   }
-
 }
 
 /**Tri funkcije koje rade sa konfirm modalom - za potvrdu akcija/brisanja */
@@ -343,13 +339,13 @@ function confirmOdustani() {
 }
 
 function openModalSpinner() {
-  document.querySelector('#modalSpinner').style.display = 'block';
-  document.querySelector('#fadeSpinner').style.display = 'block';
+  document.querySelector("#modalSpinner").style.display = "block";
+  document.querySelector("#fadeSpinner").style.display = "block";
 }
 
 function closeModalSpinner() {
-  document.querySelector('#modalSpinner').style.display = 'none';
-  document.querySelector('#fadeSpinner').style.display = 'none';
+  document.querySelector("#modalSpinner").style.display = "none";
+  document.querySelector("#fadeSpinner").style.display = "none";
 }
 
 /**Funkcije za setovanje podloga */
@@ -434,33 +430,34 @@ document.querySelector("#excel").addEventListener("click", excelDownload);
 document.querySelector("#confirmPotvrdi").addEventListener("click", confirmPotvrdi);
 document.querySelector("#confirmOdustani").addEventListener("click", confirmOdustani);
 
-let blnPocetniStub = false, blnZavrsniStub = false;
+let blnPocetniStub = false,
+  blnZavrsniStub = false;
 /**Metoda koja bira prvi stub voda */
-function selekcijaPocetnogStuba(){
+function selekcijaPocetnogStuba() {
   akcija = "pocetniStub";
   setujAktivnu("#selekcijaPocetnogStuba");
-  if(blnZavrsniStub){
+  if (blnZavrsniStub) {
     poruka("Upozorenje", "Potrebno je odabrati završni stub.");
-  }else{
+  } else {
     poruka("Uspjeh", "Odaberite početni stub voda koji želite da uvezete.");
     blnPocetniStub = true;
-  }  
+  }
 }
 
 /**Metoda koja bira prvi stub */
-function selekcijaZavrsnogStuba(){
+function selekcijaZavrsnogStuba() {
   akcija = "zavrsniStub";
   setujAktivnu("#selekcijaZavrsnogStuba");
-  if(blnPocetniStub){
+  if (blnPocetniStub) {
     poruka("Upozorenje", "Potrebno je odabrati početni stub.");
-  }else{
+  } else {
     poruka("Uspjeh", "Odaberite završni stub voda koji želite da uvezete.");
     blnZavrsniStub = true;
-  }  
+  }
 }
 
 /**
- * Metoda koja popunjava zadati ddl vrijednostima atributa koje vrate servisi za predati objekat, naziv atributa i 
+ * Metoda koja popunjava zadati ddl vrijednostima atributa koje vrate servisi za predati objekat, naziv atributa i
  * @param {*} ddl - naziv select-a "#napon"
  * @param {*} objekat - stubovi, trafostanice, vodovi...
  * @param {*} atribut - napon, visina...
@@ -473,31 +470,35 @@ function popuniDdlAtributima(ddl, objekat, atribut, key_param, value_param) {
   if (key_param !== "" && value_param !== "") {
     urlServisa += "&" + key_param + "=" + value_param;
   }
-  $(ddl).append($("<option>", {
-    value: "",
-    text: ""
-  }));
+  $(ddl).append(
+    $("<option>", {
+      value: "",
+      text: "",
+    })
+  );
   $.ajax({
     url: urlServisa,
     data: "",
     type: "GET",
     success: function (data) {
       data.data.vrijednosti.forEach(function (response) {
-        $(ddl).append($("<option>", {
-          value: response,
-          text: response
-        }));
+        $(ddl).append(
+          $("<option>", {
+            value: response,
+            text: response,
+          })
+        );
       });
     },
     error: function (x, y, z) {
       //alert(x.responseText +"  " +x.status);
       console.log("greška popuniDdlAtributima", x.responseText);
-    }
+    },
   });
 }
 
 function prikaziVektor() {
-  let tekstFiltera = ""
+  let tekstFiltera = "";
   poligoni.forEach((item) => {
     if (tekstFiltera === "") {
       tekstFiltera = "INTERSECTS(geom," + item + ") ";
@@ -507,12 +508,12 @@ function prikaziVektor() {
   });
 
   if (document.querySelector("#ddl_vektor").value === "") {
-    poruka("Upozorenje", "Nije odabran sloj za prikaz.")
-    return false
+    poruka("Upozorenje", "Nije odabran sloj za prikaz.");
+    return false;
   }
   if (tekstFiltera === "") {
-    poruka("Upozorenje", "Nije kreiran nijedan poligon.")
-    return false
+    poruka("Upozorenje", "Nije kreiran nijedan poligon.");
+    return false;
   }
 
   console.log("tekst filtera", tekstFiltera);
