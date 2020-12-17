@@ -142,9 +142,12 @@ function poveziTS() {
 document.querySelector("#ddlPovezivanjeTSselektovane").addEventListener("change", function () {
   console.log("odabrana trafostanica", this.value);
   for (let i = 0; i < selektovaneTSfeatures.length; i++) {
-    console.log("feature id", selektovaneTSfeatures[i].id_);
-    feature.getGeometry();
-    //map.getView().fit(selektovaneTSfeatures.getGeometry(), map.getSize());//Ovako je zoom tačke išao do razmjere 1:2
-    map.getView().fit(selektovaneTSfeatures[i].getGeometry().transform("EPSG:4326", "EPSG:3857"), { maxZoom: 20 });
+    console.log("originalId", selektovaneTSfeatures[i].values_.originalId);
+    if (this.value === selektovaneTSfeatures[i].values_.originalId.toString()) {
+      console.log("feature id", selektovaneTSfeatures[i].id_);
+      //let featureZaTransofrmaciju = Object.assign({}, selektovaneTSfeatures[i]);
+      let featureZaTransofrmaciju = selektovaneTSfeatures[i].clone();
+      map.getView().fit(featureZaTransofrmaciju.getGeometry().transform("EPSG:4326", "EPSG:3857"), { maxZoom: 20 });
+    }
   }
 });

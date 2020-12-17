@@ -80,20 +80,19 @@ function popuniKontrole(odgovor) {
   }
 }
 
-
 /** Unos izmijenjenih vrijednosti atributa, nove fotografije ili unos svih podataka za novu geometriju */
 function sacuvaj() {
   if (akcija === "dodaj" && geometrijaZaBazuWkt === "") {
     poruka("Upozorenje", "Potrebno je nacrtati objekat.");
-    return false
+    return false;
   }
   if (akcija === "izmijeni" && (geometrijaZaBazuWkt === "" || idObjekta === 0)) {
     poruka("Upozorenje", "Potrebno je izmijeniti geometriju odabranog objekta.");
-    return false
+    return false;
   }
   if (akcija === "atributi" && idObjekta === 0) {
     poruka("Upozorenje", "Potrebno je odabrati objekat čije atribute mijenjate.");
-    return false
+    return false;
   }
 
   let podaciForme = new FormData();
@@ -132,7 +131,7 @@ function sacuvaj() {
   podaciForme.append("10_vod", document.querySelector("#10_vod").value);
 
   let xhr = new XMLHttpRequest();
-  xhr.open('POST', sacuvajZapisUrl, true);
+  xhr.open("POST", sacuvajZapisUrl, true);
   xhr.timeout = 100000;
   xhr.ontimeout = function () {
     poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
@@ -181,7 +180,6 @@ function isprazniGeometrije() {
   //let paramsRestart = rasterLayer.getSource().getParams();
   //rasterLayer.getSource().updateParams(paramsRestart);
 }
-
 
 /**Smještanje mape u div sa id-jem "map" */
 let map = new ol.Map({
@@ -265,7 +263,7 @@ function podesiInterakciju() {
       },
     });
     map.addInteraction(modify);
-    modify.on('modifyend', function (e) {
+    modify.on("modifyend", function (e) {
       modifikovan = true;
       geometrijaZaBazuWkt = wktGeometrije(e.features.getArray()[0]);
       console.log("feature geometrija", wktGeometrije(e.features.getArray()[0]));
@@ -286,7 +284,7 @@ function podesiInterakciju() {
         return ol.events.condition.shiftKeyOnly(event) && ol.events.condition.singleClick(event);
       },
     });
-    draw.on('drawend', function (e) {
+    draw.on("drawend", function (e) {
       nacrtan = true;
       //TODO: ovo možda dodati u promjeni akcije i poništi
       featureTekuciOverlay.getSource().clear(); //Samo jedan može da se crta
@@ -294,7 +292,7 @@ function podesiInterakciju() {
       showDiv("#atributiDiv");
       console.log("feature nova geometrija", geometrijaZaBazuWkt);
     });
-    modify.on('modifyend', function (e) {
+    modify.on("modifyend", function (e) {
       //Iz nekog razloga na brisanje čvora ne očitava odmah izmjenu
       console.log("broj geometrija", e.features.getArray().length);
       geometrijaZaBazuWkt = wktGeometrije(e.features.getArray()[0]);
@@ -329,7 +327,7 @@ let dragAndDrop = new ol.interaction.DragAndDrop({
   formatConstructors: [ol.format.GPX, ol.format.GeoJSON, ol.format.IGC, ol.format.KML, ol.format.TopoJSON],
 });
 dragAndDrop.on("addfeatures", function (event) {
-  console.log("aaaa", event.features)
+  console.log("aaaa", event.features);
   event.features.forEach(function (feature) {
     /*console.log("feat", feature);
     console.log("feat1", feature.values_);
@@ -365,7 +363,7 @@ var select = new ol.interaction.Select({
   wrapX: false,
 });
 
-select.on('select', function (e) {
+select.on("select", function (e) {
   //console.log("select target", e.target.getFeatures().array_[0].values_.name);
   console.log("select target", e.target.getFeatures());
   if (blnZavrsniStub) {
@@ -388,7 +386,7 @@ var modifyV = new ol.interaction.Modify({
   features: select.getFeatures(),
 });
 
-modifyV.on('modifyend', function (e) {
+modifyV.on("modifyend", function (e) {
   /*modifikovan = true;
   geometrijaZaBazuWkt = wktGeometrije(e.features.getArray()[0]);
   console.log("feature geometrija", wktGeometrije(e.features.getArray()[0]));*/
@@ -406,21 +404,21 @@ modifyV.on('modifyend', function (e) {
       //console.log("Obj", el);
       //console.log("Objname", el.name);
     }
-  })
+  });
   let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat]));
   //console.log("pocetnaTacka", pocetnaTacka);
   //console.log("pocetnaTacka transform", ol.proj.transform(pocetnaTacka.flatCoordinates, "EPSG:3857", "EPSG:4326"));
   let distancaOd = turf.point([position[0], position[1]]);
   let distancaDo = turf.point([pocetniElement.lng, pocetniElement.lat]);
   let mjera = {
-    units: 'kilometers'
+    units: "kilometers",
   };
   let distanca = turf.distance(distancaOd, distancaDo, mjera);
   console.log("distanca", distanca);
   if (distanca > dozvoljeniPomjeraj) {
     //console.log("vrati na početno");
     e.features.getArray()[0].getGeometry().setCoordinates(pocetnaTacka.flatCoordinates);
-    poruka("Upozorenje", 'Tačka ne može biti pomjerena više od ' + (dozvoljeniPomjeraj * 1000).toString() + 'm od snimljene pozicije.')
+    poruka("Upozorenje", "Tačka ne može biti pomjerena više od " + (dozvoljeniPomjeraj * 1000).toString() + "m od snimljene pozicije.");
   }
   //let boundingExtent = map.getView().calculateExtent(map.getSize());
   //console.log(map.getView());
@@ -429,12 +427,11 @@ modifyV.on('modifyend', function (e) {
   citajExtent();
 });
 
-modifyV.on('change', function (e) {
+modifyV.on("change", function (e) {
   console.log("koordinate", e.selected[0].values_.geometry.flatCoordinates);
   let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
   console.log("koordinate c", position);
 });
-
 
 map.addInteraction(select);
 map.addInteraction(modifyV);
@@ -444,10 +441,6 @@ let snap = new ol.interaction.Snap({
 map.addInteraction(snap);
 
 /*** Završena selekcija i modifikacija */
-
-
-
-
 
 //Klik na feature
 map.on("click", onMouseClick);
@@ -474,7 +467,7 @@ function onMouseClick(browserEvent) {
             console.log("odgovor napojna", odgovor);
             console.log("napojna properties", odgovor.features[0]["properties"]);
             console.log("napojna id", odgovor.features[0]["id"]);
-            sifraNapojneTrafostanice = odgovor.features[0]["id"]
+            sifraNapojneTrafostanice = odgovor.features[0]["properties"]["id_billing"];
             //vectorNaselje.getSource().addFeatures(odgovor.features);
             //odgovor.features[0]["properties"]
             let atributi = odgovor.features[0]["properties"];
@@ -484,10 +477,6 @@ function onMouseClick(browserEvent) {
           }
         });
     }
-
-
-
-
   } else {
     map.forEachLayerAtPixel(pixel, function (layer) {
       if (layer instanceof ol.layer.Image) {
@@ -511,7 +500,7 @@ function onMouseClick(browserEvent) {
                 if (odgovor.features.length > 0) {
                   console.log("odgovor klika", odgovor.features);
                   //popuniKontrole(odgovor);
-                  //showDiv("#atributiDiv");                            
+                  //showDiv("#atributiDiv");
                   if (akcija == "slika") {
                     console.log("slika title", title);
                     console.log("slika id", odgovor.features[0].id);
@@ -524,9 +513,7 @@ function onMouseClick(browserEvent) {
       }
     });
   }
-
 }
-
 
 /*function onMouseClick(browserEvent) {
   if (akcija === "atributi" || akcija === "izmijeni") {
@@ -567,7 +554,7 @@ function brisanje() {
   let podaciForme = new FormData();
   podaciForme.append("id", idObjekta);
   let xhr = new XMLHttpRequest();
-  xhr.open('POST', izbrisiZapisUrl, true);
+  xhr.open("POST", izbrisiZapisUrl, true);
   xhr.timeout = 100000;
   xhr.ontimeout = function () {
     poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
@@ -627,10 +614,12 @@ function kreiranjeCqlFilteraAtributi() {
   document.querySelector("#pretraga_visina").value !== "" && (retVal += "visina = '" + document.querySelector("#pretraga_visina").value + "' AND ");
   document.querySelector("#pretraga_rasp_prov").value !== "" && (retVal += "rasp_prov = '" + document.querySelector("#pretraga_rasp_prov").value + "' AND ");
   document.querySelector("#pretraga_izolator_vrsta").value !== "" && (retVal += "izolator_vrsta = '" + document.querySelector("#pretraga_izolator_vrsta").value + "' AND ");
-  document.querySelector("#pretraga_izolator_funkcija").value !== "" && (retVal += "izolator_funkcija = '" + document.querySelector("#pretraga_izolator_funkcija").value + "' AND ");
+  document.querySelector("#pretraga_izolator_funkcija").value !== "" &&
+    (retVal += "izolator_funkcija = '" + document.querySelector("#pretraga_izolator_funkcija").value + "' AND ");
   document.querySelector("#pretraga_br_izol_faza").value !== "" && (retVal += "br_izol_faza = '" + document.querySelector("#pretraga_br_izol_faza").value + "' AND ");
   document.querySelector("#pretraga_tip_nosac_izol").value !== "" && (retVal += "tip_nosac_izol = '" + document.querySelector("#pretraga_tip_nosac_izol").value + "' AND ");
-  document.querySelector("#pretraga_odvodnik_prenapona").value !== "" && (retVal += "odvodnik_prenapona = '" + document.querySelector("#pretraga_odvodnik_prenapona").value + "' AND ");
+  document.querySelector("#pretraga_odvodnik_prenapona").value !== "" &&
+    (retVal += "odvodnik_prenapona = '" + document.querySelector("#pretraga_odvodnik_prenapona").value + "' AND ");
   document.querySelector("#pretraga_uzemljivac").value !== "" && (retVal += "uzemljivac = '" + document.querySelector("#pretraga_uzemljivac").value + "' AND ");
   document.querySelector("#pretraga_uzemljivac_otpor").value !== "" && (retVal += "uzemljivac_otpor = '" + document.querySelector("#pretraga_uzemljivac_otpor").value + "' AND ");
   document.querySelector("#pretraga_optika").value !== "" && (retVal += "optika = '" + document.querySelector("#pretraga_optika").value + "' AND ");
@@ -641,16 +630,15 @@ function kreiranjeCqlFilteraAtributi() {
   document.querySelector("#pretraga_vlasnistvo").value !== "" && (retVal += "vlasnistvo = '" + document.querySelector("#pretraga_vlasnistvo").value + "' AND ");
   document.querySelector("#pretraga_opstina").value !== "" && (retVal += "opstina = '" + document.querySelector("#pretraga_opstina").value + "' AND ");
   document.querySelector("#pretraga_napon").value !== "" && (retVal += "napon = '" + document.querySelector("#pretraga_napon").value + "' AND ");
-  document.querySelector("#pretraga_prikljucak_otcjep").value !== "" && (retVal += "prikljucak_otcjep = '" + document.querySelector("#pretraga_prikljucak_otcjep").value + "' AND ");
+  document.querySelector("#pretraga_prikljucak_otcjep").value !== "" &&
+    (retVal += "prikljucak_otcjep = '" + document.querySelector("#pretraga_prikljucak_otcjep").value + "' AND ");
   document.querySelector("#pretraga_nn_vod").value !== "" && (retVal += "nn_vod = '" + document.querySelector("#pretraga_nn_vod").value + "' AND ");
   document.querySelector("#pretraga_rastavljac").value !== "" && (retVal += "rastavljac = '" + document.querySelector("#pretraga_rastavljac").value + "' AND ");
   document.querySelector("#pretraga_10_vod").value !== "" && (retVal += "10_vod = '" + document.querySelector("#pretraga_10_vod").value + "' AND ");
 
-
   retVal.length > 5 && (retVal = retVal.substring(0, retVal.length - 5));
   return retVal;
 }
-
 
 function wfsFilter() {
   $.ajax({
