@@ -9,6 +9,19 @@ let nizKml = [];
 let vrijednostPocetneTacke = 0,
   vrijednostKrajnjeTacke = 0;
 
+/*let rasterLayer = new ol.layer.Image({
+  title: layertitle,
+  name: layername,
+  source: new ol.source.ImageWMS({
+    url: wmsUrl,
+    params: {
+      LAYERS: fulllayername
+    },
+    ratio: 1,
+    serverType: "geoserver",
+  }),
+});*/
+
 /**Popunjavanje komponenti u divu za prikaz atributa, nakon pročitanog odgovora za WMS objekat */
 function popuniKontrole(odgovor) {
   let atributi = odgovor.features[0]["properties"];
@@ -164,16 +177,24 @@ function isprazniGeometrije() {
   geometrijaZaBazuWkt = "";
   nacrtan = false;
   modifikovan = false;
+  //let paramsRestart = rasterLayer.getSource().getParams();
+  //rasterLayer.getSource().updateParams(paramsRestart);
 }
 
 /**Smještanje mape u div sa id-jem "map" */
 let map = new ol.Map({
   target: "map",
   interactions: ol.interaction.defaults().extend([new ol.interaction.PinchZoom(), new ol.interaction.DragPan()]),
+  //layers: [osmBaseMap, rasterLayer],
   layers: [osmBaseMap],
   view: view,
 });
 
+/** Prikaz razmjere na mapi */
+/*let razmjera = new ol.control.ScaleLine({
+  target: document.querySelector("#razmjera")
+});*/
+//Sve ovo je nepotrebno u OL3, u šestici prikazuje i scale bar
 map.addControl(razmjera);
 
 /** Dodavanje vektorskih lejera za crtanje i edit geometrije na mapu */
@@ -308,7 +329,12 @@ let dragAndDrop = new ol.interaction.DragAndDrop({
 dragAndDrop.on("addfeatures", function (event) {
   console.log("aaaa", event.features);
   event.features.forEach(function (feature) {
+    /*console.log("feat", feature);
+    console.log("feat1", feature.values_);
+    console.log("feat2", feature.values_.name);
+    console.log("feat3", feature.values_.geometry.flatCoordinates);*/
     let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
+    //console.log("4326", position);
     nizKml.push({
       lat: position[1],
       lng: position[0],
@@ -361,6 +387,9 @@ var modifyV = new ol.interaction.Modify({
 });
 
 modifyV.on("modifyend", function (e) {
+  /*modifikovan = true;
+  geometrijaZaBazuWkt = wktGeometrije(e.features.getArray()[0]);
+  console.log("feature geometrija", wktGeometrije(e.features.getArray()[0]));*/
   let featureName = e.features.getArray()[0].values_.name;
 
   console.log("select m", e.features.getArray()[0].values_);
@@ -387,6 +416,10 @@ modifyV.on("modifyend", function (e) {
       e.features.getArray()[0].getGeometry().setCoordinates(pocetnaTacka.flatCoordinates);
       poruka("Upozorenje", "Tačka ne može biti pomjerena više od " + (dozvoljeniPomjeraj * 1000).toString() + "m od snimljene pozicije.");
     }
+    //let boundingExtent = map.getView().calculateExtent(map.getSize());
+    //console.log(map.getView());
+    //boundingExtent = ol.proj.transformExtent(boundingExtent, ol.proj.get("EPSG:4326"), ol.proj.get("EPSG:3857"));
+    //console.log(boundingExtent);
     citajExtent();
   }
 });
@@ -432,7 +465,11 @@ function onMouseClick(browserEvent) {
             console.log("napojna properties", odgovor.features[0]["properties"]);
             console.log("napojna id", odgovor.features[0]["id"]);
             sifraNapojneTrafostanice = odgovor.features[0]["properties"]["id_billing"];
+            //vectorNaselje.getSource().addFeatures(odgovor.features);
+            //odgovor.features[0]["properties"]
             let atributi = odgovor.features[0]["properties"];
+            let nekiID = atributi["id"];
+            //poruka("Uspjeh", "Šifra napojne trafostanice je: " + sifraNapojneTrafostanice);
             pretragaTrafostanica(sifraNapojneTrafostanice);
           }
         });
@@ -458,7 +495,12 @@ function onMouseClick(browserEvent) {
               .then(function (json) {
                 let odgovor = JSON.parse(json);
                 if (odgovor.features.length > 0) {
+                  console.log("odgovor klika", odgovor.features);
+                  //popuniKontrole(odgovor);
+                  //showDiv("#atributiDiv");
                   if (akcija == "slika") {
+                    console.log("slika title", title);
+                    console.log("slika id", odgovor.features[0].id);
                     prikazFotografija(title, odgovor.features[0][0].id);
                   }
                 }
@@ -469,6 +511,31 @@ function onMouseClick(browserEvent) {
     });
   }
 }
+
+/*function onMouseClick(browserEvent) {
+  if (akcija === "atributi" || akcija === "izmijeni") {
+    //let coordinate = browserEvent.coordinate;
+    //let pixel = map.getPixelFromCoordinate(coordinate);
+
+    let url = rasterLayer.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
+      INFO_FORMAT: "application/json",
+    });
+    if (url) {
+      fetch(url)
+        .then(function (response) {
+          restartovanje();
+          return response.text();
+        })
+        .then(function (json) {
+          let odgovor = JSON.parse(json);
+          if (odgovor.features.length > 0) {
+            popuniKontrole(odgovor);
+            showDiv("#atributiDiv");
+          }
+        });
+    }
+  }
+}*/
 
 function izbrisi() {
   console.log("kml", vectorSource);
