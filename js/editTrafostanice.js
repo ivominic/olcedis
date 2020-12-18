@@ -119,6 +119,8 @@ function prikazUparivanje() {
 
 function selektujNapojnuTS() {
   poruka("Uspjeh", "Odaberite napojnu trafostanicu");
+  map.removeInteraction(draw);
+  map.removeInteraction(modify);
   sifraNapojneTrafostanice = "";
   blnSelekcijaNapojneTS = true;
 }
