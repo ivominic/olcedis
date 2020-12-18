@@ -106,7 +106,6 @@
         <div class="dropdown">
           <button class="dropbtn" id="meniTS">TS<i class="fa fa-caret-down"></i></button>
           <div class="dropdown-content">
-            <a href="#" id="selekcijaNapojneTrafostanice">Napojna trafostanica</a>
             <a href="#" id="selekecijaTrafostanicaPoligon">Selekcija poligonom</a>
             <a href="#" id="uparivanjeTrafostanica">Uparivanje trafostanica</a>
           </div>
@@ -571,8 +570,12 @@
           <span id="uparivanjeTxtSifraTS"></span>
         </div>
         <div class="flex-row pb-8">
+          <label for="uparivanjeTxtNazivTrafostanice">Naziv trafostanice:</label>
+          <span id="uparivanjeTxtNazivTrafostanice"></span>
+        </div>
+        <div class="flex-row pb-8">
           <label for="uparivanjeTxtNazivIzvodaTS">Naziv izvoda:</label>
-          <span id="uparivanjeTxtNazivIzvodaTS"></span>
+          <select id="uparivanjeTxtNazivIzvodaTS" class="select-css"></select>
         </div>
       </div>
       <div class="items-padd">
@@ -587,6 +590,7 @@
       </div>
       <div class="items-padd-sm d-flex-end">
         <button type="button" class="btn" id="btnPoveziTS">Uparivanje</button>
+        <button type="button" class="btn" id="btnOdabirNapojneTS">Napojna TS</button>
       </div>
     </div>
 

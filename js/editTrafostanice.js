@@ -28,8 +28,10 @@ map.addLayer(wmsTrafostanice);
 
 document.querySelector("#selekecijaTrafostanicaPoligon").addEventListener("click", trafostaniceUpoligonu);
 document.querySelector("#uparivanjeTrafostanica").addEventListener("click", prikazUparivanje);
-document.querySelector("#selekcijaNapojneTrafostanice").addEventListener("click", selektujNapojnuTS);
+//document.querySelector("#selekcijaNapojneTrafostanice").addEventListener("click", selektujNapojnuTS);
 document.querySelector("#btnPoveziTS").addEventListener("click", poveziTS);
+document.querySelector("#btnOdabirNapojneTS").addEventListener("click", selektujNapojnuTS);
+document.querySelector("#btnOdabirNapojneTS").style.display = "none";
 
 function trafostaniceUpoligonu() {
   if (poligoni.length === 0) {
@@ -108,19 +110,24 @@ function trafostaniceUpoligonu() {
 }
 
 function prikazUparivanje() {
-  if (sifraNapojneTrafostanice === "") {
+  /*if (sifraNapojneTrafostanice === "") {
     poruka("Upozorenje", "Potrebno je odabrati napojnu trafostanicu");
     return false;
-  }
+  }*/
   showDiv("#povezivanjeTSdiv");
 }
 
 function selektujNapojnuTS() {
+  poruka("Uspjeh", "Odaberite napojnu trafostanicu");
   sifraNapojneTrafostanice = "";
   blnSelekcijaNapojneTS = true;
 }
 
 function poveziTS() {
+  if (!document.querySelector("#uparivanjeTxtNazivIzvodaTS").value) {
+    alert("Potrebno je odabrati napojnu trafostanicu i izvod");
+    return false;
+  }
   let odabranaTS = document.querySelector("#ddlPovezivanjeTSselektovane").value;
   let tsIzSistema = document.querySelector("#ddlPovezivanjeTSpronadjene").value;
   if (!odabranaTS || !tsIzSistema) {
@@ -143,6 +150,7 @@ function poveziTS() {
     alert("Uspješno uparene sve trafostanice: \n" + paroviTS.join(",") + "\n Prelazak na sljedeći korak wizard-a");
     console.log("Uspješno uparene sve trafostanice:", paroviTS);
   }
+  //TODO: Dodati da se predaje i izvod trafostanice, prilikom slanja podataka ka web servisu
 }
 
 document.querySelector("#ddlPovezivanjeTSselektovane").addEventListener("change", function () {

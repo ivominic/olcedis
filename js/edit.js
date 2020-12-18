@@ -472,7 +472,7 @@ function onMouseClick(browserEvent) {
             //odgovor.features[0]["properties"]
             let atributi = odgovor.features[0]["properties"];
             let nekiID = atributi["id"];
-            poruka("Uspjeh", "Šifra napojne trafostanice je: " + sifraNapojneTrafostanice);
+            //poruka("Uspjeh", "Šifra napojne trafostanice je: " + sifraNapojneTrafostanice);
             pretragaTrafostanica(sifraNapojneTrafostanice);
           }
         });
