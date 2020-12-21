@@ -98,6 +98,7 @@ function trafostaniceIzBilingaZaUparivanje(nizTS) {
   $("#ddlPovezivanjeTSpronadjene").empty();
   $.ajax({
     url: urlServisa,
+    headers: { Authorization: "ApiKey fkjasgjgSJAGFAPSSAPG123" },
     data: "",
     type: "GET",
     success: function (data) {

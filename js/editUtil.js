@@ -41,10 +41,10 @@ let satelitBaseMap = new ol.layer.Tile({
 
 /**Stilizacija vektora */
 var fill = new ol.style.Fill({
-  color: "rgba(255,0,0,0.3)",
+  color: "rgba(255,255,0,0.3)",
 });
 var stroke = new ol.style.Stroke({
-  color: "#ff0000",
+  color: "#ffff00",
   width: 2,
 });
 var circle = new ol.style.Circle({
@@ -323,28 +323,36 @@ function showDiv(nazivDiva) {
 }
 
 /**Prenosivi sidenav */
-var windows = document.querySelectorAll('.draggable');
-[].forEach.call(windows,function(win){
-    let title = win.querySelector('.titleAndClose');
-    title.addEventListener('mousedown',function(evt){
-        let real = window.getComputedStyle(win),
-            winX = parseFloat(real.left),
-            winY = parseFloat(real.top);
-        let mX = evt.clientX,
-            mY = evt.clientY;
-        document.body.addEventListener('mousemove',drag,false);
-        document.body.addEventListener('mouseup',function(){
-            document.body.removeEventListener('mousemove',drag,false);
-        },false);
-        function drag(evt){
-            win.style.left = winX + evt.clientX-mX + 'px';
-            win.style.top  = winY + evt.clientY-mY + 'px';
-            if (winY + evt.clientY-mY < 60) {
-                win.style.left = winX + evt.clientX-mX + 'px';
-                win.style.top = 60 + "px";
-            }
+var windows = document.querySelectorAll(".draggable");
+[].forEach.call(windows, function (win) {
+  let title = win.querySelector(".titleAndClose");
+  title.addEventListener(
+    "mousedown",
+    function (evt) {
+      let real = window.getComputedStyle(win),
+        winX = parseFloat(real.left),
+        winY = parseFloat(real.top);
+      let mX = evt.clientX,
+        mY = evt.clientY;
+      document.body.addEventListener("mousemove", drag, false);
+      document.body.addEventListener(
+        "mouseup",
+        function () {
+          document.body.removeEventListener("mousemove", drag, false);
+        },
+        false
+      );
+      function drag(evt) {
+        win.style.left = winX + evt.clientX - mX + "px";
+        win.style.top = winY + evt.clientY - mY + "px";
+        if (winY + evt.clientY - mY < 60) {
+          win.style.left = winX + evt.clientX - mX + "px";
+          win.style.top = 60 + "px";
         }
-    },false);
+      }
+    },
+    false
+  );
 });
 
 /**Tri funkcije koje rade sa konfirm modalom - za potvrdu akcija/brisanja */
