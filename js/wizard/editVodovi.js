@@ -71,6 +71,7 @@ function vodoviUpoligonu() {
           console.log("feature i tip", features[i].values_.tip);
           console.log("feature id", features[i].id_);
         }
+        povezivanjeVodova(features[0], features);
       } else {
         poruka("Uspjeh", "Nema zapisa za prikaz.");
       }
@@ -84,4 +85,39 @@ function vodoviUpoligonu() {
       console.log("Request failed: " + textStatus);
     },
   });
+}
+
+/**
+ * Metoda koja za niz feature-a i početni feature prati konektivnost i dodaje povezane objekte
+ */
+function povezivanjeVodova(pocetna, features) {
+  console.log("pocetni vod", pocetna);
+
+  let writer = new ol.format.GeoJSON();
+  let pocetnaGJ = writer.writeFeatureObject(new ol.Feature(pocetna.getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
+  console.log("pocetnaGJ", pocetnaGJ);
+
+  for (let i = 0; i < features.length; i++) {
+    let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(features[i].getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
+    let presjek = turf.lineIntersect(pojedinacnaLinijaTurf, pocetnaGJ);
+    console.log("test presjeka", presjek);
+    //console.log("test presjeka niz", presjek.features);
+    //console.log("test presjeka niz dužina", presjek.features.length);
+
+    if (presjek.features.length > 0) {
+      console.log("presijeca početni", features[i]);
+    }
+
+    /*if (turf.lineIntersect(pojedinacnaLinijaTurf, pocetnaGJ)) {
+      console.log("susjedni vod", features[i]);
+    }*/
+
+    /*if (turf.lineIntersect(features[i].getGeometry, pocetna.getGeometry())) {
+      console.log("susjedni vod", features[i]);
+    }*/
+
+    /*if (pocetna.getGeometry().intersects(features[i].getGeometry())) {
+      console.log("susjedni vod", features[i]);      
+    }*/
+  }
 }
