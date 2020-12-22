@@ -92,32 +92,65 @@ function vodoviUpoligonu() {
  */
 function povezivanjeVodova(pocetna, features) {
   console.log("pocetni vod", pocetna);
+  let nizObradjenihVodova = []; //Završeni vodovi, na koje se više ne treba vraćati
+  let nizTrenutnihVodova = []; //Vodovi od kojih treba dalje nastaviti obradu - konektivnost
+  let nizPodredjenihVodova = []; //Vodovi koji su pronađeni u tekućem koraku obrade
+  let trenutnaGeometrija = pocetna; //geometrija sa kojom se upoređuje presjek ostalih vodova
+  let nizSvihGeometrija = features.clone();
+  let blnPostojeNepovezaniZapisi = nizSvihGeometrija.length > 0;
 
   let writer = new ol.format.GeoJSON();
-  let pocetnaGJ = writer.writeFeatureObject(new ol.Feature(pocetna.getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
-  console.log("pocetnaGJ", pocetnaGJ);
 
-  for (let i = 0; i < features.length; i++) {
-    let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(features[i].getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
-    let presjek = turf.lineIntersect(pojedinacnaLinijaTurf, pocetnaGJ);
-    console.log("test presjeka", presjek);
-    //console.log("test presjeka niz", presjek.features);
-    //console.log("test presjeka niz dužina", presjek.features.length);
+  while (blnPostojeNepovezaniZapisi) {
+    let trenutnaGJ = writer.writeFeatureObject(new ol.Feature(trenutnaGeometrija.getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
+    console.log("pocetnaGJ", trenutnaGJ);
+    for (let i = 0; i < nizSvihGeometrija.length; i++) {
+      let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(nizSvihGeometrija[i].getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
+      let presjek = turf.lineIntersect(pojedinacnaLinijaTurf, trenutnaGJ);
+      console.log("test presjeka", presjek);
+      //console.log("test presjeka niz", presjek.features);
+      //console.log("test presjeka niz dužina", presjek.features.length);
 
-    if (presjek.features.length > 0) {
-      console.log("presijeca početni", features[i]);
+      if (presjek.features.length > 0) {
+        console.log("presijeca početni", nizSvihGeometrija[i]);
+        if (nizObradjenihVodova.indexOf(nizSvihGeometrija[i]) < 0) {
+          nizPodredjenihVodova.push(nizSvihGeometrija[i]);
+          nizObradjenihVodova.push(nizSvihGeometrija[i]);
+        }
+      }
     }
 
-    /*if (turf.lineIntersect(pojedinacnaLinijaTurf, pocetnaGJ)) {
-      console.log("susjedni vod", features[i]);
-    }*/
+    //Ukloniti obrađene vodove iz niza svih geometrija za sljedeći korak
+    for (let i = 0; i < nizPodredjenihVodova.length; i++) {
+      let indexElementaZaUklanjanje = nizSvihGeometrija.indexOf(nizPodredjenihVodova[i]);
+      if (indexElementaZaUklanjanje >= 0) {
+        nizSvihGeometrija.slice(indexElementaZaUklanjanje, 1);
+      }
+    }
 
-    /*if (turf.lineIntersect(features[i].getGeometry, pocetna.getGeometry())) {
-      console.log("susjedni vod", features[i]);
-    }*/
+    if (nizTrenutnihVodova.length > 0) {
+      trenutnaGeometrija = nizTrenutnihVodova[0];
+      nizTrenutnihVodova = nizTrenutnihVodova.slice(0, 1);
+    } else {
+      nizTrenutnihVodova = nizPodredjenihVodova.slice();
+      nizPodredjenihVodova.length = 0;
+    }
 
-    /*if (pocetna.getGeometry().intersects(features[i].getGeometry())) {
-      console.log("susjedni vod", features[i]);      
-    }*/
+    if (nizTrenutnihVodova.length === 0) {
+      blnPostojeNepovezaniZapisi = false;
+      //Provjeriti da li je ostao koji zapis u nizu svih geometrija i onda su oni nepovezani
+    }
   }
+
+  /*if (turf.lineIntersect(pojedinacnaLinijaTurf, pocetnaGJ)) {
+        console.log("susjedni vod", features[i]);
+      }*/
+
+  /*if (turf.lineIntersect(features[i].getGeometry, pocetna.getGeometry())) {
+        console.log("susjedni vod", features[i]);
+      }*/
+
+  /*if (pocetna.getGeometry().intersects(features[i].getGeometry())) {
+        console.log("susjedni vod", features[i]);      
+      }*/
 }
