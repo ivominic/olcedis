@@ -95,26 +95,26 @@ function povezivanjeVodova(pocetna, features) {
   let nizObradjenihVodova = []; //Završeni vodovi, na koje se više ne treba vraćati
   let nizTrenutnihVodova = []; //Vodovi od kojih treba dalje nastaviti obradu - konektivnost
   let nizPodredjenihVodova = []; //Vodovi koji su pronađeni u tekućem koraku obrade
-  let trenutnaGeometrija = pocetna; //geometrija sa kojom se upoređuje presjek ostalih vodova
+  //let trenutnaGeometrija = pocetna; //geometrija sa kojom se upoređuje presjek ostalih vodova
   let nizSvihGeometrija = features.slice();
   let blnPostojeNepovezaniZapisi = nizSvihGeometrija.length > 0;
+  nizTrenutnihVodova.push(pocetna);
 
   let writer = new ol.format.GeoJSON();
 
   nizSvihGeometrija.forEach((elem) => console.log("elementi početnog niza", elem.values_.name));
 
   while (blnPostojeNepovezaniZapisi) {
-    let trenutnaGJ = writer.writeFeatureObject(new ol.Feature(trenutnaGeometrija.getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
-    console.log("feature kojim se testira", trenutnaGeometrija);
+    let trenutnaGJ = writer.writeFeatureObject(new ol.Feature(nizTrenutnihVodova[0].getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
+    //console.log("feature kojim se testira", nizTrenutnihVodova[0]);
+    console.log("vod za koji tražimo podređene vodove", nizTrenutnihVodova[0].values_.name);
     for (let i = 0; i < nizSvihGeometrija.length; i++) {
       let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(nizSvihGeometrija[i].getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
       let presjek = turf.lineIntersect(pojedinacnaLinijaTurf, trenutnaGJ);
-      //console.log("test presjeka", presjek);
-      //console.log("test presjeka niz", presjek.features);
       //console.log("test presjeka niz dužina", presjek.features.length);
 
       if (presjek.features.length > 0) {
-        console.log("presijeca početni", nizSvihGeometrija[i]);
+        //console.log("presijeca početni", nizSvihGeometrija[i]);
         if (nizObradjenihVodova.indexOf(nizSvihGeometrija[i]) < 0) {
           nizPodredjenihVodova.push(nizSvihGeometrija[i]);
           nizObradjenihVodova.push(nizSvihGeometrija[i]);
@@ -126,24 +126,20 @@ function povezivanjeVodova(pocetna, features) {
     for (let i = 0; i < nizPodredjenihVodova.length; i++) {
       let indexElementaZaUklanjanje = nizSvihGeometrija.indexOf(nizPodredjenihVodova[i]);
       if (indexElementaZaUklanjanje >= 0) {
-        console.log("vod za koji se provjerava", trenutnaGeometrija.values_.name);
-        console.log("vod koji presijeca", nizSvihGeometrija[indexElementaZaUklanjanje].values_.name);
-        //console.log("prije uklanjanja", nizSvihGeometrija);
+        //Prikazuje par vodova koji se nadovezuju
+        console.log(nizTrenutnihVodova[0].values_.name, nizSvihGeometrija[indexElementaZaUklanjanje].values_.name);
         nizSvihGeometrija.splice(indexElementaZaUklanjanje, 1);
-        //console.log("nakon uklanjanja", nizSvihGeometrija);
       }
     }
 
     if (nizTrenutnihVodova.length > 0) {
-      trenutnaGeometrija = nizTrenutnihVodova[0];
-      nizTrenutnihVodova = nizTrenutnihVodova.splice(0, 1);
-    } else {
+      //trenutnaGeometrija = nizTrenutnihVodova[0];
+      nizTrenutnihVodova.splice(0, 1);
+    }
+    if (nizTrenutnihVodova.length == 0) {
       nizTrenutnihVodova = nizPodredjenihVodova.slice();
       nizPodredjenihVodova.length = 0;
-      if (nizTrenutnihVodova.length > 0) {
-        trenutnaGeometrija = nizTrenutnihVodova[0];
-        nizTrenutnihVodova = nizTrenutnihVodova.splice(0, 1);
-      } else {
+      if (nizTrenutnihVodova.length == 0) {
         blnPostojeNepovezaniZapisi = false;
         console.log("neupareni", nizSvihGeometrija);
       }
