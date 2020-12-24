@@ -4,8 +4,6 @@ let layername = "trafostanice",
   layertitle = "Trafostanice";
 let tipGeometrije = point;
 let opisSlike = "";
-const dozvoljeniPomjeraj = 0.01; //0.01km
-let nizKml = [];
 let vrijednostPocetneTacke = 0,
   vrijednostKrajnjeTacke = 0;
 
@@ -426,13 +424,14 @@ function onMouseClick(browserEvent) {
         })
         .then(function (json) {
           let odgovor = JSON.parse(json);
-
           if (odgovor.features.length > 0) {
             console.log("odgovor napojna", odgovor);
             console.log("napojna properties", odgovor.features[0]["properties"]);
             console.log("napojna id", odgovor.features[0]["id"]);
-            sifraNapojneTrafostanice = odgovor.features[0]["properties"]["id_billing"];
             let atributi = odgovor.features[0]["properties"];
+            featureNapojnaTrafostanica = odgovor.features[0];
+            sifraNapojneTrafostanice = odgovor.features[0]["properties"]["id_billing"];
+            naponskiNivoNapojneTrafostanice = atributi["prenos_odnos"];
             pretragaTrafostanica(sifraNapojneTrafostanice);
           }
         });

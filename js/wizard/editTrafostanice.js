@@ -5,8 +5,6 @@ let layernameTS = "trafostanice",
   layertitleTS = "trafostanice";
 let tipGeometrijeTS = point;
 let opisSlikeTS = "";
-let sifraNapojneTrafostanice = "";
-let blnSelekcijaNapojneTS = false;
 let selektovaneTSfeatures;
 let nizSelektovanihOriginalId = [];
 
