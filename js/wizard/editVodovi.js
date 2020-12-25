@@ -101,6 +101,7 @@ function vodoviUpoligonu() {
  */
 function povezivanjeVodova(pocetna, nivo, features) {
   console.log("pocetni objekat", pocetna);
+  console.log("pocetne linije", features);
   let nizObradjenihVodova = []; //Završeni vodovi, na koje se više ne treba vraćati
   let nizTrenutnihVodova = []; //Vodovi od kojih treba dalje nastaviti obradu - konektivnost
   let nizPodredjenihVodova = []; //Vodovi koji su pronađeni u tekućem koraku obrade
@@ -111,30 +112,44 @@ function povezivanjeVodova(pocetna, nivo, features) {
   let writer = new ol.format.GeoJSON();
   let tempPosition = ol.proj.transform(pocetna.geometry.coordinates, "EPSG:3857", "EPSG:4326");
   console.log("tacka", tempPosition);
-  let tempTacka = turf.point([tempPosition[0], tempPosition[1]]);
-  let trenutnaGJ = tempTacka;
-  //let trenutnaGJ = writer.writeFeatureObject(new ol.Feature(tempTacka.getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
+  //let tempTacka = turf.point([tempPosition[0].toFixed(10), tempPosition[1].toFixed(10)]);
+  let tempTacka = turf.point([18.6628778, 43.0596194]);
+  //let trenutnaGJ = tempTacka;
+  let point = new ol.Feature(new ol.geom.Point([18.6628778, 43.0596194]));
+  //let trenutnaGJ = writer.writeFeatureObject(new ol.Feature(point.getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
+  let trenutnaGJ = writer.writeFeatureObject(new ol.Feature(point.getGeometry()));
 
   nizSvihGeometrija.forEach((elem) => console.log("elementi početnog niza", elem.values_.name));
 
   while (blnPostojeNepovezaniZapisi) {
     //
     if (nizTrenutnihVodova.length > 0) {
-      trenutnaGJ = writer.writeFeatureObject(new ol.Feature(nizTrenutnihVodova[0].getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
+      //trenutnaGJ = writer.writeFeatureObject(new ol.Feature(nizTrenutnihVodova[0].getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
+      trenutnaGJ = writer.writeFeatureObject(new ol.Feature(nizTrenutnihVodova[0].getGeometry()));
     }
 
-    //console.log("feature kojim se testira", nizTrenutnihVodova[0]);
-    console.log("vod za koji tražimo podređene vodove", nizTrenutnihVodova[0].values_.name);
+    if (nizTrenutnihVodova[0]) {
+      console.log("vod za koji tražimo podređene vodove", nizTrenutnihVodova[0].values_.name);
+    }
     for (let i = 0; i < nizSvihGeometrija.length; i++) {
-      let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(nizSvihGeometrija[i].getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
-      let presjek = turf.lineIntersect(pojedinacnaLinijaTurf, trenutnaGJ);
-      //console.log("test presjeka niz dužina", presjek.features.length);
-
-      if (presjek.features.length > 0) {
-        //console.log("presijeca početni", nizSvihGeometrija[i]);
-        if (nizObradjenihVodova.indexOf(nizSvihGeometrija[i]) < 0) {
-          nizPodredjenihVodova.push(nizSvihGeometrija[i]);
-          nizObradjenihVodova.push(nizSvihGeometrija[i]);
+      //let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(nizSvihGeometrija[i].getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
+      let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(nizSvihGeometrija[i].getGeometry()));
+      //Ne postoji funkcija za presjek linije i tačke pa se, ukoliko je prva linija tačka, koristi provjera da je udaljenost = 0
+      if (trenutnaGJ.geometry.type === "Point") {
+        if (turf.pointToLineDistance(trenutnaGJ, pojedinacnaLinijaTurf, { units: "kilometers" }) === 0) {
+          if (nizObradjenihVodova.indexOf(nizSvihGeometrija[i]) < 0) {
+            nizPodredjenihVodova.push(nizSvihGeometrija[i]);
+            nizObradjenihVodova.push(nizSvihGeometrija[i]);
+          }
+        }
+      } else {
+        let presjek = turf.lineIntersect(pojedinacnaLinijaTurf, trenutnaGJ);
+        if (presjek.features.length > 0) {
+          //console.log("presijeca početni", nizSvihGeometrija[i]);
+          if (nizObradjenihVodova.indexOf(nizSvihGeometrija[i]) < 0) {
+            nizPodredjenihVodova.push(nizSvihGeometrija[i]);
+            nizObradjenihVodova.push(nizSvihGeometrija[i]);
+          }
         }
       }
     }
@@ -144,7 +159,12 @@ function povezivanjeVodova(pocetna, nivo, features) {
       let indexElementaZaUklanjanje = nizSvihGeometrija.indexOf(nizPodredjenihVodova[i]);
       if (indexElementaZaUklanjanje >= 0) {
         //Prikazuje par vodova koji se nadovezuju
-        console.log(nizTrenutnihVodova[0].values_.name, nizSvihGeometrija[indexElementaZaUklanjanje].values_.name);
+        if (nizTrenutnihVodova.length === 0) {
+          console.log("pocetna trafostanica", nizSvihGeometrija[indexElementaZaUklanjanje].values_.name);
+        } else {
+          console.log(nizTrenutnihVodova[0].values_.name, nizSvihGeometrija[indexElementaZaUklanjanje].values_.name);
+        }
+
         nizSvihGeometrija.splice(indexElementaZaUklanjanje, 1);
       }
     }
@@ -197,3 +217,13 @@ function poveziVodove() {
     console.log("Uspješno upareni svi vodovi:", paroviVodova);
   }
 }
+
+function testTacka() {
+  //let tempTacka = turf.point([tempPosition[0].toFixed(10), tempPosition[1].toFixed(10)]);
+  let point = new ol.Feature(new ol.geom.Point([18.6628778, 43.0596194]));
+
+  let tempTacka = turf.point([18.6628778, 43.0596194]);
+  console.log("point", point);
+  console.log("temp tačka", tempTacka);
+}
+//testTacka();
