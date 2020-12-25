@@ -106,16 +106,20 @@ function povezivanjeVodova(pocetna, nivo, features) {
   let nizTrenutnihVodova = []; //Vodovi od kojih treba dalje nastaviti obradu - konektivnost
   let nizPodredjenihVodova = []; //Vodovi koji su pronađeni u tekućem koraku obrade
   //let trenutnaGeometrija = pocetna; //geometrija sa kojom se upoređuje presjek ostalih vodova
-  let nizSvihGeometrija = features.slice();
+  //let nizSvihGeometrija = features.slice();
+  let nizSvihGeometrija = features.filter(function (item) {
+    return item.values_.napon === globalNaponskiNivo(nivo);
+  });
   let blnPostojeNepovezaniZapisi = nizSvihGeometrija.length > 0;
+  console.log("nizSvihGeometrija", nizSvihGeometrija);
+  console.log("features", features);
   //nizTrenutnihVodova.push(pocetna);
   let writer = new ol.format.GeoJSON();
   let tempPosition = ol.proj.transform(pocetna.geometry.coordinates, "EPSG:3857", "EPSG:4326");
-  console.log("tacka", tempPosition);
   //let tempTacka = turf.point([tempPosition[0].toFixed(10), tempPosition[1].toFixed(10)]);
-  let tempTacka = turf.point([18.6628778, 43.0596194]);
+  //let tempTacka = turf.point([18.6628778, 43.0596194]);
   //let trenutnaGJ = tempTacka;
-  let point = new ol.Feature(new ol.geom.Point([18.6628778, 43.0596194]));
+  let point = new ol.Feature(new ol.geom.Point([tempPosition[0].toFixed(10), tempPosition[1].toFixed(10)]));
   //let trenutnaGJ = writer.writeFeatureObject(new ol.Feature(point.getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
   let trenutnaGJ = writer.writeFeatureObject(new ol.Feature(point.getGeometry()));
 
@@ -217,13 +221,3 @@ function poveziVodove() {
     console.log("Uspješno upareni svi vodovi:", paroviVodova);
   }
 }
-
-function testTacka() {
-  //let tempTacka = turf.point([tempPosition[0].toFixed(10), tempPosition[1].toFixed(10)]);
-  let point = new ol.Feature(new ol.geom.Point([18.6628778, 43.0596194]));
-
-  let tempTacka = turf.point([18.6628778, 43.0596194]);
-  console.log("point", point);
-  console.log("temp tačka", tempTacka);
-}
-//testTacka();
