@@ -24,10 +24,10 @@ let wmsVodovi = new ol.layer.Image({
 map.addLayer(wmsVodovi);
 //console.log("dodao lejer na mapu");
 
-document.querySelector("#selekecijaVodovaPoligon").addEventListener("click", vodoviUpoligonu);
-document.querySelector("#uparivanjeVodovaForma").addEventListener("click", prikazUparivanjeVodovaDiv);
-document.querySelector("#btnPoveziVodove").addEventListener("click", poveziVodove);
-document.querySelector("#btnOdabirNapojneTSVodovi").addEventListener("click", selektujNapojnuTS);
+//document.querySelector("#selekecijaVodovaPoligon").addEventListener("click", vodoviUpoligonu);
+//document.querySelector("#uparivanjeVodovaForma").addEventListener("click", prikazUparivanjeVodovaDiv);
+//document.querySelector("#btnPoveziVodove").addEventListener("click", poveziVodove);
+//document.querySelector("#btnOdabirNapojneTSVodovi").addEventListener("click", selektujNapojnuTS);
 /*
 //document.querySelector("#selekcijaNapojneTrafostanice").addEventListener("click", selektujNapojnuTS);
 document.querySelector("#btnPoveziTS").addEventListener("click", poveziTS);
