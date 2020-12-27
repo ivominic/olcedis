@@ -1,10 +1,105 @@
 //Modul koji sadrži sve promjenljive koje se koriste na globalnom nivou u aplikaciji / wizardu kao i opšte metode
 const dozvoljeniPomjeraj = 0.01; //0.01km - deset metara je dozvoljeo pomjeriti tačke iz gpx fajlova prije uvoza u bazu
+//const domainUrl = location.origin;
+const domainUrl = "https://razvojgis.cedis.me";
+//const domainUrl = "http://localhost";
+//const domainUrl = "http://167.172.171.249";
+const wmsUrl = domainUrl + "/geoserver/geonode/wms";
+//const wmsUrl = domainUrl + "/geoserver/winsoft/wms";
+const wfsUrl = domainUrl + "/geoserver/geonode/wfs";
+//const wfsUrl = domainUrl + "/geoserver/winsoft/wfs";
+const imageUrl = domainUrl + "/slike/";
+const point = "Point",
+  lineString = "LineString",
+  polygon = "Polygon",
+  tacke = [],
+  linije = [],
+  poligoni = [];
+let draw,
+  modify,
+  cqlFilter = "",
+  idObjekta = 0,
+  akcija = "pan",
+  slikaUrl = "",
+  slikeUrl = [],
+  slikeIndex = 0;
+let geometrijaZaBazuWkt = "",
+  nacrtan = false,
+  modifikovan = false;
 let sifraNapojneTrafostanice = "",
   naponskiNivoNapojneTrafostanice = "";
 let nizKml = []; //podaci koji će biti prevučeni na mapu iz kml/gpx fajla
 let blnSelekcijaNapojneTS = false; // Kada je true, klik na mapu treba da nađe napojnu trafostanicu
 let featureNapojnaTrafostanica; //Ovaj objekat koristiti kao feature iz koje će se pratiti konektivnost
+
+/**Definisanje podloga */
+let osmBaseMap = new ol.layer.Tile({
+  title: "Open Street Maps",
+  source: new ol.source.OSM(),
+});
+let satelitBaseMap = new ol.layer.Tile({
+  title: "Satelitski snimak",
+  source: new ol.source.XYZ({
+    url: "http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}",
+    maxZoom: 23,
+  }),
+});
+
+/**Stilizacija vektora */
+var fill = new ol.style.Fill({
+  color: "rgba(255,255,0,0.3)",
+});
+var stroke = new ol.style.Stroke({
+  color: "#ffff00",
+  width: 2,
+});
+var circle = new ol.style.Circle({
+  radius: 7,
+  fill: fill,
+  stroke: stroke,
+});
+var vectorStyle = new ol.style.Style({
+  fill: fill,
+  stroke: stroke,
+  image: circle,
+});
+
+/**Stilizacija vektora za snap*/
+var fillSnap = new ol.style.Fill({
+  color: "rgba(128,0,128,0.3)",
+});
+var strokeSnap = new ol.style.Stroke({
+  color: "#C807FE",
+  width: 2,
+});
+var circleSnap = new ol.style.Circle({
+  radius: 7,
+  fill: fillSnap,
+  stroke: strokeSnap,
+});
+var vectorStyleSnap = new ol.style.Style({
+  fill: fillSnap,
+  stroke: strokeSnap,
+  image: circleSnap,
+});
+
+/**Setovanje centra mape */
+let center = ol.proj.transform([19.26, 42.56], "EPSG:4326", "EPSG:3857");
+//let center = ol.proj.transform([19.2381, 43.1271], "EPSG:4326", "EPSG:3857");
+let view = new ol.View({
+  center: center,
+  zoom: 9,
+});
+
+/** Prikaz razmjernika na mapi*/
+const razmjera = new ol.control.ScaleLine({
+  target: document.querySelector("#razmjera"),
+  units: "metric",
+  bar: true,
+  steps: 4,
+  text: true,
+  minWidth: 100,
+});
 
 /**
  * Metoda koja za naponski nivo trafostanice vraća odgovarajući nivo naponskog voda

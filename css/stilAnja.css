@@ -12,14 +12,14 @@
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
 }
 
 /** Stil za sva input polja*/
@@ -34,14 +34,14 @@ input[type] {
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
 }
 
 /** Podijeljena stranica na dvije kolone*/
@@ -73,35 +73,35 @@ input[type] {
 }
 
 .border-bottom {
-  border-bottom: 1px solid #CA2129;
+  border-bottom: 1px solid #ca2129;
 }
 
 .btn {
-    background: linear-gradient(to bottom, #dd252e 25%, #CA2129 100%);
-    background-color: #CA2129;
-    border-radius: 5px;
-    border: 1px solid #CA2129;
-    display: inline-block;
-    cursor: pointer;
-    color:#f2f2f2;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: none;
-    /* text-shadow: 0px -1px 0px #2b665e; */
+  background: linear-gradient(to bottom, #dd252e 25%, #ca2129 100%);
+  background-color: #ca2129;
+  border-radius: 5px;
+  border: 1px solid #ca2129;
+  display: inline-block;
+  cursor: pointer;
+  color: #f2f2f2;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  /* text-shadow: 0px -1px 0px #2b665e; */
 }
 .btn:hover {
-    background:linear-gradient(to bottom, #CA2129 25%, #dd252e 100%);
-    background-color: #323a42;
+  background: linear-gradient(to bottom, #ca2129 25%, #dd252e 100%);
+  background-color: #323a42;
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
-  color: #f2f2f2;
-  background: #CA2129;
+  color: #333;
+  background: #f2f2f2;
   /*display: flex;
   flex-direction: column;*/
 }
@@ -149,7 +149,7 @@ body {
 /* Definisanje boje navbara */
 .topnav {
   min-height: 70px;
-  background-color: #CA2129;
+  background-color: #ca2129;
   overflow: hidden;
 }
 
@@ -178,7 +178,7 @@ body {
 
 a.active {
   background-color: #f2f2f2;
-  color: #CA2129;
+  color: #ca2129;
 }
 
 /* Ne prikazuje hamburger na desnoj strani, koji se pojavljuje na malim ekranima */
@@ -189,7 +189,7 @@ a.active {
 #logo {
   padding: 8px 20px;
 }
-#logo:hover{
+#logo:hover {
   background: transparent;
 }
 
@@ -232,11 +232,11 @@ a.active {
   text-decoration: none;
   display: block;
   text-align: left;
-  border-bottom: 1px solid #CA2129;
+  border-bottom: 1px solid #ca2129;
 }
 
 .dropdown-content a:first-child {
-  border-top: 1px solid #CA2129;
+  border-top: 1px solid #ca2129;
 }
 
 .dropdown-content a:last-child {
@@ -246,13 +246,13 @@ a.active {
 /* Pozadina ikonica na mouse hover */
 .topnav a:hover,
 .dropdown:hover .dropbtn {
-  background: linear-gradient(to bottom, #f2f2f2, transparent);;
+  background: linear-gradient(to bottom, #f2f2f2, transparent);
   color: white;
 }
 
 /* Siva pozadina na hover contenta */
 .dropdown-content a:hover {
-  background: linear-gradient(to bottom, #CA2129 -20%, #f2f2f2 50%);
+  background: linear-gradient(to bottom, #ca2129 -20%, #f2f2f2 50%);
   background-color: #f2f2f2;
   color: #000;
 }
@@ -269,12 +269,12 @@ a.active {
   flex-direction: row;
   align-items: baseline;
   justify-content: space-between;
-  border-bottom: 3px solid #CA2129;
+  border-bottom: 3px solid #ca2129;
   padding: 30px 0;
 }
 
 .titleAndClose a.closebtn:hover {
-  color: #CA2129;
+  color: #ca2129;
 }
 
 .titleAndClose h1 {
@@ -286,18 +286,16 @@ a.active {
   cursor: move;
 }
 
-
 /* Na ekranima manjim od 600px skriva sve ikonice osim prve i prikazuje hamburger (icon) */
-@media screen and (max-width: 1150px){
+@media screen and (max-width: 1150px) {
   .topnav a:not(:first-child),
   .dropdown .dropbtn {
-      display: none;
+    display: none;
   }
   .topnav a.icon {
-      float: right;
-      display: block;
+    float: right;
+    display: block;
   }
-
 }
 
 .dropdownDiv {
@@ -312,48 +310,48 @@ a.active {
   }
 
   .topnav.responsive a.icon {
-      position: absolute;
-      width: auto;
-      right: 0;
-      top: 0;
+    position: absolute;
+    width: auto;
+    right: 0;
+    top: 0;
   }
 
   .topnav.responsive .dropdownDiv {
-      float: left;
-      width: 100%;
+    float: left;
+    width: 100%;
   }
 
   .topnav.responsive a {
-      float: left;
-      display: block;
-      text-align: left;
-      z-index: 15;
-      width: 100%;
+    float: left;
+    display: block;
+    text-align: left;
+    z-index: 15;
+    width: 100%;
   }
 
   .topnav.responsive .dropdown {
-      float: none;
-      width: inherit;
+    float: none;
+    width: inherit;
   }
 
   .topnav.responsive .dropdown-content {
-      position: relative;
+    position: relative;
   }
 
   .topnav.responsive .dropdown-content a {
-      background: #F2F2F2;
+    background: #f2f2f2;
   }
 
   .topnav.responsive .dropdown .dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
+    display: block;
+    width: 100%;
+    text-align: left;
   }
   .dropdown-content {
     top: 0;
   }
 
-  .flex-row > label{
+  .flex-row > label {
     width: 98%;
   }
 
@@ -363,7 +361,6 @@ a.active {
     margin: 16px 0;
   }
 }
-
 
 /** paddings and margins*/
 .mb-16 {
@@ -390,7 +387,7 @@ a.active {
 .mr-16 {
   margin-right: 16px;
 }
-.mt-32{
+.mt-32 {
   margin-top: 32px;
 }
 .pl-32 {
@@ -454,29 +451,26 @@ a.active {
   margin-bottom: 5px;
 }
 
-.sadrzaj-scroll{
+.sadrzaj-scroll {
   overflow-y: scroll;
   height: 450px;
 }
 
-.style-2::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color: #F5F5F5;
+.style-2::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
 }
 
-.style-2::-webkit-scrollbar
-{
-	width: 12px;
-	background-color: #F5F5F5;
+.style-2::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
 }
 
-.style-2::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #CA2129;
+.style-2::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #ca2129;
 }
 
 .sidenav h1 {
@@ -510,7 +504,7 @@ a.active {
 
 /* Pomjera sadržaj 20px u desno */
 #main {
-  transition: margin-left .3s;
+  transition: margin-left 0.3s;
   padding: 20px;
 }
 
@@ -524,42 +518,40 @@ a.active {
   }
 }*/
 
-
 /** TOOLTIP */
-
 
 /** tooltip styles
   * based on http://www.flatypo.net/tutorials/how-to-create-animated-tooltips-css3-hiperlink/ 
  **/
 a.tooltip {
-    position: relative;
-    display: inline;
+  position: relative;
+  display: inline;
 }
 
 a.tooltip:after {
-    padding: 0 15px;
-    top: 80%;
-    position: absolute;
-    right: 50%;
-    /* margin-left: -60px; */
-    font-size: 16px;
-    font-weight: 600;
-    white-space: nowrap;
-    display: block;
-    visibility: hidden;
-    opacity: 0;
-    content: attr(data-tool);
-    /* might also use attr(title) */
-    height: 25px;
-    min-width: 100px;
-    z-index: 999;
-    color: #333;
-    text-decoration: none;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.8);
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+  padding: 0 15px;
+  top: 80%;
+  position: absolute;
+  right: 50%;
+  /* margin-left: -60px; */
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  content: attr(data-tool);
+  /* might also use attr(title) */
+  height: 25px;
+  min-width: 100px;
+  z-index: 999;
+  color: #333;
+  text-decoration: none;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 
 /*a.tooltip:before {
@@ -577,121 +569,117 @@ a.tooltip:after {
 }*/
 
 a.tooltip:hover:after {
-    visibility: visible;
-    opacity: 1;
-    bottom: 20px;
+  visibility: visible;
+  opacity: 1;
+  bottom: 20px;
 }
 
 a.tooltip:hover:before {
-    visibility: visible;
-    opacity: 1;
-    bottom: 14px;
+  visibility: visible;
+  opacity: 1;
+  bottom: 14px;
 }
 
 a.tooltip.animate:after,
 a.tooltip.animate:before {
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -ms-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
-
 
 /* tips on bottom */
 a.tooltip.bottom:after {
-    bottom: auto;
-    top: 0;
+  bottom: auto;
+  top: 0;
 }
 
 a.tooltip.bottom:hover:after {
-    top: 28px;
+  top: 28px;
 }
 
 a.tooltip.bottom:before {
-    border-width: 0 5px 8.7px 5px;
-    border-color: transparent transparent rgba(0, 0, 0, 0.85) transparent;
-    top: 0px
+  border-width: 0 5px 8.7px 5px;
+  border-color: transparent transparent rgba(0, 0, 0, 0.85) transparent;
+  top: 0px;
 }
 
 a.tooltip.bottom:hover:before {
-    top: 20px;
+  top: 20px;
 }
-
 
 /* tips on the right */
 a.tooltip.right:after {
-    left: 100%;
-    bottom: -45%;
+  left: 100%;
+  bottom: -45%;
 }
 
 a.tooltip.right:hover:after {
-    left: 110%;
-    bottom: -45%;
+  left: 110%;
+  bottom: -45%;
 }
 
 a.tooltip.right:before {
-    border-width: 5px 10px 5px 0;
-    border-color: transparent rgba(0, 0, 0, 0.85) transparent transparent;
-    left: 90%;
-    bottom: 2%;
+  border-width: 5px 10px 5px 0;
+  border-color: transparent rgba(0, 0, 0, 0.85) transparent transparent;
+  left: 90%;
+  bottom: 2%;
 }
 
 a.tooltip.right:hover:before {
-    left: 100%;
-    bottom: 2%;
+  left: 100%;
+  bottom: 2%;
 }
-
 
 /* tips on the left */
 a.tooltip.left:after {
-    left: auto;
-    right: 100%;
-    bottom: -45%;
+  left: auto;
+  right: 100%;
+  bottom: -45%;
 }
 
 a.tooltip.left:hover:after {
-    right: 110%;
-    bottom: -45%;
+  right: 110%;
+  bottom: -45%;
 }
 
 a.tooltip.left:before {
-    border-width: 5px 0 5px 10px;
-    border-color: transparent transparent transparent rgba(0, 0, 0, 0.85);
-    left: auto;
-    right: 90%;
-    bottom: 2%;
+  border-width: 5px 0 5px 10px;
+  border-color: transparent transparent transparent rgba(0, 0, 0, 0.85);
+  left: auto;
+  right: 90%;
+  bottom: 2%;
 }
 
 a.tooltip.left:hover:before {
-    right: 100%;
-    bottom: 2%;
+  right: 100%;
+  bottom: 2%;
 }
-
 
 /* tooltip colors (add your own!) */
 a.tooltip.blue:after {
-    background: #5f87c2;
+  background: #5f87c2;
 }
 
 a.tooltip.blue:before {
-    border-color: #5f87c2 transparent transparent transparent;
+  border-color: #5f87c2 transparent transparent transparent;
 }
 
 a.tooltip.bottom.blue:before {
-    border-color: transparent transparent #5f87c2 transparent;
+  border-color: transparent transparent #5f87c2 transparent;
 }
 
 a.tooltip.right.blue:before {
-    border-color: transparent #5f87c2 transparent transparent;
+  border-color: transparent #5f87c2 transparent transparent;
 }
 
 a.tooltip.left.blue:before {
-    border-color: transparent transparent transparent #5f87c2;
+  border-color: transparent transparent transparent #5f87c2;
 }
 
 /* input field tooltips */
-input+.fieldtip {
+input + .fieldtip {
   visibility: hidden;
   position: relative;
   bottom: 0;
@@ -718,11 +706,11 @@ input+.fieldtip {
   transition: all 0.2s ease-in-out;
 }
 
-input+.fieldtip:after {
+input + .fieldtip:after {
   display: block;
   position: absolute;
   visibility: hidden;
-  content: '';
+  content: "";
   width: 0;
   height: 0;
   top: 8px;
@@ -737,12 +725,11 @@ input+.fieldtip:after {
   transition: all 0.2s ease-in-out;
 }
 
-input:focus+.fieldtip,
-input:focus+.fieldtip:after {
+input:focus + .fieldtip,
+input:focus + .fieldtip:after {
   visibility: visible;
   opacity: 1;
 }
-
 
 /** clearfix **/
 .clearfix:after {
@@ -765,7 +752,6 @@ html[xmlns] .clearfix {
 * html .clearfix {
   height: 1%;
 }
-
 
 /** CHECKBOX-OVI*/
 
@@ -802,14 +788,14 @@ html[xmlns] .clearfix {
 }
 
 /* Na mouse hover daje sivu pozadinu checkbox-a */
-.container:hover input~.checkmark {
+.container:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
 /* Čekiranom daje zelenu pozadinu */
-.container input:checked~.checkmark {
+.container input:checked ~ .checkmark {
   /*background-color: #2196F3;*/
-  background-color: #4CAF50;
+  background-color: #4caf50;
 }
 
 /* Skriva štrik kad nije čekirano */
@@ -820,7 +806,7 @@ html[xmlns] .clearfix {
 }
 
 /* Inače ga prikazuje */
-.container input:checked~.checkmark:after {
+.container input:checked ~ .checkmark:after {
   display: block;
 }
 

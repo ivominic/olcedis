@@ -95,6 +95,7 @@
             </div>
           </div>
           <a href="#" id="brisanje" class="tooltip" data-tool="Uklanjanje"><i class="fas fa-eraser" aria-hidden="true"></i></a>
+          <a href="#" id="wizard" class="tooltip" data-tool="Wizard">W</a>
           <div class="dropdown">
             <button class="dropbtn" id="izmjeneGeometrija">
               <i class="fas fa-tasks"></i>
@@ -510,12 +511,12 @@
     <div class="razmjera" id="razmjera"></div>
     <div class="koordinate" id="koordinate"></div>
 
-    <div id="povezivanjeTSdiv" class="sidenav draggable">
+    <div id="wizardDiv" class="sidenav draggable">
       <div class="titleAndClose">
-        <h1>Uparivanje trafostanica</h1>
-        <a href="javascript:void(0)" class="closebtn" onclick="closeDiv('#povezivanjeTSdiv')">&times;</a>
+        <h1 id="wizardHeader">Uparivanje trafostanica</h1>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeDiv('#wizardDiv')">&times;</a>
       </div>
-      <div class="items-padd">
+      <div class="items-padd" id="divWizardUparivanjeTrafostanica">
         <div class="flex-row pb-8">
           <label for="ddlPovezivanjeTSselektovane">Selektovane trafostanice:</label>
           <select id="ddlPovezivanjeTSselektovane" class="select-css"></select>
@@ -524,9 +525,10 @@
           <label for="ddlPovezivanjeTSpronadjene">Neuparene trafostanice iz TB:</label>
           <select id="ddlPovezivanjeTSpronadjene" class="select-css"></select>
         </div>
-      </div>
-      <div class="items-padd-sm d-flex-end">
-        <button type="button" class="btn" id="btnPoveziTS">Uparivanje</button>
+        <div class="items-padd-sm d-flex-end">
+          <button type="button" class="btn" id="btnPoveziTS">Uparivanje</button>
+          <button type="button" class="btn" id="btnOdabirNapojneTS">Napojna TS</button>
+        </div>
       </div>
     </div>
 
@@ -537,15 +539,18 @@
         naslovnaStranaUrl = "urlZaCuvanjeZapisa";
     </script>
 
+    <script src="js/wizard/global.js"></script>
     <script src="js/turf.min.js"></script>
     <script src="js/ol.js"></script>
     <script src="js/editUtil.js"></script>
     <script src="js/edit.js"></script>
     <script src="js/snap.js"></script>
     <script src="js/kreiranjeVoda.js"></script>
-    <script src="js/poligonSelect.js"></script>
-    <script src="js/editWebServisi.js"></script>
-    <script src="js/editTrafostanice.js"></script>
-    <script src="js/editStubovi.js"></script>
+    <script src="js/wizard/poligonSelect.js"></script>
+    <script src="js/wizard/editWebServisi.js"></script>
+    <script src="js/wizard/editTrafostanice.js"></script>
+    <script src="js/wizard/editStubovi.js"></script>
+    <script src="js/wizard/editVodovi.js"></script>
+    <script src="js/wizard/tok.js"></script>
   </body>
 </html>
