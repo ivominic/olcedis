@@ -32,6 +32,27 @@ document.querySelector("#btnOdabirNapojneTS").addEventListener("click", selektuj
 document.querySelector("#btnOdabirNapojneTS").style.display = "none";
 
 /**
+ * Metoda koja vrši provjeru da li su sve selektovane trafostanice sa istog izvoda
+ */
+function provjeriTrafostanice() {
+  let nizSelektovanihTrafostanicaOriginalId = [];
+  let trafostaniceZaWS = "";
+  for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
+    console.log("feature trafotanica i", selektovaneTrafostaniceFeatures[i]);
+    trafostaniceZaWS += selektovaneTrafostaniceFeatures[i].values_.originalId + ",";
+    /*let option = document.createElement("option");
+    option.text = features[i].values_.naziv + "-" + features[i].values_.id_biling;
+    option.value = features[i].values_.originalId;
+    document.querySelector("#ddlPovezivanjeTSselektovane").appendChild(option);*/
+    nizSelektovanihTrafostanicaOriginalId.push(selektovaneTrafostaniceFeatures[i].values_.originalId);
+  }
+  trafostaniceZaWS = trafostaniceZaWS.substring(0, trafostaniceZaWS.length - 1);
+  trafostaniceZaWS = "[" + trafostaniceZaWS + "]";
+
+  trafostaniceIzBilingaZaUparivanje(nizSelektovanihTrafostanicaOriginalId, "", "", "");
+}
+
+/**
  * Metoda koja za odabrani naponski nivo vraća sve trafostanice tog nivoa
  * @param {} napon
  */
@@ -46,6 +67,14 @@ function trafostaniceUpoligonu(napon) {
     data: {},
     success: function (response) {
       selektovaneTrafostaniceFeatures = new ol.format.GeoJSON().readFeatures(response);
+      if (selektovaneTrafostaniceFeatures.length === 0) {
+        poruka("Upozorenje", "Nema trafostanica u odabranom zahvatu.");
+        return false;
+      } else {
+        if (selektovaniVodoviFeatures.length > 0) {
+          provjeriTrafostanice();
+        }
+      }
     },
     fail: function (jqXHR, textStatus) {
       console.log("Request failed: " + textStatus);

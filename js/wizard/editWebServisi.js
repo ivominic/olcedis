@@ -165,6 +165,8 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
           })
         );
       });
+      document.querySelector("#wizardHeader").innerHTML === treciKorakWizarda;
+      blnSelekcijaNapojneTS = false;
 
       /*if (!data.naziv_izvoda) {
         //Ako nije predložen naziv izvoda, omogućiti odabir napojne trafostanice sa mape
@@ -178,7 +180,8 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
         //Potrebno je ručno odabrati trafostanicu sa mape
         blnSelekcijaNapojneTS = true;
         document.querySelector("#wizardHeader").innerHTML === drugiKorakWizarda;
-        wizardNext();
+        document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
+        //wizardNext();
       }
       poruka("Greska", x.responseJSON["error"]);
       //TODO: onemogućiti dalji nastavak rada na mapi - pošto se radi o nepoklapanju broja trafostanica ili nekoj sličnoj grešci

@@ -42,17 +42,18 @@ function wizardNext() {
   if (document.querySelector("#wizardHeader").innerHTML === prviKorakWizarda) {
     //Na klik se bira naponski nivo i filtriraju se trafostanice i vodovi selektovanog reona (zahvat iscrtanog poligona)
     odabraniNaponskiNivo = document.querySelector("#ddlWizardNaponskiNivo").value;
-    document.querySelector("#wizardHeader").innerHTML = drugiKorakWizarda;
+    //document.querySelector("#wizardHeader").innerHTML = drugiKorakWizarda;
     trafostaniceUpoligonu(odabraniNaponskiNivo);
     vodoviUpoligonu(odabraniNaponskiNivo);
-    if (selektovaneTrafostaniceFeatures.length === 0) {
+    /*if (selektovaneTrafostaniceFeatures.length === 0) {
       poruka("Upozorenje", "Nema trafostanica u odabranom zahvatu.");
       return false;
     }
     if (selektovaniVodoviFeatures.length === 0) {
       poruka("Upozorenje", "Nema vodova u odabranom zahvatu.");
       return false;
-    }
+    }*/
+    document.querySelector("#divWizardOdabirNaponskogNivoa").style.display = "none";
     //Provjeriti da li je moguće odabrati napojnu trafostanicu i izvod na osnovu selektovanih trafostanica
     //TODO: poziv metode za provjeru i uparivanje trafostanica
     if (sifraNapojneTrafostanice !== "" && nazivNapojneTrafostanice !== "") {
@@ -66,29 +67,9 @@ function wizardNext() {
     }
   } else if (document.querySelector("#wizardHeader").innerHTML === drugiKorakWizarda) {
     document.querySelector("#divWizardOdabirNaponskogNivoa").style.display = "none";
-    document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
+    //document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
   } else if (document.querySelector("#wizardHeader").innerHTML === treciKorakWizarda) {
     document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "none";
     document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "block";
   }
-}
-
-/**
- * Metoda koja vrši provjeru da li su sve selektovane trafostanice sa istog izvoda
- */
-function provjeriTrafostanice() {
-  let nizSelektovanihTrafostanicaOriginalId = [];
-  for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
-    console.log("feature trafotanica i", selektovaneTrafostaniceFeatures[i]);
-    trafostaniceZaWS += selektovaneTrafostaniceFeatures[i].values_.originalId + ",";
-    /*let option = document.createElement("option");
-    option.text = features[i].values_.naziv + "-" + features[i].values_.id_biling;
-    option.value = features[i].values_.originalId;
-    document.querySelector("#ddlPovezivanjeTSselektovane").appendChild(option);*/
-    nizSelektovanihTrafostanicaOriginalId.push(features[i].values_.originalId);
-  }
-  trafostaniceZaWS = trafostaniceZaWS.substring(0, trafostaniceZaWS.length - 1);
-  trafostaniceZaWS = "[" + trafostaniceZaWS + "]";
-
-  trafostaniceIzBilingaZaUparivanje(nizSelektovanihOriginalId);
 }

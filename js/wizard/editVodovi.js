@@ -53,6 +53,14 @@ function vodoviUpoligonu(napon) {
     data: {},
     success: function (response) {
       selektovaniVodoviFeatures = new ol.format.GeoJSON().readFeatures(response);
+      if (selektovaniVodoviFeatures.length === 0) {
+        poruka("Upozorenje", "Nema vodova u odabranom zahvatu.");
+        return false;
+      } else {
+        if (selektovaneTrafostaniceFeatures.length > 0) {
+          provjeriTrafostanice();
+        }
+      }
     },
     fail: function (jqXHR, textStatus) {
       console.log("Request failed: " + textStatus);
