@@ -4,7 +4,6 @@ let layernameVodovi = "vodovi",
   layertitleVodovi = "vodovi";
 let tipGeometrijeVodovi = lineString;
 let opisSlikeVodovi = "";
-let selektovaniVodoviFeatures;
 let nizSelektovanihVodova = [];
 let paroviVodova = [];
 
@@ -39,7 +38,29 @@ function prikazUparivanjeVodovaDiv() {
   showDiv("#povezivanjeVodovaDiv");
 }
 
-function vodoviUpoligonu() {
+/**
+ * Metoda koja za odabrani naponski nivo vraća sve vodove tog nivoa
+ * @param {} napon
+ */
+function vodoviUpoligonu(napon) {
+  let urlZaFilter =
+    wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernameTS + "&outputformat=application/json&cql_filter=" + globalCqlZaNaponskiNivo(napon, "vodovi");
+  console.log("url filter", urlZaFilter);
+
+  $.ajax({
+    method: "POST",
+    url: urlZaFilter,
+    data: {},
+    success: function (response) {
+      selektovaniVodoviFeatures = new ol.format.GeoJSON().readFeatures(response);
+    },
+    fail: function (jqXHR, textStatus) {
+      console.log("Request failed: " + textStatus);
+    },
+  });
+}
+
+function vodoviUpoligonu_orig() {
   if (poligoni.length === 0) {
     poruka("Upozorenje", "Potrebno je nacrtati poligon");
     return false;

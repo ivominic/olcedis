@@ -1,5 +1,6 @@
 //Crtanje poligona
 //Prikaz forme
+
 //Odabir naponskog nivoa
 //Filtriranje trafostanica
 //Filtriranje vodova
@@ -9,7 +10,12 @@
 //Uparivanje trafostanica
 //Uparivanje vodova
 
+let prviKorakWizarda = "Odabir naponskog nivoa";
+let drugiKorakWizarda = "Odabir napojne trafostanice";
+let treciKorakWizarda = "Uparivanje trafostanica";
+
 document.querySelector("#wizard").addEventListener("click", prikazWizardForme);
+document.querySelector("#btnWizardNext").addEventListener("click", wizardNext);
 /**
  * Pokreće proces za wizard - prikazuje formu, ako je ozačen reon poligonom
  */
@@ -18,6 +24,71 @@ function prikazWizardForme() {
     poruka("Upozorenje", "Potrebno je nacrtati poligon prije pokretanja wizard-a.");
     return false;
   }
+  map.removeInteraction(draw);
+  map.removeInteraction(modify);
+
+  document.querySelector("#wizardHeader").innerHTML = prviKorakWizarda;
+  document.querySelector("#divWizardOdabirNaponskogNivoa").style.display = "block";
+
+  showDiv("#wizardDiv");
   //trafostaniceUpoligonu();
   //vodoviUpoligonu();
+}
+
+/**
+ * Metoda koja izvršava jedan po jedan korak vizarda
+ */
+function wizardNext() {
+  if (document.querySelector("#wizardHeader").innerHTML === prviKorakWizarda) {
+    //Na klik se bira naponski nivo i filtriraju se trafostanice i vodovi selektovanog reona (zahvat iscrtanog poligona)
+    odabraniNaponskiNivo = document.querySelector("#ddlWizardNaponskiNivo").value;
+    document.querySelector("#wizardHeader").innerHTML = drugiKorakWizarda;
+    trafostaniceUpoligonu(odabraniNaponskiNivo);
+    vodoviUpoligonu(odabraniNaponskiNivo);
+    if (selektovaneTrafostaniceFeatures.length === 0) {
+      poruka("Upozorenje", "Nema trafostanica u odabranom zahvatu.");
+      return false;
+    }
+    if (selektovaniVodoviFeatures.length === 0) {
+      poruka("Upozorenje", "Nema vodova u odabranom zahvatu.");
+      return false;
+    }
+    //Provjeriti da li je moguće odabrati napojnu trafostanicu i izvod na osnovu selektovanih trafostanica
+    //TODO: poziv metode za provjeru i uparivanje trafostanica
+    if (sifraNapojneTrafostanice !== "" && nazivNapojneTrafostanice !== "") {
+      document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = nazivNapojneTrafostanice;
+      document.querySelector("#uparivanjeTxtSifraTS").textContent = sifraNapojneTrafostanice;
+      //TODO: prikazati formu
+    } else {
+      //TODO: provjeriti da li se poklapa broj trafostanica
+      //TODO: provjeriti konektivnost vodova
+      //TODO: odabrati trafostanicu sa mape
+    }
+  } else if (document.querySelector("#wizardHeader").innerHTML === drugiKorakWizarda) {
+    document.querySelector("#divWizardOdabirNaponskogNivoa").style.display = "none";
+    document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
+  } else if (document.querySelector("#wizardHeader").innerHTML === treciKorakWizarda) {
+    document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "none";
+    document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "block";
+  }
+}
+
+/**
+ * Metoda koja vrši provjeru da li su sve selektovane trafostanice sa istog izvoda
+ */
+function provjeriTrafostanice() {
+  let nizSelektovanihTrafostanicaOriginalId = [];
+  for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
+    console.log("feature trafotanica i", selektovaneTrafostaniceFeatures[i]);
+    trafostaniceZaWS += selektovaneTrafostaniceFeatures[i].values_.originalId + ",";
+    /*let option = document.createElement("option");
+    option.text = features[i].values_.naziv + "-" + features[i].values_.id_biling;
+    option.value = features[i].values_.originalId;
+    document.querySelector("#ddlPovezivanjeTSselektovane").appendChild(option);*/
+    nizSelektovanihTrafostanicaOriginalId.push(features[i].values_.originalId);
+  }
+  trafostaniceZaWS = trafostaniceZaWS.substring(0, trafostaniceZaWS.length - 1);
+  trafostaniceZaWS = "[" + trafostaniceZaWS + "]";
+
+  trafostaniceIzBilingaZaUparivanje(nizSelektovanihOriginalId);
 }

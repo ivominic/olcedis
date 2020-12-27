@@ -5,7 +5,7 @@ let layernameTS = "trafostanice",
   layertitleTS = "trafostanice";
 let tipGeometrijeTS = point;
 let opisSlikeTS = "";
-let selektovaneTSfeatures;
+
 let nizSelektovanihOriginalId = [];
 
 let wmsTrafostanice = new ol.layer.Image({
@@ -31,7 +31,29 @@ document.querySelector("#btnPoveziTS").addEventListener("click", poveziTS);
 document.querySelector("#btnOdabirNapojneTS").addEventListener("click", selektujNapojnuTS);
 document.querySelector("#btnOdabirNapojneTS").style.display = "none";
 
-function trafostaniceUpoligonu() {
+/**
+ * Metoda koja za odabrani naponski nivo vraća sve trafostanice tog nivoa
+ * @param {} napon
+ */
+function trafostaniceUpoligonu(napon) {
+  let urlZaFilter =
+    wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernameTS + "&outputformat=application/json&cql_filter=" + globalCqlZaNaponskiNivo(napon, "trafostanice");
+  console.log("url filter", urlZaFilter);
+
+  $.ajax({
+    method: "POST",
+    url: urlZaFilter,
+    data: {},
+    success: function (response) {
+      selektovaneTrafostaniceFeatures = new ol.format.GeoJSON().readFeatures(response);
+    },
+    fail: function (jqXHR, textStatus) {
+      console.log("Request failed: " + textStatus);
+    },
+  });
+}
+
+function trafostaniceUpoligonu_orig() {
   if (poligoni.length === 0) {
     poruka("Upozorenje", "Potrebno je nacrtati poligon");
     return false;

@@ -516,7 +516,33 @@
         <h1 id="wizardHeader">Uparivanje trafostanica</h1>
         <a href="javascript:void(0)" class="closebtn" onclick="closeDiv('#wizardDiv')">&times;</a>
       </div>
-      <div class="items-padd" id="divWizardUparivanjeTrafostanica">
+      <div class="items-padd" id="divWizardOdabirNaponskogNivoa" style="display: none">
+        <div class="flex-row pb-8">
+          <label for="ddlWizardNaponskiNivo">Odabir naponskog nivoa:</label>
+          <select id="ddlWizardNaponskiNivo" class="select-css">
+            <option value="35">35kV</option>
+            <option value="10">10kV</option>
+            <option value="0.4">0.4kV</option>
+          </select>
+        </div>
+      </div>
+      <div class="items-padd" id="divWizardOdabirNapojneTrafostanice" style="display: none">
+        <div class="items-padd">
+          <div class="flex-row pb-8">
+            <label for="uparivanjeTxtSifraTS">Šifra trafostanice:</label>
+            <span id="uparivanjeTxtSifraTS"></span>
+          </div>
+          <div class="flex-row pb-8">
+            <label for="uparivanjeTxtNazivTrafostanice">Naziv trafostanice:</label>
+            <span id="uparivanjeTxtNazivTrafostanice"></span>
+          </div>
+          <div class="flex-row pb-8">
+            <label for="uparivanjeTxtNazivIzvodaTS">Naziv izvoda:</label>
+            <select id="uparivanjeTxtNazivIzvodaTS" class="select-css"></select>
+          </div>
+        </div>
+      </div>
+      <div class="items-padd" id="divWizardUparivanjeTrafostanica" style="display: none">
         <div class="flex-row pb-8">
           <label for="ddlPovezivanjeTSselektovane">Selektovane trafostanice:</label>
           <select id="ddlPovezivanjeTSselektovane" class="select-css"></select>
@@ -529,6 +555,9 @@
           <button type="button" class="btn" id="btnPoveziTS">Uparivanje</button>
           <button type="button" class="btn" id="btnOdabirNapojneTS">Napojna TS</button>
         </div>
+      </div>
+      <div class="items-padd-sm d-flex-end">
+        <button type="button" class="btn" id="btnWizardNext">Dalje</button>
       </div>
     </div>
 

@@ -412,7 +412,7 @@ function onMouseClick(browserEvent) {
   let pixel = map.getPixelFromCoordinate(coordinate);
   console.log("jeste selekcija ts", blnSelekcijaNapojneTS);
   if (blnSelekcijaNapojneTS) {
-    blnSelekcijaNapojneTS = false;
+    //blnSelekcijaNapojneTS = false;
     let url = wmsTrafostanice.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
       INFO_FORMAT: "application/json",
     });

@@ -3,11 +3,8 @@ const dozvoljeniPomjeraj = 0.01; //0.01km - deset metara je dozvoljeo pomjeriti 
 //const domainUrl = location.origin;
 const domainUrl = "https://razvojgis.cedis.me";
 //const domainUrl = "http://localhost";
-//const domainUrl = "http://167.172.171.249";
 const wmsUrl = domainUrl + "/geoserver/geonode/wms";
-//const wmsUrl = domainUrl + "/geoserver/winsoft/wms";
 const wfsUrl = domainUrl + "/geoserver/geonode/wfs";
-//const wfsUrl = domainUrl + "/geoserver/winsoft/wfs";
 const imageUrl = domainUrl + "/slike/";
 const point = "Point",
   lineString = "LineString",
@@ -15,6 +12,12 @@ const point = "Point",
   tacke = [],
   linije = [],
   poligoni = [];
+let naponskiNivoNapojneTrafostanice = "";
+let odabraniNaponskiNivo = "";
+let sifraNapojneTrafostanice = "";
+let nazivNapojneTrafostanice = "";
+let izvodNapojneTrafostanice = "";
+
 let draw,
   modify,
   cqlFilter = "",
@@ -26,11 +29,11 @@ let draw,
 let geometrijaZaBazuWkt = "",
   nacrtan = false,
   modifikovan = false;
-let sifraNapojneTrafostanice = "",
-  naponskiNivoNapojneTrafostanice = "";
 let nizKml = []; //podaci koji će biti prevučeni na mapu iz kml/gpx fajla
 let blnSelekcijaNapojneTS = false; // Kada je true, klik na mapu treba da nađe napojnu trafostanicu
 let featureNapojnaTrafostanica; //Ovaj objekat koristiti kao feature iz koje će se pratiti konektivnost
+let selektovaneTrafostaniceFeatures = []; //Trafostanice u zahvatu poligona
+let selektovaniVodoviFeatures = []; //Vodovi u zahvatu poligona
 
 /**Definisanje podloga */
 let osmBaseMap = new ol.layer.Tile({
@@ -119,6 +122,41 @@ function globalNaponskiNivo(nivo) {
       break;
     default:
       retVal = nivo;
+  }
+  return retVal;
+}
+
+/**
+ * Metoda koja za naponski nivo vraća cql text za filter objekata prema iscrtanim poligonima i naponskom nivou
+ * @param {*} nivo
+ */
+function globalCqlZaNaponskiNivo(nivo, sloj) {
+  let retVal = "";
+  poligoni.forEach((item) => {
+    if (retVal === "") {
+      retVal = "INTERSECTS(Geometry," + item + ")";
+    } else {
+      retVal += " OR INTERSECTS(Geometry," + item + ")";
+    }
+  });
+
+  retVal = "(" + retVal + ")";
+  if (sloj === "trafostanice") {
+    if (napon === "35") {
+      retVal += " AND (napon='35' OR napon='10')";
+    } else if (napon === "10") {
+      retVal += " AND (napon='10' OR napon='0.4')";
+    } else if (napon === "0.4") {
+      retVal += " AND napon='0.4'";
+    }
+  } else if (sloj === "vodovi") {
+    if (napon === "35") {
+      retVal += " AND napon='35'";
+    } else if (napon === "10") {
+      retVal += " AND napon='10'";
+    } else if (napon === "0.4") {
+      retVal += " AND napon='0.4'";
+    }
   }
   return retVal;
 }
