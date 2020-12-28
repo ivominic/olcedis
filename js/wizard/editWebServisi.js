@@ -128,11 +128,13 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
       console.log("šifra napojne TS", data.sifra_napojne);
       console.log("naziv izvoda TS", data.naziv_izvoda);
       console.log("naziv napojne TS", data.naziv_napojne);
+      console.log("geometrija napojne TS", data.geometrija_napojne);
       //TODO: Ovdje dodati čitanje naponskog nivoa napojne trafostanice - ovo ne treba, pošto se sad to bira u prvom koraku
       //naponskiNivoNapojneTrafostanice = "";
       console.log("poruka", data.poruka);
       nazivNapojneTrafostanice = data.naziv_napojne;
       sifraNapojneTrafostanice = data.sifra_napojne;
+      geometrijaNapojneTrafostanice = data.geometrija_napojne;
       document.querySelector("#uparivanjeTxtSifraTS").textContent = sifraNapojneTrafostanice;
       //document.querySelector("#uparivanjeTxtNazivIzvodaTS").textContent = data.naziv_izvoda;
       document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = data.naziv_napojne;
@@ -144,11 +146,11 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
       );
 
       data.neuparene.forEach(function (vrijednost) {
-        console.log("trafostanice za uparivanje", vrijednost);
+        //console.log("trafostanice za uparivanje", vrijednost);
         //TODO: Ovim podacima napuniti listu trafostanica za uparivanje ili iz spiska uparenih brisati one koje se tamo nađu
       });
       data.uparene.forEach(function (vrijednost) {
-        console.log("uparene TS - brisati iz liste", vrijednost);
+        //console.log("uparene TS - brisati iz liste", vrijednost);
         for (let i = 0; i < document.querySelector("#ddlPovezivanjeTSselektovane").length; i++) {
           if (document.querySelector("#ddlPovezivanjeTSselektovane").options[i].value === vrijednost.toString()) {
             document.querySelector("#ddlPovezivanjeTSselektovane").remove(i);
@@ -156,7 +158,7 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
         }
       });
       data.predlog.forEach(function (vrijednost) {
-        console.log("predlog TS za uparivanje", vrijednost);
+        //console.log("predlog TS za uparivanje", vrijednost);
         //TODO: Ovim podacima napuniti listu trafostanica za uparivanje ili iz spiska uparenih brisati one koje se tamo nađu
         $("#ddlPovezivanjeTSpronadjene").append(
           $("<option>", {
@@ -165,8 +167,17 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
           })
         );
       });
-      document.querySelector("#wizardHeader").innerHTML === treciKorakWizarda;
-      blnSelekcijaNapojneTS = false;
+      if (data.naziv_izvoda) {
+        document.querySelector("#wizardHeader").innerText = treciKorakWizarda;
+        document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "block";
+        document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
+        blnSelekcijaNapojneTS = false;
+      } else {
+        document.querySelector("#wizardHeader").inneText = drugiKorakWizarda;
+        document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
+        document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
+        blnSelekcijaNapojneTS = true;
+      }
 
       /*if (!data.naziv_izvoda) {
         //Ako nije predložen naziv izvoda, omogućiti odabir napojne trafostanice sa mape

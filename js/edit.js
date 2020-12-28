@@ -432,6 +432,7 @@ function onMouseClick(browserEvent) {
             featureNapojnaTrafostanica = odgovor.features[0];
             sifraNapojneTrafostanice = odgovor.features[0]["properties"]["id_billing"];
             naponskiNivoNapojneTrafostanice = atributi["prenos_odnos"];
+            geohashNapojneTrafostanice = atributi["geohash_id"];
             pretragaTrafostanica(sifraNapojneTrafostanice);
           }
         });

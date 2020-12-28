@@ -128,29 +128,27 @@ function vodoviUpoligonu_orig() {
 /**
  * Metoda koja za niz feature-a i početni feature prati konektivnost i dodaje povezane objekte
  */
-function povezivanjeVodova(pocetna, nivo, features) {
-  console.log("pocetni objekat", pocetna);
-  console.log("pocetne linije", features);
+function povezivanjeVodova(pocetna, features) {
+  let nizSvihGeometrija = features.slice();
+  let blnPostojeNepovezaniZapisi = nizSvihGeometrija.length > 0;
   let nizObradjenihVodova = []; //Završeni vodovi, na koje se više ne treba vraćati
   let nizTrenutnihVodova = []; //Vodovi od kojih treba dalje nastaviti obradu - konektivnost
   let nizPodredjenihVodova = []; //Vodovi koji su pronađeni u tekućem koraku obrade
-  //let trenutnaGeometrija = pocetna; //geometrija sa kojom se upoređuje presjek ostalih vodova
-  //let nizSvihGeometrija = features.slice();
-  let nizSvihGeometrija = features.filter(function (item) {
-    return item.values_.napon === globalNaponskiNivo(nivo);
-  });
-  let blnPostojeNepovezaniZapisi = nizSvihGeometrija.length > 0;
-  console.log("nizSvihGeometrija", nizSvihGeometrija);
-  console.log("features", features);
-  //nizTrenutnihVodova.push(pocetna);
   let writer = new ol.format.GeoJSON();
-  let tempPosition = ol.proj.transform(pocetna.geometry.coordinates, "EPSG:3857", "EPSG:4326");
-  //let tempTacka = turf.point([tempPosition[0].toFixed(10), tempPosition[1].toFixed(10)]);
-  //let tempTacka = turf.point([18.6628778, 43.0596194]);
-  //let trenutnaGJ = tempTacka;
-  let point = new ol.Feature(new ol.geom.Point([tempPosition[0].toFixed(10), tempPosition[1].toFixed(10)]));
-  //let trenutnaGJ = writer.writeFeatureObject(new ol.Feature(point.getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
-  let trenutnaGJ = writer.writeFeatureObject(new ol.Feature(point.getGeometry()));
+  let trenutnaGJ;
+  console.log("pocetni objekat", pocetna);
+  console.log("pocetne linije", features);
+  if (!pocetna) {
+    //napraviti geometriju iz promjenljivih: geometrijaNapojneTrafostanice i geohashNapojneTrafostanice
+    let format = new ol.format.WKT();
+    let geometrija = format.readFeature(geometrijaNapojneTrafostanice, {});
+    trenutnaGJ = writer.writeFeatureObject(new ol.Feature(geometrija.getGeometry()));
+  } else {
+    let tempPosition = ol.proj.transform(pocetna.geometry.coordinates, "EPSG:3857", "EPSG:4326");
+    let point = new ol.Feature(new ol.geom.Point([tempPosition[0].toFixed(10), tempPosition[1].toFixed(10)]));
+    trenutnaGJ = writer.writeFeatureObject(new ol.Feature(point.getGeometry()));
+  }
+  console.log("trenutna geometrija 1111111", trenutnaGJ);
 
   nizSvihGeometrija.forEach((elem) => console.log("elementi početnog niza", elem.values_.name));
 

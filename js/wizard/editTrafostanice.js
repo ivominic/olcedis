@@ -40,10 +40,10 @@ function provjeriTrafostanice() {
   for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
     console.log("feature trafotanica i", selektovaneTrafostaniceFeatures[i]);
     trafostaniceZaWS += selektovaneTrafostaniceFeatures[i].values_.originalId + ",";
-    /*let option = document.createElement("option");
-    option.text = features[i].values_.naziv + "-" + features[i].values_.id_biling;
-    option.value = features[i].values_.originalId;
-    document.querySelector("#ddlPovezivanjeTSselektovane").appendChild(option);*/
+    let option = document.createElement("option");
+    option.text = selektovaneTrafostaniceFeatures[i].values_.naziv + "-" + selektovaneTrafostaniceFeatures[i].values_.id_biling;
+    option.value = selektovaneTrafostaniceFeatures[i].values_.originalId;
+    document.querySelector("#ddlPovezivanjeTSselektovane").appendChild(option);
     nizSelektovanihTrafostanicaOriginalId.push(selektovaneTrafostaniceFeatures[i].values_.originalId);
   }
   trafostaniceZaWS = trafostaniceZaWS.substring(0, trafostaniceZaWS.length - 1);
@@ -200,6 +200,11 @@ function poveziTS() {
   if (document.querySelector("#ddlPovezivanjeTSselektovane").length === 0 && document.querySelector("#ddlPovezivanjeTSpronadjene").length === 0) {
     alert("Uspješno uparene sve trafostanice: \n" + paroviTS.join(",") + "\n Prelazak na sljedeći korak wizard-a");
     console.log("Uspješno uparene sve trafostanice:", paroviTS);
+    //TODO: Prelazak na sljedeći korak
+    blnZavrsenoUparivanjeTrafostanica = true;
+    document.querySelector("#wizardHeader").inneText === drugiKorakWizarda;
+    document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
+    document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
   }
   //TODO: Dodati da se predaje i izvod trafostanice, prilikom slanja podataka ka web servisu
 }

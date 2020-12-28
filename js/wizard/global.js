@@ -17,6 +17,9 @@ let odabraniNaponskiNivo = "";
 let sifraNapojneTrafostanice = "";
 let nazivNapojneTrafostanice = "";
 let izvodNapojneTrafostanice = "";
+let geometrijaNapojneTrafostanice = "";
+let geohashNapojneTrafostanice = "";
+let blnZavrsenoUparivanjeTrafostanica = false;
 
 let draw,
   modify,
@@ -143,19 +146,19 @@ function globalCqlZaNaponskiNivo(nivo, sloj) {
   retVal = "(" + retVal + ")";
   if (sloj === "trafostanice") {
     if (nivo === "35") {
-      retVal += " AND (napon=35 OR napon=10)";
+      retVal += " AND napon='35'";
     } else if (nivo === "10") {
-      retVal += " AND (napon=10 OR napon=0.4)";
+      retVal += " AND napon='10'";
     } else if (nivo === "0.4") {
-      retVal += " AND napon=0.4";
+      retVal += " AND napon='0.4'";
     }
   } else if (sloj === "vodovi") {
     if (nivo === "35") {
-      retVal += " AND napon=35";
+      retVal += " AND napon='35'";
     } else if (nivo === "10") {
-      retVal += " AND napon=10";
+      retVal += " AND napon='10'";
     } else if (nivo === "0.4") {
-      retVal += " AND napon=0.4";
+      retVal += " AND napon='0.4'";
     }
   }
   console.log("cql retval", retVal);
