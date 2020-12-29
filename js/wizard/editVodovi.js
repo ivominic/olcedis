@@ -53,6 +53,10 @@ function vodoviUpoligonu(napon) {
     data: {},
     success: function (response) {
       selektovaniVodoviFeatures = new ol.format.GeoJSON().readFeatures(response);
+      selektovaniVodoviFeatures3857 = new ol.format.GeoJSON().readFeatures(response, {
+        dataProjection: "EPSG:4326",
+        featureProjection: "EPSG:3857",
+      });
       if (selektovaniVodoviFeatures.length === 0) {
         poruka("Upozorenje", "Nema vodova u odabranom zahvatu.");
         return false;
@@ -210,7 +214,22 @@ function povezivanjeVodova(pocetna, features) {
       nizPodredjenihVodova.length = 0;
       if (nizTrenutnihVodova.length == 0) {
         blnPostojeNepovezaniZapisi = false;
-        console.log("neupareni", nizSvihGeometrija);
+        let vektorNeupareniVodovi1 = new ol.layer.Vector({
+          source: new ol.source.Vector({
+            features: selektovaniVodoviFeatures3857,
+          }),
+          style: vectorStyleUnmatched,
+        });
+        map.addLayer(vektorNeupareniVodovi1);
+        console.log("neupareni", vektorNeupareniVodovi1);
+        document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
+        document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
+        /*console.log("neupareni", nizSvihGeometrija);
+        
+        //
+        console.log("vodovi na mapi", vektorNeupareniVodovi);*/
+        //vektorNeupareniVodovi.getSource().clear(); //Ispraznimo prethodne zapise
+        //vektorNeupareniVodovi.getSource().addFeatures(nizSvihGeometrija);
       }
     }
   }

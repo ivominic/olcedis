@@ -38,6 +38,7 @@ let blnSelekcijaNapojneTS = false; // Kada je true, klik na mapu treba da nađe 
 let featureNapojnaTrafostanica; //Ovaj objekat koristiti kao feature iz koje će se pratiti konektivnost
 let selektovaneTrafostaniceFeatures = []; //Trafostanice u zahvatu poligona
 let selektovaniVodoviFeatures = []; //Vodovi u zahvatu poligona
+let selektovaniVodoviFeatures3857 = []; //U drugom koordinatnom sistemu
 
 /**Definisanje podloga */
 let osmBaseMap = new ol.layer.Tile({
@@ -90,6 +91,25 @@ var vectorStyleSnap = new ol.style.Style({
   image: circleSnap,
 });
 
+/**Stilizacija vektora za neuparene i sporne elemente na mapi*/
+let fillUnmatched = new ol.style.Fill({
+  color: "rgba(0,255,255,0.8)",
+});
+let strokeUnmatched = new ol.style.Stroke({
+  color: "#00ffff",
+  width: 4,
+});
+let circleUnmatched = new ol.style.Circle({
+  radius: 14,
+  fill: fillUnmatched,
+  stroke: strokeUnmatched,
+});
+let vectorStyleUnmatched = new ol.style.Style({
+  fill: fillUnmatched,
+  stroke: strokeUnmatched,
+  image: circleUnmatched,
+});
+
 /**Setovanje centra mape */
 let center = ol.proj.transform([19.26, 42.56], "EPSG:4326", "EPSG:3857");
 //let center = ol.proj.transform([19.2381, 43.1271], "EPSG:4326", "EPSG:3857");
@@ -107,6 +127,14 @@ const razmjera = new ol.control.ScaleLine({
   text: true,
   minWidth: 100,
 });
+
+let vektorNeupareniVodovi = new ol.layer.Vector({
+  source: new ol.source.Vector({
+    //features: features
+  }),
+  style: vectorStyleUnmatched,
+});
+//vektorNeupareniVodovi.setSource(new ol.source.Vector({features: features}));
 
 /**
  * Metoda koja za naponski nivo trafostanice vraća odgovarajući nivo naponskog voda

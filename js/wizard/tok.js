@@ -92,5 +92,7 @@ function wizardNext() {
       povezivanjeVodova(featureNapojnaTrafostanica, selektovaniVodoviFeatures);
     }
   } else if (document.querySelector("#wizardHeader").innerText === cetvrtiKorakWizarda) {
+    document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
+    document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
   }
 }
