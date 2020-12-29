@@ -44,7 +44,7 @@ function prikazUparivanjeVodovaDiv() {
  */
 function vodoviUpoligonu(napon) {
   let urlZaFilter =
-    wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernameTS + "&outputformat=application/json&cql_filter=" + globalCqlZaNaponskiNivo(napon, "vodovi");
+    wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernameVodovi + "&outputformat=application/json&cql_filter=" + globalCqlZaNaponskiNivo(napon, "vodovi");
   console.log("url filter", urlZaFilter);
 
   $.ajax({
@@ -109,7 +109,7 @@ function vodoviUpoligonu_orig() {
           console.log("feature i tip", features[i].values_.naziv);
           //console.log("feature id", features[i].id_);
         }
-        povezivanjeVodova(featureNapojnaTrafostanica, naponskiNivoNapojneTrafostanice, features);
+        //povezivanjeVodova(featureNapojnaTrafostanica, naponskiNivoNapojneTrafostanice, features);
       } else {
         poruka("Uspjeh", "Nema zapisa za prikaz.");
       }
@@ -151,6 +151,7 @@ function povezivanjeVodova(pocetna, features) {
   console.log("trenutna geometrija 1111111", trenutnaGJ);
 
   nizSvihGeometrija.forEach((elem) => console.log("elementi početnog niza", elem.values_.name));
+  nizSvihGeometrija.forEach((elem) => console.log("geometrije početnog niza vodova", elem.values_.geometry.flatCoordinates));
 
   while (blnPostojeNepovezaniZapisi) {
     //

@@ -35,7 +35,7 @@ document.querySelector("#btnOdabirNapojneTS").style.display = "none";
  * Metoda koja vrši provjeru da li su sve selektovane trafostanice sa istog izvoda
  */
 function provjeriTrafostanice() {
-  let nizSelektovanihTrafostanicaOriginalId = [];
+  nizSelektovanihTrafostanicaOriginalId.length = 0;
   let trafostaniceZaWS = "";
   for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
     console.log("feature trafotanica i", selektovaneTrafostaniceFeatures[i]);

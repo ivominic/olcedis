@@ -33,6 +33,9 @@ function prikazWizardForme() {
 
   document.querySelector("#wizardHeader").innerText = prviKorakWizarda;
   document.querySelector("#divWizardOdabirNaponskogNivoa").style.display = "block";
+  document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = "";
+  document.querySelector("#uparivanjeTxtSifraTS").textContent = "";
+  document.querySelector("#uparivanjeTxtSifraTS").textContent = "";
 
   showDiv("#wizardDiv");
   //trafostaniceUpoligonu();
@@ -72,7 +75,12 @@ function wizardNext() {
   } else if (document.querySelector("#wizardHeader").innerText === drugiKorakWizarda) {
     document.querySelector("#divWizardOdabirNaponskogNivoa").style.display = "none";
     //document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
+    trafostaniceIzBilingaZaUparivanje(nizSelektovanihTrafostanicaOriginalId, "", "", "");
   } else if (document.querySelector("#wizardHeader").innerText === treciKorakWizarda) {
+    if (document.querySelector("#ddlPovezivanjeTSselektovane").length > 0 || document.querySelector("#ddlPovezivanjeTSpronadjene").length > 0) {
+      poruka("Upozorenje", "Nisu uparene sve trafostanice iz oba sistema");
+      return false;
+    }
     document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "none";
     document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "block";
     document.querySelector("#wizardHeader").innerText = cetvrtiKorakWizarda;
@@ -80,6 +88,7 @@ function wizardNext() {
       poruka("Upozorenje", "Nije odabrana napojna trafostanica");
       return false;
     } else {
+      console.log("selektovani vodovi prije poziva za uparivanje", selektovaniVodoviFeatures);
       povezivanjeVodova(featureNapojnaTrafostanica, selektovaniVodoviFeatures);
     }
   } else if (document.querySelector("#wizardHeader").innerText === cetvrtiKorakWizarda) {

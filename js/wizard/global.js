@@ -20,6 +20,7 @@ let izvodNapojneTrafostanice = "";
 let geometrijaNapojneTrafostanice = "";
 let geohashNapojneTrafostanice = "";
 let blnZavrsenoUparivanjeTrafostanica = false;
+let nizSelektovanihTrafostanicaOriginalId = []; //Niz vrijednosti original_id polja iz trafostanica iz zahvata
 
 let draw,
   modify,

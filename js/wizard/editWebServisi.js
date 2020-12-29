@@ -66,8 +66,8 @@ function pretragaTrafostanica(sifraTS) {
           );
         });
         //Za vodove
-        document.querySelector("#uparivanjeTxtNazivTrafostaniceVod").textContent = data.ts.naziv;
-        document.querySelector("#uparivanjeTxtSifraTSVod").textContent = data.ts.sifra;
+        document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = data.ts.naziv;
+        document.querySelector("#uparivanjeTxtSifraTS").textContent = data.ts.sifra;
         data.ts.izvodi.forEach(function (vrijednost) {
           console.log("vrijednost niza", vrijednost);
           $("#uparivanjeTxtNazivIzvodaTSVod").append(
@@ -107,10 +107,14 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
     poruka("Upozorenje", "Nije odabrana nijedna trafostanica");
     return false;
   }
+  //TODO: Prazniti vrijednosti ovih komponenti prilikom svakog pokretanja wizarda
+  sifraOdabraneNapojneTS = document.querySelector("#uparivanjeTxtSifraTS").textContent;
+  nazivOdabranaNapojneTS = document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent;
+  izvodOdabraneNapojneTS = document.querySelector("#uparivanjeTxtNazivIzvodaTS").value;
   if (sifraOdabraneNapojneTS !== "" && nazivOdabranaNapojneTS !== "" && izvodOdabraneNapojneTS !== "") {
-    dodatniParametriWS = "&sifra_napojne" + sifraOdabraneNapojneTS;
-    dodatniParametriWS = "&naziv_napojne" + nazivOdabranaNapojneTS;
-    dodatniParametriWS = "&izvod_napojne" + izvodOdabraneNapojneTS;
+    dodatniParametriWS = "&sifra_napojne=" + sifraOdabraneNapojneTS;
+    dodatniParametriWS += "&naziv_napojne=" + nazivOdabranaNapojneTS;
+    dodatniParametriWS += "&izvod_napojne=" + izvodOdabraneNapojneTS;
   }
   let stringNiz = "[" + nizTS.join(",") + "]";
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/upari_trafostanice?trafostanice=" + stringNiz + dodatniParametriWS;
@@ -167,6 +171,9 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
           })
         );
       });
+      if (izvodOdabraneNapojneTS && data.predlog.length === 0 && data.uparene.length === 0) {
+        poruka("Upozorenje", "Nije pronađena nijedna trafostanica u tehničkoj bazi podataka koja zadovoljava zadate uslove.");
+      }
       if (data.naziv_izvoda) {
         document.querySelector("#wizardHeader").innerText = treciKorakWizarda;
         document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "block";
@@ -190,11 +197,14 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
         //document.querySelector("#btnOdabirNapojneTS").style.display = "inline-block";
         //Potrebno je ručno odabrati trafostanicu sa mape
         blnSelekcijaNapojneTS = true;
-        document.querySelector("#wizardHeader").innerHTML === drugiKorakWizarda;
+        document.querySelector("#wizardHeader").innerText = drugiKorakWizarda;
         document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
         //wizardNext();
+        poruka("Greska", x.responseJSON["error"] + "\n Odaberite napojnu trafostanicu i izvod!");
+      } else {
+        poruka("Greska", x.responseJSON["error"]);
       }
-      poruka("Greska", x.responseJSON["error"]);
+
       //TODO: onemogućiti dalji nastavak rada na mapi - pošto se radi o nepoklapanju broja trafostanica ili nekoj sličnoj grešci
     },
   });
