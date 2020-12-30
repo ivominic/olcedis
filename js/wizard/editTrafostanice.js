@@ -205,7 +205,7 @@ function poveziTS() {
     //document.querySelector("#wizardHeader").inneText = cetvrtiKorakWizarda;
     //document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
     //document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
-    prikaziCetvrtiKorakWizarda();
+    prikaziCetvrtuFormuWizarda();
   }
   //TODO: Dodati da se predaje i izvod trafostanice, prilikom slanja podataka ka web servisu
 }

@@ -100,3 +100,13 @@ function prikaziCetvrtuFormuWizarda() {
     povezivanjeVodova(featureNapojnaTrafostanica, selektovaniVodoviFeatures);
   }
 }
+
+/**
+ * Metoda koja zatvara wizard formu i vrši prekid toka wizarda.
+ */
+function prekidWizarda() {
+  closeDiv("#wizardDiv");
+  document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = "";
+  document.querySelector("#uparivanjeTxtSifraTS").textContent = "";
+  document.querySelector("#wizardHeader").innerText = prviKorakWizarda;
+}
