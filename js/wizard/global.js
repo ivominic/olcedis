@@ -128,6 +128,16 @@ const razmjera = new ol.control.ScaleLine({
   minWidth: 100,
 });
 
+/**Smještanje mape u div sa id-jem "map" */
+let map = new ol.Map({
+  target: "map",
+  interactions: ol.interaction.defaults().extend([new ol.interaction.PinchZoom(), new ol.interaction.DragPan()]),
+  layers: [osmBaseMap],
+  view: view,
+});
+
+map.addControl(razmjera);
+
 let vektorNeupareniVodovi = new ol.layer.Vector({
   source: new ol.source.Vector({
     //features: features

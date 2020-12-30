@@ -215,9 +215,16 @@ function povezivanjeVodova(pocetna, features) {
       if (nizTrenutnihVodova.length == 0) {
         blnPostojeNepovezaniZapisi = false;
         let vektorNeupareniVodovi1 = new ol.layer.Vector({
-          source: new ol.source.Vector({
-            features: selektovaniVodoviFeatures3857,
-          }),
+          source: new ol.source.Vector(
+            {
+              //features: selektovaniVodoviFeatures3857,
+              features: selektovaniVodoviFeatures,
+            },
+            {
+              defaultDataProjection: "EPSG:4326",
+              featureProjection: "EPSG:3857",
+            }
+          ),
           style: vectorStyleUnmatched,
         });
         map.addLayer(vektorNeupareniVodovi1);

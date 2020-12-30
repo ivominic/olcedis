@@ -164,16 +164,6 @@ function isprazniGeometrije() {
   modifikovan = false;
 }
 
-/**Smještanje mape u div sa id-jem "map" */
-let map = new ol.Map({
-  target: "map",
-  interactions: ol.interaction.defaults().extend([new ol.interaction.PinchZoom(), new ol.interaction.DragPan()]),
-  layers: [osmBaseMap],
-  view: view,
-});
-
-map.addControl(razmjera);
-
 /** Dodavanje vektorskih lejera za crtanje i edit geometrije na mapu */
 featureLineOverlay.setMap(map);
 featurePointOverlay.setMap(map);
