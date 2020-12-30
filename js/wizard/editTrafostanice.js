@@ -202,9 +202,10 @@ function poveziTS() {
     console.log("Uspješno uparene sve trafostanice:", paroviTS);
     //TODO: Prelazak na sljedeći korak
     blnZavrsenoUparivanjeTrafostanica = true;
-    document.querySelector("#wizardHeader").inneText === drugiKorakWizarda;
-    document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
-    document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
+    //document.querySelector("#wizardHeader").inneText = cetvrtiKorakWizarda;
+    //document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
+    //document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
+    prikaziCetvrtiKorakWizarda();
   }
   //TODO: Dodati da se predaje i izvod trafostanice, prilikom slanja podataka ka web servisu
 }
@@ -217,7 +218,7 @@ document.querySelector("#ddlPovezivanjeTSselektovane").addEventListener("change"
       console.log("feature id", selektovaneTSfeatures[i].id_);
       //let featureZaTransofrmaciju = Object.assign({}, selektovaneTSfeatures[i]);
       let featureZaTransofrmaciju = selektovaneTSfeatures[i].clone();
-      map.getView().fit(featureZaTransofrmaciju.getGeometry().transform("EPSG:4326", "EPSG:3857"), { maxZoom: 20 });
+      map.getView().fit(featureZaTransofrmaciju.getGeometry(), { maxZoom: 20 });
     }
   }
 });

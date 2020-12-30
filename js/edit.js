@@ -583,7 +583,7 @@ function wfsFilter() {
       vektorSource.addFeatures(features);
       console.log(vektorSource.getExtent());
       let boundingExtent = ol.extent.boundingExtent(vektorSource.getExtent());
-      boundingExtent = ol.proj.transformExtent(boundingExtent, ol.proj.get("EPSG:4326"), ol.proj.get("EPSG:3857"));
+      //boundingExtent = ol.proj.transformExtent(boundingExtent, ol.proj.get("EPSG:4326"), ol.proj.get("EPSG:3857"));
       console.log(boundingExtent);
       console.log("size", map.getSize());
       //map.getView().fit(boundingExtent, map.getSize());

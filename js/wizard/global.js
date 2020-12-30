@@ -111,11 +111,12 @@ let vectorStyleUnmatched = new ol.style.Style({
 });
 
 /**Setovanje centra mape */
-let center = ol.proj.transform([19.26, 42.56], "EPSG:4326", "EPSG:3857");
+let center = [19.26, 42.56];
 //let center = ol.proj.transform([19.2381, 43.1271], "EPSG:4326", "EPSG:3857");
 let view = new ol.View({
   center: center,
   zoom: 9,
+  projection: "EPSG:4326",
 });
 
 /** Prikaz razmjernika na mapi*/

@@ -53,10 +53,7 @@ function vodoviUpoligonu(napon) {
     data: {},
     success: function (response) {
       selektovaniVodoviFeatures = new ol.format.GeoJSON().readFeatures(response);
-      selektovaniVodoviFeatures3857 = new ol.format.GeoJSON().readFeatures(response, {
-        dataProjection: "EPSG:4326",
-        featureProjection: "EPSG:3857",
-      });
+      selektovaniVodoviFeatures3857 = new ol.format.GeoJSON().readFeatures(response);
       if (selektovaniVodoviFeatures.length === 0) {
         poruka("Upozorenje", "Nema vodova u odabranom zahvatu.");
         return false;
@@ -148,7 +145,7 @@ function povezivanjeVodova(pocetna, features) {
     let geometrija = format.readFeature(geometrijaNapojneTrafostanice, {});
     trenutnaGJ = writer.writeFeatureObject(new ol.Feature(geometrija.getGeometry()));
   } else {
-    let tempPosition = ol.proj.transform(pocetna.geometry.coordinates, "EPSG:3857", "EPSG:4326");
+    let tempPosition = pocetna.geometry.coordinates;
     let point = new ol.Feature(new ol.geom.Point([tempPosition[0].toFixed(10), tempPosition[1].toFixed(10)]));
     trenutnaGJ = writer.writeFeatureObject(new ol.Feature(point.getGeometry()));
   }
@@ -215,16 +212,10 @@ function povezivanjeVodova(pocetna, features) {
       if (nizTrenutnihVodova.length == 0) {
         blnPostojeNepovezaniZapisi = false;
         let vektorNeupareniVodovi1 = new ol.layer.Vector({
-          source: new ol.source.Vector(
-            {
-              //features: selektovaniVodoviFeatures3857,
-              features: selektovaniVodoviFeatures,
-            },
-            {
-              defaultDataProjection: "EPSG:4326",
-              featureProjection: "EPSG:3857",
-            }
-          ),
+          source: new ol.source.Vector({
+            //features: selektovaniVodoviFeatures3857,
+            features: selektovaniVodoviFeatures,
+          }),
           style: vectorStyleUnmatched,
         });
         map.addLayer(vektorNeupareniVodovi1);

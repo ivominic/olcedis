@@ -1,10 +1,7 @@
 /** Vraća well known tekst reprezentaciju geometrije za predati feature */
 function wktGeometrije(feature) {
   let format = new ol.format.WKT();
-  let wktgeom = format.writeGeometry(feature.getGeometry(), {
-    dataProjection: "EPSG:4326",
-    featureProjection: "EPSG:3857",
-  });
+  let wktgeom = format.writeGeometry(feature.getGeometry());
   //console.log("wkt geom", wktgeom);
   return wktgeom;
 }
@@ -467,7 +464,7 @@ function prikaziVektor() {
       request: "GetFeature",
       typename: nazivLejera,
       outputFormat: "application/json",
-      srsname: "EPSG:3857",
+      srsname: "EPSG:4326",
       CQL_FILTER: tekstFiltera,
     },
     success: function (response) {

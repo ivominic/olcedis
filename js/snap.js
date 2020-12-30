@@ -8,81 +8,74 @@ document.querySelector("#snapNKRO").addEventListener("click", snapNKRO);
 document.querySelector("#snapPrikljucnoMjesto").addEventListener("click", snapPrikljucnoMjesto);
 document.querySelector("#snapPotrosac").addEventListener("click", snapPotrosac);
 document.querySelector("#snapPOD").addEventListener("click", snapPOD);
-function snapStub35(){
+function snapStub35() {
   citajExtent("stubovi");
 }
-function snapStub10Kv(){
+function snapStub10Kv() {
   citajExtent("stubovi");
 }
-function snapVod35(){
+function snapVod35() {
   citajExtent("vodovi");
 }
-function snapVod10Kv(){
+function snapVod10Kv() {
   citajExtent("vodovi");
 }
-function snapTrafostanica35(){
+function snapTrafostanica35() {
   citajExtent("trafostanice");
 }
-function snapTrafostanica10Kv(){
+function snapTrafostanica10Kv() {
   citajExtent("trafostanice");
 }
-function snapNKRO(){
+function snapNKRO() {
   citajExtent("nkro");
 }
-function snapPrikljucnoMjesto(){
+function snapPrikljucnoMjesto() {
   citajExtent("prikljucnoMjesto");
 }
-function snapPotrosac(){
+function snapPotrosac() {
   citajExtent("potrosac");
 }
-function snapPOD(){
+function snapPOD() {
   citajExtent("pod");
 }
 
 /**
- * 
- * @param {Prikazuje objekte iz lejera na vidljivom dijelu ekrana} lejer 
+ *
+ * @param {Prikazuje objekte iz lejera na vidljivom dijelu ekrana} lejer
  */
-function citajExtent(lejer){
+function citajExtent(lejer) {
   //extentSource.clear();
   let extentMap = map.getView().calculateExtent(map.getSize());
-  let bottomLeft = ol.proj.transform(ol.extent.getBottomLeft(extentMap),
-    'EPSG:3857', 'EPSG:4326');
-  let topRight = ol.proj.transform(ol.extent.getTopRight(extentMap),
-    'EPSG:3857', 'EPSG:4326');
-  let bottomRight = ol.proj.transform(ol.extent.getBottomRight(extentMap),
-    'EPSG:3857', 'EPSG:4326');
-  let topLeft  = ol.proj.transform(ol.extent.getTopLeft(extentMap),
-    'EPSG:3857', 'EPSG:4326');
-  let ring = [ 
-      [bottomLeft[0], bottomLeft[1]], 
-      [topLeft[0], topLeft[1]] , 
-      [topRight[0], topRight[1]],
-      [bottomRight[0], bottomRight[1]],
-      [bottomLeft[0], bottomLeft[1]]
+  let bottomLeft = ol.extent.getBottomLeft(extentMap);
+  let topRight = ol.extent.getTopRight(extentMap);
+  let bottomRight = ol.extent.getBottomRight(extentMap);
+  let topLeft = ol.extent.getTopLeft(extentMap);
+  let ring = [
+    [bottomLeft[0], bottomLeft[1]],
+    [topLeft[0], topLeft[1]],
+    [topRight[0], topRight[1]],
+    [bottomRight[0], bottomRight[1]],
+    [bottomLeft[0], bottomLeft[1]],
   ];
- let polygon = new ol.geom.Polygon([ring]);
+  let polygon = new ol.geom.Polygon([ring]);
 
- let format = new ol.format.WKT();
- /*let wktPoligon = format.writeGeometry(polygon, {
+  let format = new ol.format.WKT();
+  /*let wktPoligon = format.writeGeometry(polygon, {
    dataProjection: "EPSG:4326",
    featureProjection: "EPSG:3857",
  });*/
 
+  console.log("snap", polygon);
+  //polygon.transform('EPSG:4326', 'EPSG:3857');
 
- console.log("snap", polygon);
- //polygon.transform('EPSG:4326', 'EPSG:3857');
- 
- let wktPoligon = format.writeGeometry(polygon, {
-  
-});
- console.log("wkt", wktPoligon);
+  let wktPoligon = format.writeGeometry(polygon, {});
+  console.log("wkt", wktPoligon);
 
- // Add the polygon to the layer and style it
- /*var feature = new ol.Feature(polygon);
+  // Add the polygon to the layer and style it
+  /*var feature = new ol.Feature(polygon);
  extentSource.addFeature(feature);
  feature.setStyle(extentStyle);*/
- prikaziSnapVektor(lejer, wktPoligon);
+  prikaziSnapVektor(lejer, wktPoligon);
 }
 
 /**
@@ -90,13 +83,13 @@ function citajExtent(lejer){
  */
 function prikaziSnapVektor(lejer, poligon) {
   //let tekstFiltera = "INTERSECTS(geom," + poligon + ") "
-  let tekstFiltera = "INTERSECTS(Geometry," + poligon + ") "
+  let tekstFiltera = "INTERSECTS(Geometry," + poligon + ") ";
 
   let nazivLejera = "geonode:" + lejer;
   //let nazivLejera = "winsoft:drvece";
   //const wfsUrl = domainUrl + "/geoserver/winsoft/wfs";
-  console.log("wfs putanja", wfsUrl);  
-  console.log("wfs cql", tekstFiltera);  
+  console.log("wfs putanja", wfsUrl);
+  console.log("wfs cql", tekstFiltera);
 
   $.ajax({
     method: "POST",
@@ -107,8 +100,8 @@ function prikaziSnapVektor(lejer, poligon) {
       request: "GetFeature",
       typeName: nazivLejera,
       outputFormat: "application/json",
-      SrsName: "EPSG:3857",
-      CQL_FILTER: tekstFiltera
+      SrsName: "EPSG:4326",
+      CQL_FILTER: tekstFiltera,
     },
     success: function (response) {
       console.log("response servisa", response);
