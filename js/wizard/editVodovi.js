@@ -5,7 +5,6 @@ let layernameVodovi = "vodovi",
 let tipGeometrijeVodovi = lineString;
 let opisSlikeVodovi = "";
 let nizSelektovanihVodova = [];
-let paroviVodova = [];
 
 let wmsVodovi = new ol.layer.Image({
   title: layertitleVodovi,
@@ -25,7 +24,7 @@ map.addLayer(wmsVodovi);
 
 //document.querySelector("#selekecijaVodovaPoligon").addEventListener("click", vodoviUpoligonu);
 //document.querySelector("#uparivanjeVodovaForma").addEventListener("click", prikazUparivanjeVodovaDiv);
-//document.querySelector("#btnPoveziVodove").addEventListener("click", poveziVodove);
+document.querySelector("#btnPoveziVodove").addEventListener("click", poveziVodove);
 //document.querySelector("#btnOdabirNapojneTSVodovi").addEventListener("click", selektujNapojnuTS);
 /*
 //document.querySelector("#selekcijaNapojneTrafostanice").addEventListener("click", selektujNapojnuTS);
@@ -62,63 +61,6 @@ function vodoviUpoligonu(napon) {
           provjeriTrafostanice();
         }
       }
-    },
-    fail: function (jqXHR, textStatus) {
-      console.log("Request failed: " + textStatus);
-    },
-  });
-}
-
-function vodoviUpoligonu_orig() {
-  if (poligoni.length === 0) {
-    poruka("Upozorenje", "Potrebno je nacrtati poligon");
-    return false;
-  }
-  let cqlText = "";
-
-  poligoni.forEach((item) => {
-    if (cqlText === "") {
-      cqlText = "INTERSECTS(Geometry," + item + ") ";
-    } else {
-      cqlText += " OR INTERSECTS(Geometry," + item + ") ";
-    }
-  });
-
-  console.log("vodovi poligon", cqlText);
-  let urlZaFilter = wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernameVodovi + "&outputformat=application/json&cql_filter=" + cqlText;
-  console.log("url filter", urlZaFilter);
-
-  let vodoviZaWS = "";
-  $("#ddlPovezivanjeTSselektovane").empty();
-  nizSelektovanihVodova.length = 0;
-
-  $.ajax({
-    method: "POST",
-    url: urlZaFilter,
-    data: {},
-    success: function (response) {
-      console.log("response", response);
-      let features = new ol.format.GeoJSON().readFeatures(response);
-      selektovaneTSfeatures = new ol.format.GeoJSON().readFeatures(response);
-      console.log("fičeri", features);
-      //vektorSource.clear();
-      //vektorSource.addFeatures(features);
-      //console.log("broj featurea", features.length);
-      if (features.length) {
-        for (let i = 0; i < features.length; i++) {
-          //console.log("feature i", features[i].values_);
-          console.log("feature i tip", features[i].values_.naziv);
-          //console.log("feature id", features[i].id_);
-        }
-        //povezivanjeVodova(featureNapojnaTrafostanica, naponskiNivoNapojneTrafostanice, features);
-      } else {
-        poruka("Uspjeh", "Nema zapisa za prikaz.");
-      }
-
-      //console.log("size", map.getSize());
-      //console.log("jedan value", features[0].values_);
-      //console.log("više valua", features.values_);
-      //map.getView().fit(boundingExtent, map.getSize());
     },
     fail: function (jqXHR, textStatus) {
       console.log("Request failed: " + textStatus);
@@ -236,33 +178,36 @@ function povezivanjeVodova(pocetna, features) {
 //TODO: Ako preostanu neupareni vodovi, šta raditi
 
 /**
- * Metoda koja vrsi povezivanje (uparivanje) vodova iz ddl GIS-a i ddl iz TBP
+ * Metoda koja vrši uparivanje vodova iz dvije padajuće liste
  */
 function poveziVodove() {
-  if (!document.querySelector("#uparivanjeTxtNazivIzvodaTSVod").value) {
-    alert("Potrebno je odabrati napojnu trafostanicu i izvod");
+  let odabraniVod = document.querySelector("#ddlPovezivanjeVodovaSelektovane").value;
+  let vodIzSistema = document.querySelector("#ddlPovezivanjeVodovaPronadjene").value;
+  if (!odabraniVod || !vodIzSistema) {
+    alert("Potrebno je odabrati vodove iz oba sistema");
     return false;
   }
-  let odabraniVodZaUparivanje = document.querySelector("#ddlPovezivanjeSelektovanihVodova").value;
-  let vodIzSistema = document.querySelector("#ddlPovezivanjePronadjenihVodova").value;
-  if (!odabraniVodZaUparivanje || !vodIzSistema) {
-    alert("Potrebno je odabrati trafostanice iz oba sistema");
-    return false;
-  }
-  for (let i = 0; i < document.querySelector("#ddlPovezivanjeSelektovanihVodova").length; i++) {
-    if (document.querySelector("#ddlPovezivanjeSelektovanihVodova").options[i].value === vodIzSistema) {
-      document.querySelector("#ddlPovezivanjeSelektovanihVodova").remove(i);
+  for (let i = 0; i < document.querySelector("#ddlPovezivanjeVodovaSelektovane").length; i++) {
+    if (document.querySelector("#ddlPovezivanjeVodovaSelektovane").options[i].value === odabraniVod) {
+      document.querySelector("#ddlPovezivanjeVodovaSelektovane").remove(i);
     }
   }
-  for (let i = 0; i < document.querySelector("#ddlPovezivanjePronadjenihVodova").length; i++) {
-    if (document.querySelector("#ddlPovezivanjePronadjenihVodova").options[i].value === vodIzSistema) {
-      document.querySelector("#ddlPovezivanjePronadjenihVodova").remove(i);
+  for (let i = 0; i < document.querySelector("#ddlPovezivanjeVodovaPronadjene").length; i++) {
+    if (document.querySelector("#ddlPovezivanjeVodovaPronadjene").options[i].value === vodIzSistema) {
+      document.querySelector("#ddlPovezivanjeVodovaPronadjene").remove(i);
     }
   }
-  paroviVodova.push({ gis: odabranaTS, tbp: vodIzSistema });
+  paroviVodova.push({ gis: odabraniVod, tbp: vodIzSistema });
   console.log("povezani vodovi", paroviVodova);
-  if (document.querySelector("#ddlPovezivanjeSelektovanihVodova").length === 0 && document.querySelector("#ddlPovezivanjePronadjenihVodova").length === 0) {
+  if (document.querySelector("#ddlPovezivanjeVodovaSelektovane").length === 0 && document.querySelector("#ddlPovezivanjeVodovaPronadjene").length === 0) {
     alert("Uspješno upareni svi vodovi: \n" + paroviVodova.join(",") + "\n Prelazak na sljedeći korak wizard-a");
     console.log("Uspješno upareni svi vodovi:", paroviVodova);
+    //TODO: Prelazak na sljedeći korak
+    blnZavrsenoUparivanjeVodova = true;
+    //document.querySelector("#wizardHeader").inneText = cetvrtiKorakWizarda;
+    //document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
+    //document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
+    //prikaziCetvrtuFormuWizarda();
   }
+  //TODO: Dodati da se predaje i izvod trafostanice, prilikom slanja podataka ka web servisu
 }

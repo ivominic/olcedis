@@ -20,7 +20,12 @@ let izvodNapojneTrafostanice = "";
 let geometrijaNapojneTrafostanice = "";
 let geohashNapojneTrafostanice = "";
 let blnZavrsenoUparivanjeTrafostanica = false;
-let nizSelektovanihTrafostanicaOriginalId = []; //Niz vrijednosti original_id polja iz trafostanica iz zahvata
+let blnZavrsenoUparivanjeVodova = false;
+let nizSelektovanihTrafostanicaOriginalId = []; //Niz vrijednosti original_id polja trafostanica iz zahvata
+let nizSelektovanihVodovaOriginalId = []; //Niz vrijednosti originalId polja vodova iz zahvata
+
+let paroviTS = []; //Niz koji se popunjava parovima trafostanica iz GIS-a i TBP-a
+let paroviVodova = []; //Niz koji se popunjava parovim vodova iz GIS-a i TBP-a
 
 let draw,
   modify,
