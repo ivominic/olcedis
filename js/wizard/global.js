@@ -8,8 +8,8 @@ const wfsUrl = domainUrl + "/geoserver/geonode/wfs";
 const imageUrl = domainUrl + "/slike/";
 const point = "Point",
   lineString = "LineString",
-  polygon = "Polygon",
-  tacke = [],
+  polygon = "Polygon";
+let tacke = [],
   linije = [],
   poligoni = [];
 let naponskiNivoNapojneTrafostanice = "";
@@ -26,6 +26,9 @@ let nizSelektovanihVodovaOriginalId = []; //Niz vrijednosti originalId polja vod
 
 let paroviTS = []; //Niz koji se popunjava parovima trafostanica iz GIS-a i TBP-a
 let paroviVodova = []; //Niz koji se popunjava parovim vodova iz GIS-a i TBP-a
+let nizTrafostanicaZaWebServis = []; //Niz u koji će se dodavati svi zapisi za trafostanice koje je potebno upariti. Izmjene se odnose na polja: originalId, sifra napojne trafostanice, izvod napojne trafostanice i naziv napojne trafostanice
+let nizVodovaZaWebServis = []; //Niz u koji će se dodati svi vodovi za unos u bazu, sa geohashid vrijednostima nadređenog
+let nizTrafostanicaGeohashZaWebServis = []; //Niz u koji će se dodavati sve trafostanice sa novim geohash_id_no (no = nadređeni objekat)
 
 let draw,
   modify,

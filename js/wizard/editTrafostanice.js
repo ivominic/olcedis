@@ -103,6 +103,7 @@ function poveziTS() {
     alert("Potrebno je odabrati napojnu trafostanicu i izvod");
     return false;
   }
+  izvodNapojneTrafostanice = document.querySelector("#uparivanjeTxtNazivIzvodaTS").value;
   let odabranaTS = document.querySelector("#ddlPovezivanjeTSselektovane").value;
   let tsIzSistema = document.querySelector("#ddlPovezivanjeTSpronadjene").value;
   if (!odabranaTS || !tsIzSistema) {
@@ -120,6 +121,22 @@ function poveziTS() {
     }
   }
   paroviTS.push({ gis: odabranaTS, tbp: tsIzSistema });
+  //Kreiranje niza sa trafostanicama za koje je potrebno izvršiti izmjenu podataka
+  for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
+    if (odabranaTS === selektovaneTrafostaniceFeatures[i].values_.originalId.toString()) {
+      console.log("konkretna trafostanica prije izmjena", selektovaneTrafostaniceFeatures[i]);
+      nizTrafostanicaZaWebServis.push(selektovaneTrafostaniceFeatures[i]);
+      nizTrafostanicaZaWebServis[nizTrafostanicaZaWebServis.length - 1].akcija = "Izmjena";
+      nizTrafostanicaZaWebServis[nizTrafostanicaZaWebServis.length - 1].values_.id_billing = tsIzSistema;
+      nizTrafostanicaZaWebServis[nizTrafostanicaZaWebServis.length - 1].values_.sifra_napojne = sifraNapojneTrafostanice;
+      nizTrafostanicaZaWebServis[nizTrafostanicaZaWebServis.length - 1].values_.napojna_ts = nazivNapojneTrafostanice;
+      nizTrafostanicaZaWebServis[nizTrafostanicaZaWebServis.length - 1].values_.izvod_napojne = izvodNapojneTrafostanice;
+    }
+  }
+  //Štampanje trafostanica sa izmijenjenim podacima
+  console.log("originalne trafostanice", selektovaneTrafostaniceFeatures);
+  console.log("trafostanice za izmjenu originalId-a", nizTrafostanicaZaWebServis);
+
   console.log("povezane trafostanice", paroviTS);
   if (document.querySelector("#ddlPovezivanjeTSselektovane").length === 0 && document.querySelector("#ddlPovezivanjeTSpronadjene").length === 0) {
     alert("Uspješno uparene sve trafostanice: \n" + paroviTS.join(",") + "\n Prelazak na sljedeći korak wizard-a");
@@ -136,12 +153,12 @@ function poveziTS() {
 
 document.querySelector("#ddlPovezivanjeTSselektovane").addEventListener("change", function () {
   console.log("odabrana trafostanica", this.value);
-  for (let i = 0; i < selektovaneTSfeatures.length; i++) {
-    console.log("originalId", selektovaneTSfeatures[i].values_.originalId);
-    if (this.value === selektovaneTSfeatures[i].values_.originalId.toString()) {
-      console.log("feature id", selektovaneTSfeatures[i].id_);
-      //let featureZaTransofrmaciju = Object.assign({}, selektovaneTSfeatures[i]);
-      let featureZaTransofrmaciju = selektovaneTSfeatures[i].clone();
+  for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
+    console.log("originalId", selektovaneTrafostaniceFeatures[i].values_.originalId);
+    if (this.value === selektovaneTrafostaniceFeatures[i].values_.originalId.toString()) {
+      console.log("feature id", selektovaneTrafostaniceFeatures[i].id_);
+      //let featureZaTransofrmaciju = Object.assign({}, selektovaneTrafostaniceFeatures[i]);
+      let featureZaTransofrmaciju = selektovaneTrafostaniceFeatures[i].clone();
       map.getView().fit(featureZaTransofrmaciju.getGeometry(), { maxZoom: 20 });
     }
   }

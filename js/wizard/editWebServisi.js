@@ -139,6 +139,7 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
       geometrijaNapojneTrafostanice = data.geometrija_napojne;
       document.querySelector("#uparivanjeTxtSifraTS").textContent = sifraNapojneTrafostanice;
       //document.querySelector("#uparivanjeTxtNazivIzvodaTS").textContent = data.naziv_izvoda;
+      izvodNapojneTrafostanice = data.naziv_izvoda;
       document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = data.naziv_napojne;
       $("#uparivanjeTxtNazivIzvodaTS").append(
         $("<option>", {

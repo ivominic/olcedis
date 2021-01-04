@@ -211,3 +211,16 @@ function poveziVodove() {
   }
   //TODO: Dodati da se predaje i izvod trafostanice, prilikom slanja podataka ka web servisu
 }
+
+document.querySelector("#ddlPovezivanjeVodovaSelektovane").addEventListener("change", function () {
+  console.log("odabrani vod", this.value);
+  for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
+    console.log("originalId", selektovaniVodoviFeatures[i].values_.originalId);
+    if (this.value === selektovaniVodoviFeatures[i].values_.originalId.toString()) {
+      console.log("feature id", selektovaniVodoviFeatures[i].id_);
+      //let featureZaTransofrmaciju = Object.assign({}, selektovaneTSfeatures[i]);
+      let featureZaTransofrmaciju = selektovaniVodoviFeatures[i].clone();
+      map.getView().fit(featureZaTransofrmaciju.getGeometry(), { maxZoom: 20 });
+    }
+  }
+});
