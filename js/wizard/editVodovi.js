@@ -199,6 +199,19 @@ function poveziVodove() {
   }
   paroviVodova.push({ gis: odabraniVod, tbp: vodIzSistema });
   console.log("povezani vodovi", paroviVodova);
+  //Kreiranje niza sa trafostanicama za koje je potrebno izvršiti izmjenu podataka
+  for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
+    if (odabraniVod === selektovaniVodoviFeatures[i].values_.originalId.toString()) {
+      console.log("konkretni vod prije izmjena", selektovaniVodoviFeatures[i]);
+      nizVodovaZaWebServis.push(selektovaniVodoviFeatures[i]);
+      nizVodovaZaWebServis[nizVodovaZaWebServis.length - 1].akcija = "Izmjena";
+      nizVodovaZaWebServis[nizVodovaZaWebServis.length - 1].values_.id_billing = vodIzSistema;
+      nizVodovaZaWebServis[nizVodovaZaWebServis.length - 1].values_.sifra_napojne = sifraNapojneTrafostanice;
+      nizVodovaZaWebServis[nizVodovaZaWebServis.length - 1].values_.napojna_ts = nazivNapojneTrafostanice;
+      nizVodovaZaWebServis[nizVodovaZaWebServis.length - 1].values_.izvod_napojne = izvodNapojneTrafostanice;
+      console.log("konkretni vod nakon izmjene", nizVodovaZaWebServis[nizVodovaZaWebServis.length - 1]);
+    }
+  }
   if (document.querySelector("#ddlPovezivanjeVodovaSelektovane").length === 0 && document.querySelector("#ddlPovezivanjeVodovaPronadjene").length === 0) {
     alert("Uspješno upareni svi vodovi: \n" + paroviVodova.join(",") + "\n Prelazak na sljedeći korak wizard-a");
     console.log("Uspješno upareni svi vodovi:", paroviVodova);
