@@ -124,13 +124,18 @@ function poveziTS() {
   //Kreiranje niza sa trafostanicama za koje je potrebno izvršiti izmjenu podataka
   for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
     if (odabranaTS === selektovaneTrafostaniceFeatures[i].values_.originalId.toString()) {
-      console.log("konkretna trafostanica prije izmjena", selektovaneTrafostaniceFeatures[i]);
+      /*console.log("konkretna trafostanica prije izmjena", selektovaneTrafostaniceFeatures[i]);
       nizTrafostanicaZaWebServis.push(selektovaneTrafostaniceFeatures[i]);
       nizTrafostanicaZaWebServis[nizTrafostanicaZaWebServis.length - 1].akcija = "Izmjena";
       nizTrafostanicaZaWebServis[nizTrafostanicaZaWebServis.length - 1].values_.id_billing = tsIzSistema;
       nizTrafostanicaZaWebServis[nizTrafostanicaZaWebServis.length - 1].values_.sifra_napojne = sifraNapojneTrafostanice;
       nizTrafostanicaZaWebServis[nizTrafostanicaZaWebServis.length - 1].values_.napojna_ts = nazivNapojneTrafostanice;
-      nizTrafostanicaZaWebServis[nizTrafostanicaZaWebServis.length - 1].values_.izvod_napojne = izvodNapojneTrafostanice;
+      nizTrafostanicaZaWebServis[nizTrafostanicaZaWebServis.length - 1].values_.izvod_napojne = izvodNapojneTrafostanice;*/
+      selektovaneTrafostaniceFeatures[i].akcija = "Izmjena";
+      selektovaneTrafostaniceFeatures[i].values_.id_billing = tsIzSistema;
+      selektovaneTrafostaniceFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
+      selektovaneTrafostaniceFeatures[i].values_.napojna_ts = nazivNapojneTrafostanice;
+      selektovaneTrafostaniceFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
     }
   }
   //Štampanje trafostanica sa izmijenjenim podacima
