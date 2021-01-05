@@ -116,6 +116,27 @@ function prikaziCetvrtuFormuWizarda() {
 }
 
 /**
+ * Metoda koja predaje sve feature koji su izmijenjeni
+ */
+function konacniUpisIzmjena() {
+  let format = new ol.format.WKT();
+  for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
+    if (selektovaneTrafostaniceFeatures[i].akcija && selektovaneTrafostaniceFeatures[i].akcija === "Izmjena") {
+      console.log("pozivati web servis za unos trafostanica", selektovaneTrafostaniceFeatures[i]);
+      let wktGeom = format.writeGeometry(selektovaneTrafostaniceFeatures[i].getGeometry());
+      console.log("pozivati web servis za unos trafostanica - geometrija u wkt", wktGeom);
+    }
+  }
+  for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
+    if (selektovaniVodoviFeatures[i].akcija && selektovaniVodoviFeatures[i].akcija === "Izmjena") {
+      console.log("pozivati web servis za unos vodova", selektovaniVodoviFeatures[i]);
+      let wktGeom = format.writeGeometry(selektovaniVodoviFeatures[i].getGeometry());
+      console.log("pozivati web servis za unos vodova - geometrija u wkt", wktGeom);
+    }
+  }
+}
+
+/**
  * Metoda koja zatvara wizard formu i vrši prekid toka wizarda.
  */
 function prekidWizarda() {
