@@ -148,9 +148,6 @@ function povezivanjeVodova(pocetna, features) {
       }
     }
 
-    //TODO: Ako postoje podređena i nadređena linija feature, provjeriti da li su obje u presjeku sa nekom trafostanicom
-    //Ako jesu, trafostanica dobija geohash_id_no od nadređene linije, a podređena dobija geohash nadređenog voda ili početne trafostanice
-
     //Ukloniti obrađene vodove iz niza svih geometrija za sljedeći korak
     for (let i = 0; i < nizPodredjenihVodova.length; i++) {
       let indexElementaZaUklanjanje = nizSvihGeometrija.indexOf(nizPodredjenihVodova[i]);
@@ -174,6 +171,8 @@ function povezivanjeVodova(pocetna, features) {
       nizTrenutnihVodova = nizPodredjenihVodova.slice();
       nizPodredjenihVodova.length = 0;
       if (nizTrenutnihVodova.length == 0) {
+        //Trebalo bi zamijeniti ovom if komandom:
+        //if (nizTrenutnihVodova.length === 0 && nizSvihGeometrija.length > 0) {
         blnPostojeNepovezaniZapisi = false;
         let vektorNeupareniVodovi1 = new ol.layer.Vector({
           source: new ol.source.Vector({
@@ -186,12 +185,6 @@ function povezivanjeVodova(pocetna, features) {
         console.log("neupareni", vektorNeupareniVodovi1);
         document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
         document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
-        /*console.log("neupareni", nizSvihGeometrija);
-        
-        //
-        console.log("vodovi na mapi", vektorNeupareniVodovi);*/
-        //vektorNeupareniVodovi.getSource().clear(); //Ispraznimo prethodne zapise
-        //vektorNeupareniVodovi.getSource().addFeatures(nizSvihGeometrija);
       }
     }
   }

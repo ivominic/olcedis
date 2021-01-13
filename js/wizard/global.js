@@ -23,11 +23,13 @@ let blnZavrsenoUparivanjeTrafostanica = false;
 let blnZavrsenoUparivanjeVodova = false;
 let nizSelektovanihTrafostanicaOriginalId = []; //Niz vrijednosti original_id polja trafostanica iz zahvata
 let nizSelektovanihVodovaOriginalId = []; //Niz vrijednosti originalId polja vodova iz zahvata
+let nizSelektovanihPotrosacaOriginalId = []; //Niz vrijednosti originalId polja potrošači iz zahvata - ovo je null - moguće da je nepotrebno
 
 let paroviTS = []; //Niz koji se popunjava parovima trafostanica iz GIS-a i TBP-a
 let paroviVodova = []; //Niz koji se popunjava parovim vodova iz GIS-a i TBP-a
 let nizTrafostanicaZaWebServis = []; //Niz u koji će se dodavati svi zapisi za trafostanice koje je potebno upariti. Izmjene se odnose na polja: originalId, sifra napojne trafostanice, izvod napojne trafostanice i naziv napojne trafostanice
-let nizVodovaZaWebServis = []; //Niz u koji će se dodati svi vodovi za unos u bazu, sa geohashid vrijednostima nadređenog
+let nizVodovaZaWebServis = []; //Niz u koji će se dodati svi vodovi za unos u bazu, sa geohash_id vrijednostima nadređenog
+let nizPotrosacaZaWebServis = []; //Niz u koji će se dodati svi potrošači za unos u bazu, sa geohash_id vrijednostima nadređenog
 let nizTrafostanicaGeohashZaWebServis = []; //Niz u koji će se dodavati sve trafostanice sa novim geohash_id_no (no = nadređeni objekat)
 
 let draw,
@@ -46,6 +48,7 @@ let blnSelekcijaNapojneTS = false; // Kada je true, klik na mapu treba da nađe 
 let featureNapojnaTrafostanica; //Ovaj objekat koristiti kao feature iz koje će se pratiti konektivnost
 let selektovaneTrafostaniceFeatures = []; //Trafostanice u zahvatu poligona
 let selektovaniVodoviFeatures = []; //Vodovi u zahvatu poligona
+let selektovaniPotrosaciFeatures = []; //Potrošači u zahvatu poligona
 let selektovaniVodoviFeatures3857 = []; //U drugom koordinatnom sistemu
 
 /**Definisanje podloga */
