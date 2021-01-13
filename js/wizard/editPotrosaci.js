@@ -5,8 +5,6 @@ let layernamePotrosaci = "view_potrosaci",
   layertitlePotrosaci = "view_potrosaci";
 let tipGeometrijePotrosaci = point;
 
-let nizSelektovanihOriginalId = [];
-
 let wmsPotrosaci = new ol.layer.Image({
   title: layertitlePotrosaci,
   name: layernamePotrosaci,
@@ -38,15 +36,15 @@ function provjeriPotrosace() {
     return false;
   }
   let retVal = true;
-  let tempSifraTS = selektovaneTrafostaniceFeatures[0].values_.sifra_ts,
-    tempNazivTS = selektovaneTrafostaniceFeatures[0].values_.naziv_ts,
-    tempIzvodTS = selektovaneTrafostaniceFeatures[0].values_.naziv_nn_izvod;
+  let tempSifraTS = selektovaniPotrosaciFeatures[0].values_.sifra_ts,
+    tempNazivTS = selektovaniPotrosaciFeatures[0].values_.naziv_ts,
+    tempIzvodTS = selektovaniPotrosaciFeatures[0].values_.naziv_nn_izvod;
   //Provjera da li neki od potrošača ima različit izvod ili trafostanicu od početnog potrošača
   for (let i = 0; i < selektovaniPotrosaciFeatures.length; i++) {
     if (
-      tempSifraTS !== selektovaneTrafostaniceFeatures[i].values_.sifra_ts ||
-      tempNazivTS !== selektovaneTrafostaniceFeatures[i].values_.naziv_ts ||
-      tempIzvodTS !== selektovaneTrafostaniceFeatures[i].values_.naziv_nn_izvod
+      tempSifraTS !== selektovaniPotrosaciFeatures[i].values_.sifra_ts ||
+      tempNazivTS !== selektovaniPotrosaciFeatures[i].values_.naziv_ts ||
+      tempIzvodTS !== selektovaniPotrosaciFeatures[i].values_.naziv_nn_izvod
     ) {
       retVal = false;
     }
@@ -115,6 +113,8 @@ function povezivanjePotrosacaVodova(potrosaci, vodovi) {
         if (nizObradjenihVodova.indexOf(nizSvihGeometrija[i]) < 0) {
           nizPodredjenihVodova.push(nizSvihGeometrija[i]);
           nizObradjenihVodova.push(nizSvihGeometrija[i]);
+          console.log("povezivanjePotrošačaVodova - potrošač", potrosaci[j]);
+          console.log("povezivanjePotrošačaVodova - vodovi", vodovi[i]);
           if (potrosaci[j].values_.geohash_id_no !== nizSvihGeometrija[i].values_.geohash_id) {
             potrosaci[j].akcija = "Izmjena";
             potrosaci[j].values_.geohash_id_no = nizSvihGeometrija[i].values_.geohash_id;

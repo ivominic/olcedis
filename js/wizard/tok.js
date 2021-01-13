@@ -52,7 +52,9 @@ function wizardNext() {
     //document.querySelector("#wizardHeader").innerHTML = drugiKorakWizarda;
     trafostaniceUpoligonu(odabraniNaponskiNivo);
     vodoviUpoligonu(odabraniNaponskiNivo);
-    //potrosaciUpoligonu(odabraniNaponskiNivo);
+    potrosaciUpoligonu(odabraniNaponskiNivo);
+    alert("Provjera potrošača");
+    povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
     /*if (selektovaneTrafostaniceFeatures.length === 0) {
       poruka("Upozorenje", "Nema trafostanica u odabranom zahvatu.");
       return false;
@@ -80,7 +82,8 @@ function wizardNext() {
   } else if (document.querySelector("#wizardHeader").innerText === treciKorakWizarda) {
     prikaziCetvrtuFormuWizarda();
   } else if (document.querySelector("#wizardHeader").innerText === cetvrtiKorakWizarda) {
-    alert("Provjera potrošača");
+    alert("Provjera potrošača 111 ");
+    //povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
 
     document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
     document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
