@@ -113,8 +113,8 @@ function povezivanjePotrosacaVodova(potrosaci, vodovi) {
         if (nizObradjenihVodova.indexOf(nizSvihGeometrija[i]) < 0) {
           nizPodredjenihVodova.push(nizSvihGeometrija[i]);
           nizObradjenihVodova.push(nizSvihGeometrija[i]);
-          console.log("povezivanjePotrošačaVodova - potrošač", potrosaci[j]);
-          console.log("povezivanjePotrošačaVodova - vodovi", vodovi[i]);
+          console.log("povezivanjePotrošačaVodova - potrošač", potrosaci[j].values_.name);
+          console.log("povezivanjePotrošačaVodova - vodovi", vodovi[i].values_.name);
           if (potrosaci[j].values_.geohash_id_no !== nizSvihGeometrija[i].values_.geohash_id) {
             potrosaci[j].akcija = "Izmjena";
             potrosaci[j].values_.geohash_id_no = nizSvihGeometrija[i].values_.geohash_id;
