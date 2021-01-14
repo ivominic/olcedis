@@ -1,6 +1,8 @@
 //Modul koji sadrži sve promjenljive koje se koriste na globalnom nivou u aplikaciji / wizardu kao i opšte metode
 const dozvoljeniPomjeraj = 0.01; //0.01km - deset metara je dozvoljeo pomjeriti tačke iz gpx fajlova prije uvoza u bazu
 //const domainUrl = location.origin;
+//const wsServerOriginLocation = window.location.protocol + "//" + window.location.hostname;
+const wsServerOriginLocation = "https://razvojgis.cedis.me";
 const domainUrl = "https://razvojgis.cedis.me";
 //const domainUrl = "http://localhost";
 const wmsUrl = domainUrl + "/geoserver/geonode/wms";

@@ -2,9 +2,6 @@
  * Metode koje pozivaju Jovanove web servise
  */
 
-//const wsServerOriginLocation = window.location.protocol + "//" + window.location.hostname;
-const wsServerOriginLocation = "https://razvojgis.cedis.me";
-
 //vodoviIzBilingaZaUparivanje([17991, 17992, 17993, 18003, 18004, 17996]);
 
 //pretragaTrafostanica("150838"); //id_billing
