@@ -54,6 +54,9 @@ function cudTrafostanica(feature, akcija) {
   podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
   podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
 
+  //TODO: Ukloniti ovu liniju kad web servisi budu spremni
+  return false;
+
   let xhr = new XMLHttpRequest();
   xhr.open("POST", urlServisa, true);
   xhr.timeout = 10000000;
@@ -134,6 +137,9 @@ function cudVod(feature, akcija) {
   podaciForme.append("sifra_dionice", feature.values_.sifra_dionice);
   podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
   podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
+
+  //TODO: Ukloniti ovu liniju kad web servisi budu spremni
+  return false;
 
   let xhr = new XMLHttpRequest();
   xhr.open("POST", urlServisa, true);
@@ -219,6 +225,9 @@ function cudStub(feature, akcija) {
   podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
   podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
 
+  //TODO: Ukloniti ovu liniju kad web servisi budu spremni
+  return false;
+
   let xhr = new XMLHttpRequest();
   xhr.open("POST", urlServisa, true);
   xhr.timeout = 10000000;
@@ -283,6 +292,9 @@ function cudPotrosac(feature, akcija) {
   podaciForme.append("vlasnik", feature.values_.vlasnik);
   podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
   podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
+
+  //TODO: Ukloniti ovu liniju kad web servisi budu spremni
+  return false;
 
   let xhr = new XMLHttpRequest();
   xhr.open("POST", urlServisa, true);
@@ -349,6 +361,9 @@ function cudNKRO(feature, akcija) {
   podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
   podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
 
+  //TODO: Ukloniti ovu liniju kad web servisi budu spremni
+  return false;
+
   let xhr = new XMLHttpRequest();
   xhr.open("POST", urlServisa, true);
   xhr.timeout = 10000000;
@@ -410,6 +425,9 @@ function cudPrikljucnoMjesto(feature, akcija) {
   podaciForme.append("vlasnik", feature.values_.vlasnik);
   podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
   podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
+
+  //TODO: Ukloniti ovu liniju kad web servisi budu spremni
+  return false;
 
   let xhr = new XMLHttpRequest();
   xhr.open("POST", urlServisa, true);

@@ -200,15 +200,7 @@ function globalCqlZaNaponskiNivo(nivo, sloj) {
   });
 
   retVal = "(" + retVal + ")";
-  if (sloj === "trafostanice") {
-    if (nivo === "35") {
-      retVal += " AND napon='35'";
-    } else if (nivo === "10") {
-      retVal += " AND napon='10'";
-    } else if (nivo === "0.4") {
-      retVal += " AND napon='0.4'";
-    }
-  } else if (sloj === "vodovi") {
+  if (sloj === "trafostanice" || sloj === "vodovi" || sloj === "view_potrosaci") {
     if (nivo === "35") {
       retVal += " AND napon='35'";
     } else if (nivo === "10") {

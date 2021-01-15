@@ -53,7 +53,7 @@ function wizardNext() {
     trafostaniceUpoligonu(odabraniNaponskiNivo);
     vodoviUpoligonu(odabraniNaponskiNivo);
     potrosaciUpoligonu(odabraniNaponskiNivo);
-    stuboviUpoligonu(odabraniNaponskiNivo);
+    //stuboviUpoligonu(odabraniNaponskiNivo);
     //povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
 
     /*if (selektovaneTrafostaniceFeatures.length === 0) {
@@ -78,14 +78,18 @@ function wizardNext() {
     }
   } else if (document.querySelector("#wizardHeader").innerText === drugiKorakWizarda) {
     document.querySelector("#divWizardOdabirNaponskogNivoa").style.display = "none";
-    //TODO: Ovo treba izmjestiti u neki drugi dio wizarda - povezivanje vodova i potrošača
-    povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
     //document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
     trafostaniceIzBilingaZaUparivanje(nizSelektovanihTrafostanicaOriginalId, "", "", "");
   } else if (document.querySelector("#wizardHeader").innerText === treciKorakWizarda) {
     prikaziCetvrtuFormuWizarda();
   } else if (document.querySelector("#wizardHeader").innerText === cetvrtiKorakWizarda) {
-    alert("Provjera potrošača 111 ");
+    if (selektovaniPotrosaciFeatures.length > 0 && selektovaniVodoviFeatures.length > 0) {
+      povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
+    } else {
+      if (odabraniNaponskiNivo === 0.4 && selektovaniPotrosaciFeatures.length === 0) {
+        poruka("Uspjeh", "U selektovanom zahvatu ne postoji nijedan potrošač.");
+      }
+    }
     //povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
 
     document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";

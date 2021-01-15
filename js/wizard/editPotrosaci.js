@@ -46,11 +46,13 @@ function provjeriPotrosace() {
       tempNazivTS !== selektovaniPotrosaciFeatures[i].values_.naziv_ts ||
       tempIzvodTS !== selektovaniPotrosaciFeatures[i].values_.naziv_nn_izvod
     ) {
+      console.log("provjeriPotrosace prekidWizarda", selektovaniPotrosaciFeatures[i]);
       retVal = false;
     }
   }
   //Ako je false, prekinuti wizard
   if (!retVal) {
+    alert("editPotrosaci.js provjeriPotrosace() prekidWizarda");
     prekidWizarda();
   }
   return retVal;
@@ -143,11 +145,11 @@ function povezivanjePotrosacaVodova(potrosaci, vodovi) {
   }
 
   //U prethodnom dijelu je završen dio sa prenosom podataka od potrošača do prvog voda. Dalje radimo presjeke vodova bližih potrošaču sa nadređenim vodom
-  //************************* */
   nizTrenutnihVodova = nizPodredjenihVodova.slice();
   nizPodredjenihVodova.length = 0;
   if (blnPostojeNepovezaniZapisi && nizTrenutnihVodova.length === 0) {
     poruka("Upozorenje", "Nijedan vod nije povezan sa selektovanim potrošačima");
+    prekidWizarda();
     return false;
   }
 
@@ -213,6 +215,8 @@ function povezivanjePotrosacaVodova(potrosaci, vodovi) {
         console.log("neupareni", vektorNeupareniVodovi1);
         document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
         document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
+        poruka("Upozorenje", "Postoje vodovi koji nisu povezani sa potrošačima.");
+        prekidWizarda();
       }
     }
   }
