@@ -53,6 +53,7 @@ function wizardNext() {
     trafostaniceUpoligonu(odabraniNaponskiNivo);
     vodoviUpoligonu(odabraniNaponskiNivo);
     potrosaciUpoligonu(odabraniNaponskiNivo);
+    stuboviUpoligonu(odabraniNaponskiNivo);
     //povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
 
     /*if (selektovaneTrafostaniceFeatures.length === 0) {

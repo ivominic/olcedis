@@ -51,6 +51,9 @@ let featureNapojnaTrafostanica; //Ovaj objekat koristiti kao feature iz koje će
 let selektovaneTrafostaniceFeatures = []; //Trafostanice u zahvatu poligona
 let selektovaniVodoviFeatures = []; //Vodovi u zahvatu poligona
 let selektovaniPotrosaciFeatures = []; //Potrošači u zahvatu poligona
+let selektovaniStuboviFeatures = []; //Stubovi u zahvatu poligona
+let selektovaniNKROFeatures = []; //NKRO u zahvatu poligona
+let selektovanaPrikljucnaMjestaFeatures = []; //Priključna mjesta u zahvatu poligona
 let selektovaniVodoviFeatures3857 = []; //U drugom koordinatnom sistemu
 
 /**Definisanje podloga */

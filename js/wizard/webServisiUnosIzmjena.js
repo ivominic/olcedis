@@ -164,6 +164,7 @@ function cudVod(feature, akcija) {
  * @param {*} akcija
  */
 function cudStub(feature, akcija) {
+  console.log("feature stub", feature);
   let wkt = wktGeometrije(feature);
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/***********";
   let podaciForme = new FormData();
@@ -184,7 +185,7 @@ function cudStub(feature, akcija) {
   podaciForme.append("prikljucak_otcjep", feature.values_.prikljucak_otcjep);
   podaciForme.append("br_pmo", feature.values_.br_pmo);
   podaciForme.append("nad_visina", feature.values_.nad_visina);
-  podaciForme.append("10vod", feature.values_.10vod);
+  podaciForme.append("10vod", feature.values_["10vod"]);
   podaciForme.append("tip_nosac_izol", feature.values_.tip_nosac_izol);
   podaciForme.append("vlasnistvo", feature.values_.vlasnistvo);
   podaciForme.append("tip", feature.values_.tip);
@@ -399,16 +400,12 @@ function cudPrikljucnoMjesto(feature, akcija) {
   podaciForme.append("izvod_ts", feature.values_.izvod_ts);
   podaciForme.append("ts", feature.values_.ts);
   podaciForme.append("layer_id", feature.values_.layer_id);
-
-  podaciForme.append("pog_sprem", feature.values_.pog_sprem);
-  podaciForme.append("ts", feature.values_.ts);
-  podaciForme.append("layer_id", feature.values_.layer_id);
   podaciForme.append("napon", feature.values_.napon);
   podaciForme.append("geohash_id", feature.values_.geohash_id);
   podaciForme.append("korisnik", feature.values_.korisnik);
   podaciForme.append("katastar", feature.values_.katastar);
-  podaciForme.append("posjeduje_sliku", feature.values_.posjeduje_sliku);
   podaciForme.append("originalId", feature.values_.originalId);
+  podaciForme.append("posjeduje_sliku", feature.values_.posjeduje_sliku);
   podaciForme.append("geohash_id_no", feature.values_.geohash_id_no);
   podaciForme.append("vlasnik", feature.values_.vlasnik);
   podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
