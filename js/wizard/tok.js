@@ -17,6 +17,7 @@ let prviKorakWizarda = "Odabir naponskog nivoa";
 let drugiKorakWizarda = "Odabir napojne trafostanice";
 let treciKorakWizarda = "Uparivanje trafostanica";
 let cetvrtiKorakWizarda = "Uparivanje vodova";
+let blnOnemogucitiWizard = false; //Promjenljiva koja pokazuje da li treba blokirati wizard zbog nepoklapanja podataka
 
 document.querySelector("#wizard").addEventListener("click", prikazWizardForme);
 document.querySelector("#btnWizardNext").addEventListener("click", wizardNext);
@@ -92,8 +93,24 @@ function wizardNext() {
     }
     //povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
 
-    document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
-    document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
+    //document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
+    //document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
+
+    if (
+      !blnOnemogucitiWizard &&
+      (document.querySelector("#ddlPovezivanjeVodovaSelektovane").length !== 0 || document.querySelector("#ddlPovezivanjeVodovaPronadjene").length !== 0)
+    ) {
+      blnOnemogucitiWizard = true;
+      poruka("Upozorenje", "Nisu upareni svi vodovi");
+      return false;
+    }
+
+    if (blnOnemogucitiWizard) {
+      prekidWizarda();
+      alert("Potrebno je otkloniti uočene nedostatke da bi podaci mogli biti sačuvani.");
+    } else {
+      finalniKorakWizarda();
+    }
   }
 }
 
@@ -153,6 +170,18 @@ function konacniUpisIzmjena() {
  * Metoda koja zatvara wizard formu i vrši prekid toka wizarda.
  */
 function prekidWizarda() {
+  blnOnemogucitiWizard = true;
+  closeDiv("#wizardDiv");
+  document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = "";
+  document.querySelector("#uparivanjeTxtSifraTS").textContent = "";
+  document.querySelector("#wizardHeader").innerText = prviKorakWizarda;
+}
+
+/**
+ * Metoda koja kompletira wizard - poziva sve web servise za izmjenu podataka i zatvara formu
+ */
+function finalniKorakWizarda() {
+  alert("Poziv web servisa za izmjenu podataka");
   closeDiv("#wizardDiv");
   document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = "";
   document.querySelector("#uparivanjeTxtSifraTS").textContent = "";

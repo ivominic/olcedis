@@ -78,7 +78,7 @@ function potrosaciUpoligonu(napon) {
     success: function (response) {
       selektovaniPotrosaciFeatures = new ol.format.GeoJSON().readFeatures(response);
       if (selektovaniPotrosaciFeatures.length === 0) {
-        poruka("Upozorenje", "Nema potrošača u odabranom zahvatu.");
+        //poruka("Upozorenje", "Nema potrošača u odabranom zahvatu.");
         return false;
       } else {
         if (selektovaniPotrosaciFeatures.length > 0) {
