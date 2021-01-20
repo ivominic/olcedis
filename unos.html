@@ -146,125 +146,265 @@
       </div>
       <div class="items-padd">
         <div class="pr-8 sadrzaj-scroll style-2">
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosGps">
             <label for="gps">Redni broj u GPS:</label>
             <input type="text" id="gps" readonly disabled />
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosBroj">
             <label for="broj">Broj stuba:</label>
             <input type="text" id="broj" />
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosSifra">
             <label for="sifra">Šifra:</label>
             <input type="text" id="sifra" />
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosPripadnost">
             <label for="pripadnost">Pripadnost:</label>
             <input type="text" id="pripadnost" />
           </div>
-          <div class="flex-row pb-8">
-            <label for="tip">Tip stuba:</label>
+          <div class="flex-row pb-8" id="divUnosTip">
+            <label for="tip">Tip:</label>
             <select id="tip" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8">
-            <label for="vrsta_namjena">Vrsta stuba po namjeni:</label>
+          <div class="flex-row pb-8" id="divUnosNamjena">
+            <label for="vrsta_namjena">Namjena:</label>
             <select id="vrsta_namjena" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8">
-            <label for="vrsta_materijal">Vrsta stuba po materijalu:</label>
+          <div class="flex-row pb-8" id="divUnosMaterijal">
+            <label for="vrsta_materijal">Materijal:</label>
             <select id="vrsta_materijal" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosVrstaDrvenogStuba">
             <label for="vrsta_drvenog">Vrsta drvenog stuba:</label>
             <select id="vrsta_drvenog" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosNadmorskaVisina">
             <label for="nad_visina">Nadmorska visina (m):</label>
             <input type="number" id="nad_visina" />
           </div>
-          <div class="flex-row pb-8">
-            <label for="visina">Visina stuba(m):</label>
+          <div class="flex-row pb-8" id="divUnosVisina">
+            <label for="visina">Visina (m):</label>
             <input type="number" id="visina" />
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosRasporedProvodnika">
             <label for="rasp_prov">Raspored provodnika:</label>
             <input type="text" id="rasp_prov" />
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosIzolatorVrsta">
             <label for="izolator_vrsta">Vrsta izolatora:</label>
             <select id="izolator_vrsta" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosIzolatorFunkcija">
             <label for="izolator_funkcija">Vrsta izolatora po funkciji:</label>
             <select id="izolator_funkcija" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosBrIzolFaza">
             <label for="br_izol_faza">Broj izolatora po fazi:</label>
             <input type="text" id="br_izol_faza" />
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosTipIzolatora">
             <label for="tip_nosac_izol">Tip izolatora:</label>
             <select id="tip_nosac_izol" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosOdvodnikPrenapona">
             <label for="odvodnik_prenapona">Tip odvodnika prenapona:</label>
             <select id="odvodnik_prenapona" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosUzemljivac">
             <label for="uzemljivac">Uzemljivač:</label>
             <select id="uzemljivac" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosOtporUzemljivaca">
             <label for="uzemljivac_otpor">Otpor uzemljivača:</label>
             <input type="text" id="uzemljivac_otpor" />
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosOptika">
             <label for="optika">Optika:</label>
             <select id="optika" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8">
-            <label for="rasvjeta">Lampa javne rasvjete:</label>
+          <div class="flex-row pb-8" id="divUnosRasvjeta">
+            <label for="rasvjeta">Javna rasvjeta:</label>
             <select id="rasvjeta" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosBrPmo">
             <label for="br_pmo">Broj mjernih ormara:</label>
             <input type="text" id="br_pmo" />
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosBrNnv">
             <label for="br_nnv">Broj NN vodova:</label>
             <input type="text" id="br_nnv" />
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosPogSprem">
             <label for="pog_sprem">Pogonska spremnost:</label>
             <input type="text" id="pog_sprem" />
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosVlasnistvo">
             <label for="vlasnistvo">Vlasnistvo:</label>
             <select id="vlasnistvo" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosOpstina">
             <label for="opstina">Opština:</label>
-            <input type="text" id="opstina" readonly disabled />
+            <select id="opstina" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosNapon">
             <label for="napon">Napon:</label>
-            <input type="text" id="napon" readonly disabled />
+            <input type="text" id="napon" />
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosPrikljucakOtcjep">
             <label for="prikljucak_otcjep">10kV kabal(prikljucak/otcjep):</label>
             <select id="prikljucak_otcjep" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosNnVod">
             <label for="nn_vod">NN vod :</label>
             <select id="nn_vod" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8">
+          <div class="flex-row pb-8" id="divUnosRastavljac">
             <label for="rastavljac">Rastavljač:</label>
             <select id="rastavljac" class="select-css"></select>
           </div>
-          <div class="flex-row">
+          <div class="flex-row pb-8" id="divUnos10KvVod">
             <label for="10_vod">10 kV vod:</label>
             <select id="10_vod" class="select-css"></select>
+          </div>
+          <div class="flex-row pb-8" id="divUnosDionica">
+            <label for="dionica">Dionica:</label>
+            <input type="text" id="dionica" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosIdBr">
+            <label for="id_br">Identifikacioni broj:</label>
+            <input type="text" id="id_br" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosNaziv">
+            <label for="naziv">Naziv:</label>
+            <input type="text" id="naziv" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosDionicaNn">
+            <label for="dionica_nn">Dionica:</label>
+            <input type="text" id="dionica_nn" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosTs">
+            <label for="ts">Vod se napaja iz TS:</label>
+            <input type="text" id="ts" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosIzvodTs">
+            <label for="izvod_ts">Ime izvoda u TS:</label>
+            <input type="text" id="izvod_ts" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosBrFaza">
+            <label for="br_faza">Broj faza:</label>
+            <select id="br_faza" class="select-css"></select>
+          </div>
+          <div class="flex-row pb-8" id="divUnosVrsta">
+            <label for="vrsta">Vrsta:</label>
+            <select id="vrsta" class="select-css"></select>
+          </div>
+          <div class="flex-row pb-8" id="divUnosPresjek">
+            <label for="presjek">Presjek voda (mm2):</label>
+            <select id="presjek" class="select-css"></select>
+          </div>
+          <div class="flex-row pb-8" id="divUnosBrSpojnica">
+            <label for="br_spojnica">Broj spojnica:</label>
+            <input type="text" id="br_spojnica" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosGodIzgr">
+            <label for="god_izg">Godina izgradnje:</label>
+            <input type="text" id="god_izg" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosPocDion">
+            <label for="poc_dion">Početak dionice:</label>
+            <input type="text" id="poc_dion" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosKrajDion">
+            <label for="kraj_dion">Kraj dionice:</label>
+            <input type="text" id="kraj_dion" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosUzePresjek">
+            <label for="uze_presjek">Zaštitno uže presjek mm2:</label>
+            <select id="uze_presjek" class="select-css"></select>
+          </div>
+          <div class="flex-row pb-8" id="divUnosUze">
+            <label for="uze">Zaštitno uže materijal:</label>
+            <select id="uze" class="select-css"></select>
+          </div>
+          <div class="flex-row pb-8" id="divUnosZajednickaDion">
+            <label for="zajednicka_dion">NN vod 10kV voda:</label>
+            <input type="text" id="zajednicka_dion" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosBrNnIzvoda">
+            <label for="br_nn_izvoda">Broj NN izvoda:</label>
+            <input type="text" id="br_nn_izvoda" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosCelije10">
+            <label for="celije_10">Broj 10 kV ćelija:</label>
+            <input type="text" id="celije_10" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosProjekSnaga">
+            <label for="projek_snaga">Projektovana snaga:</label>
+            <input type="text" id="projek_snaga" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosInstSnaga1">
+            <label for="inst_snaga_t1">Snaga T1 (kVA):</label>
+            <select id="inst_snaga_t1" class="select-css"></select>
+          </div>
+          <div class="flex-row pb-8" id="divUnosInstSnaga2">
+            <label for="inst_snaga_t2">Snaga T2 (kVA):</label>
+            <select id="inst_snaga_t2" class="select-css"></select>
+          </div>
+          <div class="flex-row pb-8" id="divUnosInstSnaga3">
+            <label for="inst_snaga_t3">Snaga T3 (kVA):</label>
+            <select id="inst_snaga_t3" class="select-css"></select>
+          </div>
+          <div class="flex-row pb-8" id="divUnosInstSnaga4">
+            <label for="inst_snaga_t4">Snaga T4 (kVA):</label>
+            <select id="inst_snaga_t4" class="select-css"></select>
+          </div>
+          <div class="flex-row pb-8" id="divUnosPrenosOdnos">
+            <label for="prenos_odnos">Prenosni odnos:</label>
+            <select id="prenos_odnos" class="select-css"></select>
+          </div>
+          <div class="flex-row pb-8" id="divUnosIzvodCelija">
+            <label for="izvod_celija">Izvod u napojnoj TS:</label>
+            <input type="text" id="izvod_celija" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosNapojnaTs">
+            <label for="napojna_ts">Napojna TS 110(35)/10kV:</label>
+            <input type="text" id="napojna_ts" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosFunkcija">
+            <label for="funkcija">Funkcija objekta:</label>
+            <select id="funkcija" class="select-css"></select>
+          </div>
+          <div class="flex-row pb-8" id="divUnosIdBilling">
+            <label for="id_billing">Identifikacioni broj (Biling):</label>
+            <input type="text" id="id_billing" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosId">
+            <label for="id">Id:</label>
+            <input type="text" id="id" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosOsiguraci">
+            <label for="osiguraci">Osigurači:</label>
+            <select id="osiguraci" class="select-css"></select>
+          </div>
+          <div class="flex-row pb-8" id="divUnosBrPretplatnika">
+            <label for="br_pretplatnika">Broj pretplatnika:</label>
+            <input type="text" id="br_pretplatnika" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosMontaza">
+            <label for="montaza">Montaža:</label>
+            <select id="montaza" class="select-css"></select>
+          </div>
+          <div class="flex-row pb-8" id="divUnosVrata">
+            <label for="vrata">Vrata:</label>
+            <select id="vrata" class="select-css"></select>
+          </div>
+          <div class="flex-row pb-8" id="divUnosBrIzvoda">
+            <label for="br_izvoda">Broj izvoda:</label>
+            <input type="text" id="br_izvoda" />
+          </div>
+          <div class="flex-row pb-8" id="divUnosBrPrikljucaka">
+            <label for="br_prikljucaka">Broj priključaka:</label>
+            <input type="text" id="br_prikljucaka" />
           </div>
         </div>
       </div>
@@ -651,5 +791,6 @@
     <script src="js/wizard/webServisiUnosIzmjena.js"></script>
     <script src="js/edit/interakcija.js"></script>
     <script src="js/edit/pretraga.js"></script>
+    <script src="js/edit/unos.js"></script>
   </body>
 </html>
