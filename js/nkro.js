@@ -49,20 +49,19 @@ function popuniKontrole(odgovor) {
   }
 }
 
-
 /** Unos izmijenjenih vrijednosti atributa, nove fotografije ili unos svih podataka za novu geometriju */
 function sacuvaj() {
   if (akcija === "dodaj" && geometrijaZaBazuWkt === "") {
     poruka("Upozorenje", "Potrebno je nacrtati objekat.");
-    return false
+    return false;
   }
   if (akcija === "izmijeni" && (geometrijaZaBazuWkt === "" || idObjekta === 0)) {
     poruka("Upozorenje", "Potrebno je izmijeniti geometriju odabranog objekta.");
-    return false
+    return false;
   }
   if (akcija === "atributi" && idObjekta === 0) {
     poruka("Upozorenje", "Potrebno je odabrati objekat čije atribute mijenjate.");
-    return false
+    return false;
   }
 
   let podaciForme = new FormData();
@@ -85,7 +84,7 @@ function sacuvaj() {
   podaciForme.append("", document.querySelector("#").value);
 
   let xhr = new XMLHttpRequest();
-  xhr.open('POST', sacuvajZapisUrl, true);
+  xhr.open("POST", sacuvajZapisUrl, true);
   xhr.timeout = 100000;
   xhr.ontimeout = function () {
     poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
@@ -145,7 +144,6 @@ function isprazniGeometrije() {
   let paramsRestart = rasterLayer.getSource().getParams();
   rasterLayer.getSource().updateParams(paramsRestart);
 }
-
 
 /**Smještanje mape u div sa id-jem "map" */
 let map = new ol.Map({
@@ -225,7 +223,7 @@ function podesiInterakciju() {
       },
     });
     map.addInteraction(modify);
-    modify.on('modifyend', function (e) {
+    modify.on("modifyend", function (e) {
       modifikovan = true;
       geometrijaZaBazuWkt = wktGeometrije(e.features.getArray()[0]);
       console.log("feature geometrija", wktGeometrije(e.features.getArray()[0]));
@@ -246,7 +244,7 @@ function podesiInterakciju() {
         return ol.events.condition.shiftKeyOnly(event) && ol.events.condition.singleClick(event);
       },
     });
-    draw.on('drawend', function (e) {
+    draw.on("drawend", function (e) {
       nacrtan = true;
       //TODO: ovo možda dodati u promjeni akcije i poništi
       featureTekuciOverlay.getSource().clear(); //Samo jedan može da se crta
@@ -254,7 +252,7 @@ function podesiInterakciju() {
       showDiv("#atributiDiv");
       console.log("feature nova geometrija", geometrijaZaBazuWkt);
     });
-    modify.on('modifyend', function (e) {
+    modify.on("modifyend", function (e) {
       //Iz nekog razloga na brisanje čvora ne očitava odmah izmjenu
       console.log("broj geometrija", e.features.getArray().length);
       geometrijaZaBazuWkt = wktGeometrije(e.features.getArray()[0]);
@@ -350,7 +348,7 @@ function brisanje() {
   let podaciForme = new FormData();
   podaciForme.append("id", idObjekta);
   let xhr = new XMLHttpRequest();
-  xhr.open('POST', izbrisiZapisUrl, true);
+  xhr.open("POST", izbrisiZapisUrl, true);
   xhr.timeout = 100000;
   xhr.ontimeout = function () {
     poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
@@ -413,12 +411,9 @@ function kreiranjeCqlFilteraAtributi() {
   document.querySelector("#pretraga_opstina").value !== "" && (retVal += "opstina = '" + document.querySelector("#pretraga_opstina").value + "' AND ");
   document.querySelector("#pretraga_napon").value !== "" && (retVal += "napon = '" + document.querySelector("#pretraga_napon").value + "' AND ");
 
-
-
   retVal.length > 5 && (retVal = retVal.substring(0, retVal.length - 5));
   return retVal;
 }
-
 
 function wfsFilter() {
   $.ajax({
