@@ -140,7 +140,7 @@ function novoPrikljucnoMjesto() {
 /**Povezivanje kontrola sa akcijama */
 document.querySelector("#pan").addEventListener("click", pan);
 //document.querySelector("#dodaj").addEventListener("click", dodaj);
-document.querySelector("#izmijeni").addEventListener("click", izmijeni);
+//document.querySelector("#izmijeni").addEventListener("click", izmijeni);
 document.querySelector("#atributi").addEventListener("click", atributi);
 document.querySelector("#slika").addEventListener("click", slika);
 document.querySelector("#marker").addEventListener("click", crtajTacku);
@@ -165,3 +165,12 @@ document.querySelector("#novaTrafostanica35").addEventListener("click", novaTraf
 document.querySelector("#novaTrafostanica10Kv").addEventListener("click", novaTrafostanica10);
 document.querySelector("#noviNKRO").addEventListener("click", noviNkro);
 document.querySelector("#novoPrikljucnoMjesto").addEventListener("click", novoPrikljucnoMjesto);
+
+document.querySelector("#editStub35").addEventListener("click", noviStub35);
+document.querySelector("#editStub10Kv").addEventListener("click", noviStub10);
+document.querySelector("#editVod35").addEventListener("click", noviVod35);
+document.querySelector("#editVod10Kv").addEventListener("click", noviVod10);
+document.querySelector("#editTrafostanica35").addEventListener("click", novaTrafostanica35);
+document.querySelector("#editTrafostanica10Kv").addEventListener("click", novaTrafostanica10);
+document.querySelector("#editNKRO").addEventListener("click", noviNkro);
+document.querySelector("#editPrikljucnoMjesto").addEventListener("click", novoPrikljucnoMjesto);
