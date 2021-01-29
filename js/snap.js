@@ -9,41 +9,41 @@ document.querySelector("#snapPrikljucnoMjesto").addEventListener("click", snapPr
 document.querySelector("#snapPotrosac").addEventListener("click", snapPotrosac);
 document.querySelector("#snapPOD").addEventListener("click", snapPOD);
 function snapStub35() {
-  citajExtent("stubovi");
+  citajExtent("stubovi", 35);
 }
 function snapStub10Kv() {
-  citajExtent("stubovi");
+  citajExtent("stubovi", 10);
 }
 function snapVod35() {
-  citajExtent("vodovi");
+  citajExtent("vodovi", 35);
 }
 function snapVod10Kv() {
-  citajExtent("vodovi");
+  citajExtent("vodovi", 10);
 }
 function snapTrafostanica35() {
-  citajExtent("trafostanice");
+  citajExtent("trafostanice", 35);
 }
 function snapTrafostanica10Kv() {
-  citajExtent("trafostanice");
+  citajExtent("trafostanice", 10);
 }
 function snapNKRO() {
-  citajExtent("nkro");
+  citajExtent("nkro", 0);
 }
 function snapPrikljucnoMjesto() {
-  citajExtent("prikljucnoMjesto");
+  citajExtent("prikljucno_mjesto", 0);
 }
 function snapPotrosac() {
-  citajExtent("potrosac");
+  citajExtent("potrosac", 0);
 }
 function snapPOD() {
-  citajExtent("pod");
+  citajExtent("pod", 0);
 }
 
 /**
  *
  * @param {Prikazuje objekte iz lejera na vidljivom dijelu ekrana} lejer
  */
-function citajExtent(lejer) {
+function citajExtent(lejer, nivo) {
   //extentSource.clear();
   let extentMap = map.getView().calculateExtent(map.getSize());
   let bottomLeft = ol.extent.getBottomLeft(extentMap);
@@ -75,15 +75,18 @@ function citajExtent(lejer) {
   /*var feature = new ol.Feature(polygon);
  extentSource.addFeature(feature);
  feature.setStyle(extentStyle);*/
-  prikaziSnapVektor(lejer, wktPoligon);
+  prikaziSnapVektor(lejer, nivo, wktPoligon);
 }
 
 /**
  * Metoda koja za zadati lejer i poligon (bounding box) prikazuje lejere za snap
  */
-function prikaziSnapVektor(lejer, poligon) {
+function prikaziSnapVektor(lejer, nivo, poligon) {
   //let tekstFiltera = "INTERSECTS(geom," + poligon + ") "
   let tekstFiltera = "INTERSECTS(Geometry," + poligon + ") ";
+  if (nivo !== 0) {
+    tekstFiltera += " AND napon = " + nivo;
+  }
 
   let nazivLejera = "geonode:" + lejer;
   //let nazivLejera = "winsoft:drvece";
