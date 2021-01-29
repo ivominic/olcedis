@@ -88,9 +88,58 @@ function excelDownload() {
   wfsDownload("excel2007");
 }
 
+function prikazPanelaAtributa(sloj) {
+  sakrijSvaPoljaAtributDiv();
+  if (sloj === "Stub 35KV") {
+    prikaziAtributDivStubove();
+  } else if (sloj === "Stub 10KV") {
+    prikaziAtributDivStubove();
+  } else if (sloj === "Vod 35KV") {
+    prikaziAtributDivVodove();
+  } else if (sloj === "Vod 10KV") {
+    prikaziAtributDivVodove();
+  } else if (sloj === "Trafostanica 35KV") {
+    prikaziAtributDivTrafostanice();
+  } else if (sloj === "Trafostanica 10KV") {
+    prikaziAtributDivTrafostanice();
+  } else if (sloj === "NKRO") {
+    prikaziAtributDivNkro();
+  } else if (sloj === "Priključno mjesto") {
+    prikaziAtributDivPrikljucnoMjesto();
+  } else if (sloj === "Potrošač") {
+  } else if (sloj === "POD") {
+  }
+  showDiv("#atributiDiv");
+}
+
+function noviStub35() {
+  prikazPanelaAtributa("Stub 35KV");
+}
+function noviStub10() {
+  prikazPanelaAtributa("Stub 10KV");
+}
+function noviVod35() {
+  prikazPanelaAtributa("Vod 35KV");
+}
+function noviVod10() {
+  prikazPanelaAtributa("Vod 10KV");
+}
+function novaTrafostanica35() {
+  prikazPanelaAtributa("Trafostanica 35KV");
+}
+function novaTrafostanica10() {
+  prikazPanelaAtributa("Trafostanica 10KV");
+}
+function noviNkro() {
+  prikazPanelaAtributa("NKRO");
+}
+function novoPrikljucnoMjesto() {
+  prikazPanelaAtributa("Priključno mjesto");
+}
+
 /**Povezivanje kontrola sa akcijama */
 document.querySelector("#pan").addEventListener("click", pan);
-document.querySelector("#dodaj").addEventListener("click", dodaj);
+//document.querySelector("#dodaj").addEventListener("click", dodaj);
 document.querySelector("#izmijeni").addEventListener("click", izmijeni);
 document.querySelector("#atributi").addEventListener("click", atributi);
 document.querySelector("#slika").addEventListener("click", slika);
@@ -107,3 +156,12 @@ document.querySelector("#podloga_satelit").addEventListener("click", satelitPodl
 document.querySelector("#shp").addEventListener("click", shpDownload);
 document.querySelector("#kml").addEventListener("click", kmlDownload);
 document.querySelector("#excel").addEventListener("click", excelDownload);
+
+document.querySelector("#noviStub35").addEventListener("click", noviStub35);
+document.querySelector("#noviStub10Kv").addEventListener("click", noviStub10);
+document.querySelector("#noviVod35").addEventListener("click", noviVod35);
+document.querySelector("#noviVod10Kv").addEventListener("click", noviVod10);
+document.querySelector("#novaTrafostanica35").addEventListener("click", novaTrafostanica35);
+document.querySelector("#novaTrafostanica10Kv").addEventListener("click", novaTrafostanica10);
+document.querySelector("#noviNKRO").addEventListener("click", noviNkro);
+document.querySelector("#novoPrikljucnoMjesto").addEventListener("click", novoPrikljucnoMjesto);

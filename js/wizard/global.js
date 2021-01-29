@@ -41,7 +41,8 @@ let draw,
   akcija = "pan",
   slikaUrl = "",
   slikeUrl = [],
-  slikeIndex = 0;
+  slikeIndex = 0,
+  akcijaLejerNivo = "";
 let geometrijaZaBazuWkt = "",
   nacrtan = false,
   modifikovan = false;
