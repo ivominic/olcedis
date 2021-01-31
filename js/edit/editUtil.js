@@ -306,13 +306,15 @@ function popuniDdlAtributima(ddl, objekat, atribut, key_param, value_param) {
     data: "",
     type: "GET",
     success: function (data) {
-      data.data.vrijednosti.forEach(function (response) {
-        $(ddl).append(
-          $("<option>", {
-            value: response,
-            text: response,
-          })
-        );
+      data.data.forEach(function (response) {
+        response.vrijednosti.forEach(function (vrijednost) {
+          $(ddl).append(
+            $("<option>", {
+              value: vrijednost,
+              text: vrijednost,
+            })
+          );
+        });
       });
     },
     error: function (x, y, z) {

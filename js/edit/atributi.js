@@ -102,6 +102,7 @@ function prikaziAtributDivStubove() {
   document.querySelector("#divUnosNnVod").style.display = "flex";
   document.querySelector("#divUnosRastavljac").style.display = "flex";
   document.querySelector("#divUnos10KvVod").style.display = "flex";
+  popuniListeZaStubove();
 }
 
 function prikaziAtributDivVodove() {
@@ -129,6 +130,7 @@ function prikaziAtributDivVodove() {
   document.querySelector("#divUnosUzePresjek").style.display = "flex";
   document.querySelector("#divUnosUze").style.display = "flex";
   document.querySelector("#divUnosZajednickaDion").style.display = "flex";
+  popuniListeZaVodove();
 }
 
 function prikaziAtributDivTrafostanice() {
@@ -151,6 +153,7 @@ function prikaziAtributDivTrafostanice() {
   document.querySelector("#divUnosNapojnaTs").style.display = "flex";
   document.querySelector("#divUnosFunkcija").style.display = "flex";
   document.querySelector("#divUnosIdBilling").style.display = "flex";
+  popuniListeZaTrafostanice();
 }
 
 function prikaziAtributDivPrikljucnoMjesto() {
@@ -164,6 +167,7 @@ function prikaziAtributDivPrikljucnoMjesto() {
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
   document.querySelector("#divUnosOpstina").style.display = "flex";
   document.querySelector("#divUnosNapon").style.display = "flex";
+  popuniListeZaPrikljucnaMjesta();
 }
 
 function prikaziAtributDivNkro() {
@@ -178,4 +182,5 @@ function prikaziAtributDivNkro() {
   document.querySelector("#divUnosVrata").style.display = "flex";
   document.querySelector("#divUnosBrIzvoda").style.display = "flex";
   document.querySelector("#divUnosBrPrikljucaka").style.display = "flex";
+  popuniListeZaNkro();
 }
