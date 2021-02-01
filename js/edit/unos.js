@@ -184,10 +184,14 @@ function prikaziUnosNkro() {
 /**Metode za unos podataka iz polja */
 
 function unosStubova() {
+  idObjekta = "12";
+  akcija = "unos";
+  geometrijaZaBazuWkt = "POINT (0, 0)";
   let podaciForme = new FormData();
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", akcija);
-  podaciForme.append("geom", geometrijaZaBazuWkt);
+  podaciForme.append("Geometry", geometrijaZaBazuWkt);
+  podaciForme.append("fid_1", "");
   podaciForme.append("gps", document.querySelector("#gps").value);
   podaciForme.append("broj", document.querySelector("#broj").value);
   podaciForme.append("sifra", document.querySelector("#sifra").value);
@@ -217,19 +221,51 @@ function unosStubova() {
   podaciForme.append("prikljucak_otcjep", document.querySelector("#prikljucak_otcjep").value);
   podaciForme.append("nn_vod", document.querySelector("#nn_vod").value);
   podaciForme.append("rastavljac", document.querySelector("#rastavljac").value);
-  podaciForme.append("10_vod", document.querySelector("#10_vod").value);
+  //podaciForme.append("10_vod", document.querySelector("#10_vod").value);
 
+  //Dodao za poziv Jovanovog servisa
+  podaciForme.append("name", "test");
+  podaciForme.append("visibility", true);
+  podaciForme.append("open", true);
+  podaciForme.append("address", "");
+  podaciForme.append("phoneNumber", "");
+  podaciForme.append("Folder", "test");
+  podaciForme.append("fid", "test");
+  podaciForme.append("layer_name", "test");
+  podaciForme.append("broj_priklj_mjernih_ormara", 2);
+  podaciForme.append("datum_azuriranja", "");
+
+  podaciForme.append("layer_id", "test");
+  podaciForme.append("geohash_id", "test");
+  podaciForme.append("korisnik", "test");
+  podaciForme.append("katastar", "");
+  podaciForme.append("originalId", "test");
+  podaciForme.append("posjeduje_sliku", "test");
+  podaciForme.append("vlasnik", "test");
+  podaciForme.append("geohash_id_no", "test");
+  podaciForme.append("sifra_napojne", "test");
+  podaciForme.append("izvod_napojne", "test");
+
+  console.log("data", podaciForme.elements);
+
+  console.log("putanja servisa", wsServerOriginLocation + "/novi_portal/api/stubovi_store");
   let xhr = new XMLHttpRequest();
-  xhr.open("POST", sacuvajZapisUrl, true);
+  xhr.open("POST", wsServerOriginLocation + "/novi_portal/api/stubovi_store");
+  //xhr.open("POST", "http://localhost:8080/test/cedis");
   xhr.timeout = 100000;
+  //xhr.setRequestHeader("Accept", "application/json");
+  //xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.ontimeout = function () {
     poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
   };
+  let jsonSlanje = JSON.stringify('{ fid_1: 1, Geometry: "POINT(0,0)" }');
+  //xhr.send(jsonSlanje);
   xhr.send(podaciForme);
-  openModalSpinner();
+  //openModalSpinner();
   xhr.onreadystatechange = function () {
     if (this.readyState === 4) {
       if (this.status === 200) {
+        console.log("test", xhr.responseText);
         let jsonResponse = JSON.parse(xhr.responseText);
         if (jsonResponse["success"] === true) {
           poruka("Uspjeh", jsonResponse["message"]);
@@ -237,14 +273,16 @@ function unosStubova() {
         } else {
           poruka("Upozorenje", jsonResponse["message"]);
         }
-        closeModalSpinner();
+        //closeModalSpinner();
       } else {
         poruka("Greska", xhr.statusText);
-        closeModalSpinner();
+        //closeModalSpinner();
       }
     }
   };
 }
+console.log("stubovi");
+unosStubova();
 
 function unosVodova() {
   let podaciForme = new FormData();
@@ -601,3 +639,79 @@ function popuniPoljaPrikljucnoMjesto(odgovor) {
     wfsZaEdit(idObjekta);
   }*/
 }
+
+function testunosPrikljucnoMjesto() {
+  let podaciForme = new FormData();
+  podaciForme.append("id", 1);
+  podaciForme.append("akcija", "unos");
+  podaciForme.append("Geometry", "POINT (0,0)");
+  podaciForme.append("fid_1", "1");
+  podaciForme.append("gps", "");
+  podaciForme.append("ts", "");
+  podaciForme.append("izvod_ts", "");
+  podaciForme.append("id", "");
+  podaciForme.append("tip", "");
+  podaciForme.append("osiguraci", "");
+  podaciForme.append("br_pretplatnika", "");
+  podaciForme.append("vlasnistvo", "");
+  podaciForme.append("opstina", "");
+  podaciForme.append("napon", "");
+  //Dodao za poziv Jovanovog servisa
+  podaciForme.append("name", "test");
+  podaciForme.append("visibility", true);
+  podaciForme.append("open", true);
+  podaciForme.append("address", "");
+  podaciForme.append("phoneNumber", "");
+  podaciForme.append("Folder", "test");
+  podaciForme.append("fid", "test");
+  podaciForme.append("layer_name", "test");
+  podaciForme.append("sys_id", 2);
+  podaciForme.append("datum_azuriranja", "");
+
+  podaciForme.append("layer_id", "test");
+  podaciForme.append("geohash_id", "test");
+  podaciForme.append("korisnik", "test");
+  podaciForme.append("katastar", "");
+  podaciForme.append("originalId", "test");
+  podaciForme.append("posjeduje_sliku", "test");
+  podaciForme.append("vlasnik", "test");
+  podaciForme.append("geohash_id_no", "test");
+  podaciForme.append("sifra_napojne", "test");
+  podaciForme.append("izvod_napojne", "test");
+
+  console.log("podaci forme", podaciForme.values());
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", wsServerOriginLocation + "/novi_portal/api/prikljucno_mjesto_store", true);
+  xhr.timeout = 100000;
+  xhr.setRequestHeader("Accept", "application/json");
+  xhr.setRequestHeader("Content-Type", "multipart/form-data");
+  xhr.ontimeout = function () {
+    poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
+  };
+  xhr.send(podaciForme);
+  /*xhr.send(
+    "id=1&akcija=unos&Geometry=POINT (0,0)&fid_1=1&gps=&ts=&izvod_ts=&id=&tip=&osiguraci=&br_pretplatnika=&vlasnistvo=&opstina=&napon=&name=test&visibility=true&open=true&address=&phoneNumber=&Folder=test&fid=test&layer_name=test&sys_id=2&datum_azuriranja=&layer_id=test&geohash_id=test&korisnik=test&katastar=&originalId=test&posjeduje_sliku=test&vlasnik=test&geohash_id_no=test&sifra_napojne=test&izvod_napojne=test"
+  );*/
+  openModalSpinner();
+  xhr.onreadystatechange = function () {
+    if (this.readyState === 4) {
+      if (this.status === 200) {
+        console.log("odgovor servisa", xhr.responseText);
+        let jsonResponse = JSON.parse(xhr.responseText);
+        if (jsonResponse["success"] === true) {
+          poruka("Uspjeh", jsonResponse["message"]);
+        } else {
+          poruka("Upozorenje", jsonResponse["message"]);
+        }
+        closeModalSpinner();
+      } else {
+        poruka("Greska", xhr.statusText);
+        closeModalSpinner();
+      }
+    }
+  };
+}
+
+//console.log("prikljucnomjesto");
+//testunosPrikljucnoMjesto();
