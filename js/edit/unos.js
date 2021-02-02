@@ -340,13 +340,14 @@ function unosVodova(geometrijaWkt, servisAkcija) {
   });
 }
 
-unosVodova("LINESTRING(-71.160281 42.258729,-71.160837 42.259113,-71.161144 42.25932)", "I");
+//unosVodova("LINESTRING(-71.160281 42.258729,-71.160837 42.259113,-71.161144 42.25932)", "I");
 
-function unosTrafostanica() {
+function unosTrafostanica(geometrijaWkt, servisAkcija) {
   let podaciForme = new FormData();
   podaciForme.append("id", idObjekta);
-  podaciForme.append("akcija", akcija);
-  podaciForme.append("geom", geometrijaZaBazuWkt);
+  podaciForme.append("akcija", servisAkcija);
+  podaciForme.append("Geometry", geometrijaWkt);
+  podaciForme.append("fid_1", 0);
   podaciForme.append("gps", document.querySelector("#gps").value);
   podaciForme.append("id_billing", document.querySelector("#id_billing").value);
   podaciForme.append("naziv", document.querySelector("#naziv").value);
@@ -367,31 +368,46 @@ function unosTrafostanica() {
   podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
   podaciForme.append("opstina", document.querySelector("#opstina").value);
 
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", sacuvajZapisUrl, true);
-  xhr.timeout = 100000;
-  xhr.ontimeout = function () {
-    poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
-  };
-  xhr.send(podaciForme);
-  openModalSpinner();
-  xhr.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      if (this.status === 200) {
-        let jsonResponse = JSON.parse(xhr.responseText);
-        if (jsonResponse["success"] === true) {
-          poruka("Uspjeh", jsonResponse["message"]);
-        } else {
-          poruka("Upozorenje", jsonResponse["message"]);
-        }
-        closeModalSpinner();
-      } else {
-        poruka("Greska", xhr.statusText);
-        closeModalSpinner();
-      }
-    }
-  };
+  //Dodao za poziv Jovanovog servisa
+  podaciForme.append("name", "test");
+  podaciForme.append("visibility", true);
+  podaciForme.append("open", true);
+  podaciForme.append("address", "");
+  podaciForme.append("phoneNumber", "");
+  podaciForme.append("Folder", "test");
+  podaciForme.append("fid", "test");
+  podaciForme.append("layer_name", "test");
+  //podaciForme.append("broj_priklj_mjernih_ormara", 2);
+  podaciForme.append("datum_azuriranja", "");
+
+  podaciForme.append("layer_id", 0);
+  podaciForme.append("geohash_id", "test");
+  podaciForme.append("korisnik", "test");
+  podaciForme.append("katastar", "");
+  podaciForme.append("originalId", 0);
+  podaciForme.append("posjeduje_sliku", "test");
+  podaciForme.append("vlasnik", "test");
+  podaciForme.append("geohash_id_no", "test");
+  podaciForme.append("sifra_napojne", "test");
+  podaciForme.append("izvod_napojne", "test");
+  podaciForme.append("naziv_napojne", "test");
+
+  $.ajax({
+    url: wsServerOriginLocation + "/novi_portal/api/trafostanice_store",
+    method: "post",
+    data: podaciForme,
+    processData: false,
+    contentType: false,
+    success: function (response) {
+      console.log("success", response);
+      poruka("Uspjeh", response.message);
+    },
+    error: function (response) {
+      console.log("error", response);
+    },
+  });
 }
+unosTrafostanica("POINT(0 0)", "I");
 
 function unosNkro() {
   let podaciForme = new FormData();
