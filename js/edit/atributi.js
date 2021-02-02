@@ -47,6 +47,11 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosUzePresjek").style.display = "none";
   document.querySelector("#divUnosUze").style.display = "none";
   document.querySelector("#divUnosZajednickaDion").style.display = "none";
+  document.querySelector("#divUnosDionicaGPS").style.display = "none";
+  document.querySelector("#divUnosRacDuzina").style.display = "none";
+  document.querySelector("#divUnosDuzina").style.display = "none";
+  document.querySelector("#divUnosBrojSpojnica").style.display = "none";
+  document.querySelector("#divUnosSifraDionice").style.display = "none";
 
   document.querySelector("#divUnosBrNnIzvoda").style.display = "none";
   document.querySelector("#divUnosCelije10").style.display = "none";
@@ -130,6 +135,11 @@ function prikaziAtributDivVodove() {
   document.querySelector("#divUnosUzePresjek").style.display = "flex";
   document.querySelector("#divUnosUze").style.display = "flex";
   document.querySelector("#divUnosZajednickaDion").style.display = "flex";
+  document.querySelector("#divUnosDionicaGPS").style.display = "flex";
+  document.querySelector("#divUnosRacDuzina").style.display = "flex";
+  document.querySelector("#divUnosDuzina").style.display = "flex";
+  document.querySelector("#divUnosBrojSpojnica").style.display = "flex";
+  document.querySelector("#divUnosSifraDionice").style.display = "flex";
   popuniListeZaVodove();
 }
 
