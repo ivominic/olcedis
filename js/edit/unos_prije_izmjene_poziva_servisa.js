@@ -186,7 +186,7 @@ function prikaziUnosNkro() {
 function unosStubova() {
   idObjekta = "12";
   akcija = "unos";
-  geometrijaZaBazuWkt = "POINT(0 0)";
+  geometrijaZaBazuWkt = "POINT (0, 0)";
   let podaciForme = new FormData();
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", akcija);
@@ -221,7 +221,7 @@ function unosStubova() {
   podaciForme.append("prikljucak_otcjep", document.querySelector("#prikljucak_otcjep").value);
   podaciForme.append("nn_vod", document.querySelector("#nn_vod").value);
   podaciForme.append("rastavljac", document.querySelector("#rastavljac").value);
-  podaciForme.append("10vod", document.querySelector("#vod_10").value);
+  //podaciForme.append("10_vod", document.querySelector("#10_vod").value);
 
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");
@@ -245,24 +245,45 @@ function unosStubova() {
   podaciForme.append("geohash_id_no", "test");
   podaciForme.append("sifra_napojne", "test");
   podaciForme.append("izvod_napojne", "test");
-  podaciForme.append("naziv_napojne", "test");
 
-  $.ajax({
-    url: wsServerOriginLocation + "/novi_portal/api/stubovi_store",
-    method: "post",
-    data: podaciForme,
-    processData: false,
-    contentType: false,
-    success: function (response) {
-      console.log("success", response);
-    },
-    error: function (response) {
-      console.log("error", response);
-    },
-  });
+  console.log("data", podaciForme.elements);
+
+  console.log("putanja servisa", wsServerOriginLocation + "/novi_portal/api/stubovi_store");
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", wsServerOriginLocation + "/novi_portal/api/stubovi_store");
+  //xhr.open("POST", "http://localhost:8080/test/cedis");
+  xhr.timeout = 100000;
+  xhr.setRequestHeader("Accept", "application/json");
+  xhr.setRequestHeader("Accept", "application/json");
+  //xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.ontimeout = function () {
+    poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
+  };
+  let jsonSlanje = JSON.stringify('{ fid_1: 1, Geometry: "POINT(0,0)" }');
+  //xhr.send(jsonSlanje);
+  xhr.send(podaciForme);
+  //openModalSpinner();
+  xhr.onreadystatechange = function () {
+    if (this.readyState === 4) {
+      if (this.status === 200) {
+        console.log("test", xhr.responseText);
+        let jsonResponse = JSON.parse(xhr.responseText);
+        if (jsonResponse["success"] === true) {
+          poruka("Uspjeh", jsonResponse["message"]);
+          //restartovanje();
+        } else {
+          poruka("Upozorenje", jsonResponse["message"]);
+        }
+        //closeModalSpinner();
+      } else {
+        poruka("Greska", xhr.statusText);
+        //closeModalSpinner();
+      }
+    }
+  };
 }
-
-unosStubova();
+//console.log("stubovi");
+//unosStubova();
 
 function unosVodova() {
   let podaciForme = new FormData();
@@ -764,4 +785,20 @@ function unosStubova1() {
   console.log("putanja servisa", wsServerOriginLocation + "/novi_portal/api/stubovi_store");
   let jsonSlanje = JSON.stringify('{ fid_1: 1, Geometry: "POINT(0,0)" }');
   //xhr.send(jsonSlanje);
+
+  $.ajax({
+    url: wsServerOriginLocation + "/novi_portal/api/stubovi_store",
+    method: "post",
+    data: podaciForme,
+    processData: false,
+    contentType: false,
+    success: function (response) {
+      console.log("success", response);
+    },
+    error: function (response) {
+      console.log("error", response);
+    },
+  });
 }
+console.log("stubovi");
+unosStubova1();
