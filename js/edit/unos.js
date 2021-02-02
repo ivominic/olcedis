@@ -191,7 +191,7 @@ function unosStubova() {
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", geometrijaZaBazuWkt);
-  podaciForme.append("fid_1", "");
+  podaciForme.append("fid_1", 0);
   podaciForme.append("gps", document.querySelector("#gps").value);
   podaciForme.append("broj", document.querySelector("#broj").value);
   podaciForme.append("sifra", document.querySelector("#sifra").value);
@@ -235,11 +235,11 @@ function unosStubova() {
   podaciForme.append("broj_priklj_mjernih_ormara", 2);
   podaciForme.append("datum_azuriranja", "");
 
-  podaciForme.append("layer_id", "test");
+  podaciForme.append("layer_id", 0);
   podaciForme.append("geohash_id", "test");
   podaciForme.append("korisnik", "test");
   podaciForme.append("katastar", "");
-  podaciForme.append("originalId", "test");
+  podaciForme.append("originalId", 0);
   podaciForme.append("posjeduje_sliku", "test");
   podaciForme.append("vlasnik", "test");
   podaciForme.append("geohash_id_no", "test");
@@ -255,6 +255,7 @@ function unosStubova() {
     contentType: false,
     success: function (response) {
       console.log("success", response);
+      poruka("Uspjeh", response.message);
     },
     error: function (response) {
       console.log("error", response);
