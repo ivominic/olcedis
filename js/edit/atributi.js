@@ -66,6 +66,11 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosFunkcija").style.display = "none";
   document.querySelector("#divUnosIdBilling").style.display = "none";
 
+  document.querySelector("#divUnosBrVodCelVisiNap").style.display = "none";
+  document.querySelector("#divUnosBrVodCelNiziNap").style.display = "none";
+
+  document.querySelector("#divUnosSysId").style.display = "none";
+
   document.querySelector("#divUnosId").style.display = "none";
   document.querySelector("#divUnosOsiguraci").style.display = "none";
   document.querySelector("#divUnosBrPretplatnika").style.display = "none";
@@ -163,6 +168,11 @@ function prikaziAtributDivTrafostanice() {
   document.querySelector("#divUnosNapojnaTs").style.display = "flex";
   document.querySelector("#divUnosFunkcija").style.display = "flex";
   document.querySelector("#divUnosIdBilling").style.display = "flex";
+  document.querySelector("#divUnosNadmorskaVisina").style.display = "flex";
+  document.querySelector("#divUnosBrVodCelVisiNap").style.display = "flex";
+  document.querySelector("#divUnosBrVodCelNiziNap").style.display = "flex";
+  document.querySelector("#divUnosNapon").style.display = "flex";
+  document.querySelector("#divUnosIdBr").style.display = "flex";
   popuniListeZaTrafostanice();
 }
 
@@ -177,6 +187,7 @@ function prikaziAtributDivPrikljucnoMjesto() {
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
   document.querySelector("#divUnosOpstina").style.display = "flex";
   document.querySelector("#divUnosNapon").style.display = "flex";
+  document.querySelector("#divUnosSysId").style.display = "flex";
   popuniListeZaPrikljucnaMjesta();
 }
 
@@ -192,5 +203,6 @@ function prikaziAtributDivNkro() {
   document.querySelector("#divUnosVrata").style.display = "flex";
   document.querySelector("#divUnosBrIzvoda").style.display = "flex";
   document.querySelector("#divUnosBrPrikljucaka").style.display = "flex";
+  document.querySelector("#divUnosSysId").style.display = "flex";
   popuniListeZaNkro();
 }

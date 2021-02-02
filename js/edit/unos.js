@@ -367,6 +367,11 @@ function unosTrafostanica(geometrijaWkt, servisAkcija) {
   podaciForme.append("pog_sprem", document.querySelector("#pog_sprem").value);
   podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
   podaciForme.append("opstina", document.querySelector("#opstina").value);
+  podaciForme.append("nad_vis", document.querySelector("#nad_visina").value);
+  podaciForme.append("br_vod_cel_visi_nap", document.querySelector("#br_vod_cel_visi_nap").value);
+  podaciForme.append("br_vod_cel_nizi_nap", document.querySelector("#br_vod_cel_nizi_nap").value);
+  podaciForme.append("napon", document.querySelector("#napon").value);
+  podaciForme.append("id_br", document.querySelector("#id_br").value);
 
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");
@@ -407,18 +412,19 @@ function unosTrafostanica(geometrijaWkt, servisAkcija) {
     },
   });
 }
-unosTrafostanica("POINT(0 0)", "I");
+//unosTrafostanica("POINT(0 0)", "I");
 
-function unosNkro() {
+function unosNkro(geometrijaWkt, servisAkcija) {
   let podaciForme = new FormData();
   podaciForme.append("id", idObjekta);
-  podaciForme.append("akcija", akcija);
-  podaciForme.append("geom", geometrijaZaBazuWkt);
+  podaciForme.append("akcija", servisAkcija);
+  podaciForme.append("Geometry", geometrijaWkt);
+  podaciForme.append("fid_1", 0);
   podaciForme.append("gps", document.querySelector("#gps").value);
   podaciForme.append("ts", document.querySelector("#ts").value);
   podaciForme.append("izvod_ts", document.querySelector("#izvod_ts").value);
   podaciForme.append("id", document.querySelector("#id").value);
-  podaciForme.append("materijal", document.querySelector("#materijal").value);
+  podaciForme.append("materijal", document.querySelector("#vrsta_materijal").value);
   podaciForme.append("montaza", document.querySelector("#montaza").value);
   podaciForme.append("vrata", document.querySelector("#vrata").value);
   podaciForme.append("br_izvoda", document.querySelector("#br_izvoda").value);
@@ -427,39 +433,55 @@ function unosNkro() {
   podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
   podaciForme.append("opstina", document.querySelector("#opstina").value);
   podaciForme.append("napon", document.querySelector("#napon").value);
-  podaciForme.append("", document.querySelector("#").value);
+  podaciForme.append("sys_id", document.querySelector("#sys_id").value);
 
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", sacuvajZapisUrl, true);
-  xhr.timeout = 100000;
-  xhr.ontimeout = function () {
-    poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
-  };
-  xhr.send(podaciForme);
-  openModalSpinner();
-  xhr.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      if (this.status === 200) {
-        let jsonResponse = JSON.parse(xhr.responseText);
-        if (jsonResponse["success"] === true) {
-          poruka("Uspjeh", jsonResponse["message"]);
-        } else {
-          poruka("Upozorenje", jsonResponse["message"]);
-        }
-        closeModalSpinner();
-      } else {
-        poruka("Greska", xhr.statusText);
-        closeModalSpinner();
-      }
-    }
-  };
+  //Dodao za poziv Jovanovog servisa
+  podaciForme.append("name", "test");
+  podaciForme.append("visibility", true);
+  podaciForme.append("open", true);
+  podaciForme.append("address", "");
+  podaciForme.append("phoneNumber", "");
+  podaciForme.append("Folder", "test");
+  podaciForme.append("fid", "test");
+  podaciForme.append("layer_name", "test");
+  //podaciForme.append("broj_priklj_mjernih_ormara", 2);
+  podaciForme.append("datum_azuriranja", "");
+
+  podaciForme.append("layer_id", 0);
+  podaciForme.append("geohash_id", "test");
+  podaciForme.append("korisnik", "test");
+  podaciForme.append("katastar", "");
+  podaciForme.append("originalId", 0);
+  podaciForme.append("posjeduje_sliku", "test");
+  podaciForme.append("vlasnik", "test");
+  podaciForme.append("geohash_id_no", "test");
+  podaciForme.append("sifra_napojne", "test");
+  podaciForme.append("izvod_napojne", "test");
+  podaciForme.append("naziv_napojne", "test");
+
+  $.ajax({
+    url: wsServerOriginLocation + "/novi_portal/api/nkro_store",
+    method: "post",
+    data: podaciForme,
+    processData: false,
+    contentType: false,
+    success: function (response) {
+      console.log("success", response);
+      poruka("Uspjeh", response.message);
+    },
+    error: function (response) {
+      console.log("error", response);
+    },
+  });
 }
+unosNkro("POINT(0 0)", "I");
 
-function unosPrikljucnoMjesto() {
+function unosPrikljucnoMjesto(geometrijaWkt, servisAkcija) {
   let podaciForme = new FormData();
   podaciForme.append("id", idObjekta);
-  podaciForme.append("akcija", akcija);
-  podaciForme.append("geom", geometrijaZaBazuWkt);
+  podaciForme.append("akcija", servisAkcija);
+  podaciForme.append("Geometry", geometrijaWkt);
+  podaciForme.append("fid_1", 0);
   podaciForme.append("gps", document.querySelector("#gps").value);
   podaciForme.append("ts", document.querySelector("#ts").value);
   podaciForme.append("izvod_ts", document.querySelector("#izvod_ts").value);
@@ -470,32 +492,48 @@ function unosPrikljucnoMjesto() {
   podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
   podaciForme.append("opstina", document.querySelector("#opstina").value);
   podaciForme.append("napon", document.querySelector("#napon").value);
+  podaciForme.append("sys_id", document.querySelector("#sys_id").value);
 
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", sacuvajZapisUrl, true);
-  xhr.timeout = 100000;
-  xhr.ontimeout = function () {
-    poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
-  };
-  xhr.send(podaciForme);
-  openModalSpinner();
-  xhr.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      if (this.status === 200) {
-        let jsonResponse = JSON.parse(xhr.responseText);
-        if (jsonResponse["success"] === true) {
-          poruka("Uspjeh", jsonResponse["message"]);
-        } else {
-          poruka("Upozorenje", jsonResponse["message"]);
-        }
-        closeModalSpinner();
-      } else {
-        poruka("Greska", xhr.statusText);
-        closeModalSpinner();
-      }
-    }
-  };
+  //Dodao za poziv Jovanovog servisa
+  podaciForme.append("name", "test");
+  podaciForme.append("visibility", true);
+  podaciForme.append("open", true);
+  podaciForme.append("address", "");
+  podaciForme.append("phoneNumber", "");
+  podaciForme.append("Folder", "test");
+  podaciForme.append("fid", "test");
+  podaciForme.append("layer_name", "test");
+  //podaciForme.append("broj_priklj_mjernih_ormara", 2);
+  podaciForme.append("datum_azuriranja", "");
+
+  podaciForme.append("layer_id", 0);
+  podaciForme.append("geohash_id", "test");
+  podaciForme.append("korisnik", "test");
+  podaciForme.append("katastar", "");
+  podaciForme.append("originalId", 0);
+  podaciForme.append("posjeduje_sliku", "test");
+  podaciForme.append("vlasnik", "test");
+  podaciForme.append("geohash_id_no", "test");
+  podaciForme.append("sifra_napojne", "test");
+  podaciForme.append("izvod_napojne", "test");
+  podaciForme.append("naziv_napojne", "test");
+
+  $.ajax({
+    url: wsServerOriginLocation + "/novi_portal/api/prikljucno_mjesto_store",
+    method: "post",
+    data: podaciForme,
+    processData: false,
+    contentType: false,
+    success: function (response) {
+      console.log("success", response);
+      poruka("Uspjeh", response.message);
+    },
+    error: function (response) {
+      console.log("error", response);
+    },
+  });
 }
+//unosPrikljucnoMjesto("POINT(0 0)", "I");
 
 /**Metode za popunjavanje polja atributima iz baze */
 
@@ -656,150 +694,4 @@ function popuniPoljaPrikljucnoMjesto(odgovor) {
   /*if (akcija === "izmijeni") {
     wfsZaEdit(idObjekta);
   }*/
-}
-
-function testunosPrikljucnoMjesto() {
-  let podaciForme = new FormData();
-  podaciForme.append("id", 1);
-  podaciForme.append("akcija", "unos");
-  podaciForme.append("Geometry", "POINT (0,0)");
-  podaciForme.append("fid_1", "1");
-  podaciForme.append("gps", "");
-  podaciForme.append("ts", "");
-  podaciForme.append("izvod_ts", "");
-  podaciForme.append("id", "");
-  podaciForme.append("tip", "");
-  podaciForme.append("osiguraci", "");
-  podaciForme.append("br_pretplatnika", "");
-  podaciForme.append("vlasnistvo", "");
-  podaciForme.append("opstina", "");
-  podaciForme.append("napon", "");
-  //Dodao za poziv Jovanovog servisa
-  podaciForme.append("name", "test");
-  podaciForme.append("visibility", true);
-  podaciForme.append("open", true);
-  podaciForme.append("address", "");
-  podaciForme.append("phoneNumber", "");
-  podaciForme.append("Folder", "test");
-  podaciForme.append("fid", "test");
-  podaciForme.append("layer_name", "test");
-  podaciForme.append("sys_id", 2);
-  podaciForme.append("datum_azuriranja", "");
-
-  podaciForme.append("layer_id", "test");
-  podaciForme.append("geohash_id", "test");
-  podaciForme.append("korisnik", "test");
-  podaciForme.append("katastar", "");
-  podaciForme.append("originalId", "test");
-  podaciForme.append("posjeduje_sliku", "test");
-  podaciForme.append("vlasnik", "test");
-  podaciForme.append("geohash_id_no", "test");
-  podaciForme.append("sifra_napojne", "test");
-  podaciForme.append("izvod_napojne", "test");
-
-  console.log("podaci forme", podaciForme.values());
-
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", wsServerOriginLocation + "/novi_portal/api/prikljucno_mjesto_store", true);
-  xhr.timeout = 100000;
-  xhr.setRequestHeader("Accept", "application/json");
-  xhr.setRequestHeader("Content-Type", "multipart/form-data");
-  xhr.ontimeout = function () {
-    poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
-  };
-  xhr.send(podaciForme);
-  /*xhr.send(
-    "id=1&akcija=unos&Geometry=POINT (0,0)&fid_1=1&gps=&ts=&izvod_ts=&id=&tip=&osiguraci=&br_pretplatnika=&vlasnistvo=&opstina=&napon=&name=test&visibility=true&open=true&address=&phoneNumber=&Folder=test&fid=test&layer_name=test&sys_id=2&datum_azuriranja=&layer_id=test&geohash_id=test&korisnik=test&katastar=&originalId=test&posjeduje_sliku=test&vlasnik=test&geohash_id_no=test&sifra_napojne=test&izvod_napojne=test"
-  );*/
-  openModalSpinner();
-  xhr.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      if (this.status === 200) {
-        console.log("odgovor servisa", xhr.responseText);
-        let jsonResponse = JSON.parse(xhr.responseText);
-        if (jsonResponse["success"] === true) {
-          poruka("Uspjeh", jsonResponse["message"]);
-        } else {
-          poruka("Upozorenje", jsonResponse["message"]);
-        }
-        closeModalSpinner();
-      } else {
-        poruka("Greska", xhr.statusText);
-        closeModalSpinner();
-      }
-    }
-  };
-}
-
-//console.log("prikljucnomjesto");
-//testunosPrikljucnoMjesto();
-
-function unosStubova1() {
-  idObjekta = "12";
-  akcija = "unos";
-  geometrijaZaBazuWkt = "POINT (0, 0)";
-  let podaciForme = new FormData();
-  podaciForme.append("id", idObjekta);
-  podaciForme.append("akcija", akcija);
-  podaciForme.append("Geometry", geometrijaZaBazuWkt);
-  podaciForme.append("fid_1", "");
-  podaciForme.append("gps", document.querySelector("#gps").value);
-  podaciForme.append("broj", document.querySelector("#broj").value);
-  podaciForme.append("sifra", document.querySelector("#sifra").value);
-  podaciForme.append("pripadnost", document.querySelector("#pripadnost").value);
-  podaciForme.append("tip", document.querySelector("#tip").value);
-  podaciForme.append("vrsta_namjena", document.querySelector("#vrsta_namjena").value);
-  podaciForme.append("vrsta_materijal", document.querySelector("#vrsta_materijal").value);
-  podaciForme.append("vrsta_drvenog", document.querySelector("#vrsta_drvenog").value);
-  podaciForme.append("nad_visina", document.querySelector("#nad_visina").value);
-  podaciForme.append("visina", document.querySelector("#visina").value);
-  podaciForme.append("rasp_prov", document.querySelector("#rasp_prov").value);
-  podaciForme.append("izolator_vrsta", document.querySelector("#izolator_vrsta").value);
-  podaciForme.append("izolator_funkcija", document.querySelector("#izolator_funkcija").value);
-  podaciForme.append("br_izol_faza", document.querySelector("#br_izol_faza").value);
-  podaciForme.append("tip_nosac_izol", document.querySelector("#tip_nosac_izol").value);
-  podaciForme.append("odvodnik_prenapona", document.querySelector("#odvodnik_prenapona").value);
-  podaciForme.append("uzemljivac", document.querySelector("#uzemljivac").value);
-  podaciForme.append("uzemljivac_otpor", document.querySelector("#uzemljivac_otpor").value);
-  podaciForme.append("optika", document.querySelector("#optika").value);
-  podaciForme.append("rasvjeta", document.querySelector("#rasvjeta").value);
-  podaciForme.append("br_pmo", document.querySelector("#br_pmo").value);
-  podaciForme.append("br_nnv", document.querySelector("#br_nnv").value);
-  podaciForme.append("pog_sprem", document.querySelector("#pog_sprem").value);
-  podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
-  podaciForme.append("opstina", document.querySelector("#opstina").value);
-  podaciForme.append("napon", document.querySelector("#napon").value);
-  podaciForme.append("prikljucak_otcjep", document.querySelector("#prikljucak_otcjep").value);
-  podaciForme.append("nn_vod", document.querySelector("#nn_vod").value);
-  podaciForme.append("rastavljac", document.querySelector("#rastavljac").value);
-  //podaciForme.append("10_vod", document.querySelector("#10_vod").value);
-
-  //Dodao za poziv Jovanovog servisa
-  podaciForme.append("name", "test");
-  podaciForme.append("visibility", true);
-  podaciForme.append("open", true);
-  podaciForme.append("address", "");
-  podaciForme.append("phoneNumber", "");
-  podaciForme.append("Folder", "test");
-  podaciForme.append("fid", "test");
-  podaciForme.append("layer_name", "test");
-  podaciForme.append("broj_priklj_mjernih_ormara", 2);
-  podaciForme.append("datum_azuriranja", "");
-
-  podaciForme.append("layer_id", "test");
-  podaciForme.append("geohash_id", "test");
-  podaciForme.append("korisnik", "test");
-  podaciForme.append("katastar", "");
-  podaciForme.append("originalId", "test");
-  podaciForme.append("posjeduje_sliku", "test");
-  podaciForme.append("vlasnik", "test");
-  podaciForme.append("geohash_id_no", "test");
-  podaciForme.append("sifra_napojne", "test");
-  podaciForme.append("izvod_napojne", "test");
-
-  console.log("podaciForme.elements", podaciForme.elements);
-
-  console.log("putanja servisa", wsServerOriginLocation + "/novi_portal/api/stubovi_store");
-  let jsonSlanje = JSON.stringify('{ fid_1: 1, Geometry: "POINT(0,0)" }');
-  //xhr.send(jsonSlanje);
 }
