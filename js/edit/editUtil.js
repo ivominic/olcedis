@@ -373,3 +373,41 @@ function prikaziVektor() {
     },
   });
 }
+
+/**Paljenje i gašenje lejera */
+document.querySelector("#lejer_stubovi").addEventListener("click", prikazLejeraStubovi);
+document.querySelector("#lejer_vodovi").addEventListener("click", prikazLejeraVodovi);
+document.querySelector("#lejer_trafostanice").addEventListener("click", prikazLejeraTrafostanice);
+document.querySelector("#lejer_prikljucno_mjesto").addEventListener("click", prikazLejeraPrikljucnoMjesto);
+document.querySelector("#lejer_nkro").addEventListener("click", prikazLejeraNkro);
+document.querySelector("#lejer_potrosac").addEventListener("click", prikazLejeraPotrosac);
+
+function prikazLejeraStubovi() {
+  wmsStubovi.setVisible(!wmsStubovi.getVisible());
+  zatvoriHamburger();
+}
+
+function prikazLejeraVodovi() {
+  wmsVodovi.setVisible(!wmsVodovi.getVisible());
+  zatvoriHamburger();
+}
+
+function prikazLejeraTrafostanice() {
+  wmsTrafostanice.setVisible(!wmsTrafostanice.getVisible());
+  zatvoriHamburger();
+}
+
+function prikazLejeraPrikljucnoMjesto() {
+  wmsPrikljucnoMjesto.setVisible(!wmsPrikljucnoMjesto.getVisible());
+  zatvoriHamburger();
+}
+
+function prikazLejeraNkro() {
+  wmsNKRO.setVisible(!wmsNKRO.getVisible());
+  zatvoriHamburger();
+}
+
+function prikazLejeraPotrosac() {
+  wmsPotrosaci.setVisible(!wmsPotrosaci.getVisible());
+  zatvoriHamburger();
+}
