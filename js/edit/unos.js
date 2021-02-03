@@ -474,7 +474,7 @@ function unosNkro(geometrijaWkt, servisAkcija) {
     },
   });
 }
-unosNkro("POINT(0 0)", "I");
+//unosNkro("POINT(0 0)", "I");
 
 function unosPrikljucnoMjesto(geometrijaWkt, servisAkcija) {
   let podaciForme = new FormData();
