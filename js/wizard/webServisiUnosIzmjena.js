@@ -58,7 +58,6 @@ function cudTrafostanica(feature, akcija) {
   podaciForme.append("open", feature.values_.open);
   podaciForme.append("Folder", feature.values_.Folder);
   podaciForme.append("fid", feature.values_.fid);
-  podaciForme.append("layer_id", feature.values_.layer_id);
   podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
 
   $.ajax({
@@ -84,12 +83,11 @@ function cudTrafostanica(feature, akcija) {
  */
 function cudVod(feature, akcija) {
   let wkt = wktGeometrije(feature);
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/***********";
   let podaciForme = new FormData();
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti
-  podaciForme.append("fid", feature.values_.fid);
+  podaciForme.append("fid1", feature.values_.fid1);
   podaciForme.append("name", feature.values_.name);
   podaciForme.append("address", feature.values_.address);
   podaciForme.append("phoneNumber", feature.values_.phoneNumber);
@@ -134,31 +132,26 @@ function cudVod(feature, akcija) {
   podaciForme.append("sifra_dionice", feature.values_.sifra_dionice);
   podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
   podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
+  podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
+  podaciForme.append("visibility", feature.values_.visibility);
+  podaciForme.append("open", feature.values_.open);
+  podaciForme.append("Folder", feature.values_.Folder);
+  podaciForme.append("fid", feature.values_.fid);
 
-  //TODO: Ukloniti ovu liniju kad web servisi budu spremni
-  return false;
-
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", urlServisa, true);
-  xhr.timeout = 10000000;
-  xhr.ontimeout = function () {
-    alert("Akcija je prekinuta jer je trajala predugo.");
-  };
-  xhr.send(podaciForme);
-  //openModalSpinner();
-
-  xhr.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      if (this.status === 200) {
-        let jsonResponse = JSON.parse(xhr.responseText);
-        console.log("response uspjeh", jsonResponse);
-        //closeModalSpinner();
-      } else {
-        alert(xhr.statusText);
-        //closeModalSpinner();
-      }
-    }
-  };
+  $.ajax({
+    url: wsServerOriginLocation + "/novi_portal/api/vodovi_store",
+    method: "post",
+    data: podaciForme,
+    processData: false,
+    contentType: false,
+    success: function (response) {
+      console.log("success", response);
+      poruka("Uspjeh", response.message);
+    },
+    error: function (response) {
+      console.log("error", response);
+    },
+  });
 }
 
 /**
@@ -167,14 +160,12 @@ function cudVod(feature, akcija) {
  * @param {*} akcija
  */
 function cudStub(feature, akcija) {
-  console.log("feature stub", feature);
   let wkt = wktGeometrije(feature);
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/***********";
   let podaciForme = new FormData();
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti
-  podaciForme.append("fid", feature.values_.fid);
+  podaciForme.append("fid_1", feature.values_.fid_1);
   podaciForme.append("name", feature.values_.name);
   podaciForme.append("address", feature.values_.address);
   podaciForme.append("phoneNumber", feature.values_.phoneNumber);
@@ -221,31 +212,26 @@ function cudStub(feature, akcija) {
   podaciForme.append("geohash_id_no", feature.values_.geohash_id_no);
   podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
   podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
+  podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
+  podaciForme.append("visibility", feature.values_.visibility);
+  podaciForme.append("open", feature.values_.open);
+  podaciForme.append("Folder", feature.values_.Folder);
+  podaciForme.append("fid", feature.values_.fid);
 
-  //TODO: Ukloniti ovu liniju kad web servisi budu spremni
-  return false;
-
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", urlServisa, true);
-  xhr.timeout = 10000000;
-  xhr.ontimeout = function () {
-    alert("Akcija je prekinuta jer je trajala predugo.");
-  };
-  xhr.send(podaciForme);
-  //openModalSpinner();
-
-  xhr.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      if (this.status === 200) {
-        let jsonResponse = JSON.parse(xhr.responseText);
-        console.log("response uspjeh", jsonResponse);
-        //closeModalSpinner();
-      } else {
-        alert(xhr.statusText);
-        //closeModalSpinner();
-      }
-    }
-  };
+  $.ajax({
+    url: wsServerOriginLocation + "/novi_portal/api/stubovi_store",
+    method: "post",
+    data: podaciForme,
+    processData: false,
+    contentType: false,
+    success: function (response) {
+      console.log("success", response);
+      poruka("Uspjeh", response.message);
+    },
+    error: function (response) {
+      console.log("error", response);
+    },
+  });
 }
 
 /**
