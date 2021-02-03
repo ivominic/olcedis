@@ -10,6 +10,11 @@
 function cudTrafostanica(feature, akcija) {
   let wkt = wktGeometrije(feature);
   let podaciForme = new FormData();
+  console.log("fid_1", feature.values_.fid_1);
+  console.log("originalId", feature.values_.originalId);
+  console.log("layer_id", feature.values_.layer_id);
+  console.log("fid", feature.values_.fid);
+  console.log("wkt", wkt);
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti

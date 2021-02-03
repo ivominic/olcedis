@@ -114,9 +114,9 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
   let stringNiz = "[" + nizTS.join(",") + "]";
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/upari_trafostanice?trafostanice=" + stringNiz + dodatniParametriWS;
   $("#ddlPovezivanjeTSpronadjene").empty();
+
   $.ajax({
     url: urlServisa,
-    headers: { Authorization: "ApiKey fkjasgjgSJAGFAPSSAPG123" },
     data: "",
     type: "GET",
     success: function (data) {
@@ -319,7 +319,6 @@ function vodoviIzBilingaZaUparivanje(nizVodova) {
   $("#ddlPovezivanjeTSpronadjene").empty();
   $.ajax({
     url: urlServisa,
-    headers: { Authorization: "ApiKey fkjasgjgSJAGFAPSSAPG123" },
     data: "",
     type: "POST",
     success: function (data) {
