@@ -144,8 +144,8 @@ function poveziTS() {
 
   console.log("povezane trafostanice", paroviTS);
   if (document.querySelector("#ddlPovezivanjeTSselektovane").length === 0 && document.querySelector("#ddlPovezivanjeTSpronadjene").length === 0) {
-    alert("Uspješno uparene sve trafostanice: \n" + paroviTS.join(",") + "\n Prelazak na sljedeći korak wizard-a");
-    testUpisTrafostanice();
+    //alert("Uspješno uparene sve trafostanice: \n" + paroviTS.join(",") + "\n Prelazak na sljedeći korak wizard-a");
+    //testUpisTrafostanice();
     console.log("Uspješno uparene sve trafostanice:", paroviTS);
     //TODO: Prelazak na sljedeći korak
     blnZavrsenoUparivanjeTrafostanica = true;
