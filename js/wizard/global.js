@@ -65,7 +65,7 @@ let osmBaseMap = new ol.layer.Tile({
 let satelitBaseMap = new ol.layer.Tile({
   title: "Satelitski snimak",
   source: new ol.source.XYZ({
-    url: "http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}",
+    url: "https://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}",
     maxZoom: 23,
   }),
 });
