@@ -15,7 +15,7 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosIzolatorFunkcija").style.display = "none";
   document.querySelector("#divUnosBrIzolFaza").style.display = "none";
   document.querySelector("#divUnosTipIzolatora").style.display = "none";
-  document.querySelector("#divUnosNosaciIzolatora").style.display = "flex";
+  document.querySelector("#divUnosNosaciIzolatora").style.display = "none";
   document.querySelector("#divUnosOdvodnikPrenapona").style.display = "none";
   document.querySelector("#divUnosUzemljivac").style.display = "none";
   document.querySelector("#divUnosOtporUzemljivaca").style.display = "none";
@@ -75,6 +75,7 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosId").style.display = "none";
   document.querySelector("#divUnosOsiguraci").style.display = "none";
   document.querySelector("#divUnosBrPretplatnika").style.display = "none";
+  document.querySelector("#divUnosTipPM").style.display = "none";
 
   document.querySelector("#divUnosMontaza").style.display = "none";
   document.querySelector("#divUnosVrata").style.display = "none";
@@ -183,13 +184,14 @@ function prikaziAtributDivPrikljucnoMjesto() {
   document.querySelector("#divUnosNapojnaTs").style.display = "flex";
   document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosId").style.display = "flex";
-  document.querySelector("#divUnosTip").style.display = "flex";
-  document.querySelector("#divUnosOsiguraci").style.display = "none";
-  document.querySelector("#divUnosBrPretplatnika").style.display = "none";
+  //document.querySelector("#divUnosTip").style.display = "flex";
+  document.querySelector("#divUnosOsiguraci").style.display = "flex";
+  document.querySelector("#divUnosBrPretplatnika").style.display = "flex";
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
   //document.querySelector("#divUnosOpstina").style.display = "flex";
   document.querySelector("#divUnosNapon").style.display = "flex";
   document.querySelector("#divUnosSysId").style.display = "flex";
+  document.querySelector("#divUnosTipPM").style.display = "flex";
   popuniListeZaPrikljucnaMjesta();
 }
 

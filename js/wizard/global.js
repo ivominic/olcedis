@@ -256,23 +256,23 @@ function popuniListeZaStubove(napon) {
 }
 
 function popuniListeZaVodove(napon) {
-  popuniDdlAtributima("#br_faza", "vodovi", "br_faza", "napon", napon);
+  popuniDdlAtributima("#br_faza", "vodovi", "br_faza", "", "");
   popuniDdlAtributima("#vrsta", "vodovi", "vrsta", "napon", napon);
   popuniDdlAtributima("#tip", "vodovi", "tip", "napon", napon);
   popuniDdlAtributima("#presjek", "vodovi", "presjek", "napon", napon);
-  popuniDdlAtributima("#materijal", "vodovi", "materijal", "napon", napon);
-  popuniDdlAtributima("#rasvjeta", "vodovi", "rasvjeta", "napon", napon);
+  popuniDdlAtributima("#vrsta_materijal", "vodovi", "materijal", "napon", napon);
+  popuniDdlAtributima("#rasvjeta", "vodovi", "rasvjeta", "", "");
   popuniDdlAtributima("#pog_sprem", "vodovi", "pog_sprem", "napon", napon);
   popuniDdlAtributima("#vlasnistvo", "vodovi", "vlasnistvo", "napon", napon);
   popuniDdlAtributima("#uze_presjek", "vodovi", "uze_presjek", "napon", napon);
   popuniDdlAtributima("#uze", "vodovi", "uze", "napon", napon);
 
-  popuniDdlAtributima("#pretraga_br_faza", "vodovi", "br_faza", "napon", napon);
+  popuniDdlAtributima("#pretraga_br_faza", "vodovi", "br_faza", "", "");
   popuniDdlAtributima("#pretraga_vrsta", "vodovi", "vrsta", "napon", napon);
   popuniDdlAtributima("#pretraga_tip", "vodovi", "tip", "napon", napon);
   popuniDdlAtributima("#pretraga_presjek", "vodovi", "presjek", "napon", napon);
-  popuniDdlAtributima("#pretraga_materijal", "vodovi", "materijal", "napon", napon);
-  popuniDdlAtributima("#pretraga_rasvjeta", "vodovi", "rasvjeta", "napon", napon);
+  popuniDdlAtributima("#pretraga_vrsta_materijal", "vodovi", "materijal", "napon", napon);
+  popuniDdlAtributima("#pretraga_rasvjeta", "vodovi", "rasvjeta", "", "");
   popuniDdlAtributima("#pretraga_pog_sprem", "vodovi", "pog_sprem", "napon", napon);
   popuniDdlAtributima("#pretraga_vlasnistvo", "vodovi", "vlasnistvo", "napon", napon);
   popuniDdlAtributima("#pretraga_uze_presjek", "vodovi", "uze_presjek", "napon", napon);
@@ -300,11 +300,13 @@ function popuniListeZaTrafostanice(napon) {
 }
 
 function popuniListeZaPrikljucnaMjesta() {
-  popuniDdlAtributima("#osiguraci", "prikljucnomjesto", "osiguraci", "", "");
-  popuniDdlAtributima("#vlasnistvo", "prikljucnomjesto", "vlasnistvo", "", "");
+  popuniDdlAtributima("#osiguraci", "prikljucno_mjesto", "osiguraci", "", "");
+  popuniDdlAtributima("#vlasnistvo", "prikljucno_mjesto", "vlasnistvo", "", "");
+  //popuniDdlAtributima("#tip", "prikljucno_mjesto", "tip", "", "");
 
-  popuniDdlAtributima("#pretraga_osiguraci", "prikljucnomjesto", "osiguraci", "", "");
-  popuniDdlAtributima("#pretraga_vlasnistvo", "prikljucnomjesto", "vlasnistvo", "", "");
+  popuniDdlAtributima("#pretraga_osiguraci", "prikljucno_mjesto", "osiguraci", "", "");
+  popuniDdlAtributima("#pretraga_vlasnistvo", "prikljucno_mjesto", "vlasnistvo", "", "");
+  //popuniDdlAtributima("#pretraga_tip", "prikljucno_mjesto", "pretraga_tip", "", "");
 }
 
 function popuniListeZaNkro() {
