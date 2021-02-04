@@ -135,7 +135,7 @@ function prikaziCetvrtuFormuWizarda() {
 
       //Dodavanje selektovanih vodova u listu za uparivanje
       let option = document.createElement("option");
-      option.text = selektovaniVodoviFeatures[i].values_.name + "-" + selektovaneTrafostaniceFeatures[i].values_.originalId;
+      option.text = selektovaniVodoviFeatures[i].values_.name + "-" + selektovaniVodoviFeatures[i].values_.originalId;
       option.value = selektovaniVodoviFeatures[i].values_.originalId;
       document.querySelector("#ddlPovezivanjeVodovaSelektovane").appendChild(option);
     }

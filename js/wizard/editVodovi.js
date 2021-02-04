@@ -289,12 +289,13 @@ function presjekVodovaSaTrafostanicama(nadredjenaLinijaFeature, podredjenaLinija
       }
     }
 
-    if (odabranaTS === selektovaneTrafostaniceFeatures[i].values_.originalId.toString()) {
+    //Mislim da ovaj dio nije potreban, već će trafostanicama u prvom koraku biti dodijeljene vrijednosti iz bilinga
+    /*if (odabranaTS === selektovaneTrafostaniceFeatures[i].values_.originalId.toString()) {
       selektovaneTrafostaniceFeatures[i].akcija = "Izmjena";
       selektovaneTrafostaniceFeatures[i].values_.id_billing = tsIzSistema;
       selektovaneTrafostaniceFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
       selektovaneTrafostaniceFeatures[i].values_.napojna_ts = nazivNapojneTrafostanice;
       selektovaneTrafostaniceFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
-    }
+    }*/
   }
 }
