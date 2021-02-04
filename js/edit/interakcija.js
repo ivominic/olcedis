@@ -72,6 +72,11 @@ function satelitPodloga() {
   zatvoriHamburger();
 }
 
+function ortofotoPodloga() {
+  map.getLayers().setAt(0, ortofotoBaseMap);
+  zatvoriHamburger();
+}
+
 /**Funkcije za download WFS-a */
 function shpDownload() {
   zatvoriHamburger();
@@ -160,6 +165,7 @@ document.querySelector("#selekcijaZavrsnogStuba").addEventListener("click", sele
 document.querySelector("#restart").addEventListener("click", restart);
 document.querySelector("#podloga_osm").addEventListener("click", osmPodloga);
 document.querySelector("#podloga_satelit").addEventListener("click", satelitPodloga);
+document.querySelector("#podloga_ortofoto").addEventListener("click", ortofotoPodloga);
 document.querySelector("#shp").addEventListener("click", shpDownload);
 document.querySelector("#kml").addEventListener("click", kmlDownload);
 document.querySelector("#excel").addEventListener("click", excelDownload);

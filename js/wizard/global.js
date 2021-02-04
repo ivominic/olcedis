@@ -69,6 +69,18 @@ let satelitBaseMap = new ol.layer.Tile({
     maxZoom: 23,
   }),
 });
+let ortofotoBaseMap = new ol.layer.Image({
+  title: "Ortofoto",
+  name: "ortofoto_2018",
+  source: new ol.source.ImageWMS({
+    url: wmsUrl,
+    params: {
+      LAYERS: "geonode:ortofoto_2018",
+    },
+    ratio: 1,
+    serverType: "geoserver",
+  }),
+});
 
 /**Stilizacija vektora */
 var fill = new ol.style.Fill({
