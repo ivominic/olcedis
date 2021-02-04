@@ -217,89 +217,91 @@ function globalCqlZaNaponskiNivo(nivo, sloj) {
 //x/y uzimam sve koje počinju sa y
 
 //Popunjavanje ddl listi
-function popuniListeZaStubove() {
+function popuniListeZaStubove(napon) {
+  console.log("vrsta_namjena", napon);
   popuniDdlAtributima("#tip", "stubovi", "tip", "", "");
-  popuniDdlAtributima("#vrsta_namjena", "stubovi", "vrsta_namjena", "", "");
-  popuniDdlAtributima("#vrsta_materijal", "stubovi", "vrsta_materijal", "", "");
-  popuniDdlAtributima("#vrsta_drvenog", "stubovi", "vrsta_drvenog", "", "");
-  popuniDdlAtributima("#izolator_vrsta", "stubovi", "izolator_vrsta", "", "");
-  popuniDdlAtributima("#izolator_funkcija", "stubovi", "izolator_funkcija", "", "");
-  popuniDdlAtributima("#tip_nosac_izol", "stubovi", "tip_nosac_izol", "", "");
-  popuniDdlAtributima("#odvodnik_prenapona", "stubovi", "odvodnik_prenapona", "", "");
-  popuniDdlAtributima("#uzemljivac", "stubovi", "uzemljivac", "", "");
-  popuniDdlAtributima("#optika", "stubovi", "optika", "", "");
-  popuniDdlAtributima("#rasvjeta", "stubovi", "rasvjeta", "", "");
-  popuniDdlAtributima("#vlasnistvo", "stubovi", "vlasnistvo", "", "");
-  popuniDdlAtributima("#prikljucak_otcjep", "stubovi", "prikljucak_otcjep", "", "");
-  popuniDdlAtributima("#nn_vod", "stubovi", "nn_vod", "", "");
-  popuniDdlAtributima("#rastavljac", "stubovi", "rastavljac", "", "");
-  popuniDdlAtributima("#10_vod", "stubovi", "10_vod", "", "");
+  popuniDdlAtributima("#vrsta_namjena", "stubovi", "vrsta_namjena", "napon", napon);
+  popuniDdlAtributima("#vrsta_materijal", "stubovi", "vrsta_materijal", "napon", napon);
+  popuniDdlAtributima("#vrsta_drvenog", "stubovi", "vrsta_drvenog", "napon", napon);
+  popuniDdlAtributima("#izolator_vrsta", "stubovi", "izolator_vrsta", "napon", napon);
+  popuniDdlAtributima("#izolator_funkcija", "stubovi", "izolator_funkcija", "napon", napon);
+  popuniDdlAtributima("#tip_izolatora", "stubovi", "tip_izolatora", "napon", napon);
+  popuniDdlAtributima("#nosaci_izolatora", "stubovi", "nosaci_izolatora", "napon", napon);
+  popuniDdlAtributima("#odvodnik_prenapona", "stubovi", "odvodnik_prenapona", "napon", napon);
+  popuniDdlAtributima("#uzemljivac", "stubovi", "uzemljivac", "napon", napon);
+  popuniDdlAtributima("#optika", "stubovi", "optika", "napon", napon);
+  popuniDdlAtributima("#rasvjeta", "stubovi", "rasvjeta", "napon", napon);
+  popuniDdlAtributima("#vlasnistvo", "stubovi", "vlasnistvo", "napon", napon);
+  popuniDdlAtributima("#prikljucak_otcjep", "stubovi", "prikljucak_otcjep", "napon", napon);
+  popuniDdlAtributima("#nn_vod", "stubovi", "nn_vod", "napon", napon);
+  popuniDdlAtributima("#rastavljac", "stubovi", "rastavljac", "napon", napon);
+  popuniDdlAtributima("#10_vod", "stubovi", "10_vod", "napon", napon);
 
-  popuniDdlAtributima("#pretraga_tip", "stubovi", "tip", "", "");
-  popuniDdlAtributima("#pretraga_vrsta_namjena", "stubovi", "vrsta_namjena", "", "");
-  popuniDdlAtributima("#pretraga_vrsta_materijal", "stubovi", "vrsta_materijal", "", "");
-  popuniDdlAtributima("#pretraga_vrsta_drvenog", "stubovi", "vrsta_drvenog", "", "");
-  popuniDdlAtributima("#pretraga_izolator_vrsta", "stubovi", "izolator_vrsta", "", "");
-  popuniDdlAtributima("#pretraga_izolator_funkcija", "stubovi", "izolator_funkcija", "", "");
-  popuniDdlAtributima("#pretraga_tip_nosac_izol", "stubovi", "tip_nosac_izol", "", "");
-  popuniDdlAtributima("#pretraga_odvodnik_prenapona", "stubovi", "odvodnik_prenapona", "", "");
-  popuniDdlAtributima("#pretraga_uzemljivac", "stubovi", "uzemljivac", "", "");
-  popuniDdlAtributima("#pretraga_optika", "stubovi", "optika", "", "");
-  popuniDdlAtributima("#pretraga_rasvjeta", "stubovi", "rasvjeta", "", "");
-  popuniDdlAtributima("#pretraga_vlasnistvo", "stubovi", "vlasnistvo", "", "");
-  popuniDdlAtributima("#pretraga_opstina", "stubovi", "opstina", "", "");
-  popuniDdlAtributima("#pretraga_prikljucak_otcjep", "stubovi", "prikljucak_otcjep", "", "");
-  popuniDdlAtributima("#pretraga_nn_vod", "stubovi", "nn_vod", "", "");
-  popuniDdlAtributima("#pretraga_rastavljac", "stubovi", "rastavljac", "", "");
-  popuniDdlAtributima("#pretraga_10_vod", "stubovi", "10_vod", "", "");
+  popuniDdlAtributima("#pretraga_tip", "stubovi", "tip", "napon", napon);
+  popuniDdlAtributima("#pretraga_vrsta_namjena", "stubovi", "vrsta_namjena", "napon", napon);
+  popuniDdlAtributima("#pretraga_vrsta_materijal", "stubovi", "vrsta_materijal", "napon", napon);
+  popuniDdlAtributima("#pretraga_vrsta_drvenog", "stubovi", "vrsta_drvenog", "napon", napon);
+  popuniDdlAtributima("#pretraga_izolator_vrsta", "stubovi", "izolator_vrsta", "napon", napon);
+  popuniDdlAtributima("#pretraga_izolator_funkcija", "stubovi", "izolator_funkcija", "napon", napon);
+  popuniDdlAtributima("#pretraga_tip_nosac_izol", "stubovi", "tip_nosac_izol", "napon", napon);
+  popuniDdlAtributima("#pretraga_odvodnik_prenapona", "stubovi", "odvodnik_prenapona", "napon", napon);
+  popuniDdlAtributima("#pretraga_uzemljivac", "stubovi", "uzemljivac", "napon", napon);
+  popuniDdlAtributima("#pretraga_optika", "stubovi", "optika", "napon", napon);
+  popuniDdlAtributima("#pretraga_rasvjeta", "stubovi", "rasvjeta", "napon", napon);
+  popuniDdlAtributima("#pretraga_vlasnistvo", "stubovi", "vlasnistvo", "napon", napon);
+  popuniDdlAtributima("#pretraga_opstina", "stubovi", "opstina", "napon", napon);
+  popuniDdlAtributima("#pretraga_prikljucak_otcjep", "stubovi", "prikljucak_otcjep", "napon", napon);
+  popuniDdlAtributima("#pretraga_nn_vod", "stubovi", "nn_vod", "napon", napon);
+  popuniDdlAtributima("#pretraga_rastavljac", "stubovi", "rastavljac", "napon", napon);
+  popuniDdlAtributima("#pretraga_10_vod", "stubovi", "10_vod", "napon", napon);
 }
 
-function popuniListeZaVodove() {
-  popuniDdlAtributima("#br_faza", "vodovi", "br_faza", "", "");
-  popuniDdlAtributima("#vrsta", "vodovi", "vrsta", "", "");
-  popuniDdlAtributima("#tip", "vodovi", "tip", "", "");
-  popuniDdlAtributima("#presjek", "vodovi", "presjek", "", "");
-  popuniDdlAtributima("#materijal", "vodovi", "materijal", "", "");
-  popuniDdlAtributima("#rasvjeta", "vodovi", "rasvjeta", "", "");
-  popuniDdlAtributima("#pog_sprem", "vodovi", "pog_sprem", "", "");
-  popuniDdlAtributima("#vlasnistvo", "vodovi", "vlasnistvo", "", "");
-  popuniDdlAtributima("#opstina", "vodovi", "opstina", "", "");
-  popuniDdlAtributima("#uze_presjek", "vodovi", "uze_presjek", "", "");
-  popuniDdlAtributima("#uze", "vodovi", "uze", "", "");
+function popuniListeZaVodove(napon) {
+  popuniDdlAtributima("#br_faza", "vodovi", "br_faza", "napon", napon);
+  popuniDdlAtributima("#vrsta", "vodovi", "vrsta", "napon", napon);
+  popuniDdlAtributima("#tip", "vodovi", "tip", "napon", napon);
+  popuniDdlAtributima("#presjek", "vodovi", "presjek", "napon", napon);
+  popuniDdlAtributima("#materijal", "vodovi", "materijal", "napon", napon);
+  popuniDdlAtributima("#rasvjeta", "vodovi", "rasvjeta", "napon", napon);
+  popuniDdlAtributima("#pog_sprem", "vodovi", "pog_sprem", "napon", napon);
+  popuniDdlAtributima("#vlasnistvo", "vodovi", "vlasnistvo", "napon", napon);
+  popuniDdlAtributima("#opstina", "vodovi", "opstina", "napon", napon);
+  popuniDdlAtributima("#uze_presjek", "vodovi", "uze_presjek", "napon", napon);
+  popuniDdlAtributima("#uze", "vodovi", "uze", "napon", napon);
 
-  popuniDdlAtributima("#pretraga_br_faza", "vodovi", "br_faza", "", "");
-  popuniDdlAtributima("#pretraga_vrsta", "vodovi", "vrsta", "", "");
-  popuniDdlAtributima("#pretraga_tip", "vodovi", "tip", "", "");
-  popuniDdlAtributima("#pretraga_presjek", "vodovi", "presjek", "", "");
-  popuniDdlAtributima("#pretraga_materijal", "vodovi", "materijal", "", "");
-  popuniDdlAtributima("#pretraga_rasvjeta", "vodovi", "rasvjeta", "", "");
-  popuniDdlAtributima("#pretraga_pog_sprem", "vodovi", "pog_sprem", "", "");
-  popuniDdlAtributima("#pretraga_vlasnistvo", "vodovi", "vlasnistvo", "", "");
-  popuniDdlAtributima("#pretraga_opstina", "vodovi", "opstina", "", "");
-  popuniDdlAtributima("#pretraga_uze_presjek", "vodovi", "uze_presjek", "", "");
-  popuniDdlAtributima("#pretraga_uze", "vodovi", "uze", "", "");
+  popuniDdlAtributima("#pretraga_br_faza", "vodovi", "br_faza", "napon", napon);
+  popuniDdlAtributima("#pretraga_vrsta", "vodovi", "vrsta", "napon", napon);
+  popuniDdlAtributima("#pretraga_tip", "vodovi", "tip", "napon", napon);
+  popuniDdlAtributima("#pretraga_presjek", "vodovi", "presjek", "napon", napon);
+  popuniDdlAtributima("#pretraga_materijal", "vodovi", "materijal", "napon", napon);
+  popuniDdlAtributima("#pretraga_rasvjeta", "vodovi", "rasvjeta", "napon", napon);
+  popuniDdlAtributima("#pretraga_pog_sprem", "vodovi", "pog_sprem", "napon", napon);
+  popuniDdlAtributima("#pretraga_vlasnistvo", "vodovi", "vlasnistvo", "napon", napon);
+  popuniDdlAtributima("#pretraga_opstina", "vodovi", "opstina", "napon", napon);
+  popuniDdlAtributima("#pretraga_uze_presjek", "vodovi", "uze_presjek", "napon", napon);
+  popuniDdlAtributima("#pretraga_uze", "vodovi", "uze", "napon", napon);
 }
 
-function popuniListeZaTrafostanice() {
-  popuniDdlAtributima("#funkcija", "trafostanice", "funkcija", "", "");
-  popuniDdlAtributima("#tip", "trafostanice", "tip", "", "");
-  popuniDdlAtributima("#prenos_odnos", "trafostanice", "prenos_odnos", "", "");
-  popuniDdlAtributima("#inst_snaga_t1", "trafostanice", "inst_snaga_t1", "", "");
-  popuniDdlAtributima("#inst_snaga_t2", "trafostanice", "inst_snaga_t2", "", "");
-  popuniDdlAtributima("#inst_snaga_t3", "trafostanice", "inst_snaga_t3", "", "");
-  popuniDdlAtributima("#inst_snaga_t4", "trafostanice", "inst_snaga_t4", "", "");
-  popuniDdlAtributima("#vlasnistvo", "trafostanice", "vlasnistvo", "", "");
-  popuniDdlAtributima("#opstina", "trafostanice", "opstina", "", "");
+function popuniListeZaTrafostanice(napon) {
+  popuniDdlAtributima("#funkcija", "trafostanice", "funkcija", "napon", napon);
+  popuniDdlAtributima("#tip", "trafostanice", "tip", "napon", napon);
+  popuniDdlAtributima("#prenos_odnos", "trafostanice", "prenos_odnos", "napon", napon);
+  popuniDdlAtributima("#inst_snaga_t1", "trafostanice", "inst_snaga_t1", "napon", napon);
+  popuniDdlAtributima("#inst_snaga_t2", "trafostanice", "inst_snaga_t2", "napon", napon);
+  popuniDdlAtributima("#inst_snaga_t3", "trafostanice", "inst_snaga_t3", "napon", napon);
+  popuniDdlAtributima("#inst_snaga_t4", "trafostanice", "inst_snaga_t4", "napon", napon);
+  popuniDdlAtributima("#vlasnistvo", "trafostanice", "vlasnistvo", "napon", napon);
+  popuniDdlAtributima("#opstina", "trafostanice", "opstina", "napon", napon);
 
-  popuniDdlAtributima("#pretraga_funkcija", "trafostanice", "funkcija", "", "");
-  popuniDdlAtributima("#pretraga_tip", "trafostanice", "tip", "", "");
-  popuniDdlAtributima("#pretraga_prenos_odnos", "trafostanice", "prenos_odnos", "", "");
-  popuniDdlAtributima("#pretraga_inst_snaga_t1", "trafostanice", "inst_snaga_t1", "", "");
-  popuniDdlAtributima("#pretraga_inst_snaga_t2", "trafostanice", "inst_snaga_t2", "", "");
-  popuniDdlAtributima("#pretraga_inst_snaga_t3", "trafostanice", "inst_snaga_t3", "", "");
-  popuniDdlAtributima("#pretraga_inst_snaga_t4", "trafostanice", "inst_snaga_t4", "", "");
-  popuniDdlAtributima("#pretraga_vlasnistvo", "trafostanice", "vlasnistvo", "", "");
-  popuniDdlAtributima("#pretraga_opstina", "trafostanice", "opstina", "", "");
+  popuniDdlAtributima("#pretraga_funkcija", "trafostanice", "funkcija", "napon", napon);
+  popuniDdlAtributima("#pretraga_tip", "trafostanice", "tip", "napon", napon);
+  popuniDdlAtributima("#pretraga_prenos_odnos", "trafostanice", "prenos_odnos", "napon", napon);
+  popuniDdlAtributima("#pretraga_inst_snaga_t1", "trafostanice", "inst_snaga_t1", "napon", napon);
+  popuniDdlAtributima("#pretraga_inst_snaga_t2", "trafostanice", "inst_snaga_t2", "napon", napon);
+  popuniDdlAtributima("#pretraga_inst_snaga_t3", "trafostanice", "inst_snaga_t3", "napon", napon);
+  popuniDdlAtributima("#pretraga_inst_snaga_t4", "trafostanice", "inst_snaga_t4", "napon", napon);
+  popuniDdlAtributima("#pretraga_vlasnistvo", "trafostanice", "vlasnistvo", "napon", napon);
+  popuniDdlAtributima("#pretraga_opstina", "trafostanice", "opstina", "napon", napon);
 }
 
 function popuniListeZaPrikljucnaMjesta() {

@@ -295,6 +295,7 @@ function popuniDdlAtributima(ddl, objekat, atribut, key_param, value_param) {
   if (key_param !== "" && value_param !== "") {
     urlServisa += "&" + key_param + "=" + value_param;
   }
+  console.log("poziv_web_servisa", urlServisa);
   $(ddl).append(
     $("<option>", {
       value: "",
