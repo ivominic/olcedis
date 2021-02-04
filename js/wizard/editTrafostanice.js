@@ -24,8 +24,8 @@ let wmsTrafostanice = new ol.layer.Image({
 map.addLayer(wmsTrafostanice);
 //console.log("dodao lejer na mapu");
 
-document.querySelector("#selekecijaTrafostanicaPoligon").addEventListener("click", trafostaniceUpoligonu);
-document.querySelector("#uparivanjeTrafostanica").addEventListener("click", prikazUparivanje);
+//document.querySelector("#selekecijaTrafostanicaPoligon").addEventListener("click", trafostaniceUpoligonu);
+//document.querySelector("#uparivanjeTrafostanica").addEventListener("click", prikazUparivanje);
 //document.querySelector("#selekcijaNapojneTrafostanice").addEventListener("click", selektujNapojnuTS);
 document.querySelector("#btnPoveziTS").addEventListener("click", poveziTS);
 document.querySelector("#btnOdabirNapojneTS").addEventListener("click", selektujNapojnuTS);

@@ -19,7 +19,7 @@ let wmsStubovi = new ol.layer.Image({
   }),
 });
 
-//map.addLayer(wmsStubovi);
+map.addLayer(wmsStubovi);
 //console.log("dodao stubove");
 
 /**

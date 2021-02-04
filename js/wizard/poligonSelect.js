@@ -1,4 +1,4 @@
-document.querySelector("#selekecijaPoligon").addEventListener("click", izPoligona);
+//document.querySelector("#selekecijaPoligon").addEventListener("click", izPoligona);
 
 function izPoligona() {
   if (poligoni.length === 0) {
