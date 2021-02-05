@@ -2,35 +2,6 @@
  * Metode koje pozivaju Jovanove web servise
  */
 
-//vodoviIzBilingaZaUparivanje([17991, 17992, 17993, 18003, 18004, 17996]);
-
-//pretragaTrafostanica("150838"); //id_billing
-/*trafostaniceIzBilingaZaUparivanje([
-  17991,
-  17992,
-  17993,
-  18003,
-  18004,
-  17996,
-  17995,
-  17994,
-  17990,
-  18005,
-  18006,
-  18002,
-  18010,
-  18009,
-  18001,
-  17999,
-  18000,
-  18007,
-  17989,
-  18008,
-  17998,
-]);
-
-showDiv("#povezivanjeTSdiv");*/
-
 /**
  * Metoda koja za predatu šifru iz bilinga trafostanice vrati naziv trafostanice i niz izvoda
  * @param {id_billing vrijednost iz GIS-a} sifraTS

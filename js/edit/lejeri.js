@@ -106,9 +106,28 @@ let wmsNKRO = new ol.layer.Image({
   }),
 });
 
+let layernamePOD = "pod",
+  fulllayernamePOD = "geonode:pod",
+  layertitlePOD = "pod";
+let tipGeometrijePOD = point;
+
+let wmsPOD = new ol.layer.Image({
+  title: layertitlePOD,
+  name: layernamePOD,
+  source: new ol.source.ImageWMS({
+    url: wmsUrl,
+    params: {
+      LAYERS: fulllayernamePOD,
+    },
+    ratio: 1,
+    serverType: "geoserver",
+  }),
+});
+
 map.addLayer(wmsStubovi);
 map.addLayer(wmsVodovi);
 map.addLayer(wmsTrafostanice);
 map.addLayer(wmsPotrosaci);
 map.addLayer(wmsPrikljucnoMjesto);
 map.addLayer(wmsNKRO);
+map.addLayer(wmsPOD);

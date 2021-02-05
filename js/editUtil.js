@@ -493,6 +493,7 @@ document.querySelector("#lejer_trafostanice").addEventListener("click", prikazLe
 document.querySelector("#lejer_prikljucno_mjesto").addEventListener("click", prikazLejeraPrikljucnoMjesto);
 document.querySelector("#lejer_nkro").addEventListener("click", prikazLejeraNkro);
 document.querySelector("#lejer_potrosac").addEventListener("click", prikazLejeraPotrosac);
+document.querySelector("#lejer_pod").addEventListener("click", prikazLejeraPod);
 
 function prikazLejeraStubovi() {
   wmsStubovi.setVisible(!wmsStubovi.getVisible());
@@ -521,5 +522,10 @@ function prikazLejeraNkro() {
 
 function prikazLejeraPotrosac() {
   wmsPotrosaci.setVisible(!wmsPotrosaci.getVisible());
+  zatvoriHamburger();
+}
+
+function prikazLejeraPod() {
+  wmsPOD.setVisible(!wmsPOD.getVisible());
   zatvoriHamburger();
 }

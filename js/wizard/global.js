@@ -55,6 +55,7 @@ let selektovaniPotrosaciFeatures = []; //Potrošači u zahvatu poligona
 let selektovaniStuboviFeatures = []; //Stubovi u zahvatu poligona
 let selektovaniNKROFeatures = []; //NKRO u zahvatu poligona
 let selektovanaPrikljucnaMjestaFeatures = []; //Priključna mjesta u zahvatu poligona
+let selektovaniPODoviFeatures = []; //PODovi mjesta u zahvatu poligona
 let selektovaniVodoviFeatures3857 = []; //U drugom koordinatnom sistemu
 
 /**Definisanje podloga */

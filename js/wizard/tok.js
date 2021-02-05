@@ -1,18 +1,3 @@
-//Crtanje poligona
-//Prikaz forme
-//Odabir naponskog nivoa
-//Filtriranje trafostanica
-//Filtriranje vodova
-
-//Određivanje napojne trafostanice
-
-//Provjera broja trafostanica
-
-//Provjera konektivnosti vodova *
-
-//Uparivanje trafostanica
-//Uparivanje vodova
-
 let prviKorakWizarda = "Odabir naponskog nivoa";
 let drugiKorakWizarda = "Odabir napojne trafostanice";
 let treciKorakWizarda = "Uparivanje trafostanica";
