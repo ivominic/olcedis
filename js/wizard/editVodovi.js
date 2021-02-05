@@ -265,9 +265,10 @@ function poveziVodove() {
       console.log("konkretni vod nakon izmjene", nizVodovaZaWebServis[nizVodovaZaWebServis.length - 1]);*/
       selektovaniVodoviFeatures[i].akcija = "Izmjena";
       //selektovaniVodoviFeatures[i].values_.id_billing = vodIzSistema;
+      selektovaniVodoviFeatures[i].values_.napojna_ts = nazivNapojneTrafostanice;
       selektovaniVodoviFeatures[i].values_.sifra_dionice = vodIzSistema;
       selektovaniVodoviFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
-      selektovaniVodoviFeatures[i].values_.napojna_ts = nazivNapojneTrafostanice;
+      selektovaniVodoviFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
       selektovaniVodoviFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
     }
   }
@@ -316,6 +317,9 @@ function presjekVodovaSaTrafostanicama(nadredjenaLinijaFeature, podredjenaLinija
       ) {
         selektovaneTrafostaniceFeatures[i].akcija = "Izmjena";
         selektovaneTrafostaniceFeatures[i].values_.geohash_id_no = nadredjenaLinijaFeature.values_.geohash_id;
+        selektovaneTrafostaniceFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
+        selektovaneTrafostaniceFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
+        selektovaneTrafostaniceFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
         podredjenaLinijaFeature.akcija = "Izmjena";
         podredjenaLinijaFeature.values_.geohash_id_no = selektovaneTrafostaniceFeatures[i].values_.geohash_id;
       }
@@ -323,6 +327,9 @@ function presjekVodovaSaTrafostanicama(nadredjenaLinijaFeature, podredjenaLinija
       if (turf.lineIntersect(nadredjenaGeometrija, trafostanicaGeometrija) && turf.lineIntersect(podredjenaGeometrija, trafostanicaGeometrija)) {
         selektovaneTrafostaniceFeatures[i].akcija = "Izmjena";
         selektovaneTrafostaniceFeatures[i].values_.geohash_id_no = nadredjenaLinijaFeature.values_.geohash_id;
+        selektovaneTrafostaniceFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
+        selektovaneTrafostaniceFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
+        selektovaneTrafostaniceFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
         podredjenaLinijaFeature.akcija = "Izmjena";
         podredjenaLinijaFeature.values_.geohash_id_no = selektovaneTrafostaniceFeatures[i].values_.geohash_id;
       }
