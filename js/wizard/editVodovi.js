@@ -83,6 +83,10 @@ function povezivanjeVodova(pocetna, features) {
   let trenutniGeohash;
   console.log("pocetni objekat", pocetna);
   console.log("pocetne linije", features);
+
+  //Metoda koja svim trafostanicama daje geohash_id_no voda koji je presijeca
+  presjekVodovaSaTrafostanicamaPrviKorak();
+
   if (!pocetna) {
     //napraviti geometriju iz promjenljivih: geometrijaNapojneTrafostanice i geohashNapojneTrafostanice
     let format = new ol.format.WKT();
@@ -343,5 +347,34 @@ function presjekVodovaSaTrafostanicama(nadredjenaLinijaFeature, podredjenaLinija
       selektovaneTrafostaniceFeatures[i].values_.napojna_ts = nazivNapojneTrafostanice;
       selektovaneTrafostaniceFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
     }*/
+  }
+}
+
+/**Metoda koja će svim trafostanicama dati da je geohash_id_no vrijednost iz voda koji je siječe. U metodi presjekVodovaSaTrafostanicama() se obrađuje slučaj kad više vodova presijeca istu trafostanicu */
+function presjekVodovaSaTrafostanicamaPrviKorak() {
+  let writer = new ol.format.GeoJSON();
+
+  for (let j = 0; j < selektovaniVodoviFeatures.length; j++) {
+    for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
+      let trafostanicaGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaneTrafostaniceFeatures[i].getGeometry()));
+      let vodGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaniVodoviFeatures[j].getGeometry()));
+      if (trafostanicaGeometrija.geometry.type === "Point") {
+        if (turf.pointToLineDistance(trafostanicaGeometrija, vodGeometrija, { units: "kilometers" }) === 0) {
+          selektovaneTrafostaniceFeatures[i].akcija = "Izmjena";
+          selektovaneTrafostaniceFeatures[i].values_.geohash_id_no = selektovaniVodoviFeatures[j].values_.geohash_id;
+          selektovaneTrafostaniceFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
+          selektovaneTrafostaniceFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
+          selektovaneTrafostaniceFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
+        }
+      } else {
+        if (turf.lineIntersect(vodGeometrija, trafostanicaGeometrija)) {
+          selektovaneTrafostaniceFeatures[i].akcija = "Izmjena";
+          selektovaneTrafostaniceFeatures[i].values_.geohash_id_no = selektovaniVodoviFeatures[j].values_.geohash_id;
+          selektovaneTrafostaniceFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
+          selektovaneTrafostaniceFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
+          selektovaneTrafostaniceFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
+        }
+      }
+    }
   }
 }
