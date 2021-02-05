@@ -123,6 +123,9 @@ function povezivanjeVodova(pocetna, features) {
                 podredjenaLinijaFeature = nizSvihGeometrija[i];
                 podredjenaLinijaFeature.akcija = "Izmjena";
                 podredjenaLinijaFeature.values_.geohash_id_no = nizSvihGeometrija[i].values_.geohash_id;
+                podredjenaLinijaFeature.values_.naziv_napojne = nazivNapojneTrafostanice;
+                podredjenaLinijaFeature.values_.sifra_napojne = sifraNapojneTrafostanice;
+                podredjenaLinijaFeature.values_.izvod_napojne = izvodNapojneTrafostanice;
               }
             }
           }
@@ -139,6 +142,9 @@ function povezivanjeVodova(pocetna, features) {
                 podredjenaLinijaFeature = nizSvihGeometrija[i];
                 podredjenaLinijaFeature.akcija = "Izmjena";
                 podredjenaLinijaFeature.values_.geohash_id_no = nizSvihGeometrija[i].values_.geohash_id;
+                podredjenaLinijaFeature.values_.naziv_napojne = nazivNapojneTrafostanice;
+                podredjenaLinijaFeature.values_.sifra_napojne = sifraNapojneTrafostanice;
+                podredjenaLinijaFeature.values_.izvod_napojne = izvodNapojneTrafostanice;
               }
             }
             //Poziv metode za provjeru presjeka sa trafostanicama
@@ -173,16 +179,19 @@ function povezivanjeVodova(pocetna, features) {
       if (nizTrenutnihVodova.length == 0) {
         //Trebalo bi zamijeniti ovom if komandom:
         //if (nizTrenutnihVodova.length === 0 && nizSvihGeometrija.length > 0) {
+        if (nizSvihGeometrija.length > 0) {
+          blnOnemogucitiWizard = true;
+          poruka("Upozorenje", "Postoje nepovezani vodovi");
+        }
         blnPostojeNepovezaniZapisi = false;
         let vektorNeupareniVodovi1 = new ol.layer.Vector({
           source: new ol.source.Vector({
-            //features: selektovaniVodoviFeatures3857,
-            features: selektovaniVodoviFeatures,
+            features: nizSvihGeometrija,
           }),
           style: vectorStyleUnmatched,
         });
         map.addLayer(vektorNeupareniVodovi1);
-        console.log("neupareni", vektorNeupareniVodovi1);
+        //console.log("neupareni", vektorNeupareniVodovi1);
         document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
         document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
       }

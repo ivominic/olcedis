@@ -100,9 +100,9 @@ function wizardNext() {
       !blnOnemogucitiWizard &&
       (document.querySelector("#ddlPovezivanjeVodovaSelektovane").length !== 0 || document.querySelector("#ddlPovezivanjeVodovaPronadjene").length !== 0)
     ) {
-      blnOnemogucitiWizard = true;
-      poruka("Upozorenje", "Nisu upareni svi vodovi");
-      return false;
+      //blnOnemogucitiWizard = true;
+      //poruka("Upozorenje", "Nisu upareni svi vodovi");
+      //return false;
     }
 
     if (blnOnemogucitiWizard) {
@@ -166,6 +166,7 @@ function konacniUpisIzmjena() {
       console.log("pozivati web servis za unos vodova - geometrija u wkt", wktGeom);*/
     }
   }
+  poruka("Uspjeh", "Uspješno kompletiran wizard");
 }
 
 /**
