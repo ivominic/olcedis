@@ -38,7 +38,7 @@ function provjeriTrafostanice() {
   nizSelektovanihTrafostanicaOriginalId.length = 0;
   let trafostaniceZaWS = "";
   for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
-    console.log("feature trafotanica i", selektovaneTrafostaniceFeatures[i]);
+    //console.log("feature trafotanica i", selektovaneTrafostaniceFeatures[i]);
     trafostaniceZaWS += selektovaneTrafostaniceFeatures[i].values_.originalId + ",";
     let option = document.createElement("option");
     option.text = selektovaneTrafostaniceFeatures[i].values_.naziv + "-" + selektovaneTrafostaniceFeatures[i].values_.id_biling;
@@ -139,8 +139,8 @@ function poveziTS() {
     }
   }
   //Štampanje trafostanica sa izmijenjenim podacima
-  console.log("originalne trafostanice", selektovaneTrafostaniceFeatures);
-  console.log("trafostanice za izmjenu originalId-a", nizTrafostanicaZaWebServis);
+  //console.log("originalne trafostanice", selektovaneTrafostaniceFeatures);
+  //console.log("trafostanice za izmjenu originalId-a", nizTrafostanicaZaWebServis);
 
   console.log("povezane trafostanice", paroviTS);
   if (document.querySelector("#ddlPovezivanjeTSselektovane").length === 0 && document.querySelector("#ddlPovezivanjeTSpronadjene").length === 0) {

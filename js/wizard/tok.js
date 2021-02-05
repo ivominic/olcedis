@@ -126,11 +126,11 @@ function prikaziCetvrtuFormuWizarda() {
     poruka("Upozorenje", "Nije odabrana napojna trafostanica");
     return false;
   } else {
-    console.log("selektovani vodovi prije poziva za uparivanje", selektovaniVodoviFeatures);
+    //console.log("selektovani vodovi prije poziva za uparivanje", selektovaniVodoviFeatures);
     povezivanjeVodova(featureNapojnaTrafostanica, selektovaniVodoviFeatures);
 
     for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
-      console.log("vodovi originalId", selektovaniVodoviFeatures[i].values_.originalId);
+      //console.log("vodovi originalId", selektovaniVodoviFeatures[i].values_.originalId);
       nizSelektovanihVodovaOriginalId.push(selektovaniVodoviFeatures[i].values_.originalId);
 
       //Dodavanje selektovanih vodova u listu za uparivanje
@@ -140,7 +140,7 @@ function prikaziCetvrtuFormuWizarda() {
       document.querySelector("#ddlPovezivanjeVodovaSelektovane").appendChild(option);
     }
     //Poziva metodu za uparivanje vodova
-    console.log("niz vodova", nizSelektovanihVodovaOriginalId);
+    //console.log("niz vodova", nizSelektovanihVodovaOriginalId);
     vodoviIzBilingaZaUparivanje(nizSelektovanihVodovaOriginalId);
   }
 }

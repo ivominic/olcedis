@@ -80,6 +80,7 @@ function povezivanjeVodova(pocetna, features) {
   let nizPodredjenihVodova = []; //Vodovi koji su pronađeni u tekućem koraku obrade
   let writer = new ol.format.GeoJSON();
   let trenutnaGJ;
+  let trenutniGeohash;
   console.log("pocetni objekat", pocetna);
   console.log("pocetne linije", features);
   if (!pocetna) {
@@ -87,15 +88,18 @@ function povezivanjeVodova(pocetna, features) {
     let format = new ol.format.WKT();
     let geometrija = format.readFeature(geometrijaNapojneTrafostanice, {});
     trenutnaGJ = writer.writeFeatureObject(new ol.Feature(geometrija.getGeometry()));
+    trenutniGeohash = geohashNapojneTrafostanice;
   } else {
     let tempPosition = pocetna.geometry.coordinates;
     let point = new ol.Feature(new ol.geom.Point([tempPosition[0].toFixed(10), tempPosition[1].toFixed(10)]));
     trenutnaGJ = writer.writeFeatureObject(new ol.Feature(point.getGeometry()));
+    trenutniGeohash = pocetna.values_.geohash_id;
   }
-  console.log("trenutna geometrija 1111111", trenutnaGJ);
+  console.log("geometrija trafostanice 11111", geometrijaNapojneTrafostanice);
+  console.log("trenutni geohash 222222 ", trenutniGeohash);
 
-  nizSvihGeometrija.forEach((elem) => console.log("elementi početnog niza", elem.values_.name));
-  nizSvihGeometrija.forEach((elem) => console.log("geometrije početnog niza vodova", elem.values_.geometry.flatCoordinates));
+  //nizSvihGeometrija.forEach((elem) => console.log("elementi početnog niza", elem.values_.name));
+  //nizSvihGeometrija.forEach((elem) => console.log("geometrije početnog niza vodova", elem.values_.geometry.flatCoordinates));
 
   while (blnPostojeNepovezaniZapisi) {
     //
@@ -103,8 +107,10 @@ function povezivanjeVodova(pocetna, features) {
       //trenutnaGJ = writer.writeFeatureObject(new ol.Feature(nizTrenutnihVodova[0].getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
       trenutnaGJ = writer.writeFeatureObject(new ol.Feature(nizTrenutnihVodova[0].getGeometry()));
       console.log("vod za koji tražimo podređene vodove", nizTrenutnihVodova[0].values_.name);
+      trenutniGeohash = nizTrenutnihVodova[0].values_.geohash_id;
+      console.log(nizTrenutnihVodova[0].values_.name, nizTrenutnihVodova[0].values_.geohash_id);
       for (let j = 0; j < features.length; j++) {
-        if (features[j].id === nizTrenutnihVodova[0].id) {
+        if (features[j].id_ === nizTrenutnihVodova[0].id_) {
           nadredjenaLinijaFeature = features[j];
         }
       }
@@ -119,13 +125,19 @@ function povezivanjeVodova(pocetna, features) {
             nizPodredjenihVodova.push(nizSvihGeometrija[i]);
             nizObradjenihVodova.push(nizSvihGeometrija[i]);
             for (let j = 0; j < features.length; j++) {
-              if (features[j].id === nizSvihGeometrija[i].id) {
+              if (features[j].id_ === nizSvihGeometrija[i].id_) {
                 podredjenaLinijaFeature = nizSvihGeometrija[i];
                 podredjenaLinijaFeature.akcija = "Izmjena";
-                podredjenaLinijaFeature.values_.geohash_id_no = nizSvihGeometrija[i].values_.geohash_id;
+                //podredjenaLinijaFeature.values_.geohash_id_no = nizSvihGeometrija[i].values_.geohash_id;
+                /*podredjenaLinijaFeature.values_.geohash_id_no = nizTrenutnihVodova[0].values_.geohash_id;
                 podredjenaLinijaFeature.values_.naziv_napojne = nazivNapojneTrafostanice;
                 podredjenaLinijaFeature.values_.sifra_napojne = sifraNapojneTrafostanice;
-                podredjenaLinijaFeature.values_.izvod_napojne = izvodNapojneTrafostanice;
+                podredjenaLinijaFeature.values_.izvod_napojne = izvodNapojneTrafostanice;*/
+                features[j].akcija = "Izmjena";
+                features[j].values_.geohash_id_no = trenutniGeohash;
+                features[j].values_.naziv_napojne = nazivNapojneTrafostanice;
+                features[j].values_.sifra_napojne = sifraNapojneTrafostanice;
+                features[j].values_.izvod_napojne = izvodNapojneTrafostanice;
               }
             }
           }
@@ -138,13 +150,18 @@ function povezivanjeVodova(pocetna, features) {
             nizPodredjenihVodova.push(nizSvihGeometrija[i]);
             nizObradjenihVodova.push(nizSvihGeometrija[i]);
             for (let j = 0; j < features.length; j++) {
-              if (features[j].id === nizSvihGeometrija[i].id) {
+              if (features[j].id_ === nizSvihGeometrija[i].id_) {
                 podredjenaLinijaFeature = nizSvihGeometrija[i];
                 podredjenaLinijaFeature.akcija = "Izmjena";
-                podredjenaLinijaFeature.values_.geohash_id_no = nizSvihGeometrija[i].values_.geohash_id;
+                /*podredjenaLinijaFeature.values_.geohash_id_no = nizSvihGeometrija[i].values_.geohash_id;
                 podredjenaLinijaFeature.values_.naziv_napojne = nazivNapojneTrafostanice;
                 podredjenaLinijaFeature.values_.sifra_napojne = sifraNapojneTrafostanice;
-                podredjenaLinijaFeature.values_.izvod_napojne = izvodNapojneTrafostanice;
+                podredjenaLinijaFeature.values_.izvod_napojne = izvodNapojneTrafostanice;*/
+                features[j].akcija = "Izmjena";
+                features[j].values_.geohash_id_no = trenutniGeohash;
+                features[j].values_.naziv_napojne = nazivNapojneTrafostanice;
+                features[j].values_.sifra_napojne = sifraNapojneTrafostanice;
+                features[j].values_.izvod_napojne = izvodNapojneTrafostanice;
               }
             }
             //Poziv metode za provjeru presjeka sa trafostanicama
@@ -163,6 +180,17 @@ function povezivanjeVodova(pocetna, features) {
           console.log("pocetna trafostanica", nizSvihGeometrija[indexElementaZaUklanjanje].values_.name);
         } else {
           console.log(nizTrenutnihVodova[0].values_.name, nizSvihGeometrija[indexElementaZaUklanjanje].values_.name);
+          /*for (let j = 0; j < features.length; j++) {
+            if (features[j].id_ === nizSvihGeometrija[indexElementaZaUklanjanje].id_) {
+              console.log("features_id", features[j].id_);
+              console.log(features[j], nizSvihGeometrija[indexElementaZaUklanjanje]);
+              features[j].akcija = "Izmjena";
+              features[j].values_.geohash_id_no = trenutniGeohash;
+              features[j].values_.naziv_napojne = nazivNapojneTrafostanice;
+              features[j].values_.sifra_napojne = sifraNapojneTrafostanice;
+              features[j].values_.izvod_napojne = izvodNapojneTrafostanice;
+            }
+          }*/
         }
 
         nizSvihGeometrija.splice(indexElementaZaUklanjanje, 1);
