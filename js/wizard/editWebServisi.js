@@ -52,6 +52,7 @@ function pretragaTrafostanica(sifraTS) {
         sifraNapojneTrafostanice = data.ts.sifra;
         nazivNapojneTrafostanice = data.ts.naziv;
         data.ts.izvodi.forEach(function (vrijednost) {
+          izvodNapojneTrafostanice = vrijednost; //Dodao u poslednjim izmjenama
           console.log("vrijednost niza", vrijednost);
           $("#uparivanjeTxtNazivIzvodaTS").append(
             $("<option>", {
@@ -128,12 +129,14 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
       console.log("naziv izvoda TS", data.naziv_izvoda);
       console.log("naziv napojne TS", data.naziv_napojne);
       console.log("geometrija napojne TS", data.geometrija_napojne);
+      console.log("geohash napojne TS", data.geohash_napojne);
       //TODO: Ovdje dodati čitanje naponskog nivoa napojne trafostanice - ovo ne treba, pošto se sad to bira u prvom koraku
       //naponskiNivoNapojneTrafostanice = "";
       console.log("poruka", data.poruka);
       nazivNapojneTrafostanice = data.naziv_napojne;
       sifraNapojneTrafostanice = data.sifra_napojne;
       geometrijaNapojneTrafostanice = data.geometrija_napojne;
+      geohashNapojneTrafostanice = data.geohash_napojne;
       document.querySelector("#uparivanjeTxtSifraTS").textContent = sifraNapojneTrafostanice;
       //document.querySelector("#uparivanjeTxtNazivIzvodaTS").textContent = data.naziv_izvoda;
       izvodNapojneTrafostanice = data.naziv_izvoda;
@@ -207,6 +210,9 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
 }
 
 function generisiGeohashId(lejer, wkt) {
+  let retval = "";
+  console.log("Geohash ID");
+  console.log(lejer, wkt);
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/geohash_id";
   let podaciForme = new FormData();
   podaciForme.append("tip_objekta", lejer);
@@ -224,12 +230,15 @@ function generisiGeohashId(lejer, wkt) {
     if (this.readyState === 4) {
       if (this.status === 200) {
         let jsonResponse = JSON.parse(xhr.responseText);
-        console.log("response uspjeh", jsonResponse);
+        console.log("response uspjeh", jsonResponse.geohash_id);
+        console.log("response uspjeh geohash", jsonResponse["geohash_id"]);
+        retval = jsonResponse["geohash_id"];
         //closeModalSpinner();
       } else {
-        alert(xhr.statusText);
+        console.log(xhr.statusText);
         //closeModalSpinner();
       }
+      return retval;
     }
   };
 }

@@ -89,6 +89,7 @@ function povezivanjeVodova(pocetna, features) {
     let geometrija = format.readFeature(geometrijaNapojneTrafostanice, {});
     trenutnaGJ = writer.writeFeatureObject(new ol.Feature(geometrija.getGeometry()));
     trenutniGeohash = geohashNapojneTrafostanice;
+    //trenutniGeohash = generisiGeohashId("trafostanice", geometrijaNapojneTrafostanice);
   } else {
     let tempPosition = pocetna.geometry.coordinates;
     let point = new ol.Feature(new ol.geom.Point([tempPosition[0].toFixed(10), tempPosition[1].toFixed(10)]));
