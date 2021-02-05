@@ -3,6 +3,31 @@
  */
 
 /**
+ * Metoda koja za predatu šifru iz bilinga trafostanice vrati sva polja
+ * @param {id_billing vrijednost iz GIS-a} sifraTS
+ */
+function detaljiTrafostanica(sifraTS) {
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice_data?sifra=" + sifraTS;
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "GET",
+    success: function (data) {
+      console.log("detalji trafostanica, odgovor servisa", data);
+      if (data) {
+        //Popuniti polja - TESTIRATI
+        document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = data.ts.naziv;
+        document.querySelector("#uparivanjeTxtSifraTS").textContent = data.ts.sifra;
+      }
+    },
+    error: function (x, y, z) {
+      //alert(x.responseText +"  " +x.status);
+      console.log("greška popuniDdlAtributima", x.responseText);
+    },
+  });
+}
+
+/**
  * Metoda koja za predatu šifru iz bilinga trafostanice vrati naziv trafostanice i niz izvoda
  * @param {id_billing vrijednost iz GIS-a} sifraTS
  */
