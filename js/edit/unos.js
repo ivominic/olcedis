@@ -615,7 +615,7 @@ function popuniPoljaVodovi(odgovor) {
 function popuniPoljaTrafostanice(odgovor) {
   let atributi = odgovor.features[0]["properties"];
   idObjekta = atributi["id"];
-  document.querySelector("#idObjekta").value = idObjekta;
+  /*document.querySelector("#idObjekta").value = idObjekta;
   document.querySelector("#gps").value = atributi["gps"];
   document.querySelector("#id_billing").value = atributi["id_billing"];
   document.querySelector("#naziv").value = atributi["naziv"];
@@ -635,7 +635,54 @@ function popuniPoljaTrafostanice(odgovor) {
   setujDdlVrijednost("#inst_snaga_t3", atributi["inst_snaga_t3"]);
   setujDdlVrijednost("#inst_snaga_t4", atributi["inst_snaga_t4"]);
   setujDdlVrijednost("#vlasnistvo", atributi["vlasnistvo"]);
-  setujDdlVrijednost("#opstina", atributi["opstina"]);
+  setujDdlVrijednost("#opstina", atributi["opstina"]);*/
+
+  document.querySelector("#ddlTrafostanice").value = atributi["ddlTrafostanice"];
+  document.querySelector("#read_fid_1").value = atributi["fid_1"];
+  document.querySelector("#read_visibility").value = atributi["visibility"];
+  document.querySelector("#read_name").value = atributi["name"];
+  document.querySelector("#read_open").value = atributi["open"];
+  document.querySelector("#read_address").value = atributi["address"];
+  document.querySelector("#read_phone_number").value = atributi["phone_number"];
+  document.querySelector("#read_folder").value = atributi["folder"];
+  document.querySelector("#read_id_br").value = atributi["id_br"];
+  document.querySelector("#read_celije_10").value = atributi["celije_10"];
+  document.querySelector("#read_izvod_celija").value = atributi["izvod_celija"];
+  document.querySelector("#read_funkcija").value = atributi["funkcija"];
+  document.querySelector("#read_br_nn_izvoda").value = atributi["br_nn_izvoda"];
+  document.querySelector("#read_geohash_id").value = atributi["geohash_id"];
+  document.querySelector("#read_geohash_id_no").value = atributi["geohash_id_no"];
+  document.querySelector("#read_br_vod_cel_nizi_nap").value = atributi["br_vod_cel_nizi_nap"];
+  document.querySelector("#read_br_vod_cel_visi_nap").value = atributi["br_vod_cel_visi_nap"];
+  document.querySelector("#read_layer_name").value = atributi["layer_name"];
+  document.querySelector("#read_god_izg").value = atributi["god_izg"];
+  document.querySelector("#read_vlasnistvo").value = atributi["vlasnistvo"];
+  document.querySelector("#read_datum_azuriranja").value = atributi["datum_azuriranja"];
+  document.querySelector("#read_layer_id").value = atributi["layer_id"];
+  document.querySelector("#read_nad_vis").value = atributi["nad_vis"];
+  document.querySelector("#read_gps").value = atributi["gps"];
+  document.querySelector("#read_pog_sprem").value = atributi["pog_sprem"];
+  document.querySelector("#read_napon").value = atributi["napon"];
+  document.querySelector("#read_posjeduje_sliku").value = atributi["posjeduje_sliku"];
+  document.querySelector("#read_originalId").value = atributi["originalId"];
+  document.querySelector("#read_korisnik").value = atributi["korisnik"];
+  document.querySelector("#read_vlasnik").value = atributi["vlasnik"];
+  document.querySelector("#read_katastar").value = atributi["katastar"];
+  document.querySelector("#read_id_trafostanice").value = atributi["id_trafostanice"];
+  document.querySelector("#read_opstina").value = atributi["opstina"];
+  document.querySelector("#read_region").value = atributi["region"];
+  document.querySelector("#read_naziv_napojne").value = atributi["naziv_napojne"];
+  document.querySelector("#read_sifra_napojne").value = atributi["sifra_napojne"];
+  document.querySelector("#read_izvod_napojne").value = atributi["izvod_napojne"];
+  document.querySelector("#read_prenos_odnos").value = atributi["prenos_odnos"];
+  document.querySelector("#read_id_billing").value = atributi["id_billing"];
+  document.querySelector("#read_adresa").value = atributi["adresa"];
+  document.querySelector("#read_tip").value = atributi["tip"];
+  document.querySelector("#read_naziv").value = atributi["naziv"];
+  document.querySelector("#read_inst_snaga_t1").value = atributi["inst_snaga_t1"];
+  document.querySelector("#read_inst_snaga_t2").value = atributi["inst_snaga_t2"];
+  document.querySelector("#read_inst_snaga_t3").value = atributi["inst_snaga_t3"];
+  document.querySelector("#read_tabela").value = atributi["tabela"];
 
   /*if (akcija === "izmijeni") {
     wfsZaEdit(idObjekta);
