@@ -3,6 +3,30 @@
  */
 
 /**
+ * Metoda koja za predatu šifru i izvod napojne trafostanice vrati spisak šifara svih neuparenih trafostanica. Ovim podacima popuniti listu iz koje se bira trafostanica koja se unosi u gis, a svi podaci se već nalaze u TBP. Na ovaj način neće biti moguće unijeti trafostanice koje nemaju napojnu (110kV)
+ * @param {*} sifraNapojne
+ * @param {*} izvodNapojne
+ */
+function neupareneTrafostanice(sifraNapojne, izvodNapojne) {
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/****?sifra=" + sifraNapojne + "&izvod=" + izvodNapojne;
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "GET",
+    success: function (data) {
+      console.log("šifre neuparenih trafostanica", data);
+      if (data) {
+        //TODO: Popuniti listu
+      }
+    },
+    error: function (x, y, z) {
+      //alert(x.responseText +"  " +x.status);
+      console.log("greška popuniDdlAtributima", x.responseText);
+    },
+  });
+}
+
+/**
  * Metoda koja za predatu šifru iz bilinga trafostanice vrati sva polja
  * @param {id_billing vrijednost iz GIS-a} sifraTS
  */
@@ -83,7 +107,7 @@ function pretragaTrafostanica(sifraTS) {
 /**
  * Za predati niz trafostanica (originalId) vrati napojnu trafostanicu, izvod, spisak uparenih i neuparenih,
  * kao i poruku o grešci ukoliko nisu selektovane sve trafostanice koje pripadaju tom izvodu.
- * Niz treba prevesti u strinh oblika "[originalId1,originalId2,originalId3]" i tako ga predati pozivu servisa
+ * Niz treba prevesti u string oblika "[originalId1,originalId2,originalId3]" i tako ga predati pozivu servisa
  * Sifra, naziv i izvod odabrane napojne trafostanice su popunjeni samo ako u prvom pozivu nisu nađene ove vrijednosti u bilignu.
  * Tada se napojna trafostanica bira sa mape i ove vrijednosti šalju ponovo na provjeru - isti poziv, ali popunjena ova tri parametra
  * @param {*} nizTS

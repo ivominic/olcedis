@@ -422,3 +422,66 @@ function cudPrikljucnoMjesto(feature, akcija) {
     },
   });
 }
+
+/**
+ * Metoda koja za predati feature i akciju poziva web servis za unos/izmjenu/brisanje pod-a
+ * @param {*} feature
+ * @param {*} akcija
+ */
+function cudPOD(feature, akcija) {
+  let wkt = wktGeometrije(feature);
+  let podaciForme = new FormData();
+  podaciForme.append("akcija", akcija);
+  podaciForme.append("Geometry", wkt);
+  podaciForme.append("id", feature.values_.id); //Ovo provjeriti
+  //podaciForme.append("fid_1", feature.values_.fid_1);
+  podaciForme.append("fid_1", feature.id_.split(".")[1]);
+  podaciForme.append("name", feature.values_.name);
+  podaciForme.append("address", feature.values_.address);
+  podaciForme.append("phoneNumber", feature.values_.phoneNumber);
+  podaciForme.append("prik_kabal", feature.values_.prik_kabal);
+  podaciForme.append("pod", feature.values_.pod);
+  podaciForme.append("layer_name", feature.values_.layer_name);
+  podaciForme.append("adresa_mm", feature.values_.adresa_mm);
+  podaciForme.append("naziv_ts", feature.values_.naziv_ts);
+  podaciForme.append("prik_mjesto", feature.values_.prik_mjesto);
+  podaciForme.append("opstina", feature.values_.opstina);
+  podaciForme.append("sifra_ts", feature.values_.sifra_ts);
+  podaciForme.append("naziv", feature.values_.naziv);
+  podaciForme.append("gps", feature.values_.gps);
+  podaciForme.append("datum_azuriranja", feature.values_.datum_azuriranja);
+  podaciForme.append("naziv_nn_izvod", feature.values_.naziv_nn_izvod);
+  podaciForme.append("pretplatni_br", feature.values_.pretplatni_br);
+  podaciForme.append("br_brojila", feature.values_.br_brojila);
+  podaciForme.append("layer_id", feature.values_.layer_id);
+  podaciForme.append("napon", feature.values_.napon);
+  podaciForme.append("geohash_id", feature.values_.geohash_id);
+  podaciForme.append("korisnik", feature.values_.korisnik);
+  podaciForme.append("katastar", feature.values_.katastar);
+  podaciForme.append("posjeduje_sliku", feature.values_.posjeduje_sliku);
+  podaciForme.append("originalId", feature.values_.originalId);
+  podaciForme.append("geohash_id_no", feature.values_.geohash_id_no);
+  podaciForme.append("vlasnik", feature.values_.vlasnik);
+  podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
+  podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
+  podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
+  podaciForme.append("visibility", feature.values_.visibility);
+  podaciForme.append("open", feature.values_.open);
+  podaciForme.append("Folder", feature.values_.Folder);
+  podaciForme.append("fid", feature.values_.fid);
+
+  $.ajax({
+    url: wsServerOriginLocation + "/novi_portal/api/pod_store",
+    method: "post",
+    data: podaciForme,
+    processData: false,
+    contentType: false,
+    success: function (response) {
+      console.log("success", response);
+      //poruka("Uspjeh", response.message);
+    },
+    error: function (response) {
+      console.log("error", response);
+    },
+  });
+}

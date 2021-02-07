@@ -1,6 +1,7 @@
 /**Metode za prikaz odgovarajućih polja atributDiv-a */
 function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosGps").style.display = "none";
+  document.querySelector("#divUnosFid1").style.display = "none";
   document.querySelector("#divUnosBroj").style.display = "none";
   document.querySelector("#divUnosSifra").style.display = "none";
   document.querySelector("#divUnosPripadnost").style.display = "none";
@@ -124,6 +125,15 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosOsiguraci").style.display = "none";
   document.querySelector("#divUnosBrPretplatnika").style.display = "none";
   document.querySelector("#divUnosTipPM").style.display = "none";
+  document.querySelector("#divUnosNazivTs").style.display = "none";
+  document.querySelector("#divUnosSifraTs").style.display = "none";
+  document.querySelector("#divUnosPrikKabal").style.display = "none";
+  document.querySelector("#divUnosPod").style.display = "none";
+  document.querySelector("#divUnosAdresaMm").style.display = "none";
+  document.querySelector("#divUnosPrikMjesto").style.display = "none";
+  document.querySelector("#divUnosNazivNnIzvod").style.display = "none";
+  document.querySelector("#divUnosPretplatniBr").style.display = "none";
+  document.querySelector("#divUnosBrBrojila").style.display = "none";
 
   document.querySelector("#divUnosMontaza").style.display = "none";
   document.querySelector("#divUnosVrata").style.display = "none";
@@ -133,6 +143,7 @@ function sakrijSvaPoljaAtributDiv() {
 
 function prikaziAtributDivStubove(napon) {
   document.querySelector("#divUnosGps").style.display = "flex";
+  document.querySelector("#divUnosFid1").style.display = "flex";
   document.querySelector("#divUnosBroj").style.display = "flex";
   document.querySelector("#divUnosSifra").style.display = "flex";
   document.querySelector("#divUnosPripadnost").style.display = "flex";
@@ -168,6 +179,7 @@ function prikaziAtributDivStubove(napon) {
 
 function prikaziAtributDivVodove(napon) {
   document.querySelector("#divUnosGps").style.display = "flex";
+  document.querySelector("#divUnosFid1").style.display = "flex";
   document.querySelector("#divUnosNapon").style.display = "flex";
   document.querySelector("#divUnosTip").style.display = "flex";
   document.querySelector("#divUnosMaterijal").style.display = "flex";
@@ -276,6 +288,7 @@ function prikaziAtributDivTrafostanice(napon) {
 
 function prikaziAtributDivPrikljucnoMjesto() {
   document.querySelector("#divUnosGps").style.display = "flex";
+  document.querySelector("#divUnosFid1").style.display = "flex";
   document.querySelector("#divUnosNapojnaTs").style.display = "flex";
   document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosId").style.display = "flex";
@@ -304,4 +317,40 @@ function prikaziAtributDivNkro() {
   document.querySelector("#divUnosBrPrikljucaka").style.display = "flex";
   document.querySelector("#divUnosSysId").style.display = "flex";
   popuniListeZaNkro();
+}
+
+function prikaziAtributDivPotrosac() {
+  document.querySelector("#divUnosGps").style.display = "flex";
+  document.querySelector("#divUnosFid1").style.display = "flex";
+  document.querySelector("#divUnosNapojnaTs").style.display = "flex";
+  document.querySelector("#divUnosIzvodTs").style.display = "flex";
+  document.querySelector("#divUnosId").style.display = "flex";
+  document.querySelector("#divUnosNazivTs").style.display = "flex";
+  document.querySelector("#divUnosSifraTs").style.display = "flex";
+  document.querySelector("#divUnosPrikKabal").style.display = "flex";
+  document.querySelector("#divUnosPod").style.display = "flex";
+  document.querySelector("#divUnosAdresaMm").style.display = "flex";
+  document.querySelector("#divUnosPrikMjesto").style.display = "flex";
+  document.querySelector("#divUnosNazivNnIzvod").style.display = "flex";
+  document.querySelector("#divUnosPretplatniBr").style.display = "flex";
+  document.querySelector("#divUnosBrBrojila").style.display = "flex";
+  popuniListeZaPotrosace();
+}
+
+function prikaziAtributDivPod() {
+  document.querySelector("#divUnosGps").style.display = "flex";
+  document.querySelector("#divUnosFid1").style.display = "flex";
+  document.querySelector("#divUnosNapojnaTs").style.display = "flex";
+  document.querySelector("#divUnosIzvodTs").style.display = "flex";
+  document.querySelector("#divUnosId").style.display = "flex";
+  document.querySelector("#divUnosNazivTs").style.display = "flex";
+  document.querySelector("#divUnosSifraTs").style.display = "flex";
+  document.querySelector("#divUnosPrikKabal").style.display = "flex";
+  document.querySelector("#divUnosPod").style.display = "flex";
+  document.querySelector("#divUnosAdresaMm").style.display = "flex";
+  document.querySelector("#divUnosPrikMjesto").style.display = "flex";
+  document.querySelector("#divUnosNazivNnIzvod").style.display = "flex";
+  document.querySelector("#divUnosPretplatniBr").style.display = "flex";
+  document.querySelector("#divUnosBrBrojila").style.display = "flex";
+  popuniListeZaPod();
 }

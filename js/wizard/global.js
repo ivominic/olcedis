@@ -335,3 +335,7 @@ function popuniListeZaNkro() {
   popuniDdlAtributima("#pretraga_pog_sprem", "nkro", "pog_sprem", "", "");
   popuniDdlAtributima("#pretraga_vlasnistvo", "nkro", "vlasnistvo", "", "");
 }
+
+function popuniListeZaPotrosace() {}
+
+function popuniListeZaPod() {}

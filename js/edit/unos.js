@@ -189,7 +189,7 @@ function unosStubova(geometrijaWkt, servisAkcija) {
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", servisAkcija);
   podaciForme.append("Geometry", geometrijaWkt);
-  podaciForme.append("fid_1", 0);
+  podaciForme.append("fid_1", document.querySelector("#fid_1").value);
   podaciForme.append("gps", document.querySelector("#gps").value);
   podaciForme.append("broj", document.querySelector("#broj").value);
   podaciForme.append("sifra", document.querySelector("#sifra").value);
@@ -268,7 +268,7 @@ function unosVodova(geometrijaWkt, servisAkcija) {
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", servisAkcija);
   podaciForme.append("Geometry", geometrijaWkt);
-  podaciForme.append("fid_1", 0);
+  podaciForme.append("fid_1", document.querySelector("#fid_1").value);
   podaciForme.append("gps", document.querySelector("#gps").value);
   podaciForme.append("dionica", document.querySelector("#dionica").value);
   podaciForme.append("id_br", document.querySelector("#id_br").value);
@@ -347,7 +347,7 @@ function unosTrafostanica(geometrijaWkt, servisAkcija) {
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", servisAkcija);
   podaciForme.append("Geometry", geometrijaWkt);
-  podaciForme.append("fid_1", 0);
+  podaciForme.append("fid_1", document.querySelector("#fid_1").value);
   podaciForme.append("gps", document.querySelector("#gps").value);
   podaciForme.append("id_billing", document.querySelector("#id_billing").value);
   podaciForme.append("naziv", document.querySelector("#naziv").value);
@@ -419,7 +419,7 @@ function unosNkro(geometrijaWkt, servisAkcija) {
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", servisAkcija);
   podaciForme.append("Geometry", geometrijaWkt);
-  podaciForme.append("fid_1", 0);
+  podaciForme.append("fid_1", document.querySelector("#fid_1").value);
   podaciForme.append("gps", document.querySelector("#gps").value);
   podaciForme.append("ts", document.querySelector("#ts").value);
   podaciForme.append("izvod_ts", document.querySelector("#izvod_ts").value);
@@ -481,7 +481,7 @@ function unosPrikljucnoMjesto(geometrijaWkt, servisAkcija) {
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", servisAkcija);
   podaciForme.append("Geometry", geometrijaWkt);
-  podaciForme.append("fid_1", 0);
+  podaciForme.append("fid_1", document.querySelector("#fid_1").value);
   podaciForme.append("gps", document.querySelector("#gps").value);
   podaciForme.append("ts", document.querySelector("#ts").value);
   podaciForme.append("izvod_ts", document.querySelector("#izvod_ts").value);
@@ -534,6 +534,131 @@ function unosPrikljucnoMjesto(geometrijaWkt, servisAkcija) {
   });
 }
 //unosPrikljucnoMjesto("POINT(0 0)", "I");
+
+function unosPotrosac(geometrijaWkt, servisAkcija) {
+  let podaciForme = new FormData();
+  podaciForme.append("id", idObjekta);
+  podaciForme.append("akcija", servisAkcija);
+  podaciForme.append("Geometry", geometrijaWkt);
+  podaciForme.append("fid_1", document.querySelector("#fid_1").value);
+  podaciForme.append("gps", document.querySelector("#gps").value);
+  podaciForme.append("naziv_ts", document.querySelector("#naziv_ts").value);
+  podaciForme.append("sifra_ts", document.querySelector("#sifra_ts").value);
+  podaciForme.append("id", document.querySelector("#id").value);
+  podaciForme.append("opstina", document.querySelector("#opstina").value);
+  podaciForme.append("napon", document.querySelector("#napon").value);
+  podaciForme.append("prik_kabal", document.querySelector("#prik_kabal").value);
+  podaciForme.append("pod", document.querySelector("#pod").value);
+  podaciForme.append("adresa_mm", document.querySelector("#adresa_mm").value);
+  podaciForme.append("prik_mjesto", document.querySelector("#prik_mjesto").value);
+  podaciForme.append("naziv", document.querySelector("#naziv").value);
+  podaciForme.append("naziv_nn_izvod", document.querySelector("#naziv_nn_izvod").value);
+  podaciForme.append("pretplatni_br", document.querySelector("#pretplatni_br").value);
+  podaciForme.append("br_brojila", document.querySelector("#br_brojila").value);
+
+  //Dodao za poziv Jovanovog servisa
+  podaciForme.append("name", "test");
+  podaciForme.append("visibility", true);
+  podaciForme.append("open", true);
+  podaciForme.append("address", "");
+  podaciForme.append("phoneNumber", "");
+  podaciForme.append("Folder", "test");
+  podaciForme.append("fid", "test");
+  podaciForme.append("layer_name", "test");
+  //podaciForme.append("broj_priklj_mjernih_ormara", 2);
+  podaciForme.append("datum_azuriranja", "");
+
+  podaciForme.append("layer_id", 0);
+  podaciForme.append("geohash_id", "test");
+  podaciForme.append("korisnik", "test");
+  podaciForme.append("katastar", "");
+  podaciForme.append("originalId", 0);
+  podaciForme.append("posjeduje_sliku", "test");
+  podaciForme.append("vlasnik", "test");
+  podaciForme.append("geohash_id_no", "test");
+  podaciForme.append("sifra_napojne", "test");
+  podaciForme.append("izvod_napojne", "test");
+  podaciForme.append("naziv_napojne", "test");
+
+  $.ajax({
+    url: wsServerOriginLocation + "/novi_portal/api/potrosaci_store",
+    method: "post",
+    data: podaciForme,
+    processData: false,
+    contentType: false,
+    success: function (response) {
+      console.log("success", response);
+      poruka("Uspjeh", response.message);
+    },
+    error: function (response) {
+      console.log("error", response);
+    },
+  });
+}
+//unosPotrosac("POINT(0 0)", "I");
+
+function unosPod(geometrijaWkt, servisAkcija) {
+  let podaciForme = new FormData();
+  podaciForme.append("id", idObjekta);
+  podaciForme.append("akcija", servisAkcija);
+  podaciForme.append("Geometry", geometrijaWkt);
+  podaciForme.append("fid_1", document.querySelector("#fid_1").value);
+  podaciForme.append("gps", document.querySelector("#gps").value);
+  podaciForme.append("naziv_ts", document.querySelector("#naziv_ts").value);
+  podaciForme.append("sifra_ts", document.querySelector("#sifra_ts").value);
+  podaciForme.append("id", document.querySelector("#id").value);
+  podaciForme.append("opstina", document.querySelector("#opstina").value);
+  podaciForme.append("napon", document.querySelector("#napon").value);
+  podaciForme.append("prik_kabal", document.querySelector("#prik_kabal").value);
+  podaciForme.append("pod", document.querySelector("#pod").value);
+  podaciForme.append("adresa_mm", document.querySelector("#adresa_mm").value);
+  podaciForme.append("prik_mjesto", document.querySelector("#prik_mjesto").value);
+  podaciForme.append("naziv", document.querySelector("#naziv").value);
+  podaciForme.append("naziv_nn_izvod", document.querySelector("#naziv_nn_izvod").value);
+  podaciForme.append("pretplatni_br", document.querySelector("#pretplatni_br").value);
+  podaciForme.append("br_brojila", document.querySelector("#br_brojila").value);
+
+  //Dodao za poziv Jovanovog servisa
+  podaciForme.append("name", "test");
+  podaciForme.append("visibility", true);
+  podaciForme.append("open", true);
+  podaciForme.append("address", "");
+  podaciForme.append("phoneNumber", "");
+  podaciForme.append("Folder", "test");
+  podaciForme.append("fid", "test");
+  podaciForme.append("layer_name", "test");
+  //podaciForme.append("broj_priklj_mjernih_ormara", 2);
+  podaciForme.append("datum_azuriranja", "");
+
+  podaciForme.append("layer_id", 0);
+  podaciForme.append("geohash_id", "test");
+  podaciForme.append("korisnik", "test");
+  podaciForme.append("katastar", "");
+  podaciForme.append("originalId", 0);
+  podaciForme.append("posjeduje_sliku", "test");
+  podaciForme.append("vlasnik", "test");
+  podaciForme.append("geohash_id_no", "test");
+  podaciForme.append("sifra_napojne", "test");
+  podaciForme.append("izvod_napojne", "test");
+  podaciForme.append("naziv_napojne", "test");
+
+  $.ajax({
+    url: wsServerOriginLocation + "/novi_portal/api/pod_store",
+    method: "post",
+    data: podaciForme,
+    processData: false,
+    contentType: false,
+    success: function (response) {
+      console.log("success", response);
+      poruka("Uspjeh", response.message);
+    },
+    error: function (response) {
+      console.log("error", response);
+    },
+  });
+}
+
+//unosPod("POINT(0 0)", "I");
 
 /**Metode za popunjavanje polja atributima iz baze */
 
@@ -742,3 +867,5 @@ function popuniPoljaPrikljucnoMjesto(odgovor) {
     wfsZaEdit(idObjekta);
   }*/
 }
+
+//TODO: Potrošači i PODovi
