@@ -8,15 +8,22 @@
  * @param {*} izvodNapojne
  */
 function neupareneTrafostanice(sifraNapojne, izvodNapojne) {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/****?sifra=" + sifraNapojne + "&izvod=" + izvodNapojne;
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/neuparene_za_napojnu?sifra_napojne=" + sifraNapojne + "&izvod_napojne=" + izvodNapojne;
   $.ajax({
     url: urlServisa,
     data: "",
     type: "GET",
     success: function (data) {
-      console.log("šifre neuparenih trafostanica", data);
+      //console.log("šifre neuparenih trafostanica", data);
       if (data) {
-        //TODO: Popuniti listu
+        data.neuparene.forEach(function (vrijednost) {
+          $("#ddlTrafostanice").append(
+            $("<option>", {
+              value: vrijednost.sifra_biling,
+              text: vrijednost.naziv_trafostanice,
+            })
+          );
+        });
       }
     },
     error: function (x, y, z) {
@@ -25,6 +32,7 @@ function neupareneTrafostanice(sifraNapojne, izvodNapojne) {
     },
   });
 }
+//neupareneTrafostanice("EKLICE", "Vazdušni Kličevo");
 
 /**
  * Metoda koja za predatu šifru iz bilinga trafostanice vrati sva polja

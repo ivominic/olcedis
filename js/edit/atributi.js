@@ -26,7 +26,7 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosBrNnv").style.display = "none";
   document.querySelector("#divUnosPogSprem").style.display = "none";
   document.querySelector("#divUnosVlasnistvo").style.display = "none";
-  //document.querySelector("#divUnosOpstina").style.display = "none";
+  document.querySelector("#divUnosOpstina").style.display = "none";
   document.querySelector("#divUnosNapon").style.display = "none";
   document.querySelector("#divUnosPrikljucakOtcjep").style.display = "none";
   document.querySelector("#divUnosNnVod").style.display = "none";
@@ -269,7 +269,7 @@ function prikaziAtributDivTrafostanice(napon) {
   document.querySelector("#divReadVlasnik").style.display = "flex";
   document.querySelector("#divReadKatastar").style.display = "flex";
   document.querySelector("#divReadIdTrafostanice").style.display = "flex";
-  document.querySelector("#divReadOpstina").style.display = "flex";
+  //document.querySelector("#divReadOpstina").style.display = "flex";
   document.querySelector("#divReadRegion").style.display = "flex";
   document.querySelector("#divReadNazivNapojne").style.display = "flex";
   document.querySelector("#divReadSifraNapojne").style.display = "flex";
