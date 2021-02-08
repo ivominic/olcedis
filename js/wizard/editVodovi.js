@@ -313,32 +313,57 @@ function presjekVodovaSaTrafostanicama(nadredjenaLinijaFeature, podredjenaLinija
   let podredjenaGeometrija = writer.writeFeatureObject(new ol.Feature(podredjenaLinijaFeature.getGeometry()));
 
   for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
-    let trafostanicaGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaneTrafostaniceFeatures[i].getGeometry()));
-    if (trafostanicaGeometrija.geometry.type === "Point") {
-      if (
-        turf.pointToLineDistance(trafostanicaGeometrija, nadredjenaGeometrija, { units: "kilometers" }) === 0 &&
-        turf.pointToLineDistance(trafostanicaGeometrija, podredjenaGeometrija, { units: "kilometers" }) === 0
-      ) {
-        selektovaneTrafostaniceFeatures[i].akcija = "Izmjena";
-        selektovaneTrafostaniceFeatures[i].values_.geohash_id_no = nadredjenaLinijaFeature.values_.geohash_id;
-        selektovaneTrafostaniceFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
-        selektovaneTrafostaniceFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
-        selektovaneTrafostaniceFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
-        podredjenaLinijaFeature.akcija = "Izmjena";
-        podredjenaLinijaFeature.values_.geohash_id_no = selektovaneTrafostaniceFeatures[i].values_.geohash_id;
+    //Samo za trafostanice koje imaju izlaznu stavku prenos_odnos kao odabrani naponski nivo dajemo da je nadređeni izlazog voda
+    if (globalNaponskiNivoPrenosOdnos(selektovaneTrafostaniceFeatures[i].values_.prenos_odnos) === odabraniNaponskiNivo) {
+      let trafostanicaGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaneTrafostaniceFeatures[i].getGeometry()));
+      if (trafostanicaGeometrija.geometry.type === "Point") {
+        if (
+          turf.pointToLineDistance(trafostanicaGeometrija, nadredjenaGeometrija, { units: "kilometers" }) === 0 &&
+          turf.pointToLineDistance(trafostanicaGeometrija, podredjenaGeometrija, { units: "kilometers" }) === 0
+        ) {
+          selektovaneTrafostaniceFeatures[i].akcija = "Izmjena";
+          selektovaneTrafostaniceFeatures[i].values_.geohash_id_no = nadredjenaLinijaFeature.values_.geohash_id;
+          selektovaneTrafostaniceFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
+          selektovaneTrafostaniceFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
+          selektovaneTrafostaniceFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
+          podredjenaLinijaFeature.akcija = "Izmjena";
+          podredjenaLinijaFeature.values_.geohash_id_no = selektovaneTrafostaniceFeatures[i].values_.geohash_id;
+        }
+      } else {
+        if (turf.lineIntersect(nadredjenaGeometrija, trafostanicaGeometrija) && turf.lineIntersect(podredjenaGeometrija, trafostanicaGeometrija)) {
+          selektovaneTrafostaniceFeatures[i].akcija = "Izmjena";
+          selektovaneTrafostaniceFeatures[i].values_.geohash_id_no = nadredjenaLinijaFeature.values_.geohash_id;
+          selektovaneTrafostaniceFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
+          selektovaneTrafostaniceFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
+          selektovaneTrafostaniceFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
+          podredjenaLinijaFeature.akcija = "Izmjena";
+          podredjenaLinijaFeature.values_.geohash_id_no = selektovaneTrafostaniceFeatures[i].values_.geohash_id;
+        }
       }
     } else {
-      if (turf.lineIntersect(nadredjenaGeometrija, trafostanicaGeometrija) && turf.lineIntersect(podredjenaGeometrija, trafostanicaGeometrija)) {
-        selektovaneTrafostaniceFeatures[i].akcija = "Izmjena";
-        selektovaneTrafostaniceFeatures[i].values_.geohash_id_no = nadredjenaLinijaFeature.values_.geohash_id;
-        selektovaneTrafostaniceFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
-        selektovaneTrafostaniceFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
-        selektovaneTrafostaniceFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
-        podredjenaLinijaFeature.akcija = "Izmjena";
-        podredjenaLinijaFeature.values_.geohash_id_no = selektovaneTrafostaniceFeatures[i].values_.geohash_id;
+      //Ako nije - razlika samo u dijelu da podređeni vod ne dobija geohash_id_no trafostanice
+      let trafostanicaGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaneTrafostaniceFeatures[i].getGeometry()));
+      if (trafostanicaGeometrija.geometry.type === "Point") {
+        if (
+          turf.pointToLineDistance(trafostanicaGeometrija, nadredjenaGeometrija, { units: "kilometers" }) === 0 &&
+          turf.pointToLineDistance(trafostanicaGeometrija, podredjenaGeometrija, { units: "kilometers" }) === 0
+        ) {
+          selektovaneTrafostaniceFeatures[i].akcija = "Izmjena";
+          selektovaneTrafostaniceFeatures[i].values_.geohash_id_no = nadredjenaLinijaFeature.values_.geohash_id;
+          selektovaneTrafostaniceFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
+          selektovaneTrafostaniceFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
+          selektovaneTrafostaniceFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
+        }
+      } else {
+        if (turf.lineIntersect(nadredjenaGeometrija, trafostanicaGeometrija) && turf.lineIntersect(podredjenaGeometrija, trafostanicaGeometrija)) {
+          selektovaneTrafostaniceFeatures[i].akcija = "Izmjena";
+          selektovaneTrafostaniceFeatures[i].values_.geohash_id_no = nadredjenaLinijaFeature.values_.geohash_id;
+          selektovaneTrafostaniceFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
+          selektovaneTrafostaniceFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
+          selektovaneTrafostaniceFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
+        }
       }
     }
-
     //Mislim da ovaj dio nije potreban, već će trafostanicama u prvom koraku biti dodijeljene vrijednosti iz bilinga
     /*if (odabranaTS === selektovaneTrafostaniceFeatures[i].values_.originalId.toString()) {
       selektovaneTrafostaniceFeatures[i].akcija = "Izmjena";

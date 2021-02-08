@@ -181,10 +181,10 @@ let vektorNeupareniVodovi = new ol.layer.Vector({
  * Metoda koja za naponski nivo trafostanice vraća odgovarajući nivo naponskog voda
  * @param {*} nivo
  */
-function globalNaponskiNivo(nivo) {
+function globalNaponskiNivoPrenosOdnos(nivo) {
   let retVal = "";
   switch (nivo) {
-    case ("10/0,4", "10/0,69", "6/0,4", "35/0.4"):
+    case ("10/0,4", "10/0,69", "6/0,4", "35/0.4", "35/0,4"):
       retVal = "0.4";
       break;
     case ("10/10", "35/10", "35/6", "110/10"):
