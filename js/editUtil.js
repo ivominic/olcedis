@@ -353,7 +353,7 @@ document.querySelector("#marker").addEventListener("click", crtajTacku);
 document.querySelector("#linija").addEventListener("click", crtajLiniju);
 document.querySelector("#poligon").addEventListener("click", crtajPoligon);
 document.querySelector("#brisanje").addEventListener("click", brisanje);
-//document.querySelector("#pretraga").addEventListener("click", pretraga);
+document.querySelector("#pretraga").addEventListener("click", pretraga);
 //document.querySelector("#selekcijaPocetnogStuba").addEventListener("click", selekcijaPocetnogStuba);
 //document.querySelector("#selekcijaZavrsnogStuba").addEventListener("click", selekcijaZavrsnogStuba);
 document.querySelector("#restart").addEventListener("click", restart);

@@ -506,6 +506,39 @@ function brisanje() {
 
 /* Filter wms-a po prostornim i atributskim podacima*/
 function filtriranje() {
+  let nivoPretrage = document.querySelector("#ddl_pretraga_napon").value;
+  let layerNamePretrage = document.querySelector("#pretraga_layer_name").value;
+  let tempFilter = "";
+  //alert(nivoPretrage);
+  if (nivoPretrage !== "" || layerNamePretrage != "") {
+    params = wmsStubovi.getSource().getParams();
+    if (nivoPretrage !== "") {
+      tempFilter = "napon ILIKE '%" + nivoPretrage + "%'";
+      if (layerNamePretrage !== "") {
+        tempFilter += " AND layer_name ILIKE '%" + layerNamePretrage + "%'";
+      }
+    } else {
+      tempFilter = "layer_name ILIKE '%" + layerNamePretrage + "%'";
+    }
+  } else {
+    tempFilter = "INCLUDE";
+  }
+  cqlZaWmsLejer(wmsStubovi, tempFilter);
+  cqlZaWmsLejer(wmsVodovi, tempFilter);
+  cqlZaWmsLejer(wmsPotrosaci, tempFilter);
+  cqlZaWmsLejer(wmsNKRO, tempFilter);
+  cqlZaWmsLejer(wmsPOD, tempFilter);
+  cqlZaWmsLejer(wmsPrikljucnoMjesto, tempFilter);
+}
+
+function cqlZaWmsLejer(wmsLejer, filterCql) {
+  //console.log(wmsLejer, filterCql);
+  let params = wmsLejer.getSource().getParams();
+  params.CQL_FILTER = filterCql;
+  wmsLejer.getSource().updateParams(params);
+}
+
+/*function filtriranje() {
   let prostorniFilter = kreiranjeCqlFilteraProstorno();
   let atributniFilter = kreiranjeCqlFilteraAtributi();
   if (prostorniFilter !== "" && atributniFilter !== "") {
@@ -519,7 +552,7 @@ function filtriranje() {
   let params = rasterLayer.getSource().getParams();
   params.CQL_FILTER = cqlFilter;
   rasterLayer.getSource().updateParams(params);
-}
+}*/
 
 /** Filtriranje po atributima */
 function kreiranjeCqlFilteraAtributi() {

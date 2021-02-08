@@ -126,8 +126,8 @@
               <a href="#" id="bilingTrafostanice">Biling - trafostanice</a>
               <a href="#" id="logickeVeze">Logičke veze</a>
             </div>
-          </div>
-          <a href="#" id="pretraga" class="tooltip" data-tool="Pretraga"><i class="fa fa-search" aria-hidden="true"></i></a>-->
+          </div>-->
+          <a href="#" id="pretraga" class="tooltip" data-tool="Pretraga"><i class="fa fa-search" aria-hidden="true"></i></a>
           <div class="dropdown">
             <button class="dropbtn">
               <i class="fab fa-buffer"></i>
@@ -310,7 +310,7 @@
         <h1>Pretraga</h1>
         <a href="javascript:void(0)" class="closebtn" onclick="closeDiv('#pretragaDiv')">&times;</a>
       </div>
-      <div class="items-padd">
+      <!--<div class="items-padd">
         <div class="flex-row mb-16 pb-16 border-bottom">
           <div>
             <label class="container">
@@ -346,10 +346,10 @@
             </label>
           </div>
         </div>
-      </div>
+      </div>-->
       <div class="items-padd">
         <div class="pr-8 sadrzaj-scroll style-2">
-          <div class="flex-row pb-8">
+          <!--<div class="flex-row pb-8">
             <label for="ddl_vektor">Lejer:</label>
             <select id="ddl_vektor" class="select-css">
               <option value=""></option>
@@ -359,127 +359,23 @@
               <option value="prikljucno_mjesto">Priključno mjesto</option>
               <option value="nkro">NKRO</option>
             </select>
-          </div>
-          <!--<button type="button" class="btn" id="btnPrikaziVektor">Prikaz</button>-->
+          </div>-->
           <div class="flex-row pb-8">
-            <label for="pretraga_gps">Redni broj u GPS:</label>
-            <input type="text" id="pretraga_gps" />
+            <label for="ddl_pretraga_napon">Napon:</label>
+            <select id="ddl_pretraga_napon" class="select-css">
+              <option value=""></option>
+              <option value="35">35kV</option>
+              <option value="10">10kV</option>
+              <option value="0.4">0.4kV</option>
+            </select>
           </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_broj">Broj stuba:</label>
-            <input type="text" id="pretraga_broj" />
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_sifra">Šifra:</label>
-            <input type="text" id="pretraga_sifra" />
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_pripadnost">Pripadnost:</label>
-            <input type="text" id="pretraga_pripadnost" />
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_tip">Tip stuba:</label>
-            <select id="pretraga_tip" class="select-css"></select>
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_vrsta_namjena">Vrsta stuba po namjeni:</label>
-            <select id="pretraga_vrsta_namjena" class="select-css"></select>
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_vrsta_materijal">Vrsta stuba po materijalu:</label>
-            <select id="pretraga_vrsta_materijal" class="select-css"></select>
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_vrsta_drvenog">Vrsta drvenog stuba:</label>
-            <select id="pretraga_vrsta_drvenog" class="select-css"></select>
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_nad_visina">Nadmorska visina (m):</label>
-            <input type="number" id="pretraga_nad_visina" />
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_visina">Visina stuba(m):</label>
-            <input type="number" id="pretraga_visina" />
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_rasp_prov">Raspored provodnika:</label>
-            <input type="text" id="pretraga_rasp_prov" />
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_izolator_vrsta">Vrsta izolatora:</label>
-            <select id="pretraga_izolator_vrsta" class="select-css"></select>
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_izolator_funkcija">Vrsta izolatora po funkciji:</label>
-            <select id="pretraga_izolator_funkcija" class="select-css"></select>
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_br_izol_faza">Broj izolatora po fazi:</label>
-            <input type="text" id="pretraga_br_izol_faza" />
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_tip_nosac_izol">Tip izolatora:</label>
-            <select id="pretraga_tip_nosac_izol" class="select-css"></select>
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_odvodnik_prenapona">Tip odvodnika prenapona:</label>
-            <select id="pretraga_odvodnik_prenapona" class="select-css"></select>
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_uzemljivac">Uzemljivač:</label>
-            <select id="pretraga_uzemljivac" class="select-css"></select>
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_uzemljivac_otpor">Otpor uzemljivača:</label>
-            <input type="text" id="pretraga_uzemljivac_otpor" />
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_optika">Optika:</label>
-            <select id="pretraga_optika" class="select-css"></select>
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_rasvjeta">Lampa javne rasvjete:</label>
-            <select id="pretraga_rasvjeta" class="select-css"></select>
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_br_pmo">Broj mjernih ormara:</label>
-            <input type="text" id="pretraga_br_pmo" />
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_br_nnv">Broj NN vodova:</label>
-            <input type="text" id="pretraga_br_nnv" />
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_pog_sprem">Pogonska spremnost:</label>
-            <input type="text" id="pretraga_pog_sprem" />
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_vlasnistvo">Vlasnistvo:</label>
-            <select id="pretraga_vlasnistvo" class="select-css"></select>
-          </div>
-          <div class="flex-row pb-8">
+          <!--<div class="flex-row pb-8">
             <label for="pretraga_opstina">Opština:</label>
             <select id="pretraga_opstina" class="select-css"></select>
-          </div>
+          </div>-->
           <div class="flex-row pb-8">
-            <label for="pretraga_napon">Napon:</label>
-            <input type="text" id="pretraga_napon" />
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_prikljucak_otcjep">10kV kabal(prikljucak/otcjep):</label>
-            <select id="pretraga_prikljucak_otcjep" class="select-css"></select>
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_nn_vod">NN vod :</label>
-            <select id="pretraga_nn_vod" class="select-css"></select>
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_rastavljac">Rastavljač:</label>
-            <select id="pretraga_rastavljac" class="select-css"></select>
-          </div>
-          <div class="flex-row">
-            <label for="pretraga_10_vod">10 kV vod:</label>
-            <select id="pretraga_10_vod" class="select-css"></select>
+            <label for="pretraga_layer_name">Layer name:</label>
+            <input type="text" id="pretraga_layer_name" />
           </div>
         </div>
       </div>
