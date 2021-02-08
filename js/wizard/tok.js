@@ -175,6 +175,7 @@ function prekidWizarda() {
   document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = "";
   document.querySelector("#uparivanjeTxtSifraTS").textContent = "";
   document.querySelector("#wizardHeader").innerText = prviKorakWizarda;
+  restartParametaraWizard();
 }
 
 /**
@@ -186,6 +187,7 @@ function finalniKorakWizarda() {
   document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = "";
   document.querySelector("#uparivanjeTxtSifraTS").textContent = "";
   document.querySelector("#wizardHeader").innerText = prviKorakWizarda;
+  restartParametaraWizard();
 }
 
 function testUpisTrafostanice() {
@@ -194,4 +196,28 @@ function testUpisTrafostanice() {
       cudTrafostanica(selektovaneTrafostaniceFeatures[i], "U");
     }
   }
+}
+
+function restartParametaraWizard() {
+  nazivNapojneTrafostanice = "";
+  sifraNapojneTrafostanice = "";
+  geometrijaNapojneTrafostanice = "";
+  geohashNapojneTrafostanice = "";
+  izvodNapojneTrafostanice = "";
+  odabraniNaponskiNivo = "";
+
+  document.querySelector("#wizardHeader").innerText = prviKorakWizarda;
+  document.querySelector("#divWizardOdabirNaponskogNivoa").style.display = "block";
+  document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = "";
+  document.querySelector("#uparivanjeTxtSifraTS").textContent = "";
+  document.querySelector("#uparivanjeTxtSifraTS").textContent = "";
+
+  selektovanaPrikljucnaMjestaFeatures.length = 0;
+  selektovaneTrafostaniceFeatures.length = 0;
+  selektovaniNKROFeatures.length = 0;
+  selektovaniPODoviFeatures.length = 0;
+  selektovaniPotrosaciFeatures.length = 0;
+  selektovaniStuboviFeatures.length = 0;
+
+  $("#ddlPovezivanjeTSpronadjene").empty();
 }
