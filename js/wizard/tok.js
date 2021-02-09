@@ -83,7 +83,7 @@ function wizardNext() {
 
     if (
       !blnOnemogucitiWizard &&
-      (document.querySelector("#ddlPovezivanjeVodovaSelektovane").length !== 0 || document.querySelector("#ddlPovezivanjeVodovaPronadjene").length !== 0)
+      (document.querySelector("#ddlPovezivanjeVodovaSelektovane").length > 1 || document.querySelector("#ddlPovezivanjeVodovaPronadjene").length !== 0)
     ) {
       //blnOnemogucitiWizard = true;
       //poruka("Upozorenje", "Nisu upareni svi vodovi");
@@ -100,7 +100,7 @@ function wizardNext() {
 }
 
 function prikaziCetvrtuFormuWizarda() {
-  if (document.querySelector("#ddlPovezivanjeTSselektovane").length > 0 || document.querySelector("#ddlPovezivanjeTSpronadjene").length > 0) {
+  if (document.querySelector("#ddlPovezivanjeTSselektovane").length > 1 || document.querySelector("#ddlPovezivanjeTSpronadjene").length > 0) {
     poruka("Upozorenje", "Nisu uparene sve trafostanice iz oba sistema");
     return false;
   }
@@ -114,18 +114,22 @@ function prikaziCetvrtuFormuWizarda() {
     //console.log("selektovani vodovi prije poziva za uparivanje", selektovaniVodoviFeatures);
     povezivanjeVodova(featureNapojnaTrafostanica, selektovaniVodoviFeatures);
 
+    //Dodavanje selektovanih vodova u listu za uparivanje
+    let option = document.createElement("option");
+    option.text = "Odaberite vod";
+    option.value = "";
+    document.querySelector("#ddlPovezivanjeVodovaSelektovane").appendChild(option);
+
     for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
       //console.log("vodovi originalId", selektovaniVodoviFeatures[i].values_.originalId);
       nizSelektovanihVodovaOriginalId.push(selektovaniVodoviFeatures[i].values_.originalId);
 
       //Dodavanje selektovanih vodova u listu za uparivanje
-      let option = document.createElement("option");
+      option = document.createElement("option");
       option.text = selektovaniVodoviFeatures[i].values_.name + "-" + selektovaniVodoviFeatures[i].values_.originalId;
       option.value = selektovaniVodoviFeatures[i].values_.originalId;
       document.querySelector("#ddlPovezivanjeVodovaSelektovane").appendChild(option);
     }
-    //Poziva metodu za uparivanje vodova
-    //console.log("niz vodova", nizSelektovanihVodovaOriginalId);
     vodoviIzBilingaZaUparivanje(nizSelektovanihVodovaOriginalId);
   }
 }
@@ -207,10 +211,13 @@ function restartParametaraWizard() {
   odabraniNaponskiNivo = "";
 
   document.querySelector("#wizardHeader").innerText = prviKorakWizarda;
-  document.querySelector("#divWizardOdabirNaponskogNivoa").style.display = "block";
   document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = "";
   document.querySelector("#uparivanjeTxtSifraTS").textContent = "";
   document.querySelector("#uparivanjeTxtSifraTS").textContent = "";
+  document.querySelector("#divWizardOdabirNaponskogNivoa").style.display = "block";
+  document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "none";
+  document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
+  document.querySelector("#divWizardUparivanjeVodova").style.display = "none";
 
   selektovanaPrikljucnaMjestaFeatures.length = 0;
   selektovaneTrafostaniceFeatures.length = 0;
@@ -220,4 +227,7 @@ function restartParametaraWizard() {
   selektovaniStuboviFeatures.length = 0;
 
   $("#ddlPovezivanjeTSpronadjene").empty();
+  $("#ddlPovezivanjeTSselektovane").empty();
+  $("#ddlPovezivanjeVodovaPronadjene").empty();
+  $("#ddlPovezivanjeVodovaSelektovane").empty();
 }

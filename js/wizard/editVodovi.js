@@ -215,6 +215,7 @@ function povezivanjeVodova(pocetna, features) {
         if (nizSvihGeometrija.length > 0) {
           blnOnemogucitiWizard = true;
           poruka("Upozorenje", "Postoje nepovezani vodovi");
+          prekidWizarda();
         }
         blnPostojeNepovezaniZapisi = false;
         let vektorNeupareniVodovi1 = new ol.layer.Vector({
@@ -241,7 +242,7 @@ function poveziVodove() {
   let odabraniVod = document.querySelector("#ddlPovezivanjeVodovaSelektovane").value;
   let vodIzSistema = document.querySelector("#ddlPovezivanjeVodovaPronadjene").value;
   if (!odabraniVod || !vodIzSistema) {
-    alert("Potrebno je odabrati vodove iz oba sistema");
+    poruka("Upozorenje", "Potrebno je odabrati vodove iz oba sistema");
     return false;
   }
   for (let i = 0; i < document.querySelector("#ddlPovezivanjeVodovaSelektovane").length; i++) {
@@ -276,7 +277,7 @@ function poveziVodove() {
       selektovaniVodoviFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
     }
   }
-  if (document.querySelector("#ddlPovezivanjeVodovaSelektovane").length === 0 && document.querySelector("#ddlPovezivanjeVodovaPronadjene").length === 0) {
+  if (document.querySelector("#ddlPovezivanjeVodovaSelektovane").length === 1 && document.querySelector("#ddlPovezivanjeVodovaPronadjene").length === 0) {
     alert("Uspješno upareni svi vodovi: \n" + paroviVodova.join(",") + "\n Prelazak na sljedeći korak wizard-a");
     console.log("Uspješno upareni svi vodovi:", paroviVodova);
     //TODO: Prelazak na sljedeći korak
@@ -290,17 +291,17 @@ function poveziVodove() {
 }
 
 document.querySelector("#ddlPovezivanjeVodovaSelektovane").addEventListener("change", function () {
-  console.log("odabrani vod", this.value);
+  zumVodovaIzListe(this.value);
+});
+
+function zumVodovaIzListe(value) {
   for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
-    console.log("originalId", selektovaniVodoviFeatures[i].values_.originalId);
-    if (this.value === selektovaniVodoviFeatures[i].values_.originalId.toString()) {
-      console.log("feature id", selektovaniVodoviFeatures[i].id_);
-      //let featureZaTransofrmaciju = Object.assign({}, selektovaneTSfeatures[i]);
+    if (value === selektovaniVodoviFeatures[i].values_.originalId.toString()) {
       let featureZaTransofrmaciju = selektovaniVodoviFeatures[i].clone();
       map.getView().fit(featureZaTransofrmaciju.getGeometry(), { maxZoom: 20 });
     }
   }
-});
+}
 
 /**
  *Metoda koja za dvije linije/voda koji se sijeku provjerava da li se u toj tački nalazi i trafostanica i određuje odgovarajuće geohash id no

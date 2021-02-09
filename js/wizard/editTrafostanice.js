@@ -37,11 +37,15 @@ document.querySelector("#btnOdabirNapojneTS").style.display = "none";
 function provjeriTrafostanice() {
   nizSelektovanihTrafostanicaOriginalId.length = 0;
   let trafostaniceZaWS = "";
+  let option = document.createElement("option");
+  option.text = "Odaberite trafostanicu";
+  option.value = "";
+  document.querySelector("#ddlPovezivanjeTSselektovane").appendChild(option);
   for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
     //console.log("feature trafotanica i", selektovaneTrafostaniceFeatures[i]);
     let tempNazivTs = "";
     trafostaniceZaWS += selektovaneTrafostaniceFeatures[i].values_.originalId + ",";
-    let option = document.createElement("option");
+    option = document.createElement("option");
     selektovaneTrafostaniceFeatures[i].values_.id_biling !== undefined && (tempNazivTs = "-" + selektovaneTrafostaniceFeatures[i].values_.id_biling);
     option.text = selektovaneTrafostaniceFeatures[i].values_.naziv + tempNazivTs;
     option.value = selektovaneTrafostaniceFeatures[i].values_.originalId;
@@ -101,8 +105,8 @@ function selektujNapojnuTS() {
 }
 
 function poveziTS() {
-  if (!document.querySelector("#uparivanjeTxtNazivIzvodaTS").value) {
-    alert("Potrebno je odabrati napojnu trafostanicu i izvod");
+  if (!document.querySelector("#uparivanjeTxtNazivIzvodaTS").value || !document.querySelector("#ddlPovezivanjeTSselektovane").value) {
+    poruka("Upozorenje", "Potrebno je odabrati napojnu trafostanicu i izvod");
     return false;
   }
   izvodNapojneTrafostanice = document.querySelector("#uparivanjeTxtNazivIzvodaTS").value;
@@ -126,13 +130,6 @@ function poveziTS() {
   //Kreiranje niza sa trafostanicama za koje je potrebno izvršiti izmjenu podataka
   for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
     if (odabranaTS === selektovaneTrafostaniceFeatures[i].values_.originalId.toString()) {
-      /*console.log("konkretna trafostanica prije izmjena", selektovaneTrafostaniceFeatures[i]);
-      nizTrafostanicaZaWebServis.push(selektovaneTrafostaniceFeatures[i]);
-      nizTrafostanicaZaWebServis[nizTrafostanicaZaWebServis.length - 1].akcija = "Izmjena";
-      nizTrafostanicaZaWebServis[nizTrafostanicaZaWebServis.length - 1].values_.id_billing = tsIzSistema;
-      nizTrafostanicaZaWebServis[nizTrafostanicaZaWebServis.length - 1].values_.sifra_napojne = sifraNapojneTrafostanice;
-      nizTrafostanicaZaWebServis[nizTrafostanicaZaWebServis.length - 1].values_.napojna_ts = nazivNapojneTrafostanice;
-      nizTrafostanicaZaWebServis[nizTrafostanicaZaWebServis.length - 1].values_.izvod_napojne = izvodNapojneTrafostanice;*/
       selektovaneTrafostaniceFeatures[i].akcija = "Izmjena";
       selektovaneTrafostaniceFeatures[i].values_.id_billing = tsIzSistema;
       selektovaneTrafostaniceFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
@@ -140,34 +137,33 @@ function poveziTS() {
       selektovaneTrafostaniceFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
     }
   }
-  //Štampanje trafostanica sa izmijenjenim podacima
-  //console.log("originalne trafostanice", selektovaneTrafostaniceFeatures);
-  //console.log("trafostanice za izmjenu originalId-a", nizTrafostanicaZaWebServis);
 
   console.log("povezane trafostanice", paroviTS);
-  if (document.querySelector("#ddlPovezivanjeTSselektovane").length === 0 && document.querySelector("#ddlPovezivanjeTSpronadjene").length === 0) {
-    //alert("Uspješno uparene sve trafostanice: \n" + paroviTS.join(",") + "\n Prelazak na sljedeći korak wizard-a");
-    //testUpisTrafostanice();
+  if (document.querySelector("#ddlPovezivanjeTSselektovane").length === 1 && document.querySelector("#ddlPovezivanjeTSpronadjene").length === 0) {
     console.log("Uspješno uparene sve trafostanice:", paroviTS);
-    //TODO: Prelazak na sljedeći korak
     blnZavrsenoUparivanjeTrafostanica = true;
-    //document.querySelector("#wizardHeader").inneText = cetvrtiKorakWizarda;
-    //document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
-    //document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
     prikaziCetvrtuFormuWizarda();
   }
   //TODO: Dodati da se predaje i izvod trafostanice, prilikom slanja podataka ka web servisu
 }
 
 document.querySelector("#ddlPovezivanjeTSselektovane").addEventListener("change", function () {
-  console.log("odabrana trafostanica", this.value);
-  for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
-    console.log("originalId", selektovaneTrafostaniceFeatures[i].values_.originalId);
-    if (this.value === selektovaneTrafostaniceFeatures[i].values_.originalId.toString()) {
-      console.log("feature id", selektovaneTrafostaniceFeatures[i].id_);
-      //let featureZaTransofrmaciju = Object.assign({}, selektovaneTrafostaniceFeatures[i]);
-      let featureZaTransofrmaciju = selektovaneTrafostaniceFeatures[i].clone();
-      map.getView().fit(featureZaTransofrmaciju.getGeometry(), { maxZoom: 20 });
-    }
-  }
+  zumTsIzListe(this.value);
 });
+
+/**
+ * Metoda koja zumira na trafostanicu prilikom selekcije iz liste
+ * @param {} value
+ */
+function zumTsIzListe(value) {
+  if (value) {
+    for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
+      if (value === selektovaneTrafostaniceFeatures[i].values_.originalId.toString()) {
+        let featureZaTransofrmaciju = selektovaneTrafostaniceFeatures[i].clone();
+        map.getView().fit(featureZaTransofrmaciju.getGeometry(), { maxZoom: 20 });
+      }
+    }
+  } else {
+    poruka("Upozorenje", "Potrebno je odabrati trafostanicu za uparivanje");
+  }
+}
