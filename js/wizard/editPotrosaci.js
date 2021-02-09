@@ -229,6 +229,7 @@ function povezivanjePotrosacaVodova(potrosaci, vodovi) {
   }
 }
 
+/**Metoda koja daje selektovani izvod, ts i naziv svim objektima 0.4 nivoa */
 function nnPrenosTrafostanica(sifra, naziv, izvod) {
   for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
     if (
@@ -268,7 +269,7 @@ function nnPrenosTrafostanica(sifra, naziv, izvod) {
   }
 }
 
-/** */
+/** Metoda koja će ispratiti logičku konektivnost svih objekata*/
 function povezivanjeNiskonaponskihObjekata() {
   if (selektovaniPotrosaciFeatures.length === 0 || selektovaniPODoviFeatures.length === 0 || selektovanaPrikljucnaMjestaFeatures.length === 0) {
     poruka("Upozorenje", "U zahvatu moraju postojati potrošači, PODovi i priključna mjesta.");
@@ -281,6 +282,25 @@ function povezivanjeNiskonaponskihObjekata() {
   /*********** */
   let writer = new ol.format.GeoJSON();
   let gPotrosac, gPod, gPM, gVod;
+
+  //PRAVILA ZA POVEZIVANJE OBJEKATA
+  //potrosac.prik_mjesto == prikljucnoMjesto.id
+  //pod.prik_mjesto == potrosac.prik_mjesto
+  //potrosac.pod je jedinstveno polje i pod.pod treba upariti sa potrosac.pod
+
+  //Kroz ove petlje sprovesti logičku konektivnost
+  for (let i = 0; i < selektovaniPotrosaciFeatures.length; i++) {
+    gPotrosac = writer.writeFeatureObject(new ol.Feature(selektovaniPotrosaciFeatures[i].getGeometry()));
+    for (let j = 0; j < nizSvihPodova.length; j++) {
+      gPod = writer.writeFeatureObject(new ol.Feature(nizSvihPodova[j].getGeometry()));
+      for (let k = 0; k < nizSvihPrikljucnimMjesta.length; k++) {
+        gPM = writer.writeFeatureObject(new ol.Feature(nizSvihPrikljucnimMjesta[k].getGeometry()));
+        for (let l = 0; l < nizSvihVodova.length; l++) {
+          gVod = writer.writeFeatureObject(new ol.Feature(nizSvihVodova[l].getGeometry()));
+        }
+      }
+    }
+  }
 
   for (let j = 0; j < potrosaci.length; j++) {
     //Povezivanje sa potrošačima
