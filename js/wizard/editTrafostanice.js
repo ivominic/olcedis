@@ -39,9 +39,11 @@ function provjeriTrafostanice() {
   let trafostaniceZaWS = "";
   for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
     //console.log("feature trafotanica i", selektovaneTrafostaniceFeatures[i]);
+    let tempNazivTs = "";
     trafostaniceZaWS += selektovaneTrafostaniceFeatures[i].values_.originalId + ",";
     let option = document.createElement("option");
-    option.text = selektovaneTrafostaniceFeatures[i].values_.naziv + "-" + selektovaneTrafostaniceFeatures[i].values_.id_biling;
+    selektovaneTrafostaniceFeatures[i].values_.id_biling !== undefined && (tempNazivTs = "-" + selektovaneTrafostaniceFeatures[i].values_.id_biling);
+    option.text = selektovaneTrafostaniceFeatures[i].values_.naziv + tempNazivTs;
     option.value = selektovaneTrafostaniceFeatures[i].values_.originalId;
     document.querySelector("#ddlPovezivanjeTSselektovane").appendChild(option);
     nizSelektovanihTrafostanicaOriginalId.push(selektovaneTrafostaniceFeatures[i].values_.originalId);
