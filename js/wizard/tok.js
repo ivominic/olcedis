@@ -38,9 +38,16 @@ function wizardNext() {
     //document.querySelector("#wizardHeader").innerHTML = drugiKorakWizarda;
     trafostaniceUpoligonu(odabraniNaponskiNivo);
     vodoviUpoligonu(odabraniNaponskiNivo);
-    potrosaciUpoligonu(odabraniNaponskiNivo);
+
+    if (odabraniNaponskiNivo === "0.4") {
+      potrosaciUpoligonu(odabraniNaponskiNivo);
+      podUpoligonu(odabraniNaponskiNivo);
+      prikljucnaMjestaUpoligonu(odabraniNaponskiNivo);
+      //povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
+      //TODO: OVDJE DODATI DIO ZA POTROŠAČE
+    }
+
     //stuboviUpoligonu(odabraniNaponskiNivo);
-    //povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
 
     /*if (selektovaneTrafostaniceFeatures.length === 0) {
       poruka("Upozorenje", "Nema trafostanica u odabranom zahvatu.");
