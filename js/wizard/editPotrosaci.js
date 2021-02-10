@@ -70,13 +70,14 @@ function provjeriPotrosace() {
  * @param {} napon
  */
 function potrosaciUpoligonu(napon) {
-  let urlZaFilter =
-    wfsUrl +
-    "?version=1.0.0&request=GetFeature&typeName=" +
-    fulllayernamePotrosaci +
-    "&outputformat=application/json&cql_filter=" +
-    globalCqlZaNaponskiNivo(napon, "view_potrosaci");
-  console.log("url filter", urlZaFilter);
+  let params = wmsPotrosaci.getSource().getParams();
+  let formiraniFilter = globalCqlZaNaponskiNivo(napon, "vodovi");
+  if (params.CQL_FILTER.length > 0) {
+    formiraniFilter += " AND (" + params.CQL_FILTER + ")";
+  }
+  formiraniFilter = encodeURIComponent(formiraniFilter);
+  console.log("filter za cql", formiraniFilter);
+  let urlZaFilter = wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernamePotrosaci + "&outputformat=application/json&cql_filter=" + formiraniFilter;
 
   $.ajax({
     method: "POST",
@@ -282,6 +283,8 @@ function povezivanjeNiskonaponskihObjekata() {
   /*********** */
   let writer = new ol.format.GeoJSON();
   let gPotrosac, gPod, gPM, gVod;
+  let blnNepovezaniPodPM = false,
+    nepovezaniPodPM = "";
 
   //PRAVILA ZA POVEZIVANJE OBJEKATA
   //potrosac.prik_mjesto == prikljucnoMjesto.id
@@ -291,12 +294,22 @@ function povezivanjeNiskonaponskihObjekata() {
   //Kroz ove petlje sprovesti logičku konektivnost
   for (let i = 0; i < selektovaniPotrosaciFeatures.length; i++) {
     gPotrosac = writer.writeFeatureObject(new ol.Feature(selektovaniPotrosaciFeatures[i].getGeometry()));
-    for (let j = 0; j < nizSvihPodova.length; j++) {
-      gPod = writer.writeFeatureObject(new ol.Feature(nizSvihPodova[j].getGeometry()));
+    for (let j = 0; j < selektovaniPODoviFeatures.length; j++) {
+      gPod = writer.writeFeatureObject(new ol.Feature(selektovaniPODoviFeatures[j].getGeometry()));
+      if (selektovaniPotrosaciFeatures[i].values_.pod === selektovaniPODoviFeatures[j].values_.pod) {
+        if (!selektovaniPotrosaciFeatures[i].hasOwnProperty("nadredjeni")) {
+          //provjeriti logičke veze sa PODovima
+          if (selektovaniPotrosaciFeatures[i].getGeometry().getCoordinates() === selektovaniPODoviFeatures[j].getGeometry().getCoordinates()) {
+            //povezivanje potrošača i PODa, bez voda između
+            selektovaniPotrosaciFeatures[i].values_.geohash_id_no = selektovaniPODoviFeatures[j].values_.geohash_id;
+            selektovaniPotrosaciFeatures[i].akcija = "Izmjena";
+          }
+        }
+      }
       for (let k = 0; k < nizSvihPrikljucnimMjesta.length; k++) {
-        gPM = writer.writeFeatureObject(new ol.Feature(nizSvihPrikljucnimMjesta[k].getGeometry()));
+        gPM = writer.writeFeatureObject(new ol.Feature(selektovanaPrikljucnaMjestaFeatures[k].getGeometry()));
         for (let l = 0; l < nizSvihVodova.length; l++) {
-          gVod = writer.writeFeatureObject(new ol.Feature(nizSvihVodova[l].getGeometry()));
+          gVod = writer.writeFeatureObject(new ol.Feature(selektovaniVodoviFeatures[l].getGeometry()));
         }
       }
     }

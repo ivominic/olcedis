@@ -27,8 +27,14 @@ map.addLayer(wmsStubovi);
  * @param {} napon
  */
 function stuboviUpoligonu(napon) {
-  let urlZaFilter =
-    wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernameS + "&outputformat=application/json&cql_filter=" + globalCqlZaNaponskiNivo(napon, "trafostanice");
+  let params = wmsStubovi.getSource().getParams();
+  let formiraniFilter = globalCqlZaNaponskiNivo(napon, "vodovi");
+  if (params.CQL_FILTER.length > 0) {
+    formiraniFilter += " AND (" + params.CQL_FILTER + ")";
+  }
+  formiraniFilter = encodeURIComponent(formiraniFilter);
+  console.log("filter za cql", formiraniFilter);
+  let urlZaFilter = wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernameS + "&outputformat=application/json&cql_filter=" + formiraniFilter;
   console.log("url filter", urlZaFilter);
 
   $.ajax({

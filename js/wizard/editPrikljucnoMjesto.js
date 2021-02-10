@@ -25,12 +25,14 @@ map.addLayer(wmsPrikljucnoMjesto);
  * @param {} napon
  */
 function prikljucnaMjestaUpoligonu(napon) {
-  let urlZaFilter =
-    wfsUrl +
-    "?version=1.0.0&request=GetFeature&typeName=" +
-    fulllayernamePrikljucnoMjesto +
-    "&outputformat=application/json&cql_filter=" +
-    globalCqlZaNaponskiNivo(napon, "prikljucno_mjesto");
+  let params = wmsPrikljucnoMjesto.getSource().getParams();
+  let formiraniFilter = globalCqlZaNaponskiNivo(napon, "vodovi");
+  if (params.CQL_FILTER.length > 0) {
+    formiraniFilter += " AND (" + params.CQL_FILTER + ")";
+  }
+  formiraniFilter = encodeURIComponent(formiraniFilter);
+  console.log("filter za cql", formiraniFilter);
+  let urlZaFilter = wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernamePrikljucnoMjesto + "&outputformat=application/json&cql_filter=" + formiraniFilter;
 
   $.ajax({
     method: "POST",

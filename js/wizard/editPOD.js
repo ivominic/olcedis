@@ -25,8 +25,14 @@ map.addLayer(wmsPOD);
  * @param {} napon
  */
 function podUpoligonu(napon) {
-  let urlZaFilter =
-    wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernamePOD + "&outputformat=application/json&cql_filter=" + globalCqlZaNaponskiNivo(napon, "pod");
+  let params = wmsPOD.getSource().getParams();
+  let formiraniFilter = globalCqlZaNaponskiNivo(napon, "vodovi");
+  if (params.CQL_FILTER.length > 0) {
+    formiraniFilter += " AND (" + params.CQL_FILTER + ")";
+  }
+  formiraniFilter = encodeURIComponent(formiraniFilter);
+  console.log("filter za cql", formiraniFilter);
+  let urlZaFilter = wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernamePOD + "&outputformat=application/json&cql_filter=" + formiraniFilter;
 
   $.ajax({
     method: "POST",
