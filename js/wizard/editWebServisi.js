@@ -142,13 +142,14 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
   }
   let stringNiz = "[" + nizTS.join(",") + "]";
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/upari_trafostanice?trafostanice=" + stringNiz + dodatniParametriWS;
-  $("#ddlPovezivanjeTSpronadjene").empty();
 
   $.ajax({
     url: urlServisa,
     data: "",
     type: "GET",
     success: function (data) {
+      $("#ddlPovezivanjeTSpronadjene").empty();
+      $("#uparivanjeTxtNazivIzvodaTS").empty();
       console.log("responseTSuparivanje", data);
       console.log("niz neuparenih TS", data.neuparene);
       console.log("niz uparenih TS", data.uparene);
