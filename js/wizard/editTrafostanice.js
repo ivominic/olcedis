@@ -37,6 +37,7 @@ document.querySelector("#btnOdabirNapojneTS").style.display = "none";
 function provjeriTrafostanice() {
   nizSelektovanihTrafostanicaOriginalId.length = 0;
   let trafostaniceZaWS = "";
+  $("#ddlPovezivanjeTSselektovane").empty();
   let option = document.createElement("option");
   option.text = "Odaberite trafostanicu";
   option.value = "";

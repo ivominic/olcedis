@@ -353,12 +353,13 @@ function vodoviIzBilingaZaUparivanje(nizVodova) {
   }
   let stringNiz = "[" + nizVodova.join(",") + "]";
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/upari_vodove?vodovi=" + stringNiz + dodatniParametriWS;
-  $("#ddlPovezivanjeTSpronadjene").empty();
+  //$("#ddlPovezivanjeTSpronadjene").empty();
   $.ajax({
     url: urlServisa,
     data: "",
     type: "POST",
     success: function (data) {
+      $("#ddlPovezivanjeTSpronadjene").empty();
       console.log("responseVodovi", data);
       console.log("niz neuparenih vodova", data.neupareni);
       console.log("niz predlozenih vodova za uparivanje", data.predlog);
