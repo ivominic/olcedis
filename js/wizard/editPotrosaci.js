@@ -279,7 +279,6 @@ function povezivanjeNiskonaponskihObjekata() {
   let nizTrenutnihVodova = [],
     nizPodredjenihVodova = [],
     nizPreostalihVodova = [];
-  /*********** */
   let writer = new ol.format.GeoJSON();
   let gPotrosac, gPod, gPM, gVod;
   let blnNepovezaniPodPM = false,

@@ -36,16 +36,19 @@ function wizardNext() {
     //Na klik se bira naponski nivo i filtriraju se trafostanice i vodovi selektovanog reona (zahvat iscrtanog poligona)
     odabraniNaponskiNivo = document.querySelector("#ddlWizardNaponskiNivo").value;
     //document.querySelector("#wizardHeader").innerHTML = drugiKorakWizarda;
-    trafostaniceUpoligonu(odabraniNaponskiNivo);
-    vodoviUpoligonu(odabraniNaponskiNivo);
 
     if (odabraniNaponskiNivo === "0.4") {
       potrosaciUpoligonu(odabraniNaponskiNivo);
       podUpoligonu(odabraniNaponskiNivo);
       prikljucnaMjestaUpoligonu(odabraniNaponskiNivo);
+      nnTrafostaniceUPoligonu(odabraniNaponskiNivo);
       //povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
       //TODO: OVDJE DODATI DIO ZA POTROŠAČE
+      povezivanjeNiskonaponskihObjekata(); //Ovo će trebati da se uradi u koraku wizarda nakon odabira napojne trafostanice i izvoda
+    } else {
+      trafostaniceUpoligonu(odabraniNaponskiNivo);
     }
+    vodoviUpoligonu(odabraniNaponskiNivo);
 
     //stuboviUpoligonu(odabraniNaponskiNivo);
 

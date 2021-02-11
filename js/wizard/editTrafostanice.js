@@ -89,6 +89,28 @@ function trafostaniceUpoligonu(napon) {
   });
 }
 
+/**
+ * Motoda koja bi trebala da vrati jednu trafostanicu. Poziva se samo za 0.4 naponski nivo i ne vrši provjere
+ * @param {*} napon
+ */
+function nnTrafostaniceUPoligonu(napon) {
+  let urlZaFilter =
+    wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernameTS + "&outputformat=application/json&cql_filter=" + globalCqlZaNaponskiNivo(napon, "trafostanice");
+  console.log("url filter", urlZaFilter);
+
+  $.ajax({
+    method: "POST",
+    url: urlZaFilter,
+    data: {},
+    success: function (response) {
+      selektovaneTrafostaniceFeatures = new ol.format.GeoJSON().readFeatures(response);
+    },
+    fail: function (jqXHR, textStatus) {
+      console.log("Request failed: " + textStatus);
+    },
+  });
+}
+
 function prikazUparivanje() {
   /*if (sifraNapojneTrafostanice === "") {
     poruka("Upozorenje", "Potrebno je odabrati napojnu trafostanicu");
