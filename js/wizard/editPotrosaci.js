@@ -267,10 +267,22 @@ function nnPrenosTrafostanica(sifra, naziv, izvod) {
       selektovanaPrikljucnaMjestaFeatures[i].values_.naziv_napojne !== naziv ||
       selektovanaPrikljucnaMjestaFeatures[i].values_.izvod_napojne !== izvod
     ) {
-      selektovaniVodovselektovanaPrikljucnaMjestaFeaturesFeatures[i].values_.sifra_napojne = sifra;
+      selektovanaPrikljucnaMjestaFeatures[i].values_.sifra_napojne = sifra;
       selektovanaPrikljucnaMjestaFeatures[i].values_.naziv_napojne = naziv;
       selektovanaPrikljucnaMjestaFeatures[i].values_.izvod_napojne = izvod;
       selektovanaPrikljucnaMjestaFeatures[i].akcija = "Izmjena";
+    }
+  }
+  for (let i = 0; i < selektovaniPotrosaciFeatures.length; i++) {
+    if (
+      selektovaniPotrosaciFeatures[i].values_.sifra_napojne !== sifra ||
+      selektovaniPotrosaciFeatures[i].values_.naziv_napojne !== naziv ||
+      selektovaniPotrosaciFeatures[i].values_.izvod_napojne !== izvod
+    ) {
+      selektovaniPotrosaciFeatures[i].values_.sifra_napojne = sifra;
+      selektovaniPotrosaciFeatures[i].values_.naziv_napojne = naziv;
+      selektovaniPotrosaciFeatures[i].values_.izvod_napojne = izvod;
+      selektovaniPotrosaciFeatures[i].akcija = "Izmjena";
     }
   }
 }
