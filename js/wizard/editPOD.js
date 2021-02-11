@@ -27,7 +27,7 @@ map.addLayer(wmsPOD);
 function podUpoligonu(napon) {
   let params = wmsPOD.getSource().getParams();
   let formiraniFilter = globalCqlZaNaponskiNivo(napon, "vodovi");
-  if (params.CQL_FILTER.length > 0) {
+  if (params.CQL_FILTER && params.CQL_FILTER.length > 0) {
     formiraniFilter += " AND (" + params.CQL_FILTER + ")";
   }
   formiraniFilter = encodeURIComponent(formiraniFilter);

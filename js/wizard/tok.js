@@ -42,13 +42,17 @@ function wizardNext() {
       podUpoligonu(odabraniNaponskiNivo);
       prikljucnaMjestaUpoligonu(odabraniNaponskiNivo);
       nnTrafostaniceUPoligonu(odabraniNaponskiNivo);
+      vodoviUpoligonu(odabraniNaponskiNivo);
       //povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
       //TODO: OVDJE DODATI DIO ZA POTROŠAČE
-      povezivanjeNiskonaponskihObjekata(); //Ovo će trebati da se uradi u koraku wizarda nakon odabira napojne trafostanice i izvoda
+      setTimeout(function () {
+        povezivanjeNiskonaponskihObjekata();
+      }, 1000);
+      //Ovo će trebati da se uradi u koraku wizarda nakon odabira napojne trafostanice i izvoda
     } else {
+      vodoviUpoligonu(odabraniNaponskiNivo);
       trafostaniceUpoligonu(odabraniNaponskiNivo);
     }
-    vodoviUpoligonu(odabraniNaponskiNivo);
 
     //stuboviUpoligonu(odabraniNaponskiNivo);
 
