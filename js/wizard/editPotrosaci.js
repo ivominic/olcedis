@@ -297,11 +297,19 @@ function povezivanjeNiskonaponskihObjekata() {
       if (selektovaniPotrosaciFeatures[i].values_.pod === selektovaniPODoviFeatures[j].values_.pod) {
         if (!selektovaniPotrosaciFeatures[i].hasOwnProperty("nadredjeni")) {
           //provjeriti logičke veze sa PODovima
-          if (selektovaniPotrosaciFeatures[i].getGeometry().getCoordinates() === selektovaniPODoviFeatures[j].getGeometry().getCoordinates()) {
+          console.log("pod field");
+          console.log(selektovaniPotrosaciFeatures[i].values_.pod, selektovaniPODoviFeatures[j].values_.pod);
+          console.log(selektovaniPotrosaciFeatures[i].getGeometry().getCoordinates(), selektovaniPODoviFeatures[j].getGeometry().getCoordinates());
+          if (
+            selektovaniPotrosaciFeatures[i].getGeometry().getCoordinates()[0] === selektovaniPODoviFeatures[j].getGeometry().getCoordinates()[0] &&
+            selektovaniPotrosaciFeatures[i].getGeometry().getCoordinates()[1] === selektovaniPODoviFeatures[j].getGeometry().getCoordinates()[1]
+          ) {
             //povezivanje potrošača i PODa, bez voda između
             selektovaniPotrosaciFeatures[i].values_.geohash_id_no = selektovaniPODoviFeatures[j].values_.geohash_id;
             selektovaniPotrosaciFeatures[i].akcija = "Izmjena";
             selektovaniPotrosaciFeatures[i].nadredjeni = true;
+            console.log("potrošač id uparivanje", selektovaniPotrosaciFeatures[i].id_);
+            console.log("pod id uparivanje", selektovaniPODoviFeatures[j].id_);
           }
         }
       }
@@ -309,7 +317,10 @@ function povezivanjeNiskonaponskihObjekata() {
         gPM = writer.writeFeatureObject(new ol.Feature(selektovanaPrikljucnaMjestaFeatures[k].getGeometry()));
         //provjeriti vezu poda i priključnog mjesta
         if (selektovanaPrikljucnaMjestaFeatures[k].values_.id === selektovaniPODoviFeatures[j].values_.prik_mjesto) {
-          if (selektovanaPrikljucnaMjestaFeatures[k].getGeometry().getCoordinates() === selektovaniPODoviFeatures[j].getGeometry().getCoordinates()) {
+          if (
+            selektovanaPrikljucnaMjestaFeatures[k].getGeometry().getCoordinates()[0] === selektovaniPODoviFeatures[j].getGeometry().getCoordinates()[0] &&
+            selektovanaPrikljucnaMjestaFeatures[k].getGeometry().getCoordinates()[1] === selektovaniPODoviFeatures[j].getGeometry().getCoordinates()[1]
+          ) {
             selektovaniPODoviFeatures[j].values_.geohash_id_no = selektovanaPrikljucnaMjestaFeatures[k].values_.geohash_id;
             selektovaniPODoviFeatures[j].akcija = "Izmjena";
             selektovaniPODoviFeatures[j].nadredjeni = true;
@@ -410,32 +421,8 @@ function povezivanjeNiskonaponskihObjekata() {
         nizTrenutnihVodova.push(selektovaniVodoviFeatures[i]);
       }
     }
-
-    /*if (nizTrenutnihVodova.length > 0) {
-      nizTrenutnihVodova.splice(0, 1);
-    }
-    if (nizTrenutnihVodova.length === 0) {
-      nizTrenutnihVodova = nizPodredjenihVodova.slice();
-      nizPodredjenihVodova.length = 0;
-      if (nizTrenutnihVodova.length === 0 && nizSvihGeometrija.length > 0) {
-        blnPostojeNepovezaniZapisi = false;
-        let vektorNeupareniVodovi1 = new ol.layer.Vector({
-          source: new ol.source.Vector({
-            features: nizSvihGeometrija,
-          }),
-          style: vectorStyleUnmatched,
-        });
-        map.addLayer(vektorNeupareniVodovi1);
-        console.log("neupareni", vektorNeupareniVodovi1);
-        document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
-        document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
-        poruka("Upozorenje", "Postoje vodovi koji nisu povezani sa potrošačima.");
-        prekidWizarda();
-      }
-    }*/
   }
 
-  //TODO: Da li prikazivati ako ima nepovezanih vodova
   if (nizTrenutnihVodova.length > 0) {
     alert("editPotrošači    postoje neupareni vodovi u console.log-u");
     console.log("neupareni vodovi", nizTrenutnihVodova);

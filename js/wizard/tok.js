@@ -234,7 +234,7 @@ function insertFinalniKorakNiskonaponskiObjekti() {
   }
   for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
     if (selektovaniVodoviFeatures[i].akcija && selektovaniVodoviFeatures[i].akcija === "Izmjena") {
-      cudPOD(selektovaniVodoviFeatures[i], "U");
+      cudVod(selektovaniVodoviFeatures[i], "U");
     }
   }
 }
