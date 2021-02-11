@@ -244,12 +244,14 @@ function cudStub(feature, akcija) {
  */
 function cudPotrosac(feature, akcija) {
   let wkt = wktGeometrije(feature);
+  //onsole.log("Geometrija potrošača", feature.values_);
+  //console.log("Potrošač", feature);
   let podaciForme = new FormData();
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti
-  //podaciForme.append("fid_1", feature.values_.fid_1);
-  podaciForme.append("fid_1", feature.id_.split(".")[1]);
+  podaciForme.append("fid_1", feature.values_.fid_1);
+  //podaciForme.append("fid_1", feature.id_.split(".")[1]);
   podaciForme.append("name", feature.values_.name);
   podaciForme.append("address", feature.values_.address);
   podaciForme.append("phoneNumber", feature.values_.phoneNumber);
@@ -429,6 +431,7 @@ function cudPrikljucnoMjesto(feature, akcija) {
  * @param {*} akcija
  */
 function cudPOD(feature, akcija) {
+  console.log("Unos pod-a", feature);
   let wkt = wktGeometrije(feature);
   let podaciForme = new FormData();
   podaciForme.append("akcija", akcija);

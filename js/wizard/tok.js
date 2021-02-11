@@ -216,6 +216,29 @@ function testUpisTrafostanice() {
   }
 }
 
+function insertFinalniKorakNiskonaponskiObjekti() {
+  for (let i = 0; i < selektovaniPotrosaciFeatures.length; i++) {
+    if (selektovaniPotrosaciFeatures[i].akcija && selektovaniPotrosaciFeatures[i].akcija === "Izmjena") {
+      cudPotrosac(selektovaniPotrosaciFeatures[i], "U");
+    }
+  }
+  for (let i = 0; i < selektovanaPrikljucnaMjestaFeatures.length; i++) {
+    if (selektovanaPrikljucnaMjestaFeatures[i].akcija && selektovanaPrikljucnaMjestaFeatures[i].akcija === "Izmjena") {
+      cudPrikljucnoMjesto(selektovanaPrikljucnaMjestaFeatures[i], "U");
+    }
+  }
+  for (let i = 0; i < selektovaniPODoviFeatures.length; i++) {
+    if (selektovaniPODoviFeatures[i].akcija && selektovaniPODoviFeatures[i].akcija === "Izmjena") {
+      cudPOD(selektovaniPODoviFeatures[i], "U");
+    }
+  }
+  for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
+    if (selektovaniVodoviFeatures[i].akcija && selektovaniVodoviFeatures[i].akcija === "Izmjena") {
+      cudPOD(selektovaniVodoviFeatures[i], "U");
+    }
+  }
+}
+
 function restartParametaraWizard() {
   nazivNapojneTrafostanice = "";
   sifraNapojneTrafostanice = "";

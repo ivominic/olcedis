@@ -367,6 +367,7 @@ function povezivanjeNiskonaponskihObjekata() {
   let blnOstvarenoPovezivanje = true;
   if (nizTrenutnihVodova.length === 0) {
     //TODO: Kraj wizarda, poziv servisa za unos u bazu
+    insertFinalniKorakNiskonaponskiObjekti();
     alert("editPotrosaci   završeno uparivanje");
     return false;
   }
@@ -438,5 +439,13 @@ function povezivanjeNiskonaponskihObjekata() {
   if (nizTrenutnihVodova.length > 0) {
     alert("editPotrošači    postoje neupareni vodovi u console.log-u");
     console.log("neupareni vodovi", nizTrenutnihVodova);
+  }
+}
+
+function insertFinalniKorakNiskonaponskiObjekti() {
+  for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
+    if (selektovaneTrafostaniceFeatures[i].akcija && selektovaneTrafostaniceFeatures[i].akcija === "Izmjena") {
+      cudTrafostanica(selektovaneTrafostaniceFeatures[i], "U");
+    }
   }
 }
