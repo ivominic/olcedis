@@ -355,11 +355,11 @@ function povezivanjeNiskonaponskihObjekata() {
   nizPodredjenihVodova.length = 0;
   nizTrenutnihVodova.length = 0;
   for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
-    if (selektovaniVodoviFeatures[i].hasOwnProperty(nadredjeni) && !selektovaniVodoviFeatures[i].nadredjeni) {
+    if (selektovaniVodoviFeatures[i].hasOwnProperty("nadredjeni") && !selektovaniVodoviFeatures[i].nadredjeni) {
       //Vodovi kojima treda dodijeliti geohash_id_no
       nizPodredjenihVodova.push(selektovaniVodoviFeatures[i]);
     }
-    if (!selektovaniVodoviFeatures[i].hasOwnProperty(nadredjeni)) {
+    if (!selektovaniVodoviFeatures[i].hasOwnProperty("nadredjeni")) {
       nizTrenutnihVodova.push(selektovaniVodoviFeatures[i]);
     }
   }
@@ -401,11 +401,11 @@ function povezivanjeNiskonaponskihObjekata() {
     nizPodredjenihVodova.length = 0;
     nizTrenutnihVodova.length = 0;
     for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
-      if (selektovaniVodoviFeatures[i].hasOwnProperty(nadredjeni) && !selektovaniVodoviFeatures[i].nadredjeni) {
+      if (selektovaniVodoviFeatures[i].hasOwnProperty("nadredjeni") && !selektovaniVodoviFeatures[i].nadredjeni) {
         //Vodovi kojima treda dodijeliti geohash_id_no
         nizPodredjenihVodova.push(selektovaniVodoviFeatures[i]);
       }
-      if (!selektovaniVodoviFeatures[i].hasOwnProperty(nadredjeni)) {
+      if (!selektovaniVodoviFeatures[i].hasOwnProperty("nadredjeni")) {
         nizTrenutnihVodova.push(selektovaniVodoviFeatures[i]);
       }
     }
