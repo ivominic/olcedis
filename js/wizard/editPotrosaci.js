@@ -61,6 +61,11 @@ function provjeriPotrosace() {
     console.log("Ne napajaju se svi sa istog izvoda trafostanice: ", razliciteSifre.join(",") + "***" + razlicitiIzvodi.join(","));
     alert("U zahvatu se nalaze objekti koji se napajaju sa različitih izvoda \nŠifre trafostanica: " + razliciteSifre.join(",") + "\nIzvodi: " + razlicitiIzvodi.join(","));
     prekidWizarda();
+  } else {
+    sifraNapojneTrafostanice = tempSifraTS;
+    nazivNapojneTrafostanice = tempNazivTS;
+    izvodNapojneTrafostanice = tempIzvodTS;
+    nnPrenosTrafostanica(sifraNapojneTrafostanice, nazivNapojneTrafostanice, izvodNapojneTrafostanice);
   }
   return retVal;
 }
