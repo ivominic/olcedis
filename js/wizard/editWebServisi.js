@@ -9,6 +9,7 @@
  */
 function neupareneTrafostanice(sifraNapojne, izvodNapojne) {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/neuparene_za_napojnu?sifra_napojne=" + sifraNapojne + "&izvod_napojne=" + izvodNapojne;
+  urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
     data: "",
@@ -40,6 +41,7 @@ function neupareneTrafostanice(sifraNapojne, izvodNapojne) {
  */
 function detaljiTrafostanica(sifraTS) {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice_data?sifra=" + sifraTS;
+  urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
     data: "",
@@ -65,6 +67,7 @@ function detaljiTrafostanica(sifraTS) {
  */
 function pretragaTrafostanica(sifraTS) {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice?sifra=" + sifraTS;
+  urlServisa += "&t=" + Date.now();
   $("#ddlPovezivanjeTSpronađene").empty();
   $.ajax({
     url: urlServisa,
@@ -142,7 +145,7 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
   }
   let stringNiz = "[" + nizTS.join(",") + "]";
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/upari_trafostanice?trafostanice=" + stringNiz + dodatniParametriWS;
-
+  urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
     data: "",
@@ -274,6 +277,7 @@ function generisiGeohashId(lejer, wkt) {
 
 function procitajVlasnika(username) {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/vlasnik";
+  urlServisa += "?t=" + Date.now();
   let podaciForme = new FormData();
   podaciForme.append("user", username);
   let xhr = new XMLHttpRequest();
@@ -301,6 +305,7 @@ function procitajVlasnika(username) {
 
 function prikazFotografija(lejer, id) {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/slike?tip_objekta=" + lejer + "&id_objekta=" + id;
+  urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
     data: "",
@@ -354,6 +359,7 @@ function vodoviIzBilingaZaUparivanje(nizVodova) {
   }
   let stringNiz = "[" + nizVodova.join(",") + "]";
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/upari_vodove?vodovi=" + stringNiz + dodatniParametriWS;
+  urlServisa += "&t=" + Date.now();
   //$("#ddlPovezivanjeTSpronadjene").empty();
   $.ajax({
     url: urlServisa,
