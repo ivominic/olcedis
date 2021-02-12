@@ -353,11 +353,11 @@ var modifyV = new ol.interaction.Modify({
 modifyV.on("modifyend", function (e) {
   let featureName = e.features.getArray()[0].values_.name;
 
-  console.log("select m", e.features.getArray()[0].values_);
-  console.log("ime tačke m", e.features.getArray()[0].values_.name);
+  //console.log("select m", e.features.getArray()[0].values_);
+  //console.log("ime tačke m", e.features.getArray()[0].values_.name);
   //console.log("koordinate", e.selected[0].values_.geometry.flatCoordinates);
   let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
-  console.log("koordinate m", position);
+  //console.log("koordinate m", position);
   let pocetniElement;
   nizKml.forEach((el) => {
     if (el.name === featureName) {
@@ -433,11 +433,11 @@ function onMouseClick(browserEvent) {
   } else {
     map.forEachLayerAtPixel(pixel, function (layer) {
       if (layer instanceof ol.layer.Image) {
-        console.log(layer);
+        //console.log(layer);
         let title = layer.get("title");
-        console.log("title", title);
+        //console.log("title", title);
         let vidljivost = layer.get("visible");
-        console.log("vidljivost", vidljivost);
+        //console.log("vidljivost", vidljivost);
         if (vidljivost) {
           let url = layer.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
             INFO_FORMAT: "application/json",

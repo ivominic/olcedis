@@ -93,7 +93,7 @@ function povezivanjeVodova(pocetna, features) {
   //Metoda koja svim trafostanicama daje geohash_id_no voda koji je presijeca
   presjekVodovaSaTrafostanicamaPrviKorak();
 
-  if (!pocetna) {
+  if (!pocetna || pocetna === undefined) {
     //napraviti geometriju iz promjenljivih: geometrijaNapojneTrafostanice i geohashNapojneTrafostanice
     let format = new ol.format.WKT();
     let geometrija = format.readFeature(geometrijaNapojneTrafostanice, {});
@@ -176,7 +176,9 @@ function povezivanjeVodova(pocetna, features) {
               }
             }
             //Poziv metode za provjeru presjeka sa trafostanicama
-            presjekVodovaSaTrafostanicama(nadredjenaLinijaFeature, podredjenaLinijaFeature);
+            if (nadredjenaLinijaFeature && podredjenaLinijaFeature && nadredjenaLinijaFeature !== undefined && podredjenaLinijaFeature !== undefined) {
+              presjekVodovaSaTrafostanicama(nadredjenaLinijaFeature, podredjenaLinijaFeature);
+            }
           }
         }
       }

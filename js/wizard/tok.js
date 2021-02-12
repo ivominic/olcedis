@@ -125,7 +125,9 @@ function prikaziCetvrtuFormuWizarda() {
     poruka("Upozorenje", "Nije odabrana napojna trafostanica");
     return false;
   } else {
-    //console.log("selektovani vodovi prije poziva za uparivanje", selektovaniVodoviFeatures);
+    console.log("broj vodova", selektovaniVodoviFeatures.length);
+    console.log("selektovani vodovi prije poziva za uparivanje", selektovaniVodoviFeatures);
+    console.log("selektovana napojna trafostanica", featureNapojnaTrafostanica);
     povezivanjeVodova(featureNapojnaTrafostanica, selektovaniVodoviFeatures);
 
     //Dodavanje selektovanih vodova u listu za uparivanje

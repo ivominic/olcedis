@@ -314,9 +314,7 @@ function povezivanjeNiskonaponskihObjekata() {
       if (selektovaniPotrosaciFeatures[i].values_.pod === selektovaniPODoviFeatures[j].values_.pod) {
         if (!selektovaniPotrosaciFeatures[i].hasOwnProperty("nadredjeni")) {
           //provjeriti logičke veze sa PODovima
-          console.log("pod field");
           console.log(selektovaniPotrosaciFeatures[i].values_.pod, selektovaniPODoviFeatures[j].values_.pod);
-          console.log(selektovaniPotrosaciFeatures[i].getGeometry().getCoordinates(), selektovaniPODoviFeatures[j].getGeometry().getCoordinates());
           if (
             selektovaniPotrosaciFeatures[i].getGeometry().getCoordinates()[0] === selektovaniPODoviFeatures[j].getGeometry().getCoordinates()[0] &&
             selektovaniPotrosaciFeatures[i].getGeometry().getCoordinates()[1] === selektovaniPODoviFeatures[j].getGeometry().getCoordinates()[1]
@@ -377,6 +375,8 @@ function povezivanjeNiskonaponskihObjekata() {
     }
   }
 
+  console.log("Prošao 4 petlje");
+
   //TODO: Odavde provjeriti vodove koji imaju property nadredjeni, ali je false. To su vodovi koji su nadređeni priključnom mjestu.
   //Od njih ići naviše za sve koji nemaju property nadredjeni
 
@@ -388,9 +388,13 @@ function povezivanjeNiskonaponskihObjekata() {
       nizPodredjenihVodova.push(selektovaniVodoviFeatures[i]);
     }
     if (!selektovaniVodoviFeatures[i].hasOwnProperty("nadredjeni")) {
+      console.log("trenutni values", selektovaniVodoviFeatures[i].values_);
       nizTrenutnihVodova.push(selektovaniVodoviFeatures[i]);
     }
   }
+
+  console.log("nizPodredjenihVodova", nizPodredjenihVodova);
+  console.log("nizTrenutnihVodova", nizTrenutnihVodova);
 
   let blnOstvarenoPovezivanje = true;
   if (nizTrenutnihVodova.length === 0) {
