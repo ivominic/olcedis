@@ -241,6 +241,41 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
   });
 }
 
+/**
+ * Metoda koja za podatke o napojnoj trafostanici vraća geometriju trafostanice. Ako postoji, provjerava se da li postoji konektivnost sa nekim vodom
+ * Ako postoji, radi se top-down wizard, inače bottom-up
+ * @param {*} sifraOdabraneNapojneTS
+ * @param {*} nazivOdabranaNapojneTS
+ * @param {*} izvodOdabraneNapojneTS
+ */
+function nnGeometrijaTrafostanica(sifraOdabraneNapojneTS, nazivOdabranaNapojneTS, izvodOdabraneNapojneTS) {
+  //Niz id-jeva trafostanica
+  let dodatniParametriWS = "";
+  if (sifraOdabraneNapojneTS !== "" && nazivOdabranaNapojneTS !== "" && izvodOdabraneNapojneTS !== "") {
+    dodatniParametriWS = "&sifra_napojne=" + sifraOdabraneNapojneTS;
+    dodatniParametriWS += "&naziv_napojne=" + nazivOdabranaNapojneTS;
+    dodatniParametriWS += "&izvod_napojne=" + izvodOdabraneNapojneTS;
+  }
+  let stringNiz = "[]";
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/upari_trafostanice?trafostanice=" + stringNiz + dodatniParametriWS;
+  urlServisa += "&t=" + Date.now();
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "GET",
+    success: function (data) {
+      console.log("geometrija napojne TS", data.geometrija_napojne);
+      console.log("geohash napojne TS", data.geohash_napojne);
+      geometrijaNapojneTrafostanice = data.geometrija_napojne;
+      geohashNapojneTrafostanice = data.geohash_napojne;
+      provjeriVodIzTrafostanice();
+    },
+    error: function (x, y, z) {
+      poruka("Greska", x.responseJSON["error"]);
+    },
+  });
+}
+
 function generisiGeohashId(lejer, wkt) {
   let retval = "";
   console.log("Geohash ID");

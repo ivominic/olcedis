@@ -34,6 +34,8 @@ let nizVodovaZaWebServis = []; //Niz u koji će se dodati svi vodovi za unos u b
 let nizPotrosacaZaWebServis = []; //Niz u koji će se dodati svi potrošači za unos u bazu, sa geohash_id vrijednostima nadređenog
 let nizTrafostanicaGeohashZaWebServis = []; //Niz u koji će se dodavati sve trafostanice sa novim geohash_id_no (no = nadređeni objekat)
 
+let blnTopDown = false; //Za niskonaponsku mrežu, određuje da li će se raditi top-down ili bottom-up uparivanje
+
 let draw,
   modify,
   cqlFilter = "",

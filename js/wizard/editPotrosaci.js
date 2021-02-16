@@ -457,3 +457,30 @@ function insertFinalniKorakNiskonaponskiObjekti() {
     }
   }
 }
+
+/**
+ * Metoda koja provjerava da li postoji niskonaponski vod iz trafostanice. Ako postoji radi provjeru top down
+ */
+function provjeriVodIzTrafostanice() {
+  //Ova metoda daje geometriju napojne trafostanice za niski naponski nivo
+  trafostaniceIzBilingaZaUparivanje("", sifraNapojneTrafostanice, nazivNapojneTrafostanice, izvodNapojneTrafostanice);
+
+  let writer = new ol.format.GeoJSON();
+  let format = new ol.format.WKT();
+  let geometrija = format.readFeature(geometrijaNapojneTrafostanice, {});
+  let tsGeometrija = writer.writeFeatureObject(new ol.Feature(geometrija.getGeometry()));
+
+  for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
+    //let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(nizSvihGeometrija[i].getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
+    let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(selektovaniVodoviFeatures[i].getGeometry()));
+    if (turf.pointToLineDistance(tsGeometrija, pojedinacnaLinijaTurf, { units: "kilometers" }) === 0) {
+      blnTopDown = true;
+    }
+  }
+  if (blnTopDown) {
+    //Top down
+  } else {
+    //Bottom up
+    povezivanjeNiskonaponskihObjekata();
+  }
+}

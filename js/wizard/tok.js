@@ -44,9 +44,11 @@ function wizardNext() {
       nnTrafostaniceUPoligonu(odabraniNaponskiNivo);
       vodoviUpoligonu(odabraniNaponskiNivo);
       //povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
-      //TODO: OVDJE DODATI DIO ZA POTROŠAČE
+
       setTimeout(function () {
-        povezivanjeNiskonaponskihObjekata();
+        //TODO: Provjeriti vezu od trafostanice. Ako ne postoji vod koji ide iz trafostanice, onda uraditi poziv funkcije ispod
+        //Ako postoji vod, koristiti logiku iz napona 10 i 35, od trafostanice, ka dolje
+        nnGeometrijaTrafostanica();
       }, 1000);
       //Ovo će trebati da se uradi u koraku wizarda nakon odabira napojne trafostanice i izvoda
     } else {
@@ -84,7 +86,10 @@ function wizardNext() {
     prikaziCetvrtuFormuWizarda();
   } else if (document.querySelector("#wizardHeader").innerText === cetvrtiKorakWizarda) {
     if (selektovaniPotrosaciFeatures.length > 0 && selektovaniVodoviFeatures.length > 0) {
-      povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
+      if (blnTopDown) {
+      } else {
+        povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
+      }
     } else {
       if (odabraniNaponskiNivo === 0.4 && selektovaniPotrosaciFeatures.length === 0) {
         poruka("Uspjeh", "U selektovanom zahvatu ne postoji nijedan potrošač.");
