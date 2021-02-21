@@ -463,7 +463,8 @@ function insertFinalniKorakNiskonaponskiObjekti() {
  */
 function provjeriVodIzTrafostanice() {
   //Ova metoda daje geometriju napojne trafostanice za niski naponski nivo
-  trafostaniceIzBilingaZaUparivanje("", sifraNapojneTrafostanice, nazivNapojneTrafostanice, izvodNapojneTrafostanice);
+  sifraNapojneTrafostanice = srediSifruTrafostanice(sifraNapojneTrafostanice);
+  geometrijaNapojneTrafostanice = geometrijaTrafostanice(sifraNapojneTrafostanice);
 
   let writer = new ol.format.GeoJSON();
   let format = new ol.format.WKT();

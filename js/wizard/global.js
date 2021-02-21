@@ -341,3 +341,17 @@ function popuniListeZaNkro() {
 function popuniListeZaPotrosace() {}
 
 function popuniListeZaPod() {}
+
+/**
+ * Metoda koja za zadatu sifru trafostanice provjerava da li je duga 7 karaktera i ako su prvih 6 cifre, odbacuje poslednje slovo, pošto je to oznaka trafoa
+ * @param {} sifra
+ */
+function srediSifruTrafostanice(sifra) {
+  let retval = sifra;
+  if (sifra.length > 6) {
+    if (!isNaN(sifra.substring(0, 6))) {
+      retval = sifra.substring(0, 6);
+    }
+  }
+  return retval;
+}

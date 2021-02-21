@@ -36,6 +36,34 @@ function neupareneTrafostanice(sifraNapojne, izvodNapojne) {
 //neupareneTrafostanice("EKLICE", "Vazdušni Kličevo");
 
 /**
+ * Metoda koja za predatu šifru iz bilinga trafostanice vrati geometriju trafostanice
+ * @param {id_billing vrijednost iz GIS-a} sifraTS
+ */
+function geometrijaTrafostanice(sifraTS) {
+  let retval = "";
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice_data?sifra=" + sifraTS;
+  urlServisa += "&t=" + Date.now();
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "GET",
+    success: function (data) {
+      console.log("detalji trafostanica, odgovor servisa", data);
+      if (data) {
+        //Popuniti polja - TESTIRATI
+        retval = data.Geometry;
+        return retval;
+      }
+    },
+    error: function (x, y, z) {
+      //alert(x.responseText +"  " +x.status);
+      console.log("greška popuniDdlAtributima", x.responseText);
+      return retval;
+    },
+  });
+}
+
+/**
  * Metoda koja za predatu šifru iz bilinga trafostanice vrati sva polja
  * @param {id_billing vrijednost iz GIS-a} sifraTS
  */
@@ -50,8 +78,10 @@ function detaljiTrafostanica(sifraTS) {
       console.log("detalji trafostanica, odgovor servisa", data);
       if (data) {
         //Popuniti polja - TESTIRATI
-        document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = data.ts.naziv;
-        document.querySelector("#uparivanjeTxtSifraTS").textContent = data.ts.sifra;
+        //document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = data.ts.naziv;
+        //document.querySelector("#uparivanjeTxtSifraTS").textContent = data.ts.sifra;
+        document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = data.naziv;
+        document.querySelector("#uparivanjeTxtSifraTS").textContent = data.sifra;
       }
     },
     error: function (x, y, z) {
