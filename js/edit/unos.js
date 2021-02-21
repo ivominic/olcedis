@@ -186,6 +186,7 @@ function prikaziUnosNkro() {
 function unosStubova(geometrijaWkt, servisAkcija) {
   //servisAkcija = "I";
   let podaciForme = new FormData();
+  podaciForme.append("wizard", 0);
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", servisAkcija);
   podaciForme.append("Geometry", geometrijaWkt);
@@ -223,11 +224,6 @@ function unosStubova(geometrijaWkt, servisAkcija) {
 
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");
-  podaciForme.append("visibility", true);
-  podaciForme.append("open", true);
-  podaciForme.append("address", "");
-  podaciForme.append("phoneNumber", "");
-  podaciForme.append("Folder", "test");
   podaciForme.append("fid", "test");
   podaciForme.append("layer_name", "test");
   podaciForme.append("broj_priklj_mjernih_ormara", 2);
@@ -265,6 +261,7 @@ function unosStubova(geometrijaWkt, servisAkcija) {
 
 function unosVodova(geometrijaWkt, servisAkcija) {
   let podaciForme = new FormData();
+  podaciForme.append("wizard", 0);
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", servisAkcija);
   podaciForme.append("Geometry", geometrijaWkt);
@@ -302,11 +299,6 @@ function unosVodova(geometrijaWkt, servisAkcija) {
 
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");
-  podaciForme.append("visibility", true);
-  podaciForme.append("open", true);
-  podaciForme.append("address", "");
-  podaciForme.append("phoneNumber", "");
-  podaciForme.append("Folder", "test");
   podaciForme.append("fid", "test");
   podaciForme.append("layer_name", "test");
   //podaciForme.append("broj_priklj_mjernih_ormara", 2);
@@ -344,6 +336,7 @@ function unosVodova(geometrijaWkt, servisAkcija) {
 
 function unosTrafostanica(geometrijaWkt, servisAkcija) {
   let podaciForme = new FormData();
+  podaciForme.append("wizard", 0);
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", servisAkcija);
   podaciForme.append("Geometry", geometrijaWkt);
@@ -375,11 +368,6 @@ function unosTrafostanica(geometrijaWkt, servisAkcija) {
 
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");
-  podaciForme.append("visibility", true);
-  podaciForme.append("open", true);
-  podaciForme.append("address", "");
-  podaciForme.append("phoneNumber", "");
-  podaciForme.append("Folder", "test");
   podaciForme.append("fid", "test");
   podaciForme.append("layer_name", "test");
   //podaciForme.append("broj_priklj_mjernih_ormara", 2);
@@ -416,6 +404,7 @@ function unosTrafostanica(geometrijaWkt, servisAkcija) {
 
 function unosNkro(geometrijaWkt, servisAkcija) {
   let podaciForme = new FormData();
+  podaciForme.append("wizard", 0);
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", servisAkcija);
   podaciForme.append("Geometry", geometrijaWkt);
@@ -437,11 +426,6 @@ function unosNkro(geometrijaWkt, servisAkcija) {
 
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");
-  podaciForme.append("visibility", true);
-  podaciForme.append("open", true);
-  podaciForme.append("address", "");
-  podaciForme.append("phoneNumber", "");
-  podaciForme.append("Folder", "test");
   podaciForme.append("fid", "test");
   podaciForme.append("layer_name", "test");
   //podaciForme.append("broj_priklj_mjernih_ormara", 2);
@@ -478,6 +462,7 @@ function unosNkro(geometrijaWkt, servisAkcija) {
 
 function unosPrikljucnoMjesto(geometrijaWkt, servisAkcija) {
   let podaciForme = new FormData();
+  podaciForme.append("wizard", 0);
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", servisAkcija);
   podaciForme.append("Geometry", geometrijaWkt);
@@ -496,11 +481,6 @@ function unosPrikljucnoMjesto(geometrijaWkt, servisAkcija) {
 
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");
-  podaciForme.append("visibility", true);
-  podaciForme.append("open", true);
-  podaciForme.append("address", "");
-  podaciForme.append("phoneNumber", "");
-  podaciForme.append("Folder", "test");
   podaciForme.append("fid", "test");
   podaciForme.append("layer_name", "test");
   //podaciForme.append("broj_priklj_mjernih_ormara", 2);
@@ -537,6 +517,7 @@ function unosPrikljucnoMjesto(geometrijaWkt, servisAkcija) {
 
 function unosPotrosac(geometrijaWkt, servisAkcija) {
   let podaciForme = new FormData();
+  podaciForme.append("wizard", 0);
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", servisAkcija);
   podaciForme.append("Geometry", geometrijaWkt);
@@ -558,11 +539,6 @@ function unosPotrosac(geometrijaWkt, servisAkcija) {
 
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");
-  podaciForme.append("visibility", true);
-  podaciForme.append("open", true);
-  podaciForme.append("address", "");
-  podaciForme.append("phoneNumber", "");
-  podaciForme.append("Folder", "test");
   podaciForme.append("fid", "test");
   podaciForme.append("layer_name", "test");
   //podaciForme.append("broj_priklj_mjernih_ormara", 2);
@@ -599,6 +575,7 @@ function unosPotrosac(geometrijaWkt, servisAkcija) {
 
 function unosPod(geometrijaWkt, servisAkcija) {
   let podaciForme = new FormData();
+  podaciForme.append("wizard", 0);
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", servisAkcija);
   podaciForme.append("Geometry", geometrijaWkt);
@@ -620,11 +597,6 @@ function unosPod(geometrijaWkt, servisAkcija) {
 
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");
-  podaciForme.append("visibility", true);
-  podaciForme.append("open", true);
-  podaciForme.append("address", "");
-  podaciForme.append("phoneNumber", "");
-  podaciForme.append("Folder", "test");
   podaciForme.append("fid", "test");
   podaciForme.append("layer_name", "test");
   //podaciForme.append("broj_priklj_mjernih_ormara", 2);
@@ -764,12 +736,6 @@ function popuniPoljaTrafostanice(odgovor) {
 
   document.querySelector("#ddlTrafostanice").value = atributi["ddlTrafostanice"];
   document.querySelector("#read_fid_1").value = atributi["fid_1"];
-  document.querySelector("#read_visibility").value = atributi["visibility"];
-  document.querySelector("#read_name").value = atributi["name"];
-  document.querySelector("#read_open").value = atributi["open"];
-  document.querySelector("#read_address").value = atributi["address"];
-  document.querySelector("#read_phone_number").value = atributi["phone_number"];
-  document.querySelector("#read_folder").value = atributi["folder"];
   document.querySelector("#read_id_br").value = atributi["id_br"];
   document.querySelector("#read_celije_10").value = atributi["celije_10"];
   document.querySelector("#read_izvod_celija").value = atributi["izvod_celija"];

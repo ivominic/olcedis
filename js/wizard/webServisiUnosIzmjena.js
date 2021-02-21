@@ -10,14 +10,13 @@
 function cudTrafostanica(feature, akcija) {
   let wkt = wktGeometrije(feature);
   let podaciForme = new FormData();
+  podaciForme.append("wizard", 1);
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti
   //podaciForme.append("fid_1", feature.values_.fid_1);
   podaciForme.append("fid_1", feature.id_.split(".")[1]);
   podaciForme.append("name", feature.values_.name);
-  podaciForme.append("address", feature.values_.address);
-  podaciForme.append("phoneNumber", feature.values_.phoneNumber);
   podaciForme.append("id_br", feature.values_.id_br);
   podaciForme.append("celije_10", feature.values_.celije_10);
   podaciForme.append("prenos_odnos", feature.values_.prenos_odnos);
@@ -55,9 +54,6 @@ function cudTrafostanica(feature, akcija) {
   podaciForme.append("geohash_id_no", feature.values_.geohash_id_no);
   podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
   podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
-  podaciForme.append("visibility", feature.values_.visibility);
-  podaciForme.append("open", feature.values_.open);
-  podaciForme.append("Folder", feature.values_.Folder);
   podaciForme.append("fid", feature.values_.fid);
   podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
 
@@ -85,14 +81,13 @@ function cudTrafostanica(feature, akcija) {
 function cudVod(feature, akcija) {
   let wkt = wktGeometrije(feature);
   let podaciForme = new FormData();
+  podaciForme.append("wizard", 1);
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti
   //podaciForme.append("fid1", feature.values_.fid1);
   podaciForme.append("fid_1", feature.id_.split(".")[1]);
   podaciForme.append("name", feature.values_.name);
-  podaciForme.append("address", feature.values_.address);
-  podaciForme.append("phoneNumber", feature.values_.phoneNumber);
   podaciForme.append("id_br", feature.values_.id_br);
   podaciForme.append("materijal", feature.values_.materijal);
   podaciForme.append("zajednicka_dion", feature.values_.zajednicka_dion);
@@ -135,9 +130,6 @@ function cudVod(feature, akcija) {
   podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
   podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
   podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
-  podaciForme.append("visibility", feature.values_.visibility);
-  podaciForme.append("open", feature.values_.open);
-  podaciForme.append("Folder", feature.values_.Folder);
   podaciForme.append("fid", feature.values_.fid);
 
   $.ajax({
@@ -164,14 +156,13 @@ function cudVod(feature, akcija) {
 function cudStub(feature, akcija) {
   let wkt = wktGeometrije(feature);
   let podaciForme = new FormData();
+  podaciForme.append("wizard", 1);
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti
   //podaciForme.append("fid_1", feature.values_.fid_1);
   podaciForme.append("fid_1", feature.id_.split(".")[1]);
   podaciForme.append("name", feature.values_.name);
-  podaciForme.append("address", feature.values_.address);
-  podaciForme.append("phoneNumber", feature.values_.phoneNumber);
   podaciForme.append("br_izol_faza", feature.values_.br_izol_faza);
   podaciForme.append("uzemljivac", feature.values_.uzemljivac);
   podaciForme.append("pripadnost", feature.values_.pripadnost);
@@ -216,9 +207,6 @@ function cudStub(feature, akcija) {
   podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
   podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
   podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
-  podaciForme.append("visibility", feature.values_.visibility);
-  podaciForme.append("open", feature.values_.open);
-  podaciForme.append("Folder", feature.values_.Folder);
   podaciForme.append("fid", feature.values_.fid);
 
   $.ajax({
@@ -247,14 +235,13 @@ function cudPotrosac(feature, akcija) {
   //onsole.log("Geometrija potrošača", feature.values_);
   //console.log("Potrošač", feature);
   let podaciForme = new FormData();
+  podaciForme.append("wizard", 1);
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti
   podaciForme.append("fid_1", feature.values_.fid_1);
   //podaciForme.append("fid_1", feature.id_.split(".")[1]);
   podaciForme.append("name", feature.values_.name);
-  podaciForme.append("address", feature.values_.address);
-  podaciForme.append("phoneNumber", feature.values_.phoneNumber);
   podaciForme.append("prik_kabal", feature.values_.prik_kabal);
   podaciForme.append("pod", feature.values_.pod);
   podaciForme.append("layer_name", feature.values_.layer_name);
@@ -281,9 +268,6 @@ function cudPotrosac(feature, akcija) {
   podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
   podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
   podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
-  podaciForme.append("visibility", feature.values_.visibility);
-  podaciForme.append("open", feature.values_.open);
-  podaciForme.append("Folder", feature.values_.Folder);
   podaciForme.append("fid", feature.values_.fid);
 
   $.ajax({
@@ -310,14 +294,13 @@ function cudPotrosac(feature, akcija) {
 function cudNKRO(feature, akcija) {
   let wkt = wktGeometrije(feature);
   let podaciForme = new FormData();
+  podaciForme.append("wizard", 1);
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti
   //podaciForme.append("fid_1", feature.values_.fid_1);
   podaciForme.append("fid_1", feature.id_.split(".")[1]);
   podaciForme.append("name", feature.values_.name);
-  podaciForme.append("address", feature.values_.address);
-  podaciForme.append("phoneNumber", feature.values_.phoneNumber);
   podaciForme.append("materijal", feature.values_.materijal);
   podaciForme.append("sys_id", feature.values_.sys_id);
   podaciForme.append("montaza", feature.values_.montaza);
@@ -344,9 +327,6 @@ function cudNKRO(feature, akcija) {
   podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
   podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
   podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
-  podaciForme.append("visibility", feature.values_.visibility);
-  podaciForme.append("open", feature.values_.open);
-  podaciForme.append("Folder", feature.values_.Folder);
   podaciForme.append("fid", feature.values_.fid);
 
   $.ajax({
@@ -373,14 +353,13 @@ function cudNKRO(feature, akcija) {
 function cudPrikljucnoMjesto(feature, akcija) {
   let wkt = wktGeometrije(feature);
   let podaciForme = new FormData();
+  podaciForme.append("wizard", 1);
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti
   //podaciForme.append("fid_1", feature.values_.fid_1);
   podaciForme.append("fid_1", feature.id_.split(".")[1]);
   podaciForme.append("name", feature.values_.name);
-  podaciForme.append("address", feature.values_.address);
-  podaciForme.append("phoneNumber", feature.values_.phoneNumber);
   podaciForme.append("osiguraci", feature.values_.osiguraci);
   podaciForme.append("opstina", feature.values_.opstina);
   podaciForme.append("gps", feature.values_.gps);
@@ -404,9 +383,6 @@ function cudPrikljucnoMjesto(feature, akcija) {
   podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
   podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
   podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
-  podaciForme.append("visibility", feature.values_.visibility);
-  podaciForme.append("open", feature.values_.open);
-  podaciForme.append("Folder", feature.values_.Folder);
   podaciForme.append("fid", feature.values_.fid);
 
   $.ajax({
@@ -434,14 +410,13 @@ function cudPOD(feature, akcija) {
   console.log("Unos pod-a", feature);
   let wkt = wktGeometrije(feature);
   let podaciForme = new FormData();
+  podaciForme.append("wizard", 1);
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti
   //podaciForme.append("fid_1", feature.values_.fid_1);
   podaciForme.append("fid_1", feature.id_.split(".")[1]);
   podaciForme.append("name", feature.values_.name);
-  podaciForme.append("address", feature.values_.address);
-  podaciForme.append("phoneNumber", feature.values_.phoneNumber);
   podaciForme.append("prik_kabal", feature.values_.prik_kabal);
   podaciForme.append("pod", feature.values_.pod);
   podaciForme.append("layer_name", feature.values_.layer_name);
@@ -468,9 +443,6 @@ function cudPOD(feature, akcija) {
   podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
   podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
   podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
-  podaciForme.append("visibility", feature.values_.visibility);
-  podaciForme.append("open", feature.values_.open);
-  podaciForme.append("Folder", feature.values_.Folder);
   podaciForme.append("fid", feature.values_.fid);
 
   $.ajax({
