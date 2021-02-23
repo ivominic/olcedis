@@ -184,8 +184,13 @@ function prikaziUnosNkro() {
 /**Metode za unos podataka iz polja */
 
 function unosStubova(geometrijaWkt, servisAkcija) {
+  if (!blnDodijeljenoGpxProperties) {
+    dodajPoljaGpxStubovi();
+  } else {
+    console.log("izmijeniti vrijednosti za svaki stub");
+  }
   //servisAkcija = "I";
-  let podaciForme = new FormData();
+  /*let podaciForme = new FormData();
   podaciForme.append("wizard", 0);
   podaciForme.append("id", idObjekta);
   podaciForme.append("akcija", servisAkcija);
@@ -254,7 +259,7 @@ function unosStubova(geometrijaWkt, servisAkcija) {
     error: function (response) {
       console.log("error", response);
     },
-  });
+  });*/
 }
 
 //unosStubova("POINT(0 0)", "I");

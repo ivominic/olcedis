@@ -345,6 +345,8 @@ var select = new ol.interaction.Select({
 select.on("select", function (e) {
   //console.log("select target", e.target.getFeatures().array_[0].values_.name);
   console.log("select target", e.target.getFeatures());
+  selectGpxFeature = e.target.getFeatures().array_[0];
+  console.log("gpx feature", selectGpxFeature);
   if (blnZavrsniStub) {
     blnZavrsniStub = false;
     vrijednostKrajnjeTacke = parseInt(e.target.getFeatures().array_[0].values_.name);

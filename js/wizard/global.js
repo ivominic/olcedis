@@ -16,6 +16,7 @@ let tacke = [],
   poligoni = [];
 let gpxFeatures = []; //Niz feature-a koji se dobije kad se prevuče gpx fajl na mapu
 let blnDodijeljenoGpxProperties = false; //Promjenljiva koja označava da li su svim podacima iz gpx-a dodijeljeni atributi
+let selectGpxFeature; //Fature iz gpx-a koji se selektuje
 let naponskiNivoNapojneTrafostanice = "";
 let odabraniNaponskiNivo = "";
 let sifraNapojneTrafostanice = "";

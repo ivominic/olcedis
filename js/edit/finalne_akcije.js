@@ -65,5 +65,72 @@ function dodajPoljaGpxStubovi() {
     el.set("naziv_napojne", "test");
   });
   console.log("gpx features", gpxFeatures);
-  alert("završeno");
+}
+
+function prikaziPoljaOdabranogGpxStuba() {
+  document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
+  document.querySelector("#gps").value = selectGpxFeature.values_.gps;
+  document.querySelector("#broj").value = selectGpxFeature.values_.broj;
+  document.querySelector("#sifra").value = selectGpxFeature.values_.sifra;
+  document.querySelector("#pripadnost").value = selectGpxFeature.values_.pripadnost;
+  document.querySelector("#tip").value = selectGpxFeature.values_.tip;
+  document.querySelector("#vrsta_namjena").value = selectGpxFeature.values_.vrsta_namjena;
+  document.querySelector("#vrsta_materijal").value = selectGpxFeature.values_.vrsta_materijal;
+  document.querySelector("#vrsta_drvenog").value = selectGpxFeature.values_.vrsta_drvenog;
+  document.querySelector("#nad_visina").value = selectGpxFeature.values_.nad_visina;
+  document.querySelector("#visina").value = selectGpxFeature.values_.visina;
+  document.querySelector("#rasp_prov").value = selectGpxFeature.values_.rasp_prov;
+  document.querySelector("#izolator_vrsta").value = selectGpxFeature.values_.izolator_vrsta;
+  document.querySelector("#izolator_funkcija").value = selectGpxFeature.values_.izolator_funkcija;
+  document.querySelector("#br_izol_faza").value = selectGpxFeature.values_.br_izol_faza;
+  document.querySelector("#nosaci_izolatora").value = selectGpxFeature.values_.nosaci_izolatora;
+  document.querySelector("#odvodnik_prenapona").value = selectGpxFeature.values_.odvodnik_prenapona;
+  document.querySelector("#uzemljivac").value = selectGpxFeature.values_.uzemljivac;
+  document.querySelector("#uzemljivac_otpor").value = selectGpxFeature.values_.uzemljivac_otpor;
+  document.querySelector("#optika").value = selectGpxFeature.values_.optika;
+  document.querySelector("#rasvjeta").value = selectGpxFeature.values_.rasvjeta;
+  document.querySelector("#br_pmo").value = selectGpxFeature.values_.br_pmo;
+  document.querySelector("#br_nnv").value = selectGpxFeature.values_.br_nnv;
+  document.querySelector("#pog_sprem").value = selectGpxFeature.values_.pog_sprem;
+  document.querySelector("#vlasnistvo").value = selectGpxFeature.values_.vlasnistvo;
+  document.querySelector("#opstina").value = selectGpxFeature.values_.opstina;
+  document.querySelector("#napon").value = selectGpxFeature.values_.napon;
+  document.querySelector("#prikljucak_otcjep").value = selectGpxFeature.values_.prikljucak_otcjep;
+  document.querySelector("#nn_vod").value = selectGpxFeature.values_.nn_vod;
+  document.querySelector("#rastavljac").value = selectGpxFeature.values_.rastavljac;
+  document.querySelector("#vod_10").value = selectGpxFeature.values_.vod_10;
+}
+
+function dodajPoljaOdabranomGpxStubu() {
+  selectGpxFeature.set("fid_1", document.querySelector("#fid_1").value);
+  selectGpxFeature.set("gps", document.querySelector("#gps").value);
+  selectGpxFeature.set("broj", document.querySelector("#broj").value);
+  selectGpxFeature.set("sifra", document.querySelector("#sifra").value);
+  selectGpxFeature.set("pripadnost", document.querySelector("#pripadnost").value);
+  selectGpxFeature.set("tip", document.querySelector("#tip").value);
+  selectGpxFeature.set("vrsta_namjena", document.querySelector("#vrsta_namjena").value);
+  selectGpxFeature.set("vrsta_materijal", document.querySelector("#vrsta_materijal").value);
+  selectGpxFeature.set("vrsta_drvenog", document.querySelector("#vrsta_drvenog").value);
+  selectGpxFeature.set("nad_visina", document.querySelector("#nad_visina").value);
+  selectGpxFeature.set("visina", document.querySelector("#visina").value);
+  selectGpxFeature.set("rasp_prov", document.querySelector("#rasp_prov").value);
+  selectGpxFeature.set("izolator_vrsta", document.querySelector("#izolator_vrsta").value);
+  selectGpxFeature.set("izolator_funkcija", document.querySelector("#izolator_funkcija").value);
+  selectGpxFeature.set("br_izol_faza", document.querySelector("#br_izol_faza").value);
+  selectGpxFeature.set("nosaci_izolatora", document.querySelector("#nosaci_izolatora").value);
+  selectGpxFeature.set("odvodnik_prenapona", document.querySelector("#odvodnik_prenapona").value);
+  selectGpxFeature.set("uzemljivac", document.querySelector("#uzemljivac").value);
+  selectGpxFeature.set("uzemljivac_otpor", document.querySelector("#uzemljivac_otpor").value);
+  selectGpxFeature.set("optika", document.querySelector("#optika").value);
+  selectGpxFeature.set("rasvjeta", document.querySelector("#rasvjeta").value);
+  selectGpxFeature.set("br_pmo", document.querySelector("#br_pmo").value);
+  selectGpxFeature.set("br_nnv", document.querySelector("#br_nnv").value);
+  selectGpxFeature.set("pog_sprem", document.querySelector("#pog_sprem").value);
+  selectGpxFeature.set("vlasnistvo", document.querySelector("#vlasnistvo").value);
+  selectGpxFeature.set("opstina", document.querySelector("#opstina").value);
+  selectGpxFeature.set("napon", document.querySelector("#napon").value);
+  selectGpxFeature.set("prikljucak_otcjep", document.querySelector("#prikljucak_otcjep").value);
+  selectGpxFeature.set("nn_vod", document.querySelector("#nn_vod").value);
+  selectGpxFeature.set("rastavljac", document.querySelector("#rastavljac").value);
+  selectGpxFeature.set("10vod", document.querySelector("#vod_10").value);
 }
