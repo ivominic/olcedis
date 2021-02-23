@@ -87,10 +87,10 @@ let ortofotoBaseMap = new ol.layer.Image({
 
 /**Stilizacija vektora */
 var fill = new ol.style.Fill({
-  color: "rgba(255,255,0,0.3)",
+  color: "rgba(0,255,255,0.6)",
 });
 var stroke = new ol.style.Stroke({
-  color: "#ffff00",
+  color: "#00ffff",
   width: 2,
 });
 var circle = new ol.style.Circle({
@@ -106,7 +106,7 @@ var vectorStyle = new ol.style.Style({
 
 /**Stilizacija vektora za snap*/
 var fillSnap = new ol.style.Fill({
-  color: "rgba(128,0,128,0.3)",
+  color: "rgba(128,0,128,0.5)",
 });
 var strokeSnap = new ol.style.Stroke({
   color: "#C807FE",

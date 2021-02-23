@@ -71,12 +71,7 @@ function sakrijSvaPoljaAtributDiv() {
   //Read only polja za trafostanice. Kasnije dodato.
   document.querySelector("#divUnosDdlTrafostanice").style.display = "none";
   document.querySelector("#divReadFid1").style.display = "none";
-  document.querySelector("#divReadVisibility").style.display = "none";
   document.querySelector("#divReadName").style.display = "none";
-  document.querySelector("#divReadOpen").style.display = "none";
-  document.querySelector("#divReadAddress").style.display = "none";
-  document.querySelector("#divReadPhoneNumber").style.display = "none";
-  document.querySelector("#divReadFolder").style.display = "none";
   document.querySelector("#divReadIdBr").style.display = "none";
   document.querySelector("#divReadCelije10").style.display = "none";
   document.querySelector("#divReadIzvodCelija").style.display = "none";
@@ -239,12 +234,7 @@ function prikaziAtributDivTrafostanice(napon) {
   //Read only polja za trafostanice. Kasnije dodato.
   document.querySelector("#divUnosDdlTrafostanice").style.display = "flex";
   document.querySelector("#divReadFid1").style.display = "flex";
-  document.querySelector("#divReadVisibility").style.display = "flex";
   document.querySelector("#divReadName").style.display = "flex";
-  document.querySelector("#divReadOpen").style.display = "flex";
-  document.querySelector("#divReadAddress").style.display = "flex";
-  document.querySelector("#divReadPhoneNumber").style.display = "flex";
-  document.querySelector("#divReadFolder").style.display = "flex";
   document.querySelector("#divReadIdBr").style.display = "flex";
   document.querySelector("#divReadCelije10").style.display = "flex";
   document.querySelector("#divReadIzvodCelija").style.display = "flex";

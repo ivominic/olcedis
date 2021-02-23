@@ -149,6 +149,10 @@ function novoPrikljucnoMjesto() {
   prikazPanelaAtributa("Priključno mjesto");
 }
 
+function finalnaPotvrdaUnosa() {
+  alert("Finalna potvrda");
+}
+
 /**Povezivanje kontrola sa akcijama */
 document.querySelector("#pan").addEventListener("click", pan);
 //document.querySelector("#dodaj").addEventListener("click", dodaj);
@@ -162,6 +166,7 @@ document.querySelector("#brisanje").addEventListener("click", brisanje);
 document.querySelector("#pretraga").addEventListener("click", pretraga);
 document.querySelector("#selekcijaPocetnogStuba").addEventListener("click", selekcijaPocetnogStuba);
 document.querySelector("#selekcijaZavrsnogStuba").addEventListener("click", selekcijaZavrsnogStuba);
+document.querySelector("#potvrda").addEventListener("click", finalnaPotvrdaUnosa);
 document.querySelector("#restart").addEventListener("click", restart);
 document.querySelector("#podloga_osm").addEventListener("click", osmPodloga);
 document.querySelector("#podloga_satelit").addEventListener("click", satelitPodloga);
