@@ -310,7 +310,8 @@ let dragAndDrop = new ol.interaction.DragAndDrop({
 dragAndDrop.on("addfeatures", function (event) {
   console.log("aaaa", event.features);
   event.features.forEach(function (feature) {
-    let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
+    //let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
+    let position = feature.values_.geometry.flatCoordinates;
     nizKml.push({
       lat: position[1],
       lng: position[0],
@@ -368,18 +369,29 @@ modifyV.on("modifyend", function (e) {
   console.log("select m", e.features.getArray()[0].values_);
   console.log("ime tačke m", e.features.getArray()[0].values_.name);
   //console.log("koordinate", e.selected[0].values_.geometry.flatCoordinates);
-  let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
+  //let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
+  let position = e.features.getArray()[0].values_.geometry.flatCoordinates;
   console.log("koordinate m", position);
   let pocetniElement;
   nizKml.forEach((el) => {
     if (el.name === featureName) {
       pocetniElement = el;
+      //pocetniElement = ol.proj.transform(el, "EPSG:3857", "EPSG:4326");
     }
   });
   if (pocetniElement) {
-    let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat]));
+    //pocetniElement = ol.proj.transform(pocetniElement, "EPSG:3857", "EPSG:4326");
+    console.log("pocetniElement", pocetniElement);
+    console.log("pocetniElement lng", pocetniElement.lng);
+    let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat], "EPSG:4326"));
+    //let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat]));
+    //let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat], "EPSG:3857", "EPSG:4326"));
+    //pocetnaTacka = ol.proj.transform(pocetnaTacka, "EPSG:3857", "EPSG:4326");
     let distancaOd = turf.point([position[0], position[1]]);
     let distancaDo = turf.point([pocetniElement.lng, pocetniElement.lat]);
+    console.log("distancaOd", distancaOd);
+    console.log("distancaDo", distancaDo);
+    console.log("pocetnaTacka", pocetnaTacka);
     let mjera = {
       units: "kilometers",
     };
@@ -389,7 +401,7 @@ modifyV.on("modifyend", function (e) {
       e.features.getArray()[0].getGeometry().setCoordinates(pocetnaTacka.flatCoordinates);
       poruka("Upozorenje", "Tačka ne može biti pomjerena više od " + (dozvoljeniPomjeraj * 1000).toString() + "m od snimljene pozicije.");
     }
-    citajExtent();
+    //citajExtent();
   }
 });
 
@@ -414,35 +426,38 @@ map.on("click", onMouseClick);
 function onMouseClick(browserEvent) {
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
-  map.forEachLayerAtPixel(pixel, function (layer) {
-    if (layer instanceof ol.layer.Image) {
-      console.log(layer);
-      let title = layer.get("title");
-      console.log("title", title);
-      let vidljivost = layer.get("visible");
-      console.log("vidljivost", vidljivost);
-      if (vidljivost) {
-        let url = layer.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
-          INFO_FORMAT: "application/json",
-        });
-        if (url) {
-          fetch(url)
-            .then(function (response) {
-              //restartovanje();
-              return response.text();
-            })
-            .then(function (json) {
-              let odgovor = JSON.parse(json);
-              if (odgovor.features.length > 0) {
-                if (akcija == "slika") {
-                  prikazFotografija(title, odgovor.features[0][0].id);
+  console.log("akcija", akcija);
+  if (akcija === "atributi") {
+    map.forEachLayerAtPixel(pixel, function (layer) {
+      if (layer instanceof ol.layer.Image) {
+        console.log(layer);
+        let title = layer.get("title");
+        console.log("title", title);
+        let vidljivost = layer.get("visible");
+        console.log("vidljivost", vidljivost);
+        if (vidljivost) {
+          let url = layer.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
+            INFO_FORMAT: "application/json",
+          });
+          if (url) {
+            fetch(url)
+              .then(function (response) {
+                //restartovanje();
+                return response.text();
+              })
+              .then(function (json) {
+                let odgovor = JSON.parse(json);
+                if (odgovor.features.length > 0) {
+                  if (akcija == "slika") {
+                    prikazFotografija(title, odgovor.features[0][0].id);
+                  }
                 }
-              }
-            });
+              });
+          }
         }
       }
-    }
-  });
+    });
+  }
 }
 
 function izbrisi() {
