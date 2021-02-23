@@ -150,7 +150,10 @@ function novoPrikljucnoMjesto() {
 }
 
 function finalnaPotvrdaUnosa() {
-  alert("Finalna potvrda");
+  dodajPoljaGpxStubovi();
+  //TODO: Ovo zamijeniti
+  console.log("Finalno features", gpxFeatures);
+  //Dodati properties svakom elementu
 }
 
 /**Povezivanje kontrola sa akcijama */

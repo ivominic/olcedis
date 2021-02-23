@@ -205,7 +205,7 @@ function unosStubova(geometrijaWkt, servisAkcija) {
   podaciForme.append("izolator_vrsta", document.querySelector("#izolator_vrsta").value);
   podaciForme.append("izolator_funkcija", document.querySelector("#izolator_funkcija").value);
   podaciForme.append("br_izol_faza", document.querySelector("#br_izol_faza").value);
-  podaciForme.append("tip_nosac_izol", document.querySelector("#tip_nosac_izol").value);
+  podaciForme.append("nosaci_izolatora", document.querySelector("#nosaci_izolatora").value);
   podaciForme.append("odvodnik_prenapona", document.querySelector("#odvodnik_prenapona").value);
   podaciForme.append("uzemljivac", document.querySelector("#uzemljivac").value);
   podaciForme.append("uzemljivac_otpor", document.querySelector("#uzemljivac_otpor").value);
@@ -658,7 +658,7 @@ function popuniPoljaStubovi(odgovor) {
   setujDdlVrijednost("#vrsta_drvenog", atributi["vrsta_drvenog"]);
   setujDdlVrijednost("#izolator_vrsta", atributi["izolator_vrsta"]);
   setujDdlVrijednost("#izolator_funkcija", atributi["izolator_funkcija"]);
-  setujDdlVrijednost("#tip_nosac_izol", atributi["tip_nosac_izol"]);
+  setujDdlVrijednost("#nosaci_izolatora", atributi["nosaci_izolatora"]);
   setujDdlVrijednost("#odvodnik_prenapona", atributi["odvodnik_prenapona"]);
   setujDdlVrijednost("#uzemljivac", atributi["uzemljivac"]);
   setujDdlVrijednost("#optika", atributi["optika"]);
