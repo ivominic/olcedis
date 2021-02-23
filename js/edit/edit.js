@@ -193,6 +193,10 @@ function podesiInterakciju() {
     });
     map.addInteraction(draw);
     map.addInteraction(modify);
+    var snap = new ol.interaction.Snap({
+      source: featureSnapOverlay.getSource(),
+    });
+    map.addInteraction(snap);
   }
   if (akcija === lineString) {
     draw = new ol.interaction.Draw({
@@ -208,6 +212,10 @@ function podesiInterakciju() {
     });
     map.addInteraction(draw);
     map.addInteraction(modify);
+    var snap = new ol.interaction.Snap({
+      source: featureSnapOverlay.getSource(),
+    });
+    map.addInteraction(snap);
   }
   if (akcija === polygon) {
     draw = new ol.interaction.Draw({
@@ -223,6 +231,10 @@ function podesiInterakciju() {
     });
     map.addInteraction(draw);
     map.addInteraction(modify);
+    var snap = new ol.interaction.Snap({
+      source: featureSnapOverlay.getSource(),
+    });
+    map.addInteraction(snap);
   }
   if (akcija === "izmijeni") {
     modify = new ol.interaction.Modify({
