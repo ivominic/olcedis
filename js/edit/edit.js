@@ -67,7 +67,7 @@ function popuniKontrole(odgovor) {
 
 /** Unos izmijenjenih vrijednosti atributa, nove fotografije ili unos svih podataka za novu geometriju */
 function sacuvaj() {
-  if (akcija === "dodaj" && geometrijaZaBazuWkt === "") {
+  /*if (akcija === "dodaj" && geometrijaZaBazuWkt === "") {
     poruka("Upozorenje", "Potrebno je nacrtati objekat.");
     return false;
   }
@@ -78,68 +78,14 @@ function sacuvaj() {
   if (akcija === "atributi" && idObjekta === 0) {
     poruka("Upozorenje", "Potrebno je odabrati objekat čije atribute mijenjate.");
     return false;
-  }
-
-  let podaciForme = new FormData();
-  podaciForme.append("id", idObjekta);
-  podaciForme.append("akcija", akcija);
-  podaciForme.append("geom", geometrijaZaBazuWkt);
-  podaciForme.append("gps", document.querySelector("#gps").value);
-  podaciForme.append("broj", document.querySelector("#broj").value);
-  podaciForme.append("sifra", document.querySelector("#sifra").value);
-  podaciForme.append("pripadnost", document.querySelector("#pripadnost").value);
-  podaciForme.append("tip", document.querySelector("#tip").value);
-  podaciForme.append("vrsta_namjena", document.querySelector("#vrsta_namjena").value);
-  podaciForme.append("vrsta_materijal", document.querySelector("#vrsta_materijal").value);
-  podaciForme.append("vrsta_drvenog", document.querySelector("#vrsta_drvenog").value);
-  podaciForme.append("nad_visina", document.querySelector("#nad_visina").value);
-  podaciForme.append("visina", document.querySelector("#visina").value);
-  podaciForme.append("rasp_prov", document.querySelector("#rasp_prov").value);
-  podaciForme.append("izolator_vrsta", document.querySelector("#izolator_vrsta").value);
-  podaciForme.append("izolator_funkcija", document.querySelector("#izolator_funkcija").value);
-  podaciForme.append("br_izol_faza", document.querySelector("#br_izol_faza").value);
-  podaciForme.append("nosaci_izolatora", document.querySelector("#nosaci_izolatora").value);
-  podaciForme.append("odvodnik_prenapona", document.querySelector("#odvodnik_prenapona").value);
-  podaciForme.append("uzemljivac", document.querySelector("#uzemljivac").value);
-  podaciForme.append("uzemljivac_otpor", document.querySelector("#uzemljivac_otpor").value);
-  podaciForme.append("optika", document.querySelector("#optika").value);
-  podaciForme.append("rasvjeta", document.querySelector("#rasvjeta").value);
-  podaciForme.append("br_pmo", document.querySelector("#br_pmo").value);
-  podaciForme.append("br_nnv", document.querySelector("#br_nnv").value);
-  podaciForme.append("pog_sprem", document.querySelector("#pog_sprem").value);
-  podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
-  podaciForme.append("opstina", document.querySelector("#opstina").value);
-  podaciForme.append("napon", document.querySelector("#napon").value);
-  podaciForme.append("prikljucak_otcjep", document.querySelector("#prikljucak_otcjep").value);
-  podaciForme.append("nn_vod", document.querySelector("#nn_vod").value);
-  podaciForme.append("rastavljac", document.querySelector("#rastavljac").value);
-  podaciForme.append("10_vod", document.querySelector("#vod_10").value);
-
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", sacuvajZapisUrl, true);
-  xhr.timeout = 100000;
-  xhr.ontimeout = function () {
-    poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
-  };
-  xhr.send(podaciForme);
-  openModalSpinner();
-  xhr.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      if (this.status === 200) {
-        let jsonResponse = JSON.parse(xhr.responseText);
-        if (jsonResponse["success"] === true) {
-          poruka("Uspjeh", jsonResponse["message"]);
-          restartovanje();
-        } else {
-          poruka("Upozorenje", jsonResponse["message"]);
-        }
-        closeModalSpinner();
-      } else {
-        poruka("Greska", xhr.statusText);
-        closeModalSpinner();
-      }
+  }*/
+  if (blnDodijeljenoGpxProperties) {
+    if (selectGpxFeature) {
+      dodajPoljaOdabranomGpxStubu();
     }
-  };
+  } else {
+    dodajPoljaGpxStubovi();
+  }
 }
 
 /** Sve podešava na početne vrijednosti*/
@@ -347,6 +293,13 @@ select.on("select", function (e) {
   console.log("select target", e.target.getFeatures());
   selectGpxFeature = e.target.getFeatures().array_[0];
   console.log("gpx feature", selectGpxFeature);
+  if (selectGpxFeature.values_.Geometry) {
+    //Popuni polja vrijednostima
+    console.log("ulazi ovdje");
+    prikaziPoljaOdabranogGpxStuba();
+  } else {
+    //Za sad ništa - da li prazniti polja?
+  }
   if (blnZavrsniStub) {
     blnZavrsniStub = false;
     vrijednostKrajnjeTacke = parseInt(e.target.getFeatures().array_[0].values_.name);

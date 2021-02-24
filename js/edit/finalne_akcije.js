@@ -14,7 +14,8 @@ function dodajPoljaGpxStubovi() {
     el.set("akcija", "Unos");
     el.set("Geometry", geom);
     el.set("fid_1", document.querySelector("#fid_1").value);
-    el.set("gps", document.querySelector("#gps").value);
+    //el.set("gps", document.querySelector("#gps").value);
+    el.set("gps", el.values_.name);
     el.set("broj", document.querySelector("#broj").value);
     el.set("sifra", document.querySelector("#sifra").value);
     el.set("pripadnost", document.querySelector("#pripadnost").value);

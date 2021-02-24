@@ -150,7 +150,8 @@ function novoPrikljucnoMjesto() {
 }
 
 function finalnaPotvrdaUnosa() {
-  dodajPoljaGpxStubovi();
+  //Pozivanje web servisa za finalni unos
+  //dodajPoljaGpxStubovi();
   //TODO: Ovo zamijeniti
   console.log("Finalno features", gpxFeatures);
   //Dodati properties svakom elementu
