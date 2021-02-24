@@ -131,3 +131,98 @@ map.addLayer(wmsPotrosaci);
 map.addLayer(wmsPrikljucnoMjesto);
 map.addLayer(wmsNKRO);
 map.addLayer(wmsPOD);
+
+/**Dio za filtriranje lejera koji se pošalju sa mape map_energetika */
+
+function cqlZaWmsLejer(wmsLejer, filterCql) {
+  //console.log(wmsLejer, filterCql);
+  let params = wmsLejer.getSource().getParams();
+  params.CQL_FILTER = filterCql;
+  wmsLejer.getSource().updateParams(params);
+}
+
+function pocetniFilter() {
+  let url = new URL(location.href);
+  let cql_param = unescape(url.searchParams.get("cql_param"));
+  let cql_opstina = unescape(url.searchParams.get("cql_opstina"));
+  let cql_nivo = unescape(url.searchParams.get("cql_nivo"));
+  let inactive_layers = unescape(url.searchParams.get("inactive_layers"));
+  let geohash_test = unescape(url.searchParams.get("geohash_id"));
+
+  if (cql_opstina === "null") {
+    cql_opstina = "";
+  }
+  if (cql_nivo === "null") {
+    cql_nivo = "";
+  }
+  if (cql_param === "null") {
+    cql_param = "";
+  }
+  //Provjeriti da li ovo treba da se radi za mapu unos/izmjena
+  /*if (inactive_layers !== "null" && inactive_layers !== "") {
+    var arr = inactive_layers.split(",");
+    for (var i = 0; i < arr.length; i++) {
+      $(".leaflet-control-layers-selector")[Number(arr[i])].click();
+    }
+  }*/
+
+  let objedinjeni_filter = cql_param;
+  objedinjeni_filter !== "" && cql_nivo !== "" && (objedinjeni_filter += " AND ");
+  cql_nivo !== "" && (objedinjeni_filter += cql_nivo);
+
+  let cqlStubovi = unescape(url.searchParams.get("stubovi"));
+  let cqlVodovi = unescape(url.searchParams.get("vodovi"));
+  let cqlTrafostanice = unescape(url.searchParams.get("trafostanice"));
+  let cqlPrikljucnoMjesto = unescape(url.searchParams.get("prikljucno_mjesto"));
+  let cqlPotrosaci = unescape(url.searchParams.get("view_potrosaci"));
+  let cqlNkro = unescape(url.searchParams.get("nkro"));
+  let cqlPod = unescape(url.searchParams.get("pod"));
+
+  if (objedinjeni_filter.length > 5) {
+    if (cqlStubovi !== "null" && cqlStubovi !== "") {
+      cqlStubovi += " AND (" + objedinjeni_filter + ")";
+    }
+    if (cqlVodovi !== "null" && cqlVodovi !== "") {
+      cqlVodovi += " AND (" + objedinjeni_filter + ")";
+    }
+    if (cqlTrafostanice !== "null" && cqlTrafostanice !== "") {
+      cqlTrafostanice += " AND (" + objedinjeni_filter + ")";
+    }
+    if (cqlPrikljucnoMjesto !== "null" && cqlPrikljucnoMjesto !== "") {
+      cqlPrikljucnoMjesto += " AND (" + objedinjeni_filter + ")";
+    }
+    if (cqlPotrosaci !== "null" && cqlPotrosaci !== "") {
+      cqlPotrosaci += " AND (" + objedinjeni_filter + ")";
+    }
+    if (cqlNkro !== "null" && cqlNkro !== "") {
+      cqlNkro += " AND (" + objedinjeni_filter + ")";
+    }
+    if (cqlPod !== "null" && cqlPod !== "") {
+      cqlPod += " AND (" + objedinjeni_filter + ")";
+    }
+  }
+
+  if (cqlStubovi !== "null" && cqlStubovi !== "") {
+    cqlZaWmsLejer(wmsStubovi, cqlStubovi);
+  }
+  if (cqlVodovi !== "null" && cqlVodovi !== "") {
+    cqlZaWmsLejer(wmsVodovi, cqlVodovi);
+  }
+  if (cqlTrafostanice !== "null" && cqlTrafostanice !== "") {
+    cqlZaWmsLejer(wmsTrafostanice, cqlTrafostanice);
+  }
+  if (cqlPrikljucnoMjesto !== "null" && cqlPrikljucnoMjesto !== "") {
+    cqlZaWmsLejer(wmsPrikljucnoMjesto, cqlPrikljucnoMjesto);
+  }
+  if (cqlPotrosaci !== "null" && cqlPotrosaci !== "") {
+    cqlZaWmsLejer(wmsPotrosaci, cqlPotrosaci);
+  }
+  if (cqlNkro !== "null" && cqlNkro !== "") {
+    cqlZaWmsLejer(wmsNKRO, cqlNkro);
+  }
+  if (cqlPod !== "null" && cqlPod !== "") {
+    cqlZaWmsLejer(wmsPOD, cqlPod);
+  }
+}
+
+pocetniFilter();
