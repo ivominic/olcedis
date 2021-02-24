@@ -82,9 +82,11 @@ function sacuvaj() {
   if (blnDodijeljenoGpxProperties) {
     if (selectGpxFeature) {
       dodajPoljaOdabranomGpxStubu();
+      poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
     }
   } else {
     dodajPoljaGpxStubovi();
+    poruka("Uspjeh", "Uneseni podaci dodijeljeni svim tačkama iz fajla");
   }
 }
 

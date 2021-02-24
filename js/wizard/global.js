@@ -358,3 +358,13 @@ function srediSifruTrafostanice(sifra) {
   }
   return retval;
 }
+
+/**
+ * Metoda koja za wkt reprezentaciju tačke vraća 2d wkt iste tačke
+ * @param {*} wkt3Dtacka
+ */
+function wkt3Du2D(wkt3Dtacka) {
+  const regex = /^(POINT M|POINT Z|POINT MZ|POINT ZM)\(([\d]+\.?[\d]+)\s+([\d]+\.[\d]+).*\)$/gm;
+  const subst = `POINT($2 $3)`;
+  return wkt3Dtacka.replace(regex, subst);
+}

@@ -151,10 +151,10 @@ function novoPrikljucnoMjesto() {
 
 function finalnaPotvrdaUnosa() {
   //Pozivanje web servisa za finalni unos
-  //dodajPoljaGpxStubovi();
-  //TODO: Ovo zamijeniti
+  insertStubovaIzGpx();
+  poruka("Uspjeh", "Završen unos podataka");
+
   console.log("Finalno features", gpxFeatures);
-  //Dodati properties svakom elementu
 }
 
 /**Povezivanje kontrola sa akcijama */

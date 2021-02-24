@@ -162,7 +162,7 @@ function konacniUpisIzmjena() {
   let format = new ol.format.WKT();
   for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
     if (selektovaneTrafostaniceFeatures[i].akcija && selektovaneTrafostaniceFeatures[i].akcija === "Izmjena") {
-      cudTrafostanica(selektovaneTrafostaniceFeatures[i], "U");
+      cudTrafostanica(selektovaneTrafostaniceFeatures[i], "U", 1);
       /*console.log("pozivati web servis za unos trafostanica", selektovaneTrafostaniceFeatures[i]);
       let wktGeom = format.writeGeometry(selektovaneTrafostaniceFeatures[i].getGeometry());
       console.log("pozivati web servis za unos trafostanica - geometrija u wkt", wktGeom);*/
@@ -170,22 +170,22 @@ function konacniUpisIzmjena() {
   }
   for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
     if (selektovaniVodoviFeatures[i].akcija && selektovaniVodoviFeatures[i].akcija === "Izmjena") {
-      cudVod(selektovaniVodoviFeatures[i], "U");
+      cudVod(selektovaniVodoviFeatures[i], "U", 1);
     }
   }
   for (let i = 0; i < selektovaniPotrosaciFeatures.length; i++) {
     if (selektovaniPotrosaciFeatures[i].akcija && selektovaniPotrosaciFeatures[i].akcija === "Izmjena") {
-      cudPotrosac(selektovaniPotrosaciFeatures[i], "U");
+      cudPotrosac(selektovaniPotrosaciFeatures[i], "U", 1);
     }
   }
   for (let i = 0; i < selektovaniNKROFeatures.length; i++) {
     if (selektovaniNKROFeatures[i].akcija && selektovaniNKROFeatures[i].akcija === "Izmjena") {
-      cudNKRO(selektovaniNKROFeatures[i], "U");
+      cudNKRO(selektovaniNKROFeatures[i], "U", 1);
     }
   }
   for (let i = 0; i < selektovanaPrikljucnaMjestaFeatures.length; i++) {
     if (selektovanaPrikljucnaMjestaFeatures[i].akcija && selektovanaPrikljucnaMjestaFeatures[i].akcija === "Izmjena") {
-      cudPrikljucnoMjesto(selektovanaPrikljucnaMjestaFeatures[i], "U");
+      cudPrikljucnoMjesto(selektovanaPrikljucnaMjestaFeatures[i], "U", 1);
     }
   }
   poruka("Uspjeh", "Uspješno kompletiran wizard");
@@ -218,7 +218,7 @@ function finalniKorakWizarda() {
 function testUpisTrafostanice() {
   for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
     if (selektovaneTrafostaniceFeatures[i].akcija && selektovaneTrafostaniceFeatures[i].akcija === "Izmjena") {
-      cudTrafostanica(selektovaneTrafostaniceFeatures[i], "U");
+      cudTrafostanica(selektovaneTrafostaniceFeatures[i], "U", 1);
     }
   }
 }
@@ -226,22 +226,22 @@ function testUpisTrafostanice() {
 function insertFinalniKorakNiskonaponskiObjekti() {
   for (let i = 0; i < selektovaniPotrosaciFeatures.length; i++) {
     if (selektovaniPotrosaciFeatures[i].akcija && selektovaniPotrosaciFeatures[i].akcija === "Izmjena") {
-      cudPotrosac(selektovaniPotrosaciFeatures[i], "U");
+      cudPotrosac(selektovaniPotrosaciFeatures[i], "U", 1);
     }
   }
   for (let i = 0; i < selektovanaPrikljucnaMjestaFeatures.length; i++) {
     if (selektovanaPrikljucnaMjestaFeatures[i].akcija && selektovanaPrikljucnaMjestaFeatures[i].akcija === "Izmjena") {
-      cudPrikljucnoMjesto(selektovanaPrikljucnaMjestaFeatures[i], "U");
+      cudPrikljucnoMjesto(selektovanaPrikljucnaMjestaFeatures[i], "U", 1);
     }
   }
   for (let i = 0; i < selektovaniPODoviFeatures.length; i++) {
     if (selektovaniPODoviFeatures[i].akcija && selektovaniPODoviFeatures[i].akcija === "Izmjena") {
-      cudPOD(selektovaniPODoviFeatures[i], "U");
+      cudPOD(selektovaniPODoviFeatures[i], "U", 1);
     }
   }
   for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
     if (selektovaniVodoviFeatures[i].akcija && selektovaniVodoviFeatures[i].akcija === "Izmjena") {
-      cudVod(selektovaniVodoviFeatures[i], "U");
+      cudVod(selektovaniVodoviFeatures[i], "U", 1);
     }
   }
 }

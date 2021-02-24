@@ -7,10 +7,10 @@
  * @param {*} feature
  * @param {*} akcija
  */
-function cudTrafostanica(feature, akcija) {
+function cudTrafostanica(feature, akcija, wizard) {
   let wkt = wktGeometrije(feature);
   let podaciForme = new FormData();
-  podaciForme.append("wizard", 1);
+  podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti
@@ -78,10 +78,10 @@ function cudTrafostanica(feature, akcija) {
  * @param {*} feature
  * @param {*} akcija
  */
-function cudVod(feature, akcija) {
+function cudVod(feature, akcija, wizard) {
   let wkt = wktGeometrije(feature);
   let podaciForme = new FormData();
-  podaciForme.append("wizard", 1);
+  podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti
@@ -153,15 +153,19 @@ function cudVod(feature, akcija) {
  * @param {*} feature
  * @param {*} akcija
  */
-function cudStub(feature, akcija) {
+function cudStub(feature, akcija, wizard) {
   let wkt = wktGeometrije(feature);
+  wkt = wkt3Du2D(wkt);
   let podaciForme = new FormData();
-  podaciForme.append("wizard", 1);
+  podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti
-  //podaciForme.append("fid_1", feature.values_.fid_1);
-  podaciForme.append("fid_1", feature.id_.split(".")[1]);
+  if (feature.values_.fid_1) {
+    podaciForme.append("fid_1", feature.values_.fid_1);
+  } else {
+    podaciForme.append("fid_1", feature.id_.split(".")[1]);
+  }
   podaciForme.append("name", feature.values_.name);
   podaciForme.append("br_izol_faza", feature.values_.br_izol_faza);
   podaciForme.append("uzemljivac", feature.values_.uzemljivac);
@@ -230,12 +234,12 @@ function cudStub(feature, akcija) {
  * @param {*} feature
  * @param {*} akcija
  */
-function cudPotrosac(feature, akcija) {
+function cudPotrosac(feature, akcija, wizard) {
   let wkt = wktGeometrije(feature);
   //onsole.log("Geometrija potrošača", feature.values_);
   //console.log("Potrošač", feature);
   let podaciForme = new FormData();
-  podaciForme.append("wizard", 1);
+  podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti
@@ -291,10 +295,10 @@ function cudPotrosac(feature, akcija) {
  * @param {*} feature
  * @param {*} akcija
  */
-function cudNKRO(feature, akcija) {
+function cudNKRO(feature, akcija, wizard) {
   let wkt = wktGeometrije(feature);
   let podaciForme = new FormData();
-  podaciForme.append("wizard", 1);
+  podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti
@@ -350,10 +354,10 @@ function cudNKRO(feature, akcija) {
  * @param {*} feature
  * @param {*} akcija
  */
-function cudPrikljucnoMjesto(feature, akcija) {
+function cudPrikljucnoMjesto(feature, akcija, wizard) {
   let wkt = wktGeometrije(feature);
   let podaciForme = new FormData();
-  podaciForme.append("wizard", 1);
+  podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti
@@ -406,11 +410,11 @@ function cudPrikljucnoMjesto(feature, akcija) {
  * @param {*} feature
  * @param {*} akcija
  */
-function cudPOD(feature, akcija) {
+function cudPOD(feature, akcija, wizard) {
   console.log("Unos pod-a", feature);
   let wkt = wktGeometrije(feature);
   let podaciForme = new FormData();
-  podaciForme.append("wizard", 1);
+  podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", wkt);
   podaciForme.append("id", feature.values_.id); //Ovo provjeriti

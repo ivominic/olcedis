@@ -1,5 +1,11 @@
 /**Metode koje vrše finalnu obradu podataka prije inserta u bazu */
 
+function insertStubovaIzGpx() {
+  gpxFeatures.forEach((el) => {
+    cudStub(el, "I", 0);
+  });
+}
+
 /**Metoda koja svim tačkama dodjeljuje vrijednosti atributa za stubove */
 function dodajPoljaGpxStubovi() {
   if (blnDodijeljenoGpxProperties) {
@@ -13,6 +19,8 @@ function dodajPoljaGpxStubovi() {
     el.set("id", el.values_.name);
     el.set("akcija", "Unos");
     el.set("Geometry", geom);
+    el.set("geom", geom);
+    el.set("wkt", geom);
     el.set("fid_1", document.querySelector("#fid_1").value);
     //el.set("gps", document.querySelector("#gps").value);
     el.set("gps", el.values_.name);
@@ -99,7 +107,7 @@ function prikaziPoljaOdabranogGpxStuba() {
   document.querySelector("#prikljucak_otcjep").value = selectGpxFeature.values_.prikljucak_otcjep;
   document.querySelector("#nn_vod").value = selectGpxFeature.values_.nn_vod;
   document.querySelector("#rastavljac").value = selectGpxFeature.values_.rastavljac;
-  document.querySelector("#vod_10").value = selectGpxFeature.values_.vod_10;
+  document.querySelector("#vod_10").value = selectGpxFeature.values_["10vod"];
 }
 
 function dodajPoljaOdabranomGpxStubu() {
