@@ -95,7 +95,13 @@ function trafostaniceUpoligonu(napon) {
  */
 function nnTrafostaniceUPoligonu(napon) {
   let urlZaFilter =
-    wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernameTS + "&outputformat=application/json&cql_filter=" + globalCqlZaNaponskiNivo(napon, "trafostanice");
+    wfsUrl +
+    "?version=1.0.0&request=GetFeature&typeName=" +
+    fulllayernameTS +
+    "&outputformat=application/json&cql_filter=" +
+    globalCqlZaNaponskiNivo(napon, "trafostanice") +
+    "&access_token=" +
+    geoserverToken;
   console.log("url filter", urlZaFilter);
 
   $.ajax({

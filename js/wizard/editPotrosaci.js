@@ -82,7 +82,14 @@ function potrosaciUpoligonu(napon) {
   }
   formiraniFilter = encodeURIComponent(formiraniFilter);
   console.log("filter za cql", formiraniFilter);
-  let urlZaFilter = wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernamePotrosaci + "&outputformat=application/json&cql_filter=" + formiraniFilter;
+  let urlZaFilter =
+    wfsUrl +
+    "?version=1.0.0&request=GetFeature&typeName=" +
+    fulllayernamePotrosaci +
+    "&outputformat=application/json&cql_filter=" +
+    formiraniFilter +
+    "&access_token=" +
+    geoserverToken;
 
   $.ajax({
     method: "POST",

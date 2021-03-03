@@ -355,6 +355,7 @@ function prikaziVektor() {
     method: "POST",
     url: wfsUrl,
     data: {
+      access_token: geoserverToken,
       service: "WFS",
       request: "GetFeature",
       typename: nazivLejera,

@@ -519,6 +519,7 @@ function wfsFilter() {
     method: "POST",
     url: wfsUrl,
     data: {
+      access_token: geoserverToken,
       service: "WFS",
       request: "GetFeature",
       typename: "geonode:" + layername,
@@ -555,6 +556,7 @@ function wfsZaEdit(id) {
     method: "POST",
     url: wfsUrl,
     data: {
+      access_token: geoserverToken,
       service: "WFS",
       request: "GetFeature",
       typename: "geonode:" + layername,
@@ -578,7 +580,10 @@ function wfsZaEdit(id) {
 function wfsDownload(format) {
   let dodajCqlFilter = "";
   cqlFilter !== "" && (dodajCqlFilter = "&cql_filter=" + cqlFilter);
-  window.open(wfsUrl + "?version=1.0.0&request=GetFeature&typeName=geonode:" + layername + "&outputformat=" + format + dodajCqlFilter, "_blank");
+  window.open(
+    wfsUrl + "?version=1.0.0&request=GetFeature&typeName=geonode:" + layername + "&outputformat=" + format + dodajCqlFilter + "&access_token=" + geoserverToken,
+    "_blank"
+  );
   return false;
 }
 

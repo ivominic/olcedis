@@ -34,7 +34,8 @@ function stuboviUpoligonu(napon) {
   }
   formiraniFilter = encodeURIComponent(formiraniFilter);
   console.log("filter za cql", formiraniFilter);
-  let urlZaFilter = wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernameS + "&outputformat=application/json&cql_filter=" + formiraniFilter;
+  let urlZaFilter =
+    wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernameS + "&outputformat=application/json&cql_filter=" + formiraniFilter + "&access_token=" + geoserverToken;
   console.log("url filter", urlZaFilter);
 
   $.ajax({
