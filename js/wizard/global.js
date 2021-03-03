@@ -11,6 +11,7 @@ const imageUrl = domainUrl + "/slike/";
 const point = "Point",
   lineString = "LineString",
   polygon = "Polygon";
+let geoserverToken = "";
 let tacke = [],
   linije = [],
   poligoni = [];

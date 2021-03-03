@@ -475,3 +475,19 @@ function vodoviIzBilingaZaUparivanje(nizVodova) {
     },
   });
 }
+
+function tokenGeoserver() {
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/geonode_login";
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "POST",
+    success: function (data) {
+      geoserverToken = data;
+    },
+    error: function (x, y, z) {
+      console.log("greška token za Geoserver", x.responseText);
+    },
+  });
+}
+tokenGeoserver();
