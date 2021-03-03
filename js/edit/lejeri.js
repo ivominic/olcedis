@@ -228,6 +228,7 @@ function pocetniFilter() {
     if (cqlPod !== "null" && cqlPod !== "") {
       cqlPod += " AND (" + objedinjeni_filter + ")";
     } else {
+      //komentar
       cqlPod = objedinjeni_filter;
     }
   }
