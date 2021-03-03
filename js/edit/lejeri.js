@@ -158,13 +158,29 @@ function pocetniFilter() {
   if (cql_param === "null") {
     cql_param = "";
   }
-  //Provjeriti da li ovo treba da se radi za mapu unos/izmjena
-  /*if (inactive_layers !== "null" && inactive_layers !== "") {
-    var arr = inactive_layers.split(",");
-    for (var i = 0; i < arr.length; i++) {
-      $(".leaflet-control-layers-selector")[Number(arr[i])].click();
-    }
-  }*/
+
+  //Isključivanje lejera koji su proslijeđeni sa glavne mape
+  if (inactive_layers !== "null" && inactive_layers !== "") {
+    let arr = inactive_layers.split(",");
+    arr.forEach((el) => {
+      console.log("niz inaktivnih elemenata", el);
+      if (el === "8") {
+        wmsStubovi.setVisible(false);
+      } else if (el === "9") {
+        wmsVodovi.setVisible(false);
+      } else if (el === "10") {
+        wmsTrafostanice.setVisible(false);
+      } else if (el === "11") {
+        wmsPrikljucnoMjesto.setVisible(false);
+      } else if (el === "12") {
+        wmsPotrosaci.setVisible(false);
+      } else if (el === "13") {
+        wmsPOD.setVisible(false);
+      } else if (el === "14") {
+        wmsNKRO.setVisible(false);
+      }
+    });
+  }
 
   let objedinjeni_filter = cql_param;
   objedinjeni_filter !== "" && cql_nivo !== "" && (objedinjeni_filter += " AND ");
@@ -181,24 +197,38 @@ function pocetniFilter() {
   if (objedinjeni_filter.length > 5) {
     if (cqlStubovi !== "null" && cqlStubovi !== "") {
       cqlStubovi += " AND (" + objedinjeni_filter + ")";
+    } else {
+      cqlStubovi = objedinjeni_filter;
     }
     if (cqlVodovi !== "null" && cqlVodovi !== "") {
       cqlVodovi += " AND (" + objedinjeni_filter + ")";
+    } else {
+      cqlVodovi = objedinjeni_filter;
     }
     if (cqlTrafostanice !== "null" && cqlTrafostanice !== "") {
       cqlTrafostanice += " AND (" + objedinjeni_filter + ")";
+    } else {
+      cqlTrafostanice = objedinjeni_filter;
     }
     if (cqlPrikljucnoMjesto !== "null" && cqlPrikljucnoMjesto !== "") {
       cqlPrikljucnoMjesto += " AND (" + objedinjeni_filter + ")";
+    } else {
+      cqlPrikljucnoMjesto = objedinjeni_filter;
     }
     if (cqlPotrosaci !== "null" && cqlPotrosaci !== "") {
       cqlPotrosaci += " AND (" + objedinjeni_filter + ")";
+    } else {
+      cqlPotrosaci = objedinjeni_filter;
     }
     if (cqlNkro !== "null" && cqlNkro !== "") {
       cqlNkro += " AND (" + objedinjeni_filter + ")";
+    } else {
+      cqlNkro = objedinjeni_filter;
     }
     if (cqlPod !== "null" && cqlPod !== "") {
       cqlPod += " AND (" + objedinjeni_filter + ")";
+    } else {
+      cqlPod = objedinjeni_filter;
     }
   }
 
