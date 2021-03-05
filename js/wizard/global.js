@@ -63,6 +63,7 @@ let selektovaniNKROFeatures = []; //NKRO u zahvatu poligona
 let selektovanaPrikljucnaMjestaFeatures = []; //Priključna mjesta u zahvatu poligona
 let selektovaniPODoviFeatures = []; //PODovi mjesta u zahvatu poligona
 let selektovaniVodoviFeatures3857 = []; //U drugom koordinatnom sistemu
+let odabraniLejerUnos = ""; //Mijenja se na meni za unos podataka
 
 /**Definisanje podloga */
 let osmBaseMap = new ol.layer.Tile({

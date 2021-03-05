@@ -96,29 +96,39 @@ function excelDownload() {
 function prikazPanelaAtributa(sloj) {
   sakrijSvaPoljaAtributDiv();
   if (sloj === "Stub 35KV") {
+    odabraniLejerUnos = "stubovi";
     akcijaLejerNivo = "35";
     prikaziAtributDivStubove(akcijaLejerNivo);
   } else if (sloj === "Stub 10KV") {
+    odabraniLejerUnos = "stubovi";
     akcijaLejerNivo = "10";
     prikaziAtributDivStubove(akcijaLejerNivo);
   } else if (sloj === "Vod 35KV") {
+    odabraniLejerUnos = "vodovi";
     akcijaLejerNivo = "35";
     prikaziAtributDivVodove(akcijaLejerNivo);
   } else if (sloj === "Vod 10KV") {
+    odabraniLejerUnos = "vodovi";
     akcijaLejerNivo = "10";
     prikaziAtributDivVodove(akcijaLejerNivo);
   } else if (sloj === "Trafostanica 35KV") {
+    odabraniLejerUnos = "trafostanice";
     akcijaLejerNivo = "35";
     prikaziAtributDivTrafostanice(akcijaLejerNivo);
   } else if (sloj === "Trafostanica 10KV") {
+    odabraniLejerUnos = "trafostanice";
     akcijaLejerNivo = "10";
     prikaziAtributDivTrafostanice(akcijaLejerNivo);
   } else if (sloj === "NKRO") {
+    odabraniLejerUnos = "nkro";
     prikaziAtributDivNkro();
   } else if (sloj === "Priključno mjesto") {
+    odabraniLejerUnos = "prikljucno_mjesto";
     prikaziAtributDivPrikljucnoMjesto();
   } else if (sloj === "Potrošač") {
+    odabraniLejerUnos = "potrosaci";
   } else if (sloj === "POD") {
+    odabraniLejerUnos = "pod";
   }
   showDiv("#atributiDiv");
   console.log("akcijaLejerNivo", akcijaLejerNivo);

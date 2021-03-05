@@ -498,7 +498,11 @@
 
           <div class="flex-row pb-8" id="divUnosDdlTrafostanice">
             <label for="ddlTrafostanice">Trafostanica iz TBP:</label>
-            <select id="ddlTrafostanice" class="select-css"></select>
+            <select id="ddlTrafostanice" class="select-css">
+              <option value="HTREBJ">Trebjesa</option>
+              <option value="150273">Straševina geosonda</option>
+              <option value="150434">Žitan petrol - Brlja</option>
+            </select>
           </div>
           <div class="flex-row pb-8" id="divReadFid1">
             <label for="read_fid_1">Fid_1:</label>
@@ -629,7 +633,7 @@
             <input type="text" id="read_prenos_odnos" readonly />
           </div>
           <div class="flex-row pb-8" id="divReadIdBilling">
-            <label for="read_id_billing">Id bilinf:</label>
+            <label for="read_id_billing">Id biling:</label>
             <input type="text" id="read_id_billing" readonly />
           </div>
           <div class="flex-row pb-8" id="divReadAdresa">
@@ -1038,6 +1042,7 @@
     <script src="js/ol.js"></script>
     <script src="js/edit/editUtil.js"></script>
     <script src="js/edit/edit.js"></script>
+    <script src="js/edit/selekcijaMapa.js"></script>
     <script src="js/snap.js"></script>
     <script src="js/kreiranjeVoda.js"></script>
     <script src="js/wizard/poligonSelect.js"></script>
@@ -1049,5 +1054,7 @@
     <script src="js/edit/unos.js"></script>
     <script src="js/edit/lejeri.js"></script>
     <script src="js/edit/finalne_akcije.js"></script>
+    <script src="js/edit/unosIzmjenaStubovi.js"></script>
+    <script src="js/edit/unosIzmjenaTrafostanice.js"></script>
   </body>
 </html>
