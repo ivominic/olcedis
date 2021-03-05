@@ -84,12 +84,13 @@ map.addInteraction(select);
 map.addInteraction(modifyV);
 
 function prikazPodatakaIzGpxTacaka() {
-  if (selectGpxFeature.hasOwnProperty("lejer")) {
-    console.log("prikaz podataka iz GPX tačke", selectGpxFeature.get("lejer"));
-    if (selectGpxFeature.get("lejer") === "stubovi") {
-      prikaziPoljaOdabranogGpxStuba();
-    } else if (selectGpxFeature.get("lejer") === "trafostanice") {
-      popuniKontroleIzTrafostanice();
-    }
+  console.log("prikaz podataka iz GPX tačke", selectGpxFeature.get("lejer"));
+  //if (selectGpxFeature.hasOwnProperty("lejer")) {
+  //console.log("prikaz podataka iz GPX tačke", selectGpxFeature.get("lejer"));
+  if (selectGpxFeature.get("lejer") === "stubovi") {
+    prikaziPoljaOdabranogGpxStuba();
+  } else if (selectGpxFeature.get("lejer") === "trafostanice") {
+    popuniKontroleIzTrafostanice();
   }
+  //}
 }

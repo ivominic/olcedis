@@ -7,6 +7,9 @@ function dodajPoljaGpxStubovi() {
   }
   blnDodijeljenoGpxProperties = true;
   gpxFeatures.forEach((el) => {
+    console.log("el has property", el.hasOwnProperty("lejer"));
+    console.log("el", el);
+    console.log("el.values_.lejer", el.values_.lejer);
     if (!el.hasOwnProperty("lejer")) {
       let geom = wktGeometrije(el);
       console.log("geom", geom + " " + el.values_.name);
@@ -75,7 +78,7 @@ function dodajPoljaGpxStubovi() {
 }
 
 function dodajPoljaOdabranomGpxStubu() {
-  if (!el.hasOwnProperty("lejer") || el.get("lejer") === "stubovi") {
+  if (!selectGpxFeature.hasOwnProperty("lejer") || selectGpxFeature.get("lejer") === "stubovi") {
     selectGpxFeature.set("wizard", 0);
     selectGpxFeature.set("lejer", "stubovi");
     selectGpxFeature.set("fid_1", document.querySelector("#fid_1").value);
