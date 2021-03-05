@@ -26,7 +26,7 @@ map.addLayer(wmsNKRO);
  */
 function nkroUpoligonu(napon) {
   let params = wmsNKRO.getSource().getParams();
-  let formiraniFilter = globalCqlZaNaponskiNivo(napon, "vodovi");
+  let formiraniFilter = globalCqlZaNaponskiNivo(napon, "nkro");
   if (params.CQL_FILTER && params.CQL_FILTER.length > 0) {
     formiraniFilter += " AND (" + params.CQL_FILTER + ")";
   }

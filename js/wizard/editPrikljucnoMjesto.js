@@ -26,7 +26,7 @@ map.addLayer(wmsPrikljucnoMjesto);
  */
 function prikljucnaMjestaUpoligonu(napon) {
   let params = wmsPrikljucnoMjesto.getSource().getParams();
-  let formiraniFilter = globalCqlZaNaponskiNivo(napon, "vodovi");
+  let formiraniFilter = globalCqlZaNaponskiNivo(napon, "prikljucno_mjesto");
   if (params.CQL_FILTER && params.CQL_FILTER.length > 0) {
     formiraniFilter += " AND (" + params.CQL_FILTER + ")";
   }

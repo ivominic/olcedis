@@ -171,6 +171,7 @@ function konacniUpisIzmjena() {
   for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
     if (selektovaniVodoviFeatures[i].akcija && selektovaniVodoviFeatures[i].akcija === "Izmjena") {
       cudVod(selektovaniVodoviFeatures[i], "U", 1);
+      //TODO: Razmisliti da li da se u servis za ažuriranje voda vrši i ažuriranje stubova koje vod presijeca (na serverskoj strani)
     }
   }
   for (let i = 0; i < selektovaniPotrosaciFeatures.length; i++) {
@@ -244,6 +245,7 @@ function insertFinalniKorakNiskonaponskiObjekti() {
       cudVod(selektovaniVodoviFeatures[i], "U", 1);
     }
   }
+  //TODO: Dodati NKRO
 }
 
 function restartParametaraWizard() {
