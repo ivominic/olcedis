@@ -87,10 +87,20 @@ function prikazPodatakaIzGpxTacaka() {
   console.log("prikaz podataka iz GPX tačke", selectGpxFeature.get("lejer"));
   //if (selectGpxFeature.hasOwnProperty("lejer")) {
   //console.log("prikaz podataka iz GPX tačke", selectGpxFeature.get("lejer"));
+  //prikazPanelaAtributa se nalazi u fajlu interakcija.js
   if (selectGpxFeature.get("lejer") === "stubovi") {
     prikaziPoljaOdabranogGpxStuba();
+    let pomLejer = "Stub 35KV";
+    if (selectGpxFeature.get("nivo") === "10") {
+      pomLejer = "Stub 10KV";
+    }
+    prikazPanelaAtributa(pomLejer);
   } else if (selectGpxFeature.get("lejer") === "trafostanice") {
     popuniKontroleIzTrafostanice();
+    let pomLejer = "Trafostanica 35KV";
+    if (selectGpxFeature.get("nivo") === "10") {
+      pomLejer = "Trafostanica 10KV";
+    }
+    prikazPanelaAtributa(pomLejer);
   }
-  //}
 }
