@@ -149,6 +149,7 @@ function prikaziPoljaOdabranogGpxStuba() {
   //document.querySelector("#nn_vod").value = selectGpxFeature.values_.nn_vod;
   //document.querySelector("#rastavljac").value = selectGpxFeature.values_.rastavljac;
   //document.querySelector("#vod_10").value = selectGpxFeature.values_["10vod"];
+  console.log("tip iz stubova", selectGpxFeature.values_.tip);
   setujDdlVrijednost("#tip", selectGpxFeature.values_.tip);
   setujDdlVrijednost("#vrsta_namjena", selectGpxFeature.values_.vrsta_namjena);
   setujDdlVrijednost("#vrsta_materijal", selectGpxFeature.values_.vrsta_materijal);
