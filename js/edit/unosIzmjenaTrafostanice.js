@@ -42,11 +42,13 @@ function dodajPoljaOdabranojGpxTrafostanici() {
   selectGpxFeature.set("inst_snaga_t2", document.querySelector("#read_inst_snaga_t2").value);
   selectGpxFeature.set("inst_snaga_t3", document.querySelector("#read_inst_snaga_t3").value);
   selectGpxFeature.set("tabela", document.querySelector("#read_tabela").value);
+  console.log("selectGpxFeature trafostanica", selectGpxFeature);
   poruka("Uspjeh", "Uspješno dodijeljene vrijednosti objektu");
 }
 
-function popuniKontroleIzTrafostanice() {
+function prikaziPoljaOdabraneGpxTrafostanice() {
   //document.querySelector("#ddlTrafostanice").value = ;
+  console.log("prikaziPoljaOdabraneGpxTrafostanice", selectGpxFeature);
   document.querySelector("#read_fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#read_name").value = selectGpxFeature.values_.name;
   document.querySelector("#read_id_br").value = selectGpxFeature.values_.id_br;
@@ -88,7 +90,7 @@ function popuniKontroleIzTrafostanice() {
   document.querySelector("#read_tabela").value = selectGpxFeature.values_.tabela;
 }
 
-/*function popuniKontroleIzTrafostanice(data) {
+function popuniKontroleIzTrafostanice(data) {
   //document.querySelector("#ddlTrafostanice").value = ;
   document.querySelector("#read_fid_1").value = data.fid_1;
   document.querySelector("#read_name").value = data.name;
@@ -129,4 +131,4 @@ function popuniKontroleIzTrafostanice() {
   document.querySelector("#read_inst_snaga_t2").value = data.inst_snaga_t2;
   document.querySelector("#read_inst_snaga_t3").value = data.inst_snaga_t3;
   document.querySelector("#read_tabela").value = data.tabela;
-}*/
+}

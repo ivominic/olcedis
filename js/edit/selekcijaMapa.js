@@ -96,7 +96,7 @@ function prikazPodatakaIzGpxTacaka() {
     }
     prikazPanelaAtributa(pomLejer);
   } else if (selectGpxFeature.get("lejer") === "trafostanice") {
-    popuniKontroleIzTrafostanice();
+    prikaziPoljaOdabraneGpxTrafostanice();
     let pomLejer = "Trafostanica 35KV";
     if (selectGpxFeature.get("nivo") === "10") {
       pomLejer = "Trafostanica 10KV";
