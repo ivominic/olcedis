@@ -26,7 +26,7 @@ function dodajPoljaGpxStubovi() {
       el.set("broj", document.querySelector("#broj").value);
       el.set("sifra", document.querySelector("#sifra").value);
       el.set("pripadnost", document.querySelector("#pripadnost").value);
-      el.set("tip", document.querySelector("#tip").value);
+      el.set("tip", document.querySelector("#tip_stub").value);
       el.set("vrsta_namjena", document.querySelector("#vrsta_namjena").value);
       el.set("vrsta_materijal", document.querySelector("#vrsta_materijal").value);
       el.set("vrsta_drvenog", document.querySelector("#vrsta_drvenog").value);
@@ -42,7 +42,7 @@ function dodajPoljaGpxStubovi() {
       el.set("uzemljivac", document.querySelector("#uzemljivac").value);
       el.set("uzemljivac_otpor", document.querySelector("#uzemljivac_otpor").value);
       el.set("optika", document.querySelector("#optika").value);
-      el.set("rasvjeta", document.querySelector("#rasvjeta").value);
+      el.set("rasvjeta", document.querySelector("#rasvjeta_stub").value);
       el.set("br_pmo", document.querySelector("#br_pmo").value);
       el.set("br_nnv", document.querySelector("#br_nnv").value);
       el.set("pog_sprem", document.querySelector("#pog_sprem").value);
@@ -50,7 +50,7 @@ function dodajPoljaGpxStubovi() {
       el.set("opstina", document.querySelector("#opstina").value);
       el.set("napon", document.querySelector("#napon").value);
       el.set("prikljucak_otcjep", document.querySelector("#prikljucak_otcjep").value);
-      el.set("nn_vod", document.querySelector("#nn_vod").value);
+      el.set("nn_vod", document.querySelector("#nn_vod_stub").value);
       el.set("rastavljac", document.querySelector("#rastavljac").value);
       el.set("10vod", document.querySelector("#vod_10").value);
 
@@ -79,6 +79,12 @@ function dodajPoljaGpxStubovi() {
 
 function dodajPoljaOdabranomGpxStubu() {
   if (!selectGpxFeature.hasOwnProperty("lejer") || selectGpxFeature.get("lejer") === "stubovi") {
+    //0.4 naponski nivo
+    selectGpxFeature.set("tip", document.querySelector("#tip_stub").value);
+    //10 naponski nivo
+
+    //35 naponski nivo
+
     selectGpxFeature.set("wizard", 0);
     selectGpxFeature.set("lejer", "stubovi");
     selectGpxFeature.set("fid_1", document.querySelector("#fid_1").value);
@@ -86,7 +92,7 @@ function dodajPoljaOdabranomGpxStubu() {
     selectGpxFeature.set("broj", document.querySelector("#broj").value);
     selectGpxFeature.set("sifra", document.querySelector("#sifra").value);
     selectGpxFeature.set("pripadnost", document.querySelector("#pripadnost").value);
-    selectGpxFeature.set("tip", document.querySelector("#tip").value);
+
     selectGpxFeature.set("vrsta_namjena", document.querySelector("#vrsta_namjena").value);
     selectGpxFeature.set("vrsta_materijal", document.querySelector("#vrsta_materijal").value);
     selectGpxFeature.set("vrsta_drvenog", document.querySelector("#vrsta_drvenog").value);
@@ -149,22 +155,51 @@ function prikaziPoljaOdabranogGpxStuba() {
   //document.querySelector("#nn_vod").value = selectGpxFeature.values_.nn_vod;
   //document.querySelector("#rastavljac").value = selectGpxFeature.values_.rastavljac;
   //document.querySelector("#vod_10").value = selectGpxFeature.values_["10vod"];
-  console.log("tip iz stubova", selectGpxFeature.values_.tip);
-  setujDdlVrijednost("#tip", selectGpxFeature.values_.tip);
-  setujDdlVrijednost("#vrsta_namjena", selectGpxFeature.values_.vrsta_namjena);
-  setujDdlVrijednost("#vrsta_materijal", selectGpxFeature.values_.vrsta_materijal);
-  setujDdlVrijednost("#vrsta_drvenog", selectGpxFeature.values_.vrsta_drvenog);
-  setujDdlVrijednost("#izolator_vrsta", selectGpxFeature.values_.izolator_vrsta);
-  setujDdlVrijednost("#izolator_funkcija", selectGpxFeature.values_.izolator_funkcija);
-  setujDdlVrijednost("#tip_izolatora", selectGpxFeature.values_.tip_izolatora);
-  setujDdlVrijednost("#nosaci_izolatora", selectGpxFeature.values_.nosaci_izolatora);
-  setujDdlVrijednost("#odvodnik_prenapona", selectGpxFeature.values_.odvodnik_prenapona);
-  setujDdlVrijednost("#uzemljivac", selectGpxFeature.values_.uzemljivac);
-  setujDdlVrijednost("#optika", selectGpxFeature.values_.optika);
-  setujDdlVrijednost("#rasvjeta", selectGpxFeature.values_.rasvjeta);
+  if (selectGpxFeature.values_.napon === "0.4") {
+    setujDdlVrijednost("#tip_stub", selectGpxFeature.values_.tip);
+    setujDdlVrijednost("#rasvjeta_stub", selectGpxFeature.values_.rasvjeta);
+    setujDdlVrijednost("#vrsta_namjena_stub_04", selectGpxFeature.values_.vrsta_namjena);
+    setujDdlVrijednost("#vrsta_materijal_stub_04", selectGpxFeature.values_.vrsta_materijal);
+    setujDdlVrijednost("#vrsta_drvenog_stub_04", selectGpxFeature.values_.vrsta_drvenog);
+    setujDdlVrijednost("#izolator_vrsta_stub_04", selectGpxFeature.values_.izolator_vrsta);
+    setujDdlVrijednost("#izolator_funkcija_stub_04", selectGpxFeature.values_.izolator_funkcija);
+    setujDdlVrijednost("#tip_izolatora_stub_04", selectGpxFeature.values_.tip_izolatora);
+    setujDdlVrijednost("#nosaci_izolatora_stub_04", selectGpxFeature.values_.nosaci_izolatora);
+    setujDdlVrijednost("#odvodnik_prenapona_stub_04", selectGpxFeature.values_.odvodnik_prenapona);
+    setujDdlVrijednost("#uzemljivac_stub_04", selectGpxFeature.values_.uzemljivac);
+    setujDdlVrijednost("#optika_stub_04", selectGpxFeature.values_.optika);
+  }
+  if (selectGpxFeature.values_.napon === "10") {
+    setujDdlVrijednost("#nn_vod_stub", selectGpxFeature.values_.nn_vod);
+    setujDdlVrijednost("#vrsta_namjena_stub_10", selectGpxFeature.values_.vrsta_namjena);
+    setujDdlVrijednost("#vrsta_materijal_stub_10", selectGpxFeature.values_.vrsta_materijal);
+    setujDdlVrijednost("#vrsta_drvenog_stub_10", selectGpxFeature.values_.vrsta_drvenog);
+    setujDdlVrijednost("#izolator_vrsta_stub_10", selectGpxFeature.values_.izolator_vrsta);
+    setujDdlVrijednost("#izolator_funkcija_stub_10", selectGpxFeature.values_.izolator_funkcija);
+    setujDdlVrijednost("#tip_izolatora_stub_10", selectGpxFeature.values_.tip_izolatora);
+    setujDdlVrijednost("#nosaci_izolatora_stub_10", selectGpxFeature.values_.nosaci_izolatora);
+    setujDdlVrijednost("#odvodnik_prenapona_stub_10", selectGpxFeature.values_.odvodnik_prenapona);
+    setujDdlVrijednost("#uzemljivac_stub_10", selectGpxFeature.values_.uzemljivac);
+    setujDdlVrijednost("#optika_stub_10", selectGpxFeature.values_.optika);
+    setujDdlVrijednost("#prikljucak_otcjep_stub_10", selectGpxFeature.values_.prikljucak_otcjep);
+    setujDdlVrijednost("#nn_vod_stub_10", selectGpxFeature.values_.nn_vod);
+    setujDdlVrijednost("#rastavljac_stub_10", selectGpxFeature.values_.rastavljac);
+  }
+  if (selectGpxFeature.values_.napon === "35") {
+    setujDdlVrijednost("#vrsta_namjena_stub_35", selectGpxFeature.values_.vrsta_namjena);
+    setujDdlVrijednost("#vrsta_materijal_stub_35", selectGpxFeature.values_.vrsta_materijal);
+    setujDdlVrijednost("#vrsta_drvenog_stub_35", selectGpxFeature.values_.vrsta_drvenog);
+    setujDdlVrijednost("#izolator_vrsta_stub_35", selectGpxFeature.values_.izolator_vrsta);
+    setujDdlVrijednost("#izolator_funkcija_stub_35", selectGpxFeature.values_.izolator_funkcija);
+    setujDdlVrijednost("#tip_izolatora_stub_35", selectGpxFeature.values_.tip_izolatora);
+    setujDdlVrijednost("#nosaci_izolatora_stub_35", selectGpxFeature.values_.nosaci_izolatora);
+    setujDdlVrijednost("#odvodnik_prenapona_stub_35", selectGpxFeature.values_.odvodnik_prenapona);
+    setujDdlVrijednost("#uzemljivac_stub_35", selectGpxFeature.values_.uzemljivac);
+    setujDdlVrijednost("#optika_stub_35", selectGpxFeature.values_.optika);
+    setujDdlVrijednost("#prikljucak_otcjep_stub_35", selectGpxFeature.values_.prikljucak_otcjep);
+    setujDdlVrijednost("#rastavljac_stub_35", selectGpxFeature.values_.rastavljac);
+    setujDdlVrijednost("#vod_10", selectGpxFeature.values_["10vod"]);
+  }
+
   setujDdlVrijednost("#vlasnistvo", selectGpxFeature.values_.vlasnistvo);
-  setujDdlVrijednost("#prikljucak_otcjep", selectGpxFeature.values_.prikljucak_otcjep);
-  setujDdlVrijednost("#nn_vod", selectGpxFeature.values_.nn_vod);
-  setujDdlVrijednost("#rastavljac", selectGpxFeature.values_.rastavljac);
-  setujDdlVrijednost("#vod_10", selectGpxFeature.values_["10vod"]);
 }
