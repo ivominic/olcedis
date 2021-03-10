@@ -299,14 +299,24 @@ function popuniListeZaStubove(napon) {
 
 function popuniListeZaVodove(napon) {
   popuniDdlAtributima("#br_faza", "vodovi", "br_faza", "", "");
-  popuniDdlAtributima("#vrsta", "vodovi", "vrsta", "napon", napon);
-  popuniDdlAtributima("#tip", "vodovi", "tip", "napon", napon);
-  popuniDdlAtributima("#presjek", "vodovi", "presjek", "napon", napon);
-  popuniDdlAtributima("#vrsta_materijal", "vodovi", "materijal", "napon", napon);
-  popuniDdlAtributima("#rasvjeta", "vodovi", "rasvjeta", "", "");
-  popuniDdlAtributima("#pog_sprem", "vodovi", "pog_sprem", "napon", napon);
-  popuniDdlAtributima("#uze_presjek", "vodovi", "uze_presjek", "napon", napon);
-  popuniDdlAtributima("#uze", "vodovi", "uze", "napon", napon);
+  popuniDdlAtributima("#vrsta_vod_04", "vodovi", "vrsta", "napon", "0.4");
+  popuniDdlAtributima("#vrsta_vod_10", "vodovi", "vrsta", "napon", "10");
+  popuniDdlAtributima("#vrsta_vod_35", "vodovi", "vrsta", "napon", "35");
+  popuniDdlAtributima("#tip_vod_04", "vodovi", "tip", "napon", "0.4");
+  popuniDdlAtributima("#tip_vod_10", "vodovi", "tip", "napon", "10");
+  popuniDdlAtributima("#tip_vod_35", "vodovi", "tip", "napon", "35");
+  popuniDdlAtributima("#presjek_vod_04", "vodovi", "presjek", "napon", "0.4");
+  popuniDdlAtributima("#presjek_vod_10", "vodovi", "presjek", "napon", "10");
+  popuniDdlAtributima("#presjek_vod_35", "vodovi", "presjek", "napon", "35");
+  popuniDdlAtributima("#vrsta_materijal_vod_04", "vodovi", "materijal", "napon", "0.4");
+  popuniDdlAtributima("#vrsta_materijal_vod_10", "vodovi", "materijal", "napon", "10");
+  popuniDdlAtributima("#vrsta_materijal_vod_35", "vodovi", "materijal", "napon", "35");
+  popuniDdlAtributima("#rasvjeta_vod", "vodovi", "rasvjeta", "", "");
+  popuniDdlAtributima("#pog_sprem", "vodovi", "pog_sprem", "napon", "0.4");
+  popuniDdlAtributima("#uze_presjek_vod_10", "vodovi", "uze_presjek", "napon", "10");
+  popuniDdlAtributima("#uze_presjek_vod_35", "vodovi", "uze_presjek", "napon", "35");
+  popuniDdlAtributima("#uze_vod_10", "vodovi", "uze", "napon", "10");
+  popuniDdlAtributima("#uze_vod_35", "vodovi", "uze", "napon", "35");
 
   popuniDdlAtributima("#pretraga_br_faza", "vodovi", "br_faza", "", "");
   popuniDdlAtributima("#pretraga_vrsta", "vodovi", "vrsta", "napon", napon);
@@ -347,12 +357,12 @@ function popuniListeZaNkro() {
   popuniDdlAtributima("#materijal", "nkro", "materijal", "", "");
   popuniDdlAtributima("#montaza", "nkro", "montaza", "", "");
   popuniDdlAtributima("#vrata", "nkro", "vrata", "", "");
-  popuniDdlAtributima("#pog_sprem", "nkro", "pog_sprem", "", "");
+  //popuniDdlAtributima("#pog_sprem", "nkro", "pog_sprem", "", "");
 
   popuniDdlAtributima("#pretraga_materijal", "nkro", "materijal", "", "");
   popuniDdlAtributima("#pretraga_montaza", "nkro", "montaza", "", "");
   popuniDdlAtributima("#pretraga_vrata", "nkro", "vrata", "", "");
-  popuniDdlAtributima("#pretraga_pog_sprem", "nkro", "pog_sprem", "", "");
+  //popuniDdlAtributima("#pretraga_pog_sprem", "nkro", "pog_sprem", "", "");
 }
 
 function popuniListeZaPotrosace() {}
