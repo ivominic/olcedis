@@ -302,17 +302,17 @@ function prikaziAtributDivVodove(napon) {
 
 function prikaziAtributDivTrafostanice(napon) {
   document.querySelector("#divUnosDdlTrafostanice").style.display = "flex";
-  if (napon === "0.4") {
-    document.querySelector("#divReadCelije10").style.display = "flex";
-    document.querySelector("#divReadIzvodCelija").style.display = "flex";
-    document.querySelector("#divReadBrNnIzvoda").style.display = "flex";
-  }
   if (napon === "10") {
+    //10/04
     document.querySelector("#divReadCelije10").style.display = "flex";
     document.querySelector("#divReadIzvodCelija").style.display = "flex";
     document.querySelector("#divReadBrNnIzvoda").style.display = "flex";
   }
   if (napon === "35") {
+    //35/x
+  }
+  if (napon === "110") {
+    //110/x
   }
 
   //Read only polja za trafostanice. Kasnije dodato.

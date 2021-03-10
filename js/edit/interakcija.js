@@ -119,13 +119,17 @@ function prikazPanelaAtributa(sloj) {
     odabraniLejerUnos = "vodovi";
     akcijaLejerNivo = "0.4";
     prikaziAtributDivVodove(akcijaLejerNivo);
-  } else if (sloj === "Trafostanica 35KV") {
+  } else if (sloj === "Trafostanica35x") {
     odabraniLejerUnos = "trafostanice";
     akcijaLejerNivo = "35";
     prikaziAtributDivTrafostanice(akcijaLejerNivo);
-  } else if (sloj === "Trafostanica 10KV") {
+  } else if (sloj === "Trafostanica1004") {
     odabraniLejerUnos = "trafostanice";
     akcijaLejerNivo = "10";
+    prikaziAtributDivTrafostanice(akcijaLejerNivo);
+  } else if (sloj === "Trafostanica110x") {
+    odabraniLejerUnos = "trafostanice";
+    akcijaLejerNivo = "110";
     prikaziAtributDivTrafostanice(akcijaLejerNivo);
   } else if (sloj === "NKRO") {
     odabraniLejerUnos = "nkro";
@@ -160,11 +164,14 @@ function noviVod10() {
 function noviVod04() {
   prikazPanelaAtributa("Vod 04KV");
 }
-function novaTrafostanica35() {
-  prikazPanelaAtributa("Trafostanica 35KV");
+function novaTrafostanica35x() {
+  prikazPanelaAtributa("Trafostanica35x");
 }
-function novaTrafostanica10() {
-  prikazPanelaAtributa("Trafostanica 10KV");
+function novaTrafostanica1004() {
+  prikazPanelaAtributa("Trafostanica1004");
+}
+function novaTrafostanica110x() {
+  prikazPanelaAtributa("Trafostanica110x");
 }
 function noviNkro() {
   prikazPanelaAtributa("NKRO");
@@ -209,8 +216,9 @@ document.querySelector("#noviStub04Kv").addEventListener("click", noviStub04);
 document.querySelector("#noviVod35").addEventListener("click", noviVod35);
 document.querySelector("#noviVod10Kv").addEventListener("click", noviVod10);
 document.querySelector("#noviVod04Kv").addEventListener("click", noviVod04);
-document.querySelector("#novaTrafostanica35").addEventListener("click", novaTrafostanica35);
-document.querySelector("#novaTrafostanica10Kv").addEventListener("click", novaTrafostanica10);
+document.querySelector("#novaTrafostanica35x").addEventListener("click", novaTrafostanica35x);
+document.querySelector("#novaTrafostanica110x").addEventListener("click", novaTrafostanica110x);
+document.querySelector("#novaTrafostanica1004").addEventListener("click", novaTrafostanica1004);
 document.querySelector("#noviNKRO").addEventListener("click", noviNkro);
 document.querySelector("#novoPrikljucnoMjesto").addEventListener("click", novoPrikljucnoMjesto);
 
@@ -218,7 +226,7 @@ document.querySelector("#editStub35").addEventListener("click", noviStub35);
 document.querySelector("#editStub10Kv").addEventListener("click", noviStub10);
 document.querySelector("#editVod35").addEventListener("click", noviVod35);
 document.querySelector("#editVod10Kv").addEventListener("click", noviVod10);
-document.querySelector("#editTrafostanica35").addEventListener("click", novaTrafostanica35);
-document.querySelector("#editTrafostanica10Kv").addEventListener("click", novaTrafostanica10);
+document.querySelector("#editTrafostanica35").addEventListener("click", novaTrafostanica35x);
+document.querySelector("#editTrafostanica10Kv").addEventListener("click", novaTrafostanica110x);
 document.querySelector("#editNKRO").addEventListener("click", noviNkro);
 document.querySelector("#editPrikljucnoMjesto").addEventListener("click", novoPrikljucnoMjesto);
