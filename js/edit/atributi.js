@@ -188,7 +188,7 @@ function prikaziAtributDivStubove(napon) {
     document.querySelector("#divUnosOptikaStub04").style.display = "flex";
   }
   if (napon === "10") {
-    document.querySelector("#divUnosNnVodStub").style.display = "flex";
+    //document.querySelector("#divUnosNnVodStub").style.display = "flex";
     document.querySelector("#divUnosNamjenaStub10").style.display = "flex";
     document.querySelector("#divUnosVrstaDrvenogStuba10").style.display = "flex";
     document.querySelector("#divUnosIzolatorVrstaStub10").style.display = "flex";
@@ -231,7 +231,7 @@ function prikaziAtributDivStubove(napon) {
   //document.querySelector("#divUnosOpstina").style.display = "flex";
   document.querySelector("#divUnosNapon").style.display = "flex";
 
-  popuniListeZaStubove(napon);
+  //popuniListeZaStubove(napon);
 }
 
 function prikaziAtributDivVodove(napon) {
@@ -265,7 +265,7 @@ function prikaziAtributDivVodove(napon) {
   document.querySelector("#divUnosDuzina").style.display = "flex";
   document.querySelector("#divUnosBrojSpojnica").style.display = "flex";
   document.querySelector("#divUnosSifraDionice").style.display = "flex";
-  popuniListeZaVodove(napon);
+  //popuniListeZaVodove(napon);
 }
 
 function prikaziAtributDivTrafostanice(napon) {
@@ -335,7 +335,7 @@ function prikaziAtributDivTrafostanice(napon) {
   document.querySelector("#divReadInstSnagaT2").style.display = "flex";
   document.querySelector("#divReadInstSnagaT3").style.display = "flex";
   document.querySelector("#divReadTabela").style.display = "flex";
-  popuniListeZaTrafostanice(napon);
+  //popuniListeZaTrafostanice(napon);
 }
 
 function prikaziAtributDivPrikljucnoMjesto() {
@@ -352,7 +352,7 @@ function prikaziAtributDivPrikljucnoMjesto() {
   document.querySelector("#divUnosNapon").style.display = "flex";
   document.querySelector("#divUnosSysId").style.display = "flex";
   document.querySelector("#divUnosTipPM").style.display = "flex";
-  popuniListeZaPrikljucnaMjesta();
+  //popuniListeZaPrikljucnaMjesta();
 }
 
 function prikaziAtributDivNkro() {
@@ -368,7 +368,7 @@ function prikaziAtributDivNkro() {
   document.querySelector("#divUnosBrIzvoda").style.display = "flex";
   document.querySelector("#divUnosBrPrikljucaka").style.display = "flex";
   document.querySelector("#divUnosSysId").style.display = "flex";
-  popuniListeZaNkro();
+  //popuniListeZaNkro();
 }
 
 function prikaziAtributDivPotrosac() {
@@ -386,7 +386,7 @@ function prikaziAtributDivPotrosac() {
   document.querySelector("#divUnosNazivNnIzvod").style.display = "flex";
   document.querySelector("#divUnosPretplatniBr").style.display = "flex";
   document.querySelector("#divUnosBrBrojila").style.display = "flex";
-  popuniListeZaPotrosace();
+  //popuniListeZaPotrosace();
 }
 
 function prikaziAtributDivPod() {
@@ -404,5 +404,5 @@ function prikaziAtributDivPod() {
   document.querySelector("#divUnosNazivNnIzvod").style.display = "flex";
   document.querySelector("#divUnosPretplatniBr").style.display = "flex";
   document.querySelector("#divUnosBrBrojila").style.display = "flex";
-  popuniListeZaPod();
+  //popuniListeZaPod();
 }

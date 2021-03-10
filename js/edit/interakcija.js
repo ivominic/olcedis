@@ -103,6 +103,10 @@ function prikazPanelaAtributa(sloj) {
     odabraniLejerUnos = "stubovi";
     akcijaLejerNivo = "10";
     prikaziAtributDivStubove(akcijaLejerNivo);
+  } else if (sloj === "Stub 04KV") {
+    odabraniLejerUnos = "stubovi";
+    akcijaLejerNivo = "0.4";
+    prikaziAtributDivStubove(akcijaLejerNivo);
   } else if (sloj === "Vod 35KV") {
     odabraniLejerUnos = "vodovi";
     akcijaLejerNivo = "35";
@@ -110,6 +114,10 @@ function prikazPanelaAtributa(sloj) {
   } else if (sloj === "Vod 10KV") {
     odabraniLejerUnos = "vodovi";
     akcijaLejerNivo = "10";
+    prikaziAtributDivVodove(akcijaLejerNivo);
+  } else if (sloj === "Vod 04KV") {
+    odabraniLejerUnos = "vodovi";
+    akcijaLejerNivo = "0.4";
     prikaziAtributDivVodove(akcijaLejerNivo);
   } else if (sloj === "Trafostanica 35KV") {
     odabraniLejerUnos = "trafostanice";
@@ -140,11 +148,17 @@ function noviStub35() {
 function noviStub10() {
   prikazPanelaAtributa("Stub 10KV");
 }
+function noviStub04() {
+  prikazPanelaAtributa("Stub 04KV");
+}
 function noviVod35() {
   prikazPanelaAtributa("Vod 35KV");
 }
 function noviVod10() {
   prikazPanelaAtributa("Vod 10KV");
+}
+function noviVod04() {
+  prikazPanelaAtributa("Vod 04KV");
 }
 function novaTrafostanica35() {
   prikazPanelaAtributa("Trafostanica 35KV");
@@ -191,8 +205,10 @@ document.querySelector("#excel").addEventListener("click", excelDownload);
 
 document.querySelector("#noviStub35").addEventListener("click", noviStub35);
 document.querySelector("#noviStub10Kv").addEventListener("click", noviStub10);
+document.querySelector("#noviStub04Kv").addEventListener("click", noviStub04);
 document.querySelector("#noviVod35").addEventListener("click", noviVod35);
 document.querySelector("#noviVod10Kv").addEventListener("click", noviVod10);
+document.querySelector("#noviVod04Kv").addEventListener("click", noviVod04);
 document.querySelector("#novaTrafostanica35").addEventListener("click", novaTrafostanica35);
 document.querySelector("#novaTrafostanica10Kv").addEventListener("click", novaTrafostanica10);
 document.querySelector("#noviNKRO").addEventListener("click", noviNkro);
