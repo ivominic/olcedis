@@ -104,3 +104,55 @@ function prikazPodatakaIzGpxTacaka() {
     prikazPanelaAtributa(pomLejer);
   }
 }
+
+/**
+ * Metoda koja vrši selekciju stubova iz gpx fajla, koji upadaju u poligon
+ */
+function selekcijaGpxPoligonom() {
+  let nizTacakaLinije = [];
+
+  //console.log("vectorSource prije for each", featuresPolygon);
+  //console.log("vectorSource prije for each array", featuresPolygon.array_);
+  //console.log("vectorSource prije for each array[0]", featuresPolygon.array_[0].getGeometry());
+  vectorSource.getFeatures().forEach(function (el) {
+    featuresPolygon.array_.forEach(function (poligon_el) {
+      if (poligon_el.getGeometry().intersectsExtent(el.getGeometry().getExtent())) {
+        //selectedFeatures.push(features[i]);
+        console.log("tačka presjek", el);
+        let position = el.values_.geometry.flatCoordinates;
+        let elevacija = position[2];
+        elevacija > 3000 && (elevacija = 0);
+        let found = nizTacakaLinije.some((r) => JSON.stringify(r) === JSON.stringify([position[0], position[1], elevacija]));
+        if (!found) {
+          nizTacakaLinije.push([position[0], position[1], elevacija]);
+        }
+        /*if (!nizTacakaLinije.includes([position[0], position[1], elevacija])) {
+          nizTacakaLinije.push([position[0], position[1], elevacija]);
+        }*/
+      }
+    });
+  });
+
+  //TODO: Brisati iscrtane poligone nakon selekcije
+
+  //TODO: Prevesti vod u feature i dodati propertije
+
+  let vod = new ol.geom.LineString([nizTacakaLinije]);
+  /*let feature = new ol.Feature({
+      name: "Novi vod",
+      geometry: vod
+    });
+    featureSnapOverlay.getSource().clear(); 
+    featureSnapOverlay.getSource().addFeature(feature);*/
+
+  let format = new ol.format.WKT();
+
+  let wktVod = format.writeGeometry(vod, {});
+  wktVod = wktVod.replace(/ /g, "_");
+  wktVod = wktVod.replace(/,/g, " ");
+  wktVod = wktVod.replace(/_/g, ",");
+  alert(wktVod);
+
+  console.log("wkt", wktVod);
+  console.log("kreirani niz koordinata", nizTacakaLinije);
+}

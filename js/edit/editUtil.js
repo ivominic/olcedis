@@ -269,7 +269,7 @@ function selekcijaPocetnogStuba() {
   }
 }
 
-/**Metoda koja bira prvi stub */
+/**Metoda koja bira krajnji stub */
 function selekcijaZavrsnogStuba() {
   akcija = "zavrsniStub";
   setujAktivnu("#selekcijaZavrsnogStuba");

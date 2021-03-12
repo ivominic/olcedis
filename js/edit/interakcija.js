@@ -201,6 +201,7 @@ document.querySelector("#brisanje").addEventListener("click", brisanje);
 document.querySelector("#pretraga").addEventListener("click", pretraga);
 document.querySelector("#selekcijaPocetnogStuba").addEventListener("click", selekcijaPocetnogStuba);
 document.querySelector("#selekcijaZavrsnogStuba").addEventListener("click", selekcijaZavrsnogStuba);
+document.querySelector("#selekecijaPoligon").addEventListener("click", selekcijaGpxPoligonom);
 document.querySelector("#potvrda").addEventListener("click", finalnaPotvrdaUnosa);
 document.querySelector("#restart").addEventListener("click", restart);
 document.querySelector("#podloga_osm").addEventListener("click", osmPodloga);
