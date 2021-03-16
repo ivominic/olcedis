@@ -275,6 +275,7 @@ let dragAndDrop = new ol.interaction.DragAndDrop({
 dragAndDrop.on("addfeatures", function (event) {
   console.log("aaaa", event.features);
   gpxFeatures = event.features;
+
   blnDodijeljenoGpxProperties = false;
   event.features.forEach(function (feature) {
     //let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");

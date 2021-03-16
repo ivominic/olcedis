@@ -65,6 +65,8 @@ let selektovaniPODoviFeatures = []; //PODovi mjesta u zahvatu poligona
 let selektovaniVodoviFeatures3857 = []; //U drugom koordinatnom sistemu
 let odabraniLejerUnos = ""; //Mijenja se na meni za unos podataka
 
+let kreiraniVodoviFeatures = []; //Niz vodova kreiranih iz tačaka gpx fajla
+
 /**Definisanje podloga */
 let osmBaseMap = new ol.layer.Tile({
   title: "Open Street Maps",
@@ -147,6 +149,25 @@ let vectorStyleUnmatched = new ol.style.Style({
   image: circleUnmatched,
 });
 
+/**Stilizacija vektora za kreirane elemente*/
+let fillKreirani = new ol.style.Fill({
+  color: "rgba(255,0,0,0.8)",
+});
+let strokeKreirani = new ol.style.Stroke({
+  color: "#ff0000",
+  width: 8,
+});
+let circleKreirani = new ol.style.Circle({
+  radius: 18,
+  fill: fillKreirani,
+  stroke: strokeKreirani,
+});
+let vectorStyleKreirani = new ol.style.Style({
+  fill: fillKreirani,
+  stroke: strokeKreirani,
+  image: circleKreirani,
+});
+
 /**Setovanje centra mape */
 let center = [19.26, 42.56];
 //let center = ol.proj.transform([19.2381, 43.1271], "EPSG:4326", "EPSG:3857");
@@ -183,6 +204,14 @@ let vektorNeupareniVodovi = new ol.layer.Vector({
   style: vectorStyleUnmatched,
 });
 //vektorNeupareniVodovi.setSource(new ol.source.Vector({features: features}));
+
+let vektorKreiraniVodovi = new ol.layer.Vector({
+  source: new ol.source.Vector({
+    //features: features
+  }),
+  style: vectorStyleKreirani,
+});
+map.addLayer(vektorKreiraniVodovi);
 
 /**
  * Metoda koja za naponski nivo trafostanice vraća odgovarajući nivo naponskog voda

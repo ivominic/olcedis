@@ -105,6 +105,7 @@ function prikazPodatakaIzGpxTacaka() {
   }
 }
 
+let nizVodovaGpx = [];
 /**
  * Metoda koja vrši selekciju stubova iz gpx fajla, koji upadaju u poligon
  */
@@ -114,24 +115,44 @@ function selekcijaGpxPoligonom() {
   //console.log("vectorSource prije for each", featuresPolygon);
   //console.log("vectorSource prije for each array", featuresPolygon.array_);
   //console.log("vectorSource prije for each array[0]", featuresPolygon.array_[0].getGeometry());
-  vectorSource.getFeatures().forEach(function (el) {
+  let minValue = minGpxName(vectorSource);
+  let maxValue = maxGpxName(vectorSource);
+  for (let i = minValue; i <= maxValue; i++) {
+    vectorSource.getFeatures().forEach(function (el) {
+      if (i === parseInt(el.values_.name)) {
+        featuresPolygon.array_.forEach(function (poligon_el) {
+          if (poligon_el.getGeometry().intersectsExtent(el.getGeometry().getExtent())) {
+            //selectedFeatures.push(features[i]);
+            let position = el.values_.geometry.flatCoordinates;
+            let elevacija = position[2];
+            elevacija > 3000 && (elevacija = 0);
+            let found = nizTacakaLinije.some((r) => JSON.stringify(r) === JSON.stringify([position[0], position[1], elevacija]));
+            if (!found) {
+              //nizTacakaLinije.push([position[0], position[1], elevacija]);
+              nizTacakaLinije.push([position[0], position[1]]);
+            }
+          }
+        });
+      }
+    });
+  }
+
+  /*vectorSource.getFeatures().forEach(function (el) {
     featuresPolygon.array_.forEach(function (poligon_el) {
       if (poligon_el.getGeometry().intersectsExtent(el.getGeometry().getExtent())) {
         //selectedFeatures.push(features[i]);
-        console.log("tačka presjek", el);
+        console.log(el.values_.name, el);
         let position = el.values_.geometry.flatCoordinates;
         let elevacija = position[2];
         elevacija > 3000 && (elevacija = 0);
         let found = nizTacakaLinije.some((r) => JSON.stringify(r) === JSON.stringify([position[0], position[1], elevacija]));
         if (!found) {
-          nizTacakaLinije.push([position[0], position[1], elevacija]);
+          //nizTacakaLinije.push([position[0], position[1], elevacija]);
+          nizTacakaLinije.push([position[0], position[1]]);
         }
-        /*if (!nizTacakaLinije.includes([position[0], position[1], elevacija])) {
-          nizTacakaLinije.push([position[0], position[1], elevacija]);
-        }*/
       }
     });
-  });
+  });*/
 
   //TODO: Brisati iscrtane poligone nakon selekcije
 
@@ -139,11 +160,11 @@ function selekcijaGpxPoligonom() {
 
   let vod = new ol.geom.LineString([nizTacakaLinije]);
   /*let feature = new ol.Feature({
-      name: "Novi vod",
-      geometry: vod
-    });
-    featureSnapOverlay.getSource().clear(); 
-    featureSnapOverlay.getSource().addFeature(feature);*/
+    name: "Novi vod",
+    geometry: vod,
+  });
+  vektorKreiraniVodovi.getSource().clear();
+  vektorKreiraniVodovi.getSource().addFeature(feature);*/
 
   let format = new ol.format.WKT();
 
@@ -152,7 +173,30 @@ function selekcijaGpxPoligonom() {
   wktVod = wktVod.replace(/,/g, " ");
   wktVod = wktVod.replace(/_/g, ",");
   alert(wktVod);
+  var feature = format.readFeature(wktVod, {});
 
-  console.log("wkt", wktVod);
-  console.log("kreirani niz koordinata", nizTacakaLinije);
+  nizVodovaGpx.push(feature);
+
+  vektorKreiraniVodovi.getSource().clear();
+  //vektorKreiraniVodovi.getSource().addFeatures(feature);
+  vektorKreiraniVodovi.getSource().addFeatures(nizVodovaGpx);
+
+  //console.log("wkt", wktVod);
+  //console.log("kreirani niz koordinata", vod);
+}
+
+function minGpxName(tacke) {
+  let retval = 99999;
+  tacke.getFeatures().forEach(function (el) {
+    parseInt(el.values_.name) < retval && (retval = parseInt(el.values_.name));
+  });
+  return retval;
+}
+
+function maxGpxName(tacke) {
+  let retval = 0;
+  tacke.getFeatures().forEach(function (el) {
+    parseInt(el.values_.name) > retval && (retval = parseInt(el.values_.name));
+  });
+  return retval;
 }
