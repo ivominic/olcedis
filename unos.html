@@ -27,27 +27,7 @@
         </span>
         <div class="dropdownDiv">
           <a href="#" class="active tooltip" id="pan" data-tool="Pan"><i class="far fa-hand-paper"></i></a>
-          <div class="dropdown" id="dodaj">
-            <button class="dropbtn">
-              <i class="far fa-plus-square"></i>
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-              <a href="#" id="noviStub04Kv">Stub 04KV</a>
-              <a href="#" id="noviStub10Kv">Stub 10KV</a>
-              <a href="#" id="noviStub35">Stub 35KV</a>
-              <a href="#" id="noviVod04Kv">Vod 04KV</a>
-              <a href="#" id="noviVod10Kv">Vod 10KV</a>
-              <a href="#" id="noviVod35">Vod 35KV</a>
-              <a href="#" id="novaTrafostanica1004">Trafostanica 10/0.4</a>
-              <a href="#" id="novaTrafostanica35x">Trafostanica 35/x</a>
-              <a href="#" id="novaTrafostanica110x">Trafostanica 110/x</a>
-              <a href="#" id="noviNKRO">NKRO</a>
-              <a href="#" id="novoPrikljucnoMjesto">Priključno mjesto</a>
-              <a href="#" id="noviPotrosac">Potrošač</a>
-              <a href="#" id="noviPOD">POD</a>
-            </div>
-          </div>
+          <a href="#" class="tooltip" id="dodaj" data-tool="Novi"><i class="far fa-plus-square"></i></a>
           <div class="dropdown" id="izmijeni">
             <button class="dropbtn">
               <i class="fas fa-edit"></i>
@@ -160,6 +140,24 @@
       </div>
       <div class="items-padd">
         <div class="pr-8 sadrzaj-scroll style-2">
+          <div class="flex-row pb-8" id="divOdabirSloja">
+            <label for="ddl_sloj_podataka">Tip objekta:</label>
+            <select id="ddl_sloj_podataka" class="select-css">
+              <option value="stub04">Stub 0.4KV</option>
+              <option value="stub10">Stub 10KV</option>
+              <option value="stub35">Stub 35KV</option>
+              <option value="vod04">Vod 0.4KV</option>
+              <option value="vod10">Vod 10KV</option>
+              <option value="vod35">Vod 35KV</option>
+              <option value="trafostanica10">Trafostanica 10/0.4</option>
+              <option value="trafostanica35">Trafostanica 35/x</option>
+              <option value="trafostanica110">Trafostanica 110/x</option>
+              <option value="nkro">NKRO</option>
+              <option value="prikljucno_mjesto">Priključno mjesto</option>
+              <option value="potrosac">Potrošač</option>
+              <option value="pod">Pod</option>
+            </select>
+          </div>
           <div class="flex-row pb-8" id="divUnosGps">
             <label for="gps">Redni broj u GPS:</label>
             <input type="text" id="gps" readonly disabled />
