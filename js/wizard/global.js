@@ -190,8 +190,8 @@ let kreiranjeTekstStila = function (feature) {
   return new ol.style.Text({
     textAlign: "left",
     textBaseline: "middle",
-    font: "12px Verdana",
-    offsetX: 12,
+    font: "14px Verdana",
+    offsetX: 14,
     text: feature.values_.name,
 
     //fill: fill,
@@ -214,8 +214,8 @@ let kreiranjeLabeleZaGpxTacke = function () {
       image: obradjenaTacka,
     });
 
-    if (feature.values_.name === "064") {
-      console.log(" feature", feature.values_.name);
+    if (feature.values_.lejer && feature.values_.lejer !== undefined) {
+      console.log(" feature", feature.values_.lejer);
       return [styleObradjeni];
     } else {
       return [styleNeobradjeni];
