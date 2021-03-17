@@ -295,7 +295,7 @@ dragAndDrop.on("addfeatures", function (event) {
   map.getLayers().push(
     new ol.layer.Vector({
       source: vectorSource,
-      style: vectorStyle,
+      style: kreiranjeLabeleZaGpxTacke(),
     })
   );
   view.fit(vectorSource.getExtent(), map.getSize());

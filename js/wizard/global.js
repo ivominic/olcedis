@@ -98,7 +98,7 @@ var fill = new ol.style.Fill({
 });
 var stroke = new ol.style.Stroke({
   color: "#00ffff",
-  width: 2,
+  width: 1,
 });
 var circle = new ol.style.Circle({
   radius: 7,
@@ -158,7 +158,7 @@ let strokeKreirani = new ol.style.Stroke({
   width: 8,
 });
 let circleKreirani = new ol.style.Circle({
-  radius: 18,
+  radius: 8,
   fill: fillKreirani,
   stroke: strokeKreirani,
 });
@@ -167,6 +167,61 @@ let vectorStyleKreirani = new ol.style.Style({
   stroke: strokeKreirani,
   image: circleKreirani,
 });
+
+let neobradjenaTacka = new ol.style.Circle({
+  radius: 7,
+  fill: new ol.style.Fill({ color: "rgba(255, 0, 0, 0.8)" }),
+  stroke: new ol.style.Stroke({
+    color: "#ff0000",
+    width: 2,
+  }),
+});
+let obradjenaTacka = new ol.style.Circle({
+  radius: 7,
+  fill: new ol.style.Fill({ color: "rgba(0, 255, 0, 0.8)" }),
+  stroke: new ol.style.Stroke({
+    color: "#00ff00",
+    width: 2,
+  }),
+});
+
+//Styling funkcija za gpx objekte
+let kreiranjeTekstStila = function (feature) {
+  return new ol.style.Text({
+    textAlign: "left",
+    textBaseline: "middle",
+    font: "12px Verdana",
+    offsetX: 12,
+    text: feature.values_.name,
+
+    //fill: fill,
+    stroke: stroke,
+  });
+};
+
+let kreiranjeLabeleZaGpxTacke = function () {
+  return function (feature) {
+    let styleNeobradjeni = new ol.style.Style({
+      stroke: stroke,
+      fill: fill,
+      text: kreiranjeTekstStila(feature),
+      image: neobradjenaTacka,
+    });
+    let styleObradjeni = new ol.style.Style({
+      stroke: stroke,
+      fill: fill,
+      text: kreiranjeTekstStila(feature),
+      image: obradjenaTacka,
+    });
+
+    if (feature.values_.name === "064") {
+      console.log(" feature", feature.values_.name);
+      return [styleObradjeni];
+    } else {
+      return [styleNeobradjeni];
+    }
+  };
+};
 
 /**Setovanje centra mape */
 let center = [19.26, 42.56];
