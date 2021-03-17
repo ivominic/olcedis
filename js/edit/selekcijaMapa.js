@@ -10,12 +10,16 @@ select.on("select", function (e) {
   selectGpxFeature = e.target.getFeatures().array_[0];
   console.log("gpx feature", selectGpxFeature);
   //if (selectGpxFeature.hasOwnProperty("lejer")) {
+  if (!selectGpxFeature) {
+    return false;
+  }
   if (selectGpxFeature.values_.lejer) {
     //Popuni polja vrijednostima
     console.log("ulazi ovdje", selectGpxFeature.get("lejer"));
     prikazPodatakaIzGpxTacaka();
   } else {
     //Za sad ništa - da li prazniti polja?
+    document.querySelector("#gps").value = selectGpxFeature.values_.name;
   }
   if (blnZavrsniStub) {
     blnZavrsniStub = false;

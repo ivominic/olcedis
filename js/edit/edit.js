@@ -81,15 +81,15 @@ function sacuvaj() {
   }*/
 
   if (odabraniLejerUnos === "stubovi") {
-    if (blnDodijeljenoGpxProperties) {
-      if (selectGpxFeature) {
-        dodajPoljaOdabranomGpxStubu();
-        poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
-      }
-    } else {
+    //if (blnDodijeljenoGpxProperties) {
+    if (selectGpxFeature) {
+      dodajPoljaOdabranomGpxStubu();
+      poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
+    }
+    /*} else {
       dodajPoljaGpxStubovi();
       poruka("Uspjeh", "Uneseni podaci dodijeljeni svim tačkama iz fajla");
-    }
+    }*/
   } else {
     if (odabraniLejerUnos === "vodovi") {
       if (selectGpxFeature) {

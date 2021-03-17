@@ -170,9 +170,9 @@ let vectorStyleKreirani = new ol.style.Style({
 
 let neobradjenaTacka = new ol.style.Circle({
   radius: 7,
-  fill: new ol.style.Fill({ color: "rgba(255, 0, 0, 0.8)" }),
+  fill: new ol.style.Fill({ color: "rgba(0, 255, 255, 0.8)" }),
   stroke: new ol.style.Stroke({
-    color: "#ff0000",
+    color: "#00ffff",
     width: 2,
   }),
 });
