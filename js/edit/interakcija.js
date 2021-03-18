@@ -34,6 +34,8 @@ function slika() {
   slikeIndex = 0;
   slikeUrl = [];
   akcija = "slika";
+  setujAktivnu("#slika");
+  showDiv("#odabirPoveznicaDiv");
 }
 
 function crtajTacku() {

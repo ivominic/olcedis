@@ -133,6 +133,38 @@
 
     <div id="map" class="map"></div>
 
+    <div id="odabirPoveznicaDiv" class="sidenav draggable">
+      <div class="titleAndClose">
+        <h1>Povezivanje</h1>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeDiv('#odabirPoveznicaDiv')">&times;</a>
+      </div>
+      <div class="items-padd">
+        <div class="pr-8 sadrzaj-scroll style-2 sadrzajNovi">
+          <div class="flex-row pb-8">
+            <label for="gps">Početna tačka:</label>
+            <select class="select-css">
+              <option>1</option>
+              <option>1</option>
+              <option>1</option>
+            </select>
+            <button class="btnNovi"><i class="fas fa-globe"></i></button>
+          </div>
+          <div class="flex-row pb-8">
+            <label for="gps" style="padding-right: 7px" class="labelaKrajnja">Krajnja tačka: </label>
+            <select class="select-css">
+              <option>1</option>
+              <option>1</option>
+              <option>1</option>
+            </select>
+            <button class="btnNovi"><i class="fas fa-globe"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex-end items-padd-sm">
+        <button type="button" class="btn mr-8" id="btnSacuvaj"><i class="fas fa-check-circle"></i> Potvrdi</button>
+      </div>
+    </div>
+
     <div id="atributiDiv" class="sidenav draggable">
       <div class="titleAndClose">
         <h1>Atributi</h1>
