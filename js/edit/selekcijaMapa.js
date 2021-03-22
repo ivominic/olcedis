@@ -1,10 +1,93 @@
 /** Selekcije na mapi */
 
+let nizGpxTacakaZaObradu = [];
+let indexGpxTacakaZaObradu = 0;
+
+function klikNaRastere(browserEvent) {
+  let coordinate = browserEvent.coordinate;
+  let pixel = map.getPixelFromCoordinate(coordinate);
+  console.log("akcija", akcija);
+  if (akcija === "atributi") {
+    map.forEachLayerAtPixel(pixel, function (layer) {
+      if (layer instanceof ol.layer.Image) {
+        console.log(layer);
+        let title = layer.get("title");
+        console.log("title", title);
+        let vidljivost = layer.get("visible");
+        console.log("vidljivost", vidljivost);
+        if (vidljivost) {
+          let url = layer.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
+            INFO_FORMAT: "application/json",
+          });
+          if (url) {
+            fetch(url)
+              .then(function (response) {
+                //restartovanje();
+                return response.text();
+              })
+              .then(function (json) {
+                let odgovor = JSON.parse(json);
+                if (odgovor.features.length > 0) {
+                  if (akcija == "slika") {
+                    prikazFotografija(title, odgovor.features[0][0].id);
+                  }
+                }
+              });
+          }
+        }
+      }
+    });
+  }
+}
+
+function klikNaVektore(browserEvent) {
+  nizGpxTacakaZaObradu.length = 0;
+  indexGpxTacakaZaObradu = 0;
+  console.log("feature111");
+  let coordinate = browserEvent.coordinate;
+  let pixel = map.getPixelFromCoordinate(coordinate);
+  map.forEachFeatureAtPixel(pixel, function (feature) {
+    console.log("feature", feature);
+    nizGpxTacakaZaObradu.push(feature);
+  });
+
+  vectorSource.getFeatures().forEach(function (el) {
+    if (el.values_.name === "065") {
+      select.getFeatures().clear();
+      select.getFeatures().push(el);
+    }
+  });
+}
+
+function sljedeciObjekatGpx() {
+  indexGpxTacakaZaObradu++;
+  if (indexGpxTacakaZaObradu < nizGpxTacakaZaObradu.length) {
+    select.getFeatures().clear();
+    select.getFeatures().push(nizGpxTacakaZaObradu[indexGpxTacakaZaObradu]);
+  } else {
+    indexGpxTacakaZaObradu--;
+    alert("Kraj niza.");
+  }
+}
+
+function prethodniObjekatGpx() {
+  indexGpxTacakaZaObradu--;
+  if (indexGpxTacakaZaObradu >= 0) {
+    select.getFeatures().clear();
+    select.getFeatures().push(nizGpxTacakaZaObradu[indexGpxTacakaZaObradu]);
+  } else {
+    indexGpxTacakaZaObradu++;
+    alert("Kraj niza.");
+  }
+}
+
+//Select stari način
+
 let select = new ol.interaction.Select({
   wrapX: false,
 });
 
-select.on("select", function (e) {
+/*select.on("select", function (e) {
   //console.log("select target", e.target.getFeatures().array_[0].values_.name);
   console.log("select target", e.target.getFeatures());
   selectGpxFeature = e.target.getFeatures().array_[0];
@@ -34,7 +117,7 @@ select.on("select", function (e) {
   if (vrijednostPocetneTacke > 0 && vrijednostKrajnjeTacke > 0 && vrijednostPocetneTacke !== vrijednostKrajnjeTacke) {
     kreirajVod(vrijednostPocetneTacke, vrijednostKrajnjeTacke);
   }
-});
+});*/
 
 var modifyV = new ol.interaction.Modify({
   condition: false,
@@ -83,9 +166,6 @@ modifyV.on("change", function (e) {
   let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
   console.log("koordinate c", position);
 });
-
-map.addInteraction(select);
-map.addInteraction(modifyV);
 
 function prikazPodatakaIzGpxTacaka() {
   console.log("prikaz podataka iz GPX tačke", selectGpxFeature.get("lejer"));

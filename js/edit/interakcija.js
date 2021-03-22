@@ -31,6 +31,8 @@ function restart() {
 }
 
 function slika() {
+  testPromjena();
+  return false;
   slikeIndex = 0;
   slikeUrl = [];
   akcija = "slika";
@@ -262,3 +264,5 @@ document.querySelector("#editNKRO").addEventListener("click", noviNkro);
 document.querySelector("#editPrikljucnoMjesto").addEventListener("click", novoPrikljucnoMjesto);
 
 document.querySelector("#ddl_sloj_podataka").addEventListener("click", ddlLejerChange);
+document.querySelector("#btnPrethodniObjekat").addEventListener("click", prethodniObjekatGpx);
+document.querySelector("#btnSljedeciObjekat").addEventListener("click", sljedeciObjekatGpx);

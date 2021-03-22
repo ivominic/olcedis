@@ -309,45 +309,11 @@ map.addInteraction(snap);
 
 /*** Završena selekcija i modifikacija */
 
-//Klik na feature
-map.on("click", onMouseClick);
+map.addInteraction(select);
+map.addInteraction(modifyV);
 
-function onMouseClick(browserEvent) {
-  let coordinate = browserEvent.coordinate;
-  let pixel = map.getPixelFromCoordinate(coordinate);
-  console.log("akcija", akcija);
-  if (akcija === "atributi") {
-    map.forEachLayerAtPixel(pixel, function (layer) {
-      if (layer instanceof ol.layer.Image) {
-        console.log(layer);
-        let title = layer.get("title");
-        console.log("title", title);
-        let vidljivost = layer.get("visible");
-        console.log("vidljivost", vidljivost);
-        if (vidljivost) {
-          let url = layer.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
-            INFO_FORMAT: "application/json",
-          });
-          if (url) {
-            fetch(url)
-              .then(function (response) {
-                //restartovanje();
-                return response.text();
-              })
-              .then(function (json) {
-                let odgovor = JSON.parse(json);
-                if (odgovor.features.length > 0) {
-                  if (akcija == "slika") {
-                    prikazFotografija(title, odgovor.features[0][0].id);
-                  }
-                }
-              });
-          }
-        }
-      }
-    });
-  }
-}
+//Klik na mapu - prikaz vektora ili rastera
+map.on("click", klikNaVektore);
 
 function izbrisi() {
   console.log("kml", vectorSource);
