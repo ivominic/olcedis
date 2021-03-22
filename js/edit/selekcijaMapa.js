@@ -121,16 +121,22 @@ function selekcijaGpxPoligonom() {
   //console.log("vectorSource prije for each array[0]", featuresPolygon.array_[0].getGeometry());
   let minValue = minGpxName(vectorSource);
   let maxValue = maxGpxName(vectorSource);
+  let pocetnaTacka, krajnjaTacka;
   for (let i = minValue; i <= maxValue; i++) {
     vectorSource.getFeatures().forEach(function (el) {
       if (i === parseInt(el.values_.name)) {
         featuresPolygon.array_.forEach(function (poligon_el) {
           if (poligon_el.getGeometry().intersectsExtent(el.getGeometry().getExtent())) {
             //selectedFeatures.push(features[i]);
+            if (!pocetnaTacka) {
+              pocetnaTacka = el;
+            }
+            krajnjaTacka = el;
             let position = el.values_.geometry.flatCoordinates;
             let elevacija = position[2];
             elevacija > 3000 && (elevacija = 0);
-            let found = nizTacakaLinije.some((r) => JSON.stringify(r) === JSON.stringify([position[0], position[1], elevacija]));
+            //let found = nizTacakaLinije.some((r) => JSON.stringify(r) === JSON.stringify([position[0], position[1], elevacija]));
+            let found = nizTacakaLinije.some((r) => JSON.stringify(r) === JSON.stringify([position[0], position[1]]));
             if (!found) {
               //nizTacakaLinije.push([position[0], position[1], elevacija]);
               nizTacakaLinije.push([position[0], position[1]]);
@@ -157,6 +163,9 @@ function selekcijaGpxPoligonom() {
       }
     });
   });*/
+
+  //TODO: očitavanje tačaka
+  //let udaljenost = pocetnaTacka.distanceTo(krajnjaTacka);
 
   //TODO: Brisati iscrtane poligone nakon selekcije
 

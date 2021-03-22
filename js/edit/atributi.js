@@ -316,6 +316,7 @@ function prikaziAtributDivTrafostanice(napon) {
   }
 
   //Read only polja za trafostanice. Kasnije dodato.
+  document.querySelector("#divUnosGps").style.display = "flex";
 
   document.querySelector("#divReadFid1").style.display = "flex";
   document.querySelector("#divReadName").style.display = "flex";
