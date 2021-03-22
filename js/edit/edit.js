@@ -318,6 +318,13 @@ map.on("click", klikNaVektore);
 function izbrisi() {
   console.log("kml", vectorSource);
   //confirmModal("UKLANJANJE", "Da li ste sigurni da želite da uklonite odabrani objekat?");
+  select.getFeatures();
+  vectorSource.getFeatures().forEach(function (el) {
+    console.log("test feature", select.getFeatures());
+    if (el.values_.name == select.getFeatures().array_[0].values_.name) {
+      alert("brisanje");
+    }
+  });
 }
 
 /**Metoda koja će sve resetovati na početne vrijednosti */
