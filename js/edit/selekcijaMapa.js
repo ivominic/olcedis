@@ -324,6 +324,10 @@ function maxGpxName(tacke) {
 
 function sledecaGpxTacka() {
   let nijeOdabranaNovaTacka = true;
+  if (document.querySelector("#divSljedeciObjekat").style.display !== "none") {
+    return false;
+  }
+  document.querySelector("#divPrethodniObjekat").style.display = "none";
   vectorSource.getFeatures().forEach(function (el) {
     if (selectGpxFeature && parseInt(el.values_.name) === parseInt(selectGpxFeature.values_.name) + 1 && nijeOdabranaNovaTacka) {
       console.log("postojeći ", parseInt(selectGpxFeature.values_.name));
@@ -332,6 +336,23 @@ function sledecaGpxTacka() {
       select.getFeatures().clear();
       select.getFeatures().push(selectGpxFeature);
       nijeOdabranaNovaTacka = false;
+      prikazPodatakaIzGpxTacaka();
+    }
+  });
+
+  nizGpxTacakaZaObradu.length = 0;
+  vectorSource.getFeatures().forEach(function (el) {
+    if (
+      el.values_.geometry.flatCoordinates[0] === selectGpxFeature.values_.geometry.flatCoordinates[0] &&
+      el.values_.geometry.flatCoordinates[1] === selectGpxFeature.values_.geometry.flatCoordinates[1]
+    ) {
+      //if (el.getGeometry() === selectGpxFeature.getGeometry()) {
+      console.log("prva geom", el);
+      console.log("druga geom", selectGpxFeature);
+      nizGpxTacakaZaObradu.push(el);
+      if (nizGpxTacakaZaObradu.length > 1) {
+        document.querySelector("#divSljedeciObjekat").style.display = "flex";
+      }
     }
   });
 }
