@@ -316,18 +316,37 @@ map.addInteraction(modifyV);
 map.on("click", klikNaVektore);
 
 function izbrisi() {
-  console.log("kml", vectorSource);
-  //confirmModal("UKLANJANJE", "Da li ste sigurni da želite da uklonite odabrani objekat?");
-  select.getFeatures();
+  if (select.getFeatures().array_[0] === undefined) {
+    poruka("Upozorenje", "Potrebno je selektovati objekat iz gpx fajla.");
+    return false;
+  }
   let nizZaBrisanje = vectorSource.getFeatures();
-  console.log("prije", nizZaBrisanje.length);
+  //console.log("selektovani objekat", select.getFeatures().array_[0]);
   vectorSource.getFeatures().forEach(function (el, index, nizZaBrisanje) {
-    console.log("test feature", select.getFeatures());
-    if (el.values_.name == select.getFeatures().array_[0].values_.name) {
+    if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
+      //if (el.values_.name == select.getFeatures().array_[0].values_.name) {
       nizZaBrisanje.splice(index, 1);
-      console.log("posle", nizZaBrisanje.length);
+      select.getFeatures().array_.splice(0, 1);
+      console.log("ol_uid", el.ol_uid);
       vectorSource.clear();
       vectorSource.addFeatures(nizZaBrisanje);
+    }
+  });
+}
+
+function dupliraj() {
+  if (select.getFeatures().array_[0] === undefined) {
+    poruka("Upozorenje", "Potrebno je selektovati objekat iz gpx fajla.");
+    return false;
+  }
+  let nizZaZamjenu = vectorSource.getFeatures().slice();
+  nizZaZamjenu.push(select.getFeatures().array_[0]);
+
+  vectorSource.getFeatures().forEach(function (el) {
+    if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
+      //if (el.values_.name == select.getFeatures().array_[0].values_.name) {
+      select.getFeatures().clear();
+      vectorSource.addFeature(el.clone());
     }
   });
 }
@@ -503,6 +522,7 @@ function wfsDownload(format) {
 /**Povezivanje kontrola koje zavise od lejera sa akcijama */
 document.querySelector("#btnSacuvaj").addEventListener("click", sacuvaj);
 document.querySelector("#btnIzbrisi").addEventListener("click", izbrisi);
+document.querySelector("#btnDupliraj").addEventListener("click", dupliraj);
 document.querySelector("#btnFilter").addEventListener("click", filtriranje);
 
 /**Popunjavanje ddl-ova */
