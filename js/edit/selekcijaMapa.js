@@ -51,12 +51,12 @@ function klikNaVektore(browserEvent) {
     nizGpxTacakaZaObradu.push(feature);
   });
 
-  vectorSource.getFeatures().forEach(function (el) {
+  /*vectorSource.getFeatures().forEach(function (el) {
     if (el.values_.name === "065") {
       select.getFeatures().clear();
       select.getFeatures().push(el);
     }
-  });
+  });*/
 }
 
 function sljedeciObjekatGpx() {

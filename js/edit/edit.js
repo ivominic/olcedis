@@ -319,10 +319,15 @@ function izbrisi() {
   console.log("kml", vectorSource);
   //confirmModal("UKLANJANJE", "Da li ste sigurni da želite da uklonite odabrani objekat?");
   select.getFeatures();
-  vectorSource.getFeatures().forEach(function (el) {
+  let nizZaBrisanje = vectorSource.getFeatures();
+  console.log("prije", nizZaBrisanje.length);
+  vectorSource.getFeatures().forEach(function (el, index, nizZaBrisanje) {
     console.log("test feature", select.getFeatures());
     if (el.values_.name == select.getFeatures().array_[0].values_.name) {
-      alert("brisanje");
+      nizZaBrisanje.splice(index, 1);
+      console.log("posle", nizZaBrisanje.length);
+      vectorSource.clear();
+      vectorSource.addFeatures(nizZaBrisanje);
     }
   });
 }
