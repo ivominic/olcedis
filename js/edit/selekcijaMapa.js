@@ -64,6 +64,9 @@ function sljedeciObjekatGpx() {
   if (indexGpxTacakaZaObradu < nizGpxTacakaZaObradu.length) {
     select.getFeatures().clear();
     select.getFeatures().push(nizGpxTacakaZaObradu[indexGpxTacakaZaObradu]);
+    //Za prikaz atributa stuba
+    selectGpxFeature = nizGpxTacakaZaObradu[indexGpxTacakaZaObradu];
+    prikazPodatakaIzGpxTacaka();
   } else {
     indexGpxTacakaZaObradu--;
     alert("Kraj niza.");
@@ -75,6 +78,9 @@ function prethodniObjekatGpx() {
   if (indexGpxTacakaZaObradu >= 0) {
     select.getFeatures().clear();
     select.getFeatures().push(nizGpxTacakaZaObradu[indexGpxTacakaZaObradu]);
+    //Za prikaz atributa stuba
+    selectGpxFeature = nizGpxTacakaZaObradu[indexGpxTacakaZaObradu];
+    prikazPodatakaIzGpxTacaka();
   } else {
     indexGpxTacakaZaObradu++;
     alert("Kraj niza.");
@@ -87,7 +93,7 @@ let select = new ol.interaction.Select({
   wrapX: false,
 });
 
-/*select.on("select", function (e) {
+select.on("select", function (e) {
   //console.log("select target", e.target.getFeatures().array_[0].values_.name);
   console.log("select target", e.target.getFeatures());
   selectGpxFeature = e.target.getFeatures().array_[0];
@@ -104,7 +110,7 @@ let select = new ol.interaction.Select({
     //Za sad ništa - da li prazniti polja?
     document.querySelector("#gps").value = selectGpxFeature.values_.name;
   }
-  if (blnZavrsniStub) {
+  /*if (blnZavrsniStub) {
     blnZavrsniStub = false;
     vrijednostKrajnjeTacke = parseInt(e.target.getFeatures().array_[0].values_.name);
     poruka("Uspjeh", "Završni stub voda je " + e.target.getFeatures().array_[0].values_.name);
@@ -116,8 +122,8 @@ let select = new ol.interaction.Select({
   }
   if (vrijednostPocetneTacke > 0 && vrijednostKrajnjeTacke > 0 && vrijednostPocetneTacke !== vrijednostKrajnjeTacke) {
     kreirajVod(vrijednostPocetneTacke, vrijednostKrajnjeTacke);
-  }
-});*/
+  }*/
+});
 
 var modifyV = new ol.interaction.Modify({
   condition: false,

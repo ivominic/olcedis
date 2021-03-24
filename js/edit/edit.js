@@ -344,8 +344,7 @@ function dupliraj() {
 
   vectorSource.getFeatures().forEach(function (el) {
     if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
-      //if (el.values_.name == select.getFeatures().array_[0].values_.name) {
-      select.getFeatures().clear();
+      select.getFeatures().clear(); //Da bi uklonili stil selektovane tačke
       vectorSource.addFeature(el.clone());
     }
   });
