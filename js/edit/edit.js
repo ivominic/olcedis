@@ -80,10 +80,15 @@ function sacuvaj() {
     return false;
   }*/
 
+  if (!selectGpxFeature) {
+    poruka("Upozorenje", "Potrebno je odabrati tačku iz gpx fajla.");
+    return false;
+  }
   if (odabraniLejerUnos === "stubovi") {
     //if (blnDodijeljenoGpxProperties) {
     if (selectGpxFeature) {
       dodajPoljaOdabranomGpxStubu();
+      sledecaGpxTacka();
       poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
     }
     /*} else {
@@ -328,6 +333,7 @@ function izbrisi() {
       nizZaBrisanje.splice(index, 1);
       select.getFeatures().array_.splice(0, 1);
       console.log("ol_uid", el.ol_uid);
+      selectGpxFeature = null;
       vectorSource.clear();
       vectorSource.addFeatures(nizZaBrisanje);
     }
