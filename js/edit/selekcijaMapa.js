@@ -50,6 +50,13 @@ function klikNaVektore(browserEvent) {
     console.log("feature", feature);
     nizGpxTacakaZaObradu.push(feature);
   });
+  if (nizGpxTacakaZaObradu.length > 1) {
+    document.querySelector("#divPrethodniObjekat").style.display = "none";
+    document.querySelector("#divSljedeciObjekat").style.display = "flex";
+  } else {
+    document.querySelector("#divPrethodniObjekat").style.display = "none";
+    document.querySelector("#divSljedeciObjekat").style.display = "none";
+  }
 
   /*vectorSource.getFeatures().forEach(function (el) {
     if (el.values_.name === "065") {
@@ -62,6 +69,14 @@ function klikNaVektore(browserEvent) {
 function sljedeciObjekatGpx() {
   indexGpxTacakaZaObradu++;
   if (indexGpxTacakaZaObradu < nizGpxTacakaZaObradu.length) {
+    document.querySelector("#divPrethodniObjekat").style.display = "flex";
+    if (indexGpxTacakaZaObradu == nizGpxTacakaZaObradu.length - 1) {
+      document.querySelector("#divSljedeciObjekat").style.display = "none";
+      document.querySelector("#divPrethodniObjekat").style.float = "none";
+    } else {
+      document.querySelector("#divSljedeciObjekat").style.display = "flex";
+      document.querySelector("#divPrethodniObjekat").style.float = "left";
+    }
     select.getFeatures().clear();
     select.getFeatures().push(nizGpxTacakaZaObradu[indexGpxTacakaZaObradu]);
     //Za prikaz atributa stuba
@@ -76,6 +91,13 @@ function sljedeciObjekatGpx() {
 function prethodniObjekatGpx() {
   indexGpxTacakaZaObradu--;
   if (indexGpxTacakaZaObradu >= 0) {
+    document.querySelector("#divSljedeciObjekat").style.display = "flex";
+    if (indexGpxTacakaZaObradu == 0) {
+      document.querySelector("#divPrethodniObjekat").style.display = "none";
+    } else {
+      document.querySelector("#divPrethodniObjekat").style.display = "flex";
+      document.querySelector("#divPrethodniObjekat").style.float = "left";
+    }
     select.getFeatures().clear();
     select.getFeatures().push(nizGpxTacakaZaObradu[indexGpxTacakaZaObradu]);
     //Za prikaz atributa stuba
