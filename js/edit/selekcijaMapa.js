@@ -3,6 +3,9 @@
 let nizGpxTacakaZaObradu = [];
 let indexGpxTacakaZaObradu = 0;
 let selektovaniDdlZaPovezivanjeVoda = "";
+let nizPocetnihTacakaVoda = [],
+  nizKrajnjihTacakaVoda = [];
+let nizTacakaLinije = [];
 
 function klikNaRastere(browserEvent) {
   let coordinate = browserEvent.coordinate;
@@ -231,8 +234,7 @@ let nizVodovaGpx = [];
  * Metoda koja vrši selekciju stubova iz gpx fajla, koji upadaju u poligon
  */
 function selekcijaGpxPoligonom() {
-  let nizTacakaLinije = [];
-
+  nizTacakaLinije.length = 0;
   //console.log("vectorSource prije for each", featuresPolygon);
   //console.log("vectorSource prije for each array", featuresPolygon.array_);
   //console.log("vectorSource prije for each array[0]", featuresPolygon.array_[0].getGeometry());
@@ -289,30 +291,16 @@ function selekcijaGpxPoligonom() {
   //TODO: Prevesti vod u feature i dodati propertije
 
   let vod = new ol.geom.LineString([nizTacakaLinije]);
-  /*let feature = new ol.Feature({
-    name: "Novi vod",
-    geometry: vod,
-  });
-  vektorKreiraniVodovi.getSource().clear();
-  vektorKreiraniVodovi.getSource().addFeature(feature);*/
-
   let format = new ol.format.WKT();
 
   let wktVod = format.writeGeometry(vod, {});
   wktVod = wktVod.replace(/ /g, "_");
   wktVod = wktVod.replace(/,/g, " ");
   wktVod = wktVod.replace(/_/g, ",");
-  alert(wktVod);
   var feature = format.readFeature(wktVod, {});
 
-  nizVodovaGpx.push(feature);
-
   vektorKreiraniVodovi.getSource().clear();
-  //vektorKreiraniVodovi.getSource().addFeatures(feature);
   vektorKreiraniVodovi.getSource().addFeatures(nizVodovaGpx);
-
-  //console.log("wkt", wktVod);
-  //console.log("kreirani niz koordinata", vod);
 }
 
 function minGpxName(tacke) {
@@ -367,24 +355,21 @@ function sledecaGpxTacka() {
 }
 
 function odabirPocetneTackeVoda() {
-  //alert(1);
-  //map.on('singleclick', myCallback);
-  //To unbind the event
-  //map.un('singleclick', myCallback);
   selektovaniDdlZaPovezivanjeVoda = "#ddlPocetnaTackaVodovi";
+  nizPocetnihTacakaVoda.length = 0;
   $(selektovaniDdlZaPovezivanjeVoda).empty();
-  //map.un("click", klikNaVektore);
   map.on("singleclick", klikNaRastereZaVodove);
 }
 
 function odabirKrajnjeTackeVoda() {
   selektovaniDdlZaPovezivanjeVoda = "#ddlKrajnjaTackaVodovi";
+  nizKrajnjihTacakaVoda.length = 0;
   $(selektovaniDdlZaPovezivanjeVoda).empty();
   map.on("singleclick", klikNaRastereZaVodove);
 }
 
 function potvrdaUnosaVoda() {
-  alert(3);
+  koordinateObjekataIzDdlova();
 }
 
 function klikNaRastereZaVodove(browserEvent) {
@@ -422,6 +407,12 @@ function klikNaRastereZaVodove(browserEvent) {
 
               if (brojLejera === 0) {
                 //dodati wms objekte u padajuću listu
+                if (selektovaniDdlZaPovezivanjeVoda === "#ddlPocetnaTackaVodovi") {
+                  nizPocetnihTacakaVoda = tempNiz.slice();
+                }
+                if (selektovaniDdlZaPovezivanjeVoda === "#ddlKrajnjaTackaVodovi") {
+                  nizKrajnjihTacakaVoda = tempNiz.slice();
+                }
                 tempNiz.forEach((el) => {
                   $(selektovaniDdlZaPovezivanjeVoda).append(
                     $("<option>", {
@@ -439,4 +430,78 @@ function klikNaRastereZaVodove(browserEvent) {
       }
     }
   });
+}
+
+function koordinateObjekataIzDdlova() {
+  let pocetna = document.querySelector("#ddlPocetnaTackaVodovi").value;
+  let krajnja = document.querySelector("#ddlKrajnjaTackaVodovi").value;
+  let koordinatePocetna, koordinateKrajnja;
+  if (pocetna) {
+    if (pocetna.includes(".")) {
+      nizPocetnihTacakaVoda.forEach((el) => {
+        if (el.id === pocetna) {
+          koordinatePocetna = [el.geometry.coordinates[0], el.geometry.coordinates[1]];
+        }
+      });
+    } else {
+      vectorSource.getFeatures().forEach(function (el) {
+        if (el.values_.name === pocetna) {
+          //koordinatePocetna = el.values_.geometry.flatCoordinates;
+          koordinatePocetna = [el.values_.geometry.flatCoordinates[0], el.values_.geometry.flatCoordinates[1]];
+          /*console.log("gpx iz prve liste ", el);
+          let position = el.values_.geometry.flatCoordinates;
+          console.log(position[0], position[1]);*/
+        }
+      });
+    }
+  }
+  if (krajnja) {
+    if (krajnja.includes(".")) {
+      nizKrajnjihTacakaVoda.forEach((el) => {
+        if (el.id === krajnja) {
+          koordinateKrajnja = [el.geometry.coordinates[0], el.geometry.coordinates[1]];
+          /*console.log("bbb", el.geometry.coordinates);
+          console.log(el.geometry.coordinates[0], el.geometry.coordinates[1]);*/
+        }
+      });
+    } else {
+      vectorSource.getFeatures().forEach(function (el) {
+        if (el.values_.name === krajnja) {
+          //koordinateKrajnja = el.values_.geometry.flatCoordinates;
+          koordinateKrajnja = [el.values_.geometry.flatCoordinates[0], el.values_.geometry.flatCoordinates[1]];
+          /*let position = el.values_.geometry.flatCoordinates;
+          console.log(position[0], position[1]);*/
+        }
+      });
+    }
+  }
+  pridruzivanjeKoordinataNizuVoda(koordinatePocetna, koordinateKrajnja);
+}
+
+function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
+  let options = { units: "miles" };
+  if (turf.distance(turf.point(pocetna), turf.point(nizTacakaLinije[0]), options) > turf.distance(turf.point(krajnja), turf.point(nizTacakaLinije[0]), options)) {
+    //krajnju dodajemo na početku
+    nizTacakaLinije.unshift(krajnja);
+    nizTacakaLinije.push(pocetna);
+  } else {
+    //krajnja na kraju niza
+    nizTacakaLinije.push(krajnja);
+    nizTacakaLinije.unshift(pocetna);
+  }
+
+  //Iscrtavanje voda
+  let vod = new ol.geom.LineString([nizTacakaLinije]);
+
+  let format = new ol.format.WKT();
+
+  let wktVod = format.writeGeometry(vod, {});
+  wktVod = wktVod.replace(/ /g, "_");
+  wktVod = wktVod.replace(/,/g, " ");
+  wktVod = wktVod.replace(/_/g, ",");
+  alert(wktVod);
+  var feature = format.readFeature(wktVod, {});
+  nizVodovaGpx.push(feature);
+  vektorKreiraniVodovi.getSource().clear();
+  vektorKreiraniVodovi.getSource().addFeatures(nizVodovaGpx);
 }
