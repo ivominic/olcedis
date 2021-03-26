@@ -266,28 +266,6 @@ function selekcijaGpxPoligonom() {
     });
   }
 
-  /*vectorSource.getFeatures().forEach(function (el) {
-    featuresPolygon.array_.forEach(function (poligon_el) {
-      if (poligon_el.getGeometry().intersectsExtent(el.getGeometry().getExtent())) {
-        //selectedFeatures.push(features[i]);
-        console.log(el.values_.name, el);
-        let position = el.values_.geometry.flatCoordinates;
-        let elevacija = position[2];
-        elevacija > 3000 && (elevacija = 0);
-        let found = nizTacakaLinije.some((r) => JSON.stringify(r) === JSON.stringify([position[0], position[1], elevacija]));
-        if (!found) {
-          //nizTacakaLinije.push([position[0], position[1], elevacija]);
-          nizTacakaLinije.push([position[0], position[1]]);
-        }
-      }
-    });
-  });*/
-
-  //TODO: očitavanje tačaka
-  //let udaljenost = pocetnaTacka.distanceTo(krajnjaTacka);
-
-  //TODO: Brisati iscrtane poligone nakon selekcije
-
   //TODO: Prevesti vod u feature i dodati propertije
 
   let vod = new ol.geom.LineString([nizTacakaLinije]);
@@ -355,6 +333,8 @@ function sledecaGpxTacka() {
 }
 
 function odabirPocetneTackeVoda() {
+  map.removeInteraction(draw);
+  map.removeInteraction(modify);
   selektovaniDdlZaPovezivanjeVoda = "#ddlPocetnaTackaVodovi";
   nizPocetnihTacakaVoda.length = 0;
   $(selektovaniDdlZaPovezivanjeVoda).empty();
@@ -362,6 +342,8 @@ function odabirPocetneTackeVoda() {
 }
 
 function odabirKrajnjeTackeVoda() {
+  map.removeInteraction(draw);
+  map.removeInteraction(modify);
   selektovaniDdlZaPovezivanjeVoda = "#ddlKrajnjaTackaVodovi";
   nizKrajnjihTacakaVoda.length = 0;
   $(selektovaniDdlZaPovezivanjeVoda).empty();
@@ -369,6 +351,7 @@ function odabirKrajnjeTackeVoda() {
 }
 
 function potvrdaUnosaVoda() {
+  selekcijaGpxPoligonom();
   koordinateObjekataIzDdlova();
 }
 
@@ -479,6 +462,20 @@ function koordinateObjekataIzDdlova() {
 }
 
 function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
+  if (nizTacakaLinije.length === 0) {
+    poruka("Upozorenje", "Potrebno je selektovati tačke za kreiranje voda.");
+    return false;
+  }
+  let foundPocetna = nizTacakaLinije.some((r) => JSON.stringify(r) === JSON.stringify(pocetna));
+  let foundKrajnja = nizTacakaLinije.some((r) => JSON.stringify(r) === JSON.stringify(krajnja));
+  if (foundPocetna) {
+    poruka("Upozorenje", "Početna tačka ne može biti dio voda koji je potrebno kreirati.");
+    return false;
+  }
+  if (foundKrajnja) {
+    poruka("Upozorenje", "Krajnja tačka ne može biti dio voda koji je potrebno kreirati.");
+    return false;
+  }
   let options = { units: "miles" };
   if (pocetna && pocetna !== undefined && pocetna.length && krajnja && krajnja !== undefined && krajnja.length) {
     //Ako su selektovani i nadređeni i podređeni objekat
@@ -521,9 +518,19 @@ function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
   wktVod = wktVod.replace(/ /g, "_");
   wktVod = wktVod.replace(/,/g, " ");
   wktVod = wktVod.replace(/_/g, ",");
-  alert(wktVod);
   var feature = format.readFeature(wktVod, {});
   nizVodovaGpx.push(feature);
   vektorKreiraniVodovi.getSource().clear();
   vektorKreiraniVodovi.getSource().addFeatures(nizVodovaGpx);
+  restartNakonUnosaVoda();
+}
+
+function restartNakonUnosaVoda() {
+  nizTacakaLinije.length = 0;
+  selektovaniDdlZaPovezivanjeVoda = "";
+  $("#ddlPocetnaTackaVodovi").empty();
+  $("#ddlKrajnjaTackaVodovi").empty();
+  nizPocetnihTacakaVoda.length = 0;
+  nizKrajnjihTacakaVoda.length = 0;
+  brisanje();
 }
