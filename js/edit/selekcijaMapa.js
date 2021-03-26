@@ -50,6 +50,14 @@ function klikNaVektore(browserEvent) {
   map.forEachFeatureAtPixel(pixel, function (feature) {
     console.log("feature", feature);
     nizGpxTacakaZaObradu.push(feature);
+    if (selektovaniDdlZaPovezivanjeVoda !== "") {
+      $(selektovaniDdlZaPovezivanjeVoda).append(
+        $("<option>", {
+          value: feature.values_.name,
+          text: feature.values_.name,
+        })
+      );
+    }
   });
   if (nizGpxTacakaZaObradu.length > 1) {
     document.querySelector("#divPrethodniObjekat").style.display = "none";
@@ -365,19 +373,13 @@ function odabirPocetneTackeVoda() {
   //map.un('singleclick', myCallback);
   selektovaniDdlZaPovezivanjeVoda = "#ddlPocetnaTackaVodovi";
   $(selektovaniDdlZaPovezivanjeVoda).empty();
-  nizGpxTacakaZaObradu.forEach(function (el) {
-    console.log("tačke ispod klika", el);
-  });
-  map.un("click", klikNaVektore);
+  //map.un("click", klikNaVektore);
   map.on("singleclick", klikNaRastereZaVodove);
 }
 
 function odabirKrajnjeTackeVoda() {
   selektovaniDdlZaPovezivanjeVoda = "#ddlKrajnjaTackaVodovi";
   $(selektovaniDdlZaPovezivanjeVoda).empty();
-  nizGpxTacakaZaObradu.forEach(function (el) {
-    console.log("tačke ispod klika", el);
-  });
   map.on("singleclick", klikNaRastereZaVodove);
 }
 
@@ -430,6 +432,7 @@ function klikNaRastereZaVodove(browserEvent) {
                 });
                 //Ukloniti metodu koja se poziva na klik
                 map.un("singleclick", klikNaRastereZaVodove);
+                selektovaniDdlZaPovezivanjeVoda = "";
               }
             });
         }
