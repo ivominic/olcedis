@@ -31,8 +31,7 @@ function restart() {
 }
 
 function slika() {
-  testPromjena();
-  return false;
+  //testPromjena();
   slikeIndex = 0;
   slikeUrl = [];
   akcija = "slika";
@@ -266,3 +265,8 @@ document.querySelector("#editPrikljucnoMjesto").addEventListener("click", novoPr
 document.querySelector("#ddl_sloj_podataka").addEventListener("click", ddlLejerChange);
 document.querySelector("#btnPrethodniObjekat").addEventListener("click", prethodniObjekatGpx);
 document.querySelector("#btnSljedeciObjekat").addEventListener("click", sljedeciObjekatGpx);
+
+//Akcije za povezivanje voda sa početnom i krajnjom tačkom
+document.querySelector("#btnPotvrdiPoveznica").addEventListener("click", potvrdaUnosaVoda);
+document.querySelector("#btnPocetnaTackaPoveznica").addEventListener("click", odabirPocetneTackeVoda);
+document.querySelector("#btnKrajnjaTackaPoveznica").addEventListener("click", odabirKrajnjeTackeVoda);

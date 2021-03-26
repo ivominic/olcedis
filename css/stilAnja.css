@@ -823,7 +823,7 @@ html[xmlns] .clearfix {
   transform: rotate(45deg);
 }
 
-.btnNovi {
+.dugmeodabirmapa {
   background: linear-gradient(to bottom, #dd252e 25%, #ca2129 100%);
   background-color: #ca2129;
   border-radius: 5px;
@@ -835,15 +835,15 @@ html[xmlns] .clearfix {
   cursor: pointer;
   border-radius: 9px;
 }
-.btnNovi:hover {
+.dugmeodabirmapa:hover {
   background-color: RoyalBlue;
 }
 
-.sadrzajNovi {
+.povezivanjevodovadiv {
   height: 100px;
   overflow: hidden;
 }
 
-.labelaKrajnja {
+.labelapoveznicakrajnja {
   padding-right: 7px;
 }

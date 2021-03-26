@@ -356,3 +356,15 @@ function sledecaGpxTacka() {
     }
   });
 }
+
+function odabirPocetneTackeVoda() {
+  alert(1);
+}
+
+function odabirKrajnjeTackeVoda() {
+  alert(2);
+}
+
+function potvrdaUnosaVoda() {
+  alert(3);
+}
