@@ -2,6 +2,7 @@
 
 let nizGpxTacakaZaObradu = [];
 let indexGpxTacakaZaObradu = 0;
+let selektovaniDdlZaPovezivanjeVoda = "";
 
 function klikNaRastere(browserEvent) {
   let coordinate = browserEvent.coordinate;
@@ -358,13 +359,81 @@ function sledecaGpxTacka() {
 }
 
 function odabirPocetneTackeVoda() {
-  alert(1);
+  //alert(1);
+  //map.on('singleclick', myCallback);
+  //To unbind the event
+  //map.un('singleclick', myCallback);
+  selektovaniDdlZaPovezivanjeVoda = "#ddlPocetnaTackaVodovi";
+  $(selektovaniDdlZaPovezivanjeVoda).empty();
+  nizGpxTacakaZaObradu.forEach(function (el) {
+    console.log("tačke ispod klika", el);
+  });
+  map.un("click", klikNaVektore);
+  map.on("singleclick", klikNaRastereZaVodove);
 }
 
 function odabirKrajnjeTackeVoda() {
-  alert(2);
+  selektovaniDdlZaPovezivanjeVoda = "#ddlKrajnjaTackaVodovi";
+  $(selektovaniDdlZaPovezivanjeVoda).empty();
+  nizGpxTacakaZaObradu.forEach(function (el) {
+    console.log("tačke ispod klika", el);
+  });
+  map.on("singleclick", klikNaRastereZaVodove);
 }
 
 function potvrdaUnosaVoda() {
   alert(3);
+}
+
+function klikNaRastereZaVodove(browserEvent) {
+  let coordinate = browserEvent.coordinate;
+  let pixel = map.getPixelFromCoordinate(coordinate);
+  let brojLejera = 0;
+  let tempNiz = [];
+  map.forEachLayerAtPixel(pixel, function (layer) {
+    if (layer instanceof ol.layer.Image) {
+      console.log(layer);
+      //let title = layer.get("title");
+      let vidljivost = layer.get("visible");
+      if (vidljivost) {
+        brojLejera++;
+        let url = layer.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
+          INFO_FORMAT: "application/json",
+          feature_count: "5",
+        });
+        if (url) {
+          fetch(url)
+            .then(function (response) {
+              //restartovanje();
+              //let features = new ol.format.GeoJSON().readFeatures(response);
+              return response.text();
+            })
+            .then(function (json) {
+              brojLejera--;
+              let odgovor = JSON.parse(json);
+              if (odgovor.features.length > 0) {
+                console.log(odgovor.features);
+                odgovor.features.forEach(function (el) {
+                  tempNiz.push(el);
+                });
+              }
+
+              if (brojLejera === 0) {
+                //dodati wms objekte u padajuću listu
+                tempNiz.forEach((el) => {
+                  $(selektovaniDdlZaPovezivanjeVoda).append(
+                    $("<option>", {
+                      value: el.id,
+                      text: el.id,
+                    })
+                  );
+                });
+                //Ukloniti metodu koja se poziva na klik
+                map.un("singleclick", klikNaRastereZaVodove);
+              }
+            });
+        }
+      }
+    }
+  });
 }
