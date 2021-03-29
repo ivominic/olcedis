@@ -79,14 +79,36 @@ function sacuvaj() {
     poruka("Upozorenje", "Potrebno je odabrati objekat čije atribute mijenjate.");
     return false;
   }*/
-  if (blnDodijeljenoGpxProperties) {
+
+  if (!selectGpxFeature) {
+    poruka("Upozorenje", "Potrebno je odabrati tačku iz gpx fajla.");
+    return false;
+  }
+  if (odabraniLejerUnos === "stubovi") {
+    //if (blnDodijeljenoGpxProperties) {
     if (selectGpxFeature) {
       dodajPoljaOdabranomGpxStubu();
+      sledecaGpxTacka();
       poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
     }
+    /*} else {
+      dodajPoljaGpxStubovi();
+      poruka("Uspjeh", "Uneseni podaci dodijeljeni svim tačkama iz fajla");
+    }*/
   } else {
-    dodajPoljaGpxStubovi();
-    poruka("Uspjeh", "Uneseni podaci dodijeljeni svim tačkama iz fajla");
+    if (odabraniLejerUnos === "vodovi") {
+      if (selectGpxFeature) {
+      } else {
+        poruka("Upozorenje", "Potrebno je odabrati objekat iz gpx fajla");
+      }
+    }
+    if (odabraniLejerUnos === "trafostanice") {
+      if (selectGpxFeature) {
+        dodajPoljaOdabranojGpxTrafostanici();
+      } else {
+        poruka("Upozorenje", "Potrebno je odabrati objekat iz gpx fajla");
+      }
+    }
   }
 }
 
@@ -258,6 +280,7 @@ let dragAndDrop = new ol.interaction.DragAndDrop({
 dragAndDrop.on("addfeatures", function (event) {
   console.log("aaaa", event.features);
   gpxFeatures = event.features;
+
   blnDodijeljenoGpxProperties = false;
   event.features.forEach(function (feature) {
     //let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
@@ -277,96 +300,13 @@ dragAndDrop.on("addfeatures", function (event) {
   map.getLayers().push(
     new ol.layer.Vector({
       source: vectorSource,
-      style: vectorStyle,
+      style: kreiranjeLabeleZaGpxTacke(),
     })
   );
   view.fit(vectorSource.getExtent(), map.getSize());
 });
 map.addInteraction(dragAndDrop);
 
-/** Selekcija i modifikacija */
-
-var select = new ol.interaction.Select({
-  wrapX: false,
-});
-
-select.on("select", function (e) {
-  //console.log("select target", e.target.getFeatures().array_[0].values_.name);
-  console.log("select target", e.target.getFeatures());
-  selectGpxFeature = e.target.getFeatures().array_[0];
-  console.log("gpx feature", selectGpxFeature);
-  if (selectGpxFeature.values_.Geometry) {
-    //Popuni polja vrijednostima
-    console.log("ulazi ovdje");
-    prikaziPoljaOdabranogGpxStuba();
-  } else {
-    //Za sad ništa - da li prazniti polja?
-  }
-  if (blnZavrsniStub) {
-    blnZavrsniStub = false;
-    vrijednostKrajnjeTacke = parseInt(e.target.getFeatures().array_[0].values_.name);
-    poruka("Uspjeh", "Završni stub voda je " + e.target.getFeatures().array_[0].values_.name);
-  }
-  if (blnPocetniStub) {
-    blnPocetniStub = false;
-    vrijednostPocetneTacke = parseInt(e.target.getFeatures().array_[0].values_.name);
-    poruka("Uspjeh", "Početni stub voda je " + e.target.getFeatures().array_[0].values_.name);
-  }
-  if (vrijednostPocetneTacke > 0 && vrijednostKrajnjeTacke > 0 && vrijednostPocetneTacke !== vrijednostKrajnjeTacke) {
-    kreirajVod(vrijednostPocetneTacke, vrijednostKrajnjeTacke);
-  }
-});
-
-var modifyV = new ol.interaction.Modify({
-  condition: false,
-  features: select.getFeatures(),
-});
-
-modifyV.on("modifyend", function (e) {
-  let featureName = e.features.getArray()[0].values_.name;
-
-  console.log("select m", e.features.getArray()[0].values_);
-  console.log("ime tačke m", e.features.getArray()[0].values_.name);
-  //console.log("koordinate", e.selected[0].values_.geometry.flatCoordinates);
-  //let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
-  let position = e.features.getArray()[0].values_.geometry.flatCoordinates;
-  console.log("koordinate m", position);
-  let pocetniElement;
-  nizKml.forEach((el) => {
-    if (el.name === featureName) {
-      pocetniElement = el;
-      //pocetniElement = ol.proj.transform(el, "EPSG:3857", "EPSG:4326");
-    }
-  });
-  if (pocetniElement) {
-    //pocetniElement = ol.proj.transform(pocetniElement, "EPSG:3857", "EPSG:4326");
-    let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat], "EPSG:4326"));
-    //let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat]));
-    //let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat], "EPSG:3857", "EPSG:4326"));
-    //pocetnaTacka = ol.proj.transform(pocetnaTacka, "EPSG:3857", "EPSG:4326");
-    let distancaOd = turf.point([position[0], position[1]]);
-    let distancaDo = turf.point([pocetniElement.lng, pocetniElement.lat]);
-    let mjera = {
-      units: "kilometers",
-    };
-    let distanca = turf.distance(distancaOd, distancaDo, mjera);
-    console.log("distanca", distanca);
-    if (distanca > dozvoljeniPomjeraj) {
-      e.features.getArray()[0].getGeometry().setCoordinates(pocetnaTacka.flatCoordinates);
-      poruka("Upozorenje", "Tačka ne može biti pomjerena više od " + (dozvoljeniPomjeraj * 1000).toString() + "m od snimljene pozicije.");
-    }
-    //citajExtent();
-  }
-});
-
-modifyV.on("change", function (e) {
-  console.log("koordinate", e.selected[0].values_.geometry.flatCoordinates);
-  let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
-  console.log("koordinate c", position);
-});
-
-map.addInteraction(select);
-map.addInteraction(modifyV);
 let snap = new ol.interaction.Snap({
   source: featureSnapOverlay.getSource(),
 });
@@ -374,49 +314,46 @@ map.addInteraction(snap);
 
 /*** Završena selekcija i modifikacija */
 
-//Klik na feature
-map.on("click", onMouseClick);
+map.addInteraction(select);
+map.addInteraction(modifyV);
 
-function onMouseClick(browserEvent) {
-  let coordinate = browserEvent.coordinate;
-  let pixel = map.getPixelFromCoordinate(coordinate);
-  console.log("akcija", akcija);
-  if (akcija === "atributi") {
-    map.forEachLayerAtPixel(pixel, function (layer) {
-      if (layer instanceof ol.layer.Image) {
-        console.log(layer);
-        let title = layer.get("title");
-        console.log("title", title);
-        let vidljivost = layer.get("visible");
-        console.log("vidljivost", vidljivost);
-        if (vidljivost) {
-          let url = layer.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
-            INFO_FORMAT: "application/json",
-          });
-          if (url) {
-            fetch(url)
-              .then(function (response) {
-                //restartovanje();
-                return response.text();
-              })
-              .then(function (json) {
-                let odgovor = JSON.parse(json);
-                if (odgovor.features.length > 0) {
-                  if (akcija == "slika") {
-                    prikazFotografija(title, odgovor.features[0][0].id);
-                  }
-                }
-              });
-          }
-        }
-      }
-    });
-  }
-}
+//Klik na mapu - prikaz vektora ili rastera
+map.on("click", klikNaVektore);
 
 function izbrisi() {
-  console.log("kml", vectorSource);
-  //confirmModal("UKLANJANJE", "Da li ste sigurni da želite da uklonite odabrani objekat?");
+  if (select.getFeatures().array_[0] === undefined) {
+    poruka("Upozorenje", "Potrebno je selektovati objekat iz gpx fajla.");
+    return false;
+  }
+  let nizZaBrisanje = vectorSource.getFeatures();
+  //console.log("selektovani objekat", select.getFeatures().array_[0]);
+  vectorSource.getFeatures().forEach(function (el, index, nizZaBrisanje) {
+    if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
+      //if (el.values_.name == select.getFeatures().array_[0].values_.name) {
+      nizZaBrisanje.splice(index, 1);
+      select.getFeatures().array_.splice(0, 1);
+      console.log("ol_uid", el.ol_uid);
+      selectGpxFeature = null;
+      vectorSource.clear();
+      vectorSource.addFeatures(nizZaBrisanje);
+    }
+  });
+}
+
+function dupliraj() {
+  if (select.getFeatures().array_[0] === undefined) {
+    poruka("Upozorenje", "Potrebno je selektovati objekat iz gpx fajla.");
+    return false;
+  }
+  let nizZaZamjenu = vectorSource.getFeatures().slice();
+  nizZaZamjenu.push(select.getFeatures().array_[0]);
+
+  vectorSource.getFeatures().forEach(function (el) {
+    if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
+      select.getFeatures().clear(); //Da bi uklonili stil selektovane tačke
+      vectorSource.addFeature(el.clone());
+    }
+  });
 }
 
 /**Metoda koja će sve resetovati na početne vrijednosti */
@@ -519,6 +456,7 @@ function wfsFilter() {
     method: "POST",
     url: wfsUrl,
     data: {
+      access_token: geoserverToken,
       service: "WFS",
       request: "GetFeature",
       typename: "geonode:" + layername,
@@ -555,6 +493,7 @@ function wfsZaEdit(id) {
     method: "POST",
     url: wfsUrl,
     data: {
+      access_token: geoserverToken,
       service: "WFS",
       request: "GetFeature",
       typename: "geonode:" + layername,
@@ -578,13 +517,17 @@ function wfsZaEdit(id) {
 function wfsDownload(format) {
   let dodajCqlFilter = "";
   cqlFilter !== "" && (dodajCqlFilter = "&cql_filter=" + cqlFilter);
-  window.open(wfsUrl + "?version=1.0.0&request=GetFeature&typeName=geonode:" + layername + "&outputformat=" + format + dodajCqlFilter, "_blank");
+  window.open(
+    wfsUrl + "?version=1.0.0&request=GetFeature&typeName=geonode:" + layername + "&outputformat=" + format + dodajCqlFilter + "&access_token=" + geoserverToken,
+    "_blank"
+  );
   return false;
 }
 
 /**Povezivanje kontrola koje zavise od lejera sa akcijama */
 document.querySelector("#btnSacuvaj").addEventListener("click", sacuvaj);
 document.querySelector("#btnIzbrisi").addEventListener("click", izbrisi);
+document.querySelector("#btnDupliraj").addEventListener("click", dupliraj);
 document.querySelector("#btnFilter").addEventListener("click", filtriranje);
 
 /**Popunjavanje ddl-ova */

@@ -16,7 +16,7 @@ function povezivanjeNnVodovaTopDown(pocetna, features) {
   console.log("pocetni objekat", pocetna);
   console.log("pocetne linije", features);
 
-  //Metoda koja svim potrošačima
+  //Metoda koja svim potrošačima dodjeljuje geohash_id_no od voda koji ga siječe
   presjekVodovaSaPotrosacimaPocetni();
 
   if (!pocetna || pocetna === undefined) {
@@ -82,10 +82,10 @@ function povezivanjeNnVodovaTopDown(pocetna, features) {
                 features[j].values_.geohash_id_no = trenutniGeohash;
               }
             }
-            //Poziv metode za provjeru presjeka sa trafostanicama
-            if (nadredjenaLinijaFeature && podredjenaLinijaFeature && nadredjenaLinijaFeature !== undefined && podredjenaLinijaFeature !== undefined) {
+            //Poziv metode za provjeru presjeka sa trafostanicama - ovo nije potrebno za niskonaponske vodove
+            /*if (nadredjenaLinijaFeature && podredjenaLinijaFeature && nadredjenaLinijaFeature !== undefined && podredjenaLinijaFeature !== undefined) {
               presjekVodovaSaPrikljucnimMjestima(nadredjenaLinijaFeature, podredjenaLinijaFeature);
-            }
+            }*/
           }
         }
       }

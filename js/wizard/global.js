@@ -11,7 +11,7 @@ const imageUrl = domainUrl + "/slike/";
 const point = "Point",
   lineString = "LineString",
   polygon = "Polygon";
-let geoserverToken = "";
+let geoserverToken = ""; //Promjenljiva koja čuva token za wfs servise
 let tacke = [],
   linije = [],
   poligoni = [];
@@ -63,6 +63,9 @@ let selektovaniNKROFeatures = []; //NKRO u zahvatu poligona
 let selektovanaPrikljucnaMjestaFeatures = []; //Priključna mjesta u zahvatu poligona
 let selektovaniPODoviFeatures = []; //PODovi mjesta u zahvatu poligona
 let selektovaniVodoviFeatures3857 = []; //U drugom koordinatnom sistemu
+let odabraniLejerUnos = ""; //Mijenja se na meni za unos podataka
+
+let kreiraniVodoviFeatures = []; //Niz vodova kreiranih iz tačaka gpx fajla
 
 /**Definisanje podloga */
 let osmBaseMap = new ol.layer.Tile({
@@ -95,7 +98,7 @@ var fill = new ol.style.Fill({
 });
 var stroke = new ol.style.Stroke({
   color: "#00ffff",
-  width: 2,
+  width: 1,
 });
 var circle = new ol.style.Circle({
   radius: 7,
@@ -146,6 +149,80 @@ let vectorStyleUnmatched = new ol.style.Style({
   image: circleUnmatched,
 });
 
+/**Stilizacija vektora za kreirane elemente*/
+let fillKreirani = new ol.style.Fill({
+  color: "rgba(255,0,0,0.8)",
+});
+let strokeKreirani = new ol.style.Stroke({
+  color: "#ff0000",
+  width: 8,
+});
+let circleKreirani = new ol.style.Circle({
+  radius: 8,
+  fill: fillKreirani,
+  stroke: strokeKreirani,
+});
+let vectorStyleKreirani = new ol.style.Style({
+  fill: fillKreirani,
+  stroke: strokeKreirani,
+  image: circleKreirani,
+});
+
+let neobradjenaTacka = new ol.style.Circle({
+  radius: 7,
+  fill: new ol.style.Fill({ color: "rgba(0, 255, 255, 0.8)" }),
+  stroke: new ol.style.Stroke({
+    color: "#00ffff",
+    width: 2,
+  }),
+});
+let obradjenaTacka = new ol.style.Circle({
+  radius: 7,
+  fill: new ol.style.Fill({ color: "rgba(0, 255, 0, 0.8)" }),
+  stroke: new ol.style.Stroke({
+    color: "#00ff00",
+    width: 2,
+  }),
+});
+
+//Styling funkcija za gpx objekte
+let kreiranjeTekstStila = function (feature) {
+  return new ol.style.Text({
+    textAlign: "left",
+    textBaseline: "middle",
+    font: "14px Verdana",
+    offsetX: 14,
+    text: feature.values_.name,
+
+    //fill: fill,
+    stroke: stroke,
+  });
+};
+
+let kreiranjeLabeleZaGpxTacke = function () {
+  return function (feature) {
+    let styleNeobradjeni = new ol.style.Style({
+      stroke: stroke,
+      fill: fill,
+      text: kreiranjeTekstStila(feature),
+      image: neobradjenaTacka,
+    });
+    let styleObradjeni = new ol.style.Style({
+      stroke: stroke,
+      fill: fill,
+      text: kreiranjeTekstStila(feature),
+      image: obradjenaTacka,
+    });
+
+    if (feature.values_.lejer && feature.values_.lejer !== undefined) {
+      console.log(" feature", feature.values_.lejer);
+      return [styleObradjeni];
+    } else {
+      return [styleNeobradjeni];
+    }
+  };
+};
+
 /**Setovanje centra mape */
 let center = [19.26, 42.56];
 //let center = ol.proj.transform([19.2381, 43.1271], "EPSG:4326", "EPSG:3857");
@@ -182,6 +259,14 @@ let vektorNeupareniVodovi = new ol.layer.Vector({
   style: vectorStyleUnmatched,
 });
 //vektorNeupareniVodovi.setSource(new ol.source.Vector({features: features}));
+
+let vektorKreiraniVodovi = new ol.layer.Vector({
+  source: new ol.source.Vector({
+    //features: features
+  }),
+  style: vectorStyleKreirani,
+});
+map.addLayer(vektorKreiraniVodovi);
 
 /**
  * Metoda koja za naponski nivo trafostanice vraća odgovarajući nivo naponskog voda
@@ -237,24 +322,46 @@ function globalCqlZaNaponskiNivo(nivo, sloj) {
 
 //Popunjavanje ddl listi
 function popuniListeZaStubove(napon) {
-  console.log("vrsta_namjena", napon);
-  popuniDdlAtributima("#tip", "stubovi", "tip", "", "");
-  popuniDdlAtributima("#vrsta_namjena", "stubovi", "vrsta_namjena", "napon", napon);
-  popuniDdlAtributima("#vrsta_materijal", "stubovi", "vrsta_materijal", "napon", napon);
-  popuniDdlAtributima("#vrsta_drvenog", "stubovi", "vrsta_drvenog", "napon", napon);
-  popuniDdlAtributima("#izolator_vrsta", "stubovi", "izolator_vrsta", "napon", napon);
-  popuniDdlAtributima("#izolator_funkcija", "stubovi", "izolator_funkcija", "napon", napon);
-  popuniDdlAtributima("#tip_izolatora", "stubovi", "tip_izolatora", "napon", napon);
-  popuniDdlAtributima("#nosaci_izolatora", "stubovi", "nosaci_izolatora", "napon", napon);
-  popuniDdlAtributima("#odvodnik_prenapona", "stubovi", "odvodnik_prenapona", "napon", napon);
-  popuniDdlAtributima("#uzemljivac", "stubovi", "uzemljivac", "napon", napon);
-  popuniDdlAtributima("#optika", "stubovi", "optika", "napon", napon);
-  popuniDdlAtributima("#rasvjeta", "stubovi", "rasvjeta", "", "");
-  popuniDdlAtributima("#vlasnistvo", "stubovi", "vlasnistvo", "napon", napon);
-  popuniDdlAtributima("#prikljucak_otcjep", "stubovi", "prikljucak_otcjep", "napon", napon);
-  popuniDdlAtributima("#nn_vod", "stubovi", "nn_vod", "", "");
-  popuniDdlAtributima("#rastavljac", "stubovi", "rastavljac", "napon", napon);
-  popuniDdlAtributima("#vod_10", "stubovi", "10_vod", "napon", napon);
+  popuniDdlAtributima("#tip_stub", "stubovi", "tip", "", "");
+  popuniDdlAtributima("#rasvjeta_stub", "stubovi", "rasvjeta", "", "");
+  popuniDdlAtributima("#nn_vod_stub", "stubovi", "nn_vod", "", "");
+  popuniDdlAtributima("#nn_vod_stub_10", "stubovi", "nn_vod", "", "");
+  popuniDdlAtributima("#vrsta_namjena_stub_04", "stubovi", "vrsta_namjena", "napon", "0.4");
+  popuniDdlAtributima("#vrsta_namjena_stub_10", "stubovi", "vrsta_namjena", "napon", "10");
+  popuniDdlAtributima("#vrsta_namjena_stub_35", "stubovi", "vrsta_namjena", "napon", "35");
+  popuniDdlAtributima("#vrsta_materijal_stub_04", "stubovi", "vrsta_materijal", "napon", "0.4");
+  popuniDdlAtributima("#vrsta_materijal_stub_10", "stubovi", "vrsta_materijal", "napon", "10");
+  popuniDdlAtributima("#vrsta_materijal_stub_35", "stubovi", "vrsta_materijal", "napon", "35");
+  popuniDdlAtributima("#vrsta_drvenog_stub_04", "stubovi", "vrsta_drvenog", "napon", "0.4");
+  popuniDdlAtributima("#vrsta_drvenog_stub_10", "stubovi", "vrsta_drvenog", "napon", "10");
+  popuniDdlAtributima("#vrsta_drvenog_stub_35", "stubovi", "vrsta_drvenog", "napon", "35");
+  popuniDdlAtributima("#izolator_vrsta_stub_04", "stubovi", "izolator_vrsta", "napon", "0.4");
+  popuniDdlAtributima("#izolator_vrsta_stub_10", "stubovi", "izolator_vrsta", "napon", "10");
+  popuniDdlAtributima("#izolator_vrsta_stub_35", "stubovi", "izolator_vrsta", "napon", "35");
+  popuniDdlAtributima("#izolator_funkcija_stub_04", "stubovi", "izolator_funkcija", "napon", "0.4");
+  popuniDdlAtributima("#izolator_funkcija_stub_10", "stubovi", "izolator_funkcija", "napon", "10");
+  popuniDdlAtributima("#izolator_funkcija_stub_35", "stubovi", "izolator_funkcija", "napon", "35");
+  popuniDdlAtributima("#tip_izolatora_stub_04", "stubovi", "tip_izolatora", "napon", "0.4");
+  popuniDdlAtributima("#tip_izolatora_stub_10", "stubovi", "tip_izolatora", "napon", "10");
+  popuniDdlAtributima("#tip_izolatora_stub_35", "stubovi", "tip_izolatora", "napon", "35");
+  popuniDdlAtributima("#nosaci_izolatora_stub_04", "stubovi", "nosaci_izolatora", "napon", "0.4");
+  popuniDdlAtributima("#nosaci_izolatora_stub_10", "stubovi", "nosaci_izolatora", "napon", "10");
+  popuniDdlAtributima("#nosaci_izolatora_stub_35", "stubovi", "nosaci_izolatora", "napon", "35");
+  popuniDdlAtributima("#odvodnik_prenapona_stub_04", "stubovi", "odvodnik_prenapona", "napon", "0.4");
+  popuniDdlAtributima("#odvodnik_prenapona_stub_10", "stubovi", "odvodnik_prenapona", "napon", "10");
+  popuniDdlAtributima("#odvodnik_prenapona_stub_35", "stubovi", "odvodnik_prenapona", "napon", "35");
+  popuniDdlAtributima("#uzemljivac_stub_04", "stubovi", "uzemljivac", "napon", "0.4");
+  popuniDdlAtributima("#uzemljivac_stub_10", "stubovi", "uzemljivac", "napon", "10");
+  popuniDdlAtributima("#uzemljivac_stub_35", "stubovi", "uzemljivac", "napon", "35");
+  popuniDdlAtributima("#optika_stub_04", "stubovi", "optika", "napon", "0.4");
+  popuniDdlAtributima("#optika_stub_10", "stubovi", "optika", "napon", "10");
+  popuniDdlAtributima("#optika_stub_35", "stubovi", "optika", "napon", "35");
+  popuniDdlAtributima("#vlasnistvo", "stubovi", "vlasnistvo", "napon", "0.4");
+  popuniDdlAtributima("#prikljucak_otcjep_stub_10", "stubovi", "prikljucak_otcjep", "napon", "10");
+  popuniDdlAtributima("#prikljucak_otcjep_stub_35", "stubovi", "prikljucak_otcjep", "napon", "35");
+  popuniDdlAtributima("#rastavljac_stub_10", "stubovi", "rastavljac", "napon", "10");
+  popuniDdlAtributima("#rastavljac_stub_35", "stubovi", "rastavljac", "napon", "35");
+  popuniDdlAtributima("#vod_10", "stubovi", "10_vod", "napon", "35");
 
   popuniDdlAtributima("#pretraga_tip", "stubovi", "tip", "napon", napon);
   popuniDdlAtributima("#pretraga_vrsta_namjena", "stubovi", "vrsta_namjena", "napon", napon);
@@ -276,15 +383,24 @@ function popuniListeZaStubove(napon) {
 
 function popuniListeZaVodove(napon) {
   popuniDdlAtributima("#br_faza", "vodovi", "br_faza", "", "");
-  popuniDdlAtributima("#vrsta", "vodovi", "vrsta", "napon", napon);
-  popuniDdlAtributima("#tip", "vodovi", "tip", "napon", napon);
-  popuniDdlAtributima("#presjek", "vodovi", "presjek", "napon", napon);
-  popuniDdlAtributima("#vrsta_materijal", "vodovi", "materijal", "napon", napon);
-  popuniDdlAtributima("#rasvjeta", "vodovi", "rasvjeta", "", "");
-  popuniDdlAtributima("#pog_sprem", "vodovi", "pog_sprem", "napon", napon);
-  popuniDdlAtributima("#vlasnistvo", "vodovi", "vlasnistvo", "napon", napon);
-  popuniDdlAtributima("#uze_presjek", "vodovi", "uze_presjek", "napon", napon);
-  popuniDdlAtributima("#uze", "vodovi", "uze", "napon", napon);
+  popuniDdlAtributima("#vrsta_vod_04", "vodovi", "vrsta", "napon", "0.4");
+  popuniDdlAtributima("#vrsta_vod_10", "vodovi", "vrsta", "napon", "10");
+  popuniDdlAtributima("#vrsta_vod_35", "vodovi", "vrsta", "napon", "35");
+  popuniDdlAtributima("#tip_vod_04", "vodovi", "tip", "napon", "0.4");
+  popuniDdlAtributima("#tip_vod_10", "vodovi", "tip", "napon", "10");
+  popuniDdlAtributima("#tip_vod_35", "vodovi", "tip", "napon", "35");
+  popuniDdlAtributima("#presjek_vod_04", "vodovi", "presjek", "napon", "0.4");
+  popuniDdlAtributima("#presjek_vod_10", "vodovi", "presjek", "napon", "10");
+  popuniDdlAtributima("#presjek_vod_35", "vodovi", "presjek", "napon", "35");
+  popuniDdlAtributima("#vrsta_materijal_vod_04", "vodovi", "materijal", "napon", "0.4");
+  popuniDdlAtributima("#vrsta_materijal_vod_10", "vodovi", "materijal", "napon", "10");
+  popuniDdlAtributima("#vrsta_materijal_vod_35", "vodovi", "materijal", "napon", "35");
+  popuniDdlAtributima("#rasvjeta_vod", "vodovi", "rasvjeta", "", "");
+  popuniDdlAtributima("#pog_sprem", "vodovi", "pog_sprem", "napon", "0.4");
+  popuniDdlAtributima("#uze_presjek_vod_10", "vodovi", "uze_presjek", "napon", "10");
+  popuniDdlAtributima("#uze_presjek_vod_35", "vodovi", "uze_presjek", "napon", "35");
+  popuniDdlAtributima("#uze_vod_10", "vodovi", "uze", "napon", "10");
+  popuniDdlAtributima("#uze_vod_35", "vodovi", "uze", "napon", "35");
 
   popuniDdlAtributima("#pretraga_br_faza", "vodovi", "br_faza", "", "");
   popuniDdlAtributima("#pretraga_vrsta", "vodovi", "vrsta", "napon", napon);
@@ -293,7 +409,6 @@ function popuniListeZaVodove(napon) {
   popuniDdlAtributima("#pretraga_vrsta_materijal", "vodovi", "materijal", "napon", napon);
   popuniDdlAtributima("#pretraga_rasvjeta", "vodovi", "rasvjeta", "", "");
   popuniDdlAtributima("#pretraga_pog_sprem", "vodovi", "pog_sprem", "napon", napon);
-  popuniDdlAtributima("#pretraga_vlasnistvo", "vodovi", "vlasnistvo", "napon", napon);
   popuniDdlAtributima("#pretraga_uze_presjek", "vodovi", "uze_presjek", "napon", napon);
   popuniDdlAtributima("#pretraga_uze", "vodovi", "uze", "napon", napon);
 }
@@ -306,7 +421,6 @@ function popuniListeZaTrafostanice(napon) {
   popuniDdlAtributima("#inst_snaga_t2", "trafostanice", "inst_snaga_t2", "napon", napon);
   popuniDdlAtributima("#inst_snaga_t3", "trafostanice", "inst_snaga_t3", "napon", napon);
   popuniDdlAtributima("#inst_snaga_t4", "trafostanice", "inst_snaga_t4", "napon", napon);
-  popuniDdlAtributima("#vlasnistvo", "trafostanice", "vlasnistvo", "napon", napon);
 
   popuniDdlAtributima("#pretraga_funkcija", "trafostanice", "funkcija", "napon", napon);
   popuniDdlAtributima("#pretraga_tip", "trafostanice", "tip", "napon", napon);
@@ -315,36 +429,39 @@ function popuniListeZaTrafostanice(napon) {
   popuniDdlAtributima("#pretraga_inst_snaga_t2", "trafostanice", "inst_snaga_t2", "napon", napon);
   popuniDdlAtributima("#pretraga_inst_snaga_t3", "trafostanice", "inst_snaga_t3", "napon", napon);
   popuniDdlAtributima("#pretraga_inst_snaga_t4", "trafostanice", "inst_snaga_t4", "napon", napon);
-  popuniDdlAtributima("#pretraga_vlasnistvo", "trafostanice", "vlasnistvo", "napon", napon);
 }
 
 function popuniListeZaPrikljucnaMjesta() {
   popuniDdlAtributima("#osiguraci", "prikljucno_mjesto", "osiguraci", "", "");
-  popuniDdlAtributima("#vlasnistvo", "prikljucno_mjesto", "vlasnistvo", "", "");
-  //popuniDdlAtributima("#tip", "prikljucno_mjesto", "tip", "", "");
 
   popuniDdlAtributima("#pretraga_osiguraci", "prikljucno_mjesto", "osiguraci", "", "");
-  popuniDdlAtributima("#pretraga_vlasnistvo", "prikljucno_mjesto", "vlasnistvo", "", "");
-  //popuniDdlAtributima("#pretraga_tip", "prikljucno_mjesto", "pretraga_tip", "", "");
 }
 
 function popuniListeZaNkro() {
   popuniDdlAtributima("#materijal", "nkro", "materijal", "", "");
   popuniDdlAtributima("#montaza", "nkro", "montaza", "", "");
   popuniDdlAtributima("#vrata", "nkro", "vrata", "", "");
-  popuniDdlAtributima("#pog_sprem", "nkro", "pog_sprem", "", "");
-  popuniDdlAtributima("#vlasnistvo", "nkro", "vlasnistvo", "", "");
+  //popuniDdlAtributima("#pog_sprem", "nkro", "pog_sprem", "", "");
 
   popuniDdlAtributima("#pretraga_materijal", "nkro", "materijal", "", "");
   popuniDdlAtributima("#pretraga_montaza", "nkro", "montaza", "", "");
   popuniDdlAtributima("#pretraga_vrata", "nkro", "vrata", "", "");
-  popuniDdlAtributima("#pretraga_pog_sprem", "nkro", "pog_sprem", "", "");
-  popuniDdlAtributima("#pretraga_vlasnistvo", "nkro", "vlasnistvo", "", "");
+  //popuniDdlAtributima("#pretraga_pog_sprem", "nkro", "pog_sprem", "", "");
 }
 
 function popuniListeZaPotrosace() {}
 
 function popuniListeZaPod() {}
+
+window.addEventListener("load", function () {
+  popuniListeZaStubove("0.4");
+  popuniListeZaVodove("0.4");
+  popuniListeZaTrafostanice("0.4");
+  popuniListeZaPrikljucnaMjesta();
+  popuniListeZaNkro();
+  popuniListeZaPotrosace();
+  popuniListeZaPod();
+});
 
 /**
  * Metoda koja za zadatu sifru trafostanice provjerava da li je duga 7 karaktera i ako su prvih 6 cifre, odbacuje poslednje slovo, pošto je to oznaka trafoa

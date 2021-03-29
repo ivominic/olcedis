@@ -822,3 +822,28 @@ html[xmlns] .clearfix {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+.dugmeodabirmapa {
+  background: linear-gradient(to bottom, #dd252e 25%, #ca2129 100%);
+  background-color: #ca2129;
+  border-radius: 5px;
+  border: 1px solid #ca2129;
+
+  color: white;
+  padding: 10px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 9px;
+}
+.dugmeodabirmapa:hover {
+  background-color: RoyalBlue;
+}
+
+.povezivanjevodovadiv {
+  height: 100px;
+  overflow: hidden;
+}
+
+.labelapoveznicakrajnja {
+  padding-right: 7px;
+}

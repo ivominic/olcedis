@@ -64,6 +64,33 @@ function geometrijaTrafostanice(sifraTS) {
 }
 
 /**
+ * Metoda koja za predatu šifru iz bilinga trafostanice vrati geometriju trafostanice
+ * @param {id_billing vrijednost iz GIS-a} sifraTS
+ */
+function popuniPoljaTrafostaniceWS() {
+  let sifraTS = document.querySelector("#ddlTrafostanice").value;
+  let retval = "";
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice_data?sifra=" + sifraTS;
+  urlServisa += "&t=" + Date.now();
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "GET",
+    success: function (data) {
+      console.log("detalji trafostanica, odgovor servisa", data);
+      if (data) {
+        popuniKontroleIzTrafostanice(data[0]);
+      }
+    },
+    error: function (x, y, z) {
+      //alert(x.responseText +"  " +x.status);
+      console.log("greška popuniDdlAtributima", x.responseText);
+      return retval;
+    },
+  });
+}
+
+/**
  * Metoda koja za predatu šifru iz bilinga trafostanice vrati sva polja
  * @param {id_billing vrijednost iz GIS-a} sifraTS
  */

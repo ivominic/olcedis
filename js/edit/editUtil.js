@@ -269,7 +269,7 @@ function selekcijaPocetnogStuba() {
   }
 }
 
-/**Metoda koja bira prvi stub */
+/**Metoda koja bira krajnji stub */
 function selekcijaZavrsnogStuba() {
   akcija = "zavrsniStub";
   setujAktivnu("#selekcijaZavrsnogStuba");
@@ -295,7 +295,7 @@ function popuniDdlAtributima(ddl, objekat, atribut, key_param, value_param) {
   if (key_param !== "" && value_param !== "") {
     urlServisa += "&" + key_param + "=" + value_param;
   }
-  console.log("poziv_web_servisa", urlServisa);
+  //console.log("poziv_web_servisa", urlServisa);
   $(ddl).append(
     $("<option>", {
       value: "",
@@ -355,6 +355,7 @@ function prikaziVektor() {
     method: "POST",
     url: wfsUrl,
     data: {
+      access_token: geoserverToken,
       service: "WFS",
       request: "GetFeature",
       typename: nazivLejera,
