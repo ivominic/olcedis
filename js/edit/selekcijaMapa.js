@@ -212,6 +212,8 @@ function prikazPodatakaIzGpxTacaka() {
   //if (selectGpxFeature.hasOwnProperty("lejer")) {
   //console.log("prikaz podataka iz GPX tačke", selectGpxFeature.get("lejer"));
   //prikazPanelaAtributa se nalazi u fajlu interakcija.js
+  document.querySelector("#gps").value = selectGpxFeature.get("name");
+  console.log("gpx vrijednost", selectGpxFeature.get("name"));
   if (selectGpxFeature.get("lejer") === "stubovi") {
     prikaziPoljaOdabranogGpxStuba();
     let pomLejer = "Stub 35KV";
