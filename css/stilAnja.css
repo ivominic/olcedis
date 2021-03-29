@@ -108,6 +108,7 @@ body {
 
 .pocetni-div {
   height: 55px;
+  border-bottom: 2px solid #8e8e8e;
 }
 
 .odvojeno {
@@ -148,9 +149,9 @@ body {
 
 /* Definisanje boje navbara */
 .topnav {
-  min-height: 70px;
+  min-height: 55px;
   background-color: #ca2129;
-  overflow: hidden;
+  border-bottom: 2px solid #8e8e8e;
 }
 
 .topnav a {
@@ -846,4 +847,16 @@ html[xmlns] .clearfix {
 
 .labelapoveznicakrajnja {
   padding-right: 7px;
+}
+
+#btnSacuvaj {
+  background-color: #288203 !important;
+  background: #288203;
+  border: 1px solid #288203;
+}
+
+.d-flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

@@ -165,10 +165,10 @@
       <div class="items-padd">
         <div class="pr-8 sadrzaj-scroll style-2">
           <div class="flex-row pb-8" style="float: left; justify-content: flex-start; padding: 0 0 15px 0; display: none" id="divPrethodniObjekat">
-            <button type="button" class="btn mr-8" id="btnPrethodniObjekat"><i class="fas fa-angle-left"></i>Prethodni objekat</button>
+            <button type="button" class="btn mr-8" id="btnPrethodniObjekat"><i class="fas fa-arrow-left"></i> Prethodni objekat</button>
           </div>
           <div class="flex-row pb-8" style="justify-content: flex-end; padding: 0 0 15px 0; display: none" id="divSljedeciObjekat">
-            <button type="button" class="btn" id="btnSljedeciObjekat">Sljedeći objekat<i class="fas fa-angle-right"></i></button>
+            <button type="button" class="btn" id="btnSljedeciObjekat">Sljedeći objekat <i class="fas fa-arrow-right"></i></button>
           </div>
           <div class="flex-row pb-8" id="divOdabirSloja">
             <label for="ddl_sloj_podataka">Tip objekta:</label>
@@ -190,7 +190,7 @@
           </div>
           <div class="flex-row pb-8" id="divUnosGps">
             <label for="gps">Redni broj u GPS:</label>
-            <input type="text" id="gps" readonly disabled />
+            <input type="text" id="gps" readonly disabled style="color: brown" />
           </div>
           <div class="flex-row pb-8" id="divUnosFid1">
             <label for="fid_1">Fid_1:</label>
@@ -918,9 +918,11 @@
       <div class="items-padd">
         <!--<input type="file" class="w-100" accept="image/*" capture="environment" id="dodavanjeSlike" />-->
       </div>
-      <div class="d-flex-end items-padd-sm">
-        <button type="button" class="btn" id="btnIzbrisi"><i class="fas fa-trash"></i> Izbriši</button>
-        <button type="button" class="btn" id="btnDupliraj"><i class="far fa-copy"></i> Dupliraj</button>
+      <div class="d-flex-between items-padd-sm">
+        <div>
+          <button type="button" class="btn" id="btnIzbrisi"><i class="fas fa-trash"></i> Izbriši</button>
+          <button type="button" class="btn" id="btnDupliraj"><i class="far fa-copy"></i> Dupliraj</button>
+        </div>
         <button type="button" class="btn mr-8" id="btnSacuvaj"><i class="fas fa-check-circle"></i> Sačuvaj</button>
       </div>
     </div>

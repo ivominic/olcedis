@@ -275,6 +275,8 @@ function selekcijaGpxPoligonom() {
   wktVod = wktVod.replace(/ /g, "_");
   wktVod = wktVod.replace(/,/g, " ");
   wktVod = wktVod.replace(/_/g, ",");
+  wktVod = wktVod.replace(",ZM", "");
+  wktVod = wktVod.replace(",Z", "");
   var feature = format.readFeature(wktVod, {});
 
   vektorKreiraniVodovi.getSource().clear();
@@ -518,6 +520,8 @@ function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
   wktVod = wktVod.replace(/ /g, "_");
   wktVod = wktVod.replace(/,/g, " ");
   wktVod = wktVod.replace(/_/g, ",");
+  wktVod = wktVod.replace(",ZM", "");
+  wktVod = wktVod.replace(",Z", "");
   var feature = format.readFeature(wktVod, {});
   nizVodovaGpx.push(feature);
   vektorKreiraniVodovi.getSource().clear();
