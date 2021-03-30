@@ -20,7 +20,7 @@
     <script src="js/ol.js"></script>
   </head>
 
-  
+
 
   <body>
     <div class="pocetni-div">
@@ -146,12 +146,14 @@
           <div class="flex-row pb-8">
             <label for="gps">Početna tačka:</label>
             <select class="select-css" id="ddlPocetnaTackaVodovi"></select>
-            <button class="dugmeodabirmapa" id="btnPocetnaTackaPoveznica"><i class="fas fa-map-marker-alt"></i></button>
+
+          <a class="tooltip" data-tool="Odaberite na mapi" id="tool4">  <button class="dugmeodabirmapa" id="btnPocetnaTackaPoveznica"> <i class="fas fa-map-marker-alt"></i> </button> </a>
+
           </div>
           <div class="flex-row pb-8">
             <label for="gps" style="padding-right: 7px" class="labelapoveznicakrajnja">Krajnja tačka: </label>
             <select class="select-css" id="ddlKrajnjaTackaVodovi"></select>
-            <button class="dugmeodabirmapa" id="btnKrajnjaTackaPoveznica"><i class="fas fa-map-marker-alt"></i></button>
+            <a class="tooltip" data-tool="Odaberite na mapi" id="tool5"> <button class="dugmeodabirmapa" id="btnKrajnjaTackaPoveznica"><i class="fas fa-map-marker-alt"></i></button> </a>
           </div>
         </div>
       </div>
@@ -173,7 +175,9 @@
           <div class="flex-row pb-8" style="justify-content: flex-end; padding: 0 0 15px 0; display: none" id="divSljedeciObjekat">
             <button type="button" class="btn" id="btnSljedeciObjekat">Sljedeći objekat <i class="fas fa-arrow-right"></i></button>
           </div>
-          <div class="flex-row pb-8" id="divOdabirSloja">
+
+               
+          <div class="flex-row-desno pb-8" id="divOdabirSloja">
             <label for="ddl_sloj_podataka">Tip objekta:</label>
             <select id="ddl_sloj_podataka" class="select-css">
               <option value="stub04">Stub 0.4KV</option>
@@ -191,564 +195,564 @@
               <option value="pod">Pod</option>
             </select>
           </div>
-          <div class="flex-row pb-8" id="divUnosGps">
+          <div class="flex-row-desno pb-8" id="divUnosGps">
             <label for="gps">Redni broj u GPS:</label>
             <input type="text" id="gps" readonly disabled style="color: brown" />
           </div>
-          <div class="flex-row pb-8" id="divUnosFid1">
+          <div class="flex-row-desno pb-8" id="divUnosFid1">
             <label for="fid_1">Fid_1:</label>
             <input type="text" id="fid_1" />
           </div>
-          <div class="flex-row pb-8" id="divUnosBroj">
+          <div class="flex-row-desno pb-8" id="divUnosBroj">
             <label for="broj">Broj stuba:</label>
             <input type="text" id="broj" />
           </div>
-          <div class="flex-row pb-8" id="divUnosSifra">
+          <div class="flex-row-desno pb-8" id="divUnosSifra">
             <label for="sifra">Šifra:</label>
             <input type="text" id="sifra" />
           </div>
-          <div class="flex-row pb-8" id="divUnosPripadnost">
+          <div class="flex-row-desno pb-8" id="divUnosPripadnost">
             <label for="pripadnost">Pripadnost:</label>
             <input type="text" id="pripadnost" />
           </div>
-          <div class="flex-row pb-8" id="divUnosTip">
+          <div class="flex-row-desno pb-8" id="divUnosTip">
             <label for="tip">Tip:</label>
             <select id="tip" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosTipStub">
+          <div class="flex-row-desno pb-8" id="divUnosTipStub">
             <label for="tip_stub">Tip stuba:</label>
             <select id="tip_stub" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosTipVod04">
+          <div class="flex-row-desno pb-8" id="divUnosTipVod04">
             <label for="tip_vod_04">Tip voda:</label>
             <select id="tip_vod_04" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosTipVod10">
+          <div class="flex-row-desno pb-8" id="divUnosTipVod10">
             <label for="tip_vod_10">Tip voda:</label>
             <select id="tip_vod_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosTipVod35">
+          <div class="flex-row-desno pb-8" id="divUnosTipVod35">
             <label for="tip_vod_35">Tip voda:</label>
             <select id="tip_vod_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosNamjena">
+          <div class="flex-row-desno pb-8" id="divUnosNamjena">
             <label for="vrsta_namjena">Namjena:</label>
             <select id="vrsta_namjena" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosNamjenaStub04">
+          <div class="flex-row-desno pb-8" id="divUnosNamjenaStub04">
             <label for="vrsta_namjena_stub_04">Namjena:</label>
             <select id="vrsta_namjena_stub_04" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosNamjenaStub10">
+          <div class="flex-row-desno pb-8" id="divUnosNamjenaStub10">
             <label for="vrsta_namjena_stub_10">Namjena:</label>
             <select id="vrsta_namjena_stub_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosNamjenaStub35">
+          <div class="flex-row-desno pb-8" id="divUnosNamjenaStub35">
             <label for="vrsta_namjena_stub_35">Namjena:</label>
             <select id="vrsta_namjena_stub_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosMaterijal">
+          <div class="flex-row-desno pb-8" id="divUnosMaterijal">
             <label for="vrsta_materijal">Materijal:</label>
             <select id="vrsta_materijal" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosMaterijalVod04">
+          <div class="flex-row-desno pb-8" id="divUnosMaterijalVod04">
             <label for="vrsta_materijal_vod_04">Materijal:</label>
             <select id="vrsta_materijal_vod_04" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosMaterijalVod10">
+          <div class="flex-row-desno pb-8" id="divUnosMaterijalVod10">
             <label for="vrsta_materijal_vod_10">Materijal:</label>
             <select id="vrsta_materijal_vod_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosMaterijalVod35">
+          <div class="flex-row-desno pb-8" id="divUnosMaterijalVod35">
             <label for="vrsta_materijal_vod_35">Materijal:</label>
             <select id="vrsta_materijal_vod_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosMaterijalStub04">
+          <div class="flex-row-desno pb-8" id="divUnosMaterijalStub04">
             <label for="vrsta_materijal_stub_04">Materijal:</label>
             <select id="vrsta_materijal_stub_04" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosMaterijalStub10">
+          <div class="flex-row-desno pb-8" id="divUnosMaterijalStub10">
             <label for="vrsta_materijal_stub_10">Materijal:</label>
             <select id="vrsta_materijal_stub_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosMaterijalStub35">
+          <div class="flex-row-desno pb-8" id="divUnosMaterijalStub35">
             <label for="vrsta_materijal_stub_35">Materijal:</label>
             <select id="vrsta_materijal_stub_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosVrstaDrvenogStuba04">
+          <div class="flex-row-desno pb-8" id="divUnosVrstaDrvenogStuba04">
             <label for="vrsta_drvenog_stub_04">Vrsta drvenog stuba:</label>
             <select id="vrsta_drvenog_stub_04" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosVrstaDrvenogStuba10">
+          <div class="flex-row-desno pb-8" id="divUnosVrstaDrvenogStuba10">
             <label for="vrsta_drvenog_stub_10">Vrsta drvenog stuba:</label>
             <select id="vrsta_drvenog_stub_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosVrstaDrvenogStuba35">
+          <div class="flex-row-desno pb-8" id="divUnosVrstaDrvenogStuba35">
             <label for="vrsta_drvenog_stub_35">Vrsta drvenog stuba:</label>
             <select id="vrsta_drvenog_stub_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosNadmorskaVisina">
+          <div class="flex-row-desno pb-8" id="divUnosNadmorskaVisina">
             <label for="nad_visina">Nadmorska visina (m):</label>
             <input type="number" id="nad_visina" />
           </div>
-          <div class="flex-row pb-8" id="divUnosVisina">
+          <div class="flex-row-desno pb-8" id="divUnosVisina">
             <label for="visina">Visina (m):</label>
             <input type="number" id="visina" />
           </div>
-          <div class="flex-row pb-8" id="divUnosRasporedProvodnika">
+          <div class="flex-row-desno pb-8" id="divUnosRasporedProvodnika">
             <label for="rasp_prov">Raspored provodnika:</label>
             <input type="text" id="rasp_prov" />
           </div>
-          <div class="flex-row pb-8" id="divUnosIzolatorVrsta">
+          <div class="flex-row-desno pb-8" id="divUnosIzolatorVrsta">
             <label for="izolator_vrsta">Vrsta izolatora:</label>
             <select id="izolator_vrsta" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosIzolatorVrstaStub04">
+          <div class="flex-row-desno pb-8" id="divUnosIzolatorVrstaStub04">
             <label for="izolator_vrsta_stub_04">Vrsta izolatora:</label>
             <select id="izolator_vrsta_stub_04" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosIzolatorVrstaStub10">
+          <div class="flex-row-desno pb-8" id="divUnosIzolatorVrstaStub10">
             <label for="izolator_vrsta_stub_10">Vrsta izolatora:</label>
             <select id="izolator_vrsta_stub_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosIzolatorVrstaStub35">
+          <div class="flex-row-desno pb-8" id="divUnosIzolatorVrstaStub35">
             <label for="izolator_vrsta_stub_35">Vrsta izolatora:</label>
             <select id="izolator_vrsta_stub_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosIzolatorFunkcija">
+          <div class="flex-row-desno pb-8" id="divUnosIzolatorFunkcija">
             <label for="izolator_funkcija">Vrsta izolatora po funkciji:</label>
             <select id="izolator_funkcija" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosIzolatorFunkcijaStub04">
+          <div class="flex-row-desno pb-8" id="divUnosIzolatorFunkcijaStub04">
             <label for="izolator_funkcija_stub_04">Vrsta izolatora po funkciji:</label>
             <select id="izolator_funkcija_stub_04" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosIzolatorFunkcijaStub10">
+          <div class="flex-row-desno pb-8" id="divUnosIzolatorFunkcijaStub10">
             <label for="izolator_funkcija_stub_10">Vrsta izolatora po funkciji:</label>
             <select id="izolator_funkcija_stub_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosIzolatorFunkcijaStub35">
+          <div class="flex-row-desno pb-8" id="divUnosIzolatorFunkcijaStub35">
             <label for="izolator_funkcija_stub_35">Vrsta izolatora po funkciji:</label>
             <select id="izolator_funkcija_stub_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosBrIzolFaza">
+          <div class="flex-row-desno pb-8" id="divUnosBrIzolFaza">
             <label for="br_izol_faza">Broj izolatora po fazi:</label>
             <input type="text" id="br_izol_faza" />
           </div>
-          <div class="flex-row pb-8" id="divUnosTipIzolatora">
+          <div class="flex-row-desno pb-8" id="divUnosTipIzolatora">
             <label for="tip_izolatora">Tip izolatora:</label>
             <select id="tip_izolatora" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosTipIzolatoraStub04">
+          <div class="flex-row-desno pb-8" id="divUnosTipIzolatoraStub04">
             <label for="tip_izolatora_stub_04">Tip izolatora:</label>
             <select id="tip_izolatora_stub_04" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosTipIzolatoraStub10">
+          <div class="flex-row-desno pb-8" id="divUnosTipIzolatoraStub10">
             <label for="tip_izolatora_stub_10">Tip izolatora:</label>
             <select id="tip_izolatora_stub_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosTipIzolatoraStub35">
+          <div class="flex-row-desno pb-8" id="divUnosTipIzolatoraStub35">
             <label for="tip_izolatora_stub_35">Tip izolatora:</label>
             <select id="tip_izolatora_stub_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosNosaciIzolatora">
+          <div class="flex-row-desno pb-8" id="divUnosNosaciIzolatora">
             <label for="nosaci_izolatora">Nosači izolatora:</label>
             <select id="nosaci_izolatora" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosNosaciIzolatoraStub04">
+          <div class="flex-row-desno pb-8" id="divUnosNosaciIzolatoraStub04">
             <label for="nosaci_izolatora_stub_04">Nosači izolatora:</label>
             <select id="nosaci_izolatora_stub_04" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosNosaciIzolatoraStub10">
+          <div class="flex-row-desno pb-8" id="divUnosNosaciIzolatoraStub10">
             <label for="nosaci_izolatora_stub_10">Nosači izolatora:</label>
             <select id="nosaci_izolatora_stub_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosNosaciIzolatoraStub35">
+          <div class="flex-row-desno pb-8" id="divUnosNosaciIzolatoraStub35">
             <label for="nosaci_izolatora_stub_35">Nosači izolatora:</label>
             <select id="nosaci_izolatora_stub_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosOdvodnikPrenapona">
+          <div class="flex-row-desno pb-8" id="divUnosOdvodnikPrenapona">
             <label for="odvodnik_prenapona">Tip odvodnika prenapona:</label>
             <select id="odvodnik_prenapona" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosOdvodnikPrenaponaStub04">
+          <div class="flex-row-desno pb-8" id="divUnosOdvodnikPrenaponaStub04">
             <label for="odvodnik_prenapona_stub_04">Tip odvodnika prenapona:</label>
             <select id="odvodnik_prenapona_stub_04" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosOdvodnikPrenaponaStub10">
+          <div class="flex-row-desno pb-8" id="divUnosOdvodnikPrenaponaStub10">
             <label for="odvodnik_prenapona_stub_10">Tip odvodnika prenapona:</label>
             <select id="odvodnik_prenapona_stub_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosOdvodnikPrenaponaStub35">
+          <div class="flex-row-desno pb-8" id="divUnosOdvodnikPrenaponaStub35">
             <label for="odvodnik_prenapona_stub_35">Tip odvodnika prenapona:</label>
             <select id="odvodnik_prenapona_stub_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosUzemljivac">
+          <div class="flex-row-desno pb-8" id="divUnosUzemljivac">
             <label for="uzemljivac">Uzemljivač:</label>
             <select id="uzemljivac" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosUzemljivacStub04">
+          <div class="flex-row-desno pb-8" id="divUnosUzemljivacStub04">
             <label for="uzemljivac_stub_04">Uzemljivač:</label>
             <select id="uzemljivac_stub_04" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosUzemljivacStub10">
+          <div class="flex-row-desno pb-8" id="divUnosUzemljivacStub10">
             <label for="uzemljivac_stub_10">Uzemljivač:</label>
             <select id="uzemljivac_stub_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosUzemljivacStub35">
+          <div class="flex-row-desno pb-8" id="divUnosUzemljivacStub35">
             <label for="uzemljivac_stub_35">Uzemljivač:</label>
             <select id="uzemljivac_stub_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosOtporUzemljivaca">
+          <div class="flex-row-desno pb-8" id="divUnosOtporUzemljivaca">
             <label for="uzemljivac_otpor">Otpor uzemljivača:</label>
             <input type="text" id="uzemljivac_otpor" />
           </div>
-          <div class="flex-row pb-8" id="divUnosOptika">
+          <div class="flex-row-desno pb-8" id="divUnosOptika">
             <label for="optika">Optika:</label>
             <select id="optika" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosOptikaStub04">
+          <div class="flex-row-desno pb-8" id="divUnosOptikaStub04">
             <label for="optika_stub_04">Optika:</label>
             <select id="optika_stub_04" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosOptikaStub10">
+          <div class="flex-row-desno pb-8" id="divUnosOptikaStub10">
             <label for="optika_stub_10">Optika:</label>
             <select id="optika_stub_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosOptikaStub35">
+          <div class="flex-row-desno pb-8" id="divUnosOptikaStub35">
             <label for="optika_stub_35">Optika:</label>
             <select id="optika_stub_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosRasvjeta">
+          <div class="flex-row-desno pb-8" id="divUnosRasvjeta">
             <label for="rasvjeta">Javna rasvjeta:</label>
             <select id="rasvjeta" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosRasvjetaStub">
+          <div class="flex-row-desno pb-8" id="divUnosRasvjetaStub">
             <label for="rasvjeta_stub">Javna rasvjeta:</label>
             <select id="rasvjeta_stub" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosRasvjetaVod">
+          <div class="flex-row-desno pb-8" id="divUnosRasvjetaVod">
             <label for="rasvjeta_vod">Javna rasvjeta:</label>
             <select id="rasvjeta_vod" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosBrPmo">
+          <div class="flex-row-desno pb-8" id="divUnosBrPmo">
             <label for="br_pmo">Broj mjernih ormara:</label>
             <input type="text" id="br_pmo" />
           </div>
-          <div class="flex-row pb-8" id="divUnosBrNnv">
+          <div class="flex-row-desno pb-8" id="divUnosBrNnv">
             <label for="br_nnv">Broj NN vodova:</label>
             <input type="text" id="br_nnv" />
           </div>
-          <div class="flex-row pb-8" id="divUnosPogSprem">
+          <div class="flex-row-desno pb-8" id="divUnosPogSprem">
             <label for="pog_sprem">Pogonska spremnost:</label>
             <select id="pog_sprem" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosVlasnistvo">
+          <div class="flex-row-desno pb-8" id="divUnosVlasnistvo">
             <label for="vlasnistvo">Vlasnistvo:</label>
             <select id="vlasnistvo" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosOpstina">
+          <div class="flex-row-desno pb-8" id="divUnosOpstina">
             <label for="opstina">Opština:</label>
             <select id="opstina" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosPrikKabal">
+          <div class="flex-row-desno pb-8" id="divUnosPrikKabal">
             <label for="prik_kabal">Priključni kabal:</label>
             <input type="text" id="prik_kabal" />
           </div>
-          <div class="flex-row pb-8" id="divUnosPod">
+          <div class="flex-row-desno pb-8" id="divUnosPod">
             <label for="pod">POD:</label>
             <input type="text" id="pod" />
           </div>
-          <div class="flex-row pb-8" id="divUnosAdresaMm">
+          <div class="flex-row-desno pb-8" id="divUnosAdresaMm">
             <label for="adresa_mm">Adresa mm:</label>
             <input type="text" id="adresa_mm" />
           </div>
-          <div class="flex-row pb-8" id="divUnosPrikMjesto">
+          <div class="flex-row-desno pb-8" id="divUnosPrikMjesto">
             <label for="prik_mjesto">Priključno mjesto:</label>
             <input type="text" id="prik_mjesto" />
           </div>
-          <div class="flex-row pb-8" id="divUnosNazivNnIzvod">
+          <div class="flex-row-desno pb-8" id="divUnosNazivNnIzvod">
             <label for="naziv_nn_izvod">Naziv nn izvod:</label>
             <input type="text" id="naziv_nn_izvod" />
           </div>
-          <div class="flex-row pb-8" id="divUnosPretplatniBr">
+          <div class="flex-row-desno pb-8" id="divUnosPretplatniBr">
             <label for="pretplatni_br">Pretplatni broj:</label>
             <input type="text" id="pretplatni_br" />
           </div>
-          <div class="flex-row pb-8" id="divUnosBrBrojila">
+          <div class="flex-row-desno pb-8" id="divUnosBrBrojila">
             <label for="br_brojila">Broj brojila:</label>
             <input type="text" id="br_brojila" />
           </div>
-          <div class="flex-row pb-8" id="divUnosNapon">
+          <div class="flex-row-desno pb-8" id="divUnosNapon">
             <label for="napon">Napon:</label>
             <input type="text" id="napon" />
           </div>
-          <div class="flex-row pb-8" id="divUnosPrikljucakOtcjep">
+          <div class="flex-row-desno pb-8" id="divUnosPrikljucakOtcjep">
             <label for="prikljucak_otcjep">10kV kabal(prikljucak/otcjep):</label>
             <select id="prikljucak_otcjep" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosPrikljucakOtcjepStub10">
+          <div class="flex-row-desno pb-8" id="divUnosPrikljucakOtcjepStub10">
             <label for="prikljucak_otcjep_stub_10">10kV kabal(prikljucak/otcjep):</label>
             <select id="prikljucak_otcjep_stub_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosPrikljucakOtcjepStub35">
+          <div class="flex-row-desno pb-8" id="divUnosPrikljucakOtcjepStub35">
             <label for="prikljucak_otcjep_stub_35">10kV kabal(prikljucak/otcjep):</label>
             <select id="prikljucak_otcjep_stub_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosNnVod">
+          <div class="flex-row-desno pb-8" id="divUnosNnVod">
             <label for="nn_vod">NN vod :</label>
             <select id="nn_vod" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosNnVodStub10">
+          <div class="flex-row-desno pb-8" id="divUnosNnVodStub10">
             <label for="nn_vod_stub_10">NN vod :</label>
             <select id="nn_vod_stub_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosNnVodStub">
+          <div class="flex-row-desno pb-8" id="divUnosNnVodStub">
             <label for="nn_vod_stub">NN vod:</label>
             <select id="nn_vod_stub" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosRastavljac">
+          <div class="flex-row-desno pb-8" id="divUnosRastavljac">
             <label for="rastavljac">Rastavljač:</label>
             <select id="rastavljac" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosRastavljacStub10">
+          <div class="flex-row-desno pb-8" id="divUnosRastavljacStub10">
             <label for="rastavljac_stub_10">Rastavljač:</label>
             <select id="rastavljac_stub_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosRastavljacStub35">
+          <div class="flex-row-desno pb-8" id="divUnosRastavljacStub35">
             <label for="rastavljac_stub_35">Rastavljač:</label>
             <select id="rastavljac_stub_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnos10KvVod">
+          <div class="flex-row-desno pb-8" id="divUnos10KvVod">
             <label for="vod_10">10 kV vod:</label>
             <select id="vod_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosDionica">
+          <div class="flex-row-desno pb-8" id="divUnosDionica">
             <label for="dionica">Dionica:</label>
             <input type="text" id="dionica" />
           </div>
-          <div class="flex-row pb-8" id="divUnosIdBr">
+          <div class="flex-row-desno pb-8" id="divUnosIdBr">
             <label for="id_br">Identifikacioni broj:</label>
             <input type="text" id="id_br" />
           </div>
-          <div class="flex-row pb-8" id="divUnosNaziv">
+          <div class="flex-row-desno pb-8" id="divUnosNaziv">
             <label for="naziv">Naziv:</label>
             <input type="text" id="naziv" />
           </div>
-          <div class="flex-row pb-8" id="divUnosDionicaNn">
+          <div class="flex-row-desno pb-8" id="divUnosDionicaNn">
             <label for="dionica_nn">Dionica:</label>
             <input type="text" id="dionica_nn" />
           </div>
-          <div class="flex-row pb-8" id="divUnosTs">
+          <div class="flex-row-desno pb-8" id="divUnosTs">
             <label for="ts">Vod se napaja iz TS:</label>
             <input type="text" id="ts" />
           </div>
-          <div class="flex-row pb-8" id="divUnosNazivTs">
+          <div class="flex-row-desno pb-8" id="divUnosNazivTs">
             <label for="naziv_ts">Naziv TS:</label>
             <input type="text" id="naziv_ts" />
           </div>
-          <div class="flex-row pb-8" id="divUnosSifraTs">
+          <div class="flex-row-desno pb-8" id="divUnosSifraTs">
             <label for="sifra_ts">Šifra TS:</label>
             <input type="text" id="sifra_ts" />
           </div>
-          <div class="flex-row pb-8" id="divUnosIzvodTs">
+          <div class="flex-row-desno pb-8" id="divUnosIzvodTs">
             <label for="izvod_ts">Ime izvoda u TS:</label>
             <input type="text" id="izvod_ts" />
           </div>
-          <div class="flex-row pb-8" id="divUnosBrFaza">
+          <div class="flex-row-desno pb-8" id="divUnosBrFaza">
             <label for="br_faza">Broj faza:</label>
             <select id="br_faza" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosVrsta">
+          <div class="flex-row-desno pb-8" id="divUnosVrsta">
             <label for="vrsta">Vrsta:</label>
             <select id="vrsta" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosVrstaVod04">
+          <div class="flex-row-desno pb-8" id="divUnosVrstaVod04">
             <label for="vrsta_vod_04">Vrsta:</label>
             <select id="vrsta_vod_04" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosVrstaVod10">
+          <div class="flex-row-desno pb-8" id="divUnosVrstaVod10">
             <label for="vrsta_vod_10">Vrsta:</label>
             <select id="vrsta_vod_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosVrstaVod35">
+          <div class="flex-row-desno pb-8" id="divUnosVrstaVod35">
             <label for="vrsta_vod_35">Vrsta:</label>
             <select id="vrsta_vod_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosPresjek">
+          <div class="flex-row-desno pb-8" id="divUnosPresjek">
             <label for="presjek">Presjek voda (mm2):</label>
             <select id="presjek" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosPresjekVod04">
+          <div class="flex-row-desno pb-8" id="divUnosPresjekVod04">
             <label for="presjek_vod_04">Presjek voda (mm2):</label>
             <select id="presjek_vod_04" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosPresjekVod10">
+          <div class="flex-row-desno pb-8" id="divUnosPresjekVod10">
             <label for="presjek_vod_10">Presjek voda (mm2):</label>
             <select id="presjek_vod_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosPresjekVod35">
+          <div class="flex-row-desno pb-8" id="divUnosPresjekVod35">
             <label for="presjek_vod_35">Presjek voda (mm2):</label>
             <select id="presjek_vod_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosBrSpojnica">
+          <div class="flex-row-desno pb-8" id="divUnosBrSpojnica">
             <label for="br_spojnica">Broj spojnica:</label>
             <input type="text" id="br_spojnica" />
           </div>
-          <div class="flex-row pb-8" id="divUnosGodIzgr">
+          <div class="flex-row-desno pb-8" id="divUnosGodIzgr">
             <label for="god_izg">Godina izgradnje:</label>
             <input type="text" id="god_izg" />
           </div>
-          <div class="flex-row pb-8" id="divUnosPocDion">
+          <div class="flex-row-desno pb-8" id="divUnosPocDion">
             <label for="poc_dion">Početak dionice:</label>
             <input type="text" id="poc_dion" />
           </div>
-          <div class="flex-row pb-8" id="divUnosKrajDion">
+          <div class="flex-row-desno pb-8" id="divUnosKrajDion">
             <label for="kraj_dion">Kraj dionice:</label>
             <input type="text" id="kraj_dion" />
           </div>
-          <div class="flex-row pb-8" id="divUnosUzePresjek">
+          <div class="flex-row-desno pb-8" id="divUnosUzePresjek">
             <label for="uze_presjek">Zaštitno uže presjek mm2:</label>
             <select id="uze_presjek" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosUzePresjekVod10">
+          <div class="flex-row-desno pb-8" id="divUnosUzePresjekVod10">
             <label for="uze_presjek_vod_10">Zaštitno uže presjek mm2:</label>
             <select id="uze_presjek_vod_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosUzePresjekVod35">
+          <div class="flex-row-desno pb-8" id="divUnosUzePresjekVod35">
             <label for="uze_presjek_vod_35">Zaštitno uže presjek mm2:</label>
             <select id="uze_presjek_vod_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosUze">
+          <div class="flex-row-desno pb-8" id="divUnosUze">
             <label for="uze">Zaštitno uže materijal:</label>
             <select id="uze" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosUzeVod10">
+          <div class="flex-row-desno pb-8" id="divUnosUzeVod10">
             <label for="uze_vod_10">Zaštitno uže materijal:</label>
             <select id="uze_vod_10" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosUzeVod35">
+          <div class="flex-row-desno pb-8" id="divUnosUzeVod35">
             <label for="uze_vod_35">Zaštitno uže materijal:</label>
             <select id="uze_vod_35" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosZajednickaDion">
+          <div class="flex-row-desno pb-8" id="divUnosZajednickaDion">
             <label for="zajednicka_dion">NN vod 10kV voda:</label>
             <input type="text" id="zajednicka_dion" />
           </div>
-          <div class="flex-row pb-8" id="divUnosBrNnIzvoda">
+          <div class="flex-row-desno pb-8" id="divUnosBrNnIzvoda">
             <label for="br_nn_izvoda">Broj NN izvoda:</label>
             <input type="text" id="br_nn_izvoda" />
           </div>
-          <div class="flex-row pb-8" id="divUnosCelije10">
+          <div class="flex-row-desno pb-8" id="divUnosCelije10">
             <label for="celije_10">Broj 10 kV ćelija:</label>
             <input type="text" id="celije_10" />
           </div>
-          <div class="flex-row pb-8" id="divUnosProjekSnaga">
+          <div class="flex-row-desno pb-8" id="divUnosProjekSnaga">
             <label for="projek_snaga">Projektovana snaga:</label>
             <input type="text" id="projek_snaga" />
           </div>
-          <div class="flex-row pb-8" id="divUnosInstSnaga1">
+          <div class="flex-row-desno pb-8" id="divUnosInstSnaga1">
             <label for="inst_snaga_t1">Snaga T1 (kVA):</label>
             <select id="inst_snaga_t1" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosInstSnaga2">
+          <div class="flex-row-desno pb-8" id="divUnosInstSnaga2">
             <label for="inst_snaga_t2">Snaga T2 (kVA):</label>
             <select id="inst_snaga_t2" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosInstSnaga3">
+          <div class="flex-row-desno pb-8" id="divUnosInstSnaga3">
             <label for="inst_snaga_t3">Snaga T3 (kVA):</label>
             <select id="inst_snaga_t3" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosInstSnaga4">
+          <div class="flex-row-desno pb-8" id="divUnosInstSnaga4">
             <label for="inst_snaga_t4">Snaga T4 (kVA):</label>
             <select id="inst_snaga_t4" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosPrenosOdnos">
+          <div class="flex-row-desno pb-8" id="divUnosPrenosOdnos">
             <label for="prenos_odnos">Prenosni odnos:</label>
             <select id="prenos_odnos" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosIzvodCelija">
+          <div class="flex-row-desno pb-8" id="divUnosIzvodCelija">
             <label for="izvod_celija">Izvod u napojnoj TS:</label>
             <input type="text" id="izvod_celija" />
           </div>
-          <div class="flex-row pb-8" id="divUnosNapojnaTs">
+          <div class="flex-row-desno pb-8" id="divUnosNapojnaTs">
             <label for="napojna_ts">Napojna TS 110(35)/10kV:</label>
             <input type="text" id="napojna_ts" />
           </div>
-          <div class="flex-row pb-8" id="divUnosFunkcija">
+          <div class="flex-row-desno pb-8" id="divUnosFunkcija">
             <label for="funkcija">Funkcija objekta:</label>
             <select id="funkcija" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosIdBilling">
+          <div class="flex-row-desno pb-8" id="divUnosIdBilling">
             <label for="id_billing">Identifikacioni broj (Biling):</label>
             <input type="text" id="id_billing" />
           </div>
-          <div class="flex-row pb-8" id="divUnosId">
+          <div class="flex-row-desno pb-8" id="divUnosId">
             <label for="id">Id:</label>
             <input type="text" id="id" />
           </div>
-          <div class="flex-row pb-8" id="divUnosOsiguraci">
+          <div class="flex-row-desno pb-8" id="divUnosOsiguraci">
             <label for="osiguraci">Osigurači:</label>
             <select id="osiguraci" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosTipPM">
+          <div class="flex-row-desno pb-8" id="divUnosTipPM">
             <label for="tip_pm">Tip priključnog mjesta:</label>
             <input type="text" id="tip_pm" />
           </div>
-          <div class="flex-row pb-8" id="divUnosBrPretplatnika">
+          <div class="flex-row-desno pb-8" id="divUnosBrPretplatnika">
             <label for="br_pretplatnika">Broj pretplatnika:</label>
             <input type="text" id="br_pretplatnika" />
           </div>
-          <div class="flex-row pb-8" id="divUnosMontaza">
+          <div class="flex-row-desno pb-8" id="divUnosMontaza">
             <label for="montaza">Montaža:</label>
             <select id="montaza" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosVrata">
+          <div class="flex-row-desno pb-8" id="divUnosVrata">
             <label for="vrata">Vrata:</label>
             <select id="vrata" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divUnosBrIzvoda">
+          <div class="flex-row-desno pb-8" id="divUnosBrIzvoda">
             <label for="br_izvoda">Broj izvoda:</label>
             <input type="text" id="br_izvoda" />
           </div>
-          <div class="flex-row pb-8" id="divUnosBrPrikljucaka">
+          <div class="flex-row-desno pb-8" id="divUnosBrPrikljucaka">
             <label for="br_prikljucaka">Broj priključaka:</label>
             <input type="text" id="br_prikljucaka" />
           </div>
-          <div class="flex-row pb-8" id="divUnosDionicaGPS">
+          <div class="flex-row-desno pb-8" id="divUnosDionicaGPS">
             <label for="dionica_gps">GPS dionice:</label>
             <input type="text" id="dionica_gps" />
           </div>
-          <div class="flex-row pb-8" id="divUnosRacDuzina">
+          <div class="flex-row-desno pb-8" id="divUnosRacDuzina">
             <label for="rac_duzina">Računska dužina:</label>
             <input type="text" id="rac_duzina" />
           </div>
-          <div class="flex-row pb-8" id="divUnosDuzina">
+          <div class="flex-row-desno pb-8" id="divUnosDuzina">
             <label for="duzina">Dužina:</label>
             <input type="text" id="duzina" />
           </div>
-          <div class="flex-row pb-8" id="divUnosBrojSpojnica">
+          <div class="flex-row-desno pb-8" id="divUnosBrojSpojnica">
             <label for="broj_spojnica">Broj spojnica:</label>
             <input type="text" id="broj_spojnica" />
           </div>
-          <div class="flex-row pb-8" id="divUnosSifraDionice">
+          <div class="flex-row-desno pb-8" id="divUnosSifraDionice">
             <label for="sifra_dionice">Šifra dionice:</label>
             <input type="text" id="sifra_dionice" />
           </div>
-          <div class="flex-row pb-8" id="divUnosSysId">
+          <div class="flex-row-desno pb-8" id="divUnosSysId">
             <label for="sys_id">Sys id:</label>
             <input type="text" id="sys_id" />
           </div>
-          <div class="flex-row pb-8" id="divUnosBrVodCelVisiNap">
+          <div class="flex-row-desno pb-8" id="divUnosBrVodCelVisiNap">
             <label for="br_vod_cel_visi_nap">Br vod cel visi nap:</label>
             <input type="text" id="br_vod_cel_visi_nap" />
           </div>
-          <div class="flex-row pb-8" id="divUnosBrVodCelNiziNap">
+          <div class="flex-row-desno pb-8" id="divUnosBrVodCelNiziNap">
             <label for="br_vod_cel_nizi_nap">Br vod cel niži nap:</label>
             <input type="text" id="br_vod_cel_nizi_nap" />
           </div>
 
-          <div class="flex-row pb-8" id="divUnosDdlTrafostanice">
+          <div class="flex-row-desno pb-8" id="divUnosDdlTrafostanice">
             <label for="ddlTrafostanice">Trafostanica iz TBP:</label>
             <select id="ddlTrafostanice" class="select-css">
               <option value="HTREBJ">Trebjesa</option>
@@ -756,163 +760,163 @@
               <option value="150434">Žitan petrol - Brlja</option>
             </select>
           </div>
-          <div class="flex-row pb-8" id="divReadFid1">
+          <div class="flex-row-desno pb-8" id="divReadFid1">
             <label for="read_fid_1">Fid_1:</label>
             <input type="text" id="read_fid_1" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadName">
+          <div class="flex-row-desno pb-8" id="divReadName">
             <label for="read_name">Name:</label>
             <input type="text" id="read_name" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadIdBr">
+          <div class="flex-row-desno pb-8" id="divReadIdBr">
             <label for="read_id_br">Id br:</label>
             <input type="text" id="read_id_br" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadCelije10">
+          <div class="flex-row-desno pb-8" id="divReadCelije10">
             <label for="read_celije_10">Ćelije:</label>
             <input type="text" id="read_celije_10" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadIzvodCelija">
+          <div class="flex-row-desno pb-8" id="divReadIzvodCelija">
             <label for="read_izvod_celija">Izvod ćelija:</label>
             <input type="text" id="read_izvod_celija" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadFunkcija">
+          <div class="flex-row-desno pb-8" id="divReadFunkcija">
             <label for="read_funkcija">Funkcija:</label>
             <input type="text" id="read_funkcija" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadBrNnIzvoda">
+          <div class="flex-row-desno pb-8" id="divReadBrNnIzvoda">
             <label for="read_br_nn_izvoda">Broj nn izvoda:</label>
             <input type="text" id="read_br_nn_izvoda" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadGeohashId">
+          <div class="flex-row-desno pb-8" id="divReadGeohashId">
             <label for="read_geohash_id">Geohash id:</label>
             <input type="text" id="read_geohash_id" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadGeohashIdNo">
+          <div class="flex-row-desno pb-8" id="divReadGeohashIdNo">
             <label for="read_geohash_id_no">Geohash id no:</label>
             <input type="text" id="read_geohash_id_no" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadBrVodCelNiziNap">
+          <div class="flex-row-desno pb-8" id="divReadBrVodCelNiziNap">
             <label for="read_br_vod_cel_nizi_nap">Br vod cel nizi nap:</label>
             <input type="text" id="read_br_vod_cel_nizi_nap" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadBrVodCelVisiNap">
+          <div class="flex-row-desno pb-8" id="divReadBrVodCelVisiNap">
             <label for="read_br_vod_cel_visi_nap">Br vod cel viši nap:</label>
             <input type="text" id="read_br_vod_cel_visi_nap" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadLayerName">
+          <div class="flex-row-desno pb-8" id="divReadLayerName">
             <label for="read_layer_name">Layer name:</label>
             <input type="text" id="read_layer_name" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadGodIzg">
+          <div class="flex-row-desno pb-8" id="divReadGodIzg">
             <label for="read_god_izg">Godina izgradnje:</label>
             <input type="text" id="read_god_izg" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadVlasnistvo">
+          <div class="flex-row-desno pb-8" id="divReadVlasnistvo">
             <label for="read_vlasnistvo">Vlasništvo:</label>
             <input type="text" id="read_vlasnistvo" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadDatumAzuriranja">
+          <div class="flex-row-desno pb-8" id="divReadDatumAzuriranja">
             <label for="read_datum_azuriranja">Datum ažuriranja:</label>
             <input type="text" id="read_datum_azuriranja" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadLayerId">
+          <div class="flex-row-desno pb-8" id="divReadLayerId">
             <label for="read_layer_id">Layer id:</label>
             <input type="text" id="read_layer_id" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadNadVis">
+          <div class="flex-row-desno pb-8" id="divReadNadVis">
             <label for="read_nad_vis">Nadmorska visina:</label>
             <input type="text" id="read_nad_vis" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadGPS">
+          <div class="flex-row-desno pb-8" id="divReadGPS">
             <label for="read_gps">GPS:</label>
             <input type="text" id="read_gps" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadPogSprem">
+          <div class="flex-row-desno pb-8" id="divReadPogSprem">
             <label for="read_pog_sprem">Pog sprem:</label>
             <input type="text" id="read_pog_sprem" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadNapon">
+          <div class="flex-row-desno pb-8" id="divReadNapon">
             <label for="read_napon">Napon:</label>
             <input type="text" id="read_napon" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadPosjedujeSliku">
+          <div class="flex-row-desno pb-8" id="divReadPosjedujeSliku">
             <label for="read_posjeduje_sliku">Posjeduje sliku:</label>
             <input type="text" id="read_posjeduje_sliku" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadOriginalId">
+          <div class="flex-row-desno pb-8" id="divReadOriginalId">
             <label for="read_originalId">Original id:</label>
             <input type="text" id="read_originalId" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadKorisnik">
+          <div class="flex-row-desno pb-8" id="divReadKorisnik">
             <label for="read_korisnik">Korisnik:</label>
             <input type="text" id="read_korisnik" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadVlasnik">
+          <div class="flex-row-desno pb-8" id="divReadVlasnik">
             <label for="read_vlasnik">Vlasnik:</label>
             <input type="text" id="read_vlasnik" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadKatastar">
+          <div class="flex-row-desno pb-8" id="divReadKatastar">
             <label for="read_katastar">Katastar:</label>
             <input type="text" id="read_katastar" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadIdTrafostanice">
+          <div class="flex-row-desno pb-8" id="divReadIdTrafostanice">
             <label for="read_id_trafostanice">Id trafostanice:</label>
             <input type="text" id="read_id_trafostanice" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadOpstina">
+          <div class="flex-row-desno pb-8" id="divReadOpstina">
             <label for="read_opstina">Opština:</label>
             <input type="text" id="read_opstina" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadRegion">
+          <div class="flex-row-desno pb-8" id="divReadRegion">
             <label for="read_region">Region:</label>
             <input type="text" id="read_region" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadNazivNapojne">
+          <div class="flex-row-desno pb-8" id="divReadNazivNapojne">
             <label for="read_naziv_napojne">Naziv napojne:</label>
             <input type="text" id="read_naziv_napojne" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadSifraNapojne">
+          <div class="flex-row-desno pb-8" id="divReadSifraNapojne">
             <label for="read_sifra_napojne">Šifra napojne:</label>
             <input type="text" id="read_sifra_napojne" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadIzvodNapojne">
+          <div class="flex-row-desno pb-8" id="divReadIzvodNapojne">
             <label for="read_izvod_napojne">Izvod napojne:</label>
             <input type="text" id="read_izvod_napojne" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadPrenosOdnos">
+          <div class="flex-row-desno pb-8" id="divReadPrenosOdnos">
             <label for="read_prenos_odnos">Prenos odnos:</label>
             <input type="text" id="read_prenos_odnos" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadIdBilling">
+          <div class="flex-row-desno pb-8" id="divReadIdBilling">
             <label for="read_id_billing">Id biling:</label>
             <input type="text" id="read_id_billing" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadAdresa">
+          <div class="flex-row-desno pb-8" id="divReadAdresa">
             <label for="read_adresa">Adresa:</label>
             <input type="text" id="read_adresa" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadTip">
+          <div class="flex-row-desno pb-8" id="divReadTip">
             <label for="read_tip">Tip:</label>
             <input type="text" id="read_tip" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadNaziv">
+          <div class="flex-row-desno pb-8" id="divReadNaziv">
             <label for="read_naziv">Naziv:</label>
             <input type="text" id="read_naziv" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadInstSnagaT1">
+          <div class="flex-row-desno pb-8" id="divReadInstSnagaT1">
             <label for="read_inst_snaga_t1">Inst snaga t1:</label>
             <input type="text" id="read_inst_snaga_t1" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadInstSnagaT2">
+          <div class="flex-row-desno pb-8" id="divReadInstSnagaT2">
             <label for="read_inst_snaga_t2">Inst snaga t2:</label>
             <input type="text" id="read_inst_snaga_t2" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadInstSnagaT3">
+          <div class="flex-row-desno pb-8" id="divReadInstSnagaT3">
             <label for="read_inst_snaga_t3">Inst snaga t3:</label>
             <input type="text" id="read_inst_snaga_t3" readonly />
           </div>
-          <div class="flex-row pb-8" id="divReadTabela">
+          <div class="flex-row-desno pb-8" id="divReadTabela">
             <label for="read_tabela">Tabela:</label>
             <input type="text" id="read_tabela" readonly />
           </div>
@@ -923,10 +927,12 @@
       </div>
       <div class="d-flex-between items-padd-sm">
         <div>
-          <button type="button" class="btn" id="btnIzbrisi"><i class="fas fa-trash"></i> Izbriši</button>
-          <button type="button" class="btn" id="btnDupliraj"><i class="far fa-copy"></i> Dupliraj</button>
+          <button type="button" class="btn" id="btnIzbrisi"> <div class="tooltip bottom" data-tool="Brisanje"> <i class="fas fa-trash"></i> Izbriši 
+                 </div>
+          </button>
+          <button type="button" class="btn" id="btnDupliraj"> <div class="tooltip bottom" data-tool="Dupliranje"> <i class="far fa-copy"></i> Dupliraj  </div> </button>
         </div>
-        <button type="button" class="btn mr-8" id="btnSacuvaj"><i class="fas fa-check-circle"></i> Sačuvaj</button>
+        <button type="button" class="btn mr-8" id="btnSacuvaj"><div class="tooltip bottom" data-tool="Čuvanje podataka"><i class="fas fa-check-circle"></i> Sačuvaj </div></button>
       </div>
     </div>
 
