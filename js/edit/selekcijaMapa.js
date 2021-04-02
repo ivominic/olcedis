@@ -540,3 +540,31 @@ function restartNakonUnosaVoda() {
   nizKrajnjihTacakaVoda.length = 0;
   brisanje();
 }
+
+function odabirNapojneTrafostaniceSaMape() {
+  map.removeInteraction(draw);
+  map.removeInteraction(modify);
+  map.on("singleclick", klikNapojnaTrafostanicaMapa);
+}
+
+function klikNapojnaTrafostanicaMapa(browserEvent) {
+  let url = wmsTrafostanice.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
+    INFO_FORMAT: "application/json",
+  });
+  if (url) {
+    fetch(url)
+      .then(function (response) {
+        //restartovanje();
+        return response.text();
+      })
+      .then(function (json) {
+        let odgovor = JSON.parse(json);
+        map.un("singleclick", klikNapojnaTrafostanicaMapa);
+        if (odgovor.features[0].properties.id_billing >= 6 || odgovor.features[0].properties.id_billing <= 8) {
+          pretragaTrafostanicaGpx(odgovor.features[0].properties.id_billing);
+        } else {
+          poruka("Upozorenje", "Nije odabrana trafostanica koja ima šifru iz bilinga.");
+        }
+      });
+  }
+}

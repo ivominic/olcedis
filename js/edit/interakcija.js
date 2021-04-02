@@ -271,14 +271,13 @@ document.querySelector("#btnPotvrdiPoveznica").addEventListener("click", potvrda
 document.querySelector("#btnPocetnaTackaPoveznica").addEventListener("click", odabirPocetneTackeVoda);
 document.querySelector("#btnKrajnjaTackaPoveznica").addEventListener("click", odabirKrajnjeTackeVoda);
 
-//TODO: Uključiti na prevlačenje gpx fajla
-showDiv("#odabirNapojneTrafostaniceDiv");
-
 document.querySelector("#btnOdabirNapojneTrafostanice").addEventListener("click", odabirNapojneTrafostaniceUnos);
 document.querySelector("#btnPotvrdiNapojnuTrafostanicu").addEventListener("click", potvrdaNapojneTrafostaniceUnos);
 document.querySelector("#txtSifraNapojneTrafostanice").addEventListener("keyup", promjenaSifreNapojneTrafostanice);
 
-function odabirNapojneTrafostaniceUnos() {}
+function odabirNapojneTrafostaniceUnos() {
+  odabirNapojneTrafostaniceSaMape();
+}
 
 function potvrdaNapojneTrafostaniceUnos() {
   let izvod = document.querySelector("#ddlIzvodNapojneTrafostanice").value;
@@ -286,6 +285,7 @@ function potvrdaNapojneTrafostaniceUnos() {
     poruka("Upozorenje", "Potrebno je odabrati izvod trafostanice");
     return false;
   }
+  closeDiv("#odabirNapojneTrafostaniceDiv");
 }
 
 function promjenaSifreNapojneTrafostanice() {

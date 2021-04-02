@@ -170,6 +170,7 @@ function pretragaTrafostanicaGpx(sifraTS) {
       if (data && data.ts) {
         sifraNapojneTrafostanice = data.ts.sifra;
         nazivNapojneTrafostanice = data.ts.naziv;
+        document.querySelector("#txtSifraNapojneTrafostanice").value = sifraNapojneTrafostanice;
         document.querySelector("#txtNazivNapojneTrafostanice").value = nazivNapojneTrafostanice;
         data.ts.izvodi.forEach(function (vrijednost) {
           console.log("vrijednost niza", vrijednost);
