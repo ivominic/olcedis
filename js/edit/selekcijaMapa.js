@@ -560,7 +560,12 @@ function klikNapojnaTrafostanicaMapa(browserEvent) {
       .then(function (json) {
         let odgovor = JSON.parse(json);
         map.un("singleclick", klikNapojnaTrafostanicaMapa);
-        if (odgovor.features[0].properties.id_billing >= 6 || odgovor.features[0].properties.id_billing <= 8) {
+        if (
+          odgovor.features[0].properties.id_billing !== null &&
+          odgovor.features[0].properties.id_billing !== "null" &&
+          odgovor.features[0].properties.id_billing.length >= 6 &&
+          odgovor.features[0].properties.id_billing.length <= 8
+        ) {
           pretragaTrafostanicaGpx(odgovor.features[0].properties.id_billing);
         } else {
           poruka("Upozorenje", "Nije odabrana trafostanica koja ima šifru iz bilinga.");

@@ -285,6 +285,9 @@ function potvrdaNapojneTrafostaniceUnos() {
     poruka("Upozorenje", "Potrebno je odabrati izvod trafostanice");
     return false;
   }
+  sifraNapojneTrafostanice = document.querySelector("#txtSifraNapojneTrafostanice").value;
+  nazivNapojneTrafostanice = document.querySelector("#txtNazivNapojneTrafostanice").value;
+  izvodNapojneTrafostanice = izvod;
   closeDiv("#odabirNapojneTrafostaniceDiv");
 }
 
@@ -294,5 +297,8 @@ function promjenaSifreNapojneTrafostanice() {
     pretragaTrafostanicaGpx(sifra);
     geometrijaTrafostaniceCentar(sifra);
     //Poziv web servisa
+  } else {
+    document.querySelector("#txtNazivNapojneTrafostanice").value = "";
+    $("#ddlIzvodNapojneTrafostanice").empty();
   }
 }

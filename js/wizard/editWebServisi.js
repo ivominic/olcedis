@@ -181,6 +181,8 @@ function pretragaTrafostanicaGpx(sifraTS) {
             })
           );
         });
+      } else {
+        poruka("Upozorenje", "Za odabranu trafostanicu nema podataka u tehničkoj bazi.");
       }
     },
     error: function (x, y, z) {
