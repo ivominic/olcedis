@@ -51,7 +51,7 @@ function geometrijaTrafostanice(sifraTS) {
       console.log("detalji trafostanica, odgovor servisa", data);
       if (data) {
         //Popuniti polja - TESTIRATI
-        retval = data.Geometry;
+        retval = data.the_geom;
         return retval;
       }
     },
@@ -59,6 +59,35 @@ function geometrijaTrafostanice(sifraTS) {
       //alert(x.responseText +"  " +x.status);
       console.log("greška popuniDdlAtributima", x.responseText);
       return retval;
+    },
+  });
+}
+
+/**
+ * Metoda koja za predatu šifru iz bilinga trafostanice vrati geometriju trafostanice i zumira mapu na tu lokaciju
+ * @param {id_billing vrijednost iz GIS-a} sifraTS
+ */
+function geometrijaTrafostaniceCentar(sifraTS) {
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice_data?sifra=" + sifraTS;
+  urlServisa += "&t=" + Date.now();
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "GET",
+    success: function (data) {
+      console.log("detalji trafostanica, odgovor servisa", data);
+      if (data) {
+        let wkt = data[0].the_geom;
+        wkt = wkt.replace(")", "").replace("((", "(");
+        let niz1 = wkt.split("(");
+        let niz2 = niz1[1].split(",");
+        let coord = niz2[0].split(" ");
+        map.getView().setCenter(coord);
+        map.getView().setZoom(20);
+      }
+    },
+    error: function (x, y, z) {
+      console.log("greška popuniDdlAtributima", x.responseText);
     },
   });
 }
@@ -109,6 +138,48 @@ function detaljiTrafostanica(sifraTS) {
         //document.querySelector("#uparivanjeTxtSifraTS").textContent = data.ts.sifra;
         document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = data.naziv;
         document.querySelector("#uparivanjeTxtSifraTS").textContent = data.sifra;
+      }
+    },
+    error: function (x, y, z) {
+      //alert(x.responseText +"  " +x.status);
+      console.log("greška popuniDdlAtributima", x.responseText);
+    },
+  });
+}
+
+/**
+ * Metoda koja za predatu šifru iz bilinga trafostanice vrati naziv trafostanice i niz izvoda i popuni formu za odabir kod uvoza gpx fajla
+ * @param {id_billing vrijednost iz GIS-a} sifraTS
+ */
+function pretragaTrafostanicaGpx(sifraTS) {
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice?sifra=" + sifraTS;
+  urlServisa += "&t=" + Date.now();
+  $("#ddlIzvodNapojneTrafostanice").empty();
+  $("#ddlIzvodNapojneTrafostanice").append(
+    $("<option>", {
+      value: "",
+      text: "",
+    })
+  );
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "GET",
+    success: function (data) {
+      console.log("pretraga trafostanica, odgovor servisa", data);
+      if (data && data.ts) {
+        sifraNapojneTrafostanice = data.ts.sifra;
+        nazivNapojneTrafostanice = data.ts.naziv;
+        document.querySelector("#txtNazivNapojneTrafostanice").value = nazivNapojneTrafostanice;
+        data.ts.izvodi.forEach(function (vrijednost) {
+          console.log("vrijednost niza", vrijednost);
+          $("#ddlIzvodNapojneTrafostanice").append(
+            $("<option>", {
+              value: vrijednost,
+              text: vrijednost,
+            })
+          );
+        });
       }
     },
     error: function (x, y, z) {
