@@ -270,3 +270,35 @@ document.querySelector("#btnSljedeciObjekat").addEventListener("click", sljedeci
 document.querySelector("#btnPotvrdiPoveznica").addEventListener("click", potvrdaUnosaVoda);
 document.querySelector("#btnPocetnaTackaPoveznica").addEventListener("click", odabirPocetneTackeVoda);
 document.querySelector("#btnKrajnjaTackaPoveznica").addEventListener("click", odabirKrajnjeTackeVoda);
+
+document.querySelector("#btnOdabirNapojneTrafostanice").addEventListener("click", odabirNapojneTrafostaniceUnos);
+document.querySelector("#btnPotvrdiNapojnuTrafostanicu").addEventListener("click", potvrdaNapojneTrafostaniceUnos);
+document.querySelector("#txtSifraNapojneTrafostanice").addEventListener("keyup", promjenaSifreNapojneTrafostanice);
+
+function odabirNapojneTrafostaniceUnos() {
+  odabirNapojneTrafostaniceSaMape();
+}
+
+function potvrdaNapojneTrafostaniceUnos() {
+  let izvod = document.querySelector("#ddlIzvodNapojneTrafostanice").value;
+  if (izvod === "") {
+    poruka("Upozorenje", "Potrebno je odabrati izvod trafostanice");
+    return false;
+  }
+  sifraNapojneTrafostanice = document.querySelector("#txtSifraNapojneTrafostanice").value;
+  nazivNapojneTrafostanice = document.querySelector("#txtNazivNapojneTrafostanice").value;
+  izvodNapojneTrafostanice = izvod;
+  closeDiv("#odabirNapojneTrafostaniceDiv");
+}
+
+function promjenaSifreNapojneTrafostanice() {
+  let sifra = document.querySelector("#txtSifraNapojneTrafostanice").value;
+  if (sifra.length >= 6 && sifra.length <= 8) {
+    pretragaTrafostanicaGpx(sifra);
+    geometrijaTrafostaniceCentar(sifra);
+    //Poziv web servisa
+  } else {
+    document.querySelector("#txtNazivNapojneTrafostanice").value = "";
+    $("#ddlIzvodNapojneTrafostanice").empty();
+  }
+}

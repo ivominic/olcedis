@@ -108,6 +108,7 @@ body {
 
 .pocetni-div {
   height: 55px;
+  border-bottom: 2px solid #8e8e8e;
 }
 
 .odvojeno {
@@ -148,9 +149,9 @@ body {
 
 /* Definisanje boje navbara */
 .topnav {
-  min-height: 70px;
+  min-height: 55px;
   background-color: #ca2129;
-  overflow: hidden;
+  border-bottom: 2px solid #8e8e8e;
 }
 
 .topnav a {
@@ -678,6 +679,161 @@ a.tooltip.left.blue:before {
   border-color: transparent transparent transparent #5f87c2;
 }
 
+
+div.tooltip {
+  position: relative;
+  display: inline;
+}
+
+div.tooltip:after {
+  padding: 0 15px;
+    top: 80%;
+    position: absolute;
+    /* right: 70%; */
+    margin-left: -25px;
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    content: attr(data-tool);
+    height: 25px;
+    min-width: 100px;
+    z-index: 999;
+    color: #333;
+    text-decoration: none;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+/*a.tooltip:before {
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    left: 50%;
+    bottom: 0px;
+    opacity: 0;
+    content: "";
+    border-style: solid;
+    border-width: 6px 6px 0 6px;
+    border-color: rgba(0, 0, 0, 0.85) transparent transparent transparent;
+}*/
+
+div.tooltip:hover:after {
+  visibility: visible;
+  opacity: 1;
+  bottom: 20px;
+}
+
+div.tooltip:hover:before {
+  visibility: visible;
+  opacity: 1;
+  bottom: 14px;
+}
+
+div.tooltip.animate:after,
+div.tooltip.animate:before {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+/* tips on bottom */
+div.tooltip.bottom:after {
+  bottom: auto;
+  top: 0;
+}
+
+div.tooltip.bottom:hover:after {
+  top: 28px;
+}
+
+div.tooltip.bottom:before {
+  border-width: 0 5px 8.7px 5px;
+  border-color: transparent transparent rgba(0, 0, 0, 0.85) transparent;
+  top: 0px;
+}
+
+div.tooltip.bottom:hover:before {
+  top: 20px;
+}
+
+/* tips on the right */
+div.tooltip.right:after {
+  left: 100%;
+  bottom: -45%;
+}
+
+div.tooltip.right:hover:after {
+  left: 110%;
+  bottom: -45%;
+}
+
+div.tooltip.right:before {
+  border-width: 5px 10px 5px 0;
+  border-color: transparent rgba(0, 0, 0, 0.85) transparent transparent;
+  left: 90%;
+  bottom: 2%;
+}
+
+div.tooltip.right:hover:before {
+  left: 100%;
+  bottom: 2%;
+}
+
+/* tips on the left */
+div.tooltip.left:after {
+  left: auto;
+  right: 100%;
+  bottom: -45%;
+}
+
+div.tooltip.left:hover:after {
+  right: 110%;
+  bottom: -45%;
+}
+
+div.tooltip.left:before {
+  border-width: 5px 0 5px 10px;
+  border-color: transparent transparent transparent rgba(0, 0, 0, 0.85);
+  left: auto;
+  right: 90%;
+  bottom: 2%;
+}
+
+div.tooltip.left:hover:before {
+  right: 100%;
+  bottom: 2%;
+}
+
+/* tooltip colors (add your own!) */
+div.tooltip.blue:after {
+  background: #5f87c2;
+}
+
+div.tooltip.blue:before {
+  border-color: #5f87c2 transparent transparent transparent;
+}
+
+div.tooltip.bottom.blue:before {
+  border-color: transparent transparent #5f87c2 transparent;
+}
+
+div.tooltip.right.blue:before {
+  border-color: transparent #5f87c2 transparent transparent;
+}
+
+div.tooltip.left.blue:before {
+  border-color: transparent transparent transparent #5f87c2;
+}
+
 /* input field tooltips */
 input + .fieldtip {
   visibility: hidden;
@@ -840,10 +996,96 @@ html[xmlns] .clearfix {
 }
 
 .povezivanjevodovadiv {
-  height: 100px;
+  height: 130px;
   overflow: hidden;
 }
 
 .labelapoveznicakrajnja {
   padding-right: 7px;
+}
+
+#btnSacuvaj {
+  background-color: #288203 !important;
+  background: #288203;
+  border: 1px solid #288203;
+}
+
+.d-flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.flex-row-desno {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.flexMarginRight{
+  margin-right: 10px;
+}
+
+.flex-row-desno label{
+  margin-right: 10px;
+}
+
+.flex-row-desno input{
+  width: 217px;
+  padding-right: 0px;
+  background-color: white;
+  border: 1px solid #c1c1c1;
+  color: #909090;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.flex-row-desno input:focus{
+border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
+
+
+.flex-row-desno select{
+  background-color: white;
+  border: 1px solid #c1c1c1;
+  color: #909090;
+}
+
+.tooltip2 {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip2 .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip2:hover .tooltiptext {
+  visibility: visible;
+}
+
+#tool4:after {
+right: -10% !important;
+}
+
+#tool5:after {
+right: -10% !important;
 }

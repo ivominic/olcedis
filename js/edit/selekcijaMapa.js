@@ -212,6 +212,8 @@ function prikazPodatakaIzGpxTacaka() {
   //if (selectGpxFeature.hasOwnProperty("lejer")) {
   //console.log("prikaz podataka iz GPX tačke", selectGpxFeature.get("lejer"));
   //prikazPanelaAtributa se nalazi u fajlu interakcija.js
+  document.querySelector("#gps").value = selectGpxFeature.get("name");
+  console.log("gpx vrijednost", selectGpxFeature.get("name"));
   if (selectGpxFeature.get("lejer") === "stubovi") {
     prikaziPoljaOdabranogGpxStuba();
     let pomLejer = "Stub 35KV";
@@ -275,6 +277,8 @@ function selekcijaGpxPoligonom() {
   wktVod = wktVod.replace(/ /g, "_");
   wktVod = wktVod.replace(/,/g, " ");
   wktVod = wktVod.replace(/_/g, ",");
+  wktVod = wktVod.replace(",ZM", "");
+  wktVod = wktVod.replace(",Z", "");
   var feature = format.readFeature(wktVod, {});
 
   vektorKreiraniVodovi.getSource().clear();
@@ -518,6 +522,8 @@ function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
   wktVod = wktVod.replace(/ /g, "_");
   wktVod = wktVod.replace(/,/g, " ");
   wktVod = wktVod.replace(/_/g, ",");
+  wktVod = wktVod.replace(",ZM", "");
+  wktVod = wktVod.replace(",Z", "");
   var feature = format.readFeature(wktVod, {});
   nizVodovaGpx.push(feature);
   vektorKreiraniVodovi.getSource().clear();
@@ -533,4 +539,37 @@ function restartNakonUnosaVoda() {
   nizPocetnihTacakaVoda.length = 0;
   nizKrajnjihTacakaVoda.length = 0;
   brisanje();
+}
+
+function odabirNapojneTrafostaniceSaMape() {
+  map.removeInteraction(draw);
+  map.removeInteraction(modify);
+  map.on("singleclick", klikNapojnaTrafostanicaMapa);
+}
+
+function klikNapojnaTrafostanicaMapa(browserEvent) {
+  let url = wmsTrafostanice.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
+    INFO_FORMAT: "application/json",
+  });
+  if (url) {
+    fetch(url)
+      .then(function (response) {
+        //restartovanje();
+        return response.text();
+      })
+      .then(function (json) {
+        let odgovor = JSON.parse(json);
+        map.un("singleclick", klikNapojnaTrafostanicaMapa);
+        if (
+          odgovor.features[0].properties.id_billing !== null &&
+          odgovor.features[0].properties.id_billing !== "null" &&
+          odgovor.features[0].properties.id_billing.length >= 6 &&
+          odgovor.features[0].properties.id_billing.length <= 8
+        ) {
+          pretragaTrafostanicaGpx(odgovor.features[0].properties.id_billing);
+        } else {
+          poruka("Upozorenje", "Nije odabrana trafostanica koja ima šifru iz bilinga.");
+        }
+      });
+  }
 }

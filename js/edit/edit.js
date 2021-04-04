@@ -279,6 +279,7 @@ let dragAndDrop = new ol.interaction.DragAndDrop({
 });
 dragAndDrop.on("addfeatures", function (event) {
   console.log("aaaa", event.features);
+  showDiv("#odabirNapojneTrafostaniceDiv");
   gpxFeatures = event.features;
 
   blnDodijeljenoGpxProperties = false;
