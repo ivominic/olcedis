@@ -67,21 +67,6 @@ function popuniKontrole(odgovor) {
 
 /** Unos izmijenjenih vrijednosti atributa, nove fotografije ili unos svih podataka za novu geometriju */
 function sacuvaj() {
-  /*if (akcija === "dodaj" && geometrijaZaBazuWkt === "") {
-    poruka("Upozorenje", "Potrebno je nacrtati objekat.");
-    return false;
-  }
-  if (akcija === "izmijeni" && (geometrijaZaBazuWkt === "" || idObjekta === 0)) {
-    poruka("Upozorenje", "Potrebno je izmijeniti geometriju odabranog objekta.");
-    return false;
-  }
-  if (akcija === "atributi" && idObjekta === 0) {
-    poruka("Upozorenje", "Potrebno je odabrati objekat čije atribute mijenjate.");
-    return false;
-  }*/
-
-  console.log("ODABRANI LEJER UNOS", odabraniLejerUnos);
-
   if (!selectGpxFeature && odabraniLejerUnos !== "vodovi") {
     poruka("Upozorenje", "Potrebno je odabrati tačku iz gpx fajla.");
     return false;
@@ -95,18 +80,13 @@ function sacuvaj() {
   }
   if (odabraniLejerUnos === "vodovi") {
     //TODO: Preuzeti vrijednosti iz polja i otvoriti formu za povezivanje voda. Atribute dodijeliti iscrtanoj liniji
+
+    showDiv("#odabirPoveznicaDiv");
+    closeDiv("#atributiDiv");
     return false;
   }
   if (odabraniLejerUnos === "trafostanice") {
-    if (selectGpxFeature) {
-      dodajPoljaOdabranojGpxTrafostanici();
-    } else {
-      poruka("Upozorenje", "Potrebno je odabrati objekat iz gpx fajla");
-    }
-    return false;
-  }
-  if (odabraniLejerUnos === "vodovi") {
-    //TODO: Preuzeti vrijednosti iz polja i otvoriti formu za povezivanje voda. Atribute dodijeliti iscrtanoj liniji
+    dodajPoljaOdabranojGpxTrafostanici();
     return false;
   }
   if (odabraniLejerUnos === "nkro") {
