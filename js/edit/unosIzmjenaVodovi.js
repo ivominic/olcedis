@@ -53,3 +53,7 @@ function dodajPoljaUcrtanomVodu() {
   ucrtaniVod.set("broj_spojnica", document.querySelector("#broj_spojnica").value);
   ucrtaniVod.set("sifra_dionice", document.querySelector("#sifra_dionice").value);
 }
+
+function prikaziPoljaOdabranogVoda() {
+  //Ovdje kao prikazi iz data u slučaju trafostanica
+}

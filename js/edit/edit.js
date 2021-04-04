@@ -85,27 +85,40 @@ function sacuvaj() {
     return false;
   }
   if (odabraniLejerUnos === "stubovi") {
-    //if (blnDodijeljenoGpxProperties) {
     if (selectGpxFeature) {
       dodajPoljaOdabranomGpxStubu();
       sledecaGpxTacka();
       poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
     }
-    /*} else {
-      dodajPoljaGpxStubovi();
-      poruka("Uspjeh", "Uneseni podaci dodijeljeni svim tačkama iz fajla");
-    }*/
-  } else {
-    if (odabraniLejerUnos === "vodovi") {
-      //TODO: Preuzeti vrijednosti iz polja i otvoriti formu za povezivanje voda. Atribute dodijeliti iscrtanoj liniji
+  }
+  if (odabraniLejerUnos === "vodovi") {
+    //TODO: Preuzeti vrijednosti iz polja i otvoriti formu za povezivanje voda. Atribute dodijeliti iscrtanoj liniji
+  }
+  if (odabraniLejerUnos === "trafostanice") {
+    if (selectGpxFeature) {
+      dodajPoljaOdabranojGpxTrafostanici();
+    } else {
+      poruka("Upozorenje", "Potrebno je odabrati objekat iz gpx fajla");
     }
-    if (odabraniLejerUnos === "trafostanice") {
-      if (selectGpxFeature) {
-        dodajPoljaOdabranojGpxTrafostanici();
-      } else {
-        poruka("Upozorenje", "Potrebno je odabrati objekat iz gpx fajla");
-      }
-    }
+  }
+  if (odabraniLejerUnos === "vodovi") {
+    //TODO: Preuzeti vrijednosti iz polja i otvoriti formu za povezivanje voda. Atribute dodijeliti iscrtanoj liniji
+  }
+  if (odabraniLejerUnos === "nkro") {
+    dodajPoljaOdabranomGpxNKRO();
+    sledecaGpxTacka();
+    poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
+  }
+  if (odabraniLejerUnos === "prikljucno_mjesto") {
+    dodajPoljaOdabranomGpxPM();
+    sledecaGpxTacka();
+    poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
+  }
+  if (odabraniLejerUnos === "pod") {
+    alert("Nije urađeno");
+  }
+  if (odabraniLejerUnos === "potrosac") {
+    alert("Nije urađeno");
   }
 }
 

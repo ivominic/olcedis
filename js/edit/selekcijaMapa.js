@@ -220,6 +220,9 @@ function prikazPodatakaIzGpxTacaka() {
     if (selectGpxFeature.get("nivo") === "10") {
       pomLejer = "Stub 10KV";
     }
+    if (selectGpxFeature.get("nivo") === "0.4") {
+      pomLejer = "Stub 04KV";
+    }
     prikazPanelaAtributa(pomLejer);
   } else if (selectGpxFeature.get("lejer") === "trafostanice") {
     prikaziPoljaOdabraneGpxTrafostanice();
@@ -227,6 +230,36 @@ function prikazPodatakaIzGpxTacaka() {
     if (selectGpxFeature.get("nivo") === "10") {
       pomLejer = "Trafostanica 10KV";
     }
+    if (selectGpxFeature.get("nivo") === "0.4") {
+      pomLejer = "Trafostanica 04KV";
+    }
+    prikazPanelaAtributa(pomLejer);
+  } else if (selectGpxFeature.get("lejer") === "vodovi") {
+    //Ovo će trebati za poseban wfs lejer za iscrtane vodove
+    prikaziPoljaOdabranogVoda();
+    let pomLejer = "Vod 35KV";
+    if (selectGpxFeature.get("nivo") === "10") {
+      pomLejer = "Vod 10KV";
+    }
+    if (selectGpxFeature.get("nivo") === "0.4") {
+      pomLejer = "Vod 04KV";
+    }
+    prikazPanelaAtributa(pomLejer);
+  } else if (selectGpxFeature.get("lejer") === "nkro") {
+    prikaziPoljaOdabranogGpxNKRO();
+    let pomLejer = "NKRO";
+    prikazPanelaAtributa(pomLejer);
+  } else if (selectGpxFeature.get("lejer") === "prikljucno_mjesto") {
+    prikaziPoljaOdabranogGpxPM();
+    let pomLejer = "Priključno mjesto";
+    prikazPanelaAtributa(pomLejer);
+  } else if (selectGpxFeature.get("lejer") === "pod") {
+    prikaziPoljaOdabranogGpxPod();
+    let pomLejer = "POD";
+    prikazPanelaAtributa(pomLejer);
+  } else if (selectGpxFeature.get("lejer") === "potrosaci") {
+    prikaziPoljaOdabranogGpxPotrosac();
+    let pomLejer = "Potrošač";
     prikazPanelaAtributa(pomLejer);
   }
 }
@@ -279,7 +312,8 @@ function selekcijaGpxPoligonom() {
   wktVod = wktVod.replace(/_/g, ",");
   wktVod = wktVod.replace(",ZM", "");
   wktVod = wktVod.replace(",Z", "");
-  var feature = format.readFeature(wktVod, {});
+  let feature = format.readFeature(wktVod, {});
+  //TODO: Ovdje dodati properties
 
   vektorKreiraniVodovi.getSource().clear();
   vektorKreiraniVodovi.getSource().addFeatures(nizVodovaGpx);
