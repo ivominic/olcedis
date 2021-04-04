@@ -80,7 +80,7 @@ function sacuvaj() {
     return false;
   }*/
 
-  if (!selectGpxFeature) {
+  if (!selectGpxFeature && odabraniLejerUnos !== "vodovi") {
     poruka("Upozorenje", "Potrebno je odabrati tačku iz gpx fajla.");
     return false;
   }
@@ -97,10 +97,7 @@ function sacuvaj() {
     }*/
   } else {
     if (odabraniLejerUnos === "vodovi") {
-      if (selectGpxFeature) {
-      } else {
-        poruka("Upozorenje", "Potrebno je odabrati objekat iz gpx fajla");
-      }
+      //TODO: Preuzeti vrijednosti iz polja i otvoriti formu za povezivanje voda. Atribute dodijeliti iscrtanoj liniji
     }
     if (odabraniLejerUnos === "trafostanice") {
       if (selectGpxFeature) {
