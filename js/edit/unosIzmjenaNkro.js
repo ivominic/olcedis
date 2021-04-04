@@ -1,5 +1,7 @@
 function dodajPoljaOdabranomGpxNKRO() {
-  if (!selectGpxFeature.hasOwnProperty("lejer") || selectGpxFeature.get("lejer") === "nkro") {
+  console.log("LEJER PROVJERA NKRO", selectGpxFeature.get("lejer"));
+  //alert(selectGpxFeature.get("lejer"));
+  if (selectGpxFeature.get("lejer") === undefined || selectGpxFeature.get("lejer") === "nkro") {
     selectGpxFeature.set("wizard", 0);
     selectGpxFeature.set("lejer", "nkro");
     selectGpxFeature.set("gps", document.querySelector("#gps").value);
@@ -16,6 +18,7 @@ function dodajPoljaOdabranomGpxNKRO() {
     selectGpxFeature.set("sifra_napojne", sifraNapojneTrafostanice);
     selectGpxFeature.set("naziv_napojne", nazivNapojneTrafostanice);
     selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
+    poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
   } else {
     poruka("Upozorenje", "Odabrani objekat je već definisan kao drugi lejer");
   }

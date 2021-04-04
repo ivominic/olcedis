@@ -1,5 +1,5 @@
 function dodajPoljaOdabranomGpxPotrosac() {
-  if (!selectGpxFeature.hasOwnProperty("lejer") || selectGpxFeature.get("lejer") === "potrosac") {
+  if (selectGpxFeature.get("lejer") === undefined || selectGpxFeature.get("lejer") === "potrosac") {
     /*selectGpxFeature.set("wizard", 0);
     selectGpxFeature.set("lejer", "prikljucno_mjesto");
     selectGpxFeature.set("gps", document.querySelector("#gps").value);

@@ -1,5 +1,5 @@
 function dodajPoljaOdabranomGpxPM() {
-  if (!selectGpxFeature.hasOwnProperty("lejer") || selectGpxFeature.get("lejer") === "prikljucno_mjesto") {
+  if (selectGpxFeature.get("lejer") === undefined || selectGpxFeature.get("lejer") === "prikljucno_mjesto") {
     selectGpxFeature.set("wizard", 0);
     selectGpxFeature.set("lejer", "prikljucno_mjesto");
     selectGpxFeature.set("gps", document.querySelector("#gps").value);
@@ -16,6 +16,7 @@ function dodajPoljaOdabranomGpxPM() {
     selectGpxFeature.set("sifra_napojne", sifraNapojneTrafostanice);
     selectGpxFeature.set("naziv_napojne", nazivNapojneTrafostanice);
     selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
+    poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
   } else {
     poruka("Upozorenje", "Odabrani objekat je već definisan kao drugi lejer");
   }

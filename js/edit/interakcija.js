@@ -101,49 +101,62 @@ function prikazPanelaAtributa(sloj) {
   if (sloj === "Stub 35KV") {
     odabraniLejerUnos = "stubovi";
     akcijaLejerNivo = "35";
+    document.querySelector("#ddl_sloj_podataka").value = "stub35";
     prikaziAtributDivStubove(akcijaLejerNivo);
   } else if (sloj === "Stub 10KV") {
     odabraniLejerUnos = "stubovi";
     akcijaLejerNivo = "10";
+    document.querySelector("#ddl_sloj_podataka").value = "stub10";
     prikaziAtributDivStubove(akcijaLejerNivo);
   } else if (sloj === "Stub 04KV") {
     odabraniLejerUnos = "stubovi";
     akcijaLejerNivo = "0.4";
+    document.querySelector("#ddl_sloj_podataka").value = "stub04";
     prikaziAtributDivStubove(akcijaLejerNivo);
   } else if (sloj === "Vod 35KV") {
     odabraniLejerUnos = "vodovi";
     akcijaLejerNivo = "35";
+    document.querySelector("#ddl_sloj_podataka").value = "vod35";
     prikaziAtributDivVodove(akcijaLejerNivo);
   } else if (sloj === "Vod 10KV") {
     odabraniLejerUnos = "vodovi";
     akcijaLejerNivo = "10";
+    document.querySelector("#ddl_sloj_podataka").value = "vod10";
     prikaziAtributDivVodove(akcijaLejerNivo);
   } else if (sloj === "Vod 04KV") {
     odabraniLejerUnos = "vodovi";
     akcijaLejerNivo = "0.4";
+    document.querySelector("#ddl_sloj_podataka").value = "vod04";
     prikaziAtributDivVodove(akcijaLejerNivo);
   } else if (sloj === "Trafostanica35x") {
     odabraniLejerUnos = "trafostanice";
     akcijaLejerNivo = "35";
+    document.querySelector("#ddl_sloj_podataka").value = "trafostanica35";
     prikaziAtributDivTrafostanice(akcijaLejerNivo);
   } else if (sloj === "Trafostanica1004") {
     odabraniLejerUnos = "trafostanice";
     akcijaLejerNivo = "10";
+    document.querySelector("#ddl_sloj_podataka").value = "trafostanica10";
     prikaziAtributDivTrafostanice(akcijaLejerNivo);
   } else if (sloj === "Trafostanica110x") {
     odabraniLejerUnos = "trafostanice";
     akcijaLejerNivo = "110";
+    document.querySelector("#ddl_sloj_podataka").value = "trafostanica110";
     prikaziAtributDivTrafostanice(akcijaLejerNivo);
   } else if (sloj === "NKRO") {
     odabraniLejerUnos = "nkro";
+    document.querySelector("#ddl_sloj_podataka").value = "nkro";
     prikaziAtributDivNkro();
   } else if (sloj === "Priključno mjesto") {
     odabraniLejerUnos = "prikljucno_mjesto";
+    document.querySelector("#ddl_sloj_podataka").value = "prikljucno_mjesto";
     prikaziAtributDivPrikljucnoMjesto();
   } else if (sloj === "Potrošač") {
     odabraniLejerUnos = "potrosaci";
+    document.querySelector("#ddl_sloj_podataka").value = "potrosac";
   } else if (sloj === "POD") {
     odabraniLejerUnos = "pod";
+    document.querySelector("#ddl_sloj_podataka").value = "pod";
   }
   showDiv("#atributiDiv");
   console.log("akcijaLejerNivo", akcijaLejerNivo);

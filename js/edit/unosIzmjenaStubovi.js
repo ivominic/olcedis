@@ -109,7 +109,7 @@ function dodajPoljaGpxStubovi() {
 }
 
 function dodajPoljaOdabranomGpxStubu() {
-  if (!selectGpxFeature.hasOwnProperty("lejer") || selectGpxFeature.get("lejer") === "stubovi") {
+  if (selectGpxFeature.get("lejer") === undefined || selectGpxFeature.get("lejer") === "stubovi") {
     if (selectGpxFeature.values_.napon === "0.4") {
       selectGpxFeature.set("tip", document.querySelector("#tip_stub").value);
       selectGpxFeature.set("rasvjeta", document.querySelector("#rasvjeta_stub").value);
@@ -174,6 +174,8 @@ function dodajPoljaOdabranomGpxStubu() {
     selectGpxFeature.set("vlasnistvo", document.querySelector("#vlasnistvo").value);
     selectGpxFeature.set("opstina", document.querySelector("#opstina").value);
     selectGpxFeature.set("napon", document.querySelector("#napon").value);
+
+    poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
   } else {
     poruka("Upozorenje", "Odabrani objekat je već definisan kao drugi lejer");
   }
