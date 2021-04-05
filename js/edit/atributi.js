@@ -275,7 +275,7 @@ function prikaziAtributDivVodove(napon) {
     document.querySelector("#divUnosUzePresjekVod35").style.display = "flex";
     document.querySelector("#divUnosUzeVod10").style.display = "flex";
   }
-  document.querySelector("#divUnosGps").style.display = "flex";
+  //document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosFid1").style.display = "flex";
   document.querySelector("#divUnosNapon").style.display = "flex";
   document.querySelector("#divUnosPogSprem").style.display = "flex";

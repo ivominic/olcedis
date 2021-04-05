@@ -177,7 +177,7 @@ function dodajPoljaOdabranomGpxStubu() {
 
     poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
   } else {
-    poruka("Upozorenje", "Odabrani objekat je već definisan kao drugi lejer");
+    poruka("Upozorenje", "Odabrani objekat je već definisan kao drugi tip objekta");
   }
 }
 

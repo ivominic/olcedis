@@ -154,9 +154,11 @@ function prikazPanelaAtributa(sloj) {
   } else if (sloj === "Potrošač") {
     odabraniLejerUnos = "potrosaci";
     document.querySelector("#ddl_sloj_podataka").value = "potrosac";
+    prikaziAtributDivPotrosac();
   } else if (sloj === "POD") {
     odabraniLejerUnos = "pod";
     document.querySelector("#ddl_sloj_podataka").value = "pod";
+    prikaziAtributDivPod();
   }
   showDiv("#atributiDiv");
   console.log("akcijaLejerNivo", akcijaLejerNivo);
@@ -220,6 +222,10 @@ function ddlLejerChange() {
     prikazPanelaAtributa("NKRO");
   } else if (value === "prikljucno_mjesto") {
     prikazPanelaAtributa("Priključno mjesto");
+  } else if (value === "potrosac") {
+    prikazPanelaAtributa("Potrošač");
+  } else if (value === "pod") {
+    prikazPanelaAtributa("POD");
   }
 }
 

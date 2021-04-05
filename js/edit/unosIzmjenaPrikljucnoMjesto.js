@@ -18,7 +18,7 @@ function dodajPoljaOdabranomGpxPM() {
     selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
     poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
   } else {
-    poruka("Upozorenje", "Odabrani objekat je već definisan kao drugi lejer");
+    poruka("Upozorenje", "Odabrani objekat je već definisan kao drugi tip objekta");
   }
 }
 
