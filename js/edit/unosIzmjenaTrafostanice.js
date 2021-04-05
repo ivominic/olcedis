@@ -30,9 +30,9 @@ function dodajPoljaOdabranojGpxTrafostanici() {
   selectGpxFeature.set("katastar", document.querySelector("#read_katastar").value);
   selectGpxFeature.set("id_trafostanice", document.querySelector("#read_id_trafostanice").value);
   selectGpxFeature.set("region", document.querySelector("#read_region").value);
-  selectGpxFeature.set("naziv_napojne", document.querySelector("#read_naziv_napojne").value);
-  selectGpxFeature.set("sifra_napojne", document.querySelector("#read_sifra_napojne").value);
-  selectGpxFeature.set("izvod_napojne", document.querySelector("#read_izvod_napojne").value);
+  selectGpxFeature.set("sifra_napojne", sifraNapojneTrafostanice);
+  selectGpxFeature.set("naziv_napojne", nazivNapojneTrafostanice);
+  selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
   selectGpxFeature.set("prenos_odnos", document.querySelector("#read_prenos_odnos").value);
   selectGpxFeature.set("id_billing", document.querySelector("#read_id_billing").value);
   selectGpxFeature.set("adresa", document.querySelector("#read_adresa").value);

@@ -97,6 +97,7 @@ function excelDownload() {
 }
 
 function prikazPanelaAtributa(sloj) {
+  console.log("prikazPanelAtributa", sloj);
   sakrijSvaPoljaAtributDiv();
   if (sloj === "Stub 35KV") {
     odabraniLejerUnos = "stubovi";

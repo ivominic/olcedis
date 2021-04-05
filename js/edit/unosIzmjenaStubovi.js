@@ -100,9 +100,9 @@ function dodajPoljaGpxStubovi() {
       el.set("posjeduje_sliku", "test");
       el.set("vlasnik", "test");
       el.set("geohash_id_no", "test");
-      el.set("sifra_napojne", "test");
-      el.set("izvod_napojne", "test");
-      el.set("naziv_napojne", "test");
+      selectGpxFeature.set("sifra_napojne", sifraNapojneTrafostanice);
+      selectGpxFeature.set("naziv_napojne", nazivNapojneTrafostanice);
+      selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
     }
   });
   console.log("gpx features", gpxFeatures);

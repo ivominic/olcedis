@@ -100,11 +100,13 @@ function sacuvaj() {
     return false;
   }
   if (odabraniLejerUnos === "pod") {
-    alert("Nije urađeno");
+    dodajPoljaOdabranomGpxPod();
+    sledecaGpxTacka();
     return false;
   }
-  if (odabraniLejerUnos === "potrosac") {
-    alert("Nije urađeno");
+  if (odabraniLejerUnos === "potrosaci") {
+    dodajPoljaOdabranomGpxPotrosac();
+    sledecaGpxTacka();
     return false;
   }
 }

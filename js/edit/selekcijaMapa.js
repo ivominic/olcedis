@@ -257,7 +257,7 @@ function prikazPodatakaIzGpxTacaka() {
     prikaziPoljaOdabranogGpxPod();
     let pomLejer = "POD";
     prikazPanelaAtributa(pomLejer);
-  } else if (selectGpxFeature.get("lejer") === "potrosaci") {
+  } else if (selectGpxFeature.get("lejer") === "potrosac") {
     prikaziPoljaOdabranogGpxPotrosac();
     let pomLejer = "Potrošač";
     prikazPanelaAtributa(pomLejer);
