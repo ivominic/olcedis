@@ -28,40 +28,61 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
     poruka("Upozorenje", "Potrebno je selektovati objekat iz gpx fajla.");
     return false;
   }
-  let selFeature = select.getFeatures().array_[0];
-  select.getFeatures().clear();
 
+  let tekstHtml = "";
   nizPretplatnika.forEach((jsonPretplatnik) => {
-    console.log("Pojedinačni niz pretplatnika", jsonPretplatnik);
-    vectorSource.getFeatures().forEach(function (el) {
-      let noviEl = el.clone();
-      if (el !== undefined && el.ol_uid == selFeature.ol_uid) {
-        //vectorSource.addFeature(el.clone());
-        //TODO: Dodijeliti vrijednosti el feature-u iz jsonPretplatnik objekta
-        noviEl.set("wizard", 0);
-        noviEl.set("lejer", "potrosac");
-        noviEl.set("gps", document.querySelector("#gps").value);
-        noviEl.set("fid_1", document.querySelector("#fid_1").value);
-        noviEl.set("izvod_ts", document.querySelector("#izvod_ts").value); //ILI izvodNapojneTrafostanice
-        noviEl.set("napojna_ts", document.querySelector("#napojna_ts").value); //ILI sifraNapojneTrafostanice
-        noviEl.set("id", jsonPretplatnik.id);
-        noviEl.set("naziv_ts", jsonPretplatnik.naziv_trafostanice);
-        noviEl.set("sifra_ts", document.querySelector("#sifra_ts").value);
-        noviEl.set("prik_kabal", document.querySelector("#prik_kabal").value);
-        noviEl.set("pod", jsonPretplatnik.pod_na_mm);
-        noviEl.set("adresa_mm", jsonPretplatnik.adresa_mjesta_mjerenja);
-        noviEl.set("prik_mjesto", document.querySelector("#prik_mjesto").value);
-        noviEl.set("naziv_nn_izvod", document.querySelector("#naziv_nn_izvod").value);
-        noviEl.set("pretplatni_br", jsonPretplatnik.sifra);
-        noviEl.set("br_brojila", jsonPretplatnik.broj_brojila);
-        noviEl.set("sifra_napojne", sifraNapojneTrafostanice);
-        noviEl.set("naziv_napojne", nazivNapojneTrafostanice);
-        noviEl.set("izvod_napojne", izvodNapojneTrafostanice);
-        vectorSource.addFeature(noviEl);
-      }
-    });
+    tekstHtml += "<li>" + jsonPretplatnik.sifra + " - " + jsonPretplatnik.naziv_potrosaca + "</li>";
   });
-  izbrisiFeatureIzVektora(selFeature);
+  tekstHtml = "<ul style='text-align:left'>" + tekstHtml + "</ul>";
+
+  Swal.fire({
+    title: "Da li želite da kreirate objekte za sljedeće korisnike?",
+    icon: "info",
+    html: tekstHtml,
+    showDenyButton: true,
+    confirmButtonText: `Da`,
+    denyButtonText: `Ne`,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      let selFeature = select.getFeatures().array_[0];
+      select.getFeatures().clear();
+
+      nizPretplatnika.forEach((jsonPretplatnik) => {
+        console.log("Pojedinačni niz pretplatnika", jsonPretplatnik);
+        vectorSource.getFeatures().forEach(function (el) {
+          let noviEl = el.clone();
+          if (el !== undefined && el.ol_uid == selFeature.ol_uid) {
+            //vectorSource.addFeature(el.clone());
+            //TODO: Dodijeliti vrijednosti el feature-u iz jsonPretplatnik objekta
+            noviEl.set("wizard", 0);
+            noviEl.set("lejer", "potrosac");
+            noviEl.set("gps", document.querySelector("#gps").value);
+            noviEl.set("fid_1", document.querySelector("#fid_1").value);
+            noviEl.set("izvod_ts", document.querySelector("#izvod_ts").value); //ILI izvodNapojneTrafostanice
+            noviEl.set("napojna_ts", document.querySelector("#napojna_ts").value); //ILI sifraNapojneTrafostanice
+            noviEl.set("id", jsonPretplatnik.id);
+            noviEl.set("naziv_ts", jsonPretplatnik.naziv_trafostanice);
+            noviEl.set("sifra_ts", document.querySelector("#sifra_ts").value);
+            noviEl.set("prik_kabal", document.querySelector("#prik_kabal").value);
+            noviEl.set("pod", jsonPretplatnik.pod_na_mm);
+            noviEl.set("adresa_mm", jsonPretplatnik.adresa_mjesta_mjerenja);
+            noviEl.set("prik_mjesto", document.querySelector("#prik_mjesto").value);
+            noviEl.set("naziv_nn_izvod", document.querySelector("#naziv_nn_izvod").value);
+            noviEl.set("pretplatni_br", jsonPretplatnik.sifra);
+            noviEl.set("br_brojila", jsonPretplatnik.broj_brojila);
+            noviEl.set("sifra_napojne", sifraNapojneTrafostanice);
+            noviEl.set("naziv_napojne", nazivNapojneTrafostanice);
+            noviEl.set("izvod_napojne", izvodNapojneTrafostanice);
+            vectorSource.addFeature(noviEl);
+          }
+        });
+        poruka("Uspjeh", "Uspješno kreirani potrošači");
+      });
+      izbrisiFeatureIzVektora(selFeature);
+    } else if (result.isDenied) {
+      Swal.fire("Odbijeno", "", "error");
+    }
+  });
 
   /*if (selectGpxFeature.get("lejer") === undefined || selectGpxFeature.get("lejer") === "potrosac") {
     selectGpxFeature.set("wizard", 0);
