@@ -1,4 +1,6 @@
 function dodajPoljaOdabranomGpxPod() {
+  parsiranjeProvjeraPotrosaca();
+  return false;
   if (selectGpxFeature.get("lejer") === undefined || selectGpxFeature.get("lejer") === "pod") {
     selectGpxFeature.set("wizard", 0);
     selectGpxFeature.set("lejer", "pod");

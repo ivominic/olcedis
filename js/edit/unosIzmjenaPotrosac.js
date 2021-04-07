@@ -1,5 +1,69 @@
 function dodajPoljaOdabranomGpxPotrosac() {
+  //TODO: prikazati confirm sa spiskom svih korisnika i nakon toga, ukoliko se potvrdi:
+  //TODO: split polja pretplatni broj odvojen zarezima. Prethodno ukloniti sve spaceove
+  //TODO: po splitovanom nizu prolazimo svaki zapis i kreiramo novi feature na istim koordinatama
+  //TODO: brišemo tačku u kojoj je unijeta vrijednost svih pretplatnih brojeva
+  let pretplatniBrojevi = document.querySelector("#pretplatni_br").value.replace(/ /g, "");
+  if (pretplatniBrojevi == "") {
+    poruka("Upozorenje", "Potrebno je unijeti pretplatne brojeve potrošača, odvojene zarezima.");
+    return false;
+  }
   if (selectGpxFeature.get("lejer") === undefined || selectGpxFeature.get("lejer") === "potrosac") {
+    podaciZaSpisakPotrosaca(pretplatniBrojevi);
+  }
+}
+
+function dupliraj() {
+  //Ovo razraditi za kreiranje pojedinačnih gpx potrošača
+  vectorSource.getFeatures().forEach(function (el) {
+    if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
+      select.getFeatures().clear(); //Da bi uklonili stil selektovane tačke
+      vectorSource.addFeature(el.clone());
+    }
+  });
+}
+
+function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
+  if (select.getFeatures().array_[0] === undefined) {
+    poruka("Upozorenje", "Potrebno je selektovati objekat iz gpx fajla.");
+    return false;
+  }
+  let selFeature = select.getFeatures().array_[0];
+  select.getFeatures().clear();
+
+  nizPretplatnika.forEach((jsonPretplatnik) => {
+    console.log("Pojedinačni niz pretplatnika", jsonPretplatnik);
+    vectorSource.getFeatures().forEach(function (el) {
+      let noviEl = el.clone();
+      if (el !== undefined && el.ol_uid == selFeature.ol_uid) {
+        //vectorSource.addFeature(el.clone());
+        //TODO: Dodijeliti vrijednosti el feature-u iz jsonPretplatnik objekta
+        noviEl.set("wizard", 0);
+        noviEl.set("lejer", "potrosac");
+        noviEl.set("gps", document.querySelector("#gps").value);
+        noviEl.set("fid_1", document.querySelector("#fid_1").value);
+        noviEl.set("izvod_ts", document.querySelector("#izvod_ts").value); //ILI izvodNapojneTrafostanice
+        noviEl.set("napojna_ts", document.querySelector("#napojna_ts").value); //ILI sifraNapojneTrafostanice
+        noviEl.set("id", jsonPretplatnik.id);
+        noviEl.set("naziv_ts", jsonPretplatnik.naziv_trafostanice);
+        noviEl.set("sifra_ts", document.querySelector("#sifra_ts").value);
+        noviEl.set("prik_kabal", document.querySelector("#prik_kabal").value);
+        noviEl.set("pod", jsonPretplatnik.pod_na_mm);
+        noviEl.set("adresa_mm", jsonPretplatnik.adresa_mjesta_mjerenja);
+        noviEl.set("prik_mjesto", document.querySelector("#prik_mjesto").value);
+        noviEl.set("naziv_nn_izvod", document.querySelector("#naziv_nn_izvod").value);
+        noviEl.set("pretplatni_br", jsonPretplatnik.sifra);
+        noviEl.set("br_brojila", jsonPretplatnik.broj_brojila);
+        noviEl.set("sifra_napojne", sifraNapojneTrafostanice);
+        noviEl.set("naziv_napojne", nazivNapojneTrafostanice);
+        noviEl.set("izvod_napojne", izvodNapojneTrafostanice);
+        vectorSource.addFeature(noviEl);
+      }
+    });
+  });
+  izbrisiFeatureIzVektora(selFeature);
+
+  /*if (selectGpxFeature.get("lejer") === undefined || selectGpxFeature.get("lejer") === "potrosac") {
     selectGpxFeature.set("wizard", 0);
     selectGpxFeature.set("lejer", "potrosac");
     selectGpxFeature.set("gps", document.querySelector("#gps").value);
@@ -22,7 +86,7 @@ function dodajPoljaOdabranomGpxPotrosac() {
     poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
   } else {
     poruka("Upozorenje", "Odabrani objekat je već definisan kao drugi tip objekta");
-  }
+  }*/
 }
 
 function prikaziPoljaOdabranogGpxPotrosac() {
@@ -40,4 +104,42 @@ function prikaziPoljaOdabranogGpxPotrosac() {
   document.querySelector("#naziv_nn_izvod").value = selectGpxFeature.values_.naziv_nn_izvod;
   document.querySelector("#pretplatni_br").value = selectGpxFeature.values_.pretplatni_br;
   document.querySelector("#br_brojila").value = selectGpxFeature.values_.br_brojila;
+}
+
+function parsiranjeProvjeraPotrosaca(nizObjekataPotrosaca) {
+  let tekstHtml = "";
+  nizObjekataPotrosaca.forEach((el) => (tekstHtml += "<li>" + el.naziv + "</li>"));
+  Swal.fire({
+    title: "Da li želite da kreirate objekte za sljedeće korisnike?",
+    icon: "info",
+    html:
+      "<ul><li>potrošač 1</li><li>potrošač 2</li><li>potrošač 3</li><li>potrošač 1</li><li>potrošač 2</li><li>potrošač 3</li><li>potrošač 1</li><li>potrošač 2</li><li>potrošač 3</li><li>potrošač 1</li><li>potrošač 2</li><li>potrošač 3</li><li>potrošač 1</li><li>potrošač 2</li><li>potrošač 3</li><li>potrošač 1</li><li>potrošač 2</li><li>potrošač 3</li><li>potrošač 1</li><li>potrošač 2</li><li>potrošač 3</li><li>potrošač 1</li><li>potrošač 2</li><li>potrošač 3</li></ul>",
+    showDenyButton: true,
+    confirmButtonText: `Da`,
+    denyButtonText: `Ne`,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire("Potvrđeno!", "", "success");
+    } else if (result.isDenied) {
+      Swal.fire("Odbijeno", "", "error");
+    }
+  });
+}
+
+function izbrisiFeatureIzVektora(elBrisanje) {
+  if (elBrisanje === undefined) {
+    poruka("Upozorenje", "Potrebno je selektovati objekat za uklanjanje.");
+    return false;
+  }
+  let nizZaBrisanje = vectorSource.getFeatures();
+  //console.log("selektovani objekat", select.getFeatures().array_[0]);
+  vectorSource.getFeatures().forEach(function (el, index, nizZaBrisanje) {
+    if (elBrisanje !== undefined && el.ol_uid == elBrisanje.ol_uid) {
+      nizZaBrisanje.splice(index, 1);
+      select.getFeatures().array_.splice(0, 1);
+      elBrisanje = null;
+      vectorSource.clear();
+      vectorSource.addFeatures(nizZaBrisanje);
+    }
+  });
 }

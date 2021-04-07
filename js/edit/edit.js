@@ -101,12 +101,12 @@ function sacuvaj() {
   }
   if (odabraniLejerUnos === "pod") {
     dodajPoljaOdabranomGpxPod();
-    sledecaGpxTacka();
+    //sledecaGpxTacka();
     return false;
   }
   if (odabraniLejerUnos === "potrosaci") {
     dodajPoljaOdabranomGpxPotrosac();
-    sledecaGpxTacka();
+    //sledecaGpxTacka();
     return false;
   }
 }
@@ -345,8 +345,6 @@ function dupliraj() {
     poruka("Upozorenje", "Potrebno je selektovati objekat iz gpx fajla.");
     return false;
   }
-  let nizZaZamjenu = vectorSource.getFeatures().slice();
-  nizZaZamjenu.push(select.getFeatures().array_[0]);
 
   vectorSource.getFeatures().forEach(function (el) {
     if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {

@@ -577,6 +577,34 @@ function vodoviIzBilingaZaUparivanje(nizVodova) {
   });
 }
 
+/**
+ * Metoda koja za predati niz pretplatnih brojeva vrati sve podatke o korisnicima
+ * @param {} nizPretplatnihBrojeva
+ */
+function podaciZaSpisakPotrosaca(nizPretplatnihBrojeva) {
+  //Niz id-jeva vodova
+  if (nizPretplatnihBrojeva.length === 0) {
+    poruka("Upozorenje", "Nije zadat nijedan pretplatni broj.");
+    return false;
+  }
+
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/get_consumer_data?pretplatni_brojevi=" + nizPretplatnihBrojeva;
+  urlServisa += "&t=" + Date.now();
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "POST",
+    success: function (data) {
+      console.log("REZULTAT", data);
+      kreiranjePojedinacnihGpxPotrosaca(data);
+    },
+    error: function (x, y, z) {
+      console.log("Greska", x.responseJSON["error"]);
+      poruka("Greska", x.responseJSON["error"]);
+    },
+  });
+}
+
 function tokenGeoserver() {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/geonode_login";
   $.ajax({
