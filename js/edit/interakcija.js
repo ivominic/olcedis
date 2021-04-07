@@ -96,6 +96,8 @@ function excelDownload() {
   wfsDownload("excel2007");
 }
 
+$("#topNav").children().prop("disabled", true);
+
 function prikazPanelaAtributa(sloj) {
   console.log("prikazPanelAtributa", sloj);
   sakrijSvaPoljaAtributDiv();

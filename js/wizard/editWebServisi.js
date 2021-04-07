@@ -592,3 +592,23 @@ function tokenGeoserver() {
   });
 }
 tokenGeoserver();
+
+/**
+ * Metoda koja za predati username (logovanog korisnika) vrati true ili false u zavisnosti da li ima pravo pristupa
+ * @param {} username
+ */
+function pravaPristupaStranici(username) {
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/pravo_pristupa_unos?username=" + username;
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "GET",
+    success: function (data) {
+      return data.pristup;
+    },
+    error: function (x, y, z) {
+      console.log("greška provjeraPristupaStranici", x.responseText);
+      return false;
+    },
+  });
+}
