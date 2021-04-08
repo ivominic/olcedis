@@ -595,7 +595,6 @@ function podaciZaSpisakPotrosaca(nizPretplatnihBrojeva) {
     data: "",
     type: "POST",
     success: function (data) {
-      console.log("REZULTAT", data);
       kreiranjePojedinacnihGpxPotrosaca(data);
     },
     error: function (x, y, z) {
