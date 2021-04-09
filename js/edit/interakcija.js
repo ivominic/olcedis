@@ -297,6 +297,9 @@ document.querySelector("#btnOdabirNapojneTrafostanice").addEventListener("click"
 document.querySelector("#btnPotvrdiNapojnuTrafostanicu").addEventListener("click", potvrdaNapojneTrafostaniceUnos);
 document.querySelector("#txtSifraNapojneTrafostanice").addEventListener("keyup", promjenaSifreNapojneTrafostanice);
 
+//Odabir priključnog mjesta za potrošače
+document.querySelector("#btnMapaPrikljucnoMjesto").addEventListener("click", odabirPrikljucnogMjestaZaUnosPotrosaca);
+
 function odabirNapojneTrafostaniceUnos() {
   odabirNapojneTrafostaniceSaMape();
 }

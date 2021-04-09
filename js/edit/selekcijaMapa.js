@@ -70,6 +70,18 @@ function klikNaVektore(browserEvent) {
     document.querySelector("#divSljedeciObjekat").style.display = "none";
   }
 
+  nizGpxTacakaZaObradu.forEach((el) => {
+    console.log("feature za priključno mjesto", el);
+    if (el.values_.lejer === "prikljucno_mjesto") {
+      $("#prik_mjesto").append(
+        $("<option>", {
+          value: el.values_.name,
+          text: el.values_.name,
+        })
+      );
+    }
+  });
+
   /*vectorSource.getFeatures().forEach(function (el) {
     if (el.values_.name === "065") {
       select.getFeatures().clear();
@@ -453,6 +465,47 @@ function klikNaRastereZaVodove(browserEvent) {
   });
 }
 
+function klikNaRastereZaOdabirPrikljucnogMjesta(browserEvent) {
+  let coordinate = browserEvent.coordinate;
+  let tempNiz = [];
+  let url = wmsPrikljucnoMjesto.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
+    INFO_FORMAT: "application/json",
+    feature_count: "5",
+  });
+  if (url) {
+    fetch(url)
+      .then(function (response) {
+        return response.text();
+      })
+      .then(function (json) {
+        let odgovor = JSON.parse(json);
+        if (odgovor.features.length > 0) {
+          console.log(odgovor.features);
+          odgovor.features.forEach(function (el) {
+            tempNiz.push(el);
+          });
+        }
+
+        /*if (selektovaniDdlZaPovezivanjeVoda === "#ddlPocetnaTackaVodovi") {
+          nizPocetnihTacakaVoda = tempNiz.slice();
+        }
+        if (selektovaniDdlZaPovezivanjeVoda === "#ddlKrajnjaTackaVodovi") {
+          nizKrajnjihTacakaVoda = tempNiz.slice();
+        }*/
+        tempNiz.forEach((el) => {
+          $(prik_mjesto).append(
+            $("<option>", {
+              value: el.id,
+              text: el.id,
+            })
+          );
+        });
+        //Ukloniti metodu koja se poziva na klik
+        map.un("singleclick", klikNaRastereZaOdabirPrikljucnogMjesta);
+      });
+  }
+}
+
 function koordinateObjekataIzDdlova() {
   let pocetna = document.querySelector("#ddlPocetnaTackaVodovi").value;
   let krajnja = document.querySelector("#ddlKrajnjaTackaVodovi").value;
@@ -606,4 +659,11 @@ function klikNapojnaTrafostanicaMapa(browserEvent) {
         }
       });
   }
+}
+
+function odabirPrikljucnogMjestaZaUnosPotrosaca() {
+  map.removeInteraction(draw);
+  map.removeInteraction(modify);
+  $(prik_mjesto).empty();
+  map.on("singleclick", klikNaRastereZaOdabirPrikljucnogMjesta);
 }
