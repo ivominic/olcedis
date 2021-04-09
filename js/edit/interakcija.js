@@ -202,6 +202,7 @@ function novoPrikljucnoMjesto() {
 }
 
 function ddlLejerChange() {
+     borderClear();
   let value = document.querySelector("#ddl_sloj_podataka").value;
   if (value === "stub04") {
     prikazPanelaAtributa("Stub 04KV");
