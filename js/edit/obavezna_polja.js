@@ -1,4 +1,3 @@
-document.querySelector("#btnSacuvajTest").addEventListener("click",pozivButton);
 function pozivButton(){
 let sloj = document.querySelector("#ddl_sloj_podataka").value;
 let poruka = obaveznaPolja(sloj);
