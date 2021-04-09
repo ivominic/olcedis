@@ -39,6 +39,7 @@ let nizPotrosacaZaWebServis = []; //Niz u koji će se dodati svi potrošači za 
 let nizTrafostanicaGeohashZaWebServis = []; //Niz u koji će se dodavati sve trafostanice sa novim geohash_id_no (no = nadređeni objekat)
 
 let blnTopDown = false; //Za niskonaponsku mrežu, određuje da li će se raditi top-down ili bottom-up uparivanje
+let odabirSaMape = false; //Promjenljiva koja označava da li je u toku funkcionalnost odabira vrijednosti sa mape
 
 let draw,
   modify,
@@ -485,4 +486,21 @@ function wkt3Du2D(wkt3Dtacka) {
   const regex = /^(POINT M|POINT Z|POINT MZ|POINT ZM)\(([\d]+\.?[\d]+)\s+([\d]+\.[\d]+).*\)$/gm;
   const subst = `POINT($2 $3)`;
   return wkt3Dtacka.replace(regex, subst);
+}
+
+/**
+ * Metoda koja provjerava da li se zadata vrijednost već nalazi u drop down listi
+ * @param {*} ddl
+ * @param {*} vrijednost
+ */
+function provjeraPostojanjaElementaDdla(ddl, vrijednost) {
+  let postoji = false;
+  Array.from(ddl.options).forEach(function (item) {
+    console.log("options", vrijednost);
+    if (item.value === vrijednost) {
+      console.log("provjera", vrijednost);
+      postoji = true;
+    }
+  });
+  return postoji;
 }

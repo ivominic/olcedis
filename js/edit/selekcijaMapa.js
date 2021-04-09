@@ -73,12 +73,14 @@ function klikNaVektore(browserEvent) {
   nizGpxTacakaZaObradu.forEach((el) => {
     console.log("feature za priključno mjesto", el);
     if (el.values_.lejer === "prikljucno_mjesto") {
-      $("#prik_mjesto").append(
-        $("<option>", {
-          value: el.values_.name,
-          text: el.values_.name,
-        })
-      );
+      if (!provjeraPostojanjaElementaDdla(document.querySelector("#prik_mjesto"), el.values_.name)) {
+        $("#prik_mjesto").append(
+          $("<option>", {
+            value: el.values_.name,
+            text: el.values_.name,
+          })
+        );
+      }
     }
   });
 
@@ -151,24 +153,15 @@ select.on("select", function (e) {
   if (selectGpxFeature.values_.lejer) {
     //Popuni polja vrijednostima
     console.log("ulazi ovdje", selectGpxFeature.get("lejer"));
-    prikazPodatakaIzGpxTacaka();
+    if (!odabirSaMape) {
+      prikazPodatakaIzGpxTacaka();
+    }
   } else {
-    //Za sad ništa - da li prazniti polja?
-    document.querySelector("#gps").value = selectGpxFeature.values_.name;
+    if (!odabirSaMape) {
+      document.querySelector("#gps").value = selectGpxFeature.values_.name;
+    }
   }
-  /*if (blnZavrsniStub) {
-    blnZavrsniStub = false;
-    vrijednostKrajnjeTacke = parseInt(e.target.getFeatures().array_[0].values_.name);
-    poruka("Uspjeh", "Završni stub voda je " + e.target.getFeatures().array_[0].values_.name);
-  }
-  if (blnPocetniStub) {
-    blnPocetniStub = false;
-    vrijednostPocetneTacke = parseInt(e.target.getFeatures().array_[0].values_.name);
-    poruka("Uspjeh", "Početni stub voda je " + e.target.getFeatures().array_[0].values_.name);
-  }
-  if (vrijednostPocetneTacke > 0 && vrijednostKrajnjeTacke > 0 && vrijednostPocetneTacke !== vrijednostKrajnjeTacke) {
-    kreirajVod(vrijednostPocetneTacke, vrijednostKrajnjeTacke);
-  }*/
+  odabirSaMape = false;
 });
 
 var modifyV = new ol.interaction.Modify({
@@ -385,6 +378,7 @@ function sledecaGpxTacka() {
 function odabirPocetneTackeVoda() {
   map.removeInteraction(draw);
   map.removeInteraction(modify);
+  odabirSaMape = true;
   selektovaniDdlZaPovezivanjeVoda = "#ddlPocetnaTackaVodovi";
   nizPocetnihTacakaVoda.length = 0;
   $(selektovaniDdlZaPovezivanjeVoda).empty();
@@ -394,6 +388,7 @@ function odabirPocetneTackeVoda() {
 function odabirKrajnjeTackeVoda() {
   map.removeInteraction(draw);
   map.removeInteraction(modify);
+  odabirSaMape = true;
   selektovaniDdlZaPovezivanjeVoda = "#ddlKrajnjaTackaVodovi";
   nizKrajnjihTacakaVoda.length = 0;
   $(selektovaniDdlZaPovezivanjeVoda).empty();
@@ -664,6 +659,7 @@ function klikNapojnaTrafostanicaMapa(browserEvent) {
 function odabirPrikljucnogMjestaZaUnosPotrosaca() {
   map.removeInteraction(draw);
   map.removeInteraction(modify);
+  odabirSaMape = true;
   $(prik_mjesto).empty();
   map.on("singleclick", klikNaRastereZaOdabirPrikljucnogMjesta);
 }
