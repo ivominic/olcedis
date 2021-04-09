@@ -43,3 +43,11 @@ function prikaziPoljaOdabranogGpxPod() {
   document.querySelector("#pretplatni_br").value = selectGpxFeature.values_.pretplatni_br;
   document.querySelector("#br_brojila").value = selectGpxFeature.values_.br_brojila;
 }
+
+function generisanjeGpxPodaIzGeometrije(lat, lng) {
+  let tackaGeom = new ol.geom.Point([lat, lng]);
+  let featureTacka = new ol.Feature({ name: "tacka", geometry: tackaGeom });
+  featureTacka.values_.lejer = "pod";
+  console.log("feature tacka ****************************************************", featureTacka);
+  vectorSource.addFeature(featureTacka);
+}

@@ -298,6 +298,7 @@ dragAndDrop.on("addfeatures", function (event) {
     features: event.features,
     projection: event.projection,
   });
+  generisanjeGpxPodaIzGeometrije(20, 20);
   map.getLayers().push(
     new ol.layer.Vector({
       source: vectorSource,
