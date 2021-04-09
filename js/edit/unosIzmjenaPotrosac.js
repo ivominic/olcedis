@@ -39,7 +39,7 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
 
   Swal.fire({
     title: "Da li želite da kreirate objekte za sljedeće korisnike?",
-    icon: "info",
+    //icon: "info",
     html: tekstHtml,
     showDenyButton: true,
     confirmButtonText: `Da`,

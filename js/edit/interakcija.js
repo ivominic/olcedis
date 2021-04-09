@@ -311,6 +311,7 @@ function potvrdaNapojneTrafostaniceUnos() {
   nazivNapojneTrafostanice = document.querySelector("#txtNazivNapojneTrafostanice").value;
   izvodNapojneTrafostanice = izvod;
   closeDiv("#odabirNapojneTrafostaniceDiv");
+  enableMenija();
 }
 
 function promjenaSifreNapojneTrafostanice() {
@@ -322,5 +323,30 @@ function promjenaSifreNapojneTrafostanice() {
   } else {
     document.querySelector("#txtNazivNapojneTrafostanice").value = "";
     $("#ddlIzvodNapojneTrafostanice").empty();
+  }
+}
+
+function disableMenija() {
+  let akcija = document.getElementsByClassName("akcija");
+  kontroleZaDisable = akcija;
+  for (i = 0; i < akcija.length; i++) {
+    akcija[i].style.cursor = "not-allowed";
+    akcija[i].style.pointerEvents = "none";
+  }
+  let dropdown = document.getElementsByClassName("dropdown-content");
+  for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].style.display = "none";
+  }
+}
+
+function enableMenija() {
+  let akcija = document.getElementsByClassName("akcija");
+  for (i = 0; i < akcija.length; i++) {
+    akcija[i].style.cursor = "pointer";
+    akcija[i].style.pointerEvents = "all";
+  }
+  let dropdown = document.getElementsByClassName("dropdown-content");
+  for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].style.removeProperty("display");
   }
 }

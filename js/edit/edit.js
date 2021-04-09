@@ -278,6 +278,7 @@ let dragAndDrop = new ol.interaction.DragAndDrop({
 });
 dragAndDrop.on("addfeatures", function (event) {
   console.log("aaaa", event.features);
+  disableMenija();
   showDiv("#odabirNapojneTrafostaniceDiv");
   gpxFeatures = event.features;
 
