@@ -62,18 +62,18 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
               //TODO: Dodijeliti vrijednosti el feature-u iz jsonPretplatnik objekta
               noviEl.set("wizard", 0);
               noviEl.set("lejer", "potrosac");
-              noviEl.set("gps", document.querySelector("#gps").value);
-              noviEl.set("fid_1", document.querySelector("#fid_1").value);
-              noviEl.set("izvod_ts", document.querySelector("#izvod_ts").value); //ILI izvodNapojneTrafostanice
-              noviEl.set("napojna_ts", document.querySelector("#napojna_ts").value); //ILI sifraNapojneTrafostanice
+              noviEl.set("gps", document.querySelector("#gps").value); //šta sa ovim
+              //noviEl.set("fid_1", jsonPretplatnik.fid_1);
+              noviEl.set("izvod_ts", jsonPretplatnik.izvod_vod); //ILI izvodNapojneTrafostanice
+              noviEl.set("napojna_ts", jsonPretplatnik.sifra_trafostanice); //ILI sifraNapojneTrafostanice
               noviEl.set("id", jsonPretplatnik.id);
               noviEl.set("naziv_ts", jsonPretplatnik.naziv_trafostanice);
-              noviEl.set("sifra_ts", document.querySelector("#sifra_ts").value);
-              noviEl.set("prik_kabal", document.querySelector("#prik_kabal").value);
+              noviEl.set("sifra_ts", jsonPretplatnik.sifra_trafostanice);
+              noviEl.set("prik_kabal", jsonPretplatnik.provodnik_spolja + " " + jsonPretplatnik.presjek_spolja);
               noviEl.set("pod", jsonPretplatnik.pod_na_mm);
               noviEl.set("adresa_mm", jsonPretplatnik.adresa_mjesta_mjerenja);
               noviEl.set("prik_mjesto", document.querySelector("#prik_mjesto").value);
-              noviEl.set("naziv_nn_izvod", document.querySelector("#naziv_nn_izvod").value);
+              noviEl.set("naziv_nn_izvod", jsonPretplatnik.naziv_voda);
               noviEl.set("pretplatni_br", jsonPretplatnik.sifra);
               noviEl.set("br_brojila", jsonPretplatnik.broj_brojila);
               noviEl.set("sifra_napojne", sifraNapojneTrafostanice);
@@ -121,7 +121,7 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
 
 function prikaziPoljaOdabranogGpxPotrosac() {
   document.querySelector("#gps").value = selectGpxFeature.values_.gps;
-  document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
+  //document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#izvod_ts").value = selectGpxFeature.values_.izvod_ts;
   document.querySelector("#napojna_ts").value = selectGpxFeature.values_.napojna_ts;
   document.querySelector("#id").value = selectGpxFeature.values_.id;

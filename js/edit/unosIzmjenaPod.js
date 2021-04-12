@@ -29,7 +29,7 @@ function dodajPoljaOdabranomGpxPod() {
 
 function prikaziPoljaOdabranogGpxPod() {
   document.querySelector("#gps").value = selectGpxFeature.values_.gps;
-  document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
+  //document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#izvod_ts").value = selectGpxFeature.values_.izvod_ts;
   document.querySelector("#napojna_ts").value = selectGpxFeature.values_.napojna_ts;
   document.querySelector("#id").value = selectGpxFeature.values_.id;
@@ -50,18 +50,18 @@ function generisanjeGpxPodaIzGeometrije(lat, lng, jsonPretplatnik) {
   //featureTacka.values_.lejer = "pod";
   featureTacka.set("wizard", 0);
   featureTacka.set("lejer", "pod");
-  featureTacka.set("gps", document.querySelector("#gps").value);
-  featureTacka.set("fid_1", document.querySelector("#fid_1").value);
-  featureTacka.set("izvod_ts", document.querySelector("#izvod_ts").value); //ILI izvodNapojneTrafostanice
-  featureTacka.set("napojna_ts", document.querySelector("#napojna_ts").value); //ILI sifraNapojneTrafostanice
+  featureTacka.set("gps", document.querySelector("#gps").value); //šta sa ovim?
+  //featureTacka.set("fid_1", jsonPretplatnik.fid_1);
+  featureTacka.set("izvod_ts", jsonPretplatnik.izvod_vod); //ILI izvodNapojneTrafostanice
+  featureTacka.set("napojna_ts", jsonPretplatnik.sifra_trafostanice); //ILI sifraNapojneTrafostanice
   featureTacka.set("id", jsonPretplatnik.id);
   featureTacka.set("naziv_ts", jsonPretplatnik.naziv_trafostanice);
-  featureTacka.set("sifra_ts", document.querySelector("#sifra_ts").value);
-  featureTacka.set("prik_kabal", document.querySelector("#prik_kabal").value);
+  featureTacka.set("sifra_ts", jsonPretplatnik.sifra_trafostanice);
+  featureTacka.set("prik_kabal", jsonPretplatnik.provodnik_spolja + " " + jsonPretplatnik.presjek_spolja);
   featureTacka.set("pod", jsonPretplatnik.pod_na_mm);
   featureTacka.set("adresa_mm", jsonPretplatnik.adresa_mjesta_mjerenja);
   featureTacka.set("prik_mjesto", document.querySelector("#prik_mjesto").value);
-  featureTacka.set("naziv_nn_izvod", document.querySelector("#naziv_nn_izvod").value);
+  featureTacka.set("naziv_nn_izvod", jsonPretplatnik.naziv_voda);
   featureTacka.set("pretplatni_br", jsonPretplatnik.sifra);
   featureTacka.set("br_brojila", jsonPretplatnik.broj_brojila);
   featureTacka.set("sifra_napojne", sifraNapojneTrafostanice);
