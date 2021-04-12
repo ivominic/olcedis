@@ -40,6 +40,7 @@ let nizTrafostanicaGeohashZaWebServis = []; //Niz u koji će se dodavati sve tra
 
 let blnTopDown = false; //Za niskonaponsku mrežu, određuje da li će se raditi top-down ili bottom-up uparivanje
 let odabirSaMape = false; //Promjenljiva koja označava da li je u toku funkcionalnost odabira vrijednosti sa mape
+let nizKoordinataPrikljucnihMjesta = {}; //Čuva koordinate nakon odabira priključnog mjesta kod unosa novog potrošača
 
 let draw,
   modify,

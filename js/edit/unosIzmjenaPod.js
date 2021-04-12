@@ -44,10 +44,29 @@ function prikaziPoljaOdabranogGpxPod() {
   document.querySelector("#br_brojila").value = selectGpxFeature.values_.br_brojila;
 }
 
-function generisanjeGpxPodaIzGeometrije(lat, lng) {
+function generisanjeGpxPodaIzGeometrije(lat, lng, jsonPretplatnik) {
   let tackaGeom = new ol.geom.Point([lat, lng]);
   let featureTacka = new ol.Feature({ name: "tacka", geometry: tackaGeom });
-  featureTacka.values_.lejer = "pod";
-  console.log("feature tacka ****************************************************", featureTacka);
+  //featureTacka.values_.lejer = "pod";
+  featureTacka.set("wizard", 0);
+  featureTacka.set("lejer", "pod");
+  featureTacka.set("gps", document.querySelector("#gps").value);
+  featureTacka.set("fid_1", document.querySelector("#fid_1").value);
+  featureTacka.set("izvod_ts", document.querySelector("#izvod_ts").value); //ILI izvodNapojneTrafostanice
+  featureTacka.set("napojna_ts", document.querySelector("#napojna_ts").value); //ILI sifraNapojneTrafostanice
+  featureTacka.set("id", jsonPretplatnik.id);
+  featureTacka.set("naziv_ts", jsonPretplatnik.naziv_trafostanice);
+  featureTacka.set("sifra_ts", document.querySelector("#sifra_ts").value);
+  featureTacka.set("prik_kabal", document.querySelector("#prik_kabal").value);
+  featureTacka.set("pod", jsonPretplatnik.pod_na_mm);
+  featureTacka.set("adresa_mm", jsonPretplatnik.adresa_mjesta_mjerenja);
+  featureTacka.set("prik_mjesto", document.querySelector("#prik_mjesto").value);
+  featureTacka.set("naziv_nn_izvod", document.querySelector("#naziv_nn_izvod").value);
+  featureTacka.set("pretplatni_br", jsonPretplatnik.sifra);
+  featureTacka.set("br_brojila", jsonPretplatnik.broj_brojila);
+  featureTacka.set("sifra_napojne", sifraNapojneTrafostanice);
+  featureTacka.set("naziv_napojne", nazivNapojneTrafostanice);
+  featureTacka.set("izvod_napojne", izvodNapojneTrafostanice);
+  //console.log("feature tacka ****************************************************", featureTacka);
   vectorSource.addFeature(featureTacka);
 }

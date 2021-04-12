@@ -80,6 +80,8 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
               noviEl.set("naziv_napojne", nazivNapojneTrafostanice);
               noviEl.set("izvod_napojne", izvodNapojneTrafostanice);
               vectorSource.addFeature(noviEl);
+              let ddlTemp = document.querySelector("#prik_mjesto").value;
+              generisanjeGpxPodaIzGeometrije(nizKoordinataPrikljucnihMjesta[ddlTemp][0], nizKoordinataPrikljucnihMjesta[ddlTemp][1], jsonPretplatnik);
             }
           });
           poruka("Uspjeh", "Uspješno kreirani potrošači");

@@ -71,6 +71,10 @@ function sacuvaj() {
     poruka("Upozorenje", "Potrebno je odabrati tačku iz gpx fajla.");
     return false;
   }
+  if (obaveznaPolja(document.querySelector("#ddl_sloj_podataka").value) === false) {
+    poruka("Upozorenje", "Potrebno je popuniti obavezna polja.");
+    return false;
+  }
   if (odabraniLejerUnos === "stubovi") {
     if (selectGpxFeature) {
       dodajPoljaOdabranomGpxStubu();
@@ -298,7 +302,7 @@ dragAndDrop.on("addfeatures", function (event) {
     features: event.features,
     projection: event.projection,
   });
-  generisanjeGpxPodaIzGeometrije(20, 20);
+  //generisanjeGpxPodaIzGeometrije(20, 20);
   map.getLayers().push(
     new ol.layer.Vector({
       source: vectorSource,
