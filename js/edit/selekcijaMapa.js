@@ -47,12 +47,14 @@ function klikNaRastere(browserEvent) {
 function klikNaVektore(browserEvent) {
   nizGpxTacakaZaObradu.length = 0;
   indexGpxTacakaZaObradu = 0;
+  select.getFeatures().clear();
   console.log("feature111");
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
   map.forEachFeatureAtPixel(pixel, function (feature) {
     console.log("feature", feature);
     if (feature.values_.name !== undefined) {
+      //TODO: Ovaj if se može ukloniti
       nizGpxTacakaZaObradu.push(feature);
       if (selektovaniDdlZaPovezivanjeVoda !== "") {
         $(selektovaniDdlZaPovezivanjeVoda).append(

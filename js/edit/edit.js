@@ -355,7 +355,14 @@ function dupliraj() {
   vectorSource.getFeatures().forEach(function (el) {
     if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
       select.getFeatures().clear(); //Da bi uklonili stil selektovane tačke
-      vectorSource.addFeature(el.clone());
+      let feature = el.clone();
+      let timestamp = Date.now();
+      if (feature.values_.lejer === "prikljucno_mjesto") {
+        feature.values_.id = timestamp;
+        provjeraWfsPrikljucnaMjesta(feature, timestamp);
+      } else {
+        vectorSource.addFeature(el.clone());
+      }
     }
   });
 }
