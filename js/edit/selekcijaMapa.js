@@ -66,30 +66,33 @@ function klikNaVektore(browserEvent) {
       }
     }
   });
-  if (nizGpxTacakaZaObradu.length > 1) {
-    document.querySelector("#divPrethodniObjekat").style.display = "none";
-    document.querySelector("#divSljedeciObjekat").style.display = "flex";
-  } else {
-    document.querySelector("#divPrethodniObjekat").style.display = "none";
-    document.querySelector("#divSljedeciObjekat").style.display = "none";
-  }
 
   nizGpxTacakaZaObradu.forEach((el) => {
     console.log("feature za priključno mjesto", el);
     if (el.values_.lejer === "prikljucno_mjesto") {
-      console.log("el.geometry.coordinates", el.values_.geometry.flatCoordinates);
-      if (!provjeraPostojanjaElementaDdla(document.querySelector("#prik_mjesto"), el.values_.name)) {
+      if (!provjeraPostojanjaElementaDdla(document.querySelector("#prik_mjesto"), el.values_.id)) {
+        console.log("el za provjeru duplikata", el);
         console.log("el.geometry.coordinates", el.values_.geometry.flatCoordinates);
         nizKoordinataPrikljucnihMjesta[el.id] = el.values_.geometry.flatCoordinates;
         $("#prik_mjesto").append(
           $("<option>", {
-            value: el.values_.name,
-            text: el.values_.name,
+            value: el.values_.id,
+            text: el.values_.id,
           })
         );
       }
     }
   });
+
+  if (!odabirSaMape) {
+    if (nizGpxTacakaZaObradu.length > 1) {
+      document.querySelector("#divPrethodniObjekat").style.display = "none";
+      document.querySelector("#divSljedeciObjekat").style.display = "flex";
+    } else {
+      document.querySelector("#divPrethodniObjekat").style.display = "none";
+      document.querySelector("#divSljedeciObjekat").style.display = "none";
+    }
+  }
 
   /*vectorSource.getFeatures().forEach(function (el) {
     if (el.values_.name === "065") {
@@ -505,8 +508,8 @@ function klikNaRastereZaOdabirPrikljucnogMjesta(browserEvent) {
         tempNiz.forEach((el) => {
           $(prik_mjesto).append(
             $("<option>", {
-              value: el.id,
-              text: el.id,
+              value: el.properties.id,
+              text: "prikljucno mjesto:" + el.properties.id,
             })
           );
         });

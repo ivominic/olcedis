@@ -497,9 +497,7 @@ function wkt3Du2D(wkt3Dtacka) {
 function provjeraPostojanjaElementaDdla(ddl, vrijednost) {
   let postoji = false;
   Array.from(ddl.options).forEach(function (item) {
-    console.log("options", vrijednost);
-    if (item.value === vrijednost) {
-      console.log("provjera", vrijednost);
+    if (item.value === String(vrijednost)) {
       postoji = true;
     }
   });
