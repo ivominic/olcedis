@@ -52,14 +52,16 @@ function klikNaVektore(browserEvent) {
   let pixel = map.getPixelFromCoordinate(coordinate);
   map.forEachFeatureAtPixel(pixel, function (feature) {
     console.log("feature", feature);
-    nizGpxTacakaZaObradu.push(feature);
-    if (selektovaniDdlZaPovezivanjeVoda !== "") {
-      $(selektovaniDdlZaPovezivanjeVoda).append(
-        $("<option>", {
-          value: feature.values_.name,
-          text: feature.values_.name,
-        })
-      );
+    if (feature.values_.name !== undefined) {
+      nizGpxTacakaZaObradu.push(feature);
+      if (selektovaniDdlZaPovezivanjeVoda !== "") {
+        $(selektovaniDdlZaPovezivanjeVoda).append(
+          $("<option>", {
+            value: feature.values_.name,
+            text: feature.values_.name,
+          })
+        );
+      }
     }
   });
   if (nizGpxTacakaZaObradu.length > 1) {
@@ -161,7 +163,12 @@ select.on("select", function (e) {
     }
   } else {
     if (!odabirSaMape) {
-      document.querySelector("#gps").value = selectGpxFeature.values_.name;
+      if (selectGpxFeature.values_.name !== undefined) {
+        document.querySelector("#gps").value = selectGpxFeature.values_.name;
+      } else {
+        select.getFeatures().clear();
+        poruka("Upozorenje", "Potrebno je ponovo odabrati objekat sa mape.");
+      }
     }
   }
   odabirSaMape = false;

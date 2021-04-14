@@ -142,8 +142,7 @@ function parsiranjeProvjeraPotrosaca(nizObjekataPotrosaca) {
   Swal.fire({
     title: "Da li želite da kreirate objekte za sljedeće korisnike?",
     icon: "info",
-    html:
-      "<ul><li>potrošač 1</li><li>potrošač 2</li><li>potrošač 3</li><li>potrošač 1</li><li>potrošač 2</li><li>potrošač 3</li><li>potrošač 1</li><li>potrošač 2</li><li>potrošač 3</li><li>potrošač 1</li><li>potrošač 2</li><li>potrošač 3</li><li>potrošač 1</li><li>potrošač 2</li><li>potrošač 3</li><li>potrošač 1</li><li>potrošač 2</li><li>potrošač 3</li><li>potrošač 1</li><li>potrošač 2</li><li>potrošač 3</li><li>potrošač 1</li><li>potrošač 2</li><li>potrošač 3</li></ul>",
+    html: tekstHtml,
     showDenyButton: true,
     confirmButtonText: `Da`,
     denyButtonText: `Ne`,
