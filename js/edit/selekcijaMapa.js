@@ -171,8 +171,9 @@ select.on("select", function (e) {
       if (selectGpxFeature.values_.name !== undefined) {
         document.querySelector("#gps").value = selectGpxFeature.values_.name;
       } else {
-        select.getFeatures().clear();
-        poruka("Upozorenje", "Potrebno je ponovo odabrati objekat sa mape.");
+        document.querySelector("#gps").value = "";
+        //select.getFeatures().clear();
+        //poruka("Upozorenje", "Potrebno je ponovo odabrati objekat sa mape.");
       }
     }
   }
