@@ -100,7 +100,7 @@ var fill = new ol.style.Fill({
 });
 var stroke = new ol.style.Stroke({
   color: "#00ffff",
-  width: 1,
+  width: 4,
 });
 var circle = new ol.style.Circle({
   radius: 7,

@@ -183,15 +183,7 @@ function podesiInterakciju() {
         return ol.events.condition.shiftKeyOnly(event) && ol.events.condition.singleClick(event);
       },
       insertVertexCondition: function () {
-        //Zabrana dodavanja novih čvorova
-        console.log("dodavanje novog čvora", "el");
-        return !featuresLine.getArray().every(function (el) {
-          console.log("dodavanje novog čvora", el.getGeometry().getType());
-          return el
-            .getGeometry()
-            .getType()
-            .match(/LineString/);
-        });
+        return false;
       },
     });
     map.addInteraction(draw);
