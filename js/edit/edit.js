@@ -179,6 +179,16 @@ function podesiInterakciju() {
     });
     modify = new ol.interaction.Modify({
       features: featuresLine,
+      condition: function (e) {
+        let f = this.getMap().getFeaturesAtPixel(e.pixel, {
+          hitTolerance: 5,
+        });
+        if (f) {
+          let v = f[0].getGeometry().getClosestPoint(e.coordinate);
+          console.log("koordinate vertexa", v);
+        }
+        return true;
+      },
       deleteCondition: function (event) {
         return ol.events.condition.shiftKeyOnly(event) && ol.events.condition.singleClick(event);
       },
