@@ -25,7 +25,11 @@ function dodajPoljaOdabranomGpxNKRO() {
 }
 
 function prikaziPoljaOdabranogGpxNKRO() {
-  document.querySelector("#gps").value = selectGpxFeature.values_.gps;
+  if (selectGpxFeature.values_.gps !== undefined) {
+    document.querySelector("#gps").value = selectGpxFeature.values_.gps;
+  } else {
+    document.querySelector("#gps").value = "";
+  }
   //document.querySelector("#vlasnistvo").value = selectGpxFeature.values_.vlasnistvo;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
   document.querySelector("#ts").value = selectGpxFeature.values_.ts;

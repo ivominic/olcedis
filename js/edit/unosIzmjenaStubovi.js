@@ -182,8 +182,12 @@ function dodajPoljaOdabranomGpxStubu() {
 }
 
 function prikaziPoljaOdabranogGpxStuba() {
-  document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
-  document.querySelector("#gps").value = selectGpxFeature.values_.gps;
+  if (selectGpxFeature.values_.gps !== undefined) {
+    document.querySelector("#gps").value = selectGpxFeature.values_.gps;
+  } else {
+    document.querySelector("#gps").value = "";
+  }
+  //document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#broj").value = selectGpxFeature.values_.broj;
   document.querySelector("#sifra").value = selectGpxFeature.values_.sifra;
   document.querySelector("#pripadnost").value = selectGpxFeature.values_.pripadnost;

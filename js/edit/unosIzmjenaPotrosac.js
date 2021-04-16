@@ -120,7 +120,11 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
 }
 
 function prikaziPoljaOdabranogGpxPotrosac() {
-  document.querySelector("#gps").value = selectGpxFeature.values_.gps;
+  if (selectGpxFeature.values_.gps !== undefined) {
+    document.querySelector("#gps").value = selectGpxFeature.values_.gps;
+  } else {
+    document.querySelector("#gps").value = "";
+  }
   //document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#izvod_ts").value = selectGpxFeature.values_.izvod_ts;
   document.querySelector("#napojna_ts").value = selectGpxFeature.values_.napojna_ts;

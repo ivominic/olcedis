@@ -23,9 +23,13 @@ function dodajPoljaOdabranomGpxPM() {
 }
 
 function prikaziPoljaOdabranogGpxPM() {
-  document.querySelector("#gps").value = selectGpxFeature.values_.gps;
-  document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
-  //document.querySelector("#vlasnistvo").value = selectGpxFeature.values_.vlasnistvo;
+  if (selectGpxFeature.values_.gps !== undefined) {
+    document.querySelector("#gps").value = selectGpxFeature.values_.gps;
+  } else {
+    document.querySelector("#gps").value = "";
+  }
+  //document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
+  document.querySelector("#vlasnistvo").value = selectGpxFeature.values_.vlasnistvo;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
   document.querySelector("#izvod_ts").value = selectGpxFeature.values_.izvod_ts;
   document.querySelector("#napojna_ts").value = selectGpxFeature.values_.napojna_ts;
