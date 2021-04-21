@@ -235,7 +235,7 @@ function ddlLejerChange() {
 
 function finalnaPotvrdaUnosa() {
   //Pozivanje web servisa za finalni unos
-  insertStubovaIzGpx();
+  insertObjekataIzGpx();
   poruka("Uspjeh", "Završen unos podataka");
 
   console.log("Finalno features", gpxFeatures);
