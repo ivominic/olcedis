@@ -1098,3 +1098,8 @@ right: -10% !important;
 .extra{
   font-weight: 200 !important;
 }
+
+.fontB{
+  color: red;
+  font-size: 17px;
+}

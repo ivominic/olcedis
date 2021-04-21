@@ -59,10 +59,6 @@ function obaveznaPolja(sloj) {
       popunjen = false;
       borderChange(document.querySelector("#pog_sprem"));
     }
-    if (document.querySelector("#pog_sprem").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#pog_sprem"));
-    }
     if (document.querySelector("#vlasnistvo").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#vlasnistvo"));
