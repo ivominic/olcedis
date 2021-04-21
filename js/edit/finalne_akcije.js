@@ -3,6 +3,7 @@
 function insertObjekataIzGpx() {
   let postojiNeobradjenaTacka = false;
   gpxFeatures.forEach((el) => {
+    console.log("finalno lejer", el.get("lejer"));
     //if (el.hasOwnProperty("lejer") && el.get("lejer") === "stubovi") {
     if (el.get("lejer") === "stubovi") {
       //cudStub(el, "I", 0);
