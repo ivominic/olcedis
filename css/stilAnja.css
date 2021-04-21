@@ -1089,3 +1089,7 @@ right: -10% !important;
 #tool5:after {
 right: -10% !important;
 }
+
+.disabledInput{
+  background-color: #e7e7e7 !important;
+}
