@@ -18,10 +18,10 @@ function obaveznaPolja(sloj) {
   let message = "";
   if (sloj === "stub04") {
     //Inputi
-    if (document.querySelector("#fid_1").value === "") {
+    /*if (document.querySelector("#fid_1").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#fid_1"));
-    }
+    }*/
     if (document.querySelector("#pripadnost").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#pripadnost"));
@@ -69,10 +69,10 @@ function obaveznaPolja(sloj) {
     }
   } else if (sloj === "stub10") {
     //Inputi
-    if (document.querySelector("#fid_1").value === "") {
+    /*if (document.querySelector("#fid_1").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#fid_1"));
-    }
+    }*/
     if (document.querySelector("#pripadnost").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#pripadnost"));
@@ -121,10 +121,10 @@ function obaveznaPolja(sloj) {
   } else if (sloj === "stub35") {
   } else if (sloj === "vod04") {
     //Inputi
-    if (document.querySelector("#fid_1").value === "") {
+    /*if (document.querySelector("#fid_1").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#fid_1"));
-    }
+    }*/
     if (document.querySelector("#naziv").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#naziv"));
@@ -176,10 +176,10 @@ function obaveznaPolja(sloj) {
     }
   } else if (sloj === "vod10") {
     //Inputi
-    if (document.querySelector("#fid_1").value === "") {
+    /*if (document.querySelector("#fid_1").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#fid_1"));
-    }
+    }*/
     if (document.querySelector("#naziv").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#naziv"));
@@ -239,10 +239,10 @@ function obaveznaPolja(sloj) {
     }
   } else if (sloj === "vod35") {
     //Inputi
-    if (document.querySelector("#fid_1").value === "") {
+    /*if (document.querySelector("#fid_1").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#fid_1"));
-    }
+    }*/
     if (document.querySelector("#naziv").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#naziv"));
@@ -325,10 +325,10 @@ function obaveznaPolja(sloj) {
     }
   } else if (sloj === "prikljucno_mjesto") {
     //Inputi
-    if (document.querySelector("#fid_1").value === "") {
+    /*if (document.querySelector("#fid_1").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#fid_1"));
-    }
+    }*/
     if (document.querySelector("#vlasnistvo").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#vlasnistvo"));
@@ -410,10 +410,10 @@ function obaveznaPolja(sloj) {
     }*/
   } else if (sloj === "pod") {
     //Inputi
-    if (document.querySelector("#fid_1").value === "") {
+    /*if (document.querySelector("#fid_1").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#fid_1"));
-    }
+    }*/
     if (document.querySelector("#prik_kabal").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#prik_kabal"));
