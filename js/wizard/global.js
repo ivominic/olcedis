@@ -66,6 +66,12 @@ let selektovanaPrikljucnaMjestaFeatures = []; //Priključna mjesta u zahvatu pol
 let selektovaniPODoviFeatures = []; //PODovi mjesta u zahvatu poligona
 let selektovaniVodoviFeatures3857 = []; //U drugom koordinatnom sistemu
 let odabraniLejerUnos = ""; //Mijenja se na meni za unos podataka
+let kreiraniStuboviFeatures = [],
+  kreiraneTrafostaniceFeatures = [],
+  kreiraniNkroFeatures = [],
+  kreiraniPotrosaciFeatures = [],
+  kreiraniPodoviFeatures = [],
+  kreiranaPrikljucnaMjestaFeatures = []; //Nizovi objekata za slanje na server
 
 let kreiraniVodoviFeatures = []; //Niz vodova kreiranih iz tačaka gpx fajla
 
