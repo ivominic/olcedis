@@ -256,3 +256,20 @@ function pocetniFilter() {
 }
 
 pocetniFilter();
+
+/**
+ * Returns type of vector fajl uploaded (drag n drop) to map
+ * @param {Uploaded vector layer} featureLayer
+ */
+function vectorLayerType(featureLayer) {
+  let retVal = "";
+  let fileNameArray = featureLayer.file.name.split(".");
+  retVal = fileNameArray[fileNameArray.length - 1].toUpperCase();
+  isEditable = retVal !== "KML";
+  if (isEditable) {
+    map.addInteraction(modifyV);
+  } else {
+    map.removeInteraction(modifyV);
+  }
+  return retVal;
+}

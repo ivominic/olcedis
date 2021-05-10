@@ -294,7 +294,8 @@ let dragAndDrop = new ol.interaction.DragAndDrop({
   formatConstructors: [ol.format.GPX, ol.format.GeoJSON, ol.format.IGC, ol.format.KML, ol.format.TopoJSON],
 });
 dragAndDrop.on("addfeatures", function (event) {
-  console.log("aaaa", event.features);
+  console.log("aaaa", event);
+  vectorLayerType(event);
   disableMenija();
   showDiv("#odabirNapojneTrafostaniceDiv");
   gpxFeatures = event.features;
@@ -316,6 +317,15 @@ dragAndDrop.on("addfeatures", function (event) {
     projection: event.projection,
   });
   //generisanjeGpxPodaIzGeometrije(20, 20);
+
+  //On drag'n'drop layer, all other vector layers are removed
+  map.getLayers().forEach(function (layer) {
+    if (layer instanceof ol.layer.Vector) {
+      console.log("vektorski lejeri", layer);
+      map.removeLayer(layer);
+    }
+  });
+
   map.getLayers().push(
     new ol.layer.Vector({
       source: vectorSource,
@@ -334,7 +344,7 @@ map.addInteraction(snap);
 /*** Završena selekcija i modifikacija */
 
 map.addInteraction(select);
-map.addInteraction(modifyV);
+//map.addInteraction(modifyV);
 
 //Klik na mapu - prikaz vektora ili rastera
 map.on("click", klikNaVektore);
@@ -437,39 +447,66 @@ function filtriranje() {
 function kreiranjeCqlFilteraAtributi() {
   let retVal = "";
 
-  document.querySelector("#pretraga_gps").value !== "" && (retVal += "gps = '" + document.querySelector("#pretraga_gps").value + "' AND ");
-  document.querySelector("#pretraga_broj").value !== "" && (retVal += "broj = '" + document.querySelector("#pretraga_broj").value + "' AND ");
-  document.querySelector("#pretraga_sifra").value !== "" && (retVal += "sifra = '" + document.querySelector("#pretraga_sifra").value + "' AND ");
-  document.querySelector("#pretraga_pripadnost").value !== "" && (retVal += "pripadnost = '" + document.querySelector("#pretraga_pripadnost").value + "' AND ");
-  document.querySelector("#pretraga_tip").value !== "" && (retVal += "tip = '" + document.querySelector("#pretraga_tip").value + "' AND ");
-  document.querySelector("#pretraga_vrsta_namjena").value !== "" && (retVal += "vrsta_namjena = '" + document.querySelector("#pretraga_vrsta_namjena").value + "' AND ");
-  document.querySelector("#pretraga_vrsta_materijal").value !== "" && (retVal += "vrsta_materijal = '" + document.querySelector("#pretraga_vrsta_materijal").value + "' AND ");
-  document.querySelector("#pretraga_vrsta_drvenog").value !== "" && (retVal += "vrsta_drvenog = '" + document.querySelector("#pretraga_vrsta_drvenog").value + "' AND ");
-  document.querySelector("#pretraga_nad_visina").value !== "" && (retVal += "nad_visina = '" + document.querySelector("#pretraga_nad_visina").value + "' AND ");
-  document.querySelector("#pretraga_visina").value !== "" && (retVal += "visina = '" + document.querySelector("#pretraga_visina").value + "' AND ");
-  document.querySelector("#pretraga_rasp_prov").value !== "" && (retVal += "rasp_prov = '" + document.querySelector("#pretraga_rasp_prov").value + "' AND ");
-  document.querySelector("#pretraga_izolator_vrsta").value !== "" && (retVal += "izolator_vrsta = '" + document.querySelector("#pretraga_izolator_vrsta").value + "' AND ");
+  document.querySelector("#pretraga_gps").value !== "" &&
+    (retVal += "gps = '" + document.querySelector("#pretraga_gps").value + "' AND ");
+  document.querySelector("#pretraga_broj").value !== "" &&
+    (retVal += "broj = '" + document.querySelector("#pretraga_broj").value + "' AND ");
+  document.querySelector("#pretraga_sifra").value !== "" &&
+    (retVal += "sifra = '" + document.querySelector("#pretraga_sifra").value + "' AND ");
+  document.querySelector("#pretraga_pripadnost").value !== "" &&
+    (retVal += "pripadnost = '" + document.querySelector("#pretraga_pripadnost").value + "' AND ");
+  document.querySelector("#pretraga_tip").value !== "" &&
+    (retVal += "tip = '" + document.querySelector("#pretraga_tip").value + "' AND ");
+  document.querySelector("#pretraga_vrsta_namjena").value !== "" &&
+    (retVal += "vrsta_namjena = '" + document.querySelector("#pretraga_vrsta_namjena").value + "' AND ");
+  document.querySelector("#pretraga_vrsta_materijal").value !== "" &&
+    (retVal += "vrsta_materijal = '" + document.querySelector("#pretraga_vrsta_materijal").value + "' AND ");
+  document.querySelector("#pretraga_vrsta_drvenog").value !== "" &&
+    (retVal += "vrsta_drvenog = '" + document.querySelector("#pretraga_vrsta_drvenog").value + "' AND ");
+  document.querySelector("#pretraga_nad_visina").value !== "" &&
+    (retVal += "nad_visina = '" + document.querySelector("#pretraga_nad_visina").value + "' AND ");
+  document.querySelector("#pretraga_visina").value !== "" &&
+    (retVal += "visina = '" + document.querySelector("#pretraga_visina").value + "' AND ");
+  document.querySelector("#pretraga_rasp_prov").value !== "" &&
+    (retVal += "rasp_prov = '" + document.querySelector("#pretraga_rasp_prov").value + "' AND ");
+  document.querySelector("#pretraga_izolator_vrsta").value !== "" &&
+    (retVal += "izolator_vrsta = '" + document.querySelector("#pretraga_izolator_vrsta").value + "' AND ");
   document.querySelector("#pretraga_izolator_funkcija").value !== "" &&
     (retVal += "izolator_funkcija = '" + document.querySelector("#pretraga_izolator_funkcija").value + "' AND ");
-  document.querySelector("#pretraga_br_izol_faza").value !== "" && (retVal += "br_izol_faza = '" + document.querySelector("#pretraga_br_izol_faza").value + "' AND ");
-  document.querySelector("#pretraga_nosaci_izolatora").value !== "" && (retVal += "nosaci_izolatora = '" + document.querySelector("#pretraga_nosaci_izolatora").value + "' AND ");
+  document.querySelector("#pretraga_br_izol_faza").value !== "" &&
+    (retVal += "br_izol_faza = '" + document.querySelector("#pretraga_br_izol_faza").value + "' AND ");
+  document.querySelector("#pretraga_nosaci_izolatora").value !== "" &&
+    (retVal += "nosaci_izolatora = '" + document.querySelector("#pretraga_nosaci_izolatora").value + "' AND ");
   document.querySelector("#pretraga_odvodnik_prenapona").value !== "" &&
     (retVal += "odvodnik_prenapona = '" + document.querySelector("#pretraga_odvodnik_prenapona").value + "' AND ");
-  document.querySelector("#pretraga_uzemljivac").value !== "" && (retVal += "uzemljivac = '" + document.querySelector("#pretraga_uzemljivac").value + "' AND ");
-  document.querySelector("#pretraga_uzemljivac_otpor").value !== "" && (retVal += "uzemljivac_otpor = '" + document.querySelector("#pretraga_uzemljivac_otpor").value + "' AND ");
-  document.querySelector("#pretraga_optika").value !== "" && (retVal += "optika = '" + document.querySelector("#pretraga_optika").value + "' AND ");
-  document.querySelector("#pretraga_rasvjeta").value !== "" && (retVal += "rasvjeta = '" + document.querySelector("#pretraga_rasvjeta").value + "' AND ");
-  document.querySelector("#pretraga_br_pmo").value !== "" && (retVal += "br_pmo = '" + document.querySelector("#pretraga_br_pmo").value + "' AND ");
-  document.querySelector("#pretraga_br_nnv").value !== "" && (retVal += "br_nnv = '" + document.querySelector("#pretraga_br_nnv").value + "' AND ");
-  document.querySelector("#pretraga_pog_sprem").value !== "" && (retVal += "pog_sprem = '" + document.querySelector("#pretraga_pog_sprem").value + "' AND ");
-  document.querySelector("#pretraga_vlasnistvo").value !== "" && (retVal += "vlasnistvo = '" + document.querySelector("#pretraga_vlasnistvo").value + "' AND ");
-  document.querySelector("#pretraga_opstina").value !== "" && (retVal += "opstina = '" + document.querySelector("#pretraga_opstina").value + "' AND ");
-  document.querySelector("#pretraga_napon").value !== "" && (retVal += "napon = '" + document.querySelector("#pretraga_napon").value + "' AND ");
+  document.querySelector("#pretraga_uzemljivac").value !== "" &&
+    (retVal += "uzemljivac = '" + document.querySelector("#pretraga_uzemljivac").value + "' AND ");
+  document.querySelector("#pretraga_uzemljivac_otpor").value !== "" &&
+    (retVal += "uzemljivac_otpor = '" + document.querySelector("#pretraga_uzemljivac_otpor").value + "' AND ");
+  document.querySelector("#pretraga_optika").value !== "" &&
+    (retVal += "optika = '" + document.querySelector("#pretraga_optika").value + "' AND ");
+  document.querySelector("#pretraga_rasvjeta").value !== "" &&
+    (retVal += "rasvjeta = '" + document.querySelector("#pretraga_rasvjeta").value + "' AND ");
+  document.querySelector("#pretraga_br_pmo").value !== "" &&
+    (retVal += "br_pmo = '" + document.querySelector("#pretraga_br_pmo").value + "' AND ");
+  document.querySelector("#pretraga_br_nnv").value !== "" &&
+    (retVal += "br_nnv = '" + document.querySelector("#pretraga_br_nnv").value + "' AND ");
+  document.querySelector("#pretraga_pog_sprem").value !== "" &&
+    (retVal += "pog_sprem = '" + document.querySelector("#pretraga_pog_sprem").value + "' AND ");
+  document.querySelector("#pretraga_vlasnistvo").value !== "" &&
+    (retVal += "vlasnistvo = '" + document.querySelector("#pretraga_vlasnistvo").value + "' AND ");
+  document.querySelector("#pretraga_opstina").value !== "" &&
+    (retVal += "opstina = '" + document.querySelector("#pretraga_opstina").value + "' AND ");
+  document.querySelector("#pretraga_napon").value !== "" &&
+    (retVal += "napon = '" + document.querySelector("#pretraga_napon").value + "' AND ");
   document.querySelector("#pretraga_prikljucak_otcjep").value !== "" &&
     (retVal += "prikljucak_otcjep = '" + document.querySelector("#pretraga_prikljucak_otcjep").value + "' AND ");
-  document.querySelector("#pretraga_nn_vod").value !== "" && (retVal += "nn_vod = '" + document.querySelector("#pretraga_nn_vod").value + "' AND ");
-  document.querySelector("#pretraga_rastavljac").value !== "" && (retVal += "rastavljac = '" + document.querySelector("#pretraga_rastavljac").value + "' AND ");
-  document.querySelector("#pretraga_10_vod").value !== "" && (retVal += "10_vod = '" + document.querySelector("#pretraga_10_vod").value + "' AND ");
+  document.querySelector("#pretraga_nn_vod").value !== "" &&
+    (retVal += "nn_vod = '" + document.querySelector("#pretraga_nn_vod").value + "' AND ");
+  document.querySelector("#pretraga_rastavljac").value !== "" &&
+    (retVal += "rastavljac = '" + document.querySelector("#pretraga_rastavljac").value + "' AND ");
+  document.querySelector("#pretraga_10_vod").value !== "" &&
+    (retVal += "10_vod = '" + document.querySelector("#pretraga_10_vod").value + "' AND ");
 
   retVal.length > 5 && (retVal = retVal.substring(0, retVal.length - 5));
   return retVal;
@@ -542,7 +579,14 @@ function wfsDownload(format) {
   let dodajCqlFilter = "";
   cqlFilter !== "" && (dodajCqlFilter = "&cql_filter=" + cqlFilter);
   window.open(
-    wfsUrl + "?version=1.0.0&request=GetFeature&typeName=geonode:" + layername + "&outputformat=" + format + dodajCqlFilter + "&access_token=" + geoserverToken,
+    wfsUrl +
+      "?version=1.0.0&request=GetFeature&typeName=geonode:" +
+      layername +
+      "&outputformat=" +
+      format +
+      dodajCqlFilter +
+      "&access_token=" +
+      geoserverToken,
     "_blank"
   );
   return false;

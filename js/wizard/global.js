@@ -1,5 +1,6 @@
 //Modul koji sadrži sve promjenljive koje se koriste na globalnom nivou u aplikaciji / wizardu kao i opšte metode
 const dozvoljeniPomjeraj = 0.01; //0.01km - deset metara je dozvoljeo pomjeriti tačke iz gpx fajlova prije uvoza u bazu
+const kmlRadius = 0.002; //Distance from klm point where checking existion of other objects
 //const domainUrl = location.origin;
 //const wsServerOriginLocation = window.location.protocol + "//" + window.location.hostname;
 const wsServerOriginLocation = "https://razvojgis.cedis.me";
@@ -11,7 +12,8 @@ const imageUrl = domainUrl + "/slike/";
 const point = "Point",
   lineString = "LineString",
   polygon = "Polygon";
-let geoserverToken = ""; //Promjenljiva koja čuva token za wfs servise
+let geoserverToken = "",
+  isEditable = true; //Promjenljiva koja čuva token za wfs servise, druga označava da li je moguće mijenjati geometriju prevučenih fajlova
 let tacke = [],
   linije = [],
   poligoni = [];
