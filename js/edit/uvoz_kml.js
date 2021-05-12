@@ -5,7 +5,10 @@ function sljedecaNeobradjenaTackaKml(feature) {
   console.log("radi", vectorSource.getFeatures().length);
   let distanca = 999999999;
   let tempFeature = null;
-  let distancaOd = turf.point([feature.values_.geometry.flatCoordinates[0], feature.values_.geometry.flatCoordinates[1]]);
+  let distancaOd = turf.point([
+    feature.values_.geometry.flatCoordinates[0],
+    feature.values_.geometry.flatCoordinates[1],
+  ]);
   vectorSource.getFeatures().forEach(function (el) {
     if (el.get("lejer") === undefined) {
       let distancaDo = turf.point([el.values_.geometry.flatCoordinates[0], el.values_.geometry.flatCoordinates[1]]);
@@ -26,4 +29,92 @@ function sljedecaNeobradjenaTackaKml(feature) {
     select.getFeatures().clear();
     select.getFeatures().push(selectGpxFeature);
   }
+}
+
+/**
+ * Finds all object that are near imported kml objects
+ */
+function distanceFromKmlPoints() {
+  console.log("niz kml tačaka", nizKml);
+  let cqlCondition = "";
+  nizKml.forEach((item) => {
+    if (cqlCondition === "") {
+      cqlCondition = "DWITHIN(Geometry,POINT(" + item.lng + " " + item.lat + ")," + kmlRadius + ",meters) ";
+    } else {
+      cqlCondition += "OR DWITHIN(Geometry,POINT(" + item.lng + " " + item.lat + ")," + kmlRadius + ",meters) ";
+    }
+  });
+  console.log("CQL", cqlCondition);
+  cqlCondition = "&cql_filter=" + cqlCondition;
+  let wfsUrl1 =
+    wfsUrl +
+    "?version=1.0.0&request=GetFeature&typeName=" +
+    //"geonode:stubovi" +
+    "geonode:stubovi,geonode:vodovi,geonode:trafostanice,geonode:view_potrosaci,geonode:prikljucno_mjesto,geonode:nkro,geonode:pod" +
+    "&outputformat=application/json&propertyname='originalId'" +
+    cqlCondition +
+    "&access_token=" +
+    geoserverToken;
+  $.ajax({
+    method: "GET",
+    url: wfsUrl1,
+    data: {
+      /*access_token: geoserverToken,
+        service: "WFS",
+        request: "GetFeature",
+        propertyName: "originalId",
+        typename:
+          "geonode:stubovi,geonode:vodovi,geonode:trafostanice,geonode:view_potrosaci,geonode:prikljucno_mjesto,geonode:nkro,geonode:pod",
+        outputFormat: "application/json",
+        //srsname: "EPSG:4326",
+        //"maxFeatures": 50,
+        CQL_FILTER: cqlCondition,*/
+    },
+    success: function (response) {
+      console.log("response", response);
+      let features = new ol.format.GeoJSON().readFeatures(response);
+      console.log(features);
+    },
+    fail: function (jqXHR, textStatus) {
+      console.log("Request failed: " + textStatus);
+    },
+  });
+}
+
+/**
+ * Zooms to location, asks user if object needs to be connected to existing network and shows form for picking objects.
+ * @param {Feature uploaded from kml file} feature
+ * @param {Name of Geoserver layer} layerName
+ */
+function objectNearKmlFeature(feature, layerName) {
+  let position = feature.values_.geometry.flatCoordinates;
+  //let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:4326", "EPSG:4326");
+
+  let cqlCondition = "DWITHIN(Geometry,POINT(" + position[0] + " " + position[1] + ")," + kmlRadius + ",meters) ";
+  cqlCondition = "&cql_filter=" + cqlCondition;
+  let wfsUrl1 =
+    wfsUrl +
+    "?version=1.0.0&request=GetFeature&typeName=geonode:" +
+    layerName +
+    //"geonode:stubovi,geonode:vodovi,geonode:trafostanice,geonode:view_potrosaci,geonode:prikljucno_mjesto,geonode:nkro,geonode:pod" +
+    "&outputformat=application/json" +
+    cqlCondition +
+    "&access_token=" +
+    geoserverToken;
+  $.ajax({
+    method: "GET",
+    url: wfsUrl1,
+    data: {},
+    success: function (response) {
+      console.log("response", response);
+      console.log("layername", response.features.length);
+      if (response.features.length) {
+        feature.values_.kml_povezati = true;
+        console.log("feature", feature);
+      }
+    },
+    fail: function (jqXHR, textStatus) {
+      console.log("Request failed: " + textStatus);
+    },
+  });
 }

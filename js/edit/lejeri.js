@@ -266,10 +266,9 @@ function vectorLayerType(featureLayer) {
   let fileNameArray = featureLayer.file.name.split(".");
   retVal = fileNameArray[fileNameArray.length - 1].toUpperCase();
   isEditable = retVal !== "KML";
+  map.removeInteraction(modifyV);
   if (isEditable) {
     map.addInteraction(modifyV);
-  } else {
-    map.removeInteraction(modifyV);
   }
   return retVal;
 }

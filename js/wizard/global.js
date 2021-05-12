@@ -1,6 +1,6 @@
 //Modul koji sadrži sve promjenljive koje se koriste na globalnom nivou u aplikaciji / wizardu kao i opšte metode
 const dozvoljeniPomjeraj = 0.01; //0.01km - deset metara je dozvoljeo pomjeriti tačke iz gpx fajlova prije uvoza u bazu
-const kmlRadius = 0.002; //Distance from klm point where checking existion of other objects
+const kmlRadius = 1000; //Distance from klm point where checking existion of other objects
 //const domainUrl = location.origin;
 //const wsServerOriginLocation = window.location.protocol + "//" + window.location.hostname;
 const wsServerOriginLocation = "https://razvojgis.cedis.me";
@@ -194,6 +194,14 @@ let obradjenaTacka = new ol.style.Circle({
     width: 2,
   }),
 });
+let kmlDisconnectedPoint = new ol.style.Circle({
+  radius: 7,
+  fill: new ol.style.Fill({ color: "rgba(255, 0, 0, 0.8)" }),
+  stroke: new ol.style.Stroke({
+    color: "#ff0000",
+    width: 2,
+  }),
+});
 
 //Styling funkcija za gpx objekte
 let kreiranjeTekstStila = function (feature) {
@@ -223,10 +231,20 @@ let kreiranjeLabeleZaGpxTacke = function () {
       text: kreiranjeTekstStila(feature),
       image: obradjenaTacka,
     });
+    let styleKmlDisconnected = new ol.style.Style({
+      stroke: stroke,
+      fill: fill,
+      text: kreiranjeTekstStila(feature),
+      image: kmlDisconnectedPoint,
+    });
 
     if (feature.values_.lejer && feature.values_.lejer !== undefined) {
       console.log(" feature", feature.values_.lejer);
       return [styleObradjeni];
+    } else if (feature.values_.lejer) {
+      //Postaviti uslov za koji će prikazati crvenu boju
+
+      return [styleKmlDisconnected];
     } else {
       return [styleNeobradjeni];
     }

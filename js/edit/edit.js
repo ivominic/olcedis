@@ -302,6 +302,9 @@ dragAndDrop.on("addfeatures", function (event) {
 
   blnDodijeljenoGpxProperties = false;
   event.features.forEach(function (feature) {
+    objectNearKmlFeature(feature, "stubovi");
+    objectNearKmlFeature(feature, "trafostanice");
+    objectNearKmlFeature(feature, "vodovi");
     //let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
     let position = feature.values_.geometry.flatCoordinates;
     nizKml.push({
@@ -312,6 +315,7 @@ dragAndDrop.on("addfeatures", function (event) {
     });
   });
   console.log("niz", nizKml);
+  distanceFromKmlPoints();
   vectorSource = new ol.source.Vector({
     features: event.features,
     projection: event.projection,
