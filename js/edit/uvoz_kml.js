@@ -87,10 +87,38 @@ function distanceFromKmlPoints() {
  * @param {Name of Geoserver layer} layerName
  */
 function objectNearKmlFeature(feature, layerName) {
-  let position = feature.values_.geometry.flatCoordinates;
+  let coordinates = feature.values_.geometry.flatCoordinates;
   //let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:4326", "EPSG:4326");
+  let cqlCondition = "";
 
-  let cqlCondition = "DWITHIN(Geometry,POINT(" + position[0] + " " + position[1] + ")," + kmlRadius + ",meters) ";
+  if (feature.getGeometry().getType().toString().includes("oint")) {
+    cqlCondition = "DWITHIN(Geometry,POINT(" + coordinates[0] + " " + coordinates[1] + ")," + kmlRadius + ",meters)";
+  }
+  if (feature.getGeometry().getType().toString().includes("tring")) {
+    cqlCondition = "DWITHIN(Geometry,POINT(" + coordinates[0] + " " + coordinates[1] + ")," + kmlRadius + ",meters)";
+    if (coordinates[coordinates.length - 1] === 0) {
+      console.log("jeste nula", coordinates.length - 1);
+      cqlCondition +=
+        " OR DWITHIN(Geometry,POINT(" +
+        coordinates[coordinates.length - 3] +
+        " " +
+        coordinates[coordinates.length - 2] +
+        ")," +
+        kmlRadius +
+        ",meters) ";
+    } else {
+      cqlCondition +=
+        " OR DWITHIN(Geometry,POINT(" +
+        coordinates[coordinates.length - 2] +
+        " " +
+        coordinates[coordinates.length - 1] +
+        ")," +
+        kmlRadius +
+        ",meters) ";
+    }
+  }
+
+  console.log("cql uslov", cqlCondition);
   cqlCondition = "&cql_filter=" + cqlCondition;
   let wfsUrl1 =
     wfsUrl +
@@ -106,8 +134,8 @@ function objectNearKmlFeature(feature, layerName) {
     url: wfsUrl1,
     data: {},
     success: function (response) {
-      console.log("response", response);
-      console.log("layername", response.features.length);
+      //console.log("response", response);
+      //console.log("layername", response.features.length);
       if (response.features.length) {
         feature.values_.kml_povezati = true;
         console.log("feature", feature);

@@ -315,7 +315,7 @@ dragAndDrop.on("addfeatures", function (event) {
     });
   });
   console.log("niz", nizKml);
-  distanceFromKmlPoints();
+  //distanceFromKmlPoints();
   vectorSource = new ol.source.Vector({
     features: event.features,
     projection: event.projection,
