@@ -4,7 +4,8 @@ let nizGpxTacakaZaObradu = [];
 let indexGpxTacakaZaObradu = 0;
 let selektovaniDdlZaPovezivanjeVoda = "";
 let nizPocetnihTacakaVoda = [],
-  nizKrajnjihTacakaVoda = [];
+  nizKrajnjihTacakaVoda = [],
+  nizKrajnjihTacakaKml = [];
 let nizTacakaLinije = [];
 
 function klikNaRastere(browserEvent) {
@@ -20,9 +21,11 @@ function klikNaRastere(browserEvent) {
         let vidljivost = layer.get("visible");
         console.log("vidljivost", vidljivost);
         if (vidljivost) {
-          let url = layer.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
-            INFO_FORMAT: "application/json",
-          });
+          let url = layer
+            .getSource()
+            .getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
+              INFO_FORMAT: "application/json",
+            });
           if (url) {
             fetch(url)
               .then(function (response) {
@@ -213,7 +216,10 @@ modifyV.on("modifyend", function (e) {
     console.log("distanca", distanca);
     if (distanca > dozvoljeniPomjeraj) {
       e.features.getArray()[0].getGeometry().setCoordinates(pocetnaTacka.flatCoordinates);
-      poruka("Upozorenje", "Tačka ne može biti pomjerena više od " + (dozvoljeniPomjeraj * 1000).toString() + "m od snimljene pozicije.");
+      poruka(
+        "Upozorenje",
+        "Tačka ne može biti pomjerena više od " + (dozvoljeniPomjeraj * 1000).toString() + "m od snimljene pozicije."
+      );
     }
     //citajExtent();
   }
@@ -360,7 +366,11 @@ function sledecaGpxTacka() {
   }
   document.querySelector("#divPrethodniObjekat").style.display = "none";
   vectorSource.getFeatures().forEach(function (el) {
-    if (selectGpxFeature && parseInt(el.values_.name) === parseInt(selectGpxFeature.values_.name) + 1 && nijeOdabranaNovaTacka) {
+    if (
+      selectGpxFeature &&
+      parseInt(el.values_.name) === parseInt(selectGpxFeature.values_.name) + 1 &&
+      nijeOdabranaNovaTacka
+    ) {
       console.log("postojeći ", parseInt(selectGpxFeature.values_.name));
       console.log("novi ", parseInt(el.values_.name));
       selectGpxFeature = el;
@@ -408,6 +418,16 @@ function odabirKrajnjeTackeVoda() {
   map.on("singleclick", klikNaRastereZaVodove);
 }
 
+function odabirTackePovezivanjaKmla() {
+  map.removeInteraction(draw);
+  map.removeInteraction(modify);
+  odabirSaMape = true;
+  selektovaniDdlZaPovezivanjeVoda = "#ddlObjekatZaPovezivanje";
+  //nizKrajnjihTacakaKml.length = 0;//Nepotrebno
+  $(selektovaniDdlZaPovezivanjeVoda).empty();
+  map.on("singleclick", klikNaRastereZaVodove);
+}
+
 function potvrdaUnosaVoda() {
   selekcijaGpxPoligonom();
   koordinateObjekataIzDdlova();
@@ -425,10 +445,12 @@ function klikNaRastereZaVodove(browserEvent) {
       let vidljivost = layer.get("visible");
       if (vidljivost) {
         brojLejera++;
-        let url = layer.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
-          INFO_FORMAT: "application/json",
-          feature_count: "5",
-        });
+        let url = layer
+          .getSource()
+          .getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
+            INFO_FORMAT: "application/json",
+            feature_count: "5",
+          });
         if (url) {
           fetch(url)
             .then(function (response) {
@@ -476,10 +498,12 @@ function klikNaRastereZaVodove(browserEvent) {
 function klikNaRastereZaOdabirPrikljucnogMjesta(browserEvent) {
   let coordinate = browserEvent.coordinate;
   let tempNiz = [];
-  let url = wmsPrikljucnoMjesto.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
-    INFO_FORMAT: "application/json",
-    feature_count: "5",
-  });
+  let url = wmsPrikljucnoMjesto
+    .getSource()
+    .getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
+      INFO_FORMAT: "application/json",
+      feature_count: "5",
+    });
   if (url) {
     fetch(url)
       .then(function (response) {
@@ -581,7 +605,10 @@ function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
   let options = { units: "miles" };
   if (pocetna && pocetna !== undefined && pocetna.length && krajnja && krajnja !== undefined && krajnja.length) {
     //Ako su selektovani i nadređeni i podređeni objekat
-    if (turf.distance(turf.point(pocetna), turf.point(nizTacakaLinije[0]), options) > turf.distance(turf.point(krajnja), turf.point(nizTacakaLinije[0]), options)) {
+    if (
+      turf.distance(turf.point(pocetna), turf.point(nizTacakaLinije[0]), options) >
+      turf.distance(turf.point(krajnja), turf.point(nizTacakaLinije[0]), options)
+    ) {
       nizTacakaLinije.unshift(krajnja);
       nizTacakaLinije.push(pocetna);
     } else {
@@ -646,9 +673,11 @@ function odabirNapojneTrafostaniceSaMape() {
 }
 
 function klikNapojnaTrafostanicaMapa(browserEvent) {
-  let url = wmsTrafostanice.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
-    INFO_FORMAT: "application/json",
-  });
+  let url = wmsTrafostanice
+    .getSource()
+    .getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
+      INFO_FORMAT: "application/json",
+    });
   if (url) {
     fetch(url)
       .then(function (response) {

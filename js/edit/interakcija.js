@@ -294,6 +294,9 @@ document.querySelector("#btnPotvrdiPoveznica").addEventListener("click", potvrda
 document.querySelector("#btnPocetnaTackaPoveznica").addEventListener("click", odabirPocetneTackeVoda);
 document.querySelector("#btnKrajnjaTackaPoveznica").addEventListener("click", odabirKrajnjeTackeVoda);
 
+document.querySelector("#btnBliskiObjekatKml").addEventListener("click", odabirTackePovezivanjaKmla);
+document.querySelector("#btnPotvrdiKmlPoveznicu").addEventListener("click", saveKmlConnection);
+
 document.querySelector("#btnOdabirNapojneTrafostanice").addEventListener("click", odabirNapojneTrafostaniceUnos);
 document.querySelector("#btnPotvrdiNapojnuTrafostanicu").addEventListener("click", potvrdaNapojneTrafostaniceUnos);
 document.querySelector("#txtSifraNapojneTrafostanice").addEventListener("keyup", promjenaSifreNapojneTrafostanice);
@@ -316,6 +319,7 @@ function potvrdaNapojneTrafostaniceUnos() {
   izvodNapojneTrafostanice = izvod;
   closeDiv("#odabirNapojneTrafostaniceDiv");
   enableMenija();
+  showConnectForm();
   neupareneTrafostanice(sifraNapojneTrafostanice, izvodNapojneTrafostanice);
 }
 

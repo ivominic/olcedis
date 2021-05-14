@@ -146,3 +146,48 @@ function objectNearKmlFeature(feature, layerName) {
     },
   });
 }
+
+function showConnectForm(features) {
+  vectorSource.getFeatures().forEach(function (el) {
+    let position = el.values_.geometry.flatCoordinates;
+    //nizTacakaLinije.push([position[0], position[1], position[2]]);
+    Swal.fire({
+      title: "Da li je potrebno povezati ovaj objekat sa ostatkom mreže?",
+      //icon: "info",
+      showDenyButton: true,
+      confirmButtonText: `Da`,
+      denyButtonText: `Ne`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        showDiv("#odabirBliskogObjektaKmlDiv");
+      } else if (result.isDenied) {
+        //TODO: Next feature
+        alert("NE");
+      }
+    });
+  });
+}
+
+function saveKmlConnection() {
+  vectorSource.getFeatures().forEach(function (el) {
+    let position = el.values_.geometry.flatCoordinates;
+    //nizTacakaLinije.push([position[0], position[1], position[2]]);
+    if (el.values_.kml_povezati && el.values_.kml_povezati === true) {
+      console.log("kml tačka", el);
+    }
+    /*Swal.fire({
+      title: "Da li je potrebno povezati ovaj objekat sa ostatkom mreže?",
+      //icon: "info",
+      showDenyButton: true,
+      confirmButtonText: `Da`,
+      denyButtonText: `Ne`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        showDiv("#odabirBliskogObjektaKmlDiv");
+      } else if (result.isDenied) {
+        //TODO: Next feature
+        alert("NE");
+      }
+    });*/
+  });
+}
