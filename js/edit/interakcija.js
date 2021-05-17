@@ -319,7 +319,9 @@ function potvrdaNapojneTrafostaniceUnos() {
   izvodNapojneTrafostanice = izvod;
   closeDiv("#odabirNapojneTrafostaniceDiv");
   enableMenija();
-  showConnectForm();
+  if (!isEditable) {
+    showConnectForm();
+  }
   neupareneTrafostanice(sifraNapojneTrafostanice, izvodNapojneTrafostanice);
 }
 

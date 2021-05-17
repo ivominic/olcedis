@@ -2,7 +2,6 @@
 
 /** Metoda koja za zadati feature nalazi sljedeću tačku iz kml fajla kojoj nisu dodijeljeni podaci (lejer) */
 function sljedecaNeobradjenaTackaKml(feature) {
-  console.log("radi", vectorSource.getFeatures().length);
   let distanca = 999999999;
   let tempFeature = null;
   let distancaOd = turf.point([
@@ -16,7 +15,6 @@ function sljedecaNeobradjenaTackaKml(feature) {
         units: "kilometers",
       };
       let udaljenost = turf.distance(distancaOd, distancaDo, mjera);
-      console.log("udaljenost", udaljenost);
       if (distanca > udaljenost) {
         distanca = udaljenost;
         tempFeature = el;
@@ -35,7 +33,6 @@ function sljedecaNeobradjenaTackaKml(feature) {
  * Finds all object that are near imported kml objects
  */
 function distanceFromKmlPoints() {
-  console.log("niz kml tačaka", nizKml);
   let cqlCondition = "";
   nizKml.forEach((item) => {
     if (cqlCondition === "") {
@@ -44,7 +41,6 @@ function distanceFromKmlPoints() {
       cqlCondition += "OR DWITHIN(Geometry,POINT(" + item.lng + " " + item.lat + ")," + kmlRadius + ",meters) ";
     }
   });
-  console.log("CQL", cqlCondition);
   cqlCondition = "&cql_filter=" + cqlCondition;
   let wfsUrl1 =
     wfsUrl +
@@ -71,9 +67,7 @@ function distanceFromKmlPoints() {
         CQL_FILTER: cqlCondition,*/
     },
     success: function (response) {
-      console.log("response", response);
       let features = new ol.format.GeoJSON().readFeatures(response);
-      console.log(features);
     },
     fail: function (jqXHR, textStatus) {
       console.log("Request failed: " + textStatus);
@@ -97,7 +91,6 @@ function objectNearKmlFeature(feature, layerName) {
   if (feature.getGeometry().getType().toString().includes("tring")) {
     cqlCondition = "DWITHIN(Geometry,POINT(" + coordinates[0] + " " + coordinates[1] + ")," + kmlRadius + ",meters)";
     if (coordinates[coordinates.length - 1] === 0) {
-      console.log("jeste nula", coordinates.length - 1);
       cqlCondition +=
         " OR DWITHIN(Geometry,POINT(" +
         coordinates[coordinates.length - 3] +
@@ -118,7 +111,6 @@ function objectNearKmlFeature(feature, layerName) {
     }
   }
 
-  console.log("cql uslov", cqlCondition);
   cqlCondition = "&cql_filter=" + cqlCondition;
   let wfsUrl1 =
     wfsUrl +
@@ -134,11 +126,8 @@ function objectNearKmlFeature(feature, layerName) {
     url: wfsUrl1,
     data: {},
     success: function (response) {
-      //console.log("response", response);
-      //console.log("layername", response.features.length);
       if (response.features.length) {
         feature.values_.kml_povezati = true;
-        console.log("feature", feature);
       }
     },
     fail: function (jqXHR, textStatus) {
@@ -150,8 +139,6 @@ function objectNearKmlFeature(feature, layerName) {
 function showConnectForm() {
   let isFlaggedForConnection = false;
   vectorSource.getFeatures().forEach(function (el) {
-    console.log("elementi za povezivanje", el);
-
     if (el.values_.kml_povezati) {
       let position = el.values_.geometry.flatCoordinates;
       //nizTacakaLinije.push([position[0], position[1], position[2]]);
@@ -161,6 +148,16 @@ function showConnectForm() {
         kmlFeature = el;
         map.getView().setCenter(position);
         map.getView().setZoom(20);
+
+        let feature = new ol.Feature({
+          geometry: new ol.geom.Point([position[0], position[1]]),
+        });
+        let features = [];
+        features.push(feature);
+        let tempFeatureArray = [];
+        tempFeatureArray.push(el);
+        vectorKmlFocusedObject.getSource().clear();
+        vectorKmlFocusedObject.setSource(new ol.source.Vector({ features: features }));
       }
     }
   });
@@ -177,8 +174,6 @@ function showConnectForm() {
         $(ddlObjekatZaPovezivanje).empty();
         showDiv("#odabirBliskogObjektaKmlDiv");
       } else if (result.isDenied) {
-        //TODO: Next feature
-        console.log("NE povezivati", kmlFeature);
         saveKmlConnection(false);
       }
     });
@@ -189,6 +184,5 @@ function showConnectForm() {
 }
 
 function saveKmlConnection(isConnecting) {
-  console.log("save kml connection", kmlFeature);
   showConnectForm();
 }

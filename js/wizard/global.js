@@ -297,6 +297,14 @@ let vektorKreiraniVodovi = new ol.layer.Vector({
 });
 map.addLayer(vektorKreiraniVodovi);
 
+let vectorKmlFocusedObject = new ol.layer.Vector({
+  source: new ol.source.Vector({
+    //features: features
+  }),
+  style: vectorStyleKreirani,
+});
+map.addLayer(vectorKmlFocusedObject);
+
 /**
  * Metoda koja za naponski nivo trafostanice vraća odgovarajući nivo naponskog voda
  * @param {*} nivo
