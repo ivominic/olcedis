@@ -147,47 +147,48 @@ function objectNearKmlFeature(feature, layerName) {
   });
 }
 
-function showConnectForm(features) {
+function showConnectForm() {
+  let isFlaggedForConnection = false;
   vectorSource.getFeatures().forEach(function (el) {
-    let position = el.values_.geometry.flatCoordinates;
-    //nizTacakaLinije.push([position[0], position[1], position[2]]);
+    console.log("elementi za povezivanje", el);
+
+    if (el.values_.kml_povezati) {
+      let position = el.values_.geometry.flatCoordinates;
+      //nizTacakaLinije.push([position[0], position[1], position[2]]);
+      if (!isFlaggedForConnection) {
+        el.values_.kml_povezati = false;
+        isFlaggedForConnection = true;
+        kmlFeature = el;
+        map.getView().setCenter(position);
+        map.getView().setZoom(20);
+      }
+    }
+  });
+  if (isFlaggedForConnection) {
     Swal.fire({
       title: "Da li je potrebno povezati ovaj objekat sa ostatkom mreže?",
       //icon: "info",
+      position: "top-end",
       showDenyButton: true,
       confirmButtonText: `Da`,
       denyButtonText: `Ne`,
     }).then((result) => {
       if (result.isConfirmed) {
+        $(ddlObjekatZaPovezivanje).empty();
         showDiv("#odabirBliskogObjektaKmlDiv");
       } else if (result.isDenied) {
         //TODO: Next feature
-        alert("NE");
+        console.log("NE povezivati", kmlFeature);
+        saveKmlConnection(false);
       }
     });
-  });
+    isFlaggedForConnection = false;
+  } else {
+    closeDiv("#odabirBliskogObjektaKmlDiv");
+  }
 }
 
-function saveKmlConnection() {
-  vectorSource.getFeatures().forEach(function (el) {
-    let position = el.values_.geometry.flatCoordinates;
-    //nizTacakaLinije.push([position[0], position[1], position[2]]);
-    if (el.values_.kml_povezati && el.values_.kml_povezati === true) {
-      console.log("kml tačka", el);
-    }
-    /*Swal.fire({
-      title: "Da li je potrebno povezati ovaj objekat sa ostatkom mreže?",
-      //icon: "info",
-      showDenyButton: true,
-      confirmButtonText: `Da`,
-      denyButtonText: `Ne`,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        showDiv("#odabirBliskogObjektaKmlDiv");
-      } else if (result.isDenied) {
-        //TODO: Next feature
-        alert("NE");
-      }
-    });*/
-  });
+function saveKmlConnection(isConnecting) {
+  console.log("save kml connection", kmlFeature);
+  showConnectForm();
 }

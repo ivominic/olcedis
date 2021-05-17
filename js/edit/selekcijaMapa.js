@@ -424,7 +424,7 @@ function odabirTackePovezivanjaKmla() {
   odabirSaMape = true;
   selektovaniDdlZaPovezivanjeVoda = "#ddlObjekatZaPovezivanje";
   //nizKrajnjihTacakaKml.length = 0;//Nepotrebno
-  $(selektovaniDdlZaPovezivanjeVoda).empty();
+  $(ddlObjekatZaPovezivanje).empty();
   map.on("singleclick", klikNaRastereZaVodove);
 }
 
