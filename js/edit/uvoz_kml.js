@@ -88,28 +88,6 @@ function objectNearKmlFeature(feature, layerName) {
   if (feature.getGeometry().getType().toString().includes("oint")) {
     cqlCondition = "DWITHIN(Geometry,POINT(" + coordinates[0] + " " + coordinates[1] + ")," + kmlRadius + ",meters)";
   }
-  if (feature.getGeometry().getType().toString().includes("tring")) {
-    cqlCondition = "DWITHIN(Geometry,POINT(" + coordinates[0] + " " + coordinates[1] + ")," + kmlRadius + ",meters)";
-    if (coordinates[coordinates.length - 1] === 0) {
-      cqlCondition +=
-        " OR DWITHIN(Geometry,POINT(" +
-        coordinates[coordinates.length - 3] +
-        " " +
-        coordinates[coordinates.length - 2] +
-        ")," +
-        kmlRadius +
-        ",meters) ";
-    } else {
-      cqlCondition +=
-        " OR DWITHIN(Geometry,POINT(" +
-        coordinates[coordinates.length - 2] +
-        " " +
-        coordinates[coordinates.length - 1] +
-        ")," +
-        kmlRadius +
-        ",meters) ";
-    }
-  }
 
   cqlCondition = "&cql_filter=" + cqlCondition;
   let wfsUrl1 =
@@ -128,6 +106,39 @@ function objectNearKmlFeature(feature, layerName) {
     success: function (response) {
       if (response.features.length) {
         feature.values_.kml_povezati = true;
+      }
+    },
+    fail: function (jqXHR, textStatus) {
+      console.log("Request failed: " + textStatus);
+    },
+  });
+}
+
+function objectNearKmlEndPoints(feature, layerName) {
+  let coordinates = feature.values_.geometry.flatCoordinates;
+  let cqlCondition = "";
+
+  if (feature.getGeometry().getType().toString().includes("oint")) {
+    cqlCondition = "DWITHIN(Geometry,POINT(" + coordinates[0] + " " + coordinates[1] + ")," + kmlRadius + ",meters)";
+  }
+
+  cqlCondition = "&cql_filter=" + cqlCondition;
+  let wfsUrl1 =
+    wfsUrl +
+    "?version=1.0.0&request=GetFeature&typeName=geonode:" +
+    layerName +
+    //"geonode:stubovi,geonode:vodovi,geonode:trafostanice,geonode:view_potrosaci,geonode:prikljucno_mjesto,geonode:nkro,geonode:pod" +
+    "&outputformat=application/json" +
+    cqlCondition +
+    "&access_token=" +
+    geoserverToken;
+  $.ajax({
+    method: "GET",
+    url: wfsUrl1,
+    data: {},
+    success: function (response) {
+      if (response.features.length) {
+        kmlEndPoint.push(feature);
       }
     },
     fail: function (jqXHR, textStatus) {
@@ -161,6 +172,32 @@ function showConnectForm() {
       }
     }
   });
+  //Kad završi sa tačkama, prelazi na niz endpointa kml linija
+  if (!isFlaggedForConnection) {
+    kmlEndPoints.forEach(function (el) {
+      if (el.values_.kml_povezati) {
+        let position = el.values_.geometry.flatCoordinates;
+        //nizTacakaLinije.push([position[0], position[1], position[2]]);
+        if (!isFlaggedForConnection) {
+          el.values_.kml_povezati = false;
+          isFlaggedForConnection = true;
+          kmlFeature = el;
+          map.getView().setCenter(position);
+          map.getView().setZoom(20);
+
+          let feature = new ol.Feature({
+            geometry: new ol.geom.Point([position[0], position[1]]),
+          });
+          let features = [];
+          features.push(feature);
+          let tempFeatureArray = [];
+          tempFeatureArray.push(el);
+          vectorKmlFocusedObject.getSource().clear();
+          vectorKmlFocusedObject.setSource(new ol.source.Vector({ features: features }));
+        }
+      }
+    });
+  }
   if (isFlaggedForConnection) {
     Swal.fire({
       title: "Da li je potrebno povezati ovaj objekat sa ostatkom mreže?",
@@ -185,4 +222,32 @@ function showConnectForm() {
 
 function saveKmlConnection(isConnecting) {
   showConnectForm();
+}
+
+/**
+ * Creates array of end points from all kml linestrings
+ */
+function extractKmlLinestringEndPoints() {
+  kmlEndPoints.length = 0;
+  vectorSource.getFeatures().forEach(function (el) {
+    if (el.getGeometry().getType().toString().includes("tring")) {
+      let coordinates = el.values_.geometry.flatCoordinates;
+      let feature1 = new ol.Feature({
+        geometry: new ol.geom.Point([coordinates[0], coordinates[1]]),
+      });
+      let feature2;
+
+      if (coordinates[coordinates.length - 1] === 0) {
+        feature2 = new ol.Feature({
+          geometry: new ol.geom.Point([coordinates[coordinates.length - 3], coordinates[coordinates.length - 4]]),
+        });
+      } else {
+        feature2 = new ol.Feature({
+          geometry: new ol.geom.Point([coordinates[coordinates.length - 2], coordinates[coordinates.length - 1]]),
+        });
+      }
+      kmlEndPoints.push(feature1);
+      kmlEndPoints.push(feature2);
+    }
+  });
 }

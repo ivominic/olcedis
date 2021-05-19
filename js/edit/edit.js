@@ -302,9 +302,12 @@ dragAndDrop.on("addfeatures", function (event) {
 
   blnDodijeljenoGpxProperties = false;
   event.features.forEach(function (feature) {
-    objectNearKmlFeature(feature, "stubovi");
-    objectNearKmlFeature(feature, "trafostanice");
-    objectNearKmlFeature(feature, "vodovi");
+    if (feature.getGeometry().getType().toString().includes("oint")) {
+      objectNearKmlFeature(feature, "stubovi");
+      objectNearKmlFeature(feature, "trafostanice");
+      objectNearKmlFeature(feature, "vodovi");
+    }
+
     //let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
     let position = feature.values_.geometry.flatCoordinates;
     nizKml.push({
@@ -321,6 +324,16 @@ dragAndDrop.on("addfeatures", function (event) {
     projection: event.projection,
   });
   //generisanjeGpxPodaIzGeometrije(20, 20);
+
+  //Provjera za kml tačke sa krajeva linije
+  extractKmlLinestringEndPoints();
+  kmlEndPoints.forEach(function (feature) {
+    if (feature.getGeometry().getType().toString().includes("oint")) {
+      objectNearKmlFeature(feature, "stubovi");
+      objectNearKmlFeature(feature, "trafostanice");
+      objectNearKmlFeature(feature, "vodovi");
+    }
+  });
 
   //On drag'n'drop layer, all other vector layers are removed
   map.getLayers().forEach(function (layer) {
