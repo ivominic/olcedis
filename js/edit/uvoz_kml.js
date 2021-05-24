@@ -251,3 +251,8 @@ function extractKmlLinestringEndPoints() {
     }
   });
 }
+
+/**
+ * Add attributes to line imported from kml file. No need to create line from points
+ */
+function addAttributesPowerLine() {}

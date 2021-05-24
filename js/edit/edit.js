@@ -84,9 +84,19 @@ function sacuvaj() {
   }
   if (odabraniLejerUnos === "vodovi") {
     //TODO: Preuzeti vrijednosti iz polja i otvoriti formu za povezivanje voda. Atribute dodijeliti iscrtanoj liniji
+    if (isEditable) {
+      showDiv("#odabirPoveznicaDiv");
+      closeDiv("#atributiDiv");
+    } else {
+      if (!selectGpxFeature) {
+        poruka("Upozorenje", "Potrebno je odabrati vod iz kml fajla.");
+        return false;
+      }
+      console.log("kml za atribute vodovima");
+      ucrtaniVod = selectGpxFeature;
+      dodajPoljaUcrtanomVodu();
+    }
 
-    showDiv("#odabirPoveznicaDiv");
-    closeDiv("#atributiDiv");
     return false;
   }
   if (odabraniLejerUnos === "trafostanice") {
