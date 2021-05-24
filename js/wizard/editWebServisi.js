@@ -8,7 +8,12 @@
  * @param {*} izvodNapojne
  */
 function neupareneTrafostanice(sifraNapojne, izvodNapojne) {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/neuparene_za_napojnu?sifra_napojne=" + sifraNapojne + "&izvod_napojne=" + izvodNapojne;
+  let urlServisa =
+    wsServerOriginLocation +
+    "/novi_portal/api/neuparene_za_napojnu?sifra_napojne=" +
+    sifraNapojne +
+    "&izvod_napojne=" +
+    izvodNapojne;
   urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
@@ -257,7 +262,12 @@ function pretragaTrafostanica(sifraTS) {
  * @param {*} nazivOdabranaNapojneTS
  * @param {*} izvodOdabraneNapojneTS
  */
-function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivOdabranaNapojneTS, izvodOdabraneNapojneTS) {
+function trafostaniceIzBilingaZaUparivanje(
+  nizTS,
+  sifraOdabraneNapojneTS,
+  nazivOdabranaNapojneTS,
+  izvodOdabraneNapojneTS
+) {
   //Niz id-jeva trafostanica
   let dodatniParametriWS = "";
   console.log("Poziva trafostanice za uparivanje ws", nizTS);
@@ -275,7 +285,8 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
     dodatniParametriWS += "&izvod_napojne=" + izvodOdabraneNapojneTS;
   }
   let stringNiz = "[" + nizTS.join(",") + "]";
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/upari_trafostanice?trafostanice=" + stringNiz + dodatniParametriWS;
+  let urlServisa =
+    wsServerOriginLocation + "/novi_portal/api/upari_trafostanice?trafostanice=" + stringNiz + dodatniParametriWS;
   urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
@@ -334,7 +345,10 @@ function trafostaniceIzBilingaZaUparivanje(nizTS, sifraOdabraneNapojneTS, nazivO
         );
       });
       if (izvodOdabraneNapojneTS && data.predlog.length === 0 && data.uparene.length === 0) {
-        poruka("Upozorenje", "Nije pronađena nijedna trafostanica u tehničkoj bazi podataka koja zadovoljava zadate uslove.");
+        poruka(
+          "Upozorenje",
+          "Nije pronađena nijedna trafostanica u tehničkoj bazi podataka koja zadovoljava zadate uslove."
+        );
       }
       if (data.naziv_izvoda) {
         document.querySelector("#wizardHeader").innerText = treciKorakWizarda;
@@ -388,7 +402,8 @@ function nnGeometrijaTrafostanica(sifraOdabraneNapojneTS, nazivOdabranaNapojneTS
     dodatniParametriWS += "&izvod_napojne=" + izvodOdabraneNapojneTS;
   }
   let stringNiz = "[]";
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/upari_trafostanice?trafostanice=" + stringNiz + dodatniParametriWS;
+  let urlServisa =
+    wsServerOriginLocation + "/novi_portal/api/upari_trafostanice?trafostanice=" + stringNiz + dodatniParametriWS;
   urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
@@ -588,7 +603,8 @@ function podaciZaSpisakPotrosaca(nizPretplatnihBrojeva) {
     return false;
   }
 
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/get_consumer_data?pretplatni_brojevi=" + nizPretplatnihBrojeva;
+  let urlServisa =
+    wsServerOriginLocation + "/novi_portal/api/get_consumer_data?pretplatni_brojevi=" + nizPretplatnihBrojeva;
   urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
@@ -639,3 +655,32 @@ function pravaPristupaStranici(username) {
     },
   });
 }
+
+function kmlConnectionLog(objects) {
+  let retval = true;
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/objekti_za_azuriranje";
+  $.ajax({
+    url: urlServisa,
+    data: { objekti: JSON.stringify(objects) },
+    type: "POST",
+    success: function (data) {
+      console.log("uspjeh", data);
+    },
+    error: function (x, y, z) {
+      console.log("greška kml connection", x.responseText);
+    },
+  });
+}
+
+/*let testArray = [];
+testArray.push({
+  new_object_id: "1621854353",
+  old_object_id: "1621854356",
+  old_object_type: "stubovi",
+});
+testArray.push({
+  new_object_id: "15156415615",
+  old_object_id: "1621854355",
+  old_object_type: "stubovi",
+});
+kmlConnectionLog(testArray);*/
