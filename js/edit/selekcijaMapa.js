@@ -241,20 +241,20 @@ function prikazPodatakaIzGpxTacaka() {
   if (selectGpxFeature.get("lejer") === "stubovi") {
     prikaziPoljaOdabranogGpxStuba();
     let pomLejer = "Stub 35KV";
-    if (selectGpxFeature.get("nivo") === "10") {
+    if (selectGpxFeature.get("napon") === "10") {
       pomLejer = "Stub 10KV";
     }
-    if (selectGpxFeature.get("nivo") === "0.4") {
+    if (selectGpxFeature.get("napon") === "0.4") {
       pomLejer = "Stub 04KV";
     }
     prikazPanelaAtributa(pomLejer);
   } else if (selectGpxFeature.get("lejer") === "trafostanice") {
     prikaziPoljaOdabraneGpxTrafostanice();
     let pomLejer = "Trafostanica 35KV";
-    if (selectGpxFeature.get("nivo") === "10") {
+    if (selectGpxFeature.get("napon") === "10") {
       pomLejer = "Trafostanica 10KV";
     }
-    if (selectGpxFeature.get("nivo") === "0.4") {
+    if (selectGpxFeature.get("napon") === "0.4") {
       pomLejer = "Trafostanica 04KV";
     }
     prikazPanelaAtributa(pomLejer);
