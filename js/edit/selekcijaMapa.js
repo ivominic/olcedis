@@ -262,10 +262,10 @@ function prikazPodatakaIzGpxTacaka() {
     //Ovo će trebati za poseban wfs lejer za iscrtane vodove
     prikaziPoljaOdabranogVoda();
     let pomLejer = "Vod 35KV";
-    if (selectGpxFeature.get("nivo") === "10") {
+    if (selectGpxFeature.get("napon") === "10") {
       pomLejer = "Vod 10KV";
     }
-    if (selectGpxFeature.get("nivo") === "0.4") {
+    if (selectGpxFeature.get("napon") === "0.4") {
       pomLejer = "Vod 04KV";
     }
     prikazPanelaAtributa(pomLejer);

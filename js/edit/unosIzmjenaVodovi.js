@@ -2,18 +2,21 @@
  * Metoda koja dodjeljuje property-e vodu koji se unosi
  */
 function dodajPoljaUcrtanomVodu() {
+  //let napon = document.querySelector("#ddl_sloj_podataka").value;
+  let napon = document.querySelector("#napon").value;
+  napon === "";
   if (napon === "0.4") {
     ucrtaniVod.set("rasvjeta_vod", document.querySelector("#rasvjeta_vod").value);
     ucrtaniVod.set("vrsta_vod_04", document.querySelector("#vrsta_vod_04").value);
     ucrtaniVod.set("tip_vod_04", document.querySelector("#tip_vod_04").value);
     ucrtaniVod.set("presjek_vod_04", document.querySelector("#presjek_vod_04").value);
-    ucrtaniVod.set("materijal_vod_04", document.querySelector("#materijal_vod_04").value);
+    ucrtaniVod.set("materijal_vod_04", document.querySelector("#vrsta_materijal_vod_04").value);
   }
   if (napon === "10") {
     ucrtaniVod.set("vrsta_vod_10", document.querySelector("#vrsta_vod_10").value);
     ucrtaniVod.set("tip_vod_10", document.querySelector("#tip_vod_10").value);
     ucrtaniVod.set("presjek_vod_10", document.querySelector("#presjek_vod_10").value);
-    ucrtaniVod.set("materijal_vod_10", document.querySelector("#materijal_vod_10").value);
+    ucrtaniVod.set("materijal_vod_10", document.querySelector("#vrsta_materijal_vod_10").value);
     ucrtaniVod.set("uze_presjek_vod_10", document.querySelector("#uze_presjek_vod_10").value);
     ucrtaniVod.set("uze_vod_10", document.querySelector("#uze_vod_10").value);
   }
@@ -21,7 +24,7 @@ function dodajPoljaUcrtanomVodu() {
     ucrtaniVod.set("vrsta_vod_35", document.querySelector("#vrsta_vod_35").value);
     ucrtaniVod.set("tip_vod_35", document.querySelector("#tip_vod_35").value);
     ucrtaniVod.set("presjek_vod_35", document.querySelector("#presjek_vod_35").value);
-    ucrtaniVod.set("materijal_vod_35", document.querySelector("#materijal_vod_35").value);
+    ucrtaniVod.set("materijal_vod_35", document.querySelector("#vrsta_materijal_vod_35").value);
     ucrtaniVod.set("uze_presjek_vod_35", document.querySelector("#uze_presjek_vod_35").value);
     ucrtaniVod.set("uze_vod_10", document.querySelector("#uze_vod_35").value);
   }
@@ -61,6 +64,7 @@ function prikaziPoljaOdabranogVoda() {
   } else {
     document.querySelector("#gps").value = "";
   }
+  console.log("vod napon", selectGpxFeature.values_.napon);
   //document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
@@ -98,7 +102,7 @@ function prikaziPoljaOdabranogVoda() {
     document.querySelector("#vrsta_vod_10").value = selectGpxFeature.values_.vrsta_vod_10;
     document.querySelector("#tip_vod_10").value = selectGpxFeature.values_.tip_vod_10;
     document.querySelector("#presjek_vod_10").value = selectGpxFeature.values_.presjek_vod_10;
-    document.querySelector("#materijal_vod_10").value = selectGpxFeature.values_.materijal_vod_10;
+    document.querySelector("#vrsta_materijal_vod_10").value = selectGpxFeature.values_.materijal_vod_10;
     document.querySelector("#uze_presjek_vod_10").value = selectGpxFeature.values_.uze_presjek_vod_10;
     document.querySelector("#uze_vod_10").value = selectGpxFeature.values_.uze_vod_10;
   }

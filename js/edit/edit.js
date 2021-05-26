@@ -85,6 +85,7 @@ function sacuvaj() {
   if (odabraniLejerUnos === "vodovi") {
     //TODO: Preuzeti vrijednosti iz polja i otvoriti formu za povezivanje voda. Atribute dodijeliti iscrtanoj liniji
     if (isEditable) {
+      //TODO: Provjera da li je iscrtan poligon
       showDiv("#odabirPoveznicaDiv");
       closeDiv("#atributiDiv");
     } else {
