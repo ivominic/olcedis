@@ -20,6 +20,7 @@ let tacke = [],
 let gpxFeatures = []; //Niz feature-a koji se dobije kad se prevuče gpx fajl na mapu
 let kmlFeature,
   kmlEndPoints = []; //Feature iz kml fajla koju povezujemo sa ostatkom mreže. EndPoint krajevi kml linije
+let kmlLinksArray = []; //Array of object for connecting with nearby objects
 let blnDodijeljenoGpxProperties = false; //Promjenljiva koja označava da li su svim podacima iz gpx-a dodijeljeni atributi
 let selectGpxFeature; //Feature iz gpx-a koji se selektuje
 let naponskiNivoNapojneTrafostanice = "";

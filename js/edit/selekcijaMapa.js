@@ -440,7 +440,7 @@ function klikNaRastereZaVodove(browserEvent) {
   let tempNiz = [];
   map.forEachLayerAtPixel(pixel, function (layer) {
     if (layer instanceof ol.layer.Image) {
-      console.log(layer);
+      console.log(layer.values_.name);
       //let title = layer.get("title");
       let vidljivost = layer.get("visible");
       if (vidljivost) {
@@ -465,6 +465,7 @@ function klikNaRastereZaVodove(browserEvent) {
                 console.log(odgovor.features);
                 odgovor.features.forEach(function (el) {
                   tempNiz.push(el);
+                  console.log("el", el);
                 });
               }
 
@@ -477,10 +478,14 @@ function klikNaRastereZaVodove(browserEvent) {
                   nizKrajnjihTacakaVoda = tempNiz.slice();
                 }
                 tempNiz.forEach((el) => {
+                  console.log("el čitanje", el);
+                  //let newId = el.id.split(".")[0] + "." + el.values_.originalId;
+                  let newId = el.id.split(".")[0] + "." + el.properties.originalId;
+
                   $(selektovaniDdlZaPovezivanjeVoda).append(
                     $("<option>", {
-                      value: el.id,
-                      text: el.id,
+                      value: newId,
+                      text: newId,
                     })
                   );
                 });

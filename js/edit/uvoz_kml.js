@@ -211,7 +211,7 @@ function showConnectForm() {
         $(ddlObjekatZaPovezivanje).empty();
         showDiv("#odabirBliskogObjektaKmlDiv");
       } else if (result.isDenied) {
-        saveKmlConnection(false);
+        saveKmlConnection(true);
       }
     });
     isFlaggedForConnection = false;
@@ -220,7 +220,20 @@ function showConnectForm() {
   }
 }
 
-function saveKmlConnection(isConnecting) {
+function saveKmlConnection(isSkipping) {
+  console.log("isSkipping", isSkipping);
+  console.log("isSkipping type", typeof isSkipping);
+  console.log("kmlFeature", kmlFeature);
+  console.log("ddl za povezivanje", document.querySelector("#ddlObjekatZaPovezivanje").value);
+  let oldObject = document.querySelector("#ddlObjekatZaPovezivanje").value.split(".");
+  if (isSkipping !== true) {
+    //TODO: Ovdje popuniti niz veza
+    kmlLinksArray.push({
+      new_object_id: kmlFeature.get("originalId"),
+      old_object_id: oldObject[1],
+      old_object_type: oldObject[0],
+    });
+  }
   showConnectForm();
 }
 
@@ -234,12 +247,14 @@ function extractKmlLinestringEndPoints() {
       let coordinates = el.values_.geometry.flatCoordinates;
       let feature1 = new ol.Feature({
         geometry: new ol.geom.Point([coordinates[0], coordinates[1]]),
+        originalId: el.get("originalId"),
       });
       let feature2;
 
       if (coordinates[coordinates.length - 1] === 0) {
         feature2 = new ol.Feature({
           geometry: new ol.geom.Point([coordinates[coordinates.length - 3], coordinates[coordinates.length - 4]]),
+          originalId: el.get("originalId"),
         });
       } else {
         feature2 = new ol.Feature({

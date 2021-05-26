@@ -235,6 +235,7 @@ function ddlLejerChange() {
 
 function finalnaPotvrdaUnosa() {
   //Pozivanje web servisa za finalni unos
+  kmlConnectionLog(kmlLinksArray);
   insertObjekataIzGpx();
   poruka("Uspjeh", "Završen unos podataka");
 

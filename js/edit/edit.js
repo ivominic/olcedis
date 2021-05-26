@@ -305,6 +305,7 @@ let dragAndDrop = new ol.interaction.DragAndDrop({
 });
 dragAndDrop.on("addfeatures", function (event) {
   console.log("aaaa", event);
+  kmlLinksArray.length = 0; //Emptying array of links with  nearby objects
   vectorLayerType(event);
   disableMenija();
   showDiv("#odabirNapojneTrafostaniceDiv");
@@ -312,6 +313,9 @@ dragAndDrop.on("addfeatures", function (event) {
 
   blnDodijeljenoGpxProperties = false;
   event.features.forEach(function (feature) {
+    console.log("feature unos", feature);
+    let tempTimestamp = new Date().getTime() + "_" + feature.ol_uid;
+    feature.set("originalId", tempTimestamp);
     if (feature.getGeometry().getType().toString().includes("oint")) {
       objectNearKmlFeature(feature, "stubovi");
       objectNearKmlFeature(feature, "trafostanice");
@@ -324,6 +328,7 @@ dragAndDrop.on("addfeatures", function (event) {
       lat: position[1],
       lng: position[0],
       name: feature.values_.name,
+      originalId: feature.values_.originalId,
       description: feature.values_.description,
     });
   });
