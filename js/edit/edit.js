@@ -83,19 +83,23 @@ function sacuvaj() {
     return false;
   }
   if (odabraniLejerUnos === "vodovi") {
-    //TODO: Preuzeti vrijednosti iz polja i otvoriti formu za povezivanje voda. Atribute dodijeliti iscrtanoj liniji
-    if (isEditable) {
-      //TODO: Provjera da li je iscrtan poligon
-      showDiv("#odabirPoveznicaDiv");
-      closeDiv("#atributiDiv");
-    } else {
-      if (!selectGpxFeature) {
-        poruka("Upozorenje", "Potrebno je odabrati vod iz kml fajla.");
-        return false;
-      }
-      console.log("kml za atribute vodovima");
-      //ucrtaniVod = selectGpxFeature;
+    if (selectGpxFeature.get("lejer") === "vodovi") {
+      //If user selects already created power line
       dodajPoljaUcrtanomVodu(selectGpxFeature);
+    } else {
+      if (isEditable) {
+        //TODO: Provjera da li je iscrtan poligon
+        showDiv("#odabirPoveznicaDiv");
+        closeDiv("#atributiDiv");
+      } else {
+        if (!selectGpxFeature) {
+          poruka("Upozorenje", "Potrebno je odabrati vod iz kml fajla.");
+          return false;
+        }
+        console.log("kml za atribute vodovima");
+        //ucrtaniVod = selectGpxFeature;
+        dodajPoljaUcrtanomVodu(selectGpxFeature);
+      }
     }
 
     return false;

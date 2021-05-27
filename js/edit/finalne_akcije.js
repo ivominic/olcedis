@@ -34,6 +34,9 @@ function insertObjekataIzGpx() {
     }
   });
 
+  //call web service
+  //insertAllObjects(...)
+
   console.log("svi vodovi za kreiranje", kreiraniVodoviFeatures);
 
   if (postojiNeobradjenaTacka) {

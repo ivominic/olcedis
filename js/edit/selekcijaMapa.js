@@ -660,6 +660,7 @@ function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
   vektorKreiraniVodovi.getSource().clear();
   vektorKreiraniVodovi.getSource().addFeatures(nizVodovaGpx);
   restartNakonUnosaVoda();
+  map.removeInteraction(modify);
 }
 
 function restartNakonUnosaVoda() {
@@ -669,6 +670,7 @@ function restartNakonUnosaVoda() {
   $("#ddlKrajnjaTackaVodovi").empty();
   nizPocetnihTacakaVoda.length = 0;
   nizKrajnjihTacakaVoda.length = 0;
+  closeDiv("#odabirPoveznicaDiv");
   brisanje();
 }
 

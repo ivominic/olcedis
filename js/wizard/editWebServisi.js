@@ -664,23 +664,44 @@ function kmlConnectionLog(objects) {
     data: { objekti: JSON.stringify(objects) },
     type: "POST",
     success: function (data) {
-      console.log("uspjeh", data);
+      console.log("success", data);
     },
     error: function (x, y, z) {
-      console.log("greška kml connection", x.responseText);
+      console.log("error kml connection log", x.responseText);
     },
   });
 }
 
-/*let testArray = [];
-testArray.push({
-  new_object_id: "1621854353",
-  old_object_id: "1621854356",
-  old_object_type: "stubovi",
-});
-testArray.push({
-  new_object_id: "15156415615",
-  old_object_id: "1621854355",
-  old_object_type: "stubovi",
-});
-kmlConnectionLog(testArray);*/
+/**
+ * Method for inserting all drawn objects into database
+ * @param {*} stubovi
+ * @param {*} vodovi
+ * @param {*} trafostanice
+ * @param {*} podovi
+ * @param {*} prikljucna_mjesta
+ * @param {*} potrosaci
+ * @param {*} nkro
+ */
+function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucna_mjesta, potrosaci, nkro) {
+  let retval = true;
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/object_control";
+  $.ajax({
+    url: urlServisa,
+    data: {
+      temp_stubovi: JSON.stringify(stubovi),
+      temp_vodovi: JSON.stringify(vodovi),
+      temp_trafostanice: JSON.stringify(trafostanice),
+      temp_pod: JSON.stringify(podovi),
+      temp_prikljucno_mjesto: JSON.stringify(prikljucna_mjesta),
+      temp_potrosac: JSON.stringify(potrosaci),
+      temp_nkro: JSON.stringify(nkro),
+    },
+    type: "POST",
+    success: function (data) {
+      console.log("success", data);
+    },
+    error: function (x, y, z) {
+      console.log("error insert all objects", x.responseText);
+    },
+  });
+}
