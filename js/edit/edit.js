@@ -94,8 +94,8 @@ function sacuvaj() {
         return false;
       }
       console.log("kml za atribute vodovima");
-      ucrtaniVod = selectGpxFeature;
-      dodajPoljaUcrtanomVodu();
+      //ucrtaniVod = selectGpxFeature;
+      dodajPoljaUcrtanomVodu(selectGpxFeature);
     }
 
     return false;

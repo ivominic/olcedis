@@ -237,7 +237,7 @@ function finalnaPotvrdaUnosa() {
   //Pozivanje web servisa za finalni unos
   kmlConnectionLog(kmlLinksArray);
   insertObjekataIzGpx();
-  poruka("Uspjeh", "Završen unos podataka");
+  //poruka("Uspjeh", "Završen unos podataka");
 
   console.log("Finalno features", gpxFeatures);
 }

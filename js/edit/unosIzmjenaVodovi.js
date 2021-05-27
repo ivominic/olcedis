@@ -1,7 +1,7 @@
 /**
  * Metoda koja dodjeljuje property-e vodu koji se unosi
  */
-function dodajPoljaUcrtanomVodu() {
+function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   //let napon = document.querySelector("#ddl_sloj_podataka").value;
   let napon = document.querySelector("#napon").value;
   napon === "";

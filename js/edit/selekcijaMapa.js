@@ -655,6 +655,7 @@ function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
   wktVod = wktVod.replace(",ZM", "");
   wktVod = wktVod.replace(",Z", "");
   var feature = format.readFeature(wktVod, {});
+  dodajPoljaUcrtanomVodu(feature);
   nizVodovaGpx.push(feature);
   vektorKreiraniVodovi.getSource().clear();
   vektorKreiraniVodovi.getSource().addFeatures(nizVodovaGpx);
