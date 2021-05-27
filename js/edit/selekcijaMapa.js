@@ -661,6 +661,7 @@ function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
   vektorKreiraniVodovi.getSource().addFeatures(nizVodovaGpx);
   restartNakonUnosaVoda();
   map.removeInteraction(modify);
+  map.removeInteraction(modifyV);
 }
 
 function restartNakonUnosaVoda() {

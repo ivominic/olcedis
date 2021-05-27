@@ -80,6 +80,8 @@ let kreiraniStuboviFeatures = [],
 
 let kreiraniVodoviFeatures = []; //Niz vodova kreiranih iz tačaka gpx fajla
 
+let isModifyDisabled = false; //Used to disable modify interraction after power line drawing
+
 /**Definisanje podloga */
 let osmBaseMap = new ol.layer.Tile({
   title: "Open Street Maps",
