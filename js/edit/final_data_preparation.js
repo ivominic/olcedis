@@ -131,3 +131,241 @@ function vodArrayElement(el, action, wizard) {
 }
 
 //TODO: Made procedures for other layers
+
+/**
+ * Preparing JSON object from feature
+ * @param {* Feature of element for insert} el
+ * @param {* "I" for insert, "U" for update} action
+ * @param {* "0" if web service is not call from wizard form, "1" else} wizard
+ */
+function trafostanicaArrayElement(el, action, wizard) {
+  let item = {
+    fid_1: el.values_.fid_1,
+    Geometry: wktGeometrije(el),
+    name: el.values_.name,
+    fid: el.values_.fid,
+    celije_10: el.values_.celije_10,
+    prenos_odnos: el.values_.prenos_odnos,
+    id_billing: el.values_.id_billing,
+    izvod_celija: el.values_.izvod_celija,
+    funkcija: el.values_.funkcija,
+    nad_vis: el.values_.nad_vis,
+    inst_snaga_t4: el.values_.inst_snaga_t4,
+    inst_snaga_t3: el.values_.inst_snaga_t3,
+    inst_snaga_t2: el.values_.inst_snaga_t2,
+    inst_snaga_t1: el.values_.inst_snaga_t1,
+    br_nn_izvoda: el.values_.br_nn_izvoda,
+    napojna_ts: el.values_.napojna_ts,
+    br_vod_cel_visi_nap: el.values_.br_vod_cel_visi_nap,
+    br_vod_cel_nizi_nap: el.values_.br_vod_cel_nizi_nap,
+    projek_snaga: el.values_.projek_snaga,
+    id_br: el.values_.id_br,
+    napon: el.values_.napon,
+    vlasnistvo: el.values_.vlasnistvo,
+    tip: el.values_.tip,
+    id: el.values_.id, //Vidjeti šta ovdje predajem
+    layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
+    opstina: el.values_.opstina,
+    naziv: el.values_.naziv,
+    god_izg: el.values_.god_izg,
+    gps: el.values_.gps,
+    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
+    pog_sprem: el.values_.pog_sprem,
+    layer_id: "", //Provjeriti da li treba da se šalje
+    geohash_id: "", //Provjeriti da li treba da se šalje
+    geohash_id_no: "", //Provjeriti da li treba da se šalje
+    korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
+    katastar: "",
+    posjeduje_sliku: false,
+    originalId: el.values_.originalId,
+    sifra_napojne: el.values_.sifra_napojne,
+    naziv_napojne: el.values_.naziv_napojne,
+    izvod_napojne: el.values_.izvod_napojne,
+    vlasnik: el.values_.vlasnik,
+    akcija: action,
+    wizard: wizard,
+  };
+  console.log("Trafostanice finalno", item);
+  stuboviArrayFinal.push(item);
+}
+
+/**
+ * Preparing JSON object from feature
+ * @param {* Feature of element for insert} el
+ * @param {* "I" for insert, "U" for update} action
+ * @param {* "0" if web service is not call from wizard form, "1" else} wizard
+ */
+function prikljucnoMjestoArrayElement(el, action, wizard) {
+  let item = {
+    fid_1: el.values_.fid_1,
+    Geometry: wktGeometrije(el),
+    name: el.values_.name,
+    fid: el.values_.fid,
+    osiguraci: el.values_.osiguraci,
+    br_pretplatnika: el.values_.br_pretplatnika,
+    sys_id: el.values_.sys_id,
+    izvod_ts: el.values_.izvod_ts,
+    ts: el.values_.ts,
+    napon: el.values_.napon,
+    vlasnistvo: el.values_.vlasnistvo,
+    tip: el.values_.tip,
+    id: el.values_.id, //Vidjeti šta ovdje predajem
+    layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
+    opstina: el.values_.opstina,
+    gps: el.values_.gps,
+    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
+    layer_id: "", //Provjeriti da li treba da se šalje
+    geohash_id: "", //Provjeriti da li treba da se šalje
+    geohash_id_no: "", //Provjeriti da li treba da se šalje
+    korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
+    katastar: "",
+    posjeduje_sliku: false,
+    originalId: el.values_.originalId,
+    sifra_napojne: el.values_.sifra_napojne,
+    naziv_napojne: el.values_.naziv_napojne,
+    izvod_napojne: el.values_.izvod_napojne,
+    vlasnik: el.values_.vlasnik,
+    akcija: action,
+    wizard: wizard,
+  };
+  console.log("Priključno mjesto finalno", item);
+  stuboviArrayFinal.push(item);
+}
+
+/**
+ * Preparing JSON object from feature
+ * @param {* Feature of element for insert} el
+ * @param {* "I" for insert, "U" for update} action
+ * @param {* "0" if web service is not call from wizard form, "1" else} wizard
+ */
+function potrosacArrayElement(el, action, wizard) {
+  let item = {
+    fid_1: el.values_.fid_1,
+    Geometry: wktGeometrije(el),
+    name: el.values_.name,
+    fid: el.values_.fid,
+    prik_kabal: el.values_.prik_kabal,
+    pod: el.values_.pod,
+    adresa_mm: el.values_.adresa_mm,
+    naziv_ts: el.values_.naziv_ts,
+    prik_mjesto: el.values_.prik_mjesto,
+    sifra_ts: el.values_.sifra_ts,
+    naziv: el.values_.naziv,
+    naziv_nn_izvod: el.values_.naziv_nn_izvod,
+    pretplatni_br: el.values_.pretplatni_br,
+    br_brojila: el.values_.br_brojila,
+    napon: el.values_.napon,
+    id: el.values_.id, //Vidjeti šta ovdje predajem
+    layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
+    opstina: el.values_.opstina,
+    gps: el.values_.gps,
+    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
+    layer_id: "", //Provjeriti da li treba da se šalje
+    geohash_id: "", //Provjeriti da li treba da se šalje
+    geohash_id_no: "", //Provjeriti da li treba da se šalje
+    korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
+    katastar: "",
+    posjeduje_sliku: false,
+    originalId: el.values_.originalId,
+    sifra_napojne: el.values_.sifra_napojne,
+    naziv_napojne: el.values_.naziv_napojne,
+    izvod_napojne: el.values_.izvod_napojne,
+    vlasnik: el.values_.vlasnik,
+    akcija: action,
+    wizard: wizard,
+  };
+  console.log("Potrošači finalno", item);
+  stuboviArrayFinal.push(item);
+}
+
+/**
+ * Preparing JSON object from feature
+ * @param {* Feature of element for insert} el
+ * @param {* "I" for insert, "U" for update} action
+ * @param {* "0" if web service is not call from wizard form, "1" else} wizard
+ */
+function podArrayElement(el, action, wizard) {
+  let item = {
+    fid_1: el.values_.fid_1,
+    Geometry: wktGeometrije(el),
+    name: el.values_.name,
+    fid: el.values_.fid,
+    prik_kabal: el.values_.prik_kabal,
+    pod: el.values_.pod,
+    adresa_mm: el.values_.adresa_mm,
+    naziv_ts: el.values_.naziv_ts,
+    prik_mjesto: el.values_.prik_mjesto,
+    sifra_ts: el.values_.sifra_ts,
+    naziv: el.values_.naziv,
+    naziv_nn_izvod: el.values_.naziv_nn_izvod,
+    pretplatni_br: el.values_.pretplatni_br,
+    br_brojila: el.values_.br_brojila,
+    napon: el.values_.napon,
+    id: el.values_.id, //Vidjeti šta ovdje predajem
+    layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
+    opstina: el.values_.opstina,
+    gps: el.values_.gps,
+    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
+    layer_id: "", //Provjeriti da li treba da se šalje
+    geohash_id: "", //Provjeriti da li treba da se šalje
+    geohash_id_no: "", //Provjeriti da li treba da se šalje
+    korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
+    katastar: "",
+    posjeduje_sliku: false,
+    originalId: el.values_.originalId,
+    sifra_napojne: el.values_.sifra_napojne,
+    naziv_napojne: el.values_.naziv_napojne,
+    izvod_napojne: el.values_.izvod_napojne,
+    vlasnik: el.values_.vlasnik,
+    akcija: action,
+    wizard: wizard,
+  };
+  console.log("Podovi finalno", item);
+  stuboviArrayFinal.push(item);
+}
+
+/**
+ * Preparing JSON object from feature
+ * @param {* Feature of element for insert} el
+ * @param {* "I" for insert, "U" for update} action
+ * @param {* "0" if web service is not call from wizard form, "1" else} wizard
+ */
+function nkroArrayElement(el, action, wizard) {
+  let item = {
+    fid_1: el.values_.fid_1,
+    Geometry: wktGeometrije(el),
+    name: el.values_.name,
+    fid: el.values_.fid,
+    materijal: el.values_.materijal,
+    sys_id: el.values_.sys_id,
+    montaza: el.values_.montaza,
+    vlasnistvo: el.values_.vlasnistvo,
+    br_prikljucaka: el.values_.br_prikljucaka,
+    izvod_ts: el.values_.izvod_ts,
+    vrata: el.values_.vrata,
+    br_izvoda: el.values_.br_izvoda,
+    pog_sprem: el.values_.pog_sprem,
+    ts: el.values_.ts,
+    napon: el.values_.napon,
+    id: el.values_.id, //Vidjeti šta ovdje predajem
+    layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
+    opstina: el.values_.opstina,
+    gps: el.values_.gps,
+    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
+    layer_id: "", //Provjeriti da li treba da se šalje
+    geohash_id: "", //Provjeriti da li treba da se šalje
+    geohash_id_no: "", //Provjeriti da li treba da se šalje
+    korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
+    katastar: "",
+    posjeduje_sliku: false,
+    originalId: el.values_.originalId,
+    sifra_napojne: el.values_.sifra_napojne,
+    naziv_napojne: el.values_.naziv_napojne,
+    izvod_napojne: el.values_.izvod_napojne,
+    vlasnik: el.values_.vlasnik,
+    akcija: action,
+    wizard: wizard,
+  };
+  console.log("Nkro finalno", item);
+  stuboviArrayFinal.push(item);
+}
