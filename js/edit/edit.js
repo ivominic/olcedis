@@ -311,7 +311,7 @@ let dragAndDrop = new ol.interaction.DragAndDrop({
 dragAndDrop.on("addfeatures", function (event) {
   console.log("aaaa", event);
   kmlLinksArray.length = 0; //Emptying array of links with  nearby objects
-  vectorLayerType(event);
+  let layerNameImport = vectorLayerType(event);
   disableMenija();
   showDiv("#odabirNapojneTrafostaniceDiv");
   gpxFeatures = event.features;
@@ -321,10 +321,17 @@ dragAndDrop.on("addfeatures", function (event) {
     console.log("feature unos", feature);
     let tempTimestamp = new Date().getTime() + "_" + feature.ol_uid;
     feature.set("originalId", tempTimestamp);
-    if (feature.getGeometry().getType().toString().includes("oint")) {
+    feature.set("layer_name", layerNameImport);
+    feature.set("isEditable", isEditable);
+    if (!isEditable) {
+      //if (feature.getGeometry().getType().toString().includes("oint")) {
       objectNearKmlFeature(feature, "stubovi");
       objectNearKmlFeature(feature, "trafostanice");
       objectNearKmlFeature(feature, "vodovi");
+      objectNearKmlFeature(feature, "podovi");
+      objectNearKmlFeature(feature, "nkro");
+      objectNearKmlFeature(feature, "prikljucno_mjesto");
+      objectNearKmlFeature(feature, "potrosac");
     }
 
     //let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");

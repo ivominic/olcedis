@@ -270,5 +270,6 @@ function vectorLayerType(featureLayer) {
   if (isEditable) {
     map.addInteraction(modifyV);
   }
+  retVal = fileNameArray[0];
   return retVal;
 }

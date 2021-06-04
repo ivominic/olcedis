@@ -9,7 +9,7 @@
 function stubArrayElement(el, action, wizard) {
   let item = {
     fid_1: el.values_.fid_1,
-    Geometry: wktGeometrije(el),
+    Geometry: wkt3Du2D(wktGeometrije(el)),
     name: el.values_.name,
     fid: el.values_.fid,
     br_izol_faza: el.values_.br_izol_faza,
@@ -49,7 +49,7 @@ function stubArrayElement(el, action, wizard) {
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
-    posjeduje_sliku: false,
+    posjeduje_sliku: "NE",
     originalId: el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
@@ -57,6 +57,7 @@ function stubArrayElement(el, action, wizard) {
     vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
+    isEditable: isEditable,
   };
   console.log("Stubovi finalno", item);
   stuboviArrayFinal.push(item);
@@ -115,7 +116,7 @@ function vodArrayElement(el, action, wizard) {
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
     katastar: "",
-    posjeduje_sliku: false,
+    posjeduje_sliku: "NE",
     originalId: el.values_.originalId,
     sifra_dionice: el.values_.sifra_dionice,
     sifra_napojne: el.values_.sifra_napojne,
@@ -125,9 +126,10 @@ function vodArrayElement(el, action, wizard) {
     ts: el.values_.ts,
     akcija: action,
     wizard: wizard,
+    isEditable: isEditable,
   };
   console.log("Vodovi finalno", item);
-  stuboviArrayFinal.push(item);
+  vodoviArrayFinal.push(item);
 }
 
 //TODO: Made procedures for other layers
@@ -141,7 +143,7 @@ function vodArrayElement(el, action, wizard) {
 function trafostanicaArrayElement(el, action, wizard) {
   let item = {
     fid_1: el.values_.fid_1,
-    Geometry: wktGeometrije(el),
+    Geometry: wkt3Du2D(wktGeometrije(el)),
     name: el.values_.name,
     fid: el.values_.fid,
     celije_10: el.values_.celije_10,
@@ -176,7 +178,7 @@ function trafostanicaArrayElement(el, action, wizard) {
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
     katastar: "",
-    posjeduje_sliku: false,
+    posjeduje_sliku: "NE",
     originalId: el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
@@ -184,9 +186,10 @@ function trafostanicaArrayElement(el, action, wizard) {
     vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
+    isEditable: isEditable,
   };
   console.log("Trafostanice finalno", item);
-  stuboviArrayFinal.push(item);
+  trafostaniceArrayFinal.push(item);
 }
 
 /**
@@ -198,7 +201,7 @@ function trafostanicaArrayElement(el, action, wizard) {
 function prikljucnoMjestoArrayElement(el, action, wizard) {
   let item = {
     fid_1: el.values_.fid_1,
-    Geometry: wktGeometrije(el),
+    Geometry: wkt3Du2D(wktGeometrije(el)),
     name: el.values_.name,
     fid: el.values_.fid,
     osiguraci: el.values_.osiguraci,
@@ -219,7 +222,7 @@ function prikljucnoMjestoArrayElement(el, action, wizard) {
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
     katastar: "",
-    posjeduje_sliku: false,
+    posjeduje_sliku: "NE",
     originalId: el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
@@ -227,9 +230,10 @@ function prikljucnoMjestoArrayElement(el, action, wizard) {
     vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
+    isEditable: isEditable,
   };
   console.log("Priključno mjesto finalno", item);
-  stuboviArrayFinal.push(item);
+  prikljucnaMjestaArrayFinal.push(item);
 }
 
 /**
@@ -241,7 +245,7 @@ function prikljucnoMjestoArrayElement(el, action, wizard) {
 function potrosacArrayElement(el, action, wizard) {
   let item = {
     fid_1: el.values_.fid_1,
-    Geometry: wktGeometrije(el),
+    Geometry: wkt3Du2D(wktGeometrije(el)),
     name: el.values_.name,
     fid: el.values_.fid,
     prik_kabal: el.values_.prik_kabal,
@@ -265,7 +269,7 @@ function potrosacArrayElement(el, action, wizard) {
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
     katastar: "",
-    posjeduje_sliku: false,
+    posjeduje_sliku: "NE",
     originalId: el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
@@ -273,9 +277,10 @@ function potrosacArrayElement(el, action, wizard) {
     vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
+    isEditable: isEditable,
   };
   console.log("Potrošači finalno", item);
-  stuboviArrayFinal.push(item);
+  potrosaciArrayFinal.push(item);
 }
 
 /**
@@ -287,7 +292,7 @@ function potrosacArrayElement(el, action, wizard) {
 function podArrayElement(el, action, wizard) {
   let item = {
     fid_1: el.values_.fid_1,
-    Geometry: wktGeometrije(el),
+    Geometry: wkt3Du2D(wktGeometrije(el)),
     name: el.values_.name,
     fid: el.values_.fid,
     prik_kabal: el.values_.prik_kabal,
@@ -311,7 +316,7 @@ function podArrayElement(el, action, wizard) {
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
     katastar: "",
-    posjeduje_sliku: false,
+    posjeduje_sliku: "NE",
     originalId: el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
@@ -319,9 +324,10 @@ function podArrayElement(el, action, wizard) {
     vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
+    isEditable: isEditable,
   };
   console.log("Podovi finalno", item);
-  stuboviArrayFinal.push(item);
+  podoviArrayFinal.push(item);
 }
 
 /**
@@ -333,7 +339,7 @@ function podArrayElement(el, action, wizard) {
 function nkroArrayElement(el, action, wizard) {
   let item = {
     fid_1: el.values_.fid_1,
-    Geometry: wktGeometrije(el),
+    Geometry: wkt3Du2D(wktGeometrije(el)),
     name: el.values_.name,
     fid: el.values_.fid,
     materijal: el.values_.materijal,
@@ -357,7 +363,7 @@ function nkroArrayElement(el, action, wizard) {
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
     katastar: "",
-    posjeduje_sliku: false,
+    posjeduje_sliku: "NE",
     originalId: el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
@@ -365,7 +371,8 @@ function nkroArrayElement(el, action, wizard) {
     vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
+    isEditable: isEditable,
   };
   console.log("Nkro finalno", item);
-  stuboviArrayFinal.push(item);
+  nkroArrayFinal.push(item);
 }
