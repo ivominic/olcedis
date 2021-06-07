@@ -666,7 +666,6 @@ function testunosPrikljucnoMjesto() {
   podaciForme.append("Folder", "test");
   podaciForme.append("fid", "test");
   podaciForme.append("layer_name", "test");
-  podaciForme.append("sys_id", 2);
   podaciForme.append("datum_azuriranja", "");
 
   podaciForme.append("layer_id", "test");
@@ -691,9 +690,6 @@ function testunosPrikljucnoMjesto() {
     poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
   };
   xhr.send(podaciForme);
-  /*xhr.send(
-    "id=1&akcija=unos&Geometry=POINT (0,0)&fid_1=1&gps=&ts=&izvod_ts=&id=&tip=&osiguraci=&br_pretplatnika=&vlasnistvo=&opstina=&napon=&name=test&visibility=true&open=true&address=&phoneNumber=&Folder=test&fid=test&layer_name=test&sys_id=2&datum_azuriranja=&layer_id=test&geohash_id=test&korisnik=test&katastar=&originalId=test&posjeduje_sliku=test&vlasnik=test&geohash_id_no=test&sifra_napojne=test&izvod_napojne=test"
-  );*/
   openModalSpinner();
   xhr.onreadystatechange = function () {
     if (this.readyState === 4) {

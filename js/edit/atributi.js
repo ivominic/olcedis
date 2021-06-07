@@ -1,5 +1,8 @@
 /**Metode za prikaz odgovarajućih polja atributDiv-a */
 function sakrijSvaPoljaAtributDiv() {
+  document.querySelector("#divUnosNazivTs").style.display = "none";
+  document.querySelector("#divUnosSifraTs").style.display = "none";
+  document.querySelector("#divUnosIzvodTs").style.display = "none";
   document.querySelector("#divUnosGps").style.display = "none";
   document.querySelector("#divUnosFid1").style.display = "none";
   document.querySelector("#divUnosBroj").style.display = "none";
@@ -78,7 +81,6 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosNaziv").style.display = "none";
   document.querySelector("#divUnosDionicaNn").style.display = "none";
   document.querySelector("#divUnosTs").style.display = "none";
-  document.querySelector("#divUnosIzvodTs").style.display = "none";
   document.querySelector("#divUnosBrFaza").style.display = "none";
   document.querySelector("#divUnosVrsta").style.display = "none";
   document.querySelector("#divUnosVrstaVod04").style.display = "none";
@@ -168,14 +170,11 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosBrVodCelVisiNap").style.display = "none";
   document.querySelector("#divUnosBrVodCelNiziNap").style.display = "none";
 
-  document.querySelector("#divUnosSysId").style.display = "none";
-
   document.querySelector("#divUnosId").style.display = "none";
   document.querySelector("#divUnosOsiguraci").style.display = "none";
   document.querySelector("#divUnosBrPretplatnika").style.display = "none";
   document.querySelector("#divUnosTipPM").style.display = "none";
-  document.querySelector("#divUnosNazivTs").style.display = "none";
-  document.querySelector("#divUnosSifraTs").style.display = "none";
+
   document.querySelector("#divUnosPrikKabal").style.display = "none";
   document.querySelector("#divUnosPod").style.display = "none";
   document.querySelector("#divUnosAdresaMm").style.display = "none";
@@ -191,6 +190,9 @@ function sakrijSvaPoljaAtributDiv() {
 }
 
 function prikaziAtributDivStubove(napon) {
+  document.querySelector("#divUnosNazivTs").style.display = "flex";
+  document.querySelector("#divUnosSifraTs").style.display = "flex";
+  document.querySelector("#divUnosIzvodTs").style.display = "flex";
   if (napon === "0.4") {
     document.querySelector("#divUnosTipStub").style.display = "flex";
     document.querySelector("#divUnosRasvjetaStub").style.display = "flex";
@@ -252,6 +254,9 @@ function prikaziAtributDivStubove(napon) {
 }
 
 function prikaziAtributDivVodove(napon) {
+  document.querySelector("#divUnosNazivTs").style.display = "flex";
+  document.querySelector("#divUnosSifraTs").style.display = "flex";
+  document.querySelector("#divUnosIzvodTs").style.display = "flex";
   if (napon === "0.4") {
     document.querySelector("#divUnosRasvjetaVod").style.display = "flex";
     document.querySelector("#divUnosVrstaVod04").style.display = "flex";
@@ -285,7 +290,6 @@ function prikaziAtributDivVodove(napon) {
   document.querySelector("#divUnosNaziv").style.display = "flex";
   document.querySelector("#divUnosDionicaNn").style.display = "flex";
   document.querySelector("#divUnosTs").style.display = "flex";
-  document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosBrFaza").style.display = "flex";
   document.querySelector("#divUnosBrSpojnica").style.display = "flex";
   document.querySelector("#divUnosGodIzgr").style.display = "flex";
@@ -301,6 +305,9 @@ function prikaziAtributDivVodove(napon) {
 }
 
 function prikaziAtributDivTrafostanice(napon) {
+  document.querySelector("#divUnosNazivTs").style.display = "flex";
+  document.querySelector("#divUnosSifraTs").style.display = "flex";
+  document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosDdlTrafostanice").style.display = "flex";
   if (napon === "10") {
     //10/04
@@ -357,10 +364,12 @@ function prikaziAtributDivTrafostanice(napon) {
 }
 
 function prikaziAtributDivPrikljucnoMjesto() {
+  document.querySelector("#divUnosNazivTs").style.display = "flex";
+  document.querySelector("#divUnosSifraTs").style.display = "flex";
+  document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosFid1").style.display = "flex";
   document.querySelector("#divUnosNapojnaTs").style.display = "flex";
-  document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosId").style.display = "flex";
   //document.querySelector("#divUnosTip").style.display = "flex";
   document.querySelector("#divUnosOsiguraci").style.display = "flex";
@@ -368,15 +377,16 @@ function prikaziAtributDivPrikljucnoMjesto() {
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
   //document.querySelector("#divUnosOpstina").style.display = "flex";
   document.querySelector("#divUnosNapon").style.display = "flex";
-  document.querySelector("#divUnosSysId").style.display = "flex";
   document.querySelector("#divUnosTipPM").style.display = "flex";
   //popuniListeZaPrikljucnaMjesta();
 }
 
 function prikaziAtributDivNkro() {
+  document.querySelector("#divUnosNazivTs").style.display = "flex";
+  document.querySelector("#divUnosSifraTs").style.display = "flex";
+  document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosTs").style.display = "flex";
-  document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosId").style.display = "flex";
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
   //document.querySelector("#divUnosOpstina").style.display = "flex";
@@ -385,18 +395,17 @@ function prikaziAtributDivNkro() {
   document.querySelector("#divUnosVrata").style.display = "flex";
   document.querySelector("#divUnosBrIzvoda").style.display = "flex";
   document.querySelector("#divUnosBrPrikljucaka").style.display = "flex";
-  document.querySelector("#divUnosSysId").style.display = "flex";
   //popuniListeZaNkro();
 }
 
 function prikaziAtributDivPotrosac() {
+  document.querySelector("#divUnosNazivTs").style.display = "flex";
+  document.querySelector("#divUnosSifraTs").style.display = "flex";
+  document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosFid1").style.display = "flex";
   document.querySelector("#divUnosNapojnaTs").style.display = "flex";
-  document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosId").style.display = "flex";
-  document.querySelector("#divUnosNazivTs").style.display = "flex";
-  document.querySelector("#divUnosSifraTs").style.display = "flex";
   document.querySelector("#divUnosPrikKabal").style.display = "flex";
   document.querySelector("#divUnosPod").style.display = "flex";
   document.querySelector("#divUnosAdresaMm").style.display = "flex";
@@ -408,13 +417,13 @@ function prikaziAtributDivPotrosac() {
 }
 
 function prikaziAtributDivPod() {
+  document.querySelector("#divUnosNazivTs").style.display = "flex";
+  document.querySelector("#divUnosSifraTs").style.display = "flex";
+  document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosFid1").style.display = "flex";
   document.querySelector("#divUnosNapojnaTs").style.display = "flex";
-  document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosId").style.display = "flex";
-  document.querySelector("#divUnosNazivTs").style.display = "flex";
-  document.querySelector("#divUnosSifraTs").style.display = "flex";
   document.querySelector("#divUnosPrikKabal").style.display = "flex";
   document.querySelector("#divUnosPod").style.display = "flex";
   document.querySelector("#divUnosAdresaMm").style.display = "flex";

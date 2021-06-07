@@ -427,7 +427,6 @@ function unosNkro(geometrijaWkt, servisAkcija) {
   podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
   podaciForme.append("opstina", document.querySelector("#opstina").value);
   podaciForme.append("napon", document.querySelector("#napon").value);
-  podaciForme.append("sys_id", document.querySelector("#sys_id").value);
 
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");
@@ -482,7 +481,6 @@ function unosPrikljucnoMjesto(geometrijaWkt, servisAkcija) {
   podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
   podaciForme.append("opstina", document.querySelector("#opstina").value);
   podaciForme.append("napon", document.querySelector("#napon").value);
-  podaciForme.append("sys_id", document.querySelector("#sys_id").value);
 
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");

@@ -14,7 +14,6 @@ function dodajPoljaOdabranomGpxNKRO() {
     selectGpxFeature.set("vrata", document.querySelector("#vrata").value);
     selectGpxFeature.set("br_izvoda", document.querySelector("#br_izvoda").value);
     selectGpxFeature.set("br_prikljucaka", document.querySelector("#br_prikljucaka").value);
-    selectGpxFeature.set("sys_id", document.querySelector("#sys_id").value);
     selectGpxFeature.set("sifra_napojne", sifraNapojneTrafostanice);
     selectGpxFeature.set("naziv_napojne", nazivNapojneTrafostanice);
     selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
@@ -39,7 +38,6 @@ function prikaziPoljaOdabranogGpxNKRO() {
   document.querySelector("#vrata").value = selectGpxFeature.values_.vrata;
   document.querySelector("#br_izvoda").value = selectGpxFeature.values_.br_izvoda;
   document.querySelector("#br_prikljucaka").value = selectGpxFeature.values_.br_prikljucaka;
-  document.querySelector("#sys_id").value = selectGpxFeature.values_.sys_id;
 
   setujDdlVrijednost("#vlasnistvo", selectGpxFeature.values_.vlasnistvo);
 }

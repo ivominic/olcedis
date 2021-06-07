@@ -200,7 +200,8 @@ function showConnectForm() {
   }
   if (isFlaggedForConnection) {
     Swal.fire({
-      title: "Da li je potrebno povezati ovaj objekat sa ostatkom mreže?",
+      title: "Da li je potrebno crveno označenu tačku usaglasiti sa postojećom mrežom?",
+      text: "Pod usaglašavanjem se podrazumijeva da vlasnik postojeće mreže istu prilagodi geodetskom snimku.",
       //icon: "info",
       position: "top-end",
       showDenyButton: true,

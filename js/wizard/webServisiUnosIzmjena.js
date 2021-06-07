@@ -306,7 +306,6 @@ function cudNKRO(feature, akcija, wizard) {
   podaciForme.append("fid_1", feature.id_.split(".")[1]);
   podaciForme.append("name", feature.values_.name);
   podaciForme.append("materijal", feature.values_.materijal);
-  podaciForme.append("sys_id", feature.values_.sys_id);
   podaciForme.append("montaza", feature.values_.montaza);
   podaciForme.append("vlasnistvo", feature.values_.vlasnistvo);
   podaciForme.append("br_prikljucaka", feature.values_.br_prikljucaka);
@@ -368,7 +367,6 @@ function cudPrikljucnoMjesto(feature, akcija, wizard) {
   podaciForme.append("opstina", feature.values_.opstina);
   podaciForme.append("gps", feature.values_.gps);
   podaciForme.append("br_pretplatnika", feature.values_.br_pretplatnika);
-  podaciForme.append("sys_id", feature.values_.sys_id);
   podaciForme.append("datum_azuriranja", feature.values_.datum_azuriranja);
   podaciForme.append("vlasnistvo", feature.values_.vlasnistvo);
   podaciForme.append("tip", feature.values_.tip);

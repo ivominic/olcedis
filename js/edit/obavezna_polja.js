@@ -302,10 +302,6 @@ function obaveznaPolja(sloj) {
       popunjen = false;
       borderChange(document.querySelector("#id"));
     }
-    if (document.querySelector("#sys_id").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#sys_id"));
-    }
     //Selekti
     if (document.querySelector("#vlasnistvo").value === "") {
       popunjen = false;
@@ -336,10 +332,6 @@ function obaveznaPolja(sloj) {
     if (document.querySelector("#br_pretplatnika").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#br_pretplatnika"));
-    }
-    if (document.querySelector("#sys_id").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#sys_id"));
     }
     //Selekti
     if (document.querySelector("#vlasnistvo").value === "") {
