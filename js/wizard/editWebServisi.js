@@ -177,6 +177,10 @@ function pretragaTrafostanicaGpx(sifraTS) {
         nazivNapojneTrafostanice = data.ts.naziv;
         document.querySelector("#txtSifraNapojneTrafostanice").value = sifraNapojneTrafostanice;
         document.querySelector("#txtNazivNapojneTrafostanice").value = nazivNapojneTrafostanice;
+        if (data.ts.prenos_odnos) {
+          filePowerLevel = globalNaponskiNivoPrenosOdnos(data.ts.prenos_odnos);
+        }
+
         data.ts.izvodi.forEach(function (vrijednost) {
           console.log("vrijednost niza", vrijednost);
           $("#ddlIzvodNapojneTrafostanice").append(
@@ -702,6 +706,56 @@ function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucna_mjes
     },
     error: function (x, y, z) {
       console.log("error insert all objects", x.responseText);
+    },
+  });
+}
+
+/**
+ * Method that returns username of logged user
+ */
+function readSignedUser() {
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/get_remote_user";
+  urlServisa += "?t=" + Date.now();
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "GET",
+    success: function (data) {
+      //console.log("username web servis", data.response);
+      return data.response;
+    },
+    error: function (x, y, z) {
+      //alert(x.responseText +"  " +x.status);
+      console.log("greška readSignedUser", x.responseText);
+      return "";
+    },
+  });
+}
+
+/**
+ * Method that returns allowed radius in meters to move gpx points, or distance from kml point.
+ */
+function readRadius() {
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/get_radius?tip_fajla=gpx&napon=0.4";
+  if (isEditable) {
+    urlServisa += "?tip_fajla=gpx";
+  } else {
+    urlServisa += "?tip_fajla=kml";
+  }
+  urlServisa += "&napon=" + filePowerLevel;
+  urlServisa += "&t=" + Date.now();
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "GET",
+    success: function (data) {
+      console.log("read radius web servis", data.response);
+      return data.response;
+    },
+    error: function (x, y, z) {
+      //alert(x.responseText +"  " +x.status);
+      console.log("greška readSignedUser", x.responseText);
+      return "";
     },
   });
 }

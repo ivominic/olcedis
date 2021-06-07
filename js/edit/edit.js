@@ -310,6 +310,7 @@ let dragAndDrop = new ol.interaction.DragAndDrop({
 });
 dragAndDrop.on("addfeatures", function (event) {
   console.log("aaaa", event);
+  globalUsername = readSignedUser(); //Reading username
   kmlLinksArray.length = 0; //Emptying array of links with  nearby objects
   let layerNameImport = vectorLayerType(event);
   disableMenija();
@@ -398,17 +399,31 @@ function izbrisi() {
     poruka("Upozorenje", "Potrebno je selektovati objekat iz gpx fajla.");
     return false;
   }
-  let nizZaBrisanje = vectorSource.getFeatures();
-  //console.log("selektovani objekat", select.getFeatures().array_[0]);
-  vectorSource.getFeatures().forEach(function (el, index, nizZaBrisanje) {
-    if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
-      //if (el.values_.name == select.getFeatures().array_[0].values_.name) {
-      nizZaBrisanje.splice(index, 1);
-      select.getFeatures().array_.splice(0, 1);
-      console.log("ol_uid", el.ol_uid);
-      selectGpxFeature = null;
-      vectorSource.clear();
-      vectorSource.addFeatures(nizZaBrisanje);
+  Swal.fire({
+    title: "Da li ste sigurni da želite da izbrišete odabrani objekat?",
+    //text: "",
+    //icon: "info",
+    position: "top-end",
+    showDenyButton: true,
+    confirmButtonText: `Da`,
+    denyButtonText: `Ne`,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      //Brisati
+      let nizZaBrisanje = vectorSource.getFeatures();
+      vectorSource.getFeatures().forEach(function (el, index, nizZaBrisanje) {
+        if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
+          //if (el.values_.name == select.getFeatures().array_[0].values_.name) {
+          nizZaBrisanje.splice(index, 1);
+          select.getFeatures().array_.splice(0, 1);
+          console.log("ol_uid", el.ol_uid);
+          selectGpxFeature = null;
+          vectorSource.clear();
+          vectorSource.addFeatures(nizZaBrisanje);
+        }
+      });
+    } else if (result.isDenied) {
+      //Ako odustane - ništa ne raditi
     }
   });
 }

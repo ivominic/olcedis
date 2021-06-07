@@ -48,7 +48,7 @@ function stubArrayElement(el, action, wizard) {
     layer_id: "", //Provjeriti da li treba da se šalje
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
-    korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
+    korisnik: globalUsername,
     posjeduje_sliku: "NE",
     originalId: el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
@@ -114,7 +114,7 @@ function vodArrayElement(el, action, wizard) {
     broj_spojnica: el.values_.broj_spojnica,
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
-    korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
+    korisnik: globalUsername,
     katastar: "",
     posjeduje_sliku: "NE",
     originalId: el.values_.originalId,
@@ -176,7 +176,7 @@ function trafostanicaArrayElement(el, action, wizard) {
     layer_id: "", //Provjeriti da li treba da se šalje
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
-    korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
+    korisnik: globalUsername,
     katastar: "",
     posjeduje_sliku: "NE",
     originalId: el.values_.originalId,
@@ -219,7 +219,7 @@ function prikljucnoMjestoArrayElement(el, action, wizard) {
     layer_id: "", //Provjeriti da li treba da se šalje
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
-    korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
+    korisnik: globalUsername,
     katastar: "",
     posjeduje_sliku: "NE",
     originalId: el.values_.originalId,
@@ -266,7 +266,7 @@ function potrosacArrayElement(el, action, wizard) {
     layer_id: "", //Provjeriti da li treba da se šalje
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
-    korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
+    korisnik: globalUsername,
     katastar: "",
     posjeduje_sliku: "NE",
     originalId: el.values_.originalId,
@@ -313,7 +313,7 @@ function podArrayElement(el, action, wizard) {
     layer_id: "", //Provjeriti da li treba da se šalje
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
-    korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
+    korisnik: globalUsername,
     katastar: "",
     posjeduje_sliku: "NE",
     originalId: el.values_.originalId,
@@ -359,7 +359,7 @@ function nkroArrayElement(el, action, wizard) {
     layer_id: "", //Provjeriti da li treba da se šalje
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
-    korisnik: "test", //TODO: Pročitati korisnika koji vrši unos
+    korisnik: globalUsername,
     katastar: "",
     posjeduje_sliku: "NE",
     originalId: el.values_.originalId,

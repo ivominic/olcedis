@@ -104,62 +104,75 @@ function prikazPanelaAtributa(sloj) {
   if (sloj === "Stub 35KV") {
     odabraniLejerUnos = "stubovi";
     akcijaLejerNivo = "35";
+    document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "stub35";
     prikaziAtributDivStubove(akcijaLejerNivo);
   } else if (sloj === "Stub 10KV") {
     odabraniLejerUnos = "stubovi";
     akcijaLejerNivo = "10";
+    document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "stub10";
     prikaziAtributDivStubove(akcijaLejerNivo);
   } else if (sloj === "Stub 04KV") {
     odabraniLejerUnos = "stubovi";
     akcijaLejerNivo = "0.4";
+    document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "stub04";
     prikaziAtributDivStubove(akcijaLejerNivo);
   } else if (sloj === "Vod 35KV") {
     odabraniLejerUnos = "vodovi";
     akcijaLejerNivo = "35";
+    document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "vod35";
     prikaziAtributDivVodove(akcijaLejerNivo);
   } else if (sloj === "Vod 10KV") {
     odabraniLejerUnos = "vodovi";
     akcijaLejerNivo = "10";
+    document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "vod10";
     prikaziAtributDivVodove(akcijaLejerNivo);
   } else if (sloj === "Vod 04KV") {
     odabraniLejerUnos = "vodovi";
     akcijaLejerNivo = "0.4";
+    document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "vod04";
     prikaziAtributDivVodove(akcijaLejerNivo);
   } else if (sloj === "Trafostanica35x") {
     odabraniLejerUnos = "trafostanice";
     akcijaLejerNivo = "35";
+    document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "trafostanica35";
     prikaziAtributDivTrafostanice(akcijaLejerNivo);
   } else if (sloj === "Trafostanica1004") {
     odabraniLejerUnos = "trafostanice";
     akcijaLejerNivo = "10";
+    document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "trafostanica10";
     prikaziAtributDivTrafostanice(akcijaLejerNivo);
   } else if (sloj === "Trafostanica110x") {
     odabraniLejerUnos = "trafostanice";
     akcijaLejerNivo = "110";
+    document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "trafostanica110";
     prikaziAtributDivTrafostanice(akcijaLejerNivo);
   } else if (sloj === "NKRO") {
     odabraniLejerUnos = "nkro";
+    document.querySelector("#napon").value = "0.4";
     document.querySelector("#ddl_sloj_podataka").value = "nkro";
     prikaziAtributDivNkro();
   } else if (sloj === "Priključno mjesto") {
     odabraniLejerUnos = "prikljucno_mjesto";
+    document.querySelector("#napon").value = "0.4";
     document.querySelector("#ddl_sloj_podataka").value = "prikljucno_mjesto";
     prikaziAtributDivPrikljucnoMjesto();
   } else if (sloj === "Potrošač") {
     odabraniLejerUnos = "potrosaci";
+    document.querySelector("#napon").value = "0.4";
     document.querySelector("#ddl_sloj_podataka").value = "potrosac";
     prikaziAtributDivPotrosac();
   } else if (sloj === "POD") {
     odabraniLejerUnos = "pod";
+    document.querySelector("#napon").value = "0.4";
     document.querySelector("#ddl_sloj_podataka").value = "pod";
     prikaziAtributDivPod();
   }
@@ -208,7 +221,7 @@ function ddlLejerChange() {
     prikazPanelaAtributa("Stub 04KV");
   } else if (value === "stub10") {
     prikazPanelaAtributa("Stub 10KV");
-  } else if (value === "stub04") {
+  } else if (value === "stub35") {
     prikazPanelaAtributa("Stub 35KV");
   } else if (value === "vod04") {
     prikazPanelaAtributa("Vod 04KV");
@@ -324,6 +337,7 @@ function potvrdaNapojneTrafostaniceUnos() {
   closeDiv("#odabirNapojneTrafostaniceDiv");
   poruka("Uspjeh", "Uspješno odabran izvod napojne trafostanice.");
   enableMenija();
+  readRadius();
   if (!isEditable) {
     showConnectForm();
   }

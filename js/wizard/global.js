@@ -12,6 +12,7 @@ const imageUrl = domainUrl + "/slike/";
 const point = "Point",
   lineString = "LineString",
   polygon = "Polygon";
+let globalUsername = ""; //Username of signed user
 let geoserverToken = "",
   isEditable = true; //Promjenljiva koja čuva token za wfs servise, druga označava da li je moguće mijenjati geometriju prevučenih fajlova
 let tacke = [],
@@ -24,7 +25,8 @@ let kmlLinksArray = []; //Array of object for connecting with nearby objects
 let blnDodijeljenoGpxProperties = false; //Promjenljiva koja označava da li su svim podacima iz gpx-a dodijeljeni atributi
 let selectGpxFeature; //Feature iz gpx-a koji se selektuje
 let naponskiNivoNapojneTrafostanice = "";
-let odabraniNaponskiNivo = "";
+let odabraniNaponskiNivo = "",
+  filePowerLevel = "";
 let sifraNapojneTrafostanice = "";
 let nazivNapojneTrafostanice = "";
 let izvodNapojneTrafostanice = "";
