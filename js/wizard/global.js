@@ -1,6 +1,6 @@
 //Modul koji sadrži sve promjenljive koje se koriste na globalnom nivou u aplikaciji / wizardu kao i opšte metode
-const dozvoljeniPomjeraj = 0.01; //0.01km - deset metara je dozvoljeo pomjeriti tačke iz gpx fajlova prije uvoza u bazu
-const kmlRadius = 2; //Distance from klm point where checking existion of other objects
+let dozvoljeniPomjeraj = 0.01; //0.01km - deset metara je dozvoljeo pomjeriti tačke iz gpx fajlova prije uvoza u bazu
+let kmlRadius = 2; //Distance from klm point where checking existion of other objects
 //const domainUrl = location.origin;
 //const wsServerOriginLocation = window.location.protocol + "//" + window.location.hostname;
 const wsServerOriginLocation = "https://razvojgis.cedis.me";
