@@ -177,8 +177,10 @@ function pretragaTrafostanicaGpx(sifraTS) {
         nazivNapojneTrafostanice = data.ts.naziv;
         document.querySelector("#txtSifraNapojneTrafostanice").value = sifraNapojneTrafostanice;
         document.querySelector("#txtNazivNapojneTrafostanice").value = nazivNapojneTrafostanice;
-        if (data.ts.prenos_odnos) {
-          filePowerLevel = globalNaponskiNivoPrenosOdnos(data.ts.prenos_odnos);
+        if (data.ts.prenosni_odnos) {
+          console.log("prenosni odnos", data.ts.prenosni_odnos);
+          filePowerLevel = globalNaponskiNivoPrenosOdnos(data.ts.prenosni_odnos);
+          console.log("filePowerLevel", filePowerLevel);
         }
 
         data.ts.izvodi.forEach(function (vrijednost) {
@@ -749,13 +751,15 @@ function readRadius() {
     data: "",
     type: "GET",
     success: function (data) {
-      console.log("read radius web servis", data.response);
-      return data.response;
+      let tempRadius = parseFloat(data.response.radius);
+      dozvoljeniPomjeraj = tempRadius / 1000; //Distance in kilometers
+      kmlRadius = tempRadius;
+      return tempRadius;
     },
     error: function (x, y, z) {
       //alert(x.responseText +"  " +x.status);
       console.log("greška readSignedUser", x.responseText);
-      return "";
+      return 0;
     },
   });
 }
