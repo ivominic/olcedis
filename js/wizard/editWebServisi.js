@@ -691,6 +691,13 @@ function kmlConnectionLog(objects) {
 function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucna_mjesta, potrosaci, nkro) {
   let retval = true;
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/object_control";
+  console.log("stubovi insert all objects   ", JSON.stringify(stubovi));
+  console.log("vodovi insert all objects   ", JSON.stringify(vodovi));
+  console.log("trafostanice insert all objects   ", JSON.stringify(trafostanice));
+  console.log("podovi insert all objects   ", JSON.stringify(podovi));
+  console.log("prikljucna_mjesta insert all objects   ", JSON.stringify(prikljucna_mjesta));
+  console.log("potrosaci insert all objects   ", JSON.stringify(potrosaci));
+  console.log("nkro insert all objects   ", JSON.stringify(nkro));
   $.ajax({
     url: urlServisa,
     data: {
@@ -704,7 +711,7 @@ function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucna_mjes
     },
     type: "POST",
     success: function (data) {
-      console.log("success", data);
+      console.log("success insert all objects", data);
     },
     error: function (x, y, z) {
       console.log("error insert all objects", x.responseText);

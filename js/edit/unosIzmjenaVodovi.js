@@ -39,6 +39,7 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("dionica", document.querySelector("#dionica").value);
   ucrtaniVod.set("id_br", document.querySelector("#id_br").value);
   ucrtaniVod.set("naziv", document.querySelector("#naziv").value);
+  ucrtaniVod.set("name", document.querySelector("#naziv").value);
   ucrtaniVod.set("dionica_nn", document.querySelector("#dionica_nn").value);
   ucrtaniVod.set("ts", sifraNapojneTrafostanice);
   ucrtaniVod.set("sifra_napojne", sifraNapojneTrafostanice);

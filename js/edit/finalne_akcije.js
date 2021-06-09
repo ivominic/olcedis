@@ -2,6 +2,12 @@
 
 function insertObjekataIzGpx() {
   let postojiNeobradjenaTacka = false;
+  stuboviArrayFinal.length = 0;
+  trafostaniceArrayFinal.length = 0;
+  podoviArrayFinal.length = 0;
+  prikljucnaMjestaArrayFinal.length = 0;
+  potrosaciArrayFinal.length = 0;
+  nkroArrayFinal.length = 0;
   gpxFeatures.forEach((el) => {
     console.log("finalno lejer", el.get("lejer"));
     //if (el.hasOwnProperty("lejer") && el.get("lejer") === "stubovi") {
@@ -59,9 +65,6 @@ function insertObjekataIzGpx() {
   console.log("podovi finalni array", podoviArrayFinal);
   console.log("prikljucna mjesta finalni array", prikljucnaMjestaArrayFinal);
 
-  //call web service
-  //insertAllObjects(...)
-
   //console.log("svi vodovi za kreiranje", kreiraniVodoviFeatures);
 
   if (postojiNeobradjenaTacka) {
@@ -69,5 +72,14 @@ function insertObjekataIzGpx() {
     return false;
   } else {
     //TODO: Unijeti sve nizove u bazu (pozvati servis za svaki od nizova)
+    insertAllObjects(
+      stuboviArrayFinal,
+      vodoviArrayFinal,
+      trafostaniceArrayFinal,
+      podoviArrayFinal,
+      prikljucnaMjestaArrayFinal,
+      potrosaciArrayFinal,
+      nkroArrayFinal
+    );
   }
 }
