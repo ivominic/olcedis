@@ -8,54 +8,53 @@
  * @param {*} akcija
  */
 function cudTrafostanica(feature, akcija, wizard) {
-  let wkt = wktGeometrije(feature);
   let podaciForme = new FormData();
   podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
-  podaciForme.append("Geometry", wkt);
-  podaciForme.append("id", feature.values_.id); //Ovo provjeriti
-  //podaciForme.append("fid_1", feature.values_.fid_1);
+  podaciForme.append("Geometry", feature.Geometry);
+  podaciForme.append("id", feature.id); //Ovo provjeriti
+  podaciForme.append("fid_1", feature.fid_1);
   podaciForme.append("fid_1", feature.id_.split(".")[1]);
-  podaciForme.append("name", feature.values_.name);
-  podaciForme.append("id_br", feature.values_.id_br);
-  podaciForme.append("celije_10", feature.values_.celije_10);
-  podaciForme.append("prenos_odnos", feature.values_.prenos_odnos);
-  podaciForme.append("id_billing", feature.values_.id_billing);
-  podaciForme.append("izvod_celija", feature.values_.izvod_celija);
-  podaciForme.append("funkcija", feature.values_.funkcija);
-  podaciForme.append("tip", feature.values_.tip);
-  podaciForme.append("nad_vis", feature.values_.nad_vis);
-  podaciForme.append("nad_visina", feature.values_.nad_visina);
-  podaciForme.append("vlasnistvo", feature.values_.vlasnistvo);
-  podaciForme.append("inst_snaga_t4", feature.values_.inst_snaga_t4);
-  podaciForme.append("inst_snaga_t3", feature.values_.inst_snaga_t3);
-  podaciForme.append("inst_snaga_t2", feature.values_.inst_snaga_t2);
-  podaciForme.append("inst_snaga_t1", feature.values_.inst_snaga_t1);
-  podaciForme.append("br_nn_izvoda", feature.values_.br_nn_izvoda);
-  podaciForme.append("br_vod_cel_nizi_nap", feature.values_.br_vod_cel_nizi_nap);
-  podaciForme.append("layer_name", feature.values_.layer_name);
-  podaciForme.append("napojna_ts", feature.values_.napojna_ts);
-  podaciForme.append("opstina", feature.values_.opstina);
-  podaciForme.append("naziv", feature.values_.naziv);
-  podaciForme.append("god_izg", feature.values_.god_izg);
-  podaciForme.append("gps", feature.values_.gps);
-  podaciForme.append("br_vod_cel_visi_nap", feature.values_.br_vod_cel_visi_nap);
-  podaciForme.append("datum_azuriranja", feature.values_.datum_azuriranja);
-  podaciForme.append("projek_snaga", feature.values_.projek_snaga);
-  podaciForme.append("pog_sprem", feature.values_.pog_sprem);
-  podaciForme.append("layer_id", feature.values_.layer_id);
-  podaciForme.append("napon", feature.values_.napon);
-  podaciForme.append("geohash_id", feature.values_.geohash_id);
-  podaciForme.append("korisnik", feature.values_.korisnik);
-  podaciForme.append("katastar", feature.values_.katastar);
-  podaciForme.append("originalId", feature.values_.originalId);
-  podaciForme.append("posjeduje_sliku", feature.values_.posjeduje_sliku);
-  podaciForme.append("vlasnik", feature.values_.vlasnik);
-  podaciForme.append("geohash_id_no", feature.values_.geohash_id_no);
-  podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
-  podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
-  podaciForme.append("fid", feature.values_.fid);
-  podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
+  podaciForme.append("name", feature.name);
+  podaciForme.append("id_br", feature.id_br);
+  podaciForme.append("celije_10", feature.celije_10);
+  podaciForme.append("prenos_odnos", feature.prenos_odnos);
+  podaciForme.append("id_billing", feature.id_billing);
+  podaciForme.append("izvod_celija", feature.izvod_celija);
+  podaciForme.append("funkcija", feature.funkcija);
+  podaciForme.append("tip", feature.tip);
+  podaciForme.append("nad_vis", feature.nad_vis);
+  podaciForme.append("nad_visina", feature.nad_visina);
+  podaciForme.append("vlasnistvo", feature.vlasnistvo);
+  podaciForme.append("inst_snaga_t4", feature.inst_snaga_t4);
+  podaciForme.append("inst_snaga_t3", feature.inst_snaga_t3);
+  podaciForme.append("inst_snaga_t2", feature.inst_snaga_t2);
+  podaciForme.append("inst_snaga_t1", feature.inst_snaga_t1);
+  podaciForme.append("br_nn_izvoda", feature.br_nn_izvoda);
+  podaciForme.append("br_vod_cel_nizi_nap", feature.br_vod_cel_nizi_nap);
+  podaciForme.append("layer_name", feature.layer_name);
+  podaciForme.append("napojna_ts", feature.napojna_ts);
+  podaciForme.append("opstina", feature.opstina);
+  podaciForme.append("naziv", feature.naziv);
+  podaciForme.append("god_izg", feature.god_izg);
+  podaciForme.append("gps", feature.gps);
+  podaciForme.append("br_vod_cel_visi_nap", feature.br_vod_cel_visi_nap);
+  podaciForme.append("datum_azuriranja", feature.datum_azuriranja);
+  podaciForme.append("projek_snaga", feature.projek_snaga);
+  podaciForme.append("pog_sprem", feature.pog_sprem);
+  podaciForme.append("layer_id", feature.layer_id);
+  podaciForme.append("napon", feature.napon);
+  podaciForme.append("geohash_id", feature.geohash_id);
+  podaciForme.append("korisnik", feature.korisnik);
+  podaciForme.append("katastar", feature.katastar);
+  podaciForme.append("originalId", feature.originalId);
+  podaciForme.append("posjeduje_sliku", feature.posjeduje_sliku);
+  podaciForme.append("vlasnik", feature.vlasnik);
+  podaciForme.append("geohash_id_no", feature.geohash_id_no);
+  podaciForme.append("sifra_napojne", feature.sifra_napojne);
+  podaciForme.append("izvod_napojne", feature.izvod_napojne);
+  podaciForme.append("fid", feature.fid);
+  podaciForme.append("naziv_napojne", feature.naziv_napojne);
 
   $.ajax({
     url: wsServerOriginLocation + "/novi_portal/api/trafostanice_store",
@@ -79,58 +78,57 @@ function cudTrafostanica(feature, akcija, wizard) {
  * @param {*} akcija
  */
 function cudVod(feature, akcija, wizard) {
-  let wkt = wktGeometrije(feature);
   let podaciForme = new FormData();
   podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
-  podaciForme.append("Geometry", wkt);
-  podaciForme.append("id", feature.values_.id); //Ovo provjeriti
-  //podaciForme.append("fid1", feature.values_.fid1);
-  podaciForme.append("fid_1", feature.id_.split(".")[1]);
-  podaciForme.append("name", feature.values_.name);
-  podaciForme.append("id_br", feature.values_.id_br);
-  podaciForme.append("materijal", feature.values_.materijal);
-  podaciForme.append("zajednicka_dion", feature.values_.zajednicka_dion);
-  podaciForme.append("dionica_nn", feature.values_.dionica_nn);
-  podaciForme.append("napon", feature.values_.napon);
-  podaciForme.append("dionica", feature.values_.dionica);
-  podaciForme.append("dionica_gps", feature.values_.dionica_gps);
-  podaciForme.append("rasvjeta", feature.values_.rasvjeta);
-  podaciForme.append("rac_duzina", feature.values_.rac_duzina);
-  podaciForme.append("poc_dion", feature.values_.poc_dion);
-  podaciForme.append("vrsta", feature.values_.vrsta);
-  podaciForme.append("vlasnistvo", feature.values_.vlasnistvo);
-  podaciForme.append("tip", feature.values_.tip);
-  podaciForme.append("br_spojnica", feature.values_.br_spojnica);
-  podaciForme.append("kraj_dion", feature.values_.kraj_dion);
-  podaciForme.append("uze_presjek", feature.values_.uze_presjek);
-  podaciForme.append("layer_name", feature.values_.layer_name);
-  podaciForme.append("izvod_ts", feature.values_.izvod_ts);
-  podaciForme.append("uze", feature.values_.uze);
-  podaciForme.append("br_faza", feature.values_.br_faza);
-  podaciForme.append("presjek", feature.values_.presjek);
-  podaciForme.append("opstina", feature.values_.opstina);
-  podaciForme.append("naziv", feature.values_.naziv);
-  podaciForme.append("god_izg", feature.values_.god_izg);
-  podaciForme.append("gps", feature.values_.gps);
-  podaciForme.append("datum_azuriranja", feature.values_.datum_azuriranja);
-  podaciForme.append("pog_sprem", feature.values_.pog_sprem);
-  podaciForme.append("duzina", feature.values_.duzina);
-  podaciForme.append("ts", feature.values_.ts);
-  podaciForme.append("layer_id", feature.values_.layer_id);
-  podaciForme.append("broj_spojnica", feature.values_.broj_spojnica);
-  podaciForme.append("geohash_id", feature.values_.geohash_id);
-  podaciForme.append("korisnik", feature.values_.korisnik);
-  podaciForme.append("katastar", feature.values_.katastar);
-  podaciForme.append("originalId", feature.values_.originalId);
-  podaciForme.append("posjeduje_sliku", feature.values_.posjeduje_sliku);
-  podaciForme.append("vlasnik", feature.values_.vlasnik);
-  podaciForme.append("geohash_id_no", feature.values_.geohash_id_no);
-  podaciForme.append("sifra_dionice", feature.values_.sifra_dionice);
-  podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
-  podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
-  podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
-  podaciForme.append("fid", feature.values_.fid);
+  podaciForme.append("Geometry", feature.Geometry);
+  podaciForme.append("id", feature.id); //Ovo provjeriti
+  podaciForme.append("fid1", feature.fid_1);
+  //podaciForme.append("fid_1", feature.id_.split(".")[1]);
+  podaciForme.append("name", feature.name);
+  podaciForme.append("id_br", feature.id_br);
+  podaciForme.append("materijal", feature.materijal);
+  podaciForme.append("zajednicka_dion", feature.zajednicka_dion);
+  podaciForme.append("dionica_nn", feature.dionica_nn);
+  podaciForme.append("napon", feature.napon);
+  podaciForme.append("dionica", feature.dionica);
+  podaciForme.append("dionica_gps", feature.dionica_gps);
+  podaciForme.append("rasvjeta", feature.rasvjeta);
+  podaciForme.append("rac_duzina", feature.rac_duzina);
+  podaciForme.append("poc_dion", feature.poc_dion);
+  podaciForme.append("vrsta", feature.vrsta);
+  podaciForme.append("vlasnistvo", feature.vlasnistvo);
+  podaciForme.append("tip", feature.tip);
+  podaciForme.append("br_spojnica", feature.br_spojnica);
+  podaciForme.append("kraj_dion", feature.kraj_dion);
+  podaciForme.append("uze_presjek", feature.uze_presjek);
+  podaciForme.append("layer_name", feature.layer_name);
+  podaciForme.append("izvod_ts", feature.izvod_ts);
+  podaciForme.append("uze", feature.uze);
+  podaciForme.append("br_faza", feature.br_faza);
+  podaciForme.append("presjek", feature.presjek);
+  podaciForme.append("opstina", feature.opstina);
+  podaciForme.append("naziv", feature.naziv);
+  podaciForme.append("god_izg", feature.god_izg);
+  podaciForme.append("gps", feature.gps);
+  podaciForme.append("datum_azuriranja", feature.datum_azuriranja);
+  podaciForme.append("pog_sprem", feature.pog_sprem);
+  podaciForme.append("duzina", feature.duzina);
+  podaciForme.append("ts", feature.ts);
+  podaciForme.append("layer_id", feature.layer_id);
+  podaciForme.append("broj_spojnica", feature.broj_spojnica);
+  podaciForme.append("geohash_id", feature.geohash_id);
+  podaciForme.append("korisnik", feature.korisnik);
+  podaciForme.append("katastar", feature.katastar);
+  podaciForme.append("originalId", feature.originalId);
+  podaciForme.append("posjeduje_sliku", feature.posjeduje_sliku);
+  podaciForme.append("vlasnik", feature.vlasnik);
+  podaciForme.append("geohash_id_no", feature.geohash_id_no);
+  podaciForme.append("sifra_dionice", feature.sifra_dionice);
+  podaciForme.append("sifra_napojne", feature.sifra_napojne);
+  podaciForme.append("izvod_napojne", feature.izvod_napojne);
+  podaciForme.append("naziv_napojne", feature.naziv_napojne);
+  podaciForme.append("fid", feature.fid);
 
   $.ajax({
     url: wsServerOriginLocation + "/novi_portal/api/vodovi_store",
@@ -154,64 +152,61 @@ function cudVod(feature, akcija, wizard) {
  * @param {*} akcija
  */
 function cudStub(feature, akcija, wizard) {
-  let wkt = wktGeometrije(feature);
-  wkt = wkt3Du2D(wkt);
+  //let wkt = wktGeometrije(feature);
+  //wkt = wkt3Du2D(wkt);
   let podaciForme = new FormData();
   podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
-  podaciForme.append("Geometry", wkt);
-  podaciForme.append("id", feature.values_.id); //Ovo provjeriti
-  if (feature.values_.fid_1) {
-    podaciForme.append("fid_1", feature.values_.fid_1);
-  } else {
-    podaciForme.append("fid_1", feature.id_.split(".")[1]);
-  }
-  podaciForme.append("name", feature.values_.name);
-  podaciForme.append("br_izol_faza", feature.values_.br_izol_faza);
-  podaciForme.append("uzemljivac", feature.values_.uzemljivac);
-  podaciForme.append("pripadnost", feature.values_.pripadnost);
-  podaciForme.append("broj", feature.values_.broj);
-  podaciForme.append("napon", feature.values_.napon);
-  podaciForme.append("vrsta_namjena", feature.values_.vrsta_namjena);
-  podaciForme.append("rasvjeta", feature.values_.rasvjeta);
-  podaciForme.append("prikljucak_otcjep", feature.values_.prikljucak_otcjep);
-  podaciForme.append("br_pmo", feature.values_.br_pmo);
-  podaciForme.append("nad_visina", feature.values_.nad_visina);
-  podaciForme.append("10vod", feature.values_["10vod"]);
-  podaciForme.append("tip_nosac_izol", feature.values_.tip_nosac_izol);
-  podaciForme.append("vlasnistvo", feature.values_.vlasnistvo);
-  podaciForme.append("tip", feature.values_.tip);
-  podaciForme.append("layer_name", feature.values_.layer_name);
-  podaciForme.append("broj_priklj_mjernih_ormara", feature.values_.broj_priklj_mjernih_ormara);
-  podaciForme.append("visina", feature.values_.visina);
-  podaciForme.append("optika", feature.values_.optika);
-  podaciForme.append("opstina", feature.values_.opstina);
-  podaciForme.append("izolator_funkcija", feature.values_.izolator_funkcija);
-  podaciForme.append("odvodnik_prenapona", feature.values_.odvodnik_prenapona);
-  podaciForme.append("vrsta_drvenog", feature.values_.vrsta_drvenog);
-  podaciForme.append("br_nnv", feature.values_.br_nnv);
-  podaciForme.append("rastavljac", feature.values_.rastavljac);
-  podaciForme.append("gps", feature.values_.gps);
-  podaciForme.append("datum_azuriranja", feature.values_.datum_azuriranja);
-  podaciForme.append("izolator_vrsta", feature.values_.izolator_vrsta);
-  podaciForme.append("uzemljivac_otpor", feature.values_.uzemljivac_otpor);
-  podaciForme.append("sifra", feature.values_.sifra);
-  podaciForme.append("rasp_prov", feature.values_.rasp_prov);
-  podaciForme.append("nn_vod", feature.values_.nn_vod);
-  podaciForme.append("pog_sprem", feature.values_.pog_sprem);
-  podaciForme.append("vrsta_materijal", feature.values_.vrsta_materijal);
-  podaciForme.append("layer_id", feature.values_.layer_id);
-  podaciForme.append("geohash_id", feature.values_.geohash_id);
-  podaciForme.append("korisnik", feature.values_.korisnik);
-  podaciForme.append("katastar", feature.values_.katastar);
-  podaciForme.append("originalId", feature.values_.originalId);
-  podaciForme.append("posjeduje_sliku", feature.values_.posjeduje_sliku);
-  podaciForme.append("vlasnik", feature.values_.vlasnik);
-  podaciForme.append("geohash_id_no", feature.values_.geohash_id_no);
-  podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
-  podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
-  podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
-  podaciForme.append("fid", feature.values_.fid);
+  podaciForme.append("Geometry", feature.Geometry);
+  podaciForme.append("id", feature.id); //Ovo provjeriti
+  podaciForme.append("fid_1", feature.fid_1);
+
+  podaciForme.append("name", feature.name);
+  podaciForme.append("br_izol_faza", feature.br_izol_faza);
+  podaciForme.append("uzemljivac", feature.uzemljivac);
+  podaciForme.append("pripadnost", feature.pripadnost);
+  podaciForme.append("broj", feature.broj);
+  podaciForme.append("napon", feature.napon);
+  podaciForme.append("vrsta_namjena", feature.vrsta_namjena);
+  podaciForme.append("rasvjeta", feature.rasvjeta);
+  podaciForme.append("prikljucak_otcjep", feature.prikljucak_otcjep);
+  podaciForme.append("br_pmo", feature.br_pmo);
+  podaciForme.append("nad_visina", feature.nad_visina);
+  podaciForme.append("10vod", feature.vod_10);
+  podaciForme.append("tip_nosac_izol", feature.tip_nosac_izol);
+  podaciForme.append("vlasnistvo", feature.vlasnistvo);
+  podaciForme.append("tip", feature.tip);
+  podaciForme.append("layer_name", feature.layer_name);
+  podaciForme.append("broj_priklj_mjernih_ormara", feature.broj_priklj_mjernih_ormara);
+  podaciForme.append("visina", feature.visina);
+  podaciForme.append("optika", feature.optika);
+  podaciForme.append("opstina", feature.opstina);
+  podaciForme.append("izolator_funkcija", feature.izolator_funkcija);
+  podaciForme.append("odvodnik_prenapona", feature.odvodnik_prenapona);
+  podaciForme.append("vrsta_drvenog", feature.vrsta_drvenog);
+  podaciForme.append("br_nnv", feature.br_nnv);
+  podaciForme.append("rastavljac", feature.rastavljac);
+  podaciForme.append("gps", feature.gps);
+  podaciForme.append("datum_azuriranja", feature.datum_azuriranja);
+  podaciForme.append("izolator_vrsta", feature.izolator_vrsta);
+  podaciForme.append("uzemljivac_otpor", feature.uzemljivac_otpor);
+  podaciForme.append("sifra", feature.sifra);
+  podaciForme.append("rasp_prov", feature.rasp_prov);
+  podaciForme.append("nn_vod", feature.nn_vod);
+  podaciForme.append("pog_sprem", feature.pog_sprem);
+  podaciForme.append("vrsta_materijal", feature.vrsta_materijal);
+  podaciForme.append("layer_id", feature.layer_id);
+  podaciForme.append("geohash_id", feature.geohash_id);
+  podaciForme.append("korisnik", feature.korisnik);
+  podaciForme.append("katastar", feature.katastar);
+  podaciForme.append("originalId", feature.originalId.replace("_", ""));
+  podaciForme.append("posjeduje_sliku", feature.posjeduje_sliku);
+  podaciForme.append("vlasnik", feature.vlasnik);
+  podaciForme.append("geohash_id_no", feature.geohash_id_no);
+  podaciForme.append("sifra_napojne", feature.sifra_napojne);
+  podaciForme.append("izvod_napojne", feature.izvod_napojne);
+  podaciForme.append("naziv_napojne", feature.naziv_napojne);
+  podaciForme.append("fid", feature.fid);
 
   $.ajax({
     url: wsServerOriginLocation + "/novi_portal/api/stubovi_store",
@@ -235,44 +230,43 @@ function cudStub(feature, akcija, wizard) {
  * @param {*} akcija
  */
 function cudPotrosac(feature, akcija, wizard) {
-  let wkt = wktGeometrije(feature);
   //onsole.log("Geometrija potrošača", feature.values_);
   //console.log("Potrošač", feature);
   let podaciForme = new FormData();
   podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
-  podaciForme.append("Geometry", wkt);
-  podaciForme.append("id", feature.values_.id); //Ovo provjeriti
-  podaciForme.append("fid_1", feature.values_.fid_1);
+  podaciForme.append("Geometry", feature.Geometry);
+  podaciForme.append("id", feature.id); //Ovo provjeriti
+  podaciForme.append("fid_1", feature.fid_1);
   //podaciForme.append("fid_1", feature.id_.split(".")[1]);
-  podaciForme.append("name", feature.values_.name);
-  podaciForme.append("prik_kabal", feature.values_.prik_kabal);
-  podaciForme.append("pod", feature.values_.pod);
-  podaciForme.append("layer_name", feature.values_.layer_name);
-  podaciForme.append("adresa_mm", feature.values_.adresa_mm);
-  podaciForme.append("naziv_ts", feature.values_.naziv_ts);
-  podaciForme.append("prik_mjesto", feature.values_.prik_mjesto);
-  podaciForme.append("opstina", feature.values_.opstina);
-  podaciForme.append("sifra_ts", feature.values_.sifra_ts);
-  podaciForme.append("naziv", feature.values_.naziv);
-  podaciForme.append("gps", feature.values_.gps);
-  podaciForme.append("datum_azuriranja", feature.values_.datum_azuriranja);
-  podaciForme.append("naziv_nn_izvod", feature.values_.naziv_nn_izvod);
-  podaciForme.append("pretplatni_br", feature.values_.pretplatni_br);
-  podaciForme.append("br_brojila", feature.values_.br_brojila);
-  podaciForme.append("layer_id", feature.values_.layer_id);
-  podaciForme.append("napon", feature.values_.napon);
-  podaciForme.append("geohash_id", feature.values_.geohash_id);
-  podaciForme.append("korisnik", feature.values_.korisnik);
-  podaciForme.append("katastar", feature.values_.katastar);
-  podaciForme.append("posjeduje_sliku", feature.values_.posjeduje_sliku);
-  podaciForme.append("originalId", feature.values_.originalId);
-  podaciForme.append("geohash_id_no", feature.values_.geohash_id_no);
-  podaciForme.append("vlasnik", feature.values_.vlasnik);
-  podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
-  podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
-  podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
-  podaciForme.append("fid", feature.values_.fid);
+  podaciForme.append("name", feature.name);
+  podaciForme.append("prik_kabal", feature.prik_kabal);
+  podaciForme.append("pod", feature.pod);
+  podaciForme.append("layer_name", feature.layer_name);
+  podaciForme.append("adresa_mm", feature.adresa_mm);
+  podaciForme.append("naziv_ts", feature.naziv_ts);
+  podaciForme.append("prik_mjesto", feature.prik_mjesto);
+  podaciForme.append("opstina", feature.opstina);
+  podaciForme.append("sifra_ts", feature.sifra_ts);
+  podaciForme.append("naziv", feature.naziv);
+  podaciForme.append("gps", feature.gps);
+  podaciForme.append("datum_azuriranja", feature.datum_azuriranja);
+  podaciForme.append("naziv_nn_izvod", feature.naziv_nn_izvod);
+  podaciForme.append("pretplatni_br", feature.pretplatni_br);
+  podaciForme.append("br_brojila", feature.br_brojila);
+  podaciForme.append("layer_id", feature.layer_id);
+  podaciForme.append("napon", feature.napon);
+  podaciForme.append("geohash_id", feature.geohash_id);
+  podaciForme.append("korisnik", feature.korisnik);
+  podaciForme.append("katastar", feature.katastar);
+  podaciForme.append("posjeduje_sliku", feature.posjeduje_sliku);
+  podaciForme.append("originalId", feature.originalId);
+  podaciForme.append("geohash_id_no", feature.geohash_id_no);
+  podaciForme.append("vlasnik", feature.vlasnik);
+  podaciForme.append("sifra_napojne", feature.sifra_napojne);
+  podaciForme.append("izvod_napojne", feature.izvod_napojne);
+  podaciForme.append("naziv_napojne", feature.naziv_napojne);
+  podaciForme.append("fid", feature.fid);
 
   $.ajax({
     url: wsServerOriginLocation + "/novi_portal/api/potrosaci_store",
@@ -296,41 +290,40 @@ function cudPotrosac(feature, akcija, wizard) {
  * @param {*} akcija
  */
 function cudNKRO(feature, akcija, wizard) {
-  let wkt = wktGeometrije(feature);
   let podaciForme = new FormData();
   podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
-  podaciForme.append("Geometry", wkt);
-  podaciForme.append("id", feature.values_.id); //Ovo provjeriti
-  //podaciForme.append("fid_1", feature.values_.fid_1);
-  podaciForme.append("fid_1", feature.id_.split(".")[1]);
-  podaciForme.append("name", feature.values_.name);
-  podaciForme.append("materijal", feature.values_.materijal);
-  podaciForme.append("montaza", feature.values_.montaza);
-  podaciForme.append("vlasnistvo", feature.values_.vlasnistvo);
-  podaciForme.append("br_prikljucaka", feature.values_.br_prikljucaka);
-  podaciForme.append("layer_name", feature.values_.layer_name);
-  podaciForme.append("izvod_ts", feature.values_.izvod_ts);
-  podaciForme.append("vrata", feature.values_.vrata);
-  podaciForme.append("opstina", feature.values_.opstina);
-  podaciForme.append("gps", feature.values_.gps);
-  podaciForme.append("datum_azuriranja", feature.values_.datum_azuriranja);
-  podaciForme.append("br_izvoda", feature.values_.br_izvoda);
-  podaciForme.append("pog_sprem", feature.values_.pog_sprem);
-  podaciForme.append("ts", feature.values_.ts);
-  podaciForme.append("layer_id", feature.values_.layer_id);
-  podaciForme.append("napon", feature.values_.napon);
-  podaciForme.append("geohash_id", feature.values_.geohash_id);
-  podaciForme.append("korisnik", feature.values_.korisnik);
-  podaciForme.append("katastar", feature.values_.katastar);
-  podaciForme.append("posjeduje_sliku", feature.values_.posjeduje_sliku);
-  podaciForme.append("originalId", feature.values_.originalId);
-  podaciForme.append("geohash_id_no", feature.values_.geohash_id_no);
-  podaciForme.append("vlasnik", feature.values_.vlasnik);
-  podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
-  podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
-  podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
-  podaciForme.append("fid", feature.values_.fid);
+  podaciForme.append("Geometry", feature.Geometry);
+  podaciForme.append("id", feature.id); //Ovo provjeriti
+  podaciForme.append("fid_1", feature.fid_1);
+  //podaciForme.append("fid_1", feature.id_.split(".")[1]);
+  podaciForme.append("name", feature.name);
+  podaciForme.append("materijal", feature.materijal);
+  podaciForme.append("montaza", feature.montaza);
+  podaciForme.append("vlasnistvo", feature.vlasnistvo);
+  podaciForme.append("br_prikljucaka", feature.br_prikljucaka);
+  podaciForme.append("layer_name", feature.layer_name);
+  podaciForme.append("izvod_ts", feature.izvod_ts);
+  podaciForme.append("vrata", feature.vrata);
+  podaciForme.append("opstina", feature.opstina);
+  podaciForme.append("gps", feature.gps);
+  podaciForme.append("datum_azuriranja", feature.datum_azuriranja);
+  podaciForme.append("br_izvoda", feature.br_izvoda);
+  podaciForme.append("pog_sprem", feature.pog_sprem);
+  podaciForme.append("ts", feature.ts);
+  podaciForme.append("layer_id", feature.layer_id);
+  podaciForme.append("napon", feature.napon);
+  podaciForme.append("geohash_id", feature.geohash_id);
+  podaciForme.append("korisnik", feature.korisnik);
+  podaciForme.append("katastar", feature.katastar);
+  podaciForme.append("posjeduje_sliku", feature.posjeduje_sliku);
+  podaciForme.append("originalId", feature.originalId);
+  podaciForme.append("geohash_id_no", feature.geohash_id_no);
+  podaciForme.append("vlasnik", feature.vlasnik);
+  podaciForme.append("sifra_napojne", feature.sifra_napojne);
+  podaciForme.append("izvod_napojne", feature.izvod_napojne);
+  podaciForme.append("naziv_napojne", feature.naziv_napojne);
+  podaciForme.append("fid", feature.fid);
 
   $.ajax({
     url: wsServerOriginLocation + "/novi_portal/api/nkro_store",
@@ -354,38 +347,37 @@ function cudNKRO(feature, akcija, wizard) {
  * @param {*} akcija
  */
 function cudPrikljucnoMjesto(feature, akcija, wizard) {
-  let wkt = wktGeometrije(feature);
   let podaciForme = new FormData();
   podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
-  podaciForme.append("Geometry", wkt);
-  podaciForme.append("id", feature.values_.id); //Ovo provjeriti
-  //podaciForme.append("fid_1", feature.values_.fid_1);
-  podaciForme.append("fid_1", feature.id_.split(".")[1]);
-  podaciForme.append("name", feature.values_.name);
-  podaciForme.append("osiguraci", feature.values_.osiguraci);
-  podaciForme.append("opstina", feature.values_.opstina);
-  podaciForme.append("gps", feature.values_.gps);
-  podaciForme.append("br_pretplatnika", feature.values_.br_pretplatnika);
-  podaciForme.append("datum_azuriranja", feature.values_.datum_azuriranja);
-  podaciForme.append("vlasnistvo", feature.values_.vlasnistvo);
-  podaciForme.append("tip", feature.values_.tip);
-  podaciForme.append("layer_name", feature.values_.layer_name);
-  podaciForme.append("izvod_ts", feature.values_.izvod_ts);
-  podaciForme.append("ts", feature.values_.ts);
-  podaciForme.append("layer_id", feature.values_.layer_id);
-  podaciForme.append("napon", feature.values_.napon);
-  podaciForme.append("geohash_id", feature.values_.geohash_id);
-  podaciForme.append("korisnik", feature.values_.korisnik);
-  podaciForme.append("katastar", feature.values_.katastar);
-  podaciForme.append("originalId", feature.values_.originalId);
-  podaciForme.append("posjeduje_sliku", feature.values_.posjeduje_sliku);
-  podaciForme.append("geohash_id_no", feature.values_.geohash_id_no);
-  podaciForme.append("vlasnik", feature.values_.vlasnik);
-  podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
-  podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
-  podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
-  podaciForme.append("fid", feature.values_.fid);
+  podaciForme.append("Geometry", feature.Geometry);
+  podaciForme.append("id", feature.id); //Ovo provjeriti
+  podaciForme.append("fid_1", feature.fid_1);
+  //podaciForme.append("fid_1", feature.id_.split(".")[1]);
+  podaciForme.append("name", feature.name);
+  podaciForme.append("osiguraci", feature.osiguraci);
+  podaciForme.append("opstina", feature.opstina);
+  podaciForme.append("gps", feature.gps);
+  podaciForme.append("br_pretplatnika", feature.br_pretplatnika);
+  podaciForme.append("datum_azuriranja", feature.datum_azuriranja);
+  podaciForme.append("vlasnistvo", feature.vlasnistvo);
+  podaciForme.append("tip", feature.tip);
+  podaciForme.append("layer_name", feature.layer_name);
+  podaciForme.append("izvod_ts", feature.izvod_ts);
+  podaciForme.append("ts", feature.ts);
+  podaciForme.append("layer_id", feature.layer_id);
+  podaciForme.append("napon", feature.napon);
+  podaciForme.append("geohash_id", feature.geohash_id);
+  podaciForme.append("korisnik", feature.korisnik);
+  podaciForme.append("katastar", feature.katastar);
+  podaciForme.append("originalId", feature.originalId);
+  podaciForme.append("posjeduje_sliku", feature.posjeduje_sliku);
+  podaciForme.append("geohash_id_no", feature.geohash_id_no);
+  podaciForme.append("vlasnik", feature.vlasnik);
+  podaciForme.append("sifra_napojne", feature.sifra_napojne);
+  podaciForme.append("izvod_napojne", feature.izvod_napojne);
+  podaciForme.append("naziv_napojne", feature.naziv_napojne);
+  podaciForme.append("fid", feature.fid);
 
   $.ajax({
     url: wsServerOriginLocation + "/novi_portal/api/prikljucno_mjesto_store",
@@ -414,38 +406,38 @@ function cudPOD(feature, akcija, wizard) {
   let podaciForme = new FormData();
   podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
-  podaciForme.append("Geometry", wkt);
-  podaciForme.append("id", feature.values_.id); //Ovo provjeriti
-  //podaciForme.append("fid_1", feature.values_.fid_1);
-  podaciForme.append("fid_1", feature.id_.split(".")[1]);
-  podaciForme.append("name", feature.values_.name);
-  podaciForme.append("prik_kabal", feature.values_.prik_kabal);
-  podaciForme.append("pod", feature.values_.pod);
-  podaciForme.append("layer_name", feature.values_.layer_name);
-  podaciForme.append("adresa_mm", feature.values_.adresa_mm);
-  podaciForme.append("naziv_ts", feature.values_.naziv_ts);
-  podaciForme.append("prik_mjesto", feature.values_.prik_mjesto);
-  podaciForme.append("opstina", feature.values_.opstina);
-  podaciForme.append("sifra_ts", feature.values_.sifra_ts);
-  podaciForme.append("naziv", feature.values_.naziv);
-  podaciForme.append("gps", feature.values_.gps);
-  podaciForme.append("datum_azuriranja", feature.values_.datum_azuriranja);
-  podaciForme.append("naziv_nn_izvod", feature.values_.naziv_nn_izvod);
-  podaciForme.append("pretplatni_br", feature.values_.pretplatni_br);
-  podaciForme.append("br_brojila", feature.values_.br_brojila);
-  podaciForme.append("layer_id", feature.values_.layer_id);
-  podaciForme.append("napon", feature.values_.napon);
-  podaciForme.append("geohash_id", feature.values_.geohash_id);
-  podaciForme.append("korisnik", feature.values_.korisnik);
-  podaciForme.append("katastar", feature.values_.katastar);
-  podaciForme.append("posjeduje_sliku", feature.values_.posjeduje_sliku);
-  podaciForme.append("originalId", feature.values_.originalId);
-  podaciForme.append("geohash_id_no", feature.values_.geohash_id_no);
-  podaciForme.append("vlasnik", feature.values_.vlasnik);
-  podaciForme.append("sifra_napojne", feature.values_.sifra_napojne);
-  podaciForme.append("izvod_napojne", feature.values_.izvod_napojne);
-  podaciForme.append("naziv_napojne", feature.values_.naziv_napojne);
-  podaciForme.append("fid", feature.values_.fid);
+  podaciForme.append("Geometry", feature.Geometry);
+  podaciForme.append("id", feature.id); //Ovo provjeriti
+  podaciForme.append("fid_1", feature.fid_1);
+  //podaciForme.append("fid_1", feature.id_.split(".")[1]);
+  podaciForme.append("name", feature.name);
+  podaciForme.append("prik_kabal", feature.prik_kabal);
+  podaciForme.append("pod", feature.pod);
+  podaciForme.append("layer_name", feature.layer_name);
+  podaciForme.append("adresa_mm", feature.adresa_mm);
+  podaciForme.append("naziv_ts", feature.naziv_ts);
+  podaciForme.append("prik_mjesto", feature.prik_mjesto);
+  podaciForme.append("opstina", feature.opstina);
+  podaciForme.append("sifra_ts", feature.sifra_ts);
+  podaciForme.append("naziv", feature.naziv);
+  podaciForme.append("gps", feature.gps);
+  podaciForme.append("datum_azuriranja", feature.datum_azuriranja);
+  podaciForme.append("naziv_nn_izvod", feature.naziv_nn_izvod);
+  podaciForme.append("pretplatni_br", feature.pretplatni_br);
+  podaciForme.append("br_brojila", feature.br_brojila);
+  podaciForme.append("layer_id", feature.layer_id);
+  podaciForme.append("napon", feature.napon);
+  podaciForme.append("geohash_id", feature.geohash_id);
+  podaciForme.append("korisnik", feature.korisnik);
+  podaciForme.append("katastar", feature.katastar);
+  podaciForme.append("posjeduje_sliku", feature.posjeduje_sliku);
+  podaciForme.append("originalId", feature.originalId);
+  podaciForme.append("geohash_id_no", feature.geohash_id_no);
+  podaciForme.append("vlasnik", feature.vlasnik);
+  podaciForme.append("sifra_napojne", feature.sifra_napojne);
+  podaciForme.append("izvod_napojne", feature.izvod_napojne);
+  podaciForme.append("naziv_napojne", feature.naziv_napojne);
+  podaciForme.append("fid", feature.fid);
 
   $.ajax({
     url: wsServerOriginLocation + "/novi_portal/api/pod_store",
