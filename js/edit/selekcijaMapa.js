@@ -56,14 +56,17 @@ function klikNaVektore(browserEvent) {
   let pixel = map.getPixelFromCoordinate(coordinate);
   map.forEachFeatureAtPixel(pixel, function (feature) {
     console.log("feature", feature);
-    nizGpxTacakaZaObradu.push(feature);
-    if (selektovaniDdlZaPovezivanjeVoda !== "") {
-      $(selektovaniDdlZaPovezivanjeVoda).append(
-        $("<option>", {
-          value: feature.values_.name,
-          text: feature.values_.name,
-        })
-      );
+    if (feature.values_.name) {
+      //To avoid dark blue dot that represents selected feature
+      nizGpxTacakaZaObradu.push(feature);
+      if (selektovaniDdlZaPovezivanjeVoda !== "") {
+        $(selektovaniDdlZaPovezivanjeVoda).append(
+          $("<option>", {
+            value: feature.values_.name,
+            text: feature.values_.name,
+          })
+        );
+      }
     }
   });
 
