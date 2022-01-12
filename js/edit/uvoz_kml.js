@@ -89,7 +89,7 @@ function objectNearKmlFeature(feature, layerName) {
     cqlCondition = "DWITHIN(Geometry,POINT(" + coordinates[0] + " " + coordinates[1] + ")," + kmlRadius + ",meters)";
   }
 
-  cqlCondition = "&cql_filter=" + cqlCondition;
+  cqlCondition !== "" && (cqlCondition = "&cql_filter=" + cqlCondition);
   let wfsUrl1 =
     wfsUrl +
     "?version=1.0.0&request=GetFeature&typeName=geonode:" +

@@ -329,10 +329,10 @@ dragAndDrop.on("addfeatures", function (event) {
       objectNearKmlFeature(feature, "stubovi");
       objectNearKmlFeature(feature, "trafostanice");
       objectNearKmlFeature(feature, "vodovi");
-      objectNearKmlFeature(feature, "podovi");
+      objectNearKmlFeature(feature, "pod");
       objectNearKmlFeature(feature, "nkro");
       objectNearKmlFeature(feature, "prikljucno_mjesto");
-      objectNearKmlFeature(feature, "potrosac");
+      objectNearKmlFeature(feature, "view_potrosaci");
     }
 
     //let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
