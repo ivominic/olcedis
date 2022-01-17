@@ -82,4 +82,5 @@ function insertObjekataIzGpx() {
       nkroArrayFinal
     );
   }
+  availableLayersPerPowerLevel(0); //After completion fill ddl with all items.
 }

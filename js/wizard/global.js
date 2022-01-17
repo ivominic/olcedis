@@ -326,19 +326,14 @@ map.addLayer(vectorKmlFocusedObject);
 function globalNaponskiNivoPrenosOdnos(nivo) {
   console.log("NIVO U GLOBAL ", nivo);
   let retVal = "";
-  switch (nivo) {
-    case ("10/0,4", "10/0,69", "6/0,4", "35/0.4", "35/0,4"):
-      retVal = "0.4";
-      break;
-    case ("10/10", "35/10", "35/6", "110/10"):
-      retVal = "10";
-      break;
-    case ("110/35", "35/35"):
-      retVal = "35";
-      break;
-    //default:
-    //  retVal = nivo;
+  if (nivo === "10/0,4" || nivo === "10/0,69" || nivo === "6/0,4" || nivo === "35/0.4" || nivo === "35/0,4") {
+    retVal = "0.4";
+  } else if (nivo === "10/10" || nivo === "35/10" || nivo === "35/6" || nivo === "110/10") {
+    retVal = "10";
+  } else if (nivo === "110/35" || nivo === "35/35") {
+    retVal = "35";
   }
+  console.log("retval nivo", retVal);
   return retVal;
 }
 
@@ -552,4 +547,19 @@ function provjeraPostojanjaElementaDdla(ddl, vrijednost) {
     }
   });
   return postoji;
+}
+
+/**
+ * Method that fills dropdown list.
+ * @param {*} ddl - dropdown id
+ * @param {*} value - record value
+ * @param {*} text - record text
+ */
+function fillDdl(ddl, value, text) {
+  $("#" + ddl).append(
+    $("<option>", {
+      value: value,
+      text: text,
+    })
+  );
 }

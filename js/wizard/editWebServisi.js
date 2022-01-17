@@ -181,6 +181,7 @@ function pretragaTrafostanicaGpx(sifraTS) {
           console.log("prenosni odnos", data.ts.prenosni_odnos);
           filePowerLevel = globalNaponskiNivoPrenosOdnos(data.ts.prenosni_odnos);
           console.log("filePowerLevel", filePowerLevel);
+          availableLayersPerPowerLevel(filePowerLevel);
         }
 
         data.ts.izvodi.forEach(function (vrijednost) {
