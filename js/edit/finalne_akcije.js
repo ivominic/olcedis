@@ -24,7 +24,7 @@ function insertObjekataIzGpx() {
       //kreiraniNkroFeatures.push(el);
       //console.log("nkro", el);
       nkroArrayElement(el, "I", 0);
-    } else if (el.get("lejer") === "potrosaci") {
+    } else if (el.get("lejer") === "potrosac") {
       //console.log("potrosaci", el);
       //kreiraniPotrosaciFeatures.push(el);
       potrosacArrayElement(el, "I", 0);
