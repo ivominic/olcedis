@@ -56,7 +56,14 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
         nizPretplatnika.forEach((jsonPretplatnik) => {
           console.log("Pojedinačni niz pretplatnika", jsonPretplatnik);
           vectorSource.getFeatures().forEach(function (el) {
-            let noviEl = el.clone();
+            let noviEl = el;
+            let boolAdd = false;
+            if (el.get("lejer")) {
+              noviEl = el.clone();
+              boolAdd = true;
+              console.log("elemenat koji ima lejer", noviEl);
+              console.log("elemenat lejer", el.get("lejer"));
+            }
             if (el !== undefined && el.ol_uid == selFeature.ol_uid) {
               //vectorSource.addFeature(el.clone());
               //TODO: Dodijeliti vrijednosti el feature-u iz jsonPretplatnik objekta
@@ -79,9 +86,17 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
               noviEl.set("sifra_napojne", sifraNapojneTrafostanice);
               noviEl.set("naziv_napojne", nazivNapojneTrafostanice);
               noviEl.set("izvod_napojne", izvodNapojneTrafostanice);
-              vectorSource.addFeature(noviEl);
+              if (boolAdd) {
+                gpxFeatures.push(noviEl);
+                vectorSource.addFeatures([noviEl]);
+              }
+
               let ddlTemp = document.querySelector("#prik_mjesto").value;
-              generisanjeGpxPodaIzGeometrije(nizKoordinataPrikljucnihMjesta[ddlTemp][0], nizKoordinataPrikljucnihMjesta[ddlTemp][1], jsonPretplatnik);
+              generisanjeGpxPodaIzGeometrije(
+                nizKoordinataPrikljucnihMjesta[ddlTemp][0],
+                nizKoordinataPrikljucnihMjesta[ddlTemp][1],
+                jsonPretplatnik
+              );
             }
           });
           poruka("Uspjeh", "Uspješno kreirani potrošači");
@@ -167,7 +182,7 @@ function izbrisiFeatureIzVektora(elBrisanje) {
   let nizZaBrisanje = vectorSource.getFeatures();
   //console.log("selektovani objekat", select.getFeatures().array_[0]);
   vectorSource.getFeatures().forEach(function (el, index, nizZaBrisanje) {
-    if (elBrisanje !== undefined && el.ol_uid == elBrisanje.ol_uid) {
+    if (elBrisanje !== undefined && elBrisanje !== null && el.ol_uid == elBrisanje.ol_uid) {
       nizZaBrisanje.splice(index, 1);
       select.getFeatures().array_.splice(0, 1);
       elBrisanje = null;

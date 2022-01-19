@@ -72,5 +72,6 @@ function generisanjeGpxPodaIzGeometrije(lat, lng, jsonPretplatnik) {
   featureTacka.set("naziv_napojne", nazivNapojneTrafostanice);
   featureTacka.set("izvod_napojne", izvodNapojneTrafostanice);
   //console.log("feature tacka ****************************************************", featureTacka);
-  vectorSource.addFeature(featureTacka);
+  vectorSource.addFeatures([featureTacka]);
+  gpxFeatures.push(featureTacka);
 }
