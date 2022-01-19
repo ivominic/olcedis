@@ -311,6 +311,10 @@ function obaveznaPolja(sloj) {
       popunjen = false;
       borderChange(document.querySelector("#montaza"));
     }
+    if (document.querySelector("#vrsta_materijal").value === "") {
+      popunjen = false;
+      borderChange(document.querySelector("#vrsta_materijal"));
+    }
     if (document.querySelector("#vrata").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#vrata"));

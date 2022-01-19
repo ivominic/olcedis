@@ -485,7 +485,7 @@ function popuniListeZaPrikljucnaMjesta() {
 }
 
 function popuniListeZaNkro() {
-  popuniDdlAtributima("#materijal", "nkro", "materijal", "", "");
+  popuniDdlAtributima("#vrsta_materijal", "nkro", "materijal", "", "");
   popuniDdlAtributima("#montaza", "nkro", "montaza", "", "");
   popuniDdlAtributima("#vrata", "nkro", "vrata", "", "");
   //popuniDdlAtributima("#pog_sprem", "nkro", "pog_sprem", "", "");

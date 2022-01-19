@@ -85,4 +85,9 @@ function insertObjekataIzGpx() {
     );
   }
   availableLayersPerPowerLevel(0); //After completion fill ddl with all items.
+  poruka("Uspjeh", "Uspješno sačuvani podaci.");
+  //TODO: Resetovati polja, trafostanicu, izvod..
+  //Removin vector file from map, after completing action.
+  vectorSource.clear();
+  gpxFeatures.length = 0;
 }

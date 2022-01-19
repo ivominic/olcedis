@@ -11,6 +11,7 @@ function dodajPoljaOdabranomGpxNKRO() {
     selectGpxFeature.set("izvod_ts", document.querySelector("#izvod_ts").value);
     selectGpxFeature.set("id", document.querySelector("#id").value);
     selectGpxFeature.set("montaza", document.querySelector("#montaza").value);
+    selectGpxFeature.set("materijal", document.querySelector("#vrsta_materijal").value);
     selectGpxFeature.set("vrata", document.querySelector("#vrata").value);
     selectGpxFeature.set("br_izvoda", document.querySelector("#br_izvoda").value);
     selectGpxFeature.set("br_prikljucaka", document.querySelector("#br_prikljucaka").value);

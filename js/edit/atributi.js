@@ -392,6 +392,7 @@ function prikaziAtributDivNkro() {
   //document.querySelector("#divUnosOpstina").style.display = "flex";
   document.querySelector("#divUnosNapon").style.display = "flex";
   document.querySelector("#divUnosMontaza").style.display = "flex";
+  document.querySelector("#divUnosMaterijal").style.display = "flex";
   document.querySelector("#divUnosVrata").style.display = "flex";
   document.querySelector("#divUnosBrIzvoda").style.display = "flex";
   document.querySelector("#divUnosBrPrikljucaka").style.display = "flex";
