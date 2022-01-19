@@ -33,7 +33,22 @@ function objectsFinalInsert(objects, methodName) {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/" + methodName;
   objects.forEach((item) => {
     console.log("itemi objects final insert", item);
-    cudStub(item, "I", "0");
+    if (methodName === "stubovi_store") {
+      cudStub(item, "I", "0");
+    } else if (methodName === "vodovi_store") {
+      cudVod(item, "I", "0");
+    } else if (methodName === "trafostanice_store") {
+      cudVod(item, "I", "0");
+    } else if (methodName === "pod_store") {
+      cudPOD(item, "I", "0");
+    } else if (methodName === "prikljucno_mjesto_store") {
+      cudPrikljucnoMjesto(item, "I", "0");
+    } else if (methodName === "potrosaci_store") {
+      cudPotrosac(item, "I", "0");
+    } else if (methodName === "nkro_store") {
+      cudNKRO(item, "I", "0");
+    }
+
     /*$.ajax({
       url: urlServisa,
       data: item,

@@ -2,6 +2,7 @@
 
 function insertObjekataIzGpx() {
   let postojiNeobradjenaTacka = false;
+  let iterator = 0;
   stuboviArrayFinal.length = 0;
   trafostaniceArrayFinal.length = 0;
   podoviArrayFinal.length = 0;
@@ -9,33 +10,34 @@ function insertObjekataIzGpx() {
   potrosaciArrayFinal.length = 0;
   nkroArrayFinal.length = 0;
   gpxFeatures.forEach((el) => {
+    iterator++;
     console.log("finalno lejer", el.get("lejer"));
     //if (el.hasOwnProperty("lejer") && el.get("lejer") === "stubovi") {
     if (el.get("lejer") === "stubovi") {
       //cudStub(el, "I", 0);
       //console.log("stubovi", el);
       //kreiraniStuboviFeatures.push(el);
-      stubArrayElement(el, "I", 0);
+      stubArrayElement(el, "I", 0, iterator);
     } else if (el.get("lejer") === "trafostanice") {
       //console.log("trafostanice", el);
       //kreiraneTrafostaniceFeatures.push(el);
-      trafostanicaArrayElement(el, "I", 0);
+      trafostanicaArrayElement(el, "I", 0, iterator);
     } else if (el.get("lejer") === "nkro") {
       //kreiraniNkroFeatures.push(el);
       //console.log("nkro", el);
-      nkroArrayElement(el, "I", 0);
+      nkroArrayElement(el, "I", 0, iterator);
     } else if (el.get("lejer") === "potrosac") {
       //console.log("potrosaci", el);
       //kreiraniPotrosaciFeatures.push(el);
-      potrosacArrayElement(el, "I", 0);
+      potrosacArrayElement(el, "I", 0, iterator);
     } else if (el.get("lejer") === "pod") {
       //console.log("pod", el);
       //kreiraniPodoviFeatures.push(el);
-      podArrayElement(el, "I", 0);
+      podArrayElement(el, "I", 0, iterator);
     } else if (el.get("lejer") === "prikljucno_mjesto") {
       //console.log("prikljucno_mjesto", el);
       //kreiranaPrikljucnaMjestaFeatures.push(el);
-      prikljucnoMjestoArrayElement(el, "I", 0);
+      prikljucnoMjestoArrayElement(el, "I", 0, iterator);
     } else if (el.get("lejer") === undefined) {
       console.log("nedefinisani", el);
       postojiNeobradjenaTacka = true;
@@ -43,7 +45,7 @@ function insertObjekataIzGpx() {
       //kreiraniVodoviFeatures// Ovo već popunjeno tokom procesa
       //console.log("vodovi", el);
       //kreiraniVodoviFeatures.push(el);
-      vodArrayElement(el, "I", 0);
+      vodArrayElement(el, "I", 0, iterator);
     }
   });
 

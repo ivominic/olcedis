@@ -5,8 +5,9 @@
  * @param {* Feature of element for insert} el
  * @param {* "I" for insert, "U" for update} action
  * @param {* "0" if web service is not call from wizard form, "1" else} wizard
+ * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
  */
-function stubArrayElement(el, action, wizard) {
+function stubArrayElement(el, action, wizard, serialNo) {
   let item = {
     fid_1: el.values_.fid_1,
     Geometry: wkt3Du2D(wktGeometrije(el)),
@@ -50,7 +51,7 @@ function stubArrayElement(el, action, wizard) {
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: globalUsername,
     posjeduje_sliku: "NE",
-    originalId: el.values_.originalId,
+    originalId: new Date().getTime() + "" + serialNo, //el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
@@ -74,8 +75,9 @@ function stubArrayElement(el, action, wizard) {
  * @param {* Feature of element for insert} el
  * @param {* "I" for insert, "U" for update} action
  * @param {* "0" if web service is not call from wizard form, "1" else} wizard
+ * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
  */
-function vodArrayElement(el, action, wizard) {
+function vodArrayElement(el, action, wizard, serialNo) {
   let item = {
     fid_1: el.values_.fid_1,
     Geometry: wktGeometrije(el),
@@ -117,7 +119,7 @@ function vodArrayElement(el, action, wizard) {
     korisnik: globalUsername,
     katastar: "",
     posjeduje_sliku: "NE",
-    originalId: el.values_.originalId,
+    originalId: new Date().getTime() + "" + serialNo, //el.values_.originalId,
     sifra_dionice: el.values_.sifra_dionice,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
@@ -139,8 +141,9 @@ function vodArrayElement(el, action, wizard) {
  * @param {* Feature of element for insert} el
  * @param {* "I" for insert, "U" for update} action
  * @param {* "0" if web service is not call from wizard form, "1" else} wizard
+ * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
  */
-function trafostanicaArrayElement(el, action, wizard) {
+function trafostanicaArrayElement(el, action, wizard, serialNo) {
   let item = {
     fid_1: el.values_.fid_1,
     Geometry: wkt3Du2D(wktGeometrije(el)),
@@ -179,7 +182,7 @@ function trafostanicaArrayElement(el, action, wizard) {
     korisnik: globalUsername,
     katastar: "",
     posjeduje_sliku: "NE",
-    originalId: el.values_.originalId,
+    originalId: new Date().getTime() + "" + serialNo, //el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
@@ -197,8 +200,9 @@ function trafostanicaArrayElement(el, action, wizard) {
  * @param {* Feature of element for insert} el
  * @param {* "I" for insert, "U" for update} action
  * @param {* "0" if web service is not call from wizard form, "1" else} wizard
+ * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
  */
-function prikljucnoMjestoArrayElement(el, action, wizard) {
+function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
   let item = {
     fid_1: el.values_.fid_1,
     Geometry: wkt3Du2D(wktGeometrije(el)),
@@ -222,7 +226,7 @@ function prikljucnoMjestoArrayElement(el, action, wizard) {
     korisnik: globalUsername,
     katastar: "",
     posjeduje_sliku: "NE",
-    originalId: el.values_.originalId,
+    originalId: new Date().getTime() + "" + serialNo, //el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
@@ -240,8 +244,9 @@ function prikljucnoMjestoArrayElement(el, action, wizard) {
  * @param {* Feature of element for insert} el
  * @param {* "I" for insert, "U" for update} action
  * @param {* "0" if web service is not call from wizard form, "1" else} wizard
+ * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
  */
-function potrosacArrayElement(el, action, wizard) {
+function potrosacArrayElement(el, action, wizard, serialNo) {
   let item = {
     fid_1: el.values_.fid_1,
     Geometry: wkt3Du2D(wktGeometrije(el)),
@@ -269,7 +274,7 @@ function potrosacArrayElement(el, action, wizard) {
     korisnik: globalUsername,
     katastar: "",
     posjeduje_sliku: "NE",
-    originalId: el.values_.originalId,
+    originalId: new Date().getTime() + "" + serialNo, //el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
@@ -287,8 +292,9 @@ function potrosacArrayElement(el, action, wizard) {
  * @param {* Feature of element for insert} el
  * @param {* "I" for insert, "U" for update} action
  * @param {* "0" if web service is not call from wizard form, "1" else} wizard
+ * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
  */
-function podArrayElement(el, action, wizard) {
+function podArrayElement(el, action, wizard, serialNo) {
   let item = {
     fid_1: el.values_.fid_1,
     Geometry: wkt3Du2D(wktGeometrije(el)),
@@ -316,7 +322,7 @@ function podArrayElement(el, action, wizard) {
     korisnik: globalUsername,
     katastar: "",
     posjeduje_sliku: "NE",
-    originalId: el.values_.originalId,
+    originalId: new Date().getTime() + "" + serialNo, //el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
@@ -334,8 +340,9 @@ function podArrayElement(el, action, wizard) {
  * @param {* Feature of element for insert} el
  * @param {* "I" for insert, "U" for update} action
  * @param {* "0" if web service is not call from wizard form, "1" else} wizard
+ * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
  */
-function nkroArrayElement(el, action, wizard) {
+function nkroArrayElement(el, action, wizard, serialNo) {
   let item = {
     fid_1: el.values_.fid_1,
     Geometry: wkt3Du2D(wktGeometrije(el)),
@@ -362,7 +369,7 @@ function nkroArrayElement(el, action, wizard) {
     korisnik: globalUsername,
     katastar: "",
     posjeduje_sliku: "NE",
-    originalId: el.values_.originalId,
+    originalId: new Date().getTime() + "" + serialNo, //el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,

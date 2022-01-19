@@ -74,6 +74,7 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
               noviEl.set("izvod_ts", jsonPretplatnik.izvod_vod); //ILI izvodNapojneTrafostanice
               noviEl.set("napojna_ts", jsonPretplatnik.sifra_trafostanice); //ILI sifraNapojneTrafostanice
               noviEl.set("id", jsonPretplatnik.id);
+              noviEl.set("naziv", jsonPretplatnik.naziv_potrosaca);
               noviEl.set("naziv_ts", jsonPretplatnik.naziv_trafostanice);
               noviEl.set("sifra_ts", jsonPretplatnik.sifra_trafostanice);
               noviEl.set("prik_kabal", jsonPretplatnik.provodnik_spolja + " " + jsonPretplatnik.presjek_spolja);
@@ -86,6 +87,8 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
               noviEl.set("sifra_napojne", sifraNapojneTrafostanice);
               noviEl.set("naziv_napojne", nazivNapojneTrafostanice);
               noviEl.set("izvod_napojne", izvodNapojneTrafostanice);
+              noviEl.set("napon", document.querySelector("#napon").value);
+              noviEl.set("korisnik", globalUsername);
               if (boolAdd) {
                 gpxFeatures.push(noviEl);
                 vectorSource.addFeatures([noviEl]);

@@ -59,6 +59,8 @@ function generisanjeGpxPodaIzGeometrije(lat, lng, jsonPretplatnik) {
   featureTacka.set("izvod_ts", jsonPretplatnik.izvod_vod); //ILI izvodNapojneTrafostanice
   featureTacka.set("napojna_ts", jsonPretplatnik.sifra_trafostanice); //ILI sifraNapojneTrafostanice
   featureTacka.set("id", jsonPretplatnik.id);
+  featureTacka.set("naziv", jsonPretplatnik.naziv_potrosaca);
+  featureTacka.set("name", jsonPretplatnik.naziv_potrosaca);
   featureTacka.set("naziv_ts", jsonPretplatnik.naziv_trafostanice);
   featureTacka.set("sifra_ts", jsonPretplatnik.sifra_trafostanice);
   featureTacka.set("prik_kabal", jsonPretplatnik.provodnik_spolja + " " + jsonPretplatnik.presjek_spolja);
@@ -71,6 +73,8 @@ function generisanjeGpxPodaIzGeometrije(lat, lng, jsonPretplatnik) {
   featureTacka.set("sifra_napojne", sifraNapojneTrafostanice);
   featureTacka.set("naziv_napojne", nazivNapojneTrafostanice);
   featureTacka.set("izvod_napojne", izvodNapojneTrafostanice);
+  featureTacka.set("napon", document.querySelector("#napon").value);
+  featureTacka.set("korisnik", globalUsername);
   //console.log("feature tacka ****************************************************", featureTacka);
   vectorSource.addFeatures([featureTacka]);
   gpxFeatures.push(featureTacka);

@@ -1,9 +1,17 @@
-/** Vraća well known tekst reprezentaciju geometrije za predati feature */
+/** Vraća well known tekst reprezentaciju geometrije za predati feature.
+ * Ukoliko feature ima Geometry property, nema getGeometry funkciju. */
 function wktGeometrije(feature) {
   let format = new ol.format.WKT();
-  let wktgeom = format.writeGeometry(feature.getGeometry());
-  //console.log("wkt geom", wktgeom);
-  return wktgeom;
+  let geom = feature.Geometry;
+  if (!geom) {
+    geom = feature.getGeometry();
+    console.log("editUtil.js wktGeometrije geom", geom);
+    let wktgeom = format.writeGeometry(geom);
+    console.log("wkt geom", wktgeom);
+    return wktgeom;
+  } else {
+    return geom;
+  }
 }
 
 /**Kreiranje vektorskih lejera za snaponvanje */
@@ -49,7 +57,8 @@ document.querySelector("#imgModal").onclick = function () {
 /** Podešava vrijednost ddl liste */
 function setujDdlVrijednost(ddl, vrijednost) {
   for (let i = 0; i < document.querySelector(ddl).length; i++) {
-    document.querySelector(ddl).options[i].text === vrijednost && (document.querySelector(ddl).options[i].selected = true);
+    document.querySelector(ddl).options[i].text === vrijednost &&
+      (document.querySelector(ddl).options[i].selected = true);
   }
 }
 
@@ -102,7 +111,10 @@ function kreiranjeCqlFilteraProstorno() {
   let pretragaPoligonObuhvata = document.querySelector("#pretragaPoligonObuhvata").checked;
   let pretragaPoligonPresijeca = document.querySelector("#pretragaPoligonPresijeca").checked;
   if (pretragaTacka && pretragaTackaUdaljenost === "") {
-    poruka("Upozorenje", "Potrebno je unijeti udaljenost od iscrtanih tačaka na kojoj će se prikazivati objekti iz sloja koji se pretražuje.");
+    poruka(
+      "Upozorenje",
+      "Potrebno je unijeti udaljenost od iscrtanih tačaka na kojoj će se prikazivati objekti iz sloja koji se pretražuje."
+    );
     return false;
   }
   if (pretragaTacka && tacke.length === 0) {
@@ -114,7 +126,10 @@ function kreiranjeCqlFilteraProstorno() {
     return false;
   }
   if ((pretragaPoligonPresijeca || pretragaPoligonObuhvata) && poligoni.length === 0) {
-    poruka("Upozorenje", "Potrebno je nacrtati bar jedan poligon za pretragu objekata koje poligon presijeca ili obuhvata.");
+    poruka(
+      "Upozorenje",
+      "Potrebno je nacrtati bar jedan poligon za pretragu objekata koje poligon presijeca ili obuhvata."
+    );
     return false;
   }
 
@@ -171,7 +186,10 @@ function poruka(naslov, tekst) {
 /** Akcija promjene ikonice u navbaru */
 function setujAktivnu(element) {
   if (nacrtan || modifikovan) {
-    poruka("Upozorenje", "Nije moguće promijeniti aktivnost dok ne poništite crtanje nove ili izmjenu postojeće geometrije.");
+    poruka(
+      "Upozorenje",
+      "Nije moguće promijeniti aktivnost dok ne poništite crtanje nove ili izmjenu postojeće geometrije."
+    );
     return false;
   }
   let els = document.querySelectorAll(".active");
@@ -405,7 +423,14 @@ function selekcijaZavrsnogStuba() {
  */
 function popuniDdlAtributima(ddl, objekat, atribut, key_param, value_param) {
   $(ddl).empty();
-  let urlServisa = window.location.protocol + "//" + window.location.hostname + "/portal/services/_getObjectAttributes.php?objekat=" + objekat + "&atribut=" + atribut;
+  let urlServisa =
+    window.location.protocol +
+    "//" +
+    window.location.hostname +
+    "/portal/services/_getObjectAttributes.php?objekat=" +
+    objekat +
+    "&atribut=" +
+    atribut;
   if (key_param !== "" && value_param !== "") {
     urlServisa += "&" + key_param + "=" + value_param;
   }
