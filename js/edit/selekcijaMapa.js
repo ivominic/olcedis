@@ -595,7 +595,7 @@ function koordinateObjekataIzDdlova() {
 /**
  * Metoda koja, ukoliko postoje, tačke iz padajućih listi dodjeljuje najbljižim krajnjim tačkama voda.
  * Korisnik može da unese redni broj tačke kojoj je potrebno pridružiti odabranu tačku.
- * Te vrijednosti mogu biti mininalni ili maksimalni redni broj niza.
+ * Te vrijednosti mogu biti mininalni ili maksimalni redni broj niza tačaka iz kojih se formira vod.
  * @param {koordinate tačke koja je selektovana iz prve liste krajnjih tačaka voda} pocetna
  * @param {koordinate tačke koja je selektovana iz druge liste krajnjih tačaka voda} krajnja
  * @returns
@@ -615,15 +615,10 @@ function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
     poruka("Upozorenje", "Krajnja tačka ne može biti dio voda koji je potrebno kreirati.");
     return false;
   }
-  //TODO: minGpsPointName, maxGpsPointName promjenljive koje prikazuju min i max vrijednost tačaka iz niza
-  //min je početna tačka niza, max je krajnja tačka niza
+
   let startGpxValue = document.querySelector("#txtPocetnaTackaVodovi").value;
   let endGpxValue = document.querySelector("#txtKrajnjaTackaVodovi").value;
   let options = { units: "miles" };
-  console.log("startGpxValue", startGpxValue);
-  console.log("endGpxValue", endGpxValue);
-  console.log("minGpsPointName", minGpsPointName);
-  console.log("maxGpsPointName", maxGpsPointName);
   if (startGpxValue || endGpxValue) {
     if (startGpxValue && endGpxValue) {
       if (startGpxValue === endGpxValue) {
