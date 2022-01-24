@@ -302,6 +302,7 @@ function selekcijaGpxPoligonom() {
   //console.log("vectorSource prije for each array[0]", featuresPolygon.array_[0].getGeometry());
   let minValue = minGpxName(vectorSource);
   let maxValue = maxGpxName(vectorSource);
+  (minGpsPointName = 0), (maxGpsPointName = 0);
   let pocetnaTacka, krajnjaTacka;
   for (let i = minValue; i <= maxValue; i++) {
     vectorSource.getFeatures().forEach(function (el) {
@@ -311,8 +312,10 @@ function selekcijaGpxPoligonom() {
             //selectedFeatures.push(features[i]);
             if (!pocetnaTacka) {
               pocetnaTacka = el;
+              minGpsPointName = i;
             }
             krajnjaTacka = el;
+            maxGpsPointName = i;
             let position = el.values_.geometry.flatCoordinates;
             let elevacija = position[2];
             elevacija > 3000 && (elevacija = 0);
@@ -529,12 +532,6 @@ function klikNaRastereZaOdabirPrikljucnogMjesta(browserEvent) {
           });
         }
 
-        /*if (selektovaniDdlZaPovezivanjeVoda === "#ddlPocetnaTackaVodovi") {
-          nizPocetnihTacakaVoda = tempNiz.slice();
-        }
-        if (selektovaniDdlZaPovezivanjeVoda === "#ddlKrajnjaTackaVodovi") {
-          nizKrajnjihTacakaVoda = tempNiz.slice();
-        }*/
         tempNiz.forEach((el) => {
           $(prik_mjesto).append(
             $("<option>", {
@@ -595,6 +592,14 @@ function koordinateObjekataIzDdlova() {
   pridruzivanjeKoordinataNizuVoda(koordinatePocetna, koordinateKrajnja);
 }
 
+/**
+ * Metoda koja, ukoliko postoje, tačke iz padajućih listi dodjeljuje najbljižim krajnjim tačkama voda.
+ * Korisnik može da unese redni broj tačke kojoj je potrebno pridružiti odabranu tačku.
+ * Te vrijednosti mogu biti mininalni ili maksimalni redni broj niza.
+ * @param {koordinate tačke koja je selektovana iz prve liste krajnjih tačaka voda} pocetna
+ * @param {koordinate tačke koja je selektovana iz druge liste krajnjih tačaka voda} krajnja
+ * @returns
+ */
 function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
   if (nizTacakaLinije.length === 0) {
     poruka("Upozorenje", "Potrebno je selektovati tačke za kreiranje voda.");
@@ -610,47 +615,104 @@ function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
     poruka("Upozorenje", "Krajnja tačka ne može biti dio voda koji je potrebno kreirati.");
     return false;
   }
+  //TODO: minGpsPointName, maxGpsPointName promjenljive koje prikazuju min i max vrijednost tačaka iz niza
+  //min je početna tačka niza, max je krajnja tačka niza
+  let startGpxValue = document.querySelector("#txtPocetnaTackaVodovi").value;
+  let endGpxValue = document.querySelector("#txtKrajnjaTackaVodovi").value;
   let options = { units: "miles" };
-  if (pocetna && pocetna !== undefined && pocetna.length && krajnja && krajnja !== undefined && krajnja.length) {
-    //Ako su selektovani i nadređeni i podređeni objekat
-    if (
-      turf.distance(turf.point(pocetna), turf.point(nizTacakaLinije[0]), options) >
-      turf.distance(turf.point(krajnja), turf.point(nizTacakaLinije[0]), options)
-    ) {
-      nizTacakaLinije.unshift(krajnja);
-      nizTacakaLinije.push(pocetna);
-    } else {
-      nizTacakaLinije.push(krajnja);
-      nizTacakaLinije.unshift(pocetna);
-    }
-  } else {
-    if (pocetna && pocetna !== undefined && pocetna.length) {
-      if (
-        turf.distance(turf.point(pocetna), turf.point(nizTacakaLinije[0]), options) >
-        turf.distance(turf.point(pocetna), turf.point(nizTacakaLinije[nizTacakaLinije.length - 1]), options)
-      ) {
-        nizTacakaLinije.push(pocetna);
-      } else {
-        nizTacakaLinije.unshift(pocetna);
+  console.log("startGpxValue", startGpxValue);
+  console.log("endGpxValue", endGpxValue);
+  console.log("minGpsPointName", minGpsPointName);
+  console.log("maxGpsPointName", maxGpsPointName);
+  if (startGpxValue || endGpxValue) {
+    if (startGpxValue && endGpxValue) {
+      if (startGpxValue === endGpxValue) {
+        poruka("Upozorenje", "Redni brojevi tačaka koje se povezuju na elemente mreže ne mogu biti isti.");
+        return false;
       }
-    }
-    if (krajnja && krajnja !== undefined && krajnja.length) {
-      if (
-        turf.distance(turf.point(krajnja), turf.point(nizTacakaLinije[0]), options) >
-        turf.distance(turf.point(krajnja), turf.point(nizTacakaLinije[nizTacakaLinije.length - 1]), options)
-      ) {
+      if (startGpxValue !== minGpsPointName && startGpxValue !== maxGpsPointName) {
+        poruka("Upozorenje", "Vrijednost treba da bude minimalna ili maksimalna vrijednost selektovanih tačaka.");
+        return false;
+      }
+      if (parseInt(endGpxValue) !== minGpsPointName && parseInt(endGpxValue) !== maxGpsPointName) {
+        poruka("Upozorenje", "Vrijednost treba da bude minimalna ili maksimalna vrijednost selektovanih tačaka.");
+        return false;
+      }
+      if (parseInt(startGpxValue) < parseInt(endGpxValue)) {
         nizTacakaLinije.push(krajnja);
+        nizTacakaLinije.unshift(pocetna);
       } else {
         nizTacakaLinije.unshift(krajnja);
+        nizTacakaLinije.push(pocetna);
+      }
+    } else {
+      if (startGpxValue) {
+        if (parseInt(startGpxValue) !== minGpsPointName && parseInt(startGpxValue) !== maxGpsPointName) {
+          poruka("Upozorenje", "Vrijednost treba da bude minimalna ili maksimalna vrijednost selektovanih tačaka.");
+          return false;
+        }
+        if (parseInt(startGpxValue) === minGpsPointName) {
+          //nizTacakaLinije.push(krajnja);
+          nizTacakaLinije.unshift(pocetna);
+        } else {
+          nizTacakaLinije.push(pocetna);
+          //nizTacakaLinije.unshift(krajnja);
+        }
+      }
+      if (endGpxValue) {
+        if (parseInt(endGpxValue) !== minGpsPointName && parseInt(endGpxValue) !== maxGpsPointName) {
+          poruka("Upozorenje", "Vrijednost treba da bude minimalna ili maksimalna vrijednost selektovanih tačaka.");
+          return false;
+        }
+        if (parseInt(endGpxValue) === minGpsPointName) {
+          //nizTacakaLinije.push(pocetna);
+          nizTacakaLinije.unshift(krajnja);
+        } else {
+          nizTacakaLinije.push(krajnja);
+          //nizTacakaLinije.unshift(pocetna);
+        }
+      }
+    }
+  } else {
+    if (pocetna && pocetna !== undefined && pocetna.length && krajnja && krajnja !== undefined && krajnja.length) {
+      //Ako su selektovani i nadređeni i podređeni objekat
+      if (
+        turf.distance(turf.point(pocetna), turf.point(nizTacakaLinije[0]), options) >
+        turf.distance(turf.point(krajnja), turf.point(nizTacakaLinije[0]), options)
+      ) {
+        nizTacakaLinije.unshift(krajnja);
+        nizTacakaLinije.push(pocetna);
+      } else {
+        nizTacakaLinije.push(krajnja);
+        nizTacakaLinije.unshift(pocetna);
+      }
+    } else {
+      if (pocetna && pocetna !== undefined && pocetna.length) {
+        if (
+          turf.distance(turf.point(pocetna), turf.point(nizTacakaLinije[0]), options) >
+          turf.distance(turf.point(pocetna), turf.point(nizTacakaLinije[nizTacakaLinije.length - 1]), options)
+        ) {
+          nizTacakaLinije.push(pocetna);
+        } else {
+          nizTacakaLinije.unshift(pocetna);
+        }
+      }
+      if (krajnja && krajnja !== undefined && krajnja.length) {
+        if (
+          turf.distance(turf.point(krajnja), turf.point(nizTacakaLinije[0]), options) >
+          turf.distance(turf.point(krajnja), turf.point(nizTacakaLinije[nizTacakaLinije.length - 1]), options)
+        ) {
+          nizTacakaLinije.push(krajnja);
+        } else {
+          nizTacakaLinije.unshift(krajnja);
+        }
       }
     }
   }
 
   //Iscrtavanje voda
   let vod = new ol.geom.LineString([nizTacakaLinije]);
-
   let format = new ol.format.WKT();
-
   let wktVod = format.writeGeometry(vod, {});
   wktVod = wktVod.replace(/ /g, "_");
   wktVod = wktVod.replace(/,/g, " ");
@@ -676,6 +738,8 @@ function restartNakonUnosaVoda() {
   nizKrajnjihTacakaVoda.length = 0;
   closeDiv("#odabirPoveznicaDiv");
   brisanje();
+  document.querySelector("#txtPocetnaTackaVodovi").value = "";
+  document.querySelector("#txtKrajnjaTackaVodovi").value = "";
 }
 
 function odabirNapojneTrafostaniceSaMape() {
