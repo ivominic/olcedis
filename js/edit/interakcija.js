@@ -341,6 +341,7 @@ function potvrdaNapojneTrafostaniceUnos() {
   if (!isEditable) {
     showConnectForm();
   }
+  availableLayersPerPowerLevel(filePowerLevel);
   neupareneTrafostanice(sifraNapojneTrafostanice, izvodNapojneTrafostanice);
 }
 

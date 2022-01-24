@@ -849,28 +849,29 @@ function availableLayersPerPowerLevel(powerLevel) {
   console.log("pl", powerLevel);
   $("#ddl_sloj_podataka").empty();
   if (powerLevel === "0.4") {
-    fillDdl("ddl_sloj_podataka", "stub04", "Stub 0.4KV");
-    fillDdl("ddl_sloj_podataka", "vod04", "Vod 0.4KV");
+    fillDdl("ddl_sloj_podataka", "stub04", "Stub 0.4kV");
+    fillDdl("ddl_sloj_podataka", "vod04", "Vod 0.4kV");
     fillDdl("ddl_sloj_podataka", "trafostanica10", "Trafostanica 10/0.4");
     fillDdl("ddl_sloj_podataka", "nkro", "NKRO");
     fillDdl("ddl_sloj_podataka", "prikljucno_mjesto", "Priključno mjesto");
     fillDdl("ddl_sloj_podataka", "potrosac", "Potrošač");
     fillDdl("ddl_sloj_podataka", "pod", "Pod");
   } else if (powerLevel === "10") {
-    fillDdl("ddl_sloj_podataka", "stub10", "Stub 10KV");
-    fillDdl("ddl_sloj_podataka", "vod10", "Vod 10KV");
+    fillDdl("ddl_sloj_podataka", "stub10", "Stub 10kV");
+    fillDdl("ddl_sloj_podataka", "vod10", "Vod 10kV");
     fillDdl("ddl_sloj_podataka", "trafostanica35", "Trafostanica 35/x");
+    fillDdl("ddl_sloj_podataka", "trafostanica10", "Trafostanica 10/0.4");
   } else if (powerLevel === "35") {
-    fillDdl("ddl_sloj_podataka", "stub35", "Stub 35KV");
-    fillDdl("ddl_sloj_podataka", "vod35", "Vod 35KV");
+    fillDdl("ddl_sloj_podataka", "stub35", "Stub 35kV");
+    fillDdl("ddl_sloj_podataka", "vod35", "Vod 35kV");
     fillDdl("ddl_sloj_podataka", "trafostanica35", "Trafostanica 35/x");
   } else {
-    fillDdl("ddl_sloj_podataka", "stub04", "Stub 0.4KV");
-    fillDdl("ddl_sloj_podataka", "stub10", "Stub 10KV");
-    fillDdl("ddl_sloj_podataka", "stub35", "Stub 35KV");
-    fillDdl("ddl_sloj_podataka", "vod04", "Vod 0.4KV");
-    fillDdl("ddl_sloj_podataka", "vod10", "Vod 10KV");
-    fillDdl("ddl_sloj_podataka", "vod35", "Vod 35KV");
+    fillDdl("ddl_sloj_podataka", "stub04", "Stub 0.4kV");
+    fillDdl("ddl_sloj_podataka", "stub10", "Stub 10kV");
+    fillDdl("ddl_sloj_podataka", "stub35", "Stub 35kV");
+    fillDdl("ddl_sloj_podataka", "vod04", "Vod 0.4kV");
+    fillDdl("ddl_sloj_podataka", "vod10", "Vod 10kV");
+    fillDdl("ddl_sloj_podataka", "vod35", "Vod 35kV");
     fillDdl("ddl_sloj_podataka", "trafostanica10", "Trafostanica 10/0.4");
     fillDdl("ddl_sloj_podataka", "trafostanica35", "Trafostanica 35/x");
     fillDdl("ddl_sloj_podataka", "trafostanica110", "Trafostanica 110/x");

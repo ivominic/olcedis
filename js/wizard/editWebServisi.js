@@ -159,6 +159,7 @@ function detaljiTrafostanica(sifraTS) {
 function pretragaTrafostanicaGpx(sifraTS) {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice?sifra=" + sifraTS;
   urlServisa += "&t=" + Date.now();
+  console.log("url pretragaTrafostanicaGpx", urlServisa);
   $("#ddlIzvodNapojneTrafostanice").empty();
   $("#ddlIzvodNapojneTrafostanice").append(
     $("<option>", {
@@ -178,10 +179,8 @@ function pretragaTrafostanicaGpx(sifraTS) {
         document.querySelector("#txtSifraNapojneTrafostanice").value = sifraNapojneTrafostanice;
         document.querySelector("#txtNazivNapojneTrafostanice").value = nazivNapojneTrafostanice;
         if (data.ts.prenosni_odnos) {
-          console.log("prenosni odnos", data.ts.prenosni_odnos);
           filePowerLevel = globalNaponskiNivoPrenosOdnos(data.ts.prenosni_odnos);
-          console.log("filePowerLevel", filePowerLevel);
-          availableLayersPerPowerLevel(filePowerLevel);
+          console.log("prenosni odnos: " + data.ts.prenosni_odnos, "filePowerLevel: " + filePowerLevel);
         }
 
         data.ts.izvodi.forEach(function (vrijednost) {
