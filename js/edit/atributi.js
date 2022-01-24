@@ -301,6 +301,7 @@ function prikaziAtributDivVodove(napon) {
   document.querySelector("#divUnosDuzina").style.display = "flex";
   document.querySelector("#divUnosBrojSpojnica").style.display = "flex";
   document.querySelector("#divUnosSifraDionice").style.display = "flex";
+  document.querySelector("#divUnosId").style.display = "flex";
   //popuniListeZaVodove(napon);
 }
 

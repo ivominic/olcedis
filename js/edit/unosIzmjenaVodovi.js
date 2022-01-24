@@ -6,32 +6,37 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   let napon = document.querySelector("#napon").value;
   napon === "";
   if (napon === "0.4") {
-    ucrtaniVod.set("rasvjeta_vod", document.querySelector("#rasvjeta_vod").value);
-    ucrtaniVod.set("vrsta_vod_04", document.querySelector("#vrsta_vod_04").value);
-    ucrtaniVod.set("tip_vod_04", document.querySelector("#tip_vod_04").value);
-    ucrtaniVod.set("presjek_vod_04", document.querySelector("#presjek_vod_04").value);
-    ucrtaniVod.set("materijal_vod_04", document.querySelector("#vrsta_materijal_vod_04").value);
+    ucrtaniVod.set("rasvjeta", document.querySelector("#rasvjeta_vod").value);
+    ucrtaniVod.set("vrsta", document.querySelector("#vrsta_vod_04").value);
+    ucrtaniVod.set("tip", document.querySelector("#tip_vod_04").value);
+    ucrtaniVod.set("presjek", document.querySelector("#presjek_vod_04").value);
+    ucrtaniVod.set("materijal", document.querySelector("#vrsta_materijal_vod_04").value);
+    ucrtaniVod.set("uze_presjek", "");
+    ucrtaniVod.set("uze", "");
   }
   if (napon === "10") {
-    ucrtaniVod.set("vrsta_vod_10", document.querySelector("#vrsta_vod_10").value);
-    ucrtaniVod.set("tip_vod_10", document.querySelector("#tip_vod_10").value);
-    ucrtaniVod.set("presjek_vod_10", document.querySelector("#presjek_vod_10").value);
-    ucrtaniVod.set("materijal_vod_10", document.querySelector("#vrsta_materijal_vod_10").value);
-    ucrtaniVod.set("uze_presjek_vod_10", document.querySelector("#uze_presjek_vod_10").value);
-    ucrtaniVod.set("uze_vod_10", document.querySelector("#uze_vod_10").value);
+    ucrtaniVod.set("vrsta", document.querySelector("#vrsta_vod_10").value);
+    ucrtaniVod.set("tip", document.querySelector("#tip_vod_10").value);
+    ucrtaniVod.set("presjek", document.querySelector("#presjek_vod_10").value);
+    ucrtaniVod.set("materijal", document.querySelector("#vrsta_materijal_vod_10").value);
+    ucrtaniVod.set("uze_presjek", document.querySelector("#uze_presjek_vod_10").value);
+    ucrtaniVod.set("uze", document.querySelector("#uze_vod_10").value);
+    ucrtaniVod.set("rasvjeta", "");
   }
   if (napon === "35") {
-    ucrtaniVod.set("vrsta_vod_35", document.querySelector("#vrsta_vod_35").value);
-    ucrtaniVod.set("tip_vod_35", document.querySelector("#tip_vod_35").value);
-    ucrtaniVod.set("presjek_vod_35", document.querySelector("#presjek_vod_35").value);
-    ucrtaniVod.set("materijal_vod_35", document.querySelector("#vrsta_materijal_vod_35").value);
-    ucrtaniVod.set("uze_presjek_vod_35", document.querySelector("#uze_presjek_vod_35").value);
-    ucrtaniVod.set("uze_vod_10", document.querySelector("#uze_vod_35").value);
+    ucrtaniVod.set("vrsta", document.querySelector("#vrsta_vod_35").value);
+    ucrtaniVod.set("tip", document.querySelector("#tip_vod_35").value);
+    ucrtaniVod.set("presjek", document.querySelector("#presjek_vod_35").value);
+    ucrtaniVod.set("materijal", document.querySelector("#vrsta_materijal_vod_35").value);
+    ucrtaniVod.set("uze_presjek", document.querySelector("#uze_presjek_vod_35").value);
+    ucrtaniVod.set("uze", document.querySelector("#uze_vod_35").value);
+    ucrtaniVod.set("rasvjeta", "");
   }
 
   ucrtaniVod.set("wizard", 0);
   ucrtaniVod.set("lejer", "vodovi");
   ucrtaniVod.set("fid_1", document.querySelector("#fid_1").value);
+  ucrtaniVod.set("gps", "");
   //ucrtaniVod.set("gps", document.querySelector("#gps").value);
   ucrtaniVod.set("napon", document.querySelector("#napon").value);
   ucrtaniVod.set("pog_sprem", document.querySelector("#pog_sprem").value);
@@ -45,6 +50,8 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("sifra_napojne", sifraNapojneTrafostanice);
   ucrtaniVod.set("naziv_napojne", nazivNapojneTrafostanice);
   ucrtaniVod.set("izvod_napojne", izvodNapojneTrafostanice);
+  ucrtaniVod.set("izvod_ts", izvodNapojneTrafostanice);
+  ucrtaniVod.set("layer_name", izvodNapojneTrafostanice);
   ucrtaniVod.set("br_faza", document.querySelector("#br_faza").value);
   ucrtaniVod.set("br_spojnica", document.querySelector("#br_spojnica").value);
   ucrtaniVod.set("god_izgr", document.querySelector("#god_izgr").value);
@@ -56,6 +63,7 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("duzina", document.querySelector("#duzina").value);
   ucrtaniVod.set("broj_spojnica", document.querySelector("#broj_spojnica").value);
   ucrtaniVod.set("sifra_dionice", document.querySelector("#sifra_dionice").value);
+  ucrtaniVod.set("originalId", new Date().getTime());
 }
 
 function prikaziPoljaOdabranogVoda() {

@@ -170,6 +170,10 @@ function obaveznaPolja(sloj) {
       popunjen = false;
       borderChange(document.querySelector("#presjek_vod_04"));
     }
+    if (document.querySelector("#id").value === "") {
+      popunjen = false;
+      borderChange(document.querySelector("#id"));
+    }
   } else if (sloj === "vod10") {
     //Inputi
     /*if (document.querySelector("#fid_1").value === "") {
@@ -233,6 +237,10 @@ function obaveznaPolja(sloj) {
       popunjen = false;
       borderChange(document.querySelector("#uze_presjek_vod_10"));
     }
+    if (document.querySelector("#id").value === "") {
+      popunjen = false;
+      borderChange(document.querySelector("#id"));
+    }
   } else if (sloj === "vod35") {
     //Inputi
     /*if (document.querySelector("#fid_1").value === "") {
@@ -291,6 +299,10 @@ function obaveznaPolja(sloj) {
     if (document.querySelector("#uze_presjek_vod_35").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#uze_presjek_vod_35"));
+    }
+    if (document.querySelector("#id").value === "") {
+      popunjen = false;
+      borderChange(document.querySelector("#id"));
     }
   } else if (sloj === "nkro") {
     //Inputi
