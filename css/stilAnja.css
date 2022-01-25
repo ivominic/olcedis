@@ -297,6 +297,62 @@ a.active {
     float: right;
     display: block;
   }
+  .topnav.responsive .dropdownDiv {
+    float: left;
+    width: 100%;
+        background-color: #ca2129;
+  }
+  .topnav.responsive {
+    position: relative;
+    z-index: 15;
+}
+.topnav.responsive a.icon {
+    position: absolute;
+    width: auto;
+    right: 0;
+    top: 0;
+}
+
+  .topnav.responsive a {
+    float: left;
+    display: block;
+    text-align: center;
+    z-index: 15;
+    width: 100%;
+  }
+
+  .topnav.responsive .dropdown {
+    float: none;
+    width: inherit;
+  }
+
+  .topnav.responsive .dropdown-content {
+    position: relative;
+  }
+
+  .topnav.responsive .dropdown-content a {
+    background: #f2f2f2;
+  }
+
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+        text-align: center;
+    margin-left: 20px;
+  }
+  .dropdown-content {
+    top: 0;
+  }
+
+  .flex-row > label {
+    width: 98%;
+  }
+
+  .titleAndClose h1 {
+    width: 50px;
+    font-size: 18px;
+    margin: 16px 0;
+  }
 }
 
 .dropdownDiv {
@@ -320,12 +376,13 @@ a.active {
   .topnav.responsive .dropdownDiv {
     float: left;
     width: 100%;
+        background-color: #ca2129;
   }
 
   .topnav.responsive a {
     float: left;
     display: block;
-    text-align: left;
+    text-align: center;
     z-index: 15;
     width: 100%;
   }
@@ -346,7 +403,8 @@ a.active {
   .topnav.responsive .dropdown .dropbtn {
     display: block;
     width: 100%;
-    text-align: left;
+        text-align: center;
+    margin-left: 20px;
   }
   .dropdown-content {
     top: 0;
@@ -997,7 +1055,7 @@ html[xmlns] .clearfix {
 }
 
 .povezivanjevodovadiv {
-  height: 130px;
+  height: 155px;
   overflow: hidden;
 }
 
@@ -1106,4 +1164,14 @@ right: -10% !important;
 
 .radioClass{
   transform: translateY(3px);
+}
+
+.selectStart{
+      width: 177px;
+}
+.inputStart{
+      width: 83px;
+}
+.markerButton{
+  padding: 8px 8px 6px 4px;
 }
