@@ -171,6 +171,7 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosBrVodCelNiziNap").style.display = "none";
 
   document.querySelector("#divUnosId").style.display = "none";
+  document.querySelector("#divUnosIdPotrosac").style.display = "none";
   document.querySelector("#divUnosOsiguraci").style.display = "none";
   document.querySelector("#divUnosBrPretplatnika").style.display = "none";
   document.querySelector("#divUnosTipPM").style.display = "none";
