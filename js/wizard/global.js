@@ -1,32 +1,34 @@
-//Modul koji sadrži sve promjenljive koje se koriste na globalnom nivou u aplikaciji / wizardu kao i opšte metode
+/**
+ * Modul koji sadrži sve promjenljive koje se koriste na globalnom nivou u aplikaciji / wizardu kao i opšte metode
+ */
 let dozvoljeniPomjeraj = 0.01; //0.01km - deset metara je dozvoljeo pomjeriti tačke iz gpx fajlova prije uvoza u bazu
-let kmlRadius = 2; //Distance from klm point where checking existion of other objects
+let kmlRadius = 2; //Radijus (u metrima) za koji se vrši provjera da li postoje objekti koji bi, potencijalno,
+//trebali biti povezani na geometriju iz kml fajla, koja se smatra apsolutno preciznom
 let minGpsPointName = 0,
-  maxGpsPointName = 0; //min i max vrijednost tačaka koje formiraju jedan vod
+  maxGpsPointName = 0; //min i max gps vrijednost tačaka koje formiraju jedan vod (krajnje tačke voda iz fajla)
 //const domainUrl = location.origin;
 //const wsServerOriginLocation = window.location.protocol + "//" + window.location.hostname;
 const wsServerOriginLocation = "https://razvojgis.cedis.me";
 const domainUrl = "https://razvojgis.cedis.me";
-//const domainUrl = "http://localhost";
 const wmsUrl = domainUrl + "/geoserver/geonode/wms";
 const wfsUrl = domainUrl + "/geoserver/geonode/wfs";
 const imageUrl = domainUrl + "/slike/";
 const point = "Point",
   lineString = "LineString",
   polygon = "Polygon";
-let globalUsername = ""; //Username of signed user
-let geoserverToken = "",
-  isEditable = true; //Promjenljiva koja čuva token za wfs servise, druga označava da li je moguće mijenjati geometriju prevučenih fajlova
+let globalUsername = ""; //Username korisnika aplikacije
+let geoserverToken = ""; //Promjenljiva koja čuva token za wfs servise
+let isEditable = true; //Promjenljiva koja definiše da li je dozvoljeno pomjeranje objekata iz fajla. Za kml nije dozvoljeno.
 let tacke = [],
   linije = [],
   poligoni = [];
 let gpxFeatures = []; //Niz feature-a koji se dobije kad se prevuče gpx fajl na mapu
 let kmlFeature,
   kmlEndPoints = []; //Feature iz kml fajla koju povezujemo sa ostatkom mreže. EndPoint krajevi kml linije
-let kmlLinksArray = []; //Array of object for connecting with nearby objects
+let kmlLinksArray = []; //Niz objekata koje je potrebno povezati sa ostatkom mreže
 let blnDodijeljenoGpxProperties = false; //Promjenljiva koja označava da li su svim podacima iz gpx-a dodijeljeni atributi
 let selectGpxFeature; //Feature iz gpx-a koji se selektuje
-let naponskiNivoNapojneTrafostanice = "";
+let naponskiNivoNapojneTrafostanice = ""; //Prenos-odnos: ova promjenljiva se setuje, ali se nigdje ne koristi.
 let odabraniNaponskiNivo = "",
   filePowerLevel = "";
 let sifraNapojneTrafostanice = "";
@@ -34,20 +36,23 @@ let nazivNapojneTrafostanice = "";
 let izvodNapojneTrafostanice = "";
 let geometrijaNapojneTrafostanice = "";
 let geohashNapojneTrafostanice = "";
-let blnZavrsenoUparivanjeTrafostanica = false;
-let blnZavrsenoUparivanjeVodova = false;
-let nizSelektovanihTrafostanicaOriginalId = []; //Niz vrijednosti original_id polja trafostanica iz zahvata
-let nizSelektovanihVodovaOriginalId = []; //Niz vrijednosti originalId polja vodova iz zahvata
-let nizSelektovanihPotrosacaOriginalId = []; //Niz vrijednosti originalId polja potrošači iz zahvata - ovo je null - moguće da je nepotrebno
+let blnZavrsenoUparivanjeTrafostanica = false; //Wizard, true ako su uparene sve trafostanice. Setuje se, a ne koristi.
+let blnZavrsenoUparivanjeVodova = false; //Wizard, true ako su upareni svi vodovi.
+let nizSelektovanihTrafostanicaOriginalId = []; //Wizard, niz vrijednosti original_id polja trafostanica iz zahvata
+let nizSelektovanihVodovaOriginalId = []; //Wizard, niz vrijednosti originalId polja vodova iz zahvata
+let nizSelektovanihPotrosacaOriginalId = []; //Wizard, niz vrijednosti originalId polja potrošači iz zahvata - ovo je null - moguće da je nepotrebno
 
-let paroviTS = []; //Niz koji se popunjava parovima trafostanica iz GIS-a i TBP-a
-let paroviVodova = []; //Niz koji se popunjava parovim vodova iz GIS-a i TBP-a
-let nizTrafostanicaZaWebServis = []; //Niz u koji će se dodavati svi zapisi za trafostanice koje je potebno upariti. Izmjene se odnose na polja: originalId, sifra napojne trafostanice, izvod napojne trafostanice i naziv napojne trafostanice
-let nizVodovaZaWebServis = []; //Niz u koji će se dodati svi vodovi za unos u bazu, sa geohash_id vrijednostima nadređenog
-let nizPotrosacaZaWebServis = []; //Niz u koji će se dodati svi potrošači za unos u bazu, sa geohash_id vrijednostima nadređenog
-let nizTrafostanicaGeohashZaWebServis = []; //Niz u koji će se dodavati sve trafostanice sa novim geohash_id_no (no = nadređeni objekat)
+let paroviTS = []; //Wizard, niz koji se popunjava parovima trafostanica iz GIS-a i TBP-a
+let paroviVodova = []; //Wizard, niz koji se popunjava parovim vodova iz GIS-a i TBP-a
+let nizTrafostanicaZaWebServis = []; //Wizard, niz u koji će se dodavati svi zapisi za trafostanice koje je potebno upariti.
+//Ne koristi se. Izmjene se odnose na polja: originalId, sifra napojne trafostanice, izvod napojne trafostanice i naziv napojne trafostanice
+let nizVodovaZaWebServis = []; //Wizard, niz u koji će se dodati svi vodovi za unos u bazu, sa geohash_id vrijednostima nadređenog
+let nizPotrosacaZaWebServis = []; //Wizard, niz u koji će se dodati svi potrošači za unos u bazu, sa geohash_id vrijednostima nadređenog
+//Ne koristi se
+let nizTrafostanicaGeohashZaWebServis = []; //Wizard, niz u koji će se dodavati sve trafostanice sa novim geohash_id_no (no = nadređeni objekat)
+//Ne koristi se
 
-let blnTopDown = false; //Za niskonaponsku mrežu, određuje da li će se raditi top-down ili bottom-up uparivanje
+let blnTopDown = false; //Wizard, za niskonaponsku mrežu, određuje da li će se raditi top-down ili bottom-up uparivanje
 let odabirSaMape = false; //Promjenljiva koja označava da li je u toku funkcionalnost odabira vrijednosti sa mape
 let nizKoordinataPrikljucnihMjesta = {}; //Čuva koordinate nakon odabira priključnog mjesta kod unosa novog potrošača
 
@@ -75,16 +80,8 @@ let selektovanaPrikljucnaMjestaFeatures = []; //Priključna mjesta u zahvatu pol
 let selektovaniPODoviFeatures = []; //PODovi mjesta u zahvatu poligona
 let selektovaniVodoviFeatures3857 = []; //U drugom koordinatnom sistemu
 let odabraniLejerUnos = ""; //Mijenja se na meni za unos podataka
-let kreiraniStuboviFeatures = [],
-  kreiraneTrafostaniceFeatures = [],
-  kreiraniNkroFeatures = [],
-  kreiraniPotrosaciFeatures = [],
-  kreiraniPodoviFeatures = [],
-  kreiranaPrikljucnaMjestaFeatures = []; //Nizovi objekata za slanje na server
 
-let kreiraniVodoviFeatures = []; //Niz vodova kreiranih iz tačaka gpx fajla
-
-let isModifyDisabled = false; //Used to disable modify interraction after power line drawing
+let isModifyDisabled = false; //Ne koristi se. Da onemogući izmjenu pozicije tačaka nakon iscrtavanja voda.
 
 let stuboviArrayFinal = [],
   vodoviArrayFinal = [],
@@ -92,7 +89,7 @@ let stuboviArrayFinal = [],
   nkroArrayFinal = [],
   potrosaciArrayFinal = [],
   podoviArrayFinal = [],
-  prikljucnaMjestaArrayFinal = []; //Arrays for database inserts
+  prikljucnaMjestaArrayFinal = []; //Nizovi za unos u bazu - finalni korak
 
 /**Definisanje podloga */
 let osmBaseMap = new ol.layer.Tile({
@@ -335,7 +332,7 @@ function globalNaponskiNivoPrenosOdnos(nivo) {
   } else if (nivo === "110/35" || nivo === "35/35") {
     retVal = "35";
   }
-  console.log("retval nivo", retVal);
+  //console.log("retval nivo", retVal);
   return retVal;
 }
 
@@ -552,7 +549,7 @@ function provjeraPostojanjaElementaDdla(ddl, vrijednost) {
 }
 
 /**
- * Method that fills dropdown list.
+ * Metoda koja dodaje jedan zapis u drop down listu.
  * @param {*} ddl - dropdown id
  * @param {*} value - record value
  * @param {*} text - record text

@@ -310,8 +310,6 @@ function trafostaniceIzBilingaZaUparivanje(
       console.log("naziv napojne TS", data.naziv_napojne);
       console.log("geometrija napojne TS", data.geometrija_napojne);
       console.log("geohash napojne TS", data.geohash_napojne);
-      //TODO: Ovdje dodati čitanje naponskog nivoa napojne trafostanice - ovo ne treba, pošto se sad to bira u prvom koraku
-      //naponskiNivoNapojneTrafostanice = "";
       console.log("poruka", data.poruka);
       nazivNapojneTrafostanice = data.naziv_napojne;
       sifraNapojneTrafostanice = data.sifra_napojne;

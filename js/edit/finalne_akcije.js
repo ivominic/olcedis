@@ -14,45 +14,34 @@ function insertObjekataIzGpx() {
     console.log("finalno lejer", el.get("lejer"));
     //if (el.hasOwnProperty("lejer") && el.get("lejer") === "stubovi") {
     if (el.get("lejer") === "stubovi") {
-      //cudStub(el, "I", 0);
       //console.log("stubovi", el);
-      //kreiraniStuboviFeatures.push(el);
       stubArrayElement(el, "I", 0, iterator);
     } else if (el.get("lejer") === "trafostanice") {
       //console.log("trafostanice", el);
-      //kreiraneTrafostaniceFeatures.push(el);
       trafostanicaArrayElement(el, "I", 0, iterator);
     } else if (el.get("lejer") === "nkro") {
-      //kreiraniNkroFeatures.push(el);
       //console.log("nkro", el);
       nkroArrayElement(el, "I", 0, iterator);
     } else if (el.get("lejer") === "potrosac") {
       //console.log("potrosaci", el);
-      //kreiraniPotrosaciFeatures.push(el);
       potrosacArrayElement(el, "I", 0, iterator);
     } else if (el.get("lejer") === "pod") {
       //console.log("pod", el);
-      //kreiraniPodoviFeatures.push(el);
       podArrayElement(el, "I", 0, iterator);
     } else if (el.get("lejer") === "prikljucno_mjesto") {
       //console.log("prikljucno_mjesto", el);
-      //kreiranaPrikljucnaMjestaFeatures.push(el);
       prikljucnoMjestoArrayElement(el, "I", 0, iterator);
     } else if (el.get("lejer") === undefined) {
       console.log("nedefinisani", el);
       postojiNeobradjenaTacka = true;
     } else if (el.get("lejer") === "vodovi") {
-      //kreiraniVodoviFeatures// Ovo već popunjeno tokom procesa
       //console.log("vodovi", el);
-      //kreiraniVodoviFeatures.push(el);
       vodArrayElement(el, "I", 0, iterator);
     }
   });
 
-  kreiraniVodoviFeatures.forEach((el) => {
-    vodArrayElement(el, "I", 0);
-  });
   nizVodovaGpx.forEach((el) => {
+    console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
     vodArrayElement(el, "I", 0);
   });
   /*vektorKreiraniVodovi.getSource().forEach((el) => {
@@ -66,8 +55,6 @@ function insertObjekataIzGpx() {
   console.log("potrosaci finalni array", potrosaciArrayFinal);
   console.log("podovi finalni array", podoviArrayFinal);
   console.log("prikljucna mjesta finalni array", prikljucnaMjestaArrayFinal);
-
-  //console.log("svi vodovi za kreiranje", kreiraniVodoviFeatures);
 
   if (postojiNeobradjenaTacka) {
     poruka("Upozorenje", "Nisu obradjeni svi objekti iz fajla za uvoz.");
