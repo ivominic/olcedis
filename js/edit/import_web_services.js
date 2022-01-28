@@ -113,6 +113,7 @@ function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucna_mjes
     },
     error: function (x, y, z) {
       console.log("error insert all objects", x.responseText);
+      poruka("Greška", "Akcija nije izvršena.");
     },
   });
 }
