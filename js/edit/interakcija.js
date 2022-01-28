@@ -278,18 +278,6 @@ document.querySelector("#shp").addEventListener("click", shpDownload);
 document.querySelector("#kml").addEventListener("click", kmlDownload);
 document.querySelector("#excel").addEventListener("click", excelDownload);
 
-/*document.querySelector("#noviStub35").addEventListener("click", noviStub35);
-document.querySelector("#noviStub10Kv").addEventListener("click", noviStub10);
-document.querySelector("#noviStub04Kv").addEventListener("click", noviStub04);
-document.querySelector("#noviVod35").addEventListener("click", noviVod35);
-document.querySelector("#noviVod10Kv").addEventListener("click", noviVod10);
-document.querySelector("#noviVod04Kv").addEventListener("click", noviVod04);
-document.querySelector("#novaTrafostanica35x").addEventListener("click", novaTrafostanica35x);
-document.querySelector("#novaTrafostanica110x").addEventListener("click", novaTrafostanica110x);
-document.querySelector("#novaTrafostanica1004").addEventListener("click", novaTrafostanica1004);
-document.querySelector("#noviNKRO").addEventListener("click", noviNkro);
-document.querySelector("#novoPrikljucnoMjesto").addEventListener("click", novoPrikljucnoMjesto);*/
-
 document.querySelector("#editStub35").addEventListener("click", noviStub35);
 document.querySelector("#editStub10Kv").addEventListener("click", noviStub10);
 document.querySelector("#editVod35").addEventListener("click", noviVod35);
@@ -379,5 +367,25 @@ function enableMenija() {
   let dropdown = document.getElementsByClassName("dropdown-content");
   for (i = 0; i < dropdown.length; i++) {
     dropdown[i].style.removeProperty("display");
+  }
+}
+
+document.querySelector("#chkShowGpsFields").addEventListener("click", showGpsFields);
+/**
+ * Method that show input fields for entering gps number of points that needs to be connected to selected element.
+ * This overrides default behavior of connecting to nearest gps point.
+ */
+function showGpsFields() {
+  document
+    .querySelector("#chkShowGpsFields")
+    .setAttribute("checked", !document.querySelector("#chkShowGpsFields").checked);
+  if (document.querySelector("#chkShowGpsFields").checked) {
+    document.querySelector("#txtPocetnaTackaVodovi").style.display = "block";
+    document.querySelector("#txtKrajnjaTackaVodovi").style.display = "block";
+  } else {
+    document.querySelector("#txtPocetnaTackaVodovi").style.display = "none";
+    document.querySelector("#txtKrajnjaTackaVodovi").style.display = "none";
+    document.querySelector("#txtPocetnaTackaVodovi").value = "";
+    document.querySelector("#txtKrajnjaTackaVodovi").value = "";
   }
 }

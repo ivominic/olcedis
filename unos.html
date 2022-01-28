@@ -10,7 +10,7 @@
     <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,requestAnimationFrame,Element.prototype.classList,URL"></script>
     <link rel="stylesheet" href="css/util.css" />
-    <link rel="stylesheet" href="css/stilAnja.css" />
+    <link rel="stylesheet" href="css/stil2.css" />
     <link rel="stylesheet" href="css/slika.css" />
     <link rel="stylesheet" href="css/ol.css" />
     <link rel="stylesheet" href="css/sweetalert2.min.css" />
@@ -180,7 +180,7 @@
           <div class="flex-row pb-8">
             <label for="ddlPocetnaTackaVodovi">Početna tačka:</label>
             <select class="select-css selectStart" id="ddlPocetnaTackaVodovi"></select>
-            <input type="text" id="txtPocetnaTackaVodovi" class="inputStart" />
+            <input type="text" id="txtPocetnaTackaVodovi" class="inputStartHidden" style="display: none" />
 
             <a class="tooltip markerButton" data-tool="Odaberite na mapi" id="tool4">
               <button class="dugmeodabirmapa" id="btnPocetnaTackaPoveznica">
@@ -193,7 +193,7 @@
               >Krajnja tačka:
             </label>
             <select class="select-css selectStart" id="ddlKrajnjaTackaVodovi"></select>
-            <input type="text" id="txtKrajnjaTackaVodovi" class="inputStart" />
+            <input type="text" id="txtKrajnjaTackaVodovi" class="inputStartHidden" style="display: none" />
             <a class="tooltip markerButton" data-tool="Odaberite na mapi" id="tool5">
               <button class="dugmeodabirmapa" id="btnKrajnjaTackaPoveznica">
                 <i class="fas fa-map-marker-alt"></i>
@@ -201,14 +201,14 @@
             </a>
           </div>
           <div class="flex-row pb-16">
-          <div>
-            <label class="container">
-              Isključi
-              <input type="checkbox" id="disableSelect" />
-              <span class="checkmark"></span>
-            </label>
+            <div>
+              <label class="container">
+                Unos rednog broja tačke za povezivanje
+                <input type="checkbox" id="chkShowGpsFields" />
+                <span class="checkmark"></span>
+              </label>
+            </div>
           </div>
-        </div>
         </div>
       </div>
       <div class="d-flex-end items-padd-sm">

@@ -300,18 +300,18 @@ a.active {
   .topnav.responsive .dropdownDiv {
     float: left;
     width: 100%;
-        background-color: #ca2129;
+    background-color: #ca2129;
   }
   .topnav.responsive {
     position: relative;
     z-index: 15;
-}
-.topnav.responsive a.icon {
+  }
+  .topnav.responsive a.icon {
     position: absolute;
     width: auto;
     right: 0;
     top: 0;
-}
+  }
 
   .topnav.responsive a {
     float: left;
@@ -337,7 +337,7 @@ a.active {
   .topnav.responsive .dropdown .dropbtn {
     display: block;
     width: 100%;
-        text-align: center;
+    text-align: center;
     margin-left: 20px;
   }
   .dropdown-content {
@@ -376,7 +376,7 @@ a.active {
   .topnav.responsive .dropdownDiv {
     float: left;
     width: 100%;
-        background-color: #ca2129;
+    background-color: #ca2129;
   }
 
   .topnav.responsive a {
@@ -403,7 +403,7 @@ a.active {
   .topnav.responsive .dropdown .dropbtn {
     display: block;
     width: 100%;
-        text-align: center;
+    text-align: center;
     margin-left: 20px;
   }
   .dropdown-content {
@@ -738,7 +738,6 @@ a.tooltip.left.blue:before {
   border-color: transparent transparent transparent #5f87c2;
 }
 
-
 div.tooltip {
   position: relative;
   display: inline;
@@ -746,27 +745,27 @@ div.tooltip {
 
 div.tooltip:after {
   padding: 0 15px;
-    top: 80%;
-    position: absolute;
-    /* right: 70%; */
-    margin-left: -25px;
-    font-size: 16px;
-    font-weight: 600;
-    white-space: nowrap;
-    display: block;
-    visibility: hidden;
-    opacity: 0;
-    content: attr(data-tool);
-    height: 25px;
-    min-width: 100px;
-    z-index: 999;
-    color: #333;
-    text-decoration: none;
-    text-align: center;
-    background: rgba(255, 255, 255, 0.8);
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+  top: 80%;
+  position: absolute;
+  /* right: 70%; */
+  margin-left: -25px;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  content: attr(data-tool);
+  height: 25px;
+  min-width: 100px;
+  z-index: 999;
+  color: #333;
+  text-decoration: none;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 
 /*a.tooltip:before {
@@ -1075,7 +1074,6 @@ html[xmlns] .clearfix {
   justify-content: space-between;
 }
 
-
 .flex-row-desno {
   display: flex;
   flex-direction: row;
@@ -1084,31 +1082,30 @@ html[xmlns] .clearfix {
   flex-wrap: wrap;
 }
 
-.flexMarginRight{
+.flexMarginRight {
   margin-right: 10px;
 }
 
-.flex-row-desno label{
+.flex-row-desno label {
   margin-right: 10px;
 }
 
-.flex-row-desno input{
+.flex-row-desno input {
   width: 217px;
   padding-right: 0px;
   background-color: white;
   border: 1px solid #c1c1c1;
   color: #909090;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.flex-row-desno input:focus{
-border-color: #80bdff;
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+.flex-row-desno input:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
 }
 
-
-.flex-row-desno select{
+.flex-row-desno select {
   background-color: white;
   border: 1px solid #c1c1c1;
   color: #909090;
@@ -1128,7 +1125,7 @@ border-color: #80bdff;
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
-  
+
   /* Position the tooltip */
   position: absolute;
   z-index: 1;
@@ -1142,36 +1139,36 @@ border-color: #80bdff;
 }
 
 #tool4:after {
-right: -10% !important;
+  right: -10% !important;
 }
 
 #tool5:after {
-right: -10% !important;
+  right: -10% !important;
 }
 
-.disabledInput{
+.disabledInput {
   background-color: #e7e7e7 !important;
 }
 
-.extra{
+.extra {
   font-weight: 200 !important;
 }
 
-.fontB{
+.fontB {
   color: red;
   font-size: 17px;
 }
 
-.radioClass{
+.radioClass {
   transform: translateY(3px);
 }
 
-.selectStart{
-      width: 177px;
+.selectStart {
+  width: 177px;
 }
-.inputStart{
-      width: 83px;
+.inputStartHidden {
+  width: 83px;
 }
-.markerButton{
+.markerButton {
   padding: 8px 8px 6px 4px;
 }
