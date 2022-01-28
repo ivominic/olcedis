@@ -232,7 +232,7 @@ function unosStubova() {
   podaciForme.append("Folder", "test");
   podaciForme.append("fid", "test");
   podaciForme.append("layer_name", "test");
-  podaciForme.append("broj_priklj_mjernih_ormara", 2);
+  podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
   podaciForme.append("layer_id", "test");
@@ -762,7 +762,7 @@ function unosStubova1() {
   podaciForme.append("Folder", "test");
   podaciForme.append("fid", "test");
   podaciForme.append("layer_name", "test");
-  podaciForme.append("broj_priklj_mjernih_ormara", 2);
+  podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
   podaciForme.append("layer_id", "test");

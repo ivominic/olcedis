@@ -9,27 +9,30 @@
  */
 function stubArrayElement(el, action, wizard, serialNo) {
   let item = {
-    fid_1: el.values_.fid_1,
+    //fid_1: el.values_.fid_1,
     Geometry: wkt3Du2D(wktGeometrije(el)),
     name: el.values_.name,
-    fid: el.values_.fid,
+    //fid: el.values_.fid,
     br_izol_faza: el.values_.br_izol_faza,
     uzemljivac: el.values_.uzemljivac,
     pripadnost: el.values_.pripadnost,
     broj: el.values_.broj,
     napon: el.values_.napon,
     vrsta_namjena: el.values_.vrsta_namjena,
+    vrsta_materijal: el.values_.vrsta_materijal,
     rasvjeta: el.values_.rasvjeta,
     prikljucak_otcjep: el.values_.prikljucak_otcjep,
     br_pmo: el.values_.br_pmo,
     nad_visina: el.values_.nad_visina,
     vod_10: el.values_.vod10, //Jovanu je polje 10vod - vidjeti može li se json poslati ovako ili da mijenjamo naziv
-    tip_nosac_izol: el.values_.tip_nosac_izol,
+    desetvod: el.values_.desetvod,
+    //tip_nosac_izol: el.values_.tip_nosac_izol,
+    tip_nosac_izol: el.values_.nosaci_izolatora,
     vlasnistvo: el.values_.vlasnistvo,
     tip: el.values_.tip,
     id: el.values_.id, //Vidjeti šta ovdje predajem
     layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
-    broj_priklj_mjernih_ormara: el.values_.broj_priklj_mjernih_ormara,
+    br_pmo: el.values_.br_pmo,
     visina: el.values_.visina,
     optika: el.values_.optika,
     opstina: el.values_.opstina,
@@ -46,12 +49,12 @@ function stubArrayElement(el, action, wizard, serialNo) {
     rasp_prov: el.values_.rasp_prov,
     nn_vod: el.values_.nn_vod,
     pog_sprem: el.values_.pog_sprem,
-    layer_id: "", //Provjeriti da li treba da se šalje
+    layer_id: 0, //Provjeriti da li treba da se šalje
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: globalUsername,
     posjeduje_sliku: "NE",
-    originalId: new Date().getTime() + "" + serialNo, //el.values_.originalId,
+    originalId: parseInt(new Date().getTime() + "" + serialNo), //el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
@@ -83,7 +86,7 @@ function vodArrayElement(el, action, wizard, serialNo) {
     Geometry: wktGeometrije(el),
     name: el.values_.name,
     fid: el.values_.fid,
-    materijal: el.values_.materijal,
+    vrsta_materijal: el.values_.vrsta_materijal,
     zajednicka_dion: el.values_.zajednicka_dion,
     id_br: el.values_.id_br,
     dionica_nn: el.values_.dionica_nn,

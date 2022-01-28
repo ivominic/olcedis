@@ -89,7 +89,7 @@ function dodajPoljaGpxStubovi() {
       el.set("name", el.values_.name);
       el.set("fid", "test");
       el.set("layer_name", "test");
-      el.set("broj_priklj_mjernih_ormara", 2);
+      el.set("br_pmo", 2);
       el.set("datum_azuriranja", "");
 
       el.set("layer_id", 0);
@@ -109,8 +109,12 @@ function dodajPoljaGpxStubovi() {
 }
 
 function dodajPoljaOdabranomGpxStubu() {
+  //console.log("dodajPoljaOdabranomGpxStubu", selectGpxFeature.values_.napon);
+  //console.log("feature polja", selectGpxFeature);
+  //alert(filePowerLevel);
   if (selectGpxFeature.get("lejer") === undefined || selectGpxFeature.get("lejer") === "stubovi") {
-    if (selectGpxFeature.values_.napon === "0.4") {
+    if (filePowerLevel == 0.4) {
+      //if (selectGpxFeature.values_.napon === "0.4") {//Ovako je trebalo
       selectGpxFeature.set("tip", document.querySelector("#tip_stub").value);
       selectGpxFeature.set("rasvjeta", document.querySelector("#rasvjeta_stub").value);
       selectGpxFeature.set("vrsta_namjena", document.querySelector("#vrsta_namjena_stub_04").value);
@@ -123,9 +127,15 @@ function dodajPoljaOdabranomGpxStubu() {
       selectGpxFeature.set("odvodnik_prenapona", document.querySelector("#odvodnik_prenapona_stub_04").value);
       selectGpxFeature.set("uzemljivac", document.querySelector("#uzemljivac_stub_04").value);
       selectGpxFeature.set("optika", document.querySelector("#optika_stub_04").value);
+      selectGpxFeature.set("prikljucak_otcjep", "");
+      selectGpxFeature.set("nn_vod", "");
+      selectGpxFeature.set("rastavljac", "");
+      selectGpxFeature.set("desetvod", "");
     }
-    if (selectGpxFeature.values_.napon === "10") {
+    if (filePowerLevel == 10) {
       setujDdlVrijednost("#nn_vod_stub", selectGpxFeature.values_.nn_vod);
+      selectGpxFeature.set("tip", "");
+      selectGpxFeature.set("rasvjeta", "");
       selectGpxFeature.set("vrsta_namjena", document.querySelector("#vrsta_namjena_stub_10").value);
       selectGpxFeature.set("vrsta_materijal", document.querySelector("#vrsta_materijal_stub_10").value);
       selectGpxFeature.set("vrsta_drvenog", document.querySelector("#vrsta_drvenog_stub_10").value);
@@ -139,8 +149,11 @@ function dodajPoljaOdabranomGpxStubu() {
       selectGpxFeature.set("prikljucak_otcjep", document.querySelector("#prikljucak_otcjep_stub_10").value);
       selectGpxFeature.set("nn_vod", document.querySelector("#nn_vod_stub_10").value);
       selectGpxFeature.set("rastavljac", document.querySelector("#rastavljac_stub_10").value);
+      selectGpxFeature.set("desetvod", "");
     }
-    if (selectGpxFeature.values_.napon === "35") {
+    if (filePowerLevel == 35) {
+      selectGpxFeature.set("tip", "");
+      selectGpxFeature.set("rasvjeta", "");
       selectGpxFeature.set("vrsta_namjena", document.querySelector("#vrsta_namjena_stub_35").value);
       selectGpxFeature.set("vrsta_materijal", document.querySelector("#vrsta_materijal_stub_35").value);
       selectGpxFeature.set("vrsta_drvenog", document.querySelector("#vrsta_drvenog_stub_35").value);
@@ -153,7 +166,9 @@ function dodajPoljaOdabranomGpxStubu() {
       selectGpxFeature.set("optika", document.querySelector("#optika_stub_35").value);
       selectGpxFeature.set("prikljucak_otcjep", document.querySelector("#prikljucak_otcjep_stub_35").value);
       selectGpxFeature.set("rastavljac", document.querySelector("#rastavljac_stub_35").value);
-      selectGpxFeature.set("10vod", document.querySelector("#vod_10").value);
+      //selectGpxFeature.set("10vod", document.querySelector("#vod_10").value);
+      selectGpxFeature.set("desetvod", document.querySelector("#vod_10").value);
+      selectGpxFeature.set("nn_vod", "");
     }
 
     selectGpxFeature.set("wizard", 0);
@@ -174,6 +189,13 @@ function dodajPoljaOdabranomGpxStubu() {
     selectGpxFeature.set("vlasnistvo", document.querySelector("#vlasnistvo").value);
     selectGpxFeature.set("opstina", document.querySelector("#opstina").value);
     selectGpxFeature.set("napon", document.querySelector("#napon").value);
+    selectGpxFeature.set("sifra_napojne", sifraNapojneTrafostanice);
+    selectGpxFeature.set("naziv_napojne", nazivNapojneTrafostanice);
+    selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
+    selectGpxFeature.set("vlasnik", ""); //TODO: Ovo izmijeniti
+    selectGpxFeature.set("korisnik", globalUsername); //TODO: Ovo izmijeniti
+
+    console.log("obrađeni fajl", selectGpxFeature);
 
     poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
   } else {

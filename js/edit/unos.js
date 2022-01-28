@@ -231,7 +231,7 @@ function unosStubova(geometrijaWkt, servisAkcija) {
   podaciForme.append("name", "test");
   podaciForme.append("fid", "test");
   podaciForme.append("layer_name", "test");
-  podaciForme.append("broj_priklj_mjernih_ormara", 2);
+  podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
   podaciForme.append("layer_id", 0);
@@ -306,7 +306,7 @@ function unosVodova(geometrijaWkt, servisAkcija) {
   podaciForme.append("name", "test");
   podaciForme.append("fid", "test");
   podaciForme.append("layer_name", "test");
-  //podaciForme.append("broj_priklj_mjernih_ormara", 2);
+  //podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
   podaciForme.append("layer_id", 0);
@@ -375,7 +375,7 @@ function unosTrafostanica(geometrijaWkt, servisAkcija) {
   podaciForme.append("name", "test");
   podaciForme.append("fid", "test");
   podaciForme.append("layer_name", "test");
-  //podaciForme.append("broj_priklj_mjernih_ormara", 2);
+  //podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
   podaciForme.append("layer_id", 0);
@@ -432,7 +432,7 @@ function unosNkro(geometrijaWkt, servisAkcija) {
   podaciForme.append("name", "test");
   podaciForme.append("fid", "test");
   podaciForme.append("layer_name", "test");
-  //podaciForme.append("broj_priklj_mjernih_ormara", 2);
+  //podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
   podaciForme.append("layer_id", 0);
@@ -486,7 +486,7 @@ function unosPrikljucnoMjesto(geometrijaWkt, servisAkcija) {
   podaciForme.append("name", "test");
   podaciForme.append("fid", "test");
   podaciForme.append("layer_name", "test");
-  //podaciForme.append("broj_priklj_mjernih_ormara", 2);
+  //podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
   podaciForme.append("layer_id", 0);
@@ -544,7 +544,7 @@ function unosPotrosac(geometrijaWkt, servisAkcija) {
   podaciForme.append("name", "test");
   podaciForme.append("fid", "test");
   podaciForme.append("layer_name", "test");
-  //podaciForme.append("broj_priklj_mjernih_ormara", 2);
+  //podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
   podaciForme.append("layer_id", 0);
@@ -602,7 +602,7 @@ function unosPod(geometrijaWkt, servisAkcija) {
   podaciForme.append("name", "test");
   podaciForme.append("fid", "test");
   podaciForme.append("layer_name", "test");
-  //podaciForme.append("broj_priklj_mjernih_ormara", 2);
+  //podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
   podaciForme.append("layer_id", 0);

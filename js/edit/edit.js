@@ -310,12 +310,12 @@ let dragAndDrop = new ol.interaction.DragAndDrop({
 });
 dragAndDrop.on("addfeatures", function (event) {
   console.log("aaaa", event);
-  globalUsername = readSignedUser(); //Reading username
+  //globalUsername = readSignedUser(); //Reading username
+  globalUsername = "ivo.minic"; //Reading username
   kmlLinksArray.length = 0; //Emptying array of links with  nearby objects
   let layerNameImport = vectorLayerType(event);
   disableMenija();
   showDiv("#odabirNapojneTrafostaniceDiv");
-  gpxFeatures = event.features;
 
   blnDodijeljenoGpxProperties = false;
   event.features.forEach(function (feature) {
@@ -324,6 +324,7 @@ dragAndDrop.on("addfeatures", function (event) {
     feature.set("originalId", tempTimestamp);
     feature.set("layer_name", layerNameImport);
     feature.set("isEditable", isEditable);
+    feature.set("napon", naponskiNivoNapojneTrafostanice);
     if (!isEditable) {
       //if (feature.getGeometry().getType().toString().includes("oint")) {
       objectNearKmlFeature(feature, "stubovi");
@@ -345,6 +346,9 @@ dragAndDrop.on("addfeatures", function (event) {
       description: feature.values_.description,
     });
   });
+
+  gpxFeatures = event.features;
+
   console.log("niz", nizKml);
   //distanceFromKmlPoints();
   vectorSource = new ol.source.Vector({

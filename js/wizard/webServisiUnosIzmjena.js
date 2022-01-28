@@ -177,7 +177,7 @@ function cudStub(feature, akcija, wizard) {
   podaciForme.append("vlasnistvo", feature.vlasnistvo);
   podaciForme.append("tip", feature.tip);
   podaciForme.append("layer_name", feature.layer_name);
-  podaciForme.append("broj_priklj_mjernih_ormara", feature.broj_priklj_mjernih_ormara);
+  podaciForme.append("br_pmo", feature.br_pmo);
   podaciForme.append("visina", feature.visina);
   podaciForme.append("optika", feature.optika);
   podaciForme.append("opstina", feature.opstina);

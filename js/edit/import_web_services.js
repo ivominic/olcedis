@@ -103,13 +103,14 @@ function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucna_mjes
     success: function (data) {
       console.log("success insert all objects", data);
       //Web services for insertion of data
-      objectsFinalInsert(stubovi, "stubovi_store");
+      /*objectsFinalInsert(stubovi, "stubovi_store");
       objectsFinalInsert(vodovi, "vodovi_store");
       objectsFinalInsert(trafostanice, "trafostanice_store");
       objectsFinalInsert(podovi, "pod_store");
       objectsFinalInsert(prikljucna_mjesta, "prikljucno_mjesto_store");
       objectsFinalInsert(potrosaci, "potrosaci_store");
-      objectsFinalInsert(nkro, "nkro_store");
+      objectsFinalInsert(nkro, "nkro_store");*/
+      poruka("Uspjeh", "Uspješno sačuvani podaci.");
     },
     error: function (x, y, z) {
       console.log("error insert all objects", x.responseText);
