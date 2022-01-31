@@ -414,24 +414,22 @@ function izbrisi() {
   }).then((result) => {
     if (result.isConfirmed) {
       //Brisati
-      console.log("objekat za brisanje select.getFeatures().array_[0] ", select.getFeatures().array_[0]);
-      console.log("vektorKreiraniVodovi ", vektorKreiraniVodovi);
-      console.log("vectorSource ", vectorSource);
-      console.log("vektorKreiraniVodovi typeof ", typeof vektorKreiraniVodovi);
-      console.log("vectorSource typeof ", typeof vectorSource);
       if (select.getFeatures().array_[0].values_.lejer === "vodovi") {
-        let nizZaBrisanje = vektorKreiraniVodovi.getFeatures();
-        vektorKreiraniVodovi.getFeatures().forEach(function (el, index, nizZaBrisanje) {
-          if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
-            //if (el.values_.name == select.getFeatures().array_[0].values_.name) {
-            nizZaBrisanje.splice(index, 1);
-            select.getFeatures().array_.splice(0, 1);
-            console.log("ol_uid", el.ol_uid);
-            selectGpxFeature = null;
-            vektorKreiraniVodovi.clear();
-            vektorKreiraniVodovi.addFeatures(nizZaBrisanje);
-          }
-        });
+        let nizZaBrisanje = nizVodovaGpx;
+        vektorKreiraniVodovi
+          .getSource()
+          .getFeatures()
+          .forEach(function (el, index, nizZaBrisanje) {
+            if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
+              //if (el.values_.name == select.getFeatures().array_[0].values_.name) {
+              nizZaBrisanje.splice(index, 1);
+              select.getFeatures().array_.splice(0, 1);
+              console.log("ol_uid", el.ol_uid);
+              selectGpxFeature = null;
+              vektorKreiraniVodovi.getSource().clear();
+              vektorKreiraniVodovi.getSource().addFeatures(nizZaBrisanje);
+            }
+          });
       } else {
         let nizZaBrisanje = vectorSource.getFeatures();
         vectorSource.getFeatures().forEach(function (el, index, nizZaBrisanje) {
