@@ -107,7 +107,7 @@ function prikaziPoljaOdabranogVoda() {
     document.querySelector("#vrsta_vod_04").value = selectGpxFeature.values_.vrsta_vod_04;
     document.querySelector("#tip_vod_04").value = selectGpxFeature.values_.tip_vod_04;
     document.querySelector("#presjek_vod_04").value = selectGpxFeature.values_.presjek_vod_04;
-    document.querySelector("#materijal_vod_04").value = selectGpxFeature.values_.broj;
+    document.querySelector("#vrsta_materijal_vod_04").value = selectGpxFeature.values_.materijal;
 
     //setujDdlVrijednost("#optika_stub_04", selectGpxFeature.values_.optika);
   }
