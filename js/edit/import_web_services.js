@@ -96,7 +96,7 @@ function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucna_mjes
       temp_trafostanice: JSON.stringify(trafostanice),
       temp_pod: JSON.stringify(podovi),
       temp_prikljucno_mjesto: JSON.stringify(prikljucna_mjesta),
-      temp_potrosac: JSON.stringify(potrosaci),
+      temp_potrosaci: JSON.stringify(potrosaci),
       temp_nkro: JSON.stringify(nkro),
     },
     type: "POST",

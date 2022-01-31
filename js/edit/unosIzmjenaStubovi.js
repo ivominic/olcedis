@@ -89,7 +89,6 @@ function dodajPoljaGpxStubovi() {
       el.set("name", el.values_.name);
       el.set("fid", "test");
       el.set("layer_name", "test");
-      el.set("br_pmo", 2);
       el.set("datum_azuriranja", "");
 
       el.set("layer_id", 0);

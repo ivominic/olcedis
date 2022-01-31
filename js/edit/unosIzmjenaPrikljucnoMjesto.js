@@ -15,6 +15,8 @@ function dodajPoljaOdabranomGpxPM() {
     selectGpxFeature.set("sifra_napojne", sifraNapojneTrafostanice);
     selectGpxFeature.set("naziv_napojne", nazivNapojneTrafostanice);
     selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
+    selectGpxFeature.set("korisnik", globalUsername);
+    selectGpxFeature.set("vlasnik", "");
     poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
   } else {
     poruka("Upozorenje", "Odabrani objekat je već definisan kao drugi tip objekta");

@@ -69,6 +69,7 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
               //TODO: Dodijeliti vrijednosti el feature-u iz jsonPretplatnik objekta
               noviEl.set("wizard", 0);
               noviEl.set("lejer", "potrosac");
+              noviEl.set("layer_name", "");
               noviEl.set("gps", document.querySelector("#gps").value); //šta sa ovim
               //noviEl.set("fid_1", jsonPretplatnik.fid_1);
               noviEl.set("izvod_ts", jsonPretplatnik.izvod_vod); //ILI izvodNapojneTrafostanice
@@ -79,6 +80,7 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
               noviEl.set("sifra_ts", jsonPretplatnik.sifra_trafostanice);
               noviEl.set("prik_kabal", jsonPretplatnik.provodnik_spolja + " " + jsonPretplatnik.presjek_spolja);
               noviEl.set("pod", jsonPretplatnik.pod_na_mm);
+              noviEl.set("status", jsonPretplatnik.status);
               noviEl.set("adresa_mm", jsonPretplatnik.adresa_mjesta_mjerenja);
               noviEl.set("prik_mjesto", document.querySelector("#prik_mjesto").value);
               noviEl.set("naziv_nn_izvod", jsonPretplatnik.naziv_voda);
@@ -89,6 +91,7 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
               noviEl.set("izvod_napojne", izvodNapojneTrafostanice);
               noviEl.set("napon", document.querySelector("#napon").value);
               noviEl.set("korisnik", globalUsername);
+              noviEl.set("vlasnik", "");
               if (boolAdd) {
                 gpxFeatures.push(noviEl);
                 vectorSource.addFeatures([noviEl]);

@@ -54,6 +54,7 @@ function generisanjeGpxPodaIzGeometrije(lat, lng, jsonPretplatnik) {
   //featureTacka.values_.lejer = "pod";
   featureTacka.set("wizard", 0);
   featureTacka.set("lejer", "pod");
+  featureTacka.set("layer_name", "");
   featureTacka.set("gps", document.querySelector("#gps").value); //šta sa ovim?
   //featureTacka.set("fid_1", jsonPretplatnik.fid_1);
   featureTacka.set("izvod_ts", jsonPretplatnik.izvod_vod); //ILI izvodNapojneTrafostanice
@@ -70,11 +71,13 @@ function generisanjeGpxPodaIzGeometrije(lat, lng, jsonPretplatnik) {
   featureTacka.set("naziv_nn_izvod", jsonPretplatnik.naziv_voda);
   featureTacka.set("pretplatni_br", jsonPretplatnik.sifra);
   featureTacka.set("br_brojila", jsonPretplatnik.broj_brojila);
+  featureTacka.set("status", jsonPretplatnik.status);
   featureTacka.set("sifra_napojne", sifraNapojneTrafostanice);
   featureTacka.set("naziv_napojne", nazivNapojneTrafostanice);
   featureTacka.set("izvod_napojne", izvodNapojneTrafostanice);
   featureTacka.set("napon", document.querySelector("#napon").value);
   featureTacka.set("korisnik", globalUsername);
+  featureTacka.set("vlasnik", "");
   //console.log("feature tacka ****************************************************", featureTacka);
   vectorSource.addFeatures([featureTacka]);
   gpxFeatures.push(featureTacka);
