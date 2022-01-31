@@ -43,6 +43,7 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("vlasnistvo", document.querySelector("#vlasnistvo").value);
   ucrtaniVod.set("dionica", document.querySelector("#dionica").value);
   ucrtaniVod.set("id_br", document.querySelector("#id_br").value);
+  ucrtaniVod.set("id", document.querySelector("#id").value);
   ucrtaniVod.set("naziv", document.querySelector("#naziv").value);
   ucrtaniVod.set("name", document.querySelector("#naziv").value);
   ucrtaniVod.set("dionica_nn", document.querySelector("#dionica_nn").value);
@@ -54,7 +55,7 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("layer_name", izvodNapojneTrafostanice);
   ucrtaniVod.set("br_faza", document.querySelector("#br_faza").value);
   ucrtaniVod.set("br_spojnica", document.querySelector("#br_spojnica").value);
-  ucrtaniVod.set("god_izgr", document.querySelector("#god_izgr").value);
+  ucrtaniVod.set("god_izg", document.querySelector("#god_izgr").value);
   ucrtaniVod.set("poc_dion", document.querySelector("#poc_dion").value);
   ucrtaniVod.set("kraj_dion", document.querySelector("#kraj_dion").value);
   ucrtaniVod.set("zajednicka_dion", document.querySelector("#zajednicka_dion").value);
@@ -64,6 +65,8 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("broj_spojnica", document.querySelector("#broj_spojnica").value);
   ucrtaniVod.set("sifra_dionice", document.querySelector("#sifra_dionice").value);
   ucrtaniVod.set("originalId", new Date().getTime());
+  ucrtaniVod.set("vlasnik", "");
+  ucrtaniVod.set("korisnik", globalUsername);
 }
 
 function prikaziPoljaOdabranogVoda() {
@@ -74,6 +77,7 @@ function prikaziPoljaOdabranogVoda() {
     document.querySelector("#gps").value = "";
   }
   console.log("vod napon", selectGpxFeature.values_.napon);
+  console.log("vod feature", selectGpxFeature);
   //document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
