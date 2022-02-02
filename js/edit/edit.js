@@ -7,10 +7,6 @@ let opisSlike = "";
 let vrijednostPocetneTacke = 0,
   vrijednostKrajnjeTacke = 0;
 
-//globalUsername = readSignedUser(); //Reading username
-globalUsername = "ivo.minic"; //Reading username
-document.querySelector("#userName").textContent = globalUsername;
-
 /**Popunjavanje komponenti u divu za prikaz atributa, nakon pročitanog odgovora za WMS objekat */
 function popuniKontrole(odgovor) {
   let atributi = odgovor.features[0]["properties"];

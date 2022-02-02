@@ -687,8 +687,8 @@ function readSignedUser() {
     data: "",
     type: "GET",
     success: function (data) {
-      //console.log("username web servis", data.response);
-      return data.response;
+      globalUsername = data.response;
+      document.querySelector("#userName").textContent = globalUsername;
     },
     error: function (x, y, z) {
       //alert(x.responseText +"  " +x.status);
@@ -697,6 +697,7 @@ function readSignedUser() {
     },
   });
 }
+readSignedUser();
 
 /**
  * Method that returns allowed radius in meters to move gpx points, or distance from kml point.
