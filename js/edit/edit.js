@@ -7,6 +7,10 @@ let opisSlike = "";
 let vrijednostPocetneTacke = 0,
   vrijednostKrajnjeTacke = 0;
 
+//globalUsername = readSignedUser(); //Reading username
+globalUsername = "ivo.minic"; //Reading username
+document.querySelector("#userName").textContent = globalUsername;
+
 /**Popunjavanje komponenti u divu za prikaz atributa, nakon pročitanog odgovora za WMS objekat */
 function popuniKontrole(odgovor) {
   let atributi = odgovor.features[0]["properties"];
@@ -310,8 +314,6 @@ let dragAndDrop = new ol.interaction.DragAndDrop({
 });
 dragAndDrop.on("addfeatures", function (event) {
   console.log("aaaa", event);
-  //globalUsername = readSignedUser(); //Reading username
-  globalUsername = "ivo.minic"; //Reading username
   kmlLinksArray.length = 0; //Emptying array of links with  nearby objects
   let layerNameImport = vectorLayerType(event);
   disableMenija();
