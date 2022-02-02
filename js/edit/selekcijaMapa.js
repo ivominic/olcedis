@@ -123,7 +123,7 @@ function sljedeciObjekatGpx() {
     prikazPodatakaIzGpxTacaka();
   } else {
     indexGpxTacakaZaObradu--;
-    alert("Kraj niza.");
+    poruka("Uspjeh", "Ne postoji sljedeći objekat.");
   }
 }
 
@@ -144,7 +144,7 @@ function prethodniObjekatGpx() {
     prikazPodatakaIzGpxTacaka();
   } else {
     indexGpxTacakaZaObradu++;
-    alert("Kraj niza.");
+    poruka("Uspjeh", "Ne postoji prethodni objekat.");
   }
 }
 
@@ -524,9 +524,10 @@ function klikNaRastereZaOdabirPrikljucnogMjesta(browserEvent) {
         let odgovor = JSON.parse(json);
         if (odgovor.features.length > 0) {
           console.log(odgovor.features);
+          odabirSaMape = false;
 
           odgovor.features.forEach(function (el) {
-            console.log("el.geometry.coordinates", el.geometry.coordinates);
+            //console.log("el.geometry.coordinates", el.geometry.coordinates);
             nizKoordinataPrikljucnihMjesta[el.properties.id] = el.geometry.coordinates;
             tempNiz.push(el);
           });
