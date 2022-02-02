@@ -173,14 +173,21 @@ function kreiranjeCqlFilteraProstorno() {
 
 /**Prikaz toast poruke. Od naslova zavisi boja, tj klasa koja se dodjeljuje */
 function poruka(naslov, tekst) {
-  let klasa = naslov.toLowerCase().trim();
-  klasa !== "uspjeh" && klasa !== "upozorenje" && klasa !== "greska" && (klasa = "obavjestenje");
-  document.querySelector("#toast").innerHTML = tekst;
-  document.querySelector("#toast").className = klasa;
-  setTimeout(function () {
-    document.querySelector("#toast").className = "";
-    document.querySelector("#toast").innerHTML = "";
-  }, 3000);
+  if (naslov.toLowerCase().trim() === "uspjeh") {
+    Swal.fire({
+      //position: "top-end",
+      icon: "success",
+      title: tekst,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  } else {
+    Swal.fire({
+      icon: "error",
+      title: naslov,
+      text: tekst,
+    });
+  }
 }
 
 /** Akcija promjene ikonice u navbaru */
