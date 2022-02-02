@@ -220,12 +220,13 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
     napon: el.values_.napon,
     vlasnistvo: el.values_.vlasnistvo,
     tip: el.values_.tip,
+    tip: el.values_.tip_pm,
     id: el.values_.id, //Vidjeti šta ovdje predajem
     layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     opstina: el.values_.opstina,
     gps: el.values_.gps,
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
-    layer_id: "", //Provjeriti da li treba da se šalje
+    layer_id: el.values_.layer_id,
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: globalUsername,

@@ -11,10 +11,13 @@ function dodajPoljaOdabranomGpxPM() {
     selectGpxFeature.set("id", document.querySelector("#id").value);
     selectGpxFeature.set("osiguraci", document.querySelector("#osiguraci").value);
     selectGpxFeature.set("tip_pm", document.querySelector("#tip_pm").value);
+    selectGpxFeature.set("tip", document.querySelector("#tip_pm").value);
     selectGpxFeature.set("br_pretplatnika", document.querySelector("#br_pretplatnika").value);
+    selectGpxFeature.set("ts", sifraNapojneTrafostanice);
     selectGpxFeature.set("sifra_napojne", sifraNapojneTrafostanice);
     selectGpxFeature.set("naziv_napojne", nazivNapojneTrafostanice);
     selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
+    selectGpxFeature.set("layer_id", 0);
     selectGpxFeature.set("korisnik", globalUsername);
     selectGpxFeature.set("vlasnik", "");
     poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
