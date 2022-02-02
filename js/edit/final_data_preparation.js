@@ -156,6 +156,7 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     celije_10: el.values_.celije_10,
     prenos_odnos: el.values_.prenos_odnos,
     id_billing: el.values_.id_billing,
+    id: el.values_.id_billing,
     izvod_celija: el.values_.izvod_celija,
     funkcija: el.values_.funkcija,
     nad_vis: el.values_.nad_vis,
@@ -180,7 +181,7 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     gps: el.values_.gps,
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
     pog_sprem: el.values_.pog_sprem,
-    layer_id: "", //Provjeriti da li treba da se šalje
+    layer_id: 0, //Provjeriti da li treba da se šalje
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: globalUsername,

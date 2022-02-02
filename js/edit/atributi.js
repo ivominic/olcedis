@@ -165,6 +165,8 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divReadInstSnagaT1").style.display = "none";
   document.querySelector("#divReadInstSnagaT2").style.display = "none";
   document.querySelector("#divReadInstSnagaT3").style.display = "none";
+  document.querySelector("#divReadInstSnagaT4").style.display = "none";
+  document.querySelector("#divReadProjekSnaga").style.display = "none";
   document.querySelector("#divReadTabela").style.display = "none";
 
   document.querySelector("#divUnosBrVodCelVisiNap").style.display = "none";
@@ -361,6 +363,8 @@ function prikaziAtributDivTrafostanice(napon) {
   document.querySelector("#divReadInstSnagaT1").style.display = "flex";
   document.querySelector("#divReadInstSnagaT2").style.display = "flex";
   document.querySelector("#divReadInstSnagaT3").style.display = "flex";
+  document.querySelector("#divReadInstSnagaT4").style.display = "flex";
+  document.querySelector("#divReadProjekSnaga").style.display = "flex";
   //document.querySelector("#divReadTabela").style.display = "flex";
   //popuniListeZaTrafostanice(napon);
 }
