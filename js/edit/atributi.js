@@ -408,7 +408,7 @@ function prikaziAtributDivPotrosac() {
   document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosFid1").style.display = "flex";
   document.querySelector("#divUnosNapojnaTs").style.display = "flex";
-  document.querySelector("#divUnosId").style.display = "flex";
+  //document.querySelector("#divUnosId").style.display = "flex";
   document.querySelector("#divUnosPrikKabal").style.display = "flex";
   document.querySelector("#divUnosPod").style.display = "flex";
   document.querySelector("#divUnosAdresaMm").style.display = "flex";
