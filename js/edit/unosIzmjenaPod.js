@@ -66,6 +66,7 @@ function generisanjeGpxPodaIzGeometrije(lat, lng, jsonPretplatnik) {
   featureTacka.set("sifra_ts", jsonPretplatnik.sifra_trafostanice);
   featureTacka.set("prik_kabal", jsonPretplatnik.provodnik_spolja + " " + jsonPretplatnik.presjek_spolja);
   featureTacka.set("pod", jsonPretplatnik.pod_na_mm);
+  featureTacka.set("status", jsonPretplatnik.status);
   featureTacka.set("adresa_mm", jsonPretplatnik.adresa_mjesta_mjerenja);
   featureTacka.set("prik_mjesto", document.querySelector("#prik_mjesto").value);
   featureTacka.set("naziv_nn_izvod", jsonPretplatnik.naziv_voda);
