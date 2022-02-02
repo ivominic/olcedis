@@ -15,6 +15,8 @@ function dodajPoljaOdabranomGpxNKRO() {
     selectGpxFeature.set("vrata", document.querySelector("#vrata").value);
     selectGpxFeature.set("br_izvoda", document.querySelector("#br_izvoda").value);
     selectGpxFeature.set("br_prikljucaka", document.querySelector("#br_prikljucaka").value);
+    selectGpxFeature.set("pog_sprem", document.querySelector("#pog_sprem").value);
+    selectGpxFeature.set("vlasnik", "test");
     selectGpxFeature.set("sifra_napojne", sifraNapojneTrafostanice);
     selectGpxFeature.set("naziv_napojne", nazivNapojneTrafostanice);
     selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);

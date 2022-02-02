@@ -398,6 +398,7 @@ function prikaziAtributDivNkro() {
   document.querySelector("#divUnosVrata").style.display = "flex";
   document.querySelector("#divUnosBrIzvoda").style.display = "flex";
   document.querySelector("#divUnosBrPrikljucaka").style.display = "flex";
+  document.querySelector("#divUnosPogSprem").style.display = "flex";
   //popuniListeZaNkro();
 }
 

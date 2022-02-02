@@ -331,6 +331,10 @@ function obaveznaPolja(sloj) {
       popunjen = false;
       borderChange(document.querySelector("#vrata"));
     }
+    if (document.querySelector("#pog_sprem").value === "") {
+      popunjen = false;
+      borderChange(document.querySelector("#pog_sprem"));
+    }
   } else if (sloj === "prikljucno_mjesto") {
     //Inputi
     /*if (document.querySelector("#fid_1").value === "") {
