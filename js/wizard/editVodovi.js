@@ -115,6 +115,8 @@ function povezivanjeVodova(pocetna, features) {
   }
   console.log("geometrija trafostanice 11111", geometrijaNapojneTrafostanice);
   console.log("trenutni geohash 222222 ", trenutniGeohash);
+  console.log("NizSvihGeometrija ", nizSvihGeometrija);
+  console.log("NizSvihGeometrija length ", nizSvihGeometrija.length);
 
   //nizSvihGeometrija.forEach((elem) => console.log("elementi početnog niza", elem.values_.name));
   //nizSvihGeometrija.forEach((elem) => console.log("geometrije početnog niza vodova", elem.values_.geometry.flatCoordinates));
@@ -183,7 +185,12 @@ function povezivanjeVodova(pocetna, features) {
               }
             }
             //Poziv metode za provjeru presjeka sa trafostanicama
-            if (nadredjenaLinijaFeature && podredjenaLinijaFeature && nadredjenaLinijaFeature !== undefined && podredjenaLinijaFeature !== undefined) {
+            if (
+              nadredjenaLinijaFeature &&
+              podredjenaLinijaFeature &&
+              nadredjenaLinijaFeature !== undefined &&
+              podredjenaLinijaFeature !== undefined
+            ) {
               presjekVodovaSaTrafostanicama(nadredjenaLinijaFeature, podredjenaLinijaFeature);
             }
           }
@@ -229,7 +236,10 @@ function povezivanjeVodova(pocetna, features) {
         //if (nizTrenutnihVodova.length === 0 && nizSvihGeometrija.length > 0) {
         if (nizSvihGeometrija.length > 0) {
           blnOnemogucitiWizard = true;
+          console.log("PREKID WIZARDA", nizSvihGeometrija);
           poruka("Upozorenje", "Postoje nepovezani vodovi");
+          alert("Postoje nepovezani vodovi");
+
           prekidWizarda();
         }
         blnPostojeNepovezaniZapisi = false;
@@ -292,7 +302,10 @@ function poveziVodove() {
       selektovaniVodoviFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
     }
   }
-  if (document.querySelector("#ddlPovezivanjeVodovaSelektovane").length === 1 && document.querySelector("#ddlPovezivanjeVodovaPronadjene").length === 0) {
+  if (
+    document.querySelector("#ddlPovezivanjeVodovaSelektovane").length === 1 &&
+    document.querySelector("#ddlPovezivanjeVodovaPronadjene").length === 0
+  ) {
     alert("Uspješno upareni svi vodovi: \n" + paroviVodova.join(",") + "\n Prelazak na sljedeći korak wizard-a");
     console.log("Uspješno upareni svi vodovi:", paroviVodova);
     //TODO: Prelazak na sljedeći korak
@@ -330,8 +343,12 @@ function presjekVodovaSaTrafostanicama(nadredjenaLinijaFeature, podredjenaLinija
 
   for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
     //Samo za trafostanice koje imaju izlaznu stavku prenos_odnos kao odabrani naponski nivo dajemo da je nadređeni izlazog voda
-    if (globalNaponskiNivoPrenosOdnos(selektovaneTrafostaniceFeatures[i].values_.prenos_odnos) === odabraniNaponskiNivo) {
-      let trafostanicaGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaneTrafostaniceFeatures[i].getGeometry()));
+    if (
+      globalNaponskiNivoPrenosOdnos(selektovaneTrafostaniceFeatures[i].values_.prenos_odnos) === odabraniNaponskiNivo
+    ) {
+      let trafostanicaGeometrija = writer.writeFeatureObject(
+        new ol.Feature(selektovaneTrafostaniceFeatures[i].getGeometry())
+      );
       if (trafostanicaGeometrija.geometry.type === "Point") {
         if (
           turf.pointToLineDistance(trafostanicaGeometrija, nadredjenaGeometrija, { units: "kilometers" }) === 0 &&
@@ -346,7 +363,10 @@ function presjekVodovaSaTrafostanicama(nadredjenaLinijaFeature, podredjenaLinija
           podredjenaLinijaFeature.values_.geohash_id_no = selektovaneTrafostaniceFeatures[i].values_.geohash_id;
         }
       } else {
-        if (turf.lineIntersect(nadredjenaGeometrija, trafostanicaGeometrija) && turf.lineIntersect(podredjenaGeometrija, trafostanicaGeometrija)) {
+        if (
+          turf.lineIntersect(nadredjenaGeometrija, trafostanicaGeometrija) &&
+          turf.lineIntersect(podredjenaGeometrija, trafostanicaGeometrija)
+        ) {
           selektovaneTrafostaniceFeatures[i].akcija = "Izmjena";
           selektovaneTrafostaniceFeatures[i].values_.geohash_id_no = nadredjenaLinijaFeature.values_.geohash_id;
           selektovaneTrafostaniceFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
@@ -358,7 +378,9 @@ function presjekVodovaSaTrafostanicama(nadredjenaLinijaFeature, podredjenaLinija
       }
     } else {
       //Ako nije - razlika samo u dijelu da podređeni vod ne dobija geohash_id_no trafostanice
-      let trafostanicaGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaneTrafostaniceFeatures[i].getGeometry()));
+      let trafostanicaGeometrija = writer.writeFeatureObject(
+        new ol.Feature(selektovaneTrafostaniceFeatures[i].getGeometry())
+      );
       if (trafostanicaGeometrija.geometry.type === "Point") {
         if (
           turf.pointToLineDistance(trafostanicaGeometrija, nadredjenaGeometrija, { units: "kilometers" }) === 0 &&
@@ -371,7 +393,10 @@ function presjekVodovaSaTrafostanicama(nadredjenaLinijaFeature, podredjenaLinija
           selektovaneTrafostaniceFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
         }
       } else {
-        if (turf.lineIntersect(nadredjenaGeometrija, trafostanicaGeometrija) && turf.lineIntersect(podredjenaGeometrija, trafostanicaGeometrija)) {
+        if (
+          turf.lineIntersect(nadredjenaGeometrija, trafostanicaGeometrija) &&
+          turf.lineIntersect(podredjenaGeometrija, trafostanicaGeometrija)
+        ) {
           selektovaneTrafostaniceFeatures[i].akcija = "Izmjena";
           selektovaneTrafostaniceFeatures[i].values_.geohash_id_no = nadredjenaLinijaFeature.values_.geohash_id;
           selektovaneTrafostaniceFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
@@ -397,7 +422,9 @@ function presjekVodovaSaTrafostanicamaPrviKorak() {
 
   for (let j = 0; j < selektovaniVodoviFeatures.length; j++) {
     for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
-      let trafostanicaGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaneTrafostaniceFeatures[i].getGeometry()));
+      let trafostanicaGeometrija = writer.writeFeatureObject(
+        new ol.Feature(selektovaneTrafostaniceFeatures[i].getGeometry())
+      );
       let vodGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaniVodoviFeatures[j].getGeometry()));
       if (trafostanicaGeometrija.geometry.type === "Point") {
         if (turf.pointToLineDistance(trafostanicaGeometrija, vodGeometrija, { units: "kilometers" }) === 0) {

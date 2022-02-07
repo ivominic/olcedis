@@ -318,6 +318,8 @@ function trafostaniceIzBilingaZaUparivanje(
       document.querySelector("#uparivanjeTxtSifraTS").textContent = sifraNapojneTrafostanice;
       //document.querySelector("#uparivanjeTxtNazivIzvodaTS").textContent = data.naziv_izvoda;
       izvodNapojneTrafostanice = data.naziv_izvoda;
+      //featureNapojnaTrafostanica = sifraNapojneTrafostanice;// Ovo treba da bude sam feature, iz kojeg se čita geometrija
+
       document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = data.naziv_napojne;
       $("#uparivanjeTxtNazivIzvodaTS").append(
         $("<option>", {

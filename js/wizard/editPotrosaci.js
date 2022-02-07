@@ -50,16 +50,26 @@ function provjeriPotrosace() {
       tempNazivTS !== selektovaniPotrosaciFeatures[i].values_.naziv_ts ||
       tempIzvodTS !== selektovaniPotrosaciFeatures[i].values_.naziv_nn_izvod
     ) {
-      !razliciteSifre.includes(selektovaniPotrosaciFeatures[i].values_.sifra_ts) && razliciteSifre.push(selektovaniPotrosaciFeatures[i].values_.sifra_ts);
-      !razlicitiIzvodi.includes(selektovaniPotrosaciFeatures[i].values_.naziv_nn_izvod) && razliciteSifre.push(selektovaniPotrosaciFeatures[i].values_.naziv_nn_izvod);
+      !razliciteSifre.includes(selektovaniPotrosaciFeatures[i].values_.sifra_ts) &&
+        razliciteSifre.push(selektovaniPotrosaciFeatures[i].values_.sifra_ts);
+      !razlicitiIzvodi.includes(selektovaniPotrosaciFeatures[i].values_.naziv_nn_izvod) &&
+        razliciteSifre.push(selektovaniPotrosaciFeatures[i].values_.naziv_nn_izvod);
       //console.log("provjeriPotrosace prekidWizarda", selektovaniPotrosaciFeatures[i]);
       retVal = false;
     }
   }
   //Ako je false, prekinuti wizard
   if (!retVal) {
-    console.log("Ne napajaju se svi sa istog izvoda trafostanice: ", razliciteSifre.join(",") + "***" + razlicitiIzvodi.join(","));
-    alert("U zahvatu se nalaze objekti koji se napajaju sa različitih izvoda \nŠifre trafostanica: " + razliciteSifre.join(",") + "\nIzvodi: " + razlicitiIzvodi.join(","));
+    console.log(
+      "Ne napajaju se svi sa istog izvoda trafostanice: ",
+      razliciteSifre.join(",") + "***" + razlicitiIzvodi.join(",")
+    );
+    alert(
+      "U zahvatu se nalaze objekti koji se napajaju sa različitih izvoda \nŠifre trafostanica: " +
+        razliciteSifre.join(",") +
+        "\nIzvodi: " +
+        razlicitiIzvodi.join(",")
+    );
     prekidWizarda();
   } else {
     sifraNapojneTrafostanice = tempSifraTS;
@@ -174,7 +184,9 @@ function povezivanjePotrosacaVodova(potrosaci, vodovi) {
   }
 
   nizSvihGeometrija.forEach((elem) => console.log("elementi početnog niza potrošači", elem.values_.name));
-  nizSvihGeometrija.forEach((elem) => console.log("geometrije početnog niza vodova potrošači", elem.values_.geometry.flatCoordinates));
+  nizSvihGeometrija.forEach((elem) =>
+    console.log("geometrije početnog niza vodova potrošači", elem.values_.geometry.flatCoordinates)
+  );
 
   while (blnPostojeNepovezaniZapisi) {
     if (nizTrenutnihVodova.length > 0) {
@@ -296,7 +308,11 @@ function nnPrenosTrafostanica(sifra, naziv, izvod) {
 
 /** Metoda koja će ispratiti logičku konektivnost svih objekata*/
 function povezivanjeNiskonaponskihObjekata() {
-  if (selektovaniPotrosaciFeatures.length === 0 || selektovaniPODoviFeatures.length === 0 || selektovanaPrikljucnaMjestaFeatures.length === 0) {
+  if (
+    selektovaniPotrosaciFeatures.length === 0 ||
+    selektovaniPODoviFeatures.length === 0 ||
+    selektovanaPrikljucnaMjestaFeatures.length === 0
+  ) {
     poruka("Upozorenje", "U zahvatu moraju postojati potrošači, PODovi i priključna mjesta.");
     return false;
   }
@@ -323,8 +339,10 @@ function povezivanjeNiskonaponskihObjekata() {
           //provjeriti logičke veze sa PODovima
           console.log(selektovaniPotrosaciFeatures[i].values_.pod, selektovaniPODoviFeatures[j].values_.pod);
           if (
-            selektovaniPotrosaciFeatures[i].getGeometry().getCoordinates()[0] === selektovaniPODoviFeatures[j].getGeometry().getCoordinates()[0] &&
-            selektovaniPotrosaciFeatures[i].getGeometry().getCoordinates()[1] === selektovaniPODoviFeatures[j].getGeometry().getCoordinates()[1]
+            selektovaniPotrosaciFeatures[i].getGeometry().getCoordinates()[0] ===
+              selektovaniPODoviFeatures[j].getGeometry().getCoordinates()[0] &&
+            selektovaniPotrosaciFeatures[i].getGeometry().getCoordinates()[1] ===
+              selektovaniPODoviFeatures[j].getGeometry().getCoordinates()[1]
           ) {
             //povezivanje potrošača i PODa, bez voda između
             selektovaniPotrosaciFeatures[i].values_.geohash_id_no = selektovaniPODoviFeatures[j].values_.geohash_id;
@@ -340,22 +358,29 @@ function povezivanjeNiskonaponskihObjekata() {
         //provjeriti vezu poda i priključnog mjesta
         if (selektovanaPrikljucnaMjestaFeatures[k].values_.id === selektovaniPODoviFeatures[j].values_.prik_mjesto) {
           if (
-            selektovanaPrikljucnaMjestaFeatures[k].getGeometry().getCoordinates()[0] === selektovaniPODoviFeatures[j].getGeometry().getCoordinates()[0] &&
-            selektovanaPrikljucnaMjestaFeatures[k].getGeometry().getCoordinates()[1] === selektovaniPODoviFeatures[j].getGeometry().getCoordinates()[1]
+            selektovanaPrikljucnaMjestaFeatures[k].getGeometry().getCoordinates()[0] ===
+              selektovaniPODoviFeatures[j].getGeometry().getCoordinates()[0] &&
+            selektovanaPrikljucnaMjestaFeatures[k].getGeometry().getCoordinates()[1] ===
+              selektovaniPODoviFeatures[j].getGeometry().getCoordinates()[1]
           ) {
-            selektovaniPODoviFeatures[j].values_.geohash_id_no = selektovanaPrikljucnaMjestaFeatures[k].values_.geohash_id;
+            selektovaniPODoviFeatures[j].values_.geohash_id_no =
+              selektovanaPrikljucnaMjestaFeatures[k].values_.geohash_id;
             selektovaniPODoviFeatures[j].akcija = "Izmjena";
             selektovaniPODoviFeatures[j].nadredjeni = true;
           } else {
             blnNepovezaniPodPM = true;
-            nepovezaniPodPM += "Priključno mjesto id=" + selektovanaPrikljucnaMjestaFeatures[k].values_.id + " nije na lokaciji poda.";
+            nepovezaniPodPM +=
+              "Priključno mjesto id=" + selektovanaPrikljucnaMjestaFeatures[k].values_.id + " nije na lokaciji poda.";
           }
         }
         for (let l = 0; l < selektovaniVodoviFeatures.length; l++) {
           gVod = writer.writeFeatureObject(new ol.Feature(selektovaniVodoviFeatures[l].getGeometry()));
           if (turf.pointToLineDistance(gPotrosac, gVod, { units: "kilometers" }) === 0) {
             if (!selektovaniPotrosaciFeatures[i].hasOwnProperty("nadredjeni")) {
-              if (turf.pointToLineDistance(gPod, gVod, { units: "kilometers" }) === 0 && selektovaniPotrosaciFeatures[i].values_.pod === selektovaniPODoviFeatures[j].values_.pod) {
+              if (
+                turf.pointToLineDistance(gPod, gVod, { units: "kilometers" }) === 0 &&
+                selektovaniPotrosaciFeatures[i].values_.pod === selektovaniPODoviFeatures[j].values_.pod
+              ) {
                 //Potrošaču nadređeni vod, vodu pod
                 selektovaniPotrosaciFeatures[i].values_.geohash_id_no = selektovaniVodoviFeatures[l].values_.geohash_id;
                 selektovaniPotrosaciFeatures[i].akcija = "Izmjena";
@@ -368,9 +393,13 @@ function povezivanjeNiskonaponskihObjekata() {
           }
           if (turf.pointToLineDistance(gPM, gVod, { units: "kilometers" }) === 0) {
             if (!selektovanaPrikljucnaMjestaFeatures[k].hasOwnProperty("nadredjeni")) {
-              if (turf.pointToLineDistance(gPM, gVod, { units: "kilometers" }) === 0 && !selektovaniVodoviFeatures[l].hasOwnProperty("nadredjeni")) {
+              if (
+                turf.pointToLineDistance(gPM, gVod, { units: "kilometers" }) === 0 &&
+                !selektovaniVodoviFeatures[l].hasOwnProperty("nadredjeni")
+              ) {
                 //Vodovi koji su nadređeni priključnim mjestima
-                selektovanaPrikljucnaMjestaFeatures[k].values_.geohash_id_no = selektovaniVodoviFeatures[l].values_.geohash_id;
+                selektovanaPrikljucnaMjestaFeatures[k].values_.geohash_id_no =
+                  selektovaniVodoviFeatures[l].values_.geohash_id;
                 selektovanaPrikljucnaMjestaFeatures[k].akcija = "Izmjena";
                 selektovanaPrikljucnaMjestaFeatures[k].nadredjeni = true;
                 selektovaniVodoviFeatures[l].nadredjeni = false;
