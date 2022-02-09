@@ -312,6 +312,8 @@ dragAndDrop.on("addfeatures", function (event) {
   console.log("aaaa", event);
   kmlLinksArray.length = 0; //Emptying array of links with  nearby objects
   let layerNameImport = vectorLayerType(event);
+  closeDiv("#atributiDiv");
+  closeDiv("#pretragaDiv");
   disableMenija();
   showDiv("#odabirNapojneTrafostaniceDiv");
 
@@ -554,8 +556,8 @@ function kreiranjeCqlFilteraAtributi() {
     (retVal += "izolator_funkcija = '" + document.querySelector("#pretraga_izolator_funkcija").value + "' AND ");
   document.querySelector("#pretraga_br_izol_faza").value !== "" &&
     (retVal += "br_izol_faza = '" + document.querySelector("#pretraga_br_izol_faza").value + "' AND ");
-  document.querySelector("#pretraga_nosaci_izolatora").value !== "" &&
-    (retVal += "nosaci_izolatora = '" + document.querySelector("#pretraga_nosaci_izolatora").value + "' AND ");
+  //document.querySelector("#pretraga_nosaci_izolatora").value !== "" &&
+  //  (retVal += "nosaci_izolatora = '" + document.querySelector("#pretraga_nosaci_izolatora").value + "' AND ");
   document.querySelector("#pretraga_odvodnik_prenapona").value !== "" &&
     (retVal += "odvodnik_prenapona = '" + document.querySelector("#pretraga_odvodnik_prenapona").value + "' AND ");
   document.querySelector("#pretraga_uzemljivac").value !== "" &&
@@ -574,8 +576,8 @@ function kreiranjeCqlFilteraAtributi() {
     (retVal += "pog_sprem = '" + document.querySelector("#pretraga_pog_sprem").value + "' AND ");
   document.querySelector("#pretraga_vlasnistvo").value !== "" &&
     (retVal += "vlasnistvo = '" + document.querySelector("#pretraga_vlasnistvo").value + "' AND ");
-  document.querySelector("#pretraga_opstina").value !== "" &&
-    (retVal += "opstina = '" + document.querySelector("#pretraga_opstina").value + "' AND ");
+  //document.querySelector("#pretraga_opstina").value !== "" &&
+  //  (retVal += "opstina = '" + document.querySelector("#pretraga_opstina").value + "' AND ");
   document.querySelector("#pretraga_napon").value !== "" &&
     (retVal += "napon = '" + document.querySelector("#pretraga_napon").value + "' AND ");
   document.querySelector("#pretraga_prikljucak_otcjep").value !== "" &&

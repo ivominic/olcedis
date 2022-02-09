@@ -65,7 +65,6 @@ function vodoviUpoligonu(napon) {
     data: {},
     success: function (response) {
       selektovaniVodoviFeatures = new ol.format.GeoJSON().readFeatures(response);
-      selektovaniVodoviFeatures3857 = new ol.format.GeoJSON().readFeatures(response);
       if (selektovaniVodoviFeatures.length === 0) {
         poruka("Upozorenje", "Nema vodova u odabranom zahvatu.");
         return false;
@@ -82,7 +81,7 @@ function vodoviUpoligonu(napon) {
 }
 
 /**
- * Metoda koja za niz feature-a i početni feature prati konektivnost i dodaje povezane objekte
+ * Metoda koja za niz feature-a i početni feature prati konektivnost i dodaje povezane objekte.
  */
 function povezivanjeVodova(pocetna, features) {
   let nadredjenaLinijaFeature, podredjenaLinijaFeature;
@@ -116,19 +115,16 @@ function povezivanjeVodova(pocetna, features) {
   console.log("geometrija trafostanice 11111", geometrijaNapojneTrafostanice);
   console.log("trenutni geohash 222222 ", trenutniGeohash);
   console.log("NizSvihGeometrija ", nizSvihGeometrija);
-  console.log("NizSvihGeometrija length ", nizSvihGeometrija.length);
 
   //nizSvihGeometrija.forEach((elem) => console.log("elementi početnog niza", elem.values_.name));
   //nizSvihGeometrija.forEach((elem) => console.log("geometrije početnog niza vodova", elem.values_.geometry.flatCoordinates));
 
   while (blnPostojeNepovezaniZapisi) {
-    //
     if (nizTrenutnihVodova.length > 0) {
       //trenutnaGJ = writer.writeFeatureObject(new ol.Feature(nizTrenutnihVodova[0].getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
       trenutnaGJ = writer.writeFeatureObject(new ol.Feature(nizTrenutnihVodova[0].getGeometry()));
       console.log("vod za koji tražimo podređene vodove", nizTrenutnihVodova[0].values_.name);
       trenutniGeohash = nizTrenutnihVodova[0].values_.geohash_id;
-      console.log(nizTrenutnihVodova[0].values_.name, nizTrenutnihVodova[0].values_.geohash_id);
       for (let j = 0; j < features.length; j++) {
         if (features[j].id_ === nizTrenutnihVodova[0].id_) {
           nadredjenaLinijaFeature = features[j];
@@ -139,6 +135,13 @@ function povezivanjeVodova(pocetna, features) {
       //let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(nizSvihGeometrija[i].getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
       let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(nizSvihGeometrija[i].getGeometry()));
       //Ne postoji funkcija za presjek linije i tačke pa se, ukoliko je prva linija tačka, koristi provjera da je udaljenost = 0
+      let presjektElemenata = false;
+      if (trenutnaGJ.geometry.type === "Point") {
+        presjektElemenata = turf.pointToLineDistance(trenutnaGJ, pojedinacnaLinijaTurf, { units: "kilometers" }) === 0;
+      } else {
+        presjektElemenata = turf.lineIntersect(pojedinacnaLinijaTurf, trenutnaGJ).features.length > 0;
+      }
+
       if (trenutnaGJ.geometry.type === "Point") {
         if (turf.pointToLineDistance(trenutnaGJ, pojedinacnaLinijaTurf, { units: "kilometers" }) === 0) {
           if (nizObradjenihVodova.indexOf(nizSvihGeometrija[i]) < 0) {
@@ -202,24 +205,6 @@ function povezivanjeVodova(pocetna, features) {
     for (let i = 0; i < nizPodredjenihVodova.length; i++) {
       let indexElementaZaUklanjanje = nizSvihGeometrija.indexOf(nizPodredjenihVodova[i]);
       if (indexElementaZaUklanjanje >= 0) {
-        //Prikazuje par vodova koji se nadovezuju
-        if (nizTrenutnihVodova.length === 0) {
-          console.log("pocetna trafostanica", nizSvihGeometrija[indexElementaZaUklanjanje].values_.name);
-        } else {
-          console.log(nizTrenutnihVodova[0].values_.name, nizSvihGeometrija[indexElementaZaUklanjanje].values_.name);
-          /*for (let j = 0; j < features.length; j++) {
-            if (features[j].id_ === nizSvihGeometrija[indexElementaZaUklanjanje].id_) {
-              console.log("features_id", features[j].id_);
-              console.log(features[j], nizSvihGeometrija[indexElementaZaUklanjanje]);
-              features[j].akcija = "Izmjena";
-              features[j].values_.geohash_id_no = trenutniGeohash;
-              features[j].values_.naziv_napojne = nazivNapojneTrafostanice;
-              features[j].values_.sifra_napojne = sifraNapojneTrafostanice;
-              features[j].values_.izvod_napojne = izvodNapojneTrafostanice;
-            }
-          }*/
-        }
-
         nizSvihGeometrija.splice(indexElementaZaUklanjanje, 1);
       }
     }
@@ -232,11 +217,8 @@ function povezivanjeVodova(pocetna, features) {
       nizTrenutnihVodova = nizPodredjenihVodova.slice();
       nizPodredjenihVodova.length = 0;
       if (nizTrenutnihVodova.length == 0) {
-        //Trebalo bi zamijeniti ovom if komandom:
-        //if (nizTrenutnihVodova.length === 0 && nizSvihGeometrija.length > 0) {
         if (nizSvihGeometrija.length > 0) {
           blnOnemogucitiWizard = true;
-          console.log("PREKID WIZARDA", nizSvihGeometrija);
           poruka("Upozorenje", "Postoje nepovezani vodovi");
           alert("Postoje nepovezani vodovi");
 
@@ -257,8 +239,6 @@ function povezivanjeVodova(pocetna, features) {
     }
   }
 }
-
-//TODO: Ako preostanu neupareni vodovi, šta raditi
 
 /**
  * Metoda koja vrši uparivanje vodova iz dvije padajuće liste

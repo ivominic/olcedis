@@ -79,6 +79,22 @@ function objectsFinalInsert(objects, methodName) {
  * @param {*} nkro
  */
 function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucna_mjesta, potrosaci, nkro) {
+  if (
+    !(
+      stubovi.length +
+      vodovi.length +
+      trafostanice.length +
+      podovi.length +
+      prikljucna_mjesta.length +
+      potrosaci.length +
+      nkro.length
+    )
+  ) {
+    poruka("Upozorenje", "Ne postoje objekti za unos.");
+    return false;
+  }
+  {
+  }
   let retval = true;
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/object_control";
   console.log("stubovi insert all objects   ", JSON.stringify(stubovi));

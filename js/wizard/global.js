@@ -78,7 +78,6 @@ let selektovaniStuboviFeatures = []; //Stubovi u zahvatu poligona
 let selektovaniNKROFeatures = []; //NKRO u zahvatu poligona
 let selektovanaPrikljucnaMjestaFeatures = []; //Priključna mjesta u zahvatu poligona
 let selektovaniPODoviFeatures = []; //PODovi mjesta u zahvatu poligona
-let selektovaniVodoviFeatures3857 = []; //U drugom koordinatnom sistemu
 let odabraniLejerUnos = ""; //Mijenja se na meni za unos podataka
 
 let isModifyDisabled = false; //Ne koristi se. Da onemogući izmjenu pozicije tačaka nakon iscrtavanja voda.
