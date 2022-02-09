@@ -97,6 +97,8 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
                 vectorSource.addFeatures([noviEl]);
               }
 
+              console.log("POTROŠAČ ZA STIL", noviEl);
+
               let ddlTemp = document.querySelector("#prik_mjesto").value;
               generisanjeGpxPodaIzGeometrije(
                 nizKoordinataPrikljucnihMjesta[ddlTemp][0],
@@ -107,7 +109,7 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
           });
           poruka("Uspjeh", "Uspješno kreirani potrošači");
         });
-        izbrisiFeatureIzVektora(selFeature);
+        //izbrisiFeatureIzVektora(selFeature);
       }
     } else if (result.isDenied) {
       //Swal.fire("Odbijeno", "", "error");
