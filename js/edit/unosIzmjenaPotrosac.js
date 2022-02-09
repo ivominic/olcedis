@@ -97,8 +97,6 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
                 vectorSource.addFeatures([noviEl]);
               }
 
-              console.log("POTROŠAČ ZA STIL", noviEl);
-
               let ddlTemp = document.querySelector("#prik_mjesto").value;
               generisanjeGpxPodaIzGeometrije(
                 nizKoordinataPrikljucnihMjesta[ddlTemp][0],
