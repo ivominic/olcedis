@@ -52,9 +52,9 @@ let wmsTrafostanice = new ol.layer.Image({
   }),
 });
 
-let layernameTSpoligoni = "trafostanicePoligoni",
-  fulllayernameTSpoligoni = "geonode:trafostanicePoligoni",
-  layertitleTSpoligoni = "trafostanicePoligoni";
+let layernameTSpoligoni = "trafostanice_poligoni",
+  fulllayernameTSpoligoni = "geonode:trafostanice_poligoni",
+  layertitleTSpoligoni = "trafostanice_poligoni";
 let tipGeometrijeTSpoligoni = polygon;
 
 let wmsTrafostanicePoligoni = new ol.layer.Image({
