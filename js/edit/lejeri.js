@@ -52,6 +52,24 @@ let wmsTrafostanice = new ol.layer.Image({
   }),
 });
 
+let layernameTSpoligoni = "trafostanicePoligoni",
+  fulllayernameTSpoligoni = "geonode:trafostanicePoligoni",
+  layertitleTSpoligoni = "trafostanicePoligoni";
+let tipGeometrijeTSpoligoni = polygon;
+
+let wmsTrafostanicePoligoni = new ol.layer.Image({
+  title: layertitleTSpoligoni,
+  name: layernameTSpoligoni,
+  source: new ol.source.ImageWMS({
+    url: wmsUrl,
+    params: {
+      LAYERS: fulllayernameTSpoligoni,
+    },
+    ratio: 1,
+    serverType: "geoserver",
+  }),
+});
+
 let layernamePotrosaci = "view_potrosaci",
   fulllayernamePotrosaci = "geonode:view_potrosaci",
   layertitlePotrosaci = "view_potrosaci";
@@ -127,6 +145,7 @@ let wmsPOD = new ol.layer.Image({
 map.addLayer(wmsStubovi);
 map.addLayer(wmsVodovi);
 map.addLayer(wmsTrafostanice);
+map.addLayer(wmsTrafostanicePoligoni);
 map.addLayer(wmsPotrosaci);
 map.addLayer(wmsPrikljucnoMjesto);
 map.addLayer(wmsNKRO);
@@ -170,6 +189,7 @@ function pocetniFilter() {
         wmsVodovi.setVisible(false);
       } else if (el === "10") {
         wmsTrafostanice.setVisible(false);
+        wmsTrafostanicePoligoni.setVisible(false);
       } else if (el === "11") {
         wmsPrikljucnoMjesto.setVisible(false);
       } else if (el === "12") {
