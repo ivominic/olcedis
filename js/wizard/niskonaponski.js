@@ -137,7 +137,8 @@ function povezivanjeNnVodovaTopDown(pocetna, features) {
   }
 }
 
-/**Metoda koja će svim trafostanicama dati da je geohash_id_no vrijednost iz voda koji je siječe. U metodi presjekVodovaSaTrafostanicama() se obrađuje slučaj kad više vodova presijeca istu trafostanicu */
+/**Metoda koja će svim trafostanicama dati da je geohash_id_no vrijednost iz voda koji je siječe.
+ *U metodi presjekVodovaSaTrafostanicama() se obrađuje slučaj kad više vodova presijeca istu trafostanicu */
 function presjekVodovaSaPotrosacimaPocetni() {
   let writer = new ol.format.GeoJSON();
 

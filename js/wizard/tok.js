@@ -3,6 +3,7 @@ let drugiKorakWizarda = "Odabir napojne trafostanice";
 let treciKorakWizarda = "Uparivanje trafostanica";
 let cetvrtiKorakWizarda = "Uparivanje vodova";
 let blnOnemogucitiWizard = false; //Promjenljiva koja pokazuje da li treba blokirati wizard zbog nepoklapanja podataka
+let blnPrikazPorukeOPrekidu = true; //Promjenljiva dobija vrijednost false, nakon prikaza prve poruke o prekidu
 
 document.querySelector("#wizard").addEventListener("click", prikazWizardForme);
 document.querySelector("#btnWizardNext").addEventListener("click", wizardNext);
@@ -92,7 +93,8 @@ function wizardNext() {
       }
     } else {
       if (odabraniNaponskiNivo === 0.4 && selektovaniPotrosaciFeatures.length === 0) {
-        poruka("Uspjeh", "U selektovanom zahvatu ne postoji nijedan potrošač.");
+        blnPrikazPorukeOPrekidu && poruka("Uspjeh", "U selektovanom zahvatu ne postoji nijedan potrošač.");
+        blnPrikazPorukeOPrekidu = false;
       }
     }
     //povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
@@ -102,7 +104,8 @@ function wizardNext() {
 
     if (
       !blnOnemogucitiWizard &&
-      (document.querySelector("#ddlPovezivanjeVodovaSelektovane").length > 1 || document.querySelector("#ddlPovezivanjeVodovaPronadjene").length !== 0)
+      (document.querySelector("#ddlPovezivanjeVodovaSelektovane").length > 1 ||
+        document.querySelector("#ddlPovezivanjeVodovaPronadjene").length !== 0)
     ) {
       //blnOnemogucitiWizard = true;
       //poruka("Upozorenje", "Nisu upareni svi vodovi");
@@ -111,7 +114,9 @@ function wizardNext() {
 
     if (blnOnemogucitiWizard) {
       prekidWizarda();
-      alert("Potrebno je otkloniti uočene nedostatke da bi podaci mogli biti sačuvani.");
+      blnPrikazPorukeOPrekidu &&
+        poruka("Upozorenje", "Potrebno je otkloniti uočene nedostatke da bi podaci mogli biti sačuvani.");
+      blnPrikazPorukeOPrekidu = false;
     } else {
       finalniKorakWizarda();
     }
@@ -119,7 +124,10 @@ function wizardNext() {
 }
 
 function prikaziCetvrtuFormuWizarda() {
-  if (document.querySelector("#ddlPovezivanjeTSselektovane").length > 1 || document.querySelector("#ddlPovezivanjeTSpronadjene").length > 0) {
+  if (
+    document.querySelector("#ddlPovezivanjeTSselektovane").length > 1 ||
+    document.querySelector("#ddlPovezivanjeTSpronadjene").length > 0
+  ) {
     poruka("Upozorenje", "Nisu uparene sve trafostanice iz oba sistema");
     return false;
   }
