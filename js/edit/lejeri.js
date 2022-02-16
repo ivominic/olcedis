@@ -144,8 +144,8 @@ let wmsPOD = new ol.layer.Image({
 
 map.addLayer(wmsStubovi);
 map.addLayer(wmsVodovi);
-map.addLayer(wmsTrafostanice);
 map.addLayer(wmsTrafostanicePoligoni);
+map.addLayer(wmsTrafostanice);
 map.addLayer(wmsPotrosaci);
 map.addLayer(wmsPrikljucnoMjesto);
 map.addLayer(wmsNKRO);

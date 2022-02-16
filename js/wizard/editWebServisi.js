@@ -730,3 +730,28 @@ function readRadius() {
     },
   });
 }
+
+/**
+ * Method that fills ddl_sloj_podataka depending on powerLevel.
+ * @param {*} powerLevel
+ */
+function availableLayersPerPowerLevel(powerLevel) {
+  $("#ddl_sloj_podataka").empty();
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/slojevi?nivo=" + powerLevel;
+  urlServisa += "&t=" + Date.now();
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "POST",
+    success: function (data) {
+      console.log("DATA spisakLejeraZaNaponskiNivo", data);
+      data.slojevi.forEach((item) => {
+        fillDdl("ddl_sloj_podataka", item.slug, item.naziv);
+      });
+    },
+    error: function (x, y, z) {
+      console.log("Greska", x.responseJSON["error"]);
+      poruka("Greska", x.responseJSON["error"]);
+    },
+  });
+}
