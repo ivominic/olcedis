@@ -327,6 +327,7 @@ dragAndDrop.on("addfeatures", function (event) {
     feature.set("napon", naponskiNivoNapojneTrafostanice);
     if (!isEditable) {
       //if (feature.getGeometry().getType().toString().includes("oint")) {
+      //TODO: ovo zakomentarisati. Pravi probleme za veći fajl.
       objectNearKmlFeature(feature, "stubovi");
       objectNearKmlFeature(feature, "trafostanice");
       objectNearKmlFeature(feature, "vodovi");

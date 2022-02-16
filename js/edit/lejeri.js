@@ -165,9 +165,7 @@ function pocetniFilter() {
   let cql_param = unescape(url.searchParams.get("cql_param"));
   let cql_opstina = unescape(url.searchParams.get("cql_opstina"));
   let cql_nivo = unescape(url.searchParams.get("cql_nivo"));
-  console.log("INACTIVE_LAYERS PRIJE UNESCAPE", url.searchParams.get("inactive_layers"));
   let inactive_layers = unescape(url.searchParams.get("inactive_layers"));
-  console.log("INACTIVE_LAYERS", inactive_layers);
   let geohash_test = unescape(url.searchParams.get("geohash_id"));
 
   if (cql_opstina === "null") {
