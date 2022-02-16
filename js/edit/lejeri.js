@@ -165,7 +165,9 @@ function pocetniFilter() {
   let cql_param = unescape(url.searchParams.get("cql_param"));
   let cql_opstina = unescape(url.searchParams.get("cql_opstina"));
   let cql_nivo = unescape(url.searchParams.get("cql_nivo"));
+  console.log("INACTIVE_LAYERS PRIJE UNESCAPE", url.searchParams.get("inactive_layers"));
   let inactive_layers = unescape(url.searchParams.get("inactive_layers"));
+  console.log("INACTIVE_LAYERS", inactive_layers);
   let geohash_test = unescape(url.searchParams.get("geohash_id"));
 
   if (cql_opstina === "null") {
@@ -184,20 +186,28 @@ function pocetniFilter() {
     arr.forEach((el) => {
       console.log("niz inaktivnih elemenata", el);
       if (el === "8") {
-        wmsStubovi.setVisible(false);
+        document.querySelector("#lejer_stubovi").click();
+        //wmsStubovi.setVisible(false);
       } else if (el === "9") {
-        wmsVodovi.setVisible(false);
+        document.querySelector("#lejer_vodovi").click();
+        //wmsVodovi.setVisible(false);
       } else if (el === "10") {
-        wmsTrafostanice.setVisible(false);
-        wmsTrafostanicePoligoni.setVisible(false);
+        document.querySelector("#lejer_trafostanice").click();
+        document.querySelector("#lejer_trafostanice_poligoni").click();
+        //wmsTrafostanice.setVisible(false);
+        //wmsTrafostanicePoligoni.setVisible(false);
       } else if (el === "11") {
-        wmsPrikljucnoMjesto.setVisible(false);
+        document.querySelector("#lejer_prikljucno_mjesto").click();
+        //wmsPrikljucnoMjesto.setVisible(false);
       } else if (el === "12") {
-        wmsPotrosaci.setVisible(false);
+        document.querySelector("#lejer_potrosac").click();
+        //wmsPotrosaci.setVisible(false);
       } else if (el === "13") {
-        wmsPOD.setVisible(false);
+        document.querySelector("#lejer_pod").click();
+        //wmsPOD.setVisible(false);
       } else if (el === "14") {
-        wmsNKRO.setVisible(false);
+        document.querySelector("#lejer_nkro").click();
+        //wmsNKRO.setVisible(false);
       }
     });
   }
