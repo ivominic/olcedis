@@ -297,8 +297,14 @@ let dragAndDrop = new ol.interaction.DragAndDrop({
 });
 dragAndDrop.on("addfeatures", function (event) {
   console.log("aaaa", event.features);
+  featurePolygonOverlay.getSource().addFeatures(event.features);
   event.features.forEach(function (feature) {
     let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
+    let tempWkt = wktGeometrije(feature);
+    if (tempWkt.includes("POLYGON")) {
+      poligoni.push(tempWkt);
+      //Dodavanje poligona iz prevučenog fajla u skup poligona na osnovu kojeg se vrši filtriranje
+    }
     nizKml.push({
       lat: position[1],
       lng: position[0],
