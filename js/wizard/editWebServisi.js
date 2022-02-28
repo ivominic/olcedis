@@ -44,27 +44,13 @@ function neupareneTrafostanice(sifraNapojne, izvodNapojne) {
  * Metoda koja za predatu šifru iz bilinga trafostanice vrati geometriju trafostanice
  * @param {id_billing vrijednost iz GIS-a} sifraTS
  */
-function geometrijaTrafostanice(sifraTS) {
-  let retval = "";
+async function geometrijaTrafostanice(sifraTS) {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice_data?sifra=" + sifraTS;
   urlServisa += "&t=" + Date.now();
-  $.ajax({
+  return $.ajax({
     url: urlServisa,
     data: "",
     type: "GET",
-    success: function (data) {
-      console.log("detalji trafostanica, odgovor servisa", data);
-      if (data) {
-        //Popuniti polja - TESTIRATI
-        retval = data.the_geom;
-        return retval;
-      }
-    },
-    error: function (x, y, z) {
-      //alert(x.responseText +"  " +x.status);
-      console.log("greška popuniDdlAtributima", x.responseText);
-      return retval;
-    },
   });
 }
 

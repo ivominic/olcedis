@@ -499,10 +499,16 @@ function insertFinalniKorakNiskonaponskiObjekti() {
 /**
  * Metoda koja provjerava da li postoji niskonaponski vod iz trafostanice. Ako postoji radi provjeru top down
  */
-function provjeriVodIzTrafostanice() {
+async function provjeriVodIzTrafostanice() {
   //Ova metoda daje geometriju napojne trafostanice za niski naponski nivo
   sifraNapojneTrafostanice = srediSifruTrafostanice(sifraNapojneTrafostanice);
-  geometrijaNapojneTrafostanice = geometrijaTrafostanice(sifraNapojneTrafostanice);
+  console.log("SIFRAAAAA!!!!!!", sifraNapojneTrafostanice);
+  let resp = await geometrijaTrafostanice(sifraNapojneTrafostanice);
+  console.log("RESP!!!!!", resp[0]);
+  if (resp && resp[0]) {
+    geometrijaNapojneTrafostanice = resp[0].the_geom;
+  }
+  console.log("Sifra i geometrija napojne TS!!!!!", sifraNapojneTrafostanice, geometrijaNapojneTrafostanice);
 
   let writer = new ol.format.GeoJSON();
   let format = new ol.format.WKT();
@@ -518,6 +524,7 @@ function provjeriVodIzTrafostanice() {
   }
   if (blnTopDown) {
     //Top down
+    //TODO: OVAJ PRAVAC TREBA NAPRAVITI
   } else {
     //Bottom up
     povezivanjeNiskonaponskihObjekata();
