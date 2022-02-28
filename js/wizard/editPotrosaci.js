@@ -41,6 +41,7 @@ function provjeriPotrosace() {
   let tempSifraTS = selektovaniPotrosaciFeatures[0].values_.sifra_ts,
     tempNazivTS = selektovaniPotrosaciFeatures[0].values_.naziv_ts,
     tempIzvodTS = selektovaniPotrosaciFeatures[0].values_.naziv_nn_izvod;
+
   razliciteSifre.push(tempSifraTS);
   razlicitiIzvodi.push(tempIzvodTS);
   //Provjera da li neki od potrošača ima različit izvod ili trafostanicu od početnog potrošača
@@ -62,8 +63,9 @@ function provjeriPotrosace() {
   if (!retVal) {
     console.log(
       "Ne napajaju se svi sa istog izvoda trafostanice: ",
-      razliciteSifre.join(",") + "***" + razlicitiIzvodi.join(",")
+      razliciteSifre.join(",") + " *** " + tempNazivTS + " **** " + tempIzvodTS
     );
+    console.log("Inicijalni podaci: ", tempSifraTS + "****" + razlicitiIzvodi.join(","));
     alert(
       "U zahvatu se nalaze objekti koji se napajaju sa različitih izvoda \nŠifre trafostanica: " +
         razliciteSifre.join(",") +
