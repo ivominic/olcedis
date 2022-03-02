@@ -741,3 +741,31 @@ function availableLayersPerPowerLevel(powerLevel) {
     },
   });
 }
+
+/**
+ * Metoda koja za odabranu napojnu trafostanicu i izvod popunjava listu šiframa dionica vodova iz odabrnog izvoda.
+ * @param {*} nazivTs
+ * @param {*} sifraTs
+ * @param {*} izvodTs
+ */
+function sifreDionicaVodova(nazivTs, sifraTs, izvodTs) {
+  $("#sifra_dionice").empty();
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/dionice?naziv_napojne_ts=" + nazivTs;
+  urlServisa += "&sifra_napojne_ts=" + sifraTs + "&izvod_napojne_ts=" + izvodTs;
+  urlServisa += "&t=" + Date.now();
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "GET",
+    success: function (data) {
+      console.log("DATA sifreDionicaVodova", data);
+      data.dionice.forEach((item) => {
+        fillDdl("sifra_dionice", item.sifra_dionice, item.sifra_dionice);
+      });
+    },
+    error: function (x, y, z) {
+      console.log("Greska", x.responseJSON["error"]);
+      poruka("Greska", x.responseJSON["error"]);
+    },
+  });
+}

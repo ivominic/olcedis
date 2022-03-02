@@ -329,6 +329,7 @@ function potvrdaNapojneTrafostaniceUnos() {
   if (!isEditable) {
     showConnectForm();
   }
+  sifreDionicaVodova(nazivNapojneTrafostanice, sifraNapojneTrafostanice, izvodNapojneTrafostanice);
   availableLayersPerPowerLevel(filePowerLevel);
   neupareneTrafostanice(sifraNapojneTrafostanice, izvodNapojneTrafostanice);
 }
