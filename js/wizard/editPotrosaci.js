@@ -501,12 +501,14 @@ function insertFinalniKorakNiskonaponskiObjekti() {
  */
 async function provjeriVodIzTrafostanice() {
   //Ova metoda daje geometriju napojne trafostanice za niski naponski nivo
+  let blnNepovezanaTrafostanica = true; //Označava da iz trafostanice ne izlazi nijedan vod
   sifraNapojneTrafostanice = srediSifruTrafostanice(sifraNapojneTrafostanice);
   console.log("SIFRAAAAA!!!!!!", sifraNapojneTrafostanice);
   let resp = await geometrijaTrafostanice(sifraNapojneTrafostanice);
   console.log("RESP!!!!!", resp[0]);
   if (resp && resp[0]) {
     geometrijaNapojneTrafostanice = resp[0].the_geom;
+    resp.length > 1 && alert("U sistemu nađeno " + resp.length + " napojnih trafostanica za odabrani reon.");
   }
   console.log("Sifra i geometrija napojne TS!!!!!", sifraNapojneTrafostanice, geometrijaNapojneTrafostanice);
 
@@ -519,14 +521,26 @@ async function provjeriVodIzTrafostanice() {
     //let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(nizSvihGeometrija[i].getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
     let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(selektovaniVodoviFeatures[i].getGeometry()));
     if (turf.pointToLineDistance(tsGeometrija, pojedinacnaLinijaTurf, { units: "kilometers" }) === 0) {
-      blnTopDown = true;
+      //blnTopDown = true;
+      console.log("Pronađeno", tsGeometrija.geometry.coordinates, pojedinacnaLinijaTurf.geometry.coordinates.join(";"));
+      blnNepovezanaTrafostanica = false;
     }
   }
-  if (blnTopDown) {
+  console.log("TOP DOWN", selektovaniVodoviFeatures);
+  if (blnNepovezanaTrafostanica) {
+    alert("Trafostanica nije povezana sa vodovima iz zahvata.");
+  } else {
+    console.log("Nastavak rada na niskonaponskom nivou");
+    povezivanjeNnVodovaTopDown(tsGeometrija, selektovaniVodoviFeatures);
+  }
+
+  //Odustalo se od bottom up pristupa
+  /*if (blnTopDown) {
     //Top down
     //TODO: OVAJ PRAVAC TREBA NAPRAVITI
+    
   } else {
     //Bottom up
     povezivanjeNiskonaponskihObjekata();
-  }
+  }*/
 }
