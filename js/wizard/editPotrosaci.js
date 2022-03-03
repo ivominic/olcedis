@@ -508,6 +508,7 @@ async function provjeriVodIzTrafostanice() {
   console.log("RESP!!!!!", resp[0]);
   if (resp && resp[0]) {
     geometrijaNapojneTrafostanice = resp[0].the_geom;
+    geohashNapojneTrafostanice = resp[0].geohash_id;
     resp.length > 1 && alert("U sistemu nađeno " + resp.length + " napojnih trafostanica za odabrani reon.");
   }
   console.log("Sifra i geometrija napojne TS!!!!!", sifraNapojneTrafostanice, geometrijaNapojneTrafostanice);
@@ -531,7 +532,7 @@ async function provjeriVodIzTrafostanice() {
     alert("Trafostanica nije povezana sa vodovima iz zahvata.");
   } else {
     console.log("Nastavak rada na niskonaponskom nivou");
-    povezivanjeNnVodovaTopDown(tsGeometrija, selektovaniVodoviFeatures);
+    povezivanjeNnVodovaTopDown(null, selektovaniVodoviFeatures);
   }
 
   //Odustalo se od bottom up pristupa

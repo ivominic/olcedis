@@ -402,6 +402,7 @@ function nnGeometrijaTrafostanica(sifraOdabraneNapojneTS, nazivOdabranaNapojneTS
     data: "",
     type: "GET",
     success: function (data) {
+      console.log("ODGOVOR SERVISA nnGeometrijaTrafostanica", data);
       console.log("geometrija napojne TS", data.geometrija_napojne);
       console.log("geohash napojne TS", data.geohash_napojne);
       geometrijaNapojneTrafostanice = data.geometrija_napojne;

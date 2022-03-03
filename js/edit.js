@@ -486,7 +486,7 @@ function ponisti() {
   restartovanje();
 }
 
-function brisanje() {
+/*function brisanjeBaza() {
   let podaciForme = new FormData();
   podaciForme.append("id", idObjekta);
   let xhr = new XMLHttpRequest();
@@ -515,7 +515,7 @@ function brisanje() {
       }
     }
   };
-}
+}*/
 
 /* Filter wms-a po prostornim i atributskim podacima*/
 function filtriranje() {
