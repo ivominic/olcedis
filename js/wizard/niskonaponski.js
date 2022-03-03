@@ -13,36 +13,8 @@ function povezivanjeNnVodovaTopDown(pocetna, features) {
   let writer = new ol.format.GeoJSON();
   let trenutnaGJ;
   let trenutniGeohash;
-  let nizNepovezanihPotrosaca = [];
   console.log("pocetni objekat", pocetna);
   console.log("pocetne linije", features);
-
-  //Metoda koja svim potrošačima dodjeljuje geohash_id_no od voda koji ga siječe
-  presjekVodovaSaPotrosacimaPocetni();
-
-  for (let i = 0; i < selektovaniPotrosaciFeatures.length; i++) {
-    if (!selektovaniPotrosaciFeatures[i].povezanost || selektovaniPotrosaciFeatures[i].povezanost !== true) {
-      nizNepovezanihPotrosaca.push(selektovaniPotrosaciFeatures[i]);
-    }
-  }
-
-  if (nizNepovezanihPotrosaca.length > 0) {
-    alert("Postoje nepovezani potrošači");
-    blnOnemogucitiWizard = true;
-    //poruka("Upozorenje", "Postoje nepovezani vodovi");
-    prekidWizarda();
-    let vektorNeupareniPotrosaci1 = new ol.layer.Vector({
-      source: new ol.source.Vector({
-        features: nizNepovezanihPotrosaca,
-      }),
-      style: vectorStyleUnmatched,
-    });
-    map.addLayer(vektorNeupareniPotrosaci1);
-    brisanje();
-    return false;
-  }
-
-  console.log("POTROSACI!!!!!  ", selektovaniPotrosaciFeatures);
 
   if (!pocetna || pocetna === undefined) {
     //napraviti geometriju iz promjenljivih: geometrijaNapojneTrafostanice i geohashNapojneTrafostanice
@@ -77,7 +49,7 @@ function povezivanjeNnVodovaTopDown(pocetna, features) {
       //let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(nizSvihGeometrija[i].getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
       let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(nizSvihGeometrija[i].getGeometry()));
       //Ne postoji funkcija za presjek linije i tačke pa se, ukoliko je prva linija tačka, koristi provjera da je udaljenost = 0
-      console.log("trenutnaGJ", trenutnaGJ);
+      //console.log("trenutnaGJ", trenutnaGJ);
       if (trenutnaGJ.geometry.type === "Point") {
         if (turf.pointToLineDistance(trenutnaGJ, pojedinacnaLinijaTurf, { units: "kilometers" }) === 0) {
           if (nizObradjenihVodova.indexOf(nizSvihGeometrija[i]) < 0) {
@@ -161,6 +133,13 @@ function povezivanjeNnVodovaTopDown(pocetna, features) {
       }
     }
   }
+
+  console.log("POTROSACI!!!!!  ", selektovaniPotrosaciFeatures);
+  //Metoda koja svim potrošačima dodjeljuje geohash_id_no od voda koji ga siječe
+  presjekVodovaSaPotrosacimaPocetni();
+  presjekVodovaSaPodIPrikljMj();
+  prekidZbogNepovezanostiObjekataNn();
+  console.log("KRAJ");
 }
 
 /**Metoda koja će svim trafostanicama dati da je geohash_id_no vrijednost iz voda koji je siječe.
@@ -170,12 +149,10 @@ function presjekVodovaSaPotrosacimaPocetni() {
 
   for (let j = 0; j < selektovaniVodoviFeatures.length; j++) {
     for (let i = 0; i < selektovaniPotrosaciFeatures.length; i++) {
-      let ptrosacGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaniPotrosaciFeatures[i].getGeometry()));
+      let potrosacGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaniPotrosaciFeatures[i].getGeometry()));
       let vodGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaniVodoviFeatures[j].getGeometry()));
-      if (turf.pointToLineDistance(ptrosacGeometrija, vodGeometrija, { units: "kilometers" }) === 0) {
-        console.log("POVEZANOS POTROŠAČA I VODOVA");
-        console.log(selektovaniPotrosaciFeatures[i], selektovaniVodoviFeatures[j]);
-        selektovaniPotrosaciFeatures[i].povezanost = true;
+      if (turf.pointToLineDistance(potrosacGeometrija, vodGeometrija, { units: "kilometers" }) === 0) {
+        selektovaniPotrosaciFeatures[i].povezanostVod = true;
         selektovaniPotrosaciFeatures[i].akcija = "Izmjena";
         selektovaniPotrosaciFeatures[i].values_.geohash_id_no = selektovaniVodoviFeatures[j].values_.geohash_id;
       }
@@ -205,4 +182,85 @@ function presjekVodovaSaPrikljucnimMjestima(nadredjenaLinijaFeature, podredjenaL
       podredjenaLinijaFeature.values_.geohash_id_no = selektovanaPrikljucnaMjestaFeatures[i].values_.geohash_id;
     }
   }
+}
+
+function presjekVodovaSaPodIPrikljMj() {
+  let writer = new ol.format.GeoJSON();
+
+  for (let j = 0; j < selektovaniVodoviFeatures.length; j++) {
+    for (let i = 0; i < selektovaniPODoviFeatures.length; i++) {
+      let podGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaniPODoviFeatures[i].getGeometry()));
+      let vodGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaniVodoviFeatures[j].getGeometry()));
+      if (turf.pointToLineDistance(podGeometrija, vodGeometrija, { units: "kilometers" }) === 0) {
+        selektovaniPODoviFeatures[i].povezanostVod = true;
+        selektovaniPODoviFeatures[i].akcija = "Izmjena";
+        //selektovaniPODoviFeatures[i].values_.geohash_id_no = selektovaniVodoviFeatures[j].values_.geohash_id;
+      }
+    }
+
+    for (let i = 0; i < selektovanaPrikljucnaMjestaFeatures.length; i++) {
+      let pmGeometrija = writer.writeFeatureObject(
+        new ol.Feature(selektovanaPrikljucnaMjestaFeatures[i].getGeometry())
+      );
+      let vodGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaniVodoviFeatures[j].getGeometry()));
+      if (turf.pointToLineDistance(pmGeometrija, vodGeometrija, { units: "kilometers" }) === 0) {
+        selektovanaPrikljucnaMjestaFeatures[i].povezanostVod = true;
+        selektovanaPrikljucnaMjestaFeatures[i].akcija = "Izmjena";
+        //selektovanaPrikljucnaMjestaFeatures[i].values_.geohash_id_no = selektovaniVodoviFeatures[j].values_.geohash_id;
+      }
+    }
+  }
+
+  for (let j = 0; j < selektovanaPrikljucnaMjestaFeatures.length; j++) {
+    for (let i = 0; i < selektovaniPODoviFeatures.length; i++) {
+      let podGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaniPODoviFeatures[i].getGeometry()));
+      let pmGeometrija = writer.writeFeatureObject(
+        new ol.Feature(selektovanaPrikljucnaMjestaFeatures[j].getGeometry())
+      );
+      if (turf.distance(podGeometrija, pmGeometrija, { units: "kilometers" }) === 0) {
+        if (selektovaniPODoviFeatures[i].values_.prik_mjesto == selektovanaPrikljucnaMjestaFeatures[j].values_.id) {
+          selektovaniPODoviFeatures[i].akcija = "Izmjena";
+          selektovanaPrikljucnaMjestaFeatures[j].akcija = "Izmjena";
+          selektovaniPODoviFeatures[i].povezanostPM = true;
+          selektovanaPrikljucnaMjestaFeatures[j].povezanostPOD = true;
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Metoda koja provjerava da li, nakon obrade, postoje objekti 0.4 nivoa, koji nisu povezani sa ostatkom mreže traforeaona.
+ * @returns true ako postoje nepovezani objekti, false ako je sve iscrtano kako treba
+ */
+function prekidZbogNepovezanostiObjekataNn() {
+  let prekid = false;
+  let message = "";
+  let nizNepovezanihPotrosaca = [];
+  console.log("POČETAK PREKIDA");
+  for (let i = 0; i < selektovaniPotrosaciFeatures.length; i++) {
+    if (!selektovaniPotrosaciFeatures[i].povezanostVod || selektovaniPotrosaciFeatures[i].povezanostVod !== true) {
+      nizNepovezanihPotrosaca.push(selektovaniPotrosaciFeatures[i]);
+    }
+  }
+  console.log("Kraj PREKIDA", nizNepovezanihPotrosaca);
+  if (nizNepovezanihPotrosaca.length > 0) {
+    message += "Postoje potrošači do kojih ne dolazi vod.\n";
+    let vektorNeupareniPotrosaci = new ol.layer.Vector({
+      source: new ol.source.Vector({
+        features: nizNepovezanihPotrosaca,
+      }),
+      style: vectorStyleUnmatched,
+    });
+    map.addLayer(vektorNeupareniPotrosaci);
+    prekid = true;
+  }
+
+  if (prekid) {
+    blnOnemogucitiWizard = true;
+    alert(message);
+    prekidWizarda();
+    brisanje();
+  }
+  return prekid;
 }
