@@ -80,10 +80,15 @@ function povezivanjeNnVodovaTopDown(pocetna, features) {
                 features[j].values_.geohash_id_no = trenutniGeohash;
               }
             }
-            //Poziv metode za provjeru presjeka sa trafostanicama - ovo nije potrebno za niskonaponske vodove
-            /*if (nadredjenaLinijaFeature && podredjenaLinijaFeature && nadredjenaLinijaFeature !== undefined && podredjenaLinijaFeature !== undefined) {
-              presjekVodovaSaPrikljucnimMjestima(nadredjenaLinijaFeature, podredjenaLinijaFeature);
-            }*/
+
+            if (
+              nadredjenaLinijaFeature &&
+              podredjenaLinijaFeature &&
+              nadredjenaLinijaFeature !== undefined &&
+              podredjenaLinijaFeature !== undefined
+            ) {
+              presjekVodovaSaPODovima(nadredjenaLinijaFeature, podredjenaLinijaFeature);
+            }
           }
         }
       }
@@ -160,25 +165,39 @@ function presjekVodovaSaPotrosacimaPocetni() {
  * @param {*Linija koja je bliža napojnoj trafostanici} nadredjenaLinijaFeature
  * @param {*Linija koja je udaljenija od napojne trafostanice} podredjenaLinijaFeature
  */
-function presjekVodovaSaPrikljucnimMjestima(nadredjenaLinijaFeature, podredjenaLinijaFeature) {
+function presjekVodovaSaPODovima(nadredjenaLinijaFeature, podredjenaLinijaFeature) {
   let writer = new ol.format.GeoJSON();
   let nadredjenaGeometrija = writer.writeFeatureObject(new ol.Feature(nadredjenaLinijaFeature.getGeometry()));
   let podredjenaGeometrija = writer.writeFeatureObject(new ol.Feature(podredjenaLinijaFeature.getGeometry()));
 
+  for (let i = 0; i < selektovaniPODoviFeatures.length; i++) {
+    let pmGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaniPODoviFeatures[i].getGeometry()));
+    if (
+      turf.pointToLineDistance(pmGeometrija, nadredjenaGeometrija, { units: "kilometers" }) === 0 &&
+      turf.pointToLineDistance(pmGeometrija, podredjenaGeometrija, { units: "kilometers" }) === 0
+    ) {
+      selektovaniPODoviFeatures[i].akcija = "Izmjena";
+      selektovaniPODoviFeatures[i].values_.geohash_id_no = nadredjenaLinijaFeature.values_.geohash_id;
+      podredjenaLinijaFeature.akcija = "Izmjena";
+      podredjenaLinijaFeature.values_.geohash_id_no = selektovaniPODoviFeatures[i].values_.geohash_id;
+    }
+  }
   for (let i = 0; i < selektovanaPrikljucnaMjestaFeatures.length; i++) {
-    let pmGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaneTrafostaniceFeatures[i].getGeometry()));
+    let pmGeometrija = writer.writeFeatureObject(new ol.Feature(selektovanaPrikljucnaMjestaFeatures[i].getGeometry()));
     if (
       turf.pointToLineDistance(pmGeometrija, nadredjenaGeometrija, { units: "kilometers" }) === 0 &&
       turf.pointToLineDistance(pmGeometrija, podredjenaGeometrija, { units: "kilometers" }) === 0
     ) {
       selektovanaPrikljucnaMjestaFeatures[i].akcija = "Izmjena";
       selektovanaPrikljucnaMjestaFeatures[i].values_.geohash_id_no = nadredjenaLinijaFeature.values_.geohash_id;
-      podredjenaLinijaFeature.akcija = "Izmjena";
-      podredjenaLinijaFeature.values_.geohash_id_no = selektovanaPrikljucnaMjestaFeatures[i].values_.geohash_id;
     }
   }
 }
 
+/**
+ * Vrši provjeru da li podovi i priključna mjesta pripadaju linijama voda, da li se poklapa lokacija PODa i priključnog mjesta.
+ * Provjerava da li se poklapa lokacija PODa i potrošača, i ako je tako, geohash poda postaje geohsh_no potrošača.
+ */
 function presjekVodovaSaPodIPrikljMj() {
   let writer = new ol.format.GeoJSON();
 
@@ -218,6 +237,19 @@ function presjekVodovaSaPodIPrikljMj() {
           selektovanaPrikljucnaMjestaFeatures[j].akcija = "Izmjena";
           selektovaniPODoviFeatures[i].povezanostPM = true;
           selektovanaPrikljucnaMjestaFeatures[j].povezanostPOD = true;
+        }
+      }
+    }
+  }
+
+  for (let j = 0; j < selektovaniPotrosaciFeatures.length; j++) {
+    for (let i = 0; i < selektovaniPODoviFeatures.length; i++) {
+      let podGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaniPODoviFeatures[i].getGeometry()));
+      let potrosacGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaniPotrosaciFeatures[j].getGeometry()));
+      if (turf.distance(podGeometrija, potrosacGeometrija, { units: "kilometers" }) === 0) {
+        if (selektovaniPODoviFeatures[i].values_.pod == selektovaniPotrosaciFeatures[j].values_.pod) {
+          selektovaniPotrosaciFeatures[j].akcija = "Izmjena";
+          selektovaniPotrosaciFeatures[j].values_.geohash_id_no = selektovaniPODoviFeatures[i].values_.geohash_id;
         }
       }
     }
@@ -281,6 +313,10 @@ function prekidZbogNepovezanostiObjekataNn() {
   return prekid;
 }
 
+/**
+ * Dodaje niz featura, koje nisu prošle provjere povezanosti, u vektorski lejer koji će biti prikazan na mapi.
+ * @param {} nepravilniFeatures
+ */
 function prikazNepravilnihObjekataNaMapi(nepravilniFeatures) {
   map.addLayer(
     new ol.layer.Vector({
