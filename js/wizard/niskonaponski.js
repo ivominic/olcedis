@@ -116,18 +116,13 @@ function povezivanjeNnVodovaTopDown(pocetna, features) {
         //if (nizTrenutnihVodova.length === 0 && nizSvihGeometrija.length > 0) {
         if (nizSvihGeometrija.length > 0) {
           blnOnemogucitiWizard = true;
+          prikazNepravilnihObjekataNaMapi(nizSvihGeometrija);
+          brisanje();
           poruka("Upozorenje", "Postoje nepovezani vodovi");
           prekidWizarda();
         }
+        //TODO: Provjeriri ovaj prikaz divova, djeluje da ne treba tako da funkcioniše nakon što se utvrdi nepravilnost podataka.
         blnPostojeNepovezaniZapisi = false;
-        let vektorNeupareniVodovi1 = new ol.layer.Vector({
-          source: new ol.source.Vector({
-            features: nizSvihGeometrija,
-          }),
-          style: vectorStyleUnmatched,
-        });
-        map.addLayer(vektorNeupareniVodovi1);
-        //console.log("neupareni", vektorNeupareniVodovi1);
         document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
         document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
       }
@@ -236,23 +231,44 @@ function presjekVodovaSaPodIPrikljMj() {
 function prekidZbogNepovezanostiObjekataNn() {
   let prekid = false;
   let message = "";
-  let nizNepovezanihPotrosaca = [];
+  let nizNepovezanihPotrosaca = [],
+    nizNepovezanihPODova = [],
+    nizNepovezanihPMa = [];
+
   console.log("POČETAK PREKIDA");
   for (let i = 0; i < selektovaniPotrosaciFeatures.length; i++) {
     if (!selektovaniPotrosaciFeatures[i].povezanostVod || selektovaniPotrosaciFeatures[i].povezanostVod !== true) {
       nizNepovezanihPotrosaca.push(selektovaniPotrosaciFeatures[i]);
     }
   }
-  console.log("Kraj PREKIDA", nizNepovezanihPotrosaca);
+  for (let i = 0; i < selektovaniPODoviFeatures.length; i++) {
+    if (!selektovaniPODoviFeatures[i].povezanostVod || selektovaniPODoviFeatures[i].povezanostVod !== true) {
+      nizNepovezanihPODova.push(selektovaniPODoviFeatures[i]);
+    }
+  }
+
+  for (let i = 0; i < selektovanaPrikljucnaMjestaFeatures.length; i++) {
+    if (
+      !selektovanaPrikljucnaMjestaFeatures[i].povezanostVod ||
+      selektovanaPrikljucnaMjestaFeatures[i].povezanostVod !== true
+    ) {
+      nizNepovezanihPMa.push(selektovanaPrikljucnaMjestaFeatures[i]);
+    }
+  }
+
   if (nizNepovezanihPotrosaca.length > 0) {
     message += "Postoje potrošači do kojih ne dolazi vod.\n";
-    let vektorNeupareniPotrosaci = new ol.layer.Vector({
-      source: new ol.source.Vector({
-        features: nizNepovezanihPotrosaca,
-      }),
-      style: vectorStyleUnmatched,
-    });
-    map.addLayer(vektorNeupareniPotrosaci);
+    prikazNepravilnihObjekataNaMapi(nizNepovezanihPotrosaca);
+    prekid = true;
+  }
+  if (nizNepovezanihPODova.length > 0) {
+    message += "Postoje PODovi do kojih ne dolazi vod.\n";
+    prikazNepravilnihObjekataNaMapi(nizNepovezanihPODova);
+    prekid = true;
+  }
+  if (nizNepovezanihPMa.length > 0) {
+    message += "Postoje priključna mjesta do kojih ne dolazi vod.\n";
+    prikazNepravilnihObjekataNaMapi(nizNepovezanihPMa);
     prekid = true;
   }
 
@@ -263,4 +279,15 @@ function prekidZbogNepovezanostiObjekataNn() {
     brisanje();
   }
   return prekid;
+}
+
+function prikazNepravilnihObjekataNaMapi(nepravilniFeatures) {
+  map.addLayer(
+    new ol.layer.Vector({
+      source: new ol.source.Vector({
+        features: nepravilniFeatures,
+      }),
+      style: vectorStyleUnmatched,
+    })
+  );
 }
