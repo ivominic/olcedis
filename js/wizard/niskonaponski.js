@@ -139,6 +139,10 @@ function povezivanjeNnVodovaTopDown(pocetna, features) {
   presjekVodovaSaPotrosacimaPocetni();
   presjekVodovaSaPodIPrikljMj();
   prekidZbogNepovezanostiObjekataNn();
+  console.log("VODOVI", selektovaniVodoviFeatures);
+  console.log("PODOVI", selektovaniPODoviFeatures);
+  console.log("POTROSACI", selektovaniPotrosaciFeatures);
+  console.log("PM", selektovanaPrikljucnaMjestaFeatures);
   console.log("KRAJ");
 }
 
