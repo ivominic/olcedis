@@ -359,7 +359,7 @@ function globalCqlZaNaponskiNivo(nivo, sloj) {
       retVal += " AND napon='0.4'";
     }
   }
-  console.log("cql retval", retVal);
+  //console.log("cql retval", retVal);
   return retVal;
 }
 

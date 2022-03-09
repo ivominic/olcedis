@@ -36,9 +36,9 @@ function povezivanjeNnVodovaTopDown(pocetna, features) {
     //
     if (nizTrenutnihVodova.length > 0) {
       trenutnaGJ = writer.writeFeatureObject(new ol.Feature(nizTrenutnihVodova[0].getGeometry()));
-      console.log("vod za koji tražimo podređene vodove", nizTrenutnihVodova[0].values_.name);
+      //console.log("vod za koji tražimo podređene vodove", nizTrenutnihVodova[0].values_.name);
       trenutniGeohash = nizTrenutnihVodova[0].values_.geohash_id;
-      console.log(nizTrenutnihVodova[0].values_.name, nizTrenutnihVodova[0].values_.geohash_id);
+      //console.log(nizTrenutnihVodova[0].values_.name, nizTrenutnihVodova[0].values_.geohash_id);
       for (let j = 0; j < features.length; j++) {
         if (features[j].id_ === nizTrenutnihVodova[0].id_) {
           nadredjenaLinijaFeature = features[j];
@@ -126,15 +126,16 @@ function povezivanjeNnVodovaTopDown(pocetna, features) {
           poruka("Upozorenje", "Postoje nepovezani vodovi");
           prekidWizarda();
         }
-        //TODO: Provjeriri ovaj prikaz divova, djeluje da ne treba tako da funkcioniše nakon što se utvrdi nepravilnost podataka.
+        //TODO: Provjeriti ovaj prikaz divova, djeluje da ne treba tako da funkcioniše nakon što se utvrdi nepravilnost podataka.
+        console.log("PREKID WIZARD", blnOnemogucitiWizard);
         blnPostojeNepovezaniZapisi = false;
+        document.querySelector("#wizardHeader").innerText = cetvrtiKorakWizarda;
         document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
         document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
       }
     }
   }
 
-  console.log("POTROSACI!!!!!  ", selektovaniPotrosaciFeatures);
   //Metoda koja svim potrošačima dodjeljuje geohash_id_no od voda koji ga siječe
   presjekVodovaSaPotrosacimaPocetni();
   presjekVodovaSaPodIPrikljMj();

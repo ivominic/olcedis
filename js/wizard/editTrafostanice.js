@@ -47,7 +47,8 @@ function provjeriTrafostanice() {
     let tempNazivTs = "";
     trafostaniceZaWS += selektovaneTrafostaniceFeatures[i].values_.originalId + ",";
     option = document.createElement("option");
-    selektovaneTrafostaniceFeatures[i].values_.id_biling !== undefined && (tempNazivTs = "-" + selektovaneTrafostaniceFeatures[i].values_.id_biling);
+    selektovaneTrafostaniceFeatures[i].values_.id_biling !== undefined &&
+      (tempNazivTs = "-" + selektovaneTrafostaniceFeatures[i].values_.id_biling);
     option.text = selektovaneTrafostaniceFeatures[i].values_.naziv + tempNazivTs;
     option.value = selektovaneTrafostaniceFeatures[i].values_.originalId;
     document.querySelector("#ddlPovezivanjeTSselektovane").appendChild(option);
@@ -72,7 +73,7 @@ function trafostaniceUpoligonu(napon) {
     globalCqlZaNaponskiNivo(napon, "trafostanice") +
     "&access_token=" +
     geoserverToken;
-  console.log("url filter", urlZaFilter);
+  //console.log("url filter", urlZaFilter);
 
   $.ajax({
     method: "POST",
@@ -140,7 +141,10 @@ function selektujNapojnuTS() {
 }
 
 function poveziTS() {
-  if (!document.querySelector("#uparivanjeTxtNazivIzvodaTS").value || !document.querySelector("#ddlPovezivanjeTSselektovane").value) {
+  if (
+    !document.querySelector("#uparivanjeTxtNazivIzvodaTS").value ||
+    !document.querySelector("#ddlPovezivanjeTSselektovane").value
+  ) {
     poruka("Upozorenje", "Potrebno je odabrati napojnu trafostanicu i izvod");
     return false;
   }
@@ -174,7 +178,10 @@ function poveziTS() {
   }
 
   console.log("povezane trafostanice", paroviTS);
-  if (document.querySelector("#ddlPovezivanjeTSselektovane").length === 1 && document.querySelector("#ddlPovezivanjeTSpronadjene").length === 0) {
+  if (
+    document.querySelector("#ddlPovezivanjeTSselektovane").length === 1 &&
+    document.querySelector("#ddlPovezivanjeTSpronadjene").length === 0
+  ) {
     console.log("Uspješno uparene sve trafostanice:", paroviTS);
     blnZavrsenoUparivanjeTrafostanica = true;
     prikaziCetvrtuFormuWizarda();

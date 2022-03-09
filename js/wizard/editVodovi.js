@@ -233,8 +233,8 @@ function povezivanjeVodova(pocetna, features) {
         });
         map.addLayer(vektorNeupareniVodovi1);
         //console.log("neupareni", vektorNeupareniVodovi1);
-        document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
-        document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
+        //document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
+        //document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
       }
     }
   }

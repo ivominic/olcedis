@@ -33,10 +33,16 @@ function stuboviUpoligonu(napon) {
     formiraniFilter += " AND (" + params.CQL_FILTER + ")";
   }
   formiraniFilter = encodeURIComponent(formiraniFilter);
-  console.log("filter za cql", formiraniFilter);
+  //console.log("filter za cql", formiraniFilter);
   let urlZaFilter =
-    wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernameS + "&outputformat=application/json&cql_filter=" + formiraniFilter + "&access_token=" + geoserverToken;
-  console.log("url filter", urlZaFilter);
+    wfsUrl +
+    "?version=1.0.0&request=GetFeature&typeName=" +
+    fulllayernameS +
+    "&outputformat=application/json&cql_filter=" +
+    formiraniFilter +
+    "&access_token=" +
+    geoserverToken;
+  //console.log("url filter", urlZaFilter);
 
   $.ajax({
     method: "POST",

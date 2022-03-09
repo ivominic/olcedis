@@ -31,9 +31,15 @@ function nkroUpoligonu(napon) {
     formiraniFilter += " AND (" + params.CQL_FILTER + ")";
   }
   formiraniFilter = encodeURIComponent(formiraniFilter);
-  console.log("filter za cql", formiraniFilter);
+  //console.log("filter za cql", formiraniFilter);
   let urlZaFilter =
-    wfsUrl + "?version=1.0.0&request=GetFeature&typeName=" + fulllayernameNKRO + "&outputformat=application/json&cql_filter=" + formiraniFilter + "&access_token=" + geoserverToken;
+    wfsUrl +
+    "?version=1.0.0&request=GetFeature&typeName=" +
+    fulllayernameNKRO +
+    "&outputformat=application/json&cql_filter=" +
+    formiraniFilter +
+    "&access_token=" +
+    geoserverToken;
 
   $.ajax({
     method: "POST",

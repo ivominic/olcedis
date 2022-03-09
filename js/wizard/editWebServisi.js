@@ -343,11 +343,13 @@ function trafostaniceIzBilingaZaUparivanje(
         );
       }
       if (data.naziv_izvoda) {
+        console.log("DATA NAZIV IZVODA");
         document.querySelector("#wizardHeader").innerText = treciKorakWizarda;
         document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "block";
         document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
         blnSelekcijaNapojneTS = false;
       } else {
+        console.log("DATA NAZIV IZVODA ELSE");
         document.querySelector("#wizardHeader").inneText = drugiKorakWizarda;
         document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
         document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";

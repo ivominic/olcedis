@@ -523,7 +523,7 @@ async function provjeriVodIzTrafostanice() {
     let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(selektovaniVodoviFeatures[i].getGeometry()));
     if (turf.pointToLineDistance(tsGeometrija, pojedinacnaLinijaTurf, { units: "kilometers" }) === 0) {
       //blnTopDown = true;
-      console.log("Pronađeno", tsGeometrija.geometry.coordinates, pojedinacnaLinijaTurf.geometry.coordinates.join(";"));
+      //console.log("Pronađeno", tsGeometrija.geometry.coordinates, pojedinacnaLinijaTurf.geometry.coordinates.join(";"));
       blnNepovezanaTrafostanica = false;
     }
   }
