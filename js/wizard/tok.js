@@ -51,7 +51,7 @@ function wizardNext() {
         //TODO: Provjeriti vezu od trafostanice. Ako ne postoji vod koji ide iz trafostanice, onda uraditi poziv funkcije ispod
         //Ako postoji vod, koristiti logiku iz napona 10 i 35, od trafostanice, ka dolje
         nnGeometrijaTrafostanica();
-      }, 1000);
+      }, 1500);
       //Ovo će trebati da se uradi u koraku wizarda nakon odabira napojne trafostanice i izvoda
       console.log("NN PRVI KORAK");
     } else {
@@ -149,7 +149,8 @@ function prikaziCetvrtuFormuWizarda() {
     return false;
   }
   document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "none";
-  document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "block";
+  document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
+  document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
   document.querySelector("#wizardHeader").innerText = cetvrtiKorakWizarda;
   if (geometrijaNapojneTrafostanice === "" && !featureNapojnaTrafostanica) {
     poruka("Upozorenje", "Nije odabrana napojna trafostanica");

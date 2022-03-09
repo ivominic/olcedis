@@ -129,9 +129,17 @@ function povezivanjeNnVodovaTopDown(pocetna, features) {
         //TODO: Provjeriti ovaj prikaz divova, djeluje da ne treba tako da funkcioniše nakon što se utvrdi nepravilnost podataka.
         console.log("PREKID WIZARD", blnOnemogucitiWizard);
         blnPostojeNepovezaniZapisi = false;
-        document.querySelector("#wizardHeader").innerText = cetvrtiKorakWizarda;
+        //prikaziCetvrtuFormuWizarda();
+        document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = nazivNapojneTrafostanice;
+        document.querySelector("#uparivanjeTxtSifraTS").textContent = sifraNapojneTrafostanice;
+        let opt = document.createElement("option");
+        opt.value = izvodNapojneTrafostanice;
+        opt.innerHTML = izvodNapojneTrafostanice;
+        document.querySelector("#uparivanjeTxtNazivIzvodaTS").appendChild(opt);
+        document.querySelector("#wizardHeader").innerText = treciKorakWizarda;
         document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
-        document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
+        document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
+        //document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
       }
     }
   }
