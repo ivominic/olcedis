@@ -101,7 +101,8 @@ function wizardNext() {
         console.log("NN PETI KORAK 2");
       } else {
         console.log("NN PETI KORAK 3");
-        povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
+        //povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
+        //Ovo uklonjeno jer se ne sprovodi više bottom up povezivanje
       }
     } else {
       console.log("NN PETI KORAK 4");
