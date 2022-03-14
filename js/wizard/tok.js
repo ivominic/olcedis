@@ -242,7 +242,7 @@ function konacniUpisIzmjena() {
     potrosaciArrayFinal,
     nkroArrayFinal
   );
-  poruka("Uspjeh", "Uspješno kompletiran wizard");
+  //poruka("Uspjeh", "Uspješno kompletiran wizard");
 }
 
 /**
