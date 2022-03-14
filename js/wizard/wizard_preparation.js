@@ -9,7 +9,7 @@
  */
 function stubArrayElement(el, action, wizard, serialNo) {
   let item = {
-    //fid_1: el.values_.fid_1,
+    fid_1: el.values_.originalId,
     Geometry: wkt3Du2D(wktGeometrije(el)),
     name: el.values_.name,
     //fid: el.values_.fid,
@@ -42,7 +42,7 @@ function stubArrayElement(el, action, wizard, serialNo) {
     br_nnv: el.values_.br_nnv,
     gps: el.values_.gps,
     rastavljac: el.values_.rastavljac,
-    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
+    datum_azuriranja: el.values_.datum_azuriranja,
     izolator_vrsta: el.values_.izolator_vrsta,
     uzemljivac_otpor: el.values_.uzemljivac_otpor,
     sifra: el.values_.sifra,
@@ -53,12 +53,12 @@ function stubArrayElement(el, action, wizard, serialNo) {
     geohash_id: el.values_.geohash_id,
     geohash_id_no: el.values_.geohash_id_no,
     korisnik: globalUsername,
-    posjeduje_sliku: "NE",
-    originalId: parseInt(new Date().getTime() + "" + serialNo), //el.values_.originalId,
+    posjeduje_sliku: el.values_.posjeduje_sliku,
+    originalId: el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
-    vlasnik: el.values_.vlasnik,
+    vlasnik: "test", //el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
@@ -76,7 +76,7 @@ function stubArrayElement(el, action, wizard, serialNo) {
  */
 function vodArrayElement(el, action, wizard, serialNo) {
   let item = {
-    fid_1: el.values_.fid_1,
+    fid_1: el.values_.originalId,
     Geometry: wktGeometrije(el),
     name: el.values_.name,
     fid: el.values_.fid,
@@ -106,7 +106,7 @@ function vodArrayElement(el, action, wizard, serialNo) {
     naziv: el.values_.naziv,
     god_izg: el.values_.god_izg,
     gps: el.values_.gps,
-    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
+    datum_azuriranja: el.values_.datum_azuriranja,
     pog_sprem: el.values_.pog_sprem,
     duzina: el.values_.duzina,
     broj_spojnica: el.values_.broj_spojnica,
@@ -114,15 +114,14 @@ function vodArrayElement(el, action, wizard, serialNo) {
     geohash_id: el.values_.geohash_id,
     geohash_id_no: el.values_.geohash_id_no,
     korisnik: globalUsername,
-    katastar: "",
-    posjeduje_sliku: "NE",
-    //originalId: new Date().getTime() + "" + serialNo, //el.values_.originalId,
+    katastar: el.values_.katastar,
+    posjeduje_sliku: el.values_.posjeduje_sliku,
     originalId: el.values_.originalId,
     sifra_dionice: el.values_.sifra_dionice,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
-    vlasnik: el.values_.vlasnik,
+    vlasnik: "test", //el.values_.vlasnik,
     ts: el.values_.ts,
     akcija: action,
     wizard: wizard,
@@ -143,7 +142,7 @@ function vodArrayElement(el, action, wizard, serialNo) {
  */
 function trafostanicaArrayElement(el, action, wizard, serialNo) {
   let item = {
-    fid_1: el.values_.fid_1,
+    fid_1: el.values_.originalId,
     Geometry: wkt3Du2D(wktGeometrije(el)),
     name: el.values_.name,
     fid: el.values_.fid,
@@ -173,19 +172,19 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     naziv: el.values_.naziv,
     god_izg: el.values_.god_izg,
     gps: el.values_.gps,
-    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
+    datum_azuriranja: el.values_.datum_azuriranja,
     pog_sprem: el.values_.pog_sprem,
     layer_id: el.values_.layer_id,
     geohash_id: el.values_.geohash_id,
     geohash_id_no: el.values_.geohash_id_no,
     korisnik: globalUsername,
-    katastar: "",
-    posjeduje_sliku: "NE",
-    originalId: new Date().getTime() + "" + serialNo, //el.values_.originalId,
+    katastar: el.values_.katastar,
+    posjeduje_sliku: el.values_.posjeduje_sliku,
+    originalId: el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
-    vlasnik: el.values_.vlasnik,
+    vlasnik: "test", //el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
@@ -203,7 +202,7 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
  */
 function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
   let item = {
-    fid_1: el.values_.fid_1,
+    fid_1: el.values_.originalId,
     Geometry: wkt3Du2D(wktGeometrije(el)),
     name: el.values_.name,
     fid: el.values_.fid,
@@ -214,23 +213,22 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
     napon: el.values_.napon,
     vlasnistvo: el.values_.vlasnistvo,
     tip: el.values_.tip,
-    tip: el.values_.tip_pm,
     id: el.values_.id, //Vidjeti šta ovdje predajem
     layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     opstina: el.values_.opstina,
     gps: el.values_.gps,
-    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
+    datum_azuriranja: el.values_.datum_azuriranja,
     layer_id: el.values_.layer_id,
     geohash_id: el.values_.geohash_id,
     geohash_id_no: el.values_.geohash_id_no,
     korisnik: globalUsername,
-    katastar: "",
-    posjeduje_sliku: "NE",
-    originalId: new Date().getTime() + "" + serialNo, //el.values_.originalId,
+    katastar: el.values_.katastar,
+    posjeduje_sliku: el.values_.posjeduje_sliku,
+    originalId: el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
-    vlasnik: el.values_.vlasnik,
+    vlasnik: "test", //el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
@@ -248,7 +246,7 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
  */
 function potrosacArrayElement(el, action, wizard, serialNo) {
   let item = {
-    fid_1: el.values_.fid_1,
+    fid_1: el.values_.originalId,
     Geometry: wkt3Du2D(wktGeometrije(el)),
     name: el.values_.name,
     fid: el.values_.fid,
@@ -267,19 +265,19 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
     layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     opstina: el.values_.opstina,
     gps: el.values_.gps,
-    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
+    datum_azuriranja: el.values_.datum_azuriranja,
     layer_id: el.values_.layer_id,
     geohash_id: el.values_.geohash_id,
     geohash_id_no: el.values_.geohash_id_no,
     korisnik: globalUsername,
-    katastar: "",
-    posjeduje_sliku: "NE",
-    originalId: new Date().getTime() + "" + serialNo, //el.values_.originalId,
+    katastar: el.values_.katastar,
+    posjeduje_sliku: el.values_.posjeduje_sliku,
+    originalid: el.values_.originalid,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
     status: el.values_.status,
-    vlasnik: el.values_.vlasnik,
+    vlasnik: "test", //el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
@@ -297,7 +295,7 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
  */
 function podArrayElement(el, action, wizard, serialNo) {
   let item = {
-    fid_1: el.values_.fid_1,
+    fid_1: el.values_.originalId,
     Geometry: wkt3Du2D(wktGeometrije(el)),
     name: el.values_.name,
     fid: el.values_.fid,
@@ -316,19 +314,19 @@ function podArrayElement(el, action, wizard, serialNo) {
     layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     opstina: el.values_.opstina,
     gps: el.values_.gps,
-    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
+    datum_azuriranja: el.values_.datum_azuriranja,
     layer_id: el.values_.layer_id,
     geohash_id: el.values_.geohash_id,
     geohash_id_no: el.values_.geohash_id_no,
     korisnik: globalUsername,
-    katastar: "",
-    posjeduje_sliku: "NE",
-    originalId: new Date().getTime() + "" + serialNo, //el.values_.originalId,
+    katastar: el.values_.katastar,
+    posjeduje_sliku: el.values_.posjeduje_sliku,
+    originalId: el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
     status: el.values_.status,
-    vlasnik: el.values_.vlasnik,
+    vlasnik: "test", //el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
@@ -346,7 +344,7 @@ function podArrayElement(el, action, wizard, serialNo) {
  */
 function nkroArrayElement(el, action, wizard, serialNo) {
   let item = {
-    fid_1: el.values_.fid_1,
+    fid_1: el.values_.originalId,
     Geometry: wkt3Du2D(wktGeometrije(el)),
     name: el.values_.name,
     fid: el.values_.fid,
@@ -364,18 +362,18 @@ function nkroArrayElement(el, action, wizard, serialNo) {
     layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     opstina: el.values_.opstina,
     gps: el.values_.gps,
-    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
+    datum_azuriranja: el.values_.datum_azuriranja,
     layer_id: el.values_.layer_id,
     geohash_id: el.values_.geohash_id,
     geohash_id_no: el.values_.geohash_id_no,
     korisnik: globalUsername,
-    katastar: "",
-    posjeduje_sliku: "NE",
-    originalId: new Date().getTime() + "" + serialNo, //el.values_.originalId,
+    katastar: el.values_.katastar,
+    posjeduje_sliku: el.values_.posjeduje_sliku,
+    originalId: el.values_.originalId,
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
-    vlasnik: el.values_.vlasnik,
+    vlasnik: "test", //el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
