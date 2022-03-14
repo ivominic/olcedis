@@ -68,6 +68,8 @@ function objectsFinalInsert(objects, methodName) {
   return retval;
 }
 
+//TODO: Ovaj fajl treba ukloniti
+
 /**
  * Method for inserting all drawn objects into database
  * @param {*} stubovi

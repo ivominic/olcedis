@@ -187,35 +187,61 @@ function prikaziCetvrtuFormuWizarda() {
  */
 function konacniUpisIzmjena() {
   let format = new ol.format.WKT();
+  let iterator = 0;
+  vodoviArrayFinal.length = 0;
+  stuboviArrayFinal.length = 0;
+  trafostaniceArrayFinal.length = 0;
+  podoviArrayFinal.length = 0;
+  prikljucnaMjestaArrayFinal.length = 0;
+  potrosaciArrayFinal.length = 0;
+  nkroArrayFinal.length = 0;
+
   for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
     if (selektovaneTrafostaniceFeatures[i].akcija && selektovaneTrafostaniceFeatures[i].akcija === "Izmjena") {
-      cudTrafostanica(selektovaneTrafostaniceFeatures[i], "U", 1);
-      /*console.log("pozivati web servis za unos trafostanica", selektovaneTrafostaniceFeatures[i]);
-      let wktGeom = format.writeGeometry(selektovaneTrafostaniceFeatures[i].getGeometry());
-      console.log("pozivati web servis za unos trafostanica - geometrija u wkt", wktGeom);*/
+      iterator++;
+      trafostanicaArrayElement(selektovaneTrafostaniceFeatures[i], "U", 1, iterator);
     }
   }
   for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
     if (selektovaniVodoviFeatures[i].akcija && selektovaniVodoviFeatures[i].akcija === "Izmjena") {
-      cudVod(selektovaniVodoviFeatures[i], "U", 1);
-      //TODO: Razmisliti da li da se u servis za ažuriranje voda vrši i ažuriranje stubova koje vod presijeca (na serverskoj strani)
+      iterator++;
+      vodArrayElement(selektovaniVodoviFeatures[i], "U", 1, iterator);
     }
   }
   for (let i = 0; i < selektovaniPotrosaciFeatures.length; i++) {
     if (selektovaniPotrosaciFeatures[i].akcija && selektovaniPotrosaciFeatures[i].akcija === "Izmjena") {
-      cudPotrosac(selektovaniPotrosaciFeatures[i], "U", 1);
+      iterator++;
+      potrosacArrayElement(selektovaniPotrosaciFeatures[i], "U", 1, iterator);
+    }
+  }
+  for (let i = 0; i < selektovaniPODoviFeatures.length; i++) {
+    if (selektovaniPODoviFeatures[i].akcija && selektovaniPODoviFeatures[i].akcija === "Izmjena") {
+      iterator++;
+      podArrayElement(selektovaniPODoviFeatures[i], "U", 1, iterator);
     }
   }
   for (let i = 0; i < selektovaniNKROFeatures.length; i++) {
     if (selektovaniNKROFeatures[i].akcija && selektovaniNKROFeatures[i].akcija === "Izmjena") {
-      cudNKRO(selektovaniNKROFeatures[i], "U", 1);
+      iterator++;
+      nkroArrayElement(selektovaniNKROFeatures[i], "U", 1, iterator);
     }
   }
   for (let i = 0; i < selektovanaPrikljucnaMjestaFeatures.length; i++) {
     if (selektovanaPrikljucnaMjestaFeatures[i].akcija && selektovanaPrikljucnaMjestaFeatures[i].akcija === "Izmjena") {
-      cudPrikljucnoMjesto(selektovanaPrikljucnaMjestaFeatures[i], "U", 1);
+      iterator++;
+      prikljucnoMjestoArrayElement(selektovanaPrikljucnaMjestaFeatures[i], "U", 1, iterator);
     }
   }
+
+  insertAllObjects(
+    stuboviArrayFinal,
+    vodoviArrayFinal,
+    trafostaniceArrayFinal,
+    podoviArrayFinal,
+    prikljucnaMjestaArrayFinal,
+    potrosaciArrayFinal,
+    nkroArrayFinal
+  );
   poruka("Uspjeh", "Uspješno kompletiran wizard");
 }
 
