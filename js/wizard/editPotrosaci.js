@@ -496,6 +496,42 @@ function insertFinalniKorakNiskonaponskiObjekti() {
   }
 }
 
+async function waitForElement() {
+  if (typeof sifraNapojneTrafostanice !== "undefined" && sifraNapojneTrafostanice) {
+    sifraNapojneTrafostanice = srediSifruTrafostanice(sifraNapojneTrafostanice);
+    let resp = await geometrijaTrafostanice(sifraNapojneTrafostanice);
+    console.log("RESP!!!!!", resp[0]);
+    if (resp && resp[0]) {
+      geometrijaNapojneTrafostanice = resp[0].the_geom;
+      geohashNapojneTrafostanice = resp[0].geohash_id;
+      resp.length > 1 && alert("U sistemu nađeno " + resp.length + " napojnih trafostanica za odabrani reon.");
+    }
+    let writer = new ol.format.GeoJSON();
+    let format = new ol.format.WKT();
+    let geometrija = format.readFeature(geometrijaNapojneTrafostanice, {});
+    let tsGeometrija = writer.writeFeatureObject(new ol.Feature(geometrija.getGeometry()));
+
+    for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
+      //let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(nizSvihGeometrija[i].getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
+      let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(selektovaniVodoviFeatures[i].getGeometry()));
+      if (turf.pointToLineDistance(tsGeometrija, pojedinacnaLinijaTurf, { units: "kilometers" }) === 0) {
+        //blnTopDown = true;
+        //console.log("Pronađeno", tsGeometrija.geometry.coordinates, pojedinacnaLinijaTurf.geometry.coordinates.join(";"));
+        blnNepovezanaTrafostanica = false;
+      }
+    }
+
+    if (blnNepovezanaTrafostanica) {
+      alert("Trafostanica nije povezana sa vodovima iz zahvata.");
+    } else {
+      povezivanjeNnVodovaTopDown(null, selektovaniVodoviFeatures);
+    }
+  } else {
+    console.log("PROLAZAK KROZ SET TIMEOUT");
+    setTimeout(waitForElement, 250);
+  }
+}
+
 /**
  * Metoda koja provjerava da li postoji niskonaponski vod iz trafostanice. Ako postoji radi provjeru top down
  */
@@ -503,45 +539,6 @@ async function provjeriVodIzTrafostanice() {
   //Ova metoda daje geometriju napojne trafostanice za niski naponski nivo
   let blnNepovezanaTrafostanica = true; //Označava da iz trafostanice ne izlazi nijedan vod
   sifraNapojneTrafostanice = srediSifruTrafostanice(sifraNapojneTrafostanice);
-  console.log("SIFRAAAAA!!!!!!", sifraNapojneTrafostanice);
-  let resp = await geometrijaTrafostanice(sifraNapojneTrafostanice);
-  console.log("RESP!!!!!", resp[0]);
-  if (resp && resp[0]) {
-    geometrijaNapojneTrafostanice = resp[0].the_geom;
-    geohashNapojneTrafostanice = resp[0].geohash_id;
-    resp.length > 1 && alert("U sistemu nađeno " + resp.length + " napojnih trafostanica za odabrani reon.");
-  }
+  await waitForElement();
   console.log("Sifra i geometrija napojne TS!!!!!", sifraNapojneTrafostanice, geometrijaNapojneTrafostanice);
-
-  let writer = new ol.format.GeoJSON();
-  let format = new ol.format.WKT();
-  let geometrija = format.readFeature(geometrijaNapojneTrafostanice, {});
-  let tsGeometrija = writer.writeFeatureObject(new ol.Feature(geometrija.getGeometry()));
-
-  for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
-    //let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(nizSvihGeometrija[i].getGeometry().clone().transform("EPSG:3857", "EPSG:4326")));
-    let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(selektovaniVodoviFeatures[i].getGeometry()));
-    if (turf.pointToLineDistance(tsGeometrija, pojedinacnaLinijaTurf, { units: "kilometers" }) === 0) {
-      //blnTopDown = true;
-      //console.log("Pronađeno", tsGeometrija.geometry.coordinates, pojedinacnaLinijaTurf.geometry.coordinates.join(";"));
-      blnNepovezanaTrafostanica = false;
-    }
-  }
-  console.log("TOP DOWN", selektovaniVodoviFeatures);
-  if (blnNepovezanaTrafostanica) {
-    alert("Trafostanica nije povezana sa vodovima iz zahvata.");
-  } else {
-    console.log("Nastavak rada na niskonaponskom nivou");
-    povezivanjeNnVodovaTopDown(null, selektovaniVodoviFeatures);
-  }
-
-  //Odustalo se od bottom up pristupa
-  /*if (blnTopDown) {
-    //Top down
-    //TODO: OVAJ PRAVAC TREBA NAPRAVITI
-    
-  } else {
-    //Bottom up
-    povezivanjeNiskonaponskihObjekata();
-  }*/
 }
