@@ -444,6 +444,27 @@ function izbrisi() {
             vectorSource.addFeatures(nizZaBrisanje);
           }
         });
+        //TODO: Dodao ovaj blok koda za uklanjanje dugmadi next/prev kod brisanja gpx tačke. Ali ne radi kako trevba.
+        if (nizGpxTacakaZaObradu.length) {
+          console.log("nizGpxTacakaZaObradu", nizGpxTacakaZaObradu.length);
+          nizGpxTacakaZaObradu.splice(indexGpxTacakaZaObradu, 1);
+          console.log("nizGpxTacakaZaObradu", nizGpxTacakaZaObradu.length);
+          console.log("indexGpxTacakaZaObradu", indexGpxTacakaZaObradu);
+          if (nizGpxTacakaZaObradu.length < 2) {
+            document.querySelector("#divPrethodniObjekat").style.display = "none";
+            document.querySelector("#divSljedeciObjekat").style.display = "none";
+          } else {
+            document.querySelector("#divPrethodniObjekat").style.display = "none";
+            document.querySelector("#divSljedeciObjekat").style.display = "none";
+            if (indexGpxTacakaZaObradu > 0) {
+              document.querySelector("#divPrethodniObjekat").style.display = "flex";
+            }
+            if (indexGpxTacakaZaObradu < nizGpxTacakaZaObradu.length) {
+              document.querySelector("#divSljedeciObjekat").style.display = "flex";
+            }
+          }
+        }
+        //TODO: Novi blok, koji ne radi, se završava ovdje
       }
     } else if (result.isDenied) {
       //Ako odustane - ništa ne raditi
