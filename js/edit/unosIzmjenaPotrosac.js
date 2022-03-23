@@ -28,12 +28,25 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
     poruka("Upozorenje", "Potrebno je selektovati objekat iz gpx fajla.");
     return false;
   }
-  let ispravno = true;
+  let ispravno = true,
+    poklapanjeTs = true;
+  let porukaNepoklapanjeTs = "";
 
   let tekstHtml = "";
   nizPretplatnika.forEach((jsonPretplatnik) => {
     tekstHtml += "<li>" + jsonPretplatnik.sifra + " - " + jsonPretplatnik.naziv_potrosaca + "</li>";
     jsonPretplatnik.naziv_potrosaca === "Nema podatka" && (ispravno = false);
+    if (sifraNapojneTrafostanice !== srediSifruTrafostanice(jsonPretplatnik.sifra_trafostanice)) {
+      poklapanjeTs = false;
+      porukaNepoklapanjeTs +=
+        "<li>" +
+        jsonPretplatnik.naziv_potrosaca +
+        " - " +
+        jsonPretplatnik.sifra +
+        " - šifra TS: " +
+        jsonPretplatnik.sifra_trafostanice +
+        "</li>";
+    }
   });
   tekstHtml = "<ul style='text-align:left'>" + tekstHtml + "</ul>";
 
@@ -46,6 +59,14 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
     denyButtonText: `Ne`,
   }).then((result) => {
     if (result.isConfirmed) {
+      if (!poklapanjeTs) {
+        Swal.fire(
+          `Pretplatnici čija šifra trafostanice u bilingu ne odgovara odabranoj (${sifraNapojneTrafostanice}):`,
+          porukaNepoklapanjeTs,
+          "error"
+        );
+        return false;
+      }
       if (!ispravno) {
         Swal.fire("Odbijeno", "Ispraviti pretplatne brojeve za koje nisu nađeni podaci u sistemu.", "error");
         return false;
