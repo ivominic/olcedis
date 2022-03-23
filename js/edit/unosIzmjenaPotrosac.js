@@ -10,6 +10,11 @@ function dodajPoljaOdabranomGpxPotrosac() {
   }
   if (selectGpxFeature.get("lejer") === undefined || selectGpxFeature.get("lejer") === "potrosac") {
     podaciZaSpisakPotrosaca(pretplatniBrojevi);
+  } else {
+    poruka(
+      "Upozorenje",
+      `Pokušavate da kreirate potrošače za selektovani objekat iz lejera ${selectGpxFeature.get("lejer")}.`
+    );
   }
 }
 
