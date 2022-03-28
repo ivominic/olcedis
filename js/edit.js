@@ -323,6 +323,38 @@ dragAndDrop.on("addfeatures", function (event) {
       style: vectorStyle,
     })
   );
+  var pixelTolerance = 10;
+  var modifyKmlLine = new ol.interaction.Modify({
+    source: vectorSource,
+    pixelTolerance: pixelTolerance,
+    condition: function (e) {
+      var f = this.getMap().getFeaturesAtPixel(e.pixel, {
+        hitTolerance: pixelTolerance,
+        layerFilter: function (candidate) {
+          return candidate === vector;
+        },
+      });
+      console.log("Radi");
+      if (f && f[0].getGeometry().getType() == "LineString") {
+        var coordinates = f[0].getGeometry().getCoordinates();
+        var p0 = e.pixel;
+        var p1 = this.getMap().getPixelFromCoordinate(coordinates[0]);
+        var dx = p0[0] - p1[0];
+        var dy = p0[1] - p1[1];
+        if (Math.sqrt(dx * dx + dy * dy) <= pixelTolerance) {
+          return false;
+        }
+        var p1 = this.getMap().getPixelFromCoordinate(coordinates.slice(-1)[0]);
+        var dx = p0[0] - p1[0];
+        var dy = p0[1] - p1[1];
+        if (Math.sqrt(dx * dx + dy * dy) <= pixelTolerance) {
+          return false;
+        }
+      }
+      return true;
+    },
+  });
+  map.addInteraction(modifyKmlLine);
   view.fit(vectorSource.getExtent(), map.getSize());
 });
 map.addInteraction(dragAndDrop);
@@ -542,6 +574,7 @@ function filtriranje() {
   cqlZaWmsLejer(wmsNKRO, tempFilter);
   cqlZaWmsLejer(wmsPOD, tempFilter);
   cqlZaWmsLejer(wmsPrikljucnoMjesto, tempFilter);
+  cqlZaWmsLejer(wmsTrafostanice, tempFilter);
 }
 
 function cqlZaWmsLejer(wmsLejer, filterCql) {
