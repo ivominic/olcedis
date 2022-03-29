@@ -1,5 +1,7 @@
 /**Metode koje se odnose na uvoz podataka iz kml fajlova */
 
+let originalKmlLines = [];
+
 /** Metoda koja za zadati feature nalazi sljedeću tačku iz kml fajla kojoj nisu dodijeljeni podaci (lejer) */
 function sljedecaNeobradjenaTackaKml(feature) {
   let distanca = 999999999;
@@ -245,6 +247,11 @@ function extractKmlLinestringEndPoints() {
   kmlEndPoints.length = 0;
   vectorSource.getFeatures().forEach(function (el) {
     if (el.getGeometry().getType().toString().includes("tring")) {
+      originalKmlLines.push({
+        ol_uid: el.ol_uid,
+        coordinates: el.clone().getGeometry().getCoordinates(),
+        el: el.clone(),
+      }); //Kreiranje niza originalnih geometrija za kml linije.
       let coordinates = el.values_.geometry.flatCoordinates;
       let feature1 = new ol.Feature({
         geometry: new ol.geom.Point([coordinates[0], coordinates[1]]),

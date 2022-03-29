@@ -339,7 +339,7 @@ function popuniDdlAtributima(ddl, objekat, atribut, key_param, value_param) {
   $(ddl).append(
     $("<option>", {
       value: "",
-      text: "",
+      text: "Izaberite vrijednost",
     })
   );
   $.ajax({

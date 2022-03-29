@@ -196,6 +196,7 @@ modifyV.on("modifyend", function (e) {
   //console.log("koordinate", e.selected[0].values_.geometry.flatCoordinates);
   //let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
   let position = e.features.getArray()[0].values_.geometry.flatCoordinates;
+  let coordinates = e.features.getArray()[0].values_.geometry.clone();
   console.log("koordinate m", position);
   let pocetniElement;
   nizKml.forEach((el) => {
@@ -204,34 +205,99 @@ modifyV.on("modifyend", function (e) {
       //pocetniElement = ol.proj.transform(el, "EPSG:3857", "EPSG:4326");
     }
   });
-  if (pocetniElement) {
-    //pocetniElement = ol.proj.transform(pocetniElement, "EPSG:3857", "EPSG:4326");
-    let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat], "EPSG:4326"));
-    //let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat]));
-    //let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat], "EPSG:3857", "EPSG:4326"));
-    //pocetnaTacka = ol.proj.transform(pocetnaTacka, "EPSG:3857", "EPSG:4326");
-    let distancaOd = turf.point([position[0], position[1]]);
-    let distancaDo = turf.point([pocetniElement.lng, pocetniElement.lat]);
+  if (isEditable) {
+    if (pocetniElement) {
+      //pocetniElement = ol.proj.transform(pocetniElement, "EPSG:3857", "EPSG:4326");
+      let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat], "EPSG:4326"));
+      //let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat]));
+      //let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat], "EPSG:3857", "EPSG:4326"));
+      //pocetnaTacka = ol.proj.transform(pocetnaTacka, "EPSG:3857", "EPSG:4326");
+      let distancaOd = turf.point([position[0], position[1]]);
+      let distancaDo = turf.point([pocetniElement.lng, pocetniElement.lat]);
+      let mjera = {
+        units: "kilometers",
+      };
+      let distanca = turf.distance(distancaOd, distancaDo, mjera);
+      console.log("distanca", distanca);
+      if (distanca > dozvoljeniPomjeraj) {
+        e.features.getArray()[0].getGeometry().setCoordinates(pocetnaTacka.flatCoordinates);
+        poruka(
+          "Upozorenje",
+          "Tačka ne može biti pomjerena više od " + (dozvoljeniPomjeraj * 1000).toString() + "m od snimljene pozicije."
+        );
+      }
+      //citajExtent();
+    }
+  } else {
+    let original;
+    originalKmlLines.forEach((item) => {
+      console.log("ITEM", item);
+      console.log(e.features.getArray()[0].ol_uid, item.ol_uid);
+      if (e.features.getArray()[0].ol_uid === item.ol_uid) {
+        original = item;
+      }
+    });
+
+    let coordinates = e.features.getArray()[0].getGeometry().getCoordinates();
+
+    if (coordinates.length !== original.coordinates.length) {
+      e.features.getArray()[0].getGeometry().setCoordinates(original.coordinates);
+      poruka(
+        "Upozorenje",
+        "Geometrija linije je izmijenjena na način da su joj dodate nove prelomne tačke, što nije dozvoljeno."
+      );
+      return false;
+    }
+
+    let isLineModifiedInMiddle = false;
+    let isViolatedAllowedDistance = false;
+    for (i = 1; i < coordinates.length - 1; i++) {
+      if (coordinates[i][0] !== original.coordinates[i][0] || coordinates[i][1] !== original.coordinates[i][1]) {
+        isLineModifiedInMiddle = true;
+      }
+    }
+    if (isLineModifiedInMiddle) {
+      e.features.getArray()[0].getGeometry().setCoordinates(original.coordinates);
+      poruka("Upozorenje", "Nije dozvoljena izmjena geometrije linije, osim pomjeranjem krajnjih tačaka.");
+      return false;
+    }
+
+    let coordinateLength = coordinates.length;
     let mjera = {
       units: "kilometers",
     };
-    let distanca = turf.distance(distancaOd, distancaDo, mjera);
-    console.log("distanca", distanca);
-    if (distanca > dozvoljeniPomjeraj) {
-      e.features.getArray()[0].getGeometry().setCoordinates(pocetnaTacka.flatCoordinates);
+    if (coordinates[0][0] !== original.coordinates[0][0] || coordinates[0][1] !== original.coordinates[0][1]) {
+      let distancaOd = turf.point([coordinates[0][0], coordinates[0][1]]);
+      let distancaDo = turf.point([original.coordinates[0][0], original.coordinates[0][1]]);
+      let distanca = turf.distance(distancaOd, distancaDo, mjera);
+      if (distanca > dozvoljeniPomjeraj) {
+        isViolatedAllowedDistance = true;
+      }
+    }
+    if (
+      coordinates[coordinateLength][0] !== original.coordinates[coordinateLength][0] ||
+      coordinates[coordinateLength][1] !== original.coordinates[coordinateLength][1]
+    ) {
+      let distancaOd = turf.point([coordinates[coordinateLength][0], coordinates[coordinateLength][1]]);
+      let distancaDo = turf.point([
+        original.coordinates[coordinateLength][0],
+        original.coordinates[coordinateLength][1],
+      ]);
+      let distanca = turf.distance(distancaOd, distancaDo, mjera);
+      if (distanca > dozvoljeniPomjeraj) {
+        isViolatedAllowedDistance = true;
+      }
+    }
+
+    if (isLineModifiedInMiddle) {
+      e.features.getArray()[0].getGeometry().setCoordinates(original.coordinates);
       poruka(
         "Upozorenje",
         "Tačka ne može biti pomjerena više od " + (dozvoljeniPomjeraj * 1000).toString() + "m od snimljene pozicije."
       );
+      return false;
     }
-    //citajExtent();
   }
-});
-
-modifyV.on("change", function (e) {
-  console.log("koordinate", e.selected[0].values_.geometry.flatCoordinates);
-  let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
-  console.log("koordinate c", position);
 });
 
 function prikazPodatakaIzGpxTacaka() {
