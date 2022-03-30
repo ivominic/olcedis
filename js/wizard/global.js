@@ -115,6 +115,13 @@ let ortofotoBaseMap = new ol.layer.Image({
   }),
 });
 
+let bezBaseMap = new ol.layer.Tile({
+  source: new ol.source.XYZ({
+    url: null,
+    //url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWNgYGD4DwABBAEAHnOcQAAAAABJRU5ErkJggg==",
+  }),
+});
+
 /**Stilizacija vektora */
 var fill = new ol.style.Fill({
   color: "rgba(0,255,255,0.6)",
