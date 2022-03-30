@@ -535,6 +535,7 @@ document.querySelector("#lejer_trafostanice_poligoni").addEventListener("click",
 document.querySelector("#lejer_prikljucno_mjesto").addEventListener("click", prikazLejeraPrikljucnoMjesto);
 document.querySelector("#lejer_nkro").addEventListener("click", prikazLejeraNkro);
 document.querySelector("#lejer_potrosac").addEventListener("click", prikazLejeraPotrosac);
+document.querySelector("#lejer_nelegalni_potrosac").addEventListener("click", prikazLejeraNelegalniPotrosac);
 document.querySelector("#lejer_pod").addEventListener("click", prikazLejeraPod);
 
 function prikazLejeraStubovi() {
@@ -568,6 +569,11 @@ function prikazLejeraNkro() {
 
 function prikazLejeraPotrosac() {
   wmsPotrosaci.setVisible(!wmsPotrosaci.getVisible());
+  zatvoriHamburger();
+}
+
+function prikazLejeraNelegalniPotrosac() {
+  wmsNelegalniPotrosaci.setVisible(!wmsNelegalniPotrosaci.getVisible());
   zatvoriHamburger();
 }
 

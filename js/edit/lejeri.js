@@ -88,6 +88,24 @@ let wmsPotrosaci = new ol.layer.Image({
   }),
 });
 
+let layernameNelegalniPotrosaci = "nelegalni_potrosac",
+  fulllayernameNelegalniPotrosaci = "geonode:nelegalni_potrosac",
+  layertitleNelegalniPotrosaci = "nelegalni_potrosac";
+let tipGeometrijeNelegalniPotrosaci = point;
+
+let wmsNelegalniPotrosaci = new ol.layer.Image({
+  title: layertitleNelegalniPotrosaci,
+  name: layernameNelegalniPotrosaci,
+  source: new ol.source.ImageWMS({
+    url: wmsUrl,
+    params: {
+      LAYERS: fulllayernameNelegalniPotrosaci,
+    },
+    ratio: 1,
+    serverType: "geoserver",
+  }),
+});
+
 let layernamePrikljucnoMjesto = "prikljucno_mjesto",
   fulllayernamePrikljucnoMjesto = "geonode:prikljucno_mjesto",
   layertitlePrikljucnoMjesto = "prikljucno_mjesto";
@@ -150,6 +168,7 @@ map.addLayer(wmsPotrosaci);
 map.addLayer(wmsPrikljucnoMjesto);
 map.addLayer(wmsNKRO);
 map.addLayer(wmsPOD);
+map.addLayer(wmsNelegalniPotrosaci);
 
 /**Dio za filtriranje lejera koji se pošalju sa mape map_energetika */
 
