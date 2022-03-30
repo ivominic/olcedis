@@ -270,7 +270,7 @@ modifyV.on("modifyend", function (e) {
       let distancaOd = turf.point([coordinates[0][0], coordinates[0][1]]);
       let distancaDo = turf.point([original.coordinates[0][0], original.coordinates[0][1]]);
       let distanca = turf.distance(distancaOd, distancaDo, mjera);
-      if (distanca > dozvoljeniPomjeraj) {
+      if (distanca > kmlRadius / 1000) {
         isViolatedAllowedDistance = true;
       }
     }
@@ -284,17 +284,14 @@ modifyV.on("modifyend", function (e) {
         original.coordinates[coordinateLength - 1][1],
       ]);
       let distanca = turf.distance(distancaOd, distancaDo, mjera);
-      if (distanca > dozvoljeniPomjeraj) {
+      if (distanca > kmlRadius / 1000) {
         isViolatedAllowedDistance = true;
       }
     }
 
-    if (isLineModifiedInMiddle) {
+    if (isViolatedAllowedDistance) {
       e.features.getArray()[0].getGeometry().setCoordinates(original.coordinates);
-      poruka(
-        "Upozorenje",
-        "Tačka ne može biti pomjerena više od " + (dozvoljeniPomjeraj * 1000).toString() + "m od snimljene pozicije."
-      );
+      poruka("Upozorenje", "Tačka ne može biti pomjerena više od " + kmlRadius.toString() + "m od snimljene pozicije.");
       return false;
     }
   }
