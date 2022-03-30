@@ -275,13 +275,13 @@ modifyV.on("modifyend", function (e) {
       }
     }
     if (
-      coordinates[coordinateLength][0] !== original.coordinates[coordinateLength][0] ||
-      coordinates[coordinateLength][1] !== original.coordinates[coordinateLength][1]
+      coordinates[coordinateLength - 1][0] !== original.coordinates[coordinateLength - 1][0] ||
+      coordinates[coordinateLength - 1][1] !== original.coordinates[coordinateLength - 1][1]
     ) {
-      let distancaOd = turf.point([coordinates[coordinateLength][0], coordinates[coordinateLength][1]]);
+      let distancaOd = turf.point([coordinates[coordinateLength - 1][0], coordinates[coordinateLength - 1][1]]);
       let distancaDo = turf.point([
-        original.coordinates[coordinateLength][0],
-        original.coordinates[coordinateLength][1],
+        original.coordinates[coordinateLength - 1][0],
+        original.coordinates[coordinateLength - 1][1],
       ]);
       let distanca = turf.distance(distancaOd, distancaDo, mjera);
       if (distanca > dozvoljeniPomjeraj) {

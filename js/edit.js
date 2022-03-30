@@ -208,6 +208,7 @@ function podesiInterakciju() {
     });
     map.addInteraction(draw);
     map.addInteraction(modify);
+    map.addInteraction(new ol.interaction.DragPan({}));
   }
   if (akcija === polygon) {
     draw = new ol.interaction.Draw({
@@ -223,6 +224,7 @@ function podesiInterakciju() {
     });
     map.addInteraction(draw);
     map.addInteraction(modify);
+    map.addInteraction(new ol.interaction.DragPan({}));
   }
   if (akcija === "izmijeni") {
     modify = new ol.interaction.Modify({
