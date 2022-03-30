@@ -162,22 +162,22 @@ function prikazPanelaAtributa(sloj) {
     prikaziAtributDivTrafostanice(akcijaLejerNivo);
   } else if (sloj === "NKRO") {
     odabraniLejerUnos = "nkro";
-    document.querySelector("#napon").value = "0.4";
+    document.querySelector("#napon").value = filePowerLevel;
     document.querySelector("#ddl_sloj_podataka").value = "nkro";
     prikaziAtributDivNkro();
   } else if (sloj === "Priključno mjesto") {
     odabraniLejerUnos = "prikljucno_mjesto";
-    document.querySelector("#napon").value = "0.4";
+    document.querySelector("#napon").value = filePowerLevel;
     document.querySelector("#ddl_sloj_podataka").value = "prikljucno_mjesto";
     prikaziAtributDivPrikljucnoMjesto();
   } else if (sloj === "Potrošač") {
     odabraniLejerUnos = "potrosaci";
-    document.querySelector("#napon").value = "0.4";
+    document.querySelector("#napon").value = filePowerLevel;
     document.querySelector("#ddl_sloj_podataka").value = "potrosac";
     prikaziAtributDivPotrosac();
   } else if (sloj === "POD") {
     odabraniLejerUnos = "pod";
-    document.querySelector("#napon").value = "0.4";
+    document.querySelector("#napon").value = filePowerLevel;
     document.querySelector("#ddl_sloj_podataka").value = "pod";
     prikaziAtributDivPod();
   }
