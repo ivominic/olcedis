@@ -694,7 +694,7 @@ readSignedUser();
  * Method that returns allowed radius in meters to move gpx points, or distance from kml point.
  */
 function readRadius() {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/get_radius?tip_fajla=gpx&napon=0.4";
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/get_radius";
   if (isEditable) {
     urlServisa += "?tip_fajla=gpx";
   } else {
@@ -707,6 +707,7 @@ function readRadius() {
     data: "",
     type: "GET",
     success: function (data) {
+      console.log({ data });
       let tempRadius = parseFloat(data.response.radius);
       dozvoljeniPomjeraj = tempRadius / 1000; //Distance in kilometers
       kmlRadius = tempRadius;

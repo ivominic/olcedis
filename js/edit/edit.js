@@ -325,7 +325,7 @@ dragAndDrop.on("addfeatures", function (event) {
     feature.set("layer_name", layerNameImport);
     feature.set("isEditable", isEditable);
     feature.set("napon", naponskiNivoNapojneTrafostanice);
-    if (!isEditable) {
+    /*if (!isEditable) {
       //if (feature.getGeometry().getType().toString().includes("oint")) {
       //TODO: ovo zakomentarisati. Pravi probleme za veći fajl.
       objectNearKmlFeature(feature, "stubovi");
@@ -335,7 +335,7 @@ dragAndDrop.on("addfeatures", function (event) {
       objectNearKmlFeature(feature, "nkro");
       objectNearKmlFeature(feature, "prikljucno_mjesto");
       objectNearKmlFeature(feature, "view_potrosaci");
-    }
+    }*/
 
     //let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
     let position = feature.values_.geometry.flatCoordinates;

@@ -173,6 +173,18 @@ select.on("select", function (e) {
     if (!odabirSaMape) {
       if (selectGpxFeature.values_.name !== undefined) {
         document.querySelector("#gps").value = selectGpxFeature.values_.name;
+        //Kad se klikne na kml objekat da provjeri da li postoji u blizini objekat na koji treba biti povezan.
+        //Kml vodovi imaju definisan name property.
+        //TODO: Dodati uslov da se ova provjera sprovodi samo ako lejer nije definisan, tj za nove objekte.
+        if (!isEditable) {
+          objectNearKmlFeature(selectGpxFeature, "stubovi");
+          objectNearKmlFeature(selectGpxFeature, "trafostanice");
+          objectNearKmlFeature(selectGpxFeature, "vodovi");
+          objectNearKmlFeature(selectGpxFeature, "pod");
+          objectNearKmlFeature(selectGpxFeature, "nkro");
+          objectNearKmlFeature(selectGpxFeature, "prikljucno_mjesto");
+          objectNearKmlFeature(selectGpxFeature, "view_potrosaci");
+        }
       } else {
         document.querySelector("#gps").value = "";
         //select.getFeatures().clear();
@@ -270,7 +282,7 @@ modifyV.on("modifyend", function (e) {
       let distancaOd = turf.point([coordinates[0][0], coordinates[0][1]]);
       let distancaDo = turf.point([original.coordinates[0][0], original.coordinates[0][1]]);
       let distanca = turf.distance(distancaOd, distancaDo, mjera);
-      if (distanca > kmlRadius / 1000) {
+      if (distanca > dozvoljeniPomjeraj) {
         isViolatedAllowedDistance = true;
       }
     }
@@ -284,7 +296,7 @@ modifyV.on("modifyend", function (e) {
         original.coordinates[coordinateLength - 1][1],
       ]);
       let distanca = turf.distance(distancaOd, distancaDo, mjera);
-      if (distanca > kmlRadius / 1000) {
+      if (distanca > dozvoljeniPomjeraj) {
         isViolatedAllowedDistance = true;
       }
     }
