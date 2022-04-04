@@ -420,7 +420,7 @@ modifyV.on("modifyend", function (e) {
         "Tačka ne može biti pomjerena više od " + (dozvoljeniPomjeraj * 1000).toString() + "m od snimljene pozicije."
       );
     }
-    citajExtent();
+    //citajExtent();
   }
 });
 
