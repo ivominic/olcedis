@@ -328,13 +328,13 @@ dragAndDrop.on("addfeatures", function (event) {
     /*if (!isEditable) {
       //if (feature.getGeometry().getType().toString().includes("oint")) {
       //TODO: ovo zakomentarisati. Pravi probleme za veći fajl.
-      objectNearKmlFeature(feature, "stubovi");
-      objectNearKmlFeature(feature, "trafostanice");
-      objectNearKmlFeature(feature, "vodovi");
-      objectNearKmlFeature(feature, "pod");
-      objectNearKmlFeature(feature, "nkro");
-      objectNearKmlFeature(feature, "prikljucno_mjesto");
-      objectNearKmlFeature(feature, "view_potrosaci");
+      objectNearKmlFeature(feature, feature, "stubovi");
+      objectNearKmlFeature(feature, feature, "trafostanice");
+      objectNearKmlFeature(feature, feature, "vodovi");
+      objectNearKmlFeature(feature, feature, "pod");
+      objectNearKmlFeature(feature, feature, "nkro");
+      objectNearKmlFeature(feature, feature, "prikljucno_mjesto");
+      objectNearKmlFeature(feature, feature, "view_potrosaci");
     }*/
 
     //let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
@@ -360,13 +360,13 @@ dragAndDrop.on("addfeatures", function (event) {
 
   //Provjera za kml tačke sa krajeva linije
   extractKmlLinestringEndPoints();
-  kmlEndPoints.forEach(function (feature) {
+  /*kmlEndPoints.forEach(function (feature) {
     if (feature.getGeometry().getType().toString().includes("oint")) {
       objectNearKmlFeature(feature, "stubovi");
       objectNearKmlFeature(feature, "trafostanice");
       objectNearKmlFeature(feature, "vodovi");
     }
-  });
+  });*/
 
   //On drag'n'drop layer, all other vector layers are removed
   map.getLayers().forEach(function (layer) {

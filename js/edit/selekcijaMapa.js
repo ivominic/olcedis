@@ -178,13 +178,17 @@ select.on("select", function (e) {
         //Kml vodovi imaju definisan name property.
         //TODO: Dodati uslov da se ova provjera sprovodi samo ako lejer nije definisan, tj za nove objekte.
         if (!isEditable) {
-          objectNearKmlFeature(selectGpxFeature, "stubovi");
-          objectNearKmlFeature(selectGpxFeature, "trafostanice");
-          objectNearKmlFeature(selectGpxFeature, "vodovi");
-          objectNearKmlFeature(selectGpxFeature, "pod");
-          objectNearKmlFeature(selectGpxFeature, "nkro");
-          objectNearKmlFeature(selectGpxFeature, "prikljucno_mjesto");
-          objectNearKmlFeature(selectGpxFeature, "view_potrosaci");
+          console.log("SELECT GXP FEATURE", selectGpxFeature);
+          extractKmlFeatureEndPoints(selectGpxFeature).forEach(function (feature) {
+            objectNearKmlFeature(selectGpxFeature, feature, "stubovi");
+            objectNearKmlFeature(selectGpxFeature, feature, "trafostanice");
+            objectNearKmlFeature(selectGpxFeature, feature, "vodovi");
+            objectNearKmlFeature(selectGpxFeature, feature, "pod");
+            objectNearKmlFeature(selectGpxFeature, feature, "nkro");
+            objectNearKmlFeature(selectGpxFeature, feature, "prikljucno_mjesto");
+            objectNearKmlFeature(selectGpxFeature, feature, "view_potrosaci");
+          });
+          showConnectForm();
         }
       } else {
         document.querySelector("#gps").value = "";
