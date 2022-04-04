@@ -152,6 +152,7 @@ function prethodniObjekatGpx() {
 
 let select = new ol.interaction.Select({
   wrapX: false,
+  hitTolerance: 5,
 });
 
 select.on("select", function (e) {
