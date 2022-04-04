@@ -333,11 +333,11 @@ dragAndDrop.on("addfeatures", function (event) {
       var f = this.getMap().getFeaturesAtPixel(e.pixel, {
         hitTolerance: pixelTolerance,
         layerFilter: function (candidate) {
-          return candidate === vector;
+          return true; //candidate === vector;
         },
       });
       console.log("Radi");
-      if (f && f[0].getGeometry().getType() == "LineString") {
+      if (f && f[0] && f[0].getGeometry() && f[0].getGeometry().getType() == "LineString") {
         var coordinates = f[0].getGeometry().getCoordinates();
         var p0 = e.pixel;
         var p1 = this.getMap().getPixelFromCoordinate(coordinates[0]);
