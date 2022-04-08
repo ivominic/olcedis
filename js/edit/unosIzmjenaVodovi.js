@@ -92,7 +92,7 @@ function prikaziPoljaOdabranogVoda() {
   //document.querySelector("#izvod_napojne").value = selectGpxFeature.values_.izvod_napojne;
   document.querySelector("#br_faza").value = selectGpxFeature.values_.br_faza;
   document.querySelector("#br_spojnica").value = selectGpxFeature.values_.br_spojnica;
-  document.querySelector("#god_izgr").value = selectGpxFeature.values_.god_izgr;
+  document.querySelector("#god_izgr").value = selectGpxFeature.values_.god_izg;
   document.querySelector("#poc_dion").value = selectGpxFeature.values_.poc_dion;
   document.querySelector("#kraj_dion").value = selectGpxFeature.values_.kraj_dion;
   document.querySelector("#zajednicka_dion").value = selectGpxFeature.values_.zajednicka_dion;
@@ -100,32 +100,33 @@ function prikaziPoljaOdabranogVoda() {
   document.querySelector("#rac_duzina").value = selectGpxFeature.values_.rac_duzina;
   document.querySelector("#duzina").value = selectGpxFeature.values_.duzina;
   document.querySelector("#broj_spojnica").value = selectGpxFeature.values_.broj_spojnica;
-  document.querySelector("#sifra_dionice").value = selectGpxFeature.values_.sifra_dionice;
 
   if (selectGpxFeature.values_.napon === "0.4") {
-    document.querySelector("#rasvjeta_vod").value = selectGpxFeature.values_.rasvjeta_vod;
-    document.querySelector("#vrsta_vod_04").value = selectGpxFeature.values_.vrsta_vod_04;
-    document.querySelector("#tip_vod_04").value = selectGpxFeature.values_.tip_vod_04;
-    document.querySelector("#presjek_vod_04").value = selectGpxFeature.values_.presjek_vod_04;
+    document.querySelector("#rasvjeta_vod").value = selectGpxFeature.values_.rasvjeta;
+    document.querySelector("#vrsta_vod_04").value = selectGpxFeature.values_.vrsta;
+    document.querySelector("#tip_vod_04").value = selectGpxFeature.values_.tip;
+    document.querySelector("#presjek_vod_04").value = selectGpxFeature.values_.presjek;
     document.querySelector("#vrsta_materijal_vod_04").value = selectGpxFeature.values_.materijal;
 
     //setujDdlVrijednost("#optika_stub_04", selectGpxFeature.values_.optika);
   }
   if (selectGpxFeature.values_.napon === "10") {
-    document.querySelector("#vrsta_vod_10").value = selectGpxFeature.values_.vrsta_vod_10;
-    document.querySelector("#tip_vod_10").value = selectGpxFeature.values_.tip_vod_10;
-    document.querySelector("#presjek_vod_10").value = selectGpxFeature.values_.presjek_vod_10;
-    document.querySelector("#vrsta_materijal_vod_10").value = selectGpxFeature.values_.materijal_vod_10;
-    document.querySelector("#uze_presjek_vod_10").value = selectGpxFeature.values_.uze_presjek_vod_10;
-    document.querySelector("#uze_vod_10").value = selectGpxFeature.values_.uze_vod_10;
+    document.querySelector("#vrsta_vod_10").value = selectGpxFeature.values_.vrsta;
+    document.querySelector("#tip_vod_10").value = selectGpxFeature.values_.tip;
+    document.querySelector("#presjek_vod_10").value = selectGpxFeature.values_.presjek;
+    document.querySelector("#vrsta_materijal_vod_10").value = selectGpxFeature.values_.materijal;
+    document.querySelector("#uze_presjek_vod_10").value = selectGpxFeature.values_.uze_presjek;
+    document.querySelector("#uze_vod_10").value = selectGpxFeature.values_.uze;
+    document.querySelector("#sifra_dionice").value = selectGpxFeature.values_.sifra_dionice;
   }
   if (selectGpxFeature.values_.napon === "35") {
-    ucrtaniVod.set("vrsta_vod_35", document.querySelector("#vrsta_vod_35").value);
-    ucrtaniVod.set("tip_vod_35", document.querySelector("#tip_vod_35").value);
-    ucrtaniVod.set("presjek_vod_35", document.querySelector("#presjek_vod_35").value);
-    ucrtaniVod.set("materijal_vod_35", document.querySelector("#materijal_vod_35").value);
-    ucrtaniVod.set("uze_presjek_vod_35", document.querySelector("#uze_presjek_vod_35").value);
-    ucrtaniVod.set("uze_vod_10", document.querySelector("#uze_vod_35").value);
+    document.querySelector("#vrsta_vod_35").value = selectGpxFeature.values_.vrsta;
+    document.querySelector("#tip_vod_35").value = selectGpxFeature.values_.tip;
+    document.querySelector("#presjek_vod_35").value = selectGpxFeature.values_.presjek;
+    document.querySelector("#materijal_vod_35").value = selectGpxFeature.values_.materijal_vod_35;
+    document.querySelector("#uze_presjek_vod_35").value = selectGpxFeature.values_.uze_presjek_vod_35;
+    document.querySelector("#uze_vod_35").value = selectGpxFeature.values_.uze_vod_35;
+    document.querySelector("#sifra_dionice").value = selectGpxFeature.values_.sifra_dionice;
   }
 
   setujDdlVrijednost("#vlasnistvo", selectGpxFeature.values_.vlasnistvo);
