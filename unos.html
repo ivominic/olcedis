@@ -240,6 +240,42 @@
       </div>
     </div>
 
+    <div id="odabirCvorovaVodaDiv" class="sidenav draggable">
+      <div class="titleAndClose">
+        <h1>Odabir susjednih objekata voda</h1>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeDiv('#odabirCvorovaVodaDiv')">&times;</a>
+      </div>
+      <div class="items-padd">
+        <div class="pr-8 sadrzaj-scroll style-2 povezivanjevodovadiv">
+          <div class="flex-row pb-8">
+            <label for="ddlPocetniCvorVodovi">Početna tačka:</label>
+            <select class="select-css selectStart" id="ddlPocetniCvorVodovi"></select>
+            <a class="tooltip markerButton" data-tool="Odaberite na mapi" id="tool41">
+              <button class="dugmeodabirmapa" id="btnPocetniCvorVoda">
+                <i class="fas fa-map-marker-alt"></i>
+              </button>
+            </a>
+          </div>
+          <div class="flex-row pb-8">
+            <label for="ddlKrajnjiCvorVodovi" style="padding-right: 7px" class="labelapoveznicakrajnja"
+              >Krajnja tačka:
+            </label>
+            <select class="select-css selectStart" id="ddlKrajnjiCvorVodovi"></select>
+            <a class="tooltip markerButton" data-tool="Odaberite na mapi" id="tool51">
+              <button class="dugmeodabirmapa" id="btnKrajnjiCvorVoda">
+                <i class="fas fa-map-marker-alt"></i>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex-end items-padd-sm">
+        <button type="button" class="btn mr-8" id="btnPotvrdiDodavanjeVodu">
+          <i class="fas fa-check-circle"></i> Potvrdi
+        </button>
+      </div>
+    </div>
+
     <div id="odabirBliskogObjektaKmlDiv" class="sidenav draggable">
       <div class="titleAndClose">
         <h1>Povezivanje</h1>
