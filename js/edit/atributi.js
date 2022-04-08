@@ -274,6 +274,7 @@ function prikaziAtributDivVodove(napon) {
     document.querySelector("#divUnosMaterijalVod10").style.display = "flex";
     document.querySelector("#divUnosUzePresjekVod10").style.display = "flex";
     document.querySelector("#divUnosUzeVod10").style.display = "flex";
+    document.querySelector("#divUnosSifraDionice").style.display = "flex";
   }
   if (napon === "35") {
     document.querySelector("#divUnosVrstaVod35").style.display = "flex";
@@ -282,6 +283,7 @@ function prikaziAtributDivVodove(napon) {
     document.querySelector("#divUnosMaterijalVod35").style.display = "flex";
     document.querySelector("#divUnosUzePresjekVod35").style.display = "flex";
     document.querySelector("#divUnosUzeVod10").style.display = "flex";
+    document.querySelector("#divUnosSifraDionice").style.display = "flex";
   }
   //document.querySelector("#divUnosGps").style.display = "flex";
   //document.querySelector("#divUnosFid1").style.display = "flex";
@@ -303,7 +305,6 @@ function prikaziAtributDivVodove(napon) {
   document.querySelector("#divUnosRacDuzina").style.display = "flex";
   document.querySelector("#divUnosDuzina").style.display = "flex";
   document.querySelector("#divUnosBrojSpojnica").style.display = "flex";
-  document.querySelector("#divUnosSifraDionice").style.display = "flex";
   document.querySelector("#divUnosId").style.display = "flex";
   //popuniListeZaVodove(napon);
 }

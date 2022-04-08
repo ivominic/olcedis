@@ -137,10 +137,10 @@ function obaveznaPolja(sloj) {
       popunjen = false;
       borderChange(document.querySelector("#broj_spojnica"));
     }
-    if (document.querySelector("#sifra_dionice").value === "") {
+    /*if (document.querySelector("#sifra_dionice").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#sifra_dionice"));
-    }
+    }*/
     //Selekti
     if (document.querySelector("#tip_vod_04").value === "") {
       popunjen = false;
