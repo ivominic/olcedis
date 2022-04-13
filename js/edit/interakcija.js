@@ -312,6 +312,11 @@ document.querySelector("#txtSifraNapojneTrafostanice").addEventListener("keyup",
 //Odabir priključnog mjesta za potrošače
 document.querySelector("#btnMapaPrikljucnoMjesto").addEventListener("click", odabirPrikljucnogMjestaZaUnosPotrosaca);
 
+//Akcije za dodavanje novog objekta postojećem vodu
+document.querySelector("#btnPotvrdiDodavanjeVodu").addEventListener("click", potvrdaDodavanjaVodu);
+document.querySelector("#btnPocetniCvorVoda").addEventListener("click", odabirPocetnogCvoraVoda);
+document.querySelector("#btnKrajnjiCvorVoda").addEventListener("click", odabirKrajnjegCvoraVoda);
+
 function odabirNapojneTrafostaniceUnos() {
   odabirNapojneTrafostaniceSaMape();
 }
