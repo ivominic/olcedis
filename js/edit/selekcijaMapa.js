@@ -548,6 +548,7 @@ function klikNaRastereZaVodove(browserEvent) {
               brojLejera--;
               let odgovor = JSON.parse(json);
               if (odgovor.features.length > 0) {
+                odabirSaMape = false;
                 console.log(odgovor.features);
                 odgovor.features.forEach(function (el) {
                   tempNiz.push(el);
