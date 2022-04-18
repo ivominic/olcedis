@@ -426,6 +426,7 @@ document.querySelector("#lejer_nkro").addEventListener("click", prikazLejeraNkro
 document.querySelector("#lejer_potrosac").addEventListener("click", prikazLejeraPotrosac);
 document.querySelector("#lejer_nelegalni_potrosac").addEventListener("click", prikazLejeraNelegalniPotrosac);
 document.querySelector("#lejer_pod").addEventListener("click", prikazLejeraPod);
+document.querySelector("#lejer_validations").addEventListener("click", prikazLejeraValidations);
 
 function prikazLejeraStubovi() {
   wmsStubovi.setVisible(!wmsStubovi.getVisible());
@@ -468,5 +469,10 @@ function prikazLejeraNelegalniPotrosac() {
 
 function prikazLejeraPod() {
   wmsPOD.setVisible(!wmsPOD.getVisible());
+  zatvoriHamburger();
+}
+
+function prikazLejeraValidations() {
+  wmsValidations.setVisible(!wmsValidations.getVisible());
   zatvoriHamburger();
 }

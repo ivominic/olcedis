@@ -20,6 +20,25 @@ let wmsPOD = new ol.layer.Image({
 
 map.addLayer(wmsPOD);
 
+let layernameValidations = "validations",
+  fulllayernameValidations = "geonode:validations",
+  layertitleValidations = "validations";
+
+let wmsValidations = new ol.layer.Image({
+  title: layertitleValidations,
+  name: layernameValidations,
+  source: new ol.source.ImageWMS({
+    url: wmsUrl,
+    params: {
+      LAYERS: fulllayernameValidations,
+    },
+    ratio: 1,
+    serverType: "geoserver",
+  }),
+});
+
+map.addLayer(wmsValidations);
+
 /**
  * Metoda koja za odabrani naponski nivo vraća sve POD tog nivoa
  * @param {} napon

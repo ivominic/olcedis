@@ -160,6 +160,23 @@ let wmsPOD = new ol.layer.Image({
   }),
 });
 
+let layernameValidations = "validations",
+  fulllayernameValidations = "geonode:validations",
+  layertitleValidations = "validations";
+
+let wmsValidations = new ol.layer.Image({
+  title: layertitleValidations,
+  name: layernameValidations,
+  source: new ol.source.ImageWMS({
+    url: wmsUrl,
+    params: {
+      LAYERS: fulllayernameValidations,
+    },
+    ratio: 1,
+    serverType: "geoserver",
+  }),
+});
+
 map.addLayer(wmsStubovi);
 map.addLayer(wmsVodovi);
 map.addLayer(wmsTrafostanicePoligoni);
@@ -169,6 +186,7 @@ map.addLayer(wmsPrikljucnoMjesto);
 map.addLayer(wmsNKRO);
 map.addLayer(wmsPOD);
 map.addLayer(wmsNelegalniPotrosaci);
+map.addLayer(wmsValidations);
 
 /**Dio za filtriranje lejera koji se pošalju sa mape map_energetika */
 
