@@ -12,6 +12,8 @@ let nizPocetnihVodova = [],
 function potvrdaDodavanjaVodu() {
   let blnIstiVod = false;
   let vodId;
+  let prviObjekat = document.querySelector("#ddlPocetniCvorVodovi").value;
+  let drugiObjekat = document.querySelector("#ddlKrajnjiCvorVodovi").value;
   nizPocetnihVodova.forEach((el1) => {
     nizKrajnjihVodova.forEach((el2) => {
       if (el1 === el2) {
@@ -20,11 +22,18 @@ function potvrdaDodavanjaVodu() {
       }
     });
   });
-  if (blnIstiVod) {
-    alert("Vod " + vodId);
+  if (!prviObjekat || !drugiObjekat) {
+    alert("Nisu odabrane tačke između kojih se unosi novi objekat.");
   } else {
-    alert("Nisu elementi istog voda");
   }
+  if (!blnIstiVod) {
+    alert("Nisu elementi istog voda");
+    return false;
+  }
+
+  console.log("Vod", vodId);
+  console.log("Prvi objekat", prviObjekat);
+  console.log("Drugi objekat", drugiObjekat);
 
   alert("Potvrda dodavanja vodu.");
 }
@@ -109,12 +118,14 @@ function klikNaRastereZaCvorVoda(browserEvent) {
                   }
                   let newId = el.id.split(".")[0] + "." + el.properties.originalId;
 
-                  $(selektovaniDdlZaPovezivanjeVoda).append(
-                    $("<option>", {
-                      value: newId,
-                      text: newId,
-                    })
-                  );
+                  if (el.id.split(".")[0] !== "vodovi") {
+                    $(selektovaniDdlZaPovezivanjeVoda).append(
+                      $("<option>", {
+                        value: newId,
+                        text: newId,
+                      })
+                    );
+                  }
                 });
                 if (blnNijeSelektovanVod) {
                   poruka("Upozorenje", "Nije odabran objekat koji pripada nekom vodu");
@@ -128,4 +139,54 @@ function klikNaRastereZaCvorVoda(browserEvent) {
       }
     }
   });
+}
+
+function finalnaObradaGpxTacaka(vodId, prvaTacka, drugaTacka) {
+  let postojiNeobradjenaTacka = false;
+  let iterator = 0;
+  let nizObjekataZaDodavanjeVodu = [];
+  stuboviArrayFinal.length = 0;
+  trafostaniceArrayFinal.length = 0;
+  podoviArrayFinal.length = 0;
+  prikljucnaMjestaArrayFinal.length = 0;
+  potrosaciArrayFinal.length = 0;
+  nkroArrayFinal.length = 0;
+  gpxFeatures.forEach((el) => {
+    iterator++;
+    console.log("finalno lejer", el.get("lejer"));
+    if (el.get("lejer") === "stubovi") {
+      nizObjekataZaDodavanjeVodu.push(stubArrayElement(el, "I", 0, iterator));
+    } else if (el.get("lejer") === "trafostanice") {
+      nizObjekataZaDodavanjeVodu.push(trafostanicaArrayElement(el, "I", 0, iterator));
+    } else if (el.get("lejer") === "nkro") {
+      nizObjekataZaDodavanjeVodu.push(nkroArrayElement(el, "I", 0, iterator));
+    } else if (el.get("lejer") === "potrosac") {
+      nizObjekataZaDodavanjeVodu.push(potrosacArrayElement(el, "I", 0, iterator));
+    } else if (el.get("lejer") === "pod") {
+      nizObjekataZaDodavanjeVodu.push(podArrayElement(el, "I", 0, iterator));
+    } else if (el.get("lejer") === "prikljucno_mjesto") {
+      nizObjekataZaDodavanjeVodu.push(prikljucnoMjestoArrayElement(el, "I", 0, iterator));
+    } else if (el.get("lejer") === undefined) {
+      postojiNeobradjenaTacka = true;
+    }
+  });
+
+  if (postojiNeobradjenaTacka) {
+    poruka("Upozorenje", "Nisu obradjeni svi objekti iz fajla za uvoz.");
+    return false;
+  } else {
+    azuriranjeWebService(vodId, prvaTacka, drugaTacka, nizObjekataZaDodavanjeVodu);
+  }
+}
+
+//TODO: Pozvati servis koji će Jovan napraviti
+function azuriranjeWebService(vodId, prvaTacka, drugaTacka, nizObjekataZaDodavanjeVodu) {
+  if (success) {
+    availableLayersPerPowerLevel("");
+    vectorSource.clear();
+    vektorKreiraniVodovi.getSource().clear();
+    gpxFeatures.length = 0;
+  } else {
+    alert("Unos u bazu nije prošao");
+  }
 }

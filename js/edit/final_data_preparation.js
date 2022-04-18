@@ -65,7 +65,7 @@ function stubArrayElement(el, action, wizard, serialNo) {
   };
   console.log("Stubovi finalno", item);
   stuboviArrayFinal.push(item);
-
+  return item;
   /*kmlLinksArray.push({
     new_object_id: kmlFeature.get("originalId"),
     old_object_id: oldObject[1],
@@ -136,6 +136,7 @@ function vodArrayElement(el, action, wizard, serialNo) {
   };
   console.log("Vodovi finalno", item);
   vodoviArrayFinal.push(item);
+  return item;
 }
 
 //TODO: Made procedures for other layers
@@ -198,6 +199,7 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
   };
   console.log("Trafostanice finalno", item);
   trafostaniceArrayFinal.push(item);
+  return item;
 }
 
 /**
@@ -243,6 +245,7 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
   };
   console.log("Priključno mjesto finalno", item);
   prikljucnaMjestaArrayFinal.push(item);
+  return item;
 }
 
 /**
@@ -292,6 +295,7 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
   };
   console.log("Potrošači finalno", item);
   potrosaciArrayFinal.push(item);
+  return item;
 }
 
 /**
@@ -341,6 +345,7 @@ function podArrayElement(el, action, wizard, serialNo) {
   };
   console.log("Podovi finalno", item);
   podoviArrayFinal.push(item);
+  return item;
 }
 
 /**
@@ -388,4 +393,5 @@ function nkroArrayElement(el, action, wizard, serialNo) {
   };
   console.log("Nkro finalno", item);
   nkroArrayFinal.push(item);
+  return item;
 }
