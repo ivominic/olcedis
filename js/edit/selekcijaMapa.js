@@ -875,9 +875,9 @@ function odabirSvihRasterObjekataKlik(browserEvent) {
   let brojLejera = 0;
   map.forEachLayerAtPixel(pixel, function (layer) {
     if (layer instanceof ol.layer.Image) {
-      console.log(layer.values_.name);
-      if (layer.get("visible")) {
-        //Ovaj if se može ukloniti
+      //console.log(layer.values_.name);
+      //Ne razmatramo nelegalne potrošače za prikaz
+      if (layer.get("visible") && !layer.values_.name.startsWith("nelegalni_potrosac")) {
         brojLejera++;
         let url = layer
           .getSource()
@@ -904,8 +904,9 @@ function odabirSvihRasterObjekataKlik(browserEvent) {
               if (brojLejera === 0) {
                 //Ukloniti metodu koja se poziva na klik
                 !odabirSaMape && map.un("singleclick", odabirSvihRasterObjekataKlik);
-                console.log("Svi selektovani objekti", nizSelektovanihObjekata);
+                //console.log("Svi selektovani objekti", nizSelektovanihObjekata);
                 //TODO: Pozvati metodu koja će vršiti prikaz atributa objekta.
+                prikazAtributaSelektovanihObjekata();
               }
             });
         }
