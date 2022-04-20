@@ -1,5 +1,8 @@
 /**Metode koje popunjavaju polja za atribute iz selektovanih raster objekata */
 
+//map.on("singleclick", odabirSvihRasterObjekataKlik);
+//metoda za čitanje atributa iz rasterskih lejera
+
 //Tretirati niz dobijen iz rastera kao i nizGpxTacakaZaObradu, za prikaz strelica za prethodni i sljedeći objekat.
 
 function prikazAtributaSelektovanihObjekata() {
@@ -12,7 +15,8 @@ function prikazAtributaSelektovanihObjekata() {
   nizSelektovanihObjekata.forEach((el) => {
     console.log("el.id", el.id);
     console.log("el.properties.napon", el.properties.napon);
-    console.log("el.properties.originalId", el.properties.originalId);
+    console.log("lejer iz ddl-a", ddlLejerNaziv(el.id, el.properties.napon));
+    //console.log("el.properties.originalId", el.properties.originalId);
   });
 }
 
