@@ -38,6 +38,7 @@ let wmsValidations = new ol.layer.Image({
 });
 
 map.addLayer(wmsValidations);
+wmsValidations.setVisible(false);
 
 /**
  * Metoda koja za odabrani naponski nivo vraća sve POD tog nivoa

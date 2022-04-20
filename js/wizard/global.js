@@ -22,6 +22,7 @@ let isEditable = true; //Promjenljiva koja definiše da li je dozvoljeno pomjera
 let tacke = [],
   linije = [],
   poligoni = [];
+let nizSelektovanihObjekata = []; //Objekti pročitani iz raster lejera, na klik event
 let gpxFeatures = []; //Niz feature-a koji se dobije kad se prevuče gpx fajl na mapu
 let kmlFeature,
   kmlEndPoints = []; //Feature iz kml fajla koju povezujemo sa ostatkom mreže. EndPoint krajevi kml linije

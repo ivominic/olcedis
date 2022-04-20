@@ -862,3 +862,54 @@ function odabirPrikljucnogMjestaZaUnosPotrosaca() {
   $(prik_mjesto).empty();
   map.on("singleclick", klikNaRastereZaOdabirPrikljucnogMjesta);
 }
+
+/**
+ * Metoda koja popunjava niz featurima koje pročita iz raster lejera na mapi.
+ * @param {*} browserEvent
+ */
+function odabirSvihRasterObjekataKlik(browserEvent) {
+  //TODO: Dodati loader dok se ne završi učitavanje podataka
+  nizSelektovanihObjekata.length = 0;
+  let coordinate = browserEvent.coordinate;
+  let pixel = map.getPixelFromCoordinate(coordinate);
+  let brojLejera = 0;
+  map.forEachLayerAtPixel(pixel, function (layer) {
+    if (layer instanceof ol.layer.Image) {
+      console.log(layer.values_.name);
+      if (layer.get("visible")) {
+        //Ovaj if se može ukloniti
+        brojLejera++;
+        let url = layer
+          .getSource()
+          .getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
+            INFO_FORMAT: "application/json",
+            feature_count: "10",
+          });
+        if (url) {
+          fetch(url)
+            .then(function (response) {
+              return response.text();
+            })
+            .then(function (json) {
+              brojLejera--;
+              let odgovor = JSON.parse(json);
+              if (odgovor.features.length > 0) {
+                odabirSaMape = false;
+                odgovor.features.forEach(function (el) {
+                  nizSelektovanihObjekata.push(el);
+                  console.log("el", el);
+                });
+              }
+
+              if (brojLejera === 0) {
+                //Ukloniti metodu koja se poziva na klik
+                !odabirSaMape && map.un("singleclick", odabirSvihRasterObjekataKlik);
+                console.log("Svi selektovani objekti", nizSelektovanihObjekata);
+                //TODO: Pozvati metodu koja će vršiti prikaz atributa objekta.
+              }
+            });
+        }
+      }
+    }
+  });
+}
