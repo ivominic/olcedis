@@ -62,6 +62,7 @@ function stubArrayElement(el, action, wizard, serialNo) {
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
+    lejer: "stubovi",
   };
   console.log("Stubovi finalno", item);
   stuboviArrayFinal.push(item);
@@ -196,6 +197,7 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
+    lejer: "trafostanice",
   };
   console.log("Trafostanice finalno", item);
   trafostaniceArrayFinal.push(item);
@@ -242,6 +244,7 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
+    lejer: "prikljucno_mjesto",
   };
   console.log("Priključno mjesto finalno", item);
   prikljucnaMjestaArrayFinal.push(item);
@@ -292,6 +295,7 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
+    lejer: "potrosac",
   };
   console.log("Potrošači finalno", item);
   potrosaciArrayFinal.push(item);
@@ -342,6 +346,7 @@ function podArrayElement(el, action, wizard, serialNo) {
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
+    lejer: "pod",
   };
   console.log("Podovi finalno", item);
   podoviArrayFinal.push(item);
@@ -390,6 +395,7 @@ function nkroArrayElement(el, action, wizard, serialNo) {
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
+    lejer: "nkro",
   };
   console.log("Nkro finalno", item);
   nkroArrayFinal.push(item);

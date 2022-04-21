@@ -24,7 +24,6 @@ function potvrdaDodavanjaVodu() {
   });
   if (!prviObjekat || !drugiObjekat) {
     alert("Nisu odabrane tačke između kojih se unosi novi objekat.");
-  } else {
   }
   if (!blnIstiVod) {
     alert("Nisu elementi istog voda");
@@ -34,6 +33,8 @@ function potvrdaDodavanjaVodu() {
   console.log("Vod", vodId);
   console.log("Prvi objekat", prviObjekat);
   console.log("Drugi objekat", drugiObjekat);
+
+  finalnaObradaGpxTacakaZaAzuriranjeVoda(`vodovi.${vodId}`, prviObjekat, drugiObjekat);
 
   alert("Potvrda dodavanja vodu.");
 }
@@ -141,7 +142,7 @@ function klikNaRastereZaCvorVoda(browserEvent) {
   });
 }
 
-function finalnaObradaGpxTacaka(vodId, prvaTacka, drugaTacka) {
+function finalnaObradaGpxTacakaZaAzuriranjeVoda(vodId, prvaTacka, drugaTacka) {
   let postojiNeobradjenaTacka = false;
   let iterator = 0;
   let nizObjekataZaDodavanjeVodu = [];
@@ -181,12 +182,25 @@ function finalnaObradaGpxTacaka(vodId, prvaTacka, drugaTacka) {
 
 //TODO: Pozvati servis koji će Jovan napraviti
 function azuriranjeWebService(vodId, prvaTacka, drugaTacka, nizObjekataZaDodavanjeVodu) {
-  if (success) {
-    availableLayersPerPowerLevel("");
-    vectorSource.clear();
-    vektorKreiraniVodovi.getSource().clear();
-    gpxFeatures.length = 0;
-  } else {
-    alert("Unos u bazu nije prošao");
-  }
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/dodavanje_objekta_vodu";
+  $.ajax({
+    url: urlServisa,
+    data: {
+      stari_objekti: JSON.stringify([vodId, prvaTacka, drugaTacka]),
+      novi_objekti: JSON.stringify(nizObjekataZaDodavanjeVodu),
+    },
+    type: "POST",
+    success: function (data) {
+      console.log("success ažuriranje", data);
+      poruka("Uspjeh", data);
+      availableLayersPerPowerLevel("");
+      vectorSource.clear();
+      vektorKreiraniVodovi.getSource().clear();
+      gpxFeatures.length = 0;
+    },
+    error: function (x, y, z) {
+      console.log("Greška", x.responseText);
+      poruka("Greška", "Nije izvršen unos podataka.");
+    },
+  });
 }
