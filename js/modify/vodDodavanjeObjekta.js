@@ -30,13 +30,13 @@ function potvrdaDodavanjaVodu() {
     return false;
   }
 
-  console.log("Vod", vodId);
-  console.log("Prvi objekat", prviObjekat);
-  console.log("Drugi objekat", drugiObjekat);
+  //console.log("Vod", vodId);
+  //console.log("Prvi objekat", prviObjekat);
+  //console.log("Drugi objekat", drugiObjekat);
 
   finalnaObradaGpxTacakaZaAzuriranjeVoda(`vodovi.${vodId}`, prviObjekat, drugiObjekat);
 
-  alert("Potvrda dodavanja vodu.");
+  //alert("Potvrda dodavanja vodu.");
 }
 
 function odabirPocetnogCvoraVoda() {
