@@ -1,8 +1,8 @@
 // Modul za dodavanje novog čvora postojećem vodu
-//TODO: Upload fajla sa novim objektom, dodaju se atributi i prikazuje forma za odabir susjednih čvorova voda: #odabirCvorovaVodaDiv
-//TODO: Odabir čvorova istog voda. Provjeriti da li je odabran bar jedan vod i još neki objekat. Ako je samo vod ili bez voda, prikazati poruku o grešci
-//TODO: Ako je novi objekat stub, mijenja se geometrija. Ako je bilo koji drugi objekat, vod se dijeli i definiše se nadređemni i podređeni vod
-//TODO: Ovo treba uraditi na serverskoj strani, da bi znali koji dio sadrži nadređeni, a koji podređeni objekat.
+// Upload fajla sa novim objektom, dodaju se atributi i prikazuje forma za odabir susjednih čvorova voda: #odabirCvorovaVodaDiv
+// Odabir čvorova istog voda. Provjeriti da li je odabran bar jedan vod i još neki objekat. Ako je samo vod ili bez voda, prikazati poruku o grešci
+// Ako je novi objekat stub, mijenja se geometrija. Ako je bilo koji drugi objekat, vod se dijeli i definiše se nadređemni i podređeni vod
+// Ovo treba uraditi na serverskoj strani, da bi znali koji dio sadrži nadređeni, a koji podređeni objekat.
 
 let nizPocetnihCvorovaVoda = [],
   nizKrajnjihCvorovaVoda = [];
