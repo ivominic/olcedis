@@ -94,4 +94,8 @@ function prikazAtributaWmsLejer(objekat) {
   if (objekat.ddlLejer === "stub35" || objekat.ddlLejer === "stub10" || objekat.ddlLejer === "stub04") {
     prikaziAtributeWmsStuba(objekat);
   }
+  if (objekat.ddlLejer === "vod35" || objekat.ddlLejer === "vod10" || objekat.ddlLejer === "vod04") {
+    //prikaziAtributeWmsStuba(objekat);
+    console.log("VODOVI");
+  }
 }

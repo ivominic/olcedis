@@ -144,11 +144,8 @@ function sljedeciObjekatGpx() {
           document.querySelector("#divPrethodniObjekat").style.float = "left";
         }
         selektovaniWmsObjekat = nizSelektovanihObjekata[indexGpxTacakaZaObradu];
-        //prikazPodatakaIzGpxTacaka();
         console.log("Pouzvati metodu za prikaz podataka");
         prikazAtributaWmsLejer(selektovaniWmsObjekat);
-        //selectGpxFeature = nizSelektovanihObjekata[indexGpxTacakaZaObradu];
-        //prikazPodatakaIzGpxTacaka();
       } else {
         indexGpxTacakaZaObradu--;
         poruka("Uspjeh", "Ne postoji sljedeći objekat.");
@@ -180,12 +177,24 @@ function prethodniObjekatGpx() {
   } else {
     if (nizSelektovanihObjekata.length > 0) {
       console.log("Prethodni objekat iz wms-a");
-      indexGpxTacakaZaObradu++;
+      indexGpxTacakaZaObradu--;
+      if (indexGpxTacakaZaObradu >= 0) {
+        document.querySelector("#divSljedeciObjekat").style.display = "flex";
+        if (indexGpxTacakaZaObradu == 0) {
+          document.querySelector("#divPrethodniObjekat").style.display = "none";
+        } else {
+          document.querySelector("#divPrethodniObjekat").style.display = "flex";
+          document.querySelector("#divPrethodniObjekat").style.float = "left";
+        }
+        selektovaniWmsObjekat = nizSelektovanihObjekata[indexGpxTacakaZaObradu];
+        prikazAtributaWmsLejer(selektovaniWmsObjekat);
+      } else {
+        indexGpxTacakaZaObradu++;
+        poruka("Uspjeh", "Ne postoji prethodni objekat.");
+      }
     }
   }
 }
-
-//Select stari način
 
 let select = new ol.interaction.Select({
   wrapX: false,
