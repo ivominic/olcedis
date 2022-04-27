@@ -31,6 +31,7 @@ function prikazAtributaSelektovanihObjekata() {
   }
 
   prikazPanelaAtributa(nizSelektovanihObjekata[0].ddlLejer);
+  prikazAtributaWmsLejer(nizSelektovanihObjekata[0]);
 }
 
 /**
@@ -95,7 +96,25 @@ function prikazAtributaWmsLejer(objekat) {
     prikaziAtributeWmsStuba(objekat);
   }
   if (objekat.ddlLejer === "vod35" || objekat.ddlLejer === "vod10" || objekat.ddlLejer === "vod04") {
-    //prikaziAtributeWmsStuba(objekat);
-    console.log("VODOVI");
+    prikaziPoljaWmsVoda(objekat);
+  }
+  if (
+    objekat.ddlLejer === "trafostanica110" ||
+    objekat.ddlLejer === "trafostanica35" ||
+    objekat.ddlLejer === "trafostanica10"
+  ) {
+    prikaziPoljaWmsTrafostanice(objekat);
+  }
+  if (objekat.ddlLejer === "nkro") {
+    prikaziPoljaWmsNKRO(objekat);
+  }
+  if (objekat.ddlLejer === "prikljucno_mjesto") {
+    prikaziPoljaWmsPM(objekat);
+  }
+  if (objekat.ddlLejer === "potrosac") {
+    prikaziPoljaWmsPotrosac(objekat);
+  }
+  if (objekat.ddlLejer === "pod") {
+    prikaziPoljaWmsPod(objekat);
   }
 }

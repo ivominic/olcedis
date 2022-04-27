@@ -45,6 +45,25 @@ function prikaziPoljaOdabranogGpxPM() {
   setujDdlVrijednost("#vlasnistvo", selectGpxFeature.values_.vlasnistvo);
 }
 
+function prikaziPoljaWmsPM(objekat) {
+  if (objekat.properties.gps !== undefined) {
+    document.querySelector("#gps").value = objekat.properties.gps;
+  } else {
+    document.querySelector("#gps").value = "";
+  }
+
+  document.querySelector("#vlasnistvo").value = objekat.properties.vlasnistvo;
+  document.querySelector("#napon").value = objekat.properties.napon;
+  document.querySelector("#izvod_ts").value = objekat.properties.izvod_ts;
+  document.querySelector("#napojna_ts").value = objekat.properties.napojna_ts;
+  document.querySelector("#id").value = objekat.properties.id;
+  document.querySelector("#osiguraci").value = objekat.properties.osiguraci;
+  document.querySelector("#tip_pm").value = objekat.properties.tip_pm;
+  document.querySelector("#br_pretplatnika").value = objekat.properties.br_pretplatnika;
+
+  setujDdlVrijednost("#vlasnistvo", objekat.properties.vlasnistvo);
+}
+
 /**Metoda koja za odabranu gpx tačku i zadati id provjerava postojanje priključnog mjesta, u bazi, sa istim id-em u radijusu od 5 metara */
 function provjeraWfsPrikljucnaMjesta(feature, id) {
   let position = feature.values_.geometry.flatCoordinates;

@@ -123,11 +123,65 @@ function prikaziPoljaOdabranogVoda() {
     document.querySelector("#vrsta_vod_35").value = selectGpxFeature.values_.vrsta;
     document.querySelector("#tip_vod_35").value = selectGpxFeature.values_.tip;
     document.querySelector("#presjek_vod_35").value = selectGpxFeature.values_.presjek;
-    document.querySelector("#materijal_vod_35").value = selectGpxFeature.values_.materijal_vod_35;
+    document.querySelector("vrsta_#materijal_vod_35").value = selectGpxFeature.values_.materijal_vod_35;
     document.querySelector("#uze_presjek_vod_35").value = selectGpxFeature.values_.uze_presjek_vod_35;
     document.querySelector("#uze_vod_35").value = selectGpxFeature.values_.uze_vod_35;
     document.querySelector("#sifra_dionice").value = selectGpxFeature.values_.sifra_dionice;
   }
 
   setujDdlVrijednost("#vlasnistvo", selectGpxFeature.values_.vlasnistvo);
+}
+
+function prikaziPoljaWmsVoda(objekat) {
+  if (objekat.properties.gps !== undefined) {
+    document.querySelector("#gps").value = objekat.properties.gps;
+  } else {
+    document.querySelector("#gps").value = "";
+  }
+  document.querySelector("#fid_1").value = objekat.properties.fid_1;
+  document.querySelector("#napon").value = objekat.properties.napon;
+  document.querySelector("#pog_sprem").value = objekat.properties.pog_sprem;
+  document.querySelector("#dionica").value = objekat.properties.dionica;
+  document.querySelector("#id_br").value = objekat.properties.id_br;
+  document.querySelector("#naziv").value = objekat.properties.naziv;
+  document.querySelector("#dionica_nn").value = objekat.properties.dionica_nn;
+  document.querySelector("#ts").value = objekat.properties.ts;
+  document.querySelector("#br_faza").value = objekat.properties.br_faza;
+  document.querySelector("#br_spojnica").value = objekat.properties.br_spojnica;
+  document.querySelector("#god_izgr").value = objekat.properties.god_izg;
+  document.querySelector("#poc_dion").value = objekat.properties.poc_dion;
+  document.querySelector("#kraj_dion").value = objekat.properties.kraj_dion;
+  document.querySelector("#zajednicka_dion").value = objekat.properties.zajednicka_dion;
+  document.querySelector("#dionica_gps").value = objekat.properties.dionica_gps;
+  document.querySelector("#rac_duzina").value = objekat.properties.rac_duzina;
+  document.querySelector("#duzina").value = objekat.properties.duzina;
+  document.querySelector("#broj_spojnica").value = objekat.properties.broj_spojnica;
+
+  if (objekat.properties.napon === "0.4") {
+    document.querySelector("#rasvjeta_vod").value = objekat.properties.rasvjeta;
+    document.querySelector("#vrsta_vod_04").value = objekat.properties.vrsta;
+    document.querySelector("#tip_vod_04").value = objekat.properties.tip;
+    document.querySelector("#presjek_vod_04").value = objekat.properties.presjek;
+    document.querySelector("#vrsta_materijal_vod_04").value = objekat.properties.materijal;
+  }
+  if (objekat.properties.napon === "10") {
+    document.querySelector("#vrsta_vod_10").value = objekat.properties.vrsta;
+    document.querySelector("#tip_vod_10").value = objekat.properties.tip;
+    document.querySelector("#presjek_vod_10").value = objekat.properties.presjek;
+    document.querySelector("#vrsta_materijal_vod_10").value = objekat.properties.materijal;
+    document.querySelector("#uze_presjek_vod_10").value = objekat.properties.uze_presjek;
+    document.querySelector("#uze_vod_10").value = objekat.properties.uze;
+    document.querySelector("#sifra_dionice").value = objekat.properties.sifra_dionice;
+  }
+  if (objekat.properties.napon === "35") {
+    document.querySelector("#vrsta_vod_35").value = objekat.properties.vrsta;
+    document.querySelector("#tip_vod_35").value = objekat.properties.tip;
+    document.querySelector("#presjek_vod_35").value = objekat.properties.presjek;
+    document.querySelector("#vrsta_materijal_vod_35").value = objekat.properties.materijal_vod_35;
+    document.querySelector("#uze_presjek_vod_35").value = objekat.properties.uze_presjek_vod_35;
+    document.querySelector("#uze_vod_35").value = objekat.properties.uze_vod_35;
+    document.querySelector("#sifra_dionice").value = objekat.properties.sifra_dionice;
+  }
+
+  setujDdlVrijednost("#vlasnistvo", objekat.properties.vlasnistvo);
 }

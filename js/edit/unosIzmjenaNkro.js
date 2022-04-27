@@ -44,3 +44,21 @@ function prikaziPoljaOdabranogGpxNKRO() {
 
   setujDdlVrijednost("#vlasnistvo", selectGpxFeature.values_.vlasnistvo);
 }
+
+function prikaziPoljaWmsNKRO(objekat) {
+  if (objekat.properties.gps !== undefined) {
+    document.querySelector("#gps").value = objekat.properties.gps;
+  } else {
+    document.querySelector("#gps").value = "";
+  }
+  document.querySelector("#napon").value = objekat.properties.napon;
+  document.querySelector("#ts").value = objekat.properties.ts;
+  document.querySelector("#izvod_ts").value = objekat.properties.izvod_ts;
+  document.querySelector("#id").value = objekat.properties.id;
+  document.querySelector("#montaza").value = objekat.properties.montaza;
+  document.querySelector("#vrata").value = objekat.properties.vrata;
+  document.querySelector("#br_izvoda").value = objekat.properties.br_izvoda;
+  document.querySelector("#br_prikljucaka").value = objekat.properties.br_prikljucaka;
+
+  setujDdlVrijednost("#vlasnistvo", objekat.properties.vlasnistvo);
+}

@@ -187,6 +187,27 @@ function prikaziPoljaOdabranogGpxPotrosac() {
   document.querySelector("#br_brojila").value = selectGpxFeature.values_.br_brojila;
 }
 
+function prikaziPoljaWmsPotrosac(objekat) {
+  if (objekat.properties.gps !== undefined) {
+    document.querySelector("#gps").value = objekat.properties.gps;
+  } else {
+    document.querySelector("#gps").value = "";
+  }
+
+  document.querySelector("#izvod_ts").value = objekat.properties.izvod_ts;
+  document.querySelector("#napojna_ts").value = objekat.properties.napojna_ts;
+  document.querySelector("#id").value = objekat.properties.id;
+  document.querySelector("#naziv_ts").value = objekat.properties.naziv_ts;
+  document.querySelector("#sifra_ts").value = objekat.properties.sifra_ts;
+  document.querySelector("#prik_kabal").value = objekat.properties.prik_kabal;
+  document.querySelector("#pod").value = objekat.properties.pod;
+  document.querySelector("#adresa_mm").value = objekat.properties.adresa_mm;
+  document.querySelector("#prik_mjesto").value = objekat.properties.prik_mjesto;
+  document.querySelector("#naziv_nn_izvod").value = objekat.properties.naziv_nn_izvod;
+  document.querySelector("#pretplatni_br").value = objekat.properties.pretplatni_br;
+  document.querySelector("#br_brojila").value = objekat.properties.br_brojila;
+}
+
 function parsiranjeProvjeraPotrosaca(nizObjekataPotrosaca) {
   let tekstHtml = "";
   nizObjekataPotrosaca.forEach((el) => (tekstHtml += "<li>" + el.naziv + "</li>"));
