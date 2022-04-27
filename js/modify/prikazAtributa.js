@@ -16,8 +16,21 @@ function prikazAtributaSelektovanihObjekata() {
     console.log("el.id", el.id);
     console.log("el.properties.napon", el.properties.napon);
     console.log("lejer iz ddl-a", ddlLejerNaziv(el.id, el.properties.napon));
+    el.ddlLejer = ddlLejerNaziv(el.id, el.properties.napon);
     //console.log("el.properties.originalId", el.properties.originalId);
   });
+  //nizGpxTacakaZaObradu = nizSelektovanihObjekata; //Možda treba raditi kloniranje, za sad je kao pointer
+  //Zadržavamo sve funkcionalnosti prikaza za rad sa nizom gpx tačaka
+
+  if (nizSelektovanihObjekata.length > 1) {
+    document.querySelector("#divPrethodniObjekat").style.display = "none";
+    document.querySelector("#divSljedeciObjekat").style.display = "flex";
+  } else {
+    document.querySelector("#divPrethodniObjekat").style.display = "none";
+    document.querySelector("#divSljedeciObjekat").style.display = "none";
+  }
+
+  prikazPanelaAtributa(nizSelektovanihObjekata[0].ddlLejer);
 }
 
 /**

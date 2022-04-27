@@ -442,3 +442,5 @@ function prikaziAtributDivPod() {
   document.querySelector("#divUnosBrBrojila").style.display = "flex";
   //popuniListeZaPod();
 }
+
+ddlLejerChange(); //Inicijalno prikazivanje

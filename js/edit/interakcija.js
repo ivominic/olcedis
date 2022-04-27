@@ -106,76 +106,76 @@ $("#topNav").children().prop("disabled", true);
 function prikazPanelaAtributa(sloj) {
   console.log("prikazPanelAtributa", sloj);
   sakrijSvaPoljaAtributDiv();
-  if (sloj === "Stub 35KV") {
+  if (sloj === "Stub 35KV" || sloj === "stub35") {
     odabraniLejerUnos = "stubovi";
     akcijaLejerNivo = "35";
     document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "stub35";
     prikaziAtributDivStubove(akcijaLejerNivo);
-  } else if (sloj === "Stub 10KV") {
+  } else if (sloj === "Stub 10KV" || sloj === "stub10") {
     odabraniLejerUnos = "stubovi";
     akcijaLejerNivo = "10";
     document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "stub10";
     prikaziAtributDivStubove(akcijaLejerNivo);
-  } else if (sloj === "Stub 04KV") {
+  } else if (sloj === "Stub 04KV" || sloj === "stub04") {
     odabraniLejerUnos = "stubovi";
     akcijaLejerNivo = "0.4";
     document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "stub04";
     prikaziAtributDivStubove(akcijaLejerNivo);
-  } else if (sloj === "Vod 35KV") {
+  } else if (sloj === "Vod 35KV" || sloj === "vod35") {
     odabraniLejerUnos = "vodovi";
     akcijaLejerNivo = "35";
     document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "vod35";
     prikaziAtributDivVodove(akcijaLejerNivo);
-  } else if (sloj === "Vod 10KV") {
+  } else if (sloj === "Vod 10KV" || sloj === "vod10") {
     odabraniLejerUnos = "vodovi";
     akcijaLejerNivo = "10";
     document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "vod10";
     prikaziAtributDivVodove(akcijaLejerNivo);
-  } else if (sloj === "Vod 04KV") {
+  } else if (sloj === "Vod 04KV" || sloj === "vod04") {
     odabraniLejerUnos = "vodovi";
     akcijaLejerNivo = "0.4";
     document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "vod04";
     prikaziAtributDivVodove(akcijaLejerNivo);
-  } else if (sloj === "Trafostanica35x") {
+  } else if (sloj === "Trafostanica35x" || sloj === "trafostanica35") {
     odabraniLejerUnos = "trafostanice";
     akcijaLejerNivo = "35";
     document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "trafostanica35";
     prikaziAtributDivTrafostanice(akcijaLejerNivo);
-  } else if (sloj === "Trafostanica1004") {
+  } else if (sloj === "Trafostanica1004" || sloj === "trafostanica10") {
     odabraniLejerUnos = "trafostanice";
     akcijaLejerNivo = "10";
     document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "trafostanica10";
     prikaziAtributDivTrafostanice(akcijaLejerNivo);
-  } else if (sloj === "Trafostanica110x") {
+  } else if (sloj === "Trafostanica110x" || sloj === "trafostanica110") {
     odabraniLejerUnos = "trafostanice";
     akcijaLejerNivo = "110";
     document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = "trafostanica110";
     prikaziAtributDivTrafostanice(akcijaLejerNivo);
-  } else if (sloj === "NKRO") {
+  } else if (sloj === "NKRO" || sloj === "nkro") {
     odabraniLejerUnos = "nkro";
     document.querySelector("#napon").value = filePowerLevel;
     document.querySelector("#ddl_sloj_podataka").value = "nkro";
     prikaziAtributDivNkro();
-  } else if (sloj === "Priključno mjesto") {
+  } else if (sloj === "Priključno mjesto" || sloj === "prikljucno_mjesto") {
     odabraniLejerUnos = "prikljucno_mjesto";
     document.querySelector("#napon").value = filePowerLevel;
     document.querySelector("#ddl_sloj_podataka").value = "prikljucno_mjesto";
     prikaziAtributDivPrikljucnoMjesto();
-  } else if (sloj === "Potrošač") {
+  } else if (sloj === "Potrošač" || sloj === "potrosac") {
     odabraniLejerUnos = "potrosaci";
     document.querySelector("#napon").value = filePowerLevel;
     document.querySelector("#ddl_sloj_podataka").value = "potrosac";
     prikaziAtributDivPotrosac();
-  } else if (sloj === "POD") {
+  } else if (sloj === "POD" || sloj === "pod") {
     odabraniLejerUnos = "pod";
     document.querySelector("#napon").value = filePowerLevel;
     document.querySelector("#ddl_sloj_podataka").value = "pod";

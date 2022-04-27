@@ -97,6 +97,10 @@ function klikNaVektore(browserEvent) {
     }
   }
 
+  if (nizGpxTacakaZaObradu.length === 0) {
+    map.on("singleclick", odabirSvihRasterObjekataKlik);
+  }
+
   /*vectorSource.getFeatures().forEach(function (el) {
     if (el.values_.name === "065") {
       select.getFeatures().clear();
