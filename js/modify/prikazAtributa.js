@@ -30,6 +30,7 @@ function prikazAtributaSelektovanihObjekata() {
     document.querySelector("#divSljedeciObjekat").style.display = "none";
   }
 
+  selektovaniWmsObjekat = nizSelektovanihObjekata[0];
   prikazPanelaAtributa(nizSelektovanihObjekata[0].ddlLejer);
   prikazAtributaWmsLejer(nizSelektovanihObjekata[0]);
 }

@@ -400,8 +400,8 @@ map.addInteraction(select);
 map.on("click", klikNaVektore);
 
 function izbrisi() {
-  if (select.getFeatures().array_[0] === undefined) {
-    poruka("Upozorenje", "Potrebno je selektovati objekat iz gpx fajla.");
+  if (select.getFeatures().array_[0] === undefined && !selektovaniWmsObjekat) {
+    poruka("Upozorenje", "Potrebno je selektovati objekat koji želite da izbrišete.");
     return false;
   }
   Swal.fire({
@@ -415,56 +415,62 @@ function izbrisi() {
   }).then((result) => {
     if (result.isConfirmed) {
       //Brisati
-      if (select.getFeatures().array_[0].values_.lejer === "vodovi") {
-        let nizZaBrisanje = nizVodovaGpx;
-        vektorKreiraniVodovi
-          .getSource()
-          .getFeatures()
-          .forEach(function (el, index, nizZaBrisanje) {
+      if (select.getFeatures().array_.length) {
+        if (select.getFeatures().array_[0].values_.lejer === "vodovi") {
+          let nizZaBrisanje = nizVodovaGpx;
+          vektorKreiraniVodovi
+            .getSource()
+            .getFeatures()
+            .forEach(function (el, index, nizZaBrisanje) {
+              if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
+                //if (el.values_.name == select.getFeatures().array_[0].values_.name) {
+                nizZaBrisanje.splice(index, 1);
+                select.getFeatures().array_.splice(0, 1);
+                console.log("ol_uid", el.ol_uid);
+                selectGpxFeature = null;
+                vektorKreiraniVodovi.getSource().clear();
+                vektorKreiraniVodovi.getSource().addFeatures(nizZaBrisanje);
+              }
+            });
+        } else {
+          let nizZaBrisanje = vectorSource.getFeatures();
+          vectorSource.getFeatures().forEach(function (el, index, nizZaBrisanje) {
             if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
               //if (el.values_.name == select.getFeatures().array_[0].values_.name) {
               nizZaBrisanje.splice(index, 1);
               select.getFeatures().array_.splice(0, 1);
               console.log("ol_uid", el.ol_uid);
               selectGpxFeature = null;
-              vektorKreiraniVodovi.getSource().clear();
-              vektorKreiraniVodovi.getSource().addFeatures(nizZaBrisanje);
+              vectorSource.clear();
+              vectorSource.addFeatures(nizZaBrisanje);
             }
           });
-      } else {
-        let nizZaBrisanje = vectorSource.getFeatures();
-        vectorSource.getFeatures().forEach(function (el, index, nizZaBrisanje) {
-          if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
-            //if (el.values_.name == select.getFeatures().array_[0].values_.name) {
-            nizZaBrisanje.splice(index, 1);
-            select.getFeatures().array_.splice(0, 1);
-            console.log("ol_uid", el.ol_uid);
-            selectGpxFeature = null;
-            vectorSource.clear();
-            vectorSource.addFeatures(nizZaBrisanje);
-          }
-        });
-        //TODO: Dodao ovaj blok koda za uklanjanje dugmadi next/prev kod brisanja gpx tačke. Ali ne radi kako trevba.
-        if (nizGpxTacakaZaObradu.length) {
-          console.log("nizGpxTacakaZaObradu", nizGpxTacakaZaObradu.length);
-          nizGpxTacakaZaObradu.splice(indexGpxTacakaZaObradu, 1);
-          console.log("nizGpxTacakaZaObradu", nizGpxTacakaZaObradu.length);
-          console.log("indexGpxTacakaZaObradu", indexGpxTacakaZaObradu);
-          if (nizGpxTacakaZaObradu.length < 2) {
-            document.querySelector("#divPrethodniObjekat").style.display = "none";
-            document.querySelector("#divSljedeciObjekat").style.display = "none";
-          } else {
-            document.querySelector("#divPrethodniObjekat").style.display = "none";
-            document.querySelector("#divSljedeciObjekat").style.display = "none";
-            if (indexGpxTacakaZaObradu > 0) {
-              document.querySelector("#divPrethodniObjekat").style.display = "flex";
-            }
-            if (indexGpxTacakaZaObradu < nizGpxTacakaZaObradu.length) {
-              document.querySelector("#divSljedeciObjekat").style.display = "flex";
+          //TODO: Dodao ovaj blok koda za uklanjanje dugmadi next/prev kod brisanja gpx tačke. Ali ne radi kako trevba.
+          if (nizGpxTacakaZaObradu.length) {
+            console.log("nizGpxTacakaZaObradu", nizGpxTacakaZaObradu.length);
+            nizGpxTacakaZaObradu.splice(indexGpxTacakaZaObradu, 1);
+            console.log("nizGpxTacakaZaObradu", nizGpxTacakaZaObradu.length);
+            console.log("indexGpxTacakaZaObradu", indexGpxTacakaZaObradu);
+            if (nizGpxTacakaZaObradu.length < 2) {
+              document.querySelector("#divPrethodniObjekat").style.display = "none";
+              document.querySelector("#divSljedeciObjekat").style.display = "none";
+            } else {
+              document.querySelector("#divPrethodniObjekat").style.display = "none";
+              document.querySelector("#divSljedeciObjekat").style.display = "none";
+              if (indexGpxTacakaZaObradu > 0) {
+                document.querySelector("#divPrethodniObjekat").style.display = "flex";
+              }
+              if (indexGpxTacakaZaObradu < nizGpxTacakaZaObradu.length) {
+                document.querySelector("#divSljedeciObjekat").style.display = "flex";
+              }
             }
           }
+          //TODO: Novi blok, koji ne radi, se završava ovdje
         }
-        //TODO: Novi blok, koji ne radi, se završava ovdje
+      } else {
+        console.log("WMS objekat", selektovaniWmsObjekat);
+        alert("Briše se objekat iz wms-a");
+        //TODO: Poziv servisa za brisanje objekata
       }
     } else if (result.isDenied) {
       //Ako odustane - ništa ne raditi
