@@ -799,8 +799,6 @@ function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucna_mjes
     poruka("Upozorenje", "Nema izmijenjenih objekata.");
     return false;
   }
-  {
-  }
   let retval = true;
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/object_control";
   console.log("stubovi insert all objects   ", JSON.stringify(stubovi));

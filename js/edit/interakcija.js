@@ -256,6 +256,7 @@ function finalnaPotvrdaUnosa() {
   kmlConnectionLog(kmlLinksArray);
   insertObjekataIzGpx();
   //poruka("Uspjeh", "Završen unos podataka");
+  brisanjeWmsObjekata();
 
   console.log("Finalno features", gpxFeatures);
 }

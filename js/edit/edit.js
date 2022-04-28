@@ -67,66 +67,72 @@ function popuniKontrole(odgovor) {
 
 /** Unos izmijenjenih vrijednosti atributa, nove fotografije ili unos svih podataka za novu geometriju */
 function sacuvaj() {
-  if (!selectGpxFeature && odabraniLejerUnos !== "vodovi") {
-    poruka("Upozorenje", "Potrebno je odabrati tačku iz gpx fajla.");
-    return false;
-  }
-  if (obaveznaPolja(document.querySelector("#ddl_sloj_podataka").value) === false) {
-    poruka("Upozorenje", "Potrebno je popuniti obavezna polja.");
-    return false;
-  }
-  if (odabraniLejerUnos === "stubovi") {
-    if (selectGpxFeature) {
-      dodajPoljaOdabranomGpxStubu();
-      sledecaGpxTacka();
+  console.log("Administracija sacuvaj()");
+  if (selektovaniWmsObjekat) {
+    alert("Odabran je wms objekat");
+    //TODO: Logika za slanje ažuriranja atributa
+  } else {
+    if (!selectGpxFeature && odabraniLejerUnos !== "vodovi") {
+      poruka("Upozorenje", "Potrebno je odabrati tačku iz gpx fajla.");
+      return false;
     }
-    return false;
-  }
-  if (odabraniLejerUnos === "vodovi") {
-    if (selectGpxFeature.get("lejer") === "vodovi") {
-      //If user selects already created power line
-      dodajPoljaUcrtanomVodu(selectGpxFeature);
-    } else {
-      if (isEditable) {
-        //TODO: Provjera da li je iscrtan poligon
-        showDiv("#odabirPoveznicaDiv");
-        closeDiv("#atributiDiv");
-      } else {
-        if (!selectGpxFeature) {
-          poruka("Upozorenje", "Potrebno je odabrati vod iz kml fajla.");
-          return false;
-        }
-        console.log("kml za atribute vodovima");
-        //ucrtaniVod = selectGpxFeature;
-        dodajPoljaUcrtanomVodu(selectGpxFeature);
+    if (obaveznaPolja(document.querySelector("#ddl_sloj_podataka").value) === false) {
+      poruka("Upozorenje", "Potrebno je popuniti obavezna polja.");
+      return false;
+    }
+    if (odabraniLejerUnos === "stubovi") {
+      if (selectGpxFeature) {
+        dodajPoljaOdabranomGpxStubu();
+        sledecaGpxTacka();
       }
+      return false;
     }
+    if (odabraniLejerUnos === "vodovi") {
+      if (selectGpxFeature.get("lejer") === "vodovi") {
+        //If user selects already created power line
+        dodajPoljaUcrtanomVodu(selectGpxFeature);
+      } else {
+        if (isEditable) {
+          //TODO: Provjera da li je iscrtan poligon
+          showDiv("#odabirPoveznicaDiv");
+          closeDiv("#atributiDiv");
+        } else {
+          if (!selectGpxFeature) {
+            poruka("Upozorenje", "Potrebno je odabrati vod iz kml fajla.");
+            return false;
+          }
+          console.log("kml za atribute vodovima");
+          //ucrtaniVod = selectGpxFeature;
+          dodajPoljaUcrtanomVodu(selectGpxFeature);
+        }
+      }
 
-    return false;
-  }
-  if (odabraniLejerUnos === "trafostanice") {
-    dodajPoljaOdabranojGpxTrafostanici();
-    return false;
-  }
-  if (odabraniLejerUnos === "nkro") {
-    dodajPoljaOdabranomGpxNKRO();
-    sledecaGpxTacka();
-    return false;
-  }
-  if (odabraniLejerUnos === "prikljucno_mjesto") {
-    dodajPoljaOdabranomGpxPM();
-    sledecaGpxTacka();
-    return false;
-  }
-  if (odabraniLejerUnos === "pod") {
-    dodajPoljaOdabranomGpxPod();
-    //sledecaGpxTacka();
-    return false;
-  }
-  if (odabraniLejerUnos === "potrosaci") {
-    dodajPoljaOdabranomGpxPotrosac();
-    //sledecaGpxTacka();
-    return false;
+      return false;
+    }
+    if (odabraniLejerUnos === "trafostanice") {
+      dodajPoljaOdabranojGpxTrafostanici();
+      return false;
+    }
+    if (odabraniLejerUnos === "nkro") {
+      dodajPoljaOdabranomGpxNKRO();
+      sledecaGpxTacka();
+      return false;
+    }
+    if (odabraniLejerUnos === "prikljucno_mjesto") {
+      dodajPoljaOdabranomGpxPM();
+      sledecaGpxTacka();
+      return false;
+    }
+    if (odabraniLejerUnos === "pod") {
+      dodajPoljaOdabranomGpxPod();
+      //sledecaGpxTacka();
+      return false;
+    }
+    if (odabraniLejerUnos === "potrosaci") {
+      dodajPoljaOdabranomGpxPotrosac();
+      //sledecaGpxTacka();
+      return false;
+    }
   }
 }
 
@@ -471,6 +477,7 @@ function izbrisi() {
         console.log("WMS objekat", selektovaniWmsObjekat);
         alert("Briše se objekat iz wms-a");
         //TODO: Poziv servisa za brisanje objekata
+        dodajObjekatZaBrisanje(selektovaniWmsObjekat);
       }
     } else if (result.isDenied) {
       //Ako odustane - ništa ne raditi

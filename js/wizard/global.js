@@ -23,6 +23,7 @@ let tacke = [],
   linije = [],
   poligoni = [];
 let selektovaniWmsObjekat; //Objekat koji je selektovan sa wms lejera
+let nizWmsZaBrisanje = []; //Niz postojećih objekata za brisanje, grupisan po geohash_no
 let nizSelektovanihObjekata = []; //Objekti pročitani iz raster lejera, na klik event
 let gpxFeatures = []; //Niz feature-a koji se dobije kad se prevuče gpx fajl na mapu
 let kmlFeature,
