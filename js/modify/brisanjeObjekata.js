@@ -22,7 +22,8 @@ function brisanjeWmsObjekata() {
   $.ajax({
     url: urlServisa,
     data: {
-      data: nizWmsZaBrisanje,
+      korisnik: globalUsername,
+      objekti: nizWmsZaBrisanje,
     },
     type: "POST",
     success: function (data) {
