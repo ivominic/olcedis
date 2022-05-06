@@ -26,26 +26,26 @@ function izmjenaAtributaWmsLejer(objekat) {
     dodajObjekatZaIzmjenu(izmijeniAtributeWmsStuba(objekat));
   }
   if (objekat.ddlLejer === "vod35" || objekat.ddlLejer === "vod10" || objekat.ddlLejer === "vod04") {
-    //dodajObjekatZaIzmjenu(izmijeniAtributeWmsStuba(objekat));
+    dodajObjekatZaIzmjenu(izmijeniAtributeWmsVoda(objekat));
   }
   if (
     objekat.ddlLejer === "trafostanica110" ||
     objekat.ddlLejer === "trafostanica35" ||
     objekat.ddlLejer === "trafostanica10"
   ) {
-    prikaziPoljaWmsTrafostanice(objekat);
+    dodajObjekatZaIzmjenu(izmijeniAtributeWmsTrafostanice(objekat));
   }
   if (objekat.ddlLejer === "nkro") {
-    prikaziPoljaWmsNKRO(objekat);
+    dodajObjekatZaIzmjenu(izmijeniAtributeWmsNKRO(objekat));
   }
   if (objekat.ddlLejer === "prikljucno_mjesto") {
-    prikaziPoljaWmsPM(objekat);
+    dodajObjekatZaIzmjenu(izmijeniAtributeWmsPM(objekat));
   }
   if (objekat.ddlLejer === "potrosac") {
-    prikaziPoljaWmsPotrosac(objekat);
+    dodajObjekatZaIzmjenu(izmijeniAtributeWmsPotrosac(objekat));
   }
   if (objekat.ddlLejer === "pod") {
-    prikaziPoljaWmsPod(objekat);
+    dodajObjekatZaIzmjenu(izmijeniAtributeWmsPod(objekat));
   }
 }
 
