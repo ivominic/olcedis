@@ -8,16 +8,16 @@ function dodajObjekatZaIzmjenu(objekat) {
   console.log("OBJEKAT IZMIJENJEN", objekat);
   let temp_geohash = objekat.properties.geohash_id;
   let blnDodaoObjekat = false;
-  nizWmsZaBrisanje.forEach((item) => {
+  nizWmsZaIzmjenu.forEach((item) => {
     if (item[0] === temp_geohash) {
       item[1].push(objekat.id);
       blnDodaoObjekat = true;
     }
   });
   if (!blnDodaoObjekat) {
-    nizWmsZaBrisanje.push([temp_geohash, objekat]);
+    nizWmsZaIzmjenu.push([temp_geohash, objekat]);
   }
-  console.log("NIZ ZA IZMJENU", nizWmsZaBrisanje);
+  console.log("NIZ ZA IZMJENU", nizWmsZaIzmjenu);
 }
 
 function izmjenaAtributaWmsLejer(objekat) {
@@ -47,4 +47,25 @@ function izmjenaAtributaWmsLejer(objekat) {
   if (objekat.ddlLejer === "pod") {
     prikaziPoljaWmsPod(objekat);
   }
+}
+
+function izmjenaAtributaSvihObjekata() {
+  //TODO: CALL WEB SERVICE
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/object_control";
+  $.ajax({
+    url: urlServisa,
+    data: {
+      korisnik: globalUsername,
+      objekti: nizWmsZaIzmjenu,
+    },
+    type: "POST",
+    success: function (data) {
+      console.log("success izmjena atributa objekata", data);
+      poruka("Uspjeh", data);
+      nizWmsZaIzmjenu.length = 0;
+    },
+    error: function (x, y, z) {
+      poruka("Greška", JSON.parse(x.responseText).response);
+    },
+  });
 }

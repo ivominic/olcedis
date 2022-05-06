@@ -62,3 +62,17 @@ function prikaziPoljaWmsNKRO(objekat) {
 
   setujDdlVrijednost("#vlasnistvo", objekat.properties.vlasnistvo);
 }
+
+function izmijeniAtributeWmsNKRO(objekat) {
+  objekat.properties.napon = document.querySelector("#napon").value;
+  objekat.properties.ts = document.querySelector("#ts").value;
+  objekat.properties.izvod_ts = document.querySelector("#izvod_ts").value;
+  objekat.properties.id = document.querySelector("#id").value;
+  objekat.properties.montaza = document.querySelector("#montaza").value;
+  objekat.properties.vrata = document.querySelector("#vrata").value;
+  objekat.properties.br_izvoda = document.querySelector("#br_izvoda").value;
+  objekat.properties.br_prikljucaka = document.querySelector("#br_prikljucaka").value;
+
+  return objekat;
+  //setujDdlVrijednost("#vlasnistvo", objekat.properties.vlasnistvo);
+}

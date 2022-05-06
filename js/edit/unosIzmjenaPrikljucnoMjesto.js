@@ -64,6 +64,18 @@ function prikaziPoljaWmsPM(objekat) {
   setujDdlVrijednost("#vlasnistvo", objekat.properties.vlasnistvo);
 }
 
+function izmijeniAtributeWmsPM(objekat) {
+  objekat.properties.napon = document.querySelector("#napon").value;
+  objekat.properties.izvod_ts = document.querySelector("#izvod_ts").value;
+  objekat.properties.napojna_ts = document.querySelector("#napojna_ts").value;
+  objekat.properties.id = document.querySelector("#id").value;
+  objekat.properties.osiguraci = document.querySelector("#osiguraci").value;
+  objekat.properties.tip_pm = document.querySelector("#tip_pm").value;
+  objekat.properties.br_pretplatnika = document.querySelector("#br_pretplatnika").value;
+
+  return objekat;
+}
+
 /**Metoda koja za odabranu gpx tačku i zadati id provjerava postojanje priključnog mjesta, u bazi, sa istim id-em u radijusu od 5 metara */
 function provjeraWfsPrikljucnaMjesta(feature, id) {
   let position = feature.values_.geometry.flatCoordinates;

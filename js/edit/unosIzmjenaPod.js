@@ -103,3 +103,20 @@ function generisanjeGpxPodaIzGeometrije(lat, lng, jsonPretplatnik) {
   vectorSource.addFeatures([featureTacka]);
   gpxFeatures.push(featureTacka);
 }
+
+function izmijeniAtributeWmsPod(objekat) {
+  objekat.properties.izvod_ts = document.querySelector("#izvod_ts").value;
+  objekat.properties.napojna_ts = document.querySelector("#napojna_ts").value;
+  objekat.properties.id = document.querySelector("#id").value;
+  objekat.properties.naziv_ts = document.querySelector("#naziv_ts").value;
+  objekat.properties.sifra_ts = document.querySelector("#sifra_ts").value;
+  objekat.properties.prik_kabal = document.querySelector("#prik_kabal").value;
+  objekat.properties.pod = document.querySelector("#pod").value;
+  objekat.properties.adresa_mm = document.querySelector("#adresa_mm").value;
+  objekat.properties.prik_mjesto = document.querySelector("#prik_mjesto").value;
+  objekat.properties.naziv_nn_izvod = document.querySelector("#naziv_nn_izvod").value;
+  objekat.properties.pretplatni_br = document.querySelector("#pretplatni_br").value;
+  objekat.properties.br_brojila = document.querySelector("#br_brojila").value;
+
+  return objekat;
+}

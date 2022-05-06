@@ -185,3 +185,52 @@ function prikaziPoljaWmsVoda(objekat) {
 
   setujDdlVrijednost("#vlasnistvo", objekat.properties.vlasnistvo);
 }
+
+function izmijeniAtributeWmsVoda(objekat) {
+  objekat.properties.napon = document.querySelector("#napon").value;
+  objekat.properties.pog_sprem = document.querySelector("#pog_sprem").value;
+  objekat.properties.dionica = document.querySelector("#dionica").value;
+  objekat.properties.id_br = document.querySelector("#id_br").value;
+  objekat.properties.naziv = document.querySelector("#naziv").value;
+  objekat.properties.dionica_nn = document.querySelector("#dionica_nn").value;
+  objekat.properties.ts = document.querySelector("#ts").value;
+  objekat.properties.br_faza = document.querySelector("#br_faza").value;
+  objekat.properties.br_spojnica = document.querySelector("#br_spojnica").value;
+  objekat.properties.god_izg = document.querySelector("#god_izgr").value;
+  objekat.properties.poc_dion = document.querySelector("#poc_dion").value;
+  objekat.properties.kraj_dion = document.querySelector("#kraj_dion").value;
+  objekat.properties.zajednicka_dion = document.querySelector("#zajednicka_dion").value;
+  objekat.properties.dionica_gps = document.querySelector("#dionica_gps").value;
+  objekat.properties.rac_duzina = document.querySelector("#rac_duzina").value;
+  objekat.properties.duzina = document.querySelector("#duzina").value;
+  objekat.properties.broj_spojnica = document.querySelector("#broj_spojnica").value;
+
+  if (objekat.properties.napon === "0.4") {
+    objekat.properties.rasvjeta = document.querySelector("#rasvjeta_vod").value;
+    objekat.properties.vrsta = document.querySelector("#vrsta_vod_04").value;
+    objekat.properties.tip = document.querySelector("#tip_vod_04").value;
+    objekat.properties.presjek = document.querySelector("#presjek_vod_04").value;
+    objekat.properties.materijal = document.querySelector("#vrsta_materijal_vod_04").value;
+  }
+  if (objekat.properties.napon === "10") {
+    objekat.properties.vrsta = document.querySelector("#vrsta_vod_10").value;
+    objekat.properties.tip = document.querySelector("#tip_vod_10").value;
+    objekat.properties.presjek = document.querySelector("#presjek_vod_10").value;
+    objekat.properties.materijal = document.querySelector("#vrsta_materijal_vod_10").value;
+    objekat.properties.uze_presjek = document.querySelector("#uze_presjek_vod_10").value;
+    objekat.properties.uze = document.querySelector("#uze_vod_10").value;
+    objekat.properties.sifra_dionice = document.querySelector("#sifra_dionice").value;
+  }
+  if (objekat.properties.napon === "35") {
+    objekat.properties.vrsta = document.querySelector("#vrsta_vod_35").value;
+    objekat.properties.tip = document.querySelector("#tip_vod_35").value;
+    objekat.properties.presjek = document.querySelector("#presjek_vod_35").value;
+    objekat.properties.materijal_vod_35 = document.querySelector("#vrsta_materijal_vod_35").value;
+    objekat.properties.uze_presjek_vod_35 = document.querySelector("#uze_presjek_vod_35").value;
+    objekat.properties.uze_vod_35 = document.querySelector("#uze_vod_35").value;
+    objekat.properties.sifra_dionice = document.querySelector("#sifra_dionice").value;
+  }
+
+  //setujDdlVrijednost("#vlasnistvo", objekat.properties.vlasnistvo);
+  return objekat;
+}

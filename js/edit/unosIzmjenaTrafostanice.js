@@ -54,7 +54,7 @@ function dodajPoljaOdabranojGpxTrafostanici() {
 }
 
 function prikaziPoljaOdabraneGpxTrafostanice() {
-  //document.querySelector("#ddlTrafostanice").value = ;
+  //document.querySelector("#ddlTrafostanice").value;
   console.log("prikaziPoljaOdabraneGpxTrafostanice", selectGpxFeature);
   document.querySelector("#read_fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#read_name").value = selectGpxFeature.values_.name;
@@ -100,7 +100,7 @@ function prikaziPoljaOdabraneGpxTrafostanice() {
 }
 
 function popuniKontroleIzTrafostanice(data) {
-  //document.querySelector("#ddlTrafostanice").value = ;
+  //document.querySelector("#ddlTrafostanice").value;
   document.querySelector("#read_fid_1").value = data.fid_1;
   document.querySelector("#read_name").value = data.name;
   document.querySelector("#read_id_br").value = data.id_br;
@@ -185,4 +185,49 @@ function prikaziPoljaWmsTrafostanice(objekat) {
   document.querySelector("#read_inst_snaga_t4").value = objekat.properties.inst_snaga_t4;
   document.querySelector("#read_tabela").value = objekat.properties.tabela;
   document.querySelector("#projek_snaga").value = objekat.properties.projek_snaga;
+}
+
+function izmijeniAtributeWmsTrafostanice(objekat) {
+  objekat.properties.name = document.querySelector("#read_name").value;
+  objekat.properties.id_br = document.querySelector("#read_id_br").value;
+  objekat.properties.celije_10 = document.querySelector("#read_celije_10").value;
+  objekat.properties.izvod_celija = document.querySelector("#read_izvod_celija").value;
+  objekat.properties.funkcija = document.querySelector("#read_funkcija").value;
+  objekat.properties.br_nn_izvoda = document.querySelector("#read_br_nn_izvoda").value;
+  objekat.properties.geohash_id = document.querySelector("#read_geohash_id").value;
+  objekat.properties.geohash_id_no = document.querySelector("#read_geohash_id_no").value;
+  objekat.properties.br_vod_cel_nizi_nap = document.querySelector("#read_br_vod_cel_nizi_nap").value;
+  objekat.properties.br_vod_cel_visi_nap = document.querySelector("#read_br_vod_cel_visi_nap").value;
+  objekat.properties.layer_name = document.querySelector("#read_layer_name").value;
+  objekat.properties.god_izg = document.querySelector("#read_god_izg").value;
+  objekat.properties.vlasnistvo = document.querySelector("#read_vlasnistvo").value;
+  objekat.properties.datum_azuriranja = document.querySelector("#read_datum_azuriranja").value;
+  objekat.properties.layer_id = document.querySelector("#read_layer_id").value;
+  objekat.properties.nad_vis = document.querySelector("#read_nad_vis").value;
+  objekat.properties.gps = document.querySelector("#read_gps").value;
+  objekat.properties.pog_sprem = document.querySelector("#read_pog_sprem").value;
+  objekat.properties.napon = document.querySelector("#read_napon").value;
+  objekat.properties.posjeduje_sliku = document.querySelector("#read_posjeduje_sliku").value;
+  objekat.properties.originalId = document.querySelector("#read_originalId").value;
+  objekat.properties.korisnik = document.querySelector("#read_korisnik").value;
+  objekat.properties.vlasnik = document.querySelector("#read_vlasnik").value;
+  objekat.properties.katastar = document.querySelector("#read_katastar").value;
+  objekat.properties.id_trafostanice = document.querySelector("#read_id_trafostanice").value;
+  objekat.properties.region = document.querySelector("#read_region").value;
+  objekat.properties.naziv_napojne = document.querySelector("#read_naziv_napojne").value;
+  objekat.properties.sifra_napojne = document.querySelector("#read_sifra_napojne").value;
+  objekat.properties.izvod_napojne = document.querySelector("#read_izvod_napojne").value;
+  objekat.properties.prenos_odnos = document.querySelector("#read_prenos_odnos").value;
+  objekat.properties.id_billing = document.querySelector("#read_id_billing").value;
+  objekat.properties.adresa = document.querySelector("#read_adresa").value;
+  objekat.properties.tip = document.querySelector("#read_tip").value;
+  objekat.properties.naziv = document.querySelector("#read_naziv").value;
+  objekat.properties.inst_snaga_t1 = document.querySelector("#read_inst_snaga_t1").value;
+  objekat.properties.inst_snaga_t2 = document.querySelector("#read_inst_snaga_t2").value;
+  objekat.properties.inst_snaga_t3 = document.querySelector("#read_inst_snaga_t3").value;
+  objekat.properties.inst_snaga_t4 = document.querySelector("#read_inst_snaga_t4").value;
+  objekat.properties.tabela = document.querySelector("#read_tabela").value;
+  objekat.properties.projek_snaga = document.querySelector("#projek_snaga").value;
+
+  return objekat;
 }
