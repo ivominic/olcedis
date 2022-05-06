@@ -341,3 +341,68 @@ function prikaziAtributeWmsStuba(objekat) {
 
   setujDdlVrijednost("#vlasnistvo", objekat.properties.vlasnistvo);
 }
+
+function izmijeniAtributeWmsStuba(objekat) {
+  objekat.properties.broj = document.querySelector("#broj").value;
+  objekat.properties.sifra = document.querySelector("#sifra").value;
+  objekat.properties.pripadnost = document.querySelector("#pripadnost").value;
+  objekat.properties.nad_visina = document.querySelector("#nad_visina").value;
+  objekat.properties.visina = document.querySelector("#visina").value;
+  objekat.properties.rasp_prov = document.querySelector("#rasp_prov").value;
+  objekat.properties.br_izol_faza = document.querySelector("#br_izol_faza").value;
+  objekat.properties.uzemljivac_otpor = document.querySelector("#uzemljivac_otpor").value;
+  objekat.properties.br_pmo = document.querySelector("#br_pmo").value;
+  objekat.properties.br_nnv = document.querySelector("#br_nnv").value;
+  objekat.properties.pog_sprem = document.querySelector("#pog_sprem").value;
+  objekat.properties.opstina = document.querySelector("#opstina").value;
+  objekat.properties.napon = document.querySelector("#napon").value;
+
+  if (objekat.properties.napon === "0.4") {
+    objekat.properties.tip = document.querySelector("#tip_stub").value;
+    objekat.properties.rasvjeta = document.querySelector("#rasvjeta_stub").value;
+    objekat.properties.vrsta_namjena = document.querySelector("#vrsta_namjena_stub_04").value;
+    objekat.properties.vrsta_materijal = document.querySelector("#vrsta_materijal_stub_04").value;
+    objekat.properties.vrsta_drvenog = document.querySelector("#vrsta_drvenog_stub_04").value;
+    objekat.properties.izolator_vrsta = document.querySelector("#izolator_vrsta_stub_04").value;
+    objekat.properties.izolator_funkcija = document.querySelector("#izolator_funkcija_stub_04").value;
+    objekat.properties.tip_izolatora = document.querySelector("#tip_izolatora_stub_04").value;
+    objekat.properties.nosaci_izolatora = document.querySelector("#nosaci_izolatora_stub_04").value;
+    objekat.properties.odvodnik_prenapona = document.querySelector("#odvodnik_prenapona_stub_04").value;
+    objekat.properties.uzemljivac = document.querySelector("#uzemljivac_stub_04").value;
+    objekat.properties.optika = document.querySelector("#optika_stub_04").value;
+  }
+  if (objekat.properties.napon === "10") {
+    objekat.properties.nn_vod = document.querySelector("#nn_vod_stub").value;
+    objekat.properties.vrsta_namjena = document.querySelector("#vrsta_namjena_stub_10").value;
+    objekat.properties.vrsta_materijal = document.querySelector("#vrsta_materijal_stub_10").value;
+    objekat.properties.vrsta_drvenog = document.querySelector("#vrsta_drvenog_stub_10").value;
+    objekat.properties.izolator_vrsta = document.querySelector("#izolator_vrsta_stub_10").value;
+    objekat.properties.izolator_funkcija = document.querySelector("#izolator_funkcija_stub_10").value;
+    objekat.properties.tip_izolatora = document.querySelector("#tip_izolatora_stub_10").value;
+    objekat.properties.nosaci_izolatora = document.querySelector("#nosaci_izolatora_stub_10").value;
+    objekat.properties.odvodnik_prenapona = document.querySelector("#odvodnik_prenapona_stub_10").value;
+    objekat.properties.uzemljivac = document.querySelector("#uzemljivac_stub_10").value;
+    objekat.properties.optika = document.querySelector("#optika_stub_10").value;
+    objekat.properties.prikljucak_otcjep = document.querySelector("#prikljucak_otcjep_stub_10").value;
+    objekat.properties.nn_vod = document.querySelector("#nn_vod_stub_10").value;
+    objekat.properties.rastavljac = document.querySelector("#rastavljac_stub_10").value;
+  }
+  if (objekat.properties.napon === "35") {
+    objekat.properties.vrsta_namjena = document.querySelector("#vrsta_namjena_stub_35").value;
+    objekat.properties.vrsta_materijal = document.querySelector("#vrsta_materijal_stub_35").value;
+    objekat.properties.vrsta_drvenog = document.querySelector("#vrsta_drvenog_stub_35").value;
+    objekat.properties.izolator_vrsta = document.querySelector("#izolator_vrsta_stub_35").value;
+    objekat.properties.izolator_funkcija = document.querySelector("#izolator_funkcija_stub_35").value;
+    objekat.properties.tip_izolatora = document.querySelector("#tip_izolatora_stub_35").value;
+    objekat.properties.nosaci_izolatora = document.querySelector("#nosaci_izolatora_stub_35").value;
+    objekat.properties.odvodnik_prenapona = document.querySelector("#odvodnik_prenapona_stub_35").value;
+    objekat.properties.uzemljivac = document.querySelector("#uzemljivac_stub_35").value;
+    objekat.properties.optika = document.querySelector("#optika_stub_35").value;
+    objekat.properties.prikljucak_otcjep = document.querySelector("#prikljucak_otcjep_stub_35").value;
+    objekat.properties.rastavljac = document.querySelector("#rastavljac_stub_35").value;
+    objekat.properties["10vod"] = document.querySelector("#vod_10").value;
+  }
+
+  //setujDdlVrijednost("#vlasnistvo", objekat.properties.vlasnistvo);
+  return objekat;
+}

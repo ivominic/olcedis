@@ -22,8 +22,9 @@ let isEditable = true; //Promjenljiva koja definiše da li je dozvoljeno pomjera
 let tacke = [],
   linije = [],
   poligoni = [];
-let selektovaniWmsObjekat; //Objekat koji je selektovan sa wms lejera
+let selektovaniWmsObjekat; //Objekat koji je selektovan sa wms lejera. Prazniti ga kada se odabere druga akcija.
 let nizWmsZaBrisanje = []; //Niz postojećih objekata za brisanje, grupisan po geohash_no
+let nizWmsZaIzmjenu = []; //Niz postojećih objekata kojima se mijenjaju atributi
 let nizSelektovanihObjekata = []; //Objekti pročitani iz raster lejera, na klik event
 let gpxFeatures = []; //Niz feature-a koji se dobije kad se prevuče gpx fajl na mapu
 let kmlFeature,

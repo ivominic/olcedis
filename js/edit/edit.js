@@ -71,6 +71,7 @@ function sacuvaj() {
   if (selektovaniWmsObjekat) {
     alert("Odabran je wms objekat");
     //TODO: Logika za slanje ažuriranja atributa
+    izmjenaAtributaWmsLejer(selektovaniWmsObjekat);
   } else {
     if (!selectGpxFeature && odabraniLejerUnos !== "vodovi") {
       poruka("Upozorenje", "Potrebno je odabrati tačku iz gpx fajla.");
