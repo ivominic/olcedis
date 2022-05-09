@@ -1,8 +1,10 @@
-// Modul za dodavanje novog čvora postojećem vodu
-// Upload fajla sa novim objektom, dodaju se atributi i prikazuje forma za odabir susjednih čvorova voda: #odabirCvorovaVodaDiv
-// Odabir čvorova istog voda. Provjeriti da li je odabran bar jedan vod i još neki objekat. Ako je samo vod ili bez voda, prikazati poruku o grešci
-// Ako je novi objekat stub, mijenja se geometrija. Ako je bilo koji drugi objekat, vod se dijeli i definiše se nadređemni i podređeni vod
-// Ovo treba uraditi na serverskoj strani, da bi znali koji dio sadrži nadređeni, a koji podređeni objekat.
+/**
+ * Modul za dodavanje novog čvora postojećem vodu
+ * Upload fajla sa novim objektom, dodaju se atributi i prikazuje forma za odabir susjednih čvorova voda: #odabirCvorovaVodaDiv
+ * Odabir čvorova istog voda. Provjeriti da li je odabran bar jedan vod i još neki objekat. Ako je samo vod ili bez voda, prikazati poruku o grešci
+ * Ako je novi objekat stub, mijenja se geometrija. Ako je bilo koji drugi objekat, vod se dijeli i definiše se nadređemni i podređeni vod
+ * Ovo treba uraditi na serverskoj strani, da bi znali koji dio sadrži nadređeni, a koji podređeni objekat.
+ */
 
 let nizPocetnihCvorovaVoda = [],
   nizKrajnjihCvorovaVoda = [];
@@ -30,13 +32,7 @@ function potvrdaDodavanjaVodu() {
     return false;
   }
 
-  //console.log("Vod", vodId);
-  //console.log("Prvi objekat", prviObjekat);
-  //console.log("Drugi objekat", drugiObjekat);
-
   finalnaObradaGpxTacakaZaAzuriranjeVoda(`vodovi.${vodId}`, prviObjekat, drugiObjekat);
-
-  //alert("Potvrda dodavanja vodu.");
 }
 
 function odabirPocetnogCvoraVoda() {

@@ -279,6 +279,31 @@
       </div>
     </div>
 
+    <div id="odabirObjektaZaPomjeranjeDiv" class="sidenav draggable">
+      <div class="titleAndClose">
+        <h1>Odabir objekta čiju lokaciju mijenjamo</h1>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeDiv('#odabirObjektaZaPomjeranjeDiv')">&times;</a>
+      </div>
+      <div class="items-padd">
+        <div class="pr-8 sadrzaj-scroll style-2 povezivanjevodovadiv">
+          <div class="flex-row pb-8">
+            <label for="ddlPocetniCvorVodovi">Objekat:</label>
+            <select class="select-css selectStart" id="ddlObjekatZaPomjeranje"></select>
+            <a class="tooltip markerButton" data-tool="Odaberite na mapi" id="tool411">
+              <button class="dugmeodabirmapa" id="btnObjekatZaPomjeranje">
+                <i class="fas fa-map-marker-alt"></i>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex-end items-padd-sm">
+        <button type="button" class="btn mr-8" id="btnPotvrdiPomjeranjeObjekta">
+          <i class="fas fa-check-circle"></i> Potvrdi
+        </button>
+      </div>
+    </div>
+
     <div id="odabirBliskogObjektaKmlDiv" class="sidenav draggable">
       <div class="titleAndClose">
         <h1>Povezivanje</h1>
@@ -1513,6 +1538,7 @@
     <script src="js/snap.js"></script>
     <script src="js/edit/uvoz_kml.js"></script>
     <script src="js/modify/vodDodavanjeObjekta.js"></script>
+    <script src="js/modify/vodPomjeranjeObjekta.js"></script>
     <script src="js/modify/prikazAtributa.js"></script>
     <script src="js/modify/brisanjeObjekata.js"></script>
     <script src="js/modify/izmjenaAtributa.js"></script>
