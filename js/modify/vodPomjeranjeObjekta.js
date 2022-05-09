@@ -6,12 +6,12 @@
 
 //showDiv("#odabirObjektaZaPomjeranjeDiv");
 
+/** Poziva se na klik na čiodu za odabir sa mape */
 function odabirObjektaZaPomjeranje() {
   map.removeInteraction(draw);
   map.removeInteraction(modify);
   odabirSaMape = true;
-  selektovaniDdlZaPovezivanjeVoda = "#ddlObjekatZaPomjeranje";
-  $(selektovaniDdlZaPovezivanjeVoda).empty();
+  $("#ddlObjekatZaPomjeranje").empty();
   map.on("singleclick", klikNaRastereZaPomjeranjeObjekta);
 }
 
@@ -78,3 +78,31 @@ function klikNaRastereZaPomjeranjeObjekta(browserEvent) {
     }
   });
 }
+
+/** Klik na dugme "Potvrdi" */
+function potvrdaPomjeranjaObjekta() {
+  let blnDodaoObjekat = false;
+  let postojeciObjekat = document.querySelector("#ddlObjekatZaPomjeranje").value;
+  if (!selectGpxFeature || !postojeciObjekat) {
+    poruka("Upozorenje", "Nije odabrana tačka i objekat za pomjeranje.");
+  } else {
+    let novaGeometrija = wktGeometrije(selectGpxFeature);
+    console.log("gpx tačka", selectGpxFeature);
+    console.log("gpx wkt geometrija", novaGeometrija);
+    console.log("wms tačka", postojeciObjekat);
+
+    nizWmsZaPomjeranje.forEach((item) => {
+      if (item[0] === postojeciObjekat) {
+        item[1] = novaGeometrija;
+        blnDodaoObjekat = true;
+      }
+    });
+    if (!blnDodaoObjekat) {
+      nizWmsZaPomjeranje.push([postojeciObjekat, novaGeometrija]);
+    }
+    console.log("niz wms za pomjeranje", nizWmsZaPomjeranje);
+    poruka("Uspjeh", "Uspješno povezana nova tačka i postojeći objekat");
+  }
+}
+
+//TODO: Poziv servisa za slanje niza parova za pomjeranje.

@@ -326,6 +326,7 @@ document.querySelector("#btnKrajnjiCvorVoda").addEventListener("click", odabirKr
 
 //Akcije za pomjeranje objekata
 document.querySelector("#btnObjekatZaPomjeranje").addEventListener("click", odabirObjektaZaPomjeranje);
+document.querySelector("#btnPotvrdiPomjeranjeObjekta").addEventListener("click", potvrdaPomjeranjaObjekta);
 
 function odabirNapojneTrafostaniceUnos() {
   odabirNapojneTrafostaniceSaMape();
