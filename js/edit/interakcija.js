@@ -181,7 +181,13 @@ function prikazPanelaAtributa(sloj) {
     document.querySelector("#ddl_sloj_podataka").value = "pod";
     prikaziAtributDivPod();
   }
-  showDiv("#atributiDiv");
+  //TODO: Ovdje detaljno podesiti kad se prikazuje forma za unos atributa
+  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //if (akcija !== "pomjeranje") {
+  if (akcija !== "pan" && akcija !== "pomjeranje") {
+    console.log("Akcija", akcija);
+    showDiv("#atributiDiv");
+  }
   console.log("akcijaLejerNivo", akcijaLejerNivo);
 }
 

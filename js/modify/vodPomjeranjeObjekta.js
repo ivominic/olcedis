@@ -20,6 +20,7 @@ function klikNaRastereZaPomjeranjeObjekta(browserEvent) {
   let pixel = map.getPixelFromCoordinate(coordinate);
   let brojLejera = 0;
   let tempNiz = [];
+  akcija = "pomjeranje";
   map.forEachLayerAtPixel(pixel, function (layer) {
     if (layer instanceof ol.layer.Image) {
       console.log(layer.values_.name);
@@ -50,7 +51,6 @@ function klikNaRastereZaPomjeranjeObjekta(browserEvent) {
               }
 
               if (brojLejera === 0) {
-                alert("aaaaaa");
                 tempNiz.forEach((el) => {
                   console.log("el čitanje", el);
                   if (el.id.split(".")[0] === "vodovi") {
@@ -71,7 +71,6 @@ function klikNaRastereZaPomjeranjeObjekta(browserEvent) {
                 });
                 map.un("singleclick", klikNaRastereZaPomjeranjeObjekta);
                 selektovaniDdlZaPovezivanjeVoda = "";
-                alert("bbbbbb");
               }
             });
         }

@@ -914,6 +914,10 @@ function odabirPrikljucnogMjestaZaUnosPotrosaca() {
  * @param {*} browserEvent
  */
 function odabirSvihRasterObjekataKlik(browserEvent) {
+  if (akcija !== "pomjeranje") {
+    akcija = "atribut";
+  }
+  //akcija = "atribut"; //TODO: Ovo ukloniti kad se bude pristupalo iz menija
   //TODO: Dodati loader dok se ne završi učitavanje podataka
   nizSelektovanihObjekata.length = 0;
   let coordinate = browserEvent.coordinate;
