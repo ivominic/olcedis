@@ -10,7 +10,6 @@ function vodEditGeometrije(browserEvent) {
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
   map.forEachLayerAtPixel(pixel, function (layer) {
-    console.log(layer.values_.name);
     let vidljivost = layer.get("visible");
     if (layer instanceof ol.layer.Image && layer.values_.name === "vodovi" && vidljivost) {
       let url = layer
@@ -26,7 +25,6 @@ function vodEditGeometrije(browserEvent) {
           })
           .then(function (json) {
             let odgovor = JSON.parse(json);
-            console.log("POMJERANJE 1", odgovor);
             if (odgovor.features.length > 0) {
               odabirSaMape = false;
               //let features = new ol.format.GeoJSON().readFeatures(odgovor.features);

@@ -31,8 +31,8 @@ function prikazAtributaSelektovanihObjekata() {
   }
 
   selektovaniWmsObjekat = nizSelektovanihObjekata[0];
-  prikazPanelaAtributa(nizSelektovanihObjekata[0].ddlLejer);
-  prikazAtributaWmsLejer(nizSelektovanihObjekata[0]);
+  nizSelektovanihObjekata.length && prikazPanelaAtributa(nizSelektovanihObjekata[0].ddlLejer);
+  nizSelektovanihObjekata.length && prikazAtributaWmsLejer(nizSelektovanihObjekata[0]);
 }
 
 /**
