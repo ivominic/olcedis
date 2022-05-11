@@ -27,10 +27,13 @@ function vodEditGeometrije(browserEvent) {
           .then(function (json) {
             let odgovor = JSON.parse(json);
             console.log("POMJERANJE 1", odgovor);
-            //let features = new ol.format.GeoJSON().readFeatures(odgovor.features);
-            featureTekuciOverlay.getSource().clear();
-            featureTekuciOverlay.getSource().addFeatures(new ol.format.GeoJSON().readFeatures(odgovor.features[0]));
-            map.un("singleclick", vodEditGeometrije);
+            if (odgovor.features.length > 0) {
+              odabirSaMape = false;
+              //let features = new ol.format.GeoJSON().readFeatures(odgovor.features);
+              featureTekuciOverlay.getSource().clear();
+              featureTekuciOverlay.getSource().addFeatures(new ol.format.GeoJSON().readFeatures(odgovor.features[0]));
+              map.un("singleclick", vodEditGeometrije);
+            }
           });
       }
     }
