@@ -4,6 +4,8 @@
 //TODO: Snap na odabrani lejer
 //TODO: Dodavanje izmjene u niz
 
+//map.on("singleclick", vodEditGeometrije);
+
 function vodEditGeometrije(browserEvent) {
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
@@ -28,6 +30,7 @@ function vodEditGeometrije(browserEvent) {
             //let features = new ol.format.GeoJSON().readFeatures(odgovor.features);
             featureTekuciOverlay.getSource().clear();
             featureTekuciOverlay.getSource().addFeatures(new ol.format.GeoJSON().readFeatures(odgovor.features[0]));
+            map.un("singleclick", vodEditGeometrije);
           });
       }
     }
