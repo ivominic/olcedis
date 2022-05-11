@@ -22,7 +22,11 @@ popuniMultiDdl("#pretraga_layer_name");
 function popuniMultiDdl(idDdl) {
   //document.querySelector(idDdl).innerHTML="";
   //$(idDdl).empty();
-  let urlServisa = window.location.protocol + "//" + window.location.hostname + "/portal/services/_getTransmissionLines.php?naponski_nivo=10";
+  let urlServisa =
+    window.location.protocol +
+    "//" +
+    window.location.hostname +
+    "/portal/services/_getTransmissionLines.php?naponski_nivo=10";
   let parametri = new FormData();
   let xhr = new XMLHttpRequest();
   xhr.open("GET", urlServisa, true);
