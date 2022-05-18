@@ -1,4 +1,5 @@
 /**Inicijalna deklaracija promjenljivih koje su vezane za konkretan lejer */
+//TODO: Trebalo bi da sljedećih 5-6 linija mogu da se uklone.
 let layername = "trafostanice",
   fulllayername = "geonode:trafostanice",
   layertitle = "Trafostanice";
@@ -15,32 +16,16 @@ function popuniKontrole(odgovor) {
   document.querySelector("#broj").value = atributi["broj"];
   document.querySelector("#sifra").value = atributi["sifra"];
   document.querySelector("#pripadnost").value = atributi["pripadnost"];
-  //document.querySelector("#tip").value = atributi["tip"];
-  //document.querySelector("#vrsta_namjena").value = atributi["vrsta_namjena"];
-  //document.querySelector("#vrsta_materijal").value = atributi["vrsta_materijal"];
-  //document.querySelector("#vrsta_drvenog").value = atributi["vrsta_drvenog"];
   document.querySelector("#nad_visina").value = atributi["nad_visina"];
   document.querySelector("#visina").value = atributi["visina"];
   document.querySelector("#rasp_prov").value = atributi["rasp_prov"];
-  //document.querySelector("#izolator_vrsta").value = atributi["izolator_vrsta"];
-  //document.querySelector("#izolator_funkcija").value = atributi["izolator_funkcija"];
   document.querySelector("#br_izol_faza").value = atributi["br_izol_faza"];
-  //document.querySelector("#nosaci_izolatora").value = atributi["nosaci_izolatora"];
-  //document.querySelector("#odvodnik_prenapona").value = atributi["odvodnik_prenapona"];
-  //document.querySelector("#uzemljivac").value = atributi["uzemljivac"];
   document.querySelector("#uzemljivac_otpor").value = atributi["uzemljivac_otpor"];
-  //document.querySelector("#optika").value = atributi["optika"];
-  //document.querySelector("#rasvjeta").value = atributi["rasvjeta"];
   document.querySelector("#br_pmo").value = atributi["br_pmo"];
   document.querySelector("#br_nnv").value = atributi["br_nnv"];
   document.querySelector("#pog_sprem").value = atributi["pog_sprem"];
-  //document.querySelector("#vlasnistvo").value = atributi["vlasnistvo"];
   document.querySelector("#opstina").value = atributi["opstina"];
   document.querySelector("#napon").value = atributi["napon"];
-  //document.querySelector("#prikljucak_otcjep").value = atributi["prikljucak_otcjep"];
-  //document.querySelector("#nn_vod").value = atributi["nn_vod"];
-  //document.querySelector("#rastavljac").value = atributi["rastavljac"];
-  //document.querySelector("#10_vod").value = atributi["10_vod"];
 
   setujDdlVrijednost("#tip", atributi["tip"]);
   setujDdlVrijednost("#vrsta_namjena", atributi["vrsta_namjena"]);
@@ -650,10 +635,8 @@ function wfsFilter() {
       vektorSource.addFeatures(features);
       console.log(vektorSource.getExtent());
       let boundingExtent = ol.extent.boundingExtent(vektorSource.getExtent());
-      //boundingExtent = ol.proj.transformExtent(boundingExtent, ol.proj.get("EPSG:4326"), ol.proj.get("EPSG:3857"));
       console.log(boundingExtent);
       console.log("size", map.getSize());
-      //map.getView().fit(boundingExtent, map.getSize());
     },
     fail: function (jqXHR, textStatus) {
       console.log("Request failed: " + textStatus);
@@ -714,40 +697,3 @@ document.querySelector("#btnSacuvaj").addEventListener("click", sacuvaj);
 document.querySelector("#btnIzbrisi").addEventListener("click", izbrisi);
 document.querySelector("#btnDupliraj").addEventListener("click", dupliraj);
 document.querySelector("#btnFilter").addEventListener("click", filtriranje);
-
-/**Popunjavanje ddl-ova */
-
-/*popuniDdlAtributima("#tip", "stubovi", "tip", "", "");
-popuniDdlAtributima("#vrsta_namjena", "stubovi", "vrsta_namjena", "", "");
-popuniDdlAtributima("#vrsta_materijal", "stubovi", "vrsta_materijal", "", "");
-popuniDdlAtributima("#vrsta_drvenog", "stubovi", "vrsta_drvenog", "", "");
-popuniDdlAtributima("#izolator_vrsta", "stubovi", "izolator_vrsta", "", "");
-popuniDdlAtributima("#izolator_funkcija", "stubovi", "izolator_funkcija", "", "");
-popuniDdlAtributima("#nosaci_izolatora", "stubovi", "nosaci_izolatora", "", "");
-popuniDdlAtributima("#odvodnik_prenapona", "stubovi", "odvodnik_prenapona", "", "");
-popuniDdlAtributima("#uzemljivac", "stubovi", "uzemljivac", "", "");
-popuniDdlAtributima("#optika", "stubovi", "optika", "", "");
-popuniDdlAtributima("#rasvjeta", "stubovi", "rasvjeta", "", "");
-popuniDdlAtributima("#vlasnistvo", "stubovi", "vlasnistvo", "", "");
-popuniDdlAtributima("#prikljucak_otcjep", "stubovi", "prikljucak_otcjep", "", "");
-popuniDdlAtributima("#nn_vod", "stubovi", "nn_vod", "", "");
-popuniDdlAtributima("#rastavljac", "stubovi", "rastavljac", "", "");
-popuniDdlAtributima("#10_vod", "stubovi", "10_vod", "", "");
-
-popuniDdlAtributima("#pretraga_tip", "stubovi", "tip", "", "");
-popuniDdlAtributima("#pretraga_vrsta_namjena", "stubovi", "vrsta_namjena", "", "");
-popuniDdlAtributima("#pretraga_vrsta_materijal", "stubovi", "vrsta_materijal", "", "");
-popuniDdlAtributima("#pretraga_vrsta_drvenog", "stubovi", "vrsta_drvenog", "", "");
-popuniDdlAtributima("#pretraga_izolator_vrsta", "stubovi", "izolator_vrsta", "", "");
-popuniDdlAtributima("#pretraga_izolator_funkcija", "stubovi", "izolator_funkcija", "", "");
-popuniDdlAtributima("#pretraga_nosaci_izolatora", "stubovi", "nosaci_izolatora", "", "");
-popuniDdlAtributima("#pretraga_odvodnik_prenapona", "stubovi", "odvodnik_prenapona", "", "");
-popuniDdlAtributima("#pretraga_uzemljivac", "stubovi", "uzemljivac", "", "");
-popuniDdlAtributima("#pretraga_optika", "stubovi", "optika", "", "");
-popuniDdlAtributima("#pretraga_rasvjeta", "stubovi", "rasvjeta", "", "");
-popuniDdlAtributima("#pretraga_vlasnistvo", "stubovi", "vlasnistvo", "", "");
-popuniDdlAtributima("#pretraga_opstina", "stubovi", "opstina", "", "");
-popuniDdlAtributima("#pretraga_prikljucak_otcjep", "stubovi", "prikljucak_otcjep", "", "");
-popuniDdlAtributima("#pretraga_nn_vod", "stubovi", "nn_vod", "", "");
-popuniDdlAtributima("#pretraga_rastavljac", "stubovi", "rastavljac", "", "");
-popuniDdlAtributima("#pretraga_10_vod", "stubovi", "10_vod", "", "");*/

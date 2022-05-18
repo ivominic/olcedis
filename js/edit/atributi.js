@@ -1,4 +1,4 @@
-/**Metode za prikaz odgovarajućih polja atributDiv-a */
+/**Metode za prikaz odgovarajućih polja atributDiv-a u zavisnosti od odabranog sloja podataka*/
 function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosNazivTs").style.display = "none";
   document.querySelector("#divUnosSifraTs").style.display = "none";
