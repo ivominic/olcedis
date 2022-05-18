@@ -23,6 +23,7 @@ let tacke = [],
   linije = [],
   poligoni = [];
 let selektovaniWmsObjekat; //Objekat koji je selektovan sa wms lejera. Prazniti ga kada se odabere druga akcija.
+let originalnaGeometrijaWmsVoda;
 let nizWmsZaBrisanje = []; //Niz postojećih objekata za brisanje, grupisan po geohash_no
 let nizWmsZaIzmjenu = []; //Niz postojećih objekata kojima se mijenjaju atributi
 let nizWmsZaPomjeranje = []; //Niz postojećih objekata kojima se mijenja lokacija

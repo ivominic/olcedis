@@ -91,6 +91,7 @@ function ddlLejerNaziv(elId, napon) {
 
 function prikazAtributaWmsLejer(objekat) {
   console.log("WMS OBJEKAT", objekat);
+  originalnaGeometrijaWmsVoda = objekat.geometry;
   document.querySelector("#ddl_sloj_podataka").value = objekat.ddlLejer;
   ddlLejerChange();
   if (objekat.ddlLejer === "stub35" || objekat.ddlLejer === "stub10" || objekat.ddlLejer === "stub04") {
