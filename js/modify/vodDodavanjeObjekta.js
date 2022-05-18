@@ -1,9 +1,10 @@
 /**
  * Modul za dodavanje novog čvora postojećem vodu
  * Upload fajla sa novim objektom, dodaju se atributi i prikazuje forma za odabir susjednih čvorova voda: #odabirCvorovaVodaDiv
- * Odabir čvorova istog voda. Provjeriti da li je odabran bar jedan vod i još neki objekat. Ako je samo vod ili bez voda, prikazati poruku o grešci
- * Ako je novi objekat stub, mijenja se geometrija. Ako je bilo koji drugi objekat, vod se dijeli i definiše se nadređemni i podređeni vod
- * Ovo treba uraditi na serverskoj strani, da bi znali koji dio sadrži nadređeni, a koji podređeni objekat.
+ * Odabir čvorova istog voda. Provjeriti da li je odabran bar jedan vod i još neki objekat.
+ * Ako je odabran samo vod ili više objekata bez voda, prikazati poruku o grešci, jer je potrebno da budu odabrani vod i stub koji pripada tom vodu.
+ * Ako je novi objekat stub, mijenja se geometrija. Ako je bilo koji drugi objekat, vod se dijeli i definiše se nadređemni i podređeni vod.
+ * Ova provjera je relizovana na serverskoj strani, da bi znali koji dio sadrži nadređeni, a koji podređeni objekat.
  */
 
 let nizPocetnihCvorovaVoda = [],
@@ -11,6 +12,11 @@ let nizPocetnihCvorovaVoda = [],
 let nizPocetnihVodova = [],
   nizKrajnjihVodova = [];
 
+/**
+ * Metoda koja se poziva na potvrdu sa mini forme za umetanje novih tačaka u vod. Vrši provjeru da li postoje krajnje tačke
+ * i provjeru da li je u oba slučaja odabran i isti vod. Ukoliko su zadovoljeni uslovi, poziva se funkcija finalnaObradaGpxTacakaZaAzuriranjeVoda
+ * @returns null
+ */
 function potvrdaDodavanjaVodu() {
   let blnIstiVod = false;
   let vodId;
@@ -25,16 +31,20 @@ function potvrdaDodavanjaVodu() {
     });
   });
   if (!prviObjekat || !drugiObjekat) {
-    alert("Nisu odabrane tačke između kojih se unosi novi objekat.");
+    poruka("Upozorenje", "Nisu odabrane tačke između kojih se unosi novi objekat.");
+    return false;
   }
   if (!blnIstiVod) {
-    alert("Nisu elementi istog voda");
+    poruka("Upozorenje", "Nisu elementi istog voda");
     return false;
   }
 
   finalnaObradaGpxTacakaZaAzuriranjeVoda(`vodovi.${vodId}`, prviObjekat, drugiObjekat);
 }
 
+/**
+ * Metoda koja se poziva kod klika na dugme za odabir prve tačke sa mape
+ */
 function odabirPocetnogCvoraVoda() {
   map.removeInteraction(draw);
   map.removeInteraction(modify);
@@ -46,6 +56,9 @@ function odabirPocetnogCvoraVoda() {
   map.on("singleclick", klikNaRastereZaCvorVoda);
 }
 
+/**
+ * Metoda koja se poziva kod klika na dugme za odabir druge tačke sa mape
+ */
 function odabirKrajnjegCvoraVoda() {
   map.removeInteraction(draw);
   map.removeInteraction(modify);
@@ -59,6 +72,13 @@ function odabirKrajnjegCvoraVoda() {
 
 //showDiv("#odabirCvorovaVodaDiv");
 
+/**
+ * Metoda koja aktivira odabir objekata sa mape i prikaz selektovanih objekata u listi za odabir čvorova voda između kojih se unose nove tačke
+ * Prolazi kroz sve vidljive lejere i inkrementira brojač, kako bi u callback-u znali kada su obrađeni svi očekivani odgovori.
+ * Za svaki odabir sa mape se vrši provjera da li je bar jedan odabrani objekat vod - jer je to obavezan uslov i popunjava odgovarajuću listu
+ * objektima koji su selektovani sa mape (klikom koji ova metoda obrađuje).
+ * @param {klik na neku lokaciju na mapi} browserEvent
+ */
 function klikNaRastereZaCvorVoda(browserEvent) {
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
@@ -89,21 +109,15 @@ function klikNaRastereZaCvorVoda(browserEvent) {
                 console.log(odgovor.features);
                 odgovor.features.forEach(function (el) {
                   tempNiz.push(el);
-                  console.log("el", el);
+                  //console.log("el", el);
                 });
               }
 
               if (brojLejera === 0) {
                 let blnNijeSelektovanVod = true;
 
-                /*if (selektovaniDdlZaPovezivanjeVoda === "#ddlPocetniCvorVodovi") {
-                  nizPocetnihCvorovaVoda = tempNiz.slice();
-                }
-                if (selektovaniDdlZaPovezivanjeVoda === "#ddlKrajnjiCvorVodovi") {
-                  nizKrajnjihCvorovaVoda = tempNiz.slice();
-                }*/
                 tempNiz.forEach((el) => {
-                  console.log("el čitanje", el);
+                  //console.log("el čitanje", el);
                   if (el.id.split(".")[0] === "vodovi") {
                     blnNijeSelektovanVod = false;
                     if (selektovaniDdlZaPovezivanjeVoda === "#ddlPocetniCvorVodovi") {
@@ -138,6 +152,15 @@ function klikNaRastereZaCvorVoda(browserEvent) {
   });
 }
 
+/**
+ * Metoda koja prolazi kroz sve elemente gpx fajla i u zavinosti od lejera priprema svaki objekat pojedinačno za unos u bazu.
+ * Ukoliko neka tačka uvezenog gpx fajla nije obrađena (nisu popunjeni podaci) prikazuje se poruka o grešci.
+ * U finalnom koraku se poziva servis za unos u bazu.
+ * @param {id voda čija geometrija se mijenja dodavanjem novih tačaka} vodId
+ * @param {tačka / čvor voda} prvaTacka
+ * @param {tačka / čvor voda} drugaTacka
+ * @returns
+ */
 function finalnaObradaGpxTacakaZaAzuriranjeVoda(vodId, prvaTacka, drugaTacka) {
   let postojiNeobradjenaTacka = false;
   let iterator = 0;
@@ -176,7 +199,7 @@ function finalnaObradaGpxTacakaZaAzuriranjeVoda(vodId, prvaTacka, drugaTacka) {
   }
 }
 
-//TODO: Pozvati servis koji će Jovan napraviti
+//TODO: Pozvati servis koji će Jovan napraviti - ili će kroz neki od postojećih servisa biti realizovano.
 function azuriranjeWebService(vodId, prvaTacka, drugaTacka, nizObjekataZaDodavanjeVodu) {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/dodavanje_objekta_vodu";
   $.ajax({

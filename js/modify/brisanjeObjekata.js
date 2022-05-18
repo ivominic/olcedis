@@ -1,3 +1,5 @@
+/** Metode koje se odnose na brisanje objekata sa mape */
+
 /**Dodaje wms objekat u niz za brisanje */
 function dodajObjekatZaBrisanje(objekat) {
   //let temp_geohash = objekat.properties.geohash_id_no;

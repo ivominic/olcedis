@@ -1,11 +1,18 @@
-//TODO: Čitanje podataka i geometrije iz wfs-a
-//TODO: Prikaz vektora na mapi
-//TODO: Omogućavanje izmjene na način kako je kreirano za kml vodove
-//TODO: Snap na odabrani lejer
-//TODO: Dodavanje izmjene u niz
+/**
+ * Modul za funkcionalnosti produženja postojećih vodova. Postupak uključuje sljedeće korake:
+ * Čitanje atributa i geometrije iz wfs-a
+ * Prikaz odgovarajućeg vektora na mapi
+ * Omogućavanje izmjene nakon klikna na vektor (nisam uspio da kreiram modify interakciju bez dodatnog klika)
+ * Snapovanje na odabrani lejer
+ * Dodavanje izmjena u niz za slanje na validaciju
+ */
 
 //map.on("singleclick", vodEditGeometrije);
 
+/**
+ * Metoda koja obrađuje klik na mapu, za prikaz geometrije voda
+ * @param {klik na neku lokaciju na mapi} browserEvent
+ */
 function vodEditGeometrije(browserEvent) {
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
@@ -51,8 +58,6 @@ modifyVod.on("modifyend", function (e) {
   console.log("MODIFY VOD END - features", e.features.getArray()[0]);
 
   let coordinates = e.features.getArray()[0].getGeometry().getCoordinates();
-  //console.log("koordinate", coordinates);
-  //console.log("koordinate1", originalnaGeometrijaWmsVoda.coordinates);
 
   if (coordinates.length !== originalnaGeometrijaWmsVoda.coordinates.length) {
     e.features.getArray()[0].getGeometry().setCoordinates(originalnaGeometrijaWmsVoda.coordinates);

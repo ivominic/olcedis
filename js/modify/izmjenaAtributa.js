@@ -1,7 +1,10 @@
 /** Pravi niz objekata kojima se mijenjaju atributi */
 
-//selektovaniWmsObjekat
-
+/**
+ * Dodaje trenutno izmijenjeni objekat, objekat kome su izmijenjeni atributi ili geometrija
+ *  u niz objekata koji se nakon finalmne potvrde šalju na validaciju (unose u bazu)
+ * @param {Ovo je selektovaniWmsObjekat koji je definisan na globalnom nivou} objekat
+ */
 function dodajObjekatZaIzmjenu(objekat) {
   //let temp_geohash = objekat.properties.geohash_id_no;
   //TODO: Podesiti prije produkcije na id_no. Trenutno su null vrijednosti.
@@ -20,6 +23,12 @@ function dodajObjekatZaIzmjenu(objekat) {
   console.log("NIZ ZA IZMJENU", nizWmsZaIzmjenu);
 }
 
+/**
+ * Vrši izmjenu atributa (setuje property-e objekta na nove vrijednosti) i dodaje izmijenjeni objekat
+ * u niz objekata koji se šalju na validaciju (unose u bazu).
+ * U zavisnosti od lejera kojem objekat pripada, poziva se različita metoda za izmjenu property-a.
+ * @param {Ovo je selektovaniWmsObjekat koji je definisan na globalnom nivou} objekat
+ */
 function izmjenaAtributaWmsLejer(objekat) {
   console.log("WMS OBJEKAT ZA IZMJENU ATRIBUTA", objekat);
   if (objekat.ddlLejer === "stub35" || objekat.ddlLejer === "stub10" || objekat.ddlLejer === "stub04") {
@@ -49,6 +58,10 @@ function izmjenaAtributaWmsLejer(objekat) {
   }
 }
 
+/**
+ * Poziv web servisa za unos pripremljenih objekata u bazu (slanje na ažiriranje).
+ * Vidjeti da li je potrebna ova metoda, ili će se koristiti neki ranije razvijen servis.
+ */
 function izmjenaAtributaSvihObjekata() {
   //TODO: CALL WEB SERVICE
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/object_control";

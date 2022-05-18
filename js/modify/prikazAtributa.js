@@ -2,24 +2,20 @@
 
 //map.on("singleclick", odabirSvihRasterObjekataKlik);
 //metoda za čitanje atributa iz rasterskih lejera
-
 //Tretirati niz dobijen iz rastera kao i nizGpxTacakaZaObradu, za prikaz strelica za prethodni i sljedeći objekat.
 
+/**
+ * Metoda za prikaz atributa odabranih objekata sa mape (wms objekata). Postupak se sprovodi kroz sljedeće korake:
+ * Za svaki objekat se u niz selektovanih dodaju: lejer, id i napon
+ * Podešava se ddl lista na vrijednost lejera prvog odabranog objekta. Ovim se prikazuju odgovarajući atributi.
+ * Popunjavanje svih prikazanih polja vrijednostima atributa objekta.
+ */
 function prikazAtributaSelektovanihObjekata() {
   console.log("prikazAtributaSelektovanihObjekata", nizSelektovanihObjekata);
-  //TODO: Izvući podatke iz niza: lejer, id i napon
-  //TODO: Podesiti ddl za odabir lejera na lejer selektovanog objekta
-  //TODO: Popuniti polja za atribute vrijednostima iz selektovanog objekta.
-  //TODO: Poziv servisa za brisanje
   //TODO: Ne dozvoliti izmjenu/brisanje potrošača, nelegalnih potrošača i svih temp_ tabela
   nizSelektovanihObjekata.forEach((el) => {
-    console.log("el.id", el.id);
-    console.log("el.properties.napon", el.properties.napon);
-    console.log("lejer iz ddl-a", ddlLejerNaziv(el.id, el.properties.napon));
     el.ddlLejer = ddlLejerNaziv(el.id, el.properties.napon);
-    //console.log("el.properties.originalId", el.properties.originalId);
   });
-  //nizGpxTacakaZaObradu = nizSelektovanihObjekata; //Možda treba raditi kloniranje, za sad je kao pointer
   //Zadržavamo sve funkcionalnosti prikaza za rad sa nizom gpx tačaka
 
   if (nizSelektovanihObjekata.length > 1) {
@@ -36,7 +32,7 @@ function prikazAtributaSelektovanihObjekata() {
 }
 
 /**
- * Metoda koja za id selektovan raster objekta i njegov napon vrati value lejera iz ddl liste za prikaz atributa.
+ * Metoda koja za id selektovanog raster objekta i njegov napon vrati value lejera iz ddl liste za prikaz atributa.
  * @param {zapis oblika "stubovi.3243"} elId
  * @param {04, 10 ili 35} napon
  */
@@ -89,6 +85,11 @@ function ddlLejerNaziv(elId, napon) {
   }
 }
 
+/**
+ * Metoda koja selektovani objekat sa mape predaje, u zavisnoti kojem lejeru pripada,
+ * metodama za popunjavanje odgovarajućih polja vrijednostima atributa objekta.
+ * @param {Ovo je selektovaniWmsObjekat koji je definisan na globalnom nivou} objekat
+ */
 function prikazAtributaWmsLejer(objekat) {
   console.log("WMS OBJEKAT", objekat);
   originalnaGeometrijaWmsVoda = objekat.geometry;
