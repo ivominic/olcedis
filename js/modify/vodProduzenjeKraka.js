@@ -48,21 +48,11 @@ var modifyVod = new ol.interaction.Modify({
 map.addInteraction(modifyVod);
 
 modifyVod.on("modifyend", function (e) {
-  let featureName = e.features.getArray()[0].values_.name;
-
-  //TODO: Ovo obraditi da odgovara izmjeni postojećeg voda
-  console.log("MODIFY VOD END", featureName);
   console.log("MODIFY VOD END - features", e.features.getArray()[0]);
-  //let position = e.features.getArray()[0].values_.geometry.flatCoordinates;
-  //let coordinates = e.features.getArray()[0].values_.geometry.clone();
-  //console.log("koordinate m", position);
-
-  //let position = e.features.getArray()[0].values_.geometry.flatCoordinates;
-  //let coordinates = e.features.getArray()[0].values_.geometry.clone();
 
   let coordinates = e.features.getArray()[0].getGeometry().getCoordinates();
-  console.log("koordinate", coordinates);
-  console.log("koordinate1", originalnaGeometrijaWmsVoda.coordinates);
+  //console.log("koordinate", coordinates);
+  //console.log("koordinate1", originalnaGeometrijaWmsVoda.coordinates);
 
   if (coordinates.length !== originalnaGeometrijaWmsVoda.coordinates.length) {
     e.features.getArray()[0].getGeometry().setCoordinates(originalnaGeometrijaWmsVoda.coordinates);
@@ -127,4 +117,6 @@ modifyVod.on("modifyend", function (e) {
     poruka("Upozorenje", "Tačka ne može biti pomjerena više od " + kmlRadius.toString() + "m od snimljene pozicije.");
     return false;
   }
+
+  //TODO: Dodati u niz objekata za izmjenu. Dodati i novu geometriju kao property "geometrija"
 });
