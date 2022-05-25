@@ -1,4 +1,4 @@
-/**Inicijalna deklaracija promjenljivih koje su vezane za konkretan lejer */
+/**Metode i promjenljive koje su vezane za konkretan lejer - POD */
 
 let layernamePOD = "pod",
   fulllayernamePOD = "geonode:pod",
@@ -51,7 +51,6 @@ function podUpoligonu(napon) {
     formiraniFilter += " AND (" + params.CQL_FILTER + ")";
   }
   formiraniFilter = encodeURIComponent(formiraniFilter);
-  //onsole.log("filter za cql", formiraniFilter);
   let urlZaFilter =
     wfsUrl +
     "?version=1.0.0&request=GetFeature&typeName=" +

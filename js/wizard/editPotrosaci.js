@@ -1,4 +1,4 @@
-/**Inicijalna deklaracija promjenljivih koje su vezane za konkretan lejer */
+/**Metode i promjenljive koje su vezane za konkretan lejer - potrosaci */
 
 let layernamePotrosaci = "view_potrosaci",
   fulllayernamePotrosaci = "geonode:view_potrosaci",
@@ -19,16 +19,9 @@ let wmsPotrosaci = new ol.layer.Image({
 });
 
 map.addLayer(wmsPotrosaci);
-//console.log("dodao lejer na mapu");
-
-/*document.querySelector("#selekecijaTrafostanicaPoligon").addEventListener("click", trafostaniceUpoligonu);
-document.querySelector("#uparivanjeTrafostanica").addEventListener("click", prikazUparivanje);
-document.querySelector("#btnPoveziTS").addEventListener("click", poveziTS);
-document.querySelector("#btnOdabirNapojneTS").addEventListener("click", selektujNapojnuTS);
-document.querySelector("#btnOdabirNapojneTS").style.display = "none";*/
 
 /**
- * Metoda koja vrši provjeru da li su svi selektovan potrošači sa istog izvoda trafostanice
+ * Metoda koja vrši provjeru da li su svi selektovani potrošači sa istog izvoda trafostanice
  */
 function provjeriPotrosace() {
   if (selektovaniPotrosaciFeatures.length === 0) {
@@ -256,7 +249,12 @@ function povezivanjePotrosacaVodova(potrosaci, vodovi) {
   }
 }
 
-/**Metoda koja daje selektovani izvod, ts i naziv svim objektima 0.4 nivoa */
+/**
+ * Metoda koja daje selektovani izvod, ts i naziv svim objektima 0.4 nivoa
+ * @param {šifra trafostanice} sifra
+ * @param {naziv trafostanice} naziv
+ * @param {izvod trafostanice} izvod
+ */
 function nnPrenosTrafostanica(sifra, naziv, izvod) {
   for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
     if (
@@ -308,7 +306,7 @@ function nnPrenosTrafostanica(sifra, naziv, izvod) {
   }
 }
 
-/** Metoda koja će ispratiti logičku konektivnost svih objekata*/
+/** Metoda koja će ispratiti logičku konektivnost svih objekata niskonaponskog nivoa*/
 function povezivanjeNiskonaponskihObjekata() {
   if (
     selektovaniPotrosaciFeatures.length === 0 ||
@@ -488,14 +486,10 @@ function povezivanjeNiskonaponskihObjekata() {
   }
 }
 
-function insertFinalniKorakNiskonaponskiObjekti() {
-  for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
-    if (selektovaneTrafostaniceFeatures[i].akcija && selektovaneTrafostaniceFeatures[i].akcija === "Izmjena") {
-      cudTrafostanica(selektovaneTrafostaniceFeatures[i], "U");
-    }
-  }
-}
-
+/**
+ * Metoda koja za šifru napojne trafostanice čita njenu geometriju i provjerava da li postoje vodovi koji izlaze ili ulaze u TS.
+ * Ukoliko iz trafostanice izlaze vodovi, provjerava konektivnost vodova metodom top-down.
+ */
 async function waitForElement() {
   if (typeof sifraNapojneTrafostanice !== "undefined" && sifraNapojneTrafostanice) {
     sifraNapojneTrafostanice = srediSifruTrafostanice(sifraNapojneTrafostanice);
@@ -536,8 +530,6 @@ async function waitForElement() {
  * Metoda koja provjerava da li postoji niskonaponski vod iz trafostanice. Ako postoji radi provjeru top down
  */
 async function provjeriVodIzTrafostanice() {
-  //Ova metoda daje geometriju napojne trafostanice za niski naponski nivo
-  let blnNepovezanaTrafostanica = true; //Označava da iz trafostanice ne izlazi nijedan vod
   sifraNapojneTrafostanice = srediSifruTrafostanice(sifraNapojneTrafostanice);
   await waitForElement();
   console.log("Sifra i geometrija napojne TS!!!!!", sifraNapojneTrafostanice, geometrijaNapojneTrafostanice);

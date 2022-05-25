@@ -1,4 +1,4 @@
-/**Inicijalna deklaracija promjenljivih koje su vezane za konkretan lejer */
+/**Metode i promjenljive koje su vezane za konkretan lejer - nkro */
 
 let layernameNKRO = "nkro",
   fulllayernameNKRO = "geonode:nkro",
@@ -31,7 +31,6 @@ function nkroUpoligonu(napon) {
     formiraniFilter += " AND (" + params.CQL_FILTER + ")";
   }
   formiraniFilter = encodeURIComponent(formiraniFilter);
-  //console.log("filter za cql", formiraniFilter);
   let urlZaFilter =
     wfsUrl +
     "?version=1.0.0&request=GetFeature&typeName=" +

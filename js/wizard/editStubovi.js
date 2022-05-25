@@ -1,8 +1,8 @@
-/**Inicijalna deklaracija promjenljivih koje su vezane za konkretan lejer */
+/**Metode i promjenljive koje su vezane za konkretan lejer - stubovi */
+
 let layernameS = "stubovi",
   fulllayernameS = "geonode:stubovi",
   layertitleS = "stubovi";
-//let layernameS = "stubovi", fulllayernameS = "winsoft:stubovi", layertitleS = "stubovi";
 let tipGeometrijeS = point;
 let opisSlikeS = "";
 
@@ -20,7 +20,6 @@ let wmsStubovi = new ol.layer.Image({
 });
 
 map.addLayer(wmsStubovi);
-//console.log("dodao stubove");
 
 /**
  * Metoda koja za odabrani naponski nivo vraća sve stubove tog nivoa
@@ -33,7 +32,6 @@ function stuboviUpoligonu(napon) {
     formiraniFilter += " AND (" + params.CQL_FILTER + ")";
   }
   formiraniFilter = encodeURIComponent(formiraniFilter);
-  //console.log("filter za cql", formiraniFilter);
   let urlZaFilter =
     wfsUrl +
     "?version=1.0.0&request=GetFeature&typeName=" +
@@ -42,7 +40,6 @@ function stuboviUpoligonu(napon) {
     formiraniFilter +
     "&access_token=" +
     geoserverToken;
-  //console.log("url filter", urlZaFilter);
 
   $.ajax({
     method: "POST",
@@ -56,7 +53,6 @@ function stuboviUpoligonu(napon) {
       } else {
         for (let i = 0; i < selektovaniStuboviFeatures.length; i++) {
           cudStub(selektovaniStuboviFeatures[i], "akcija");
-          //console.log("spisak stubova", selektovaniStuboviFeatures[i]);
         }
       }
     },

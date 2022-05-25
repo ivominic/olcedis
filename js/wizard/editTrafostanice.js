@@ -1,5 +1,6 @@
-/**Inicijalna deklaracija promjenljivih koje su vezane za konkretan lejer */
-//let layernameTS = "trafostanice", fulllayernameTS = "winsoft:trafostanice", layertitleTS = "trafostanice";
+/**Metode i promjenljive koje su vezane za konkretan lejer - trafostanice, kao i metode za obradu podataka trafostanica
+ * kroz uvodne forme - odabir napojne trafostanice i slično*/
+
 let layernameTS = "trafostanice",
   fulllayernameTS = "geonode:trafostanice",
   layertitleTS = "trafostanice";
@@ -22,11 +23,7 @@ let wmsTrafostanice = new ol.layer.Image({
 });
 
 map.addLayer(wmsTrafostanice);
-//console.log("dodao lejer na mapu");
 
-//document.querySelector("#selekecijaTrafostanicaPoligon").addEventListener("click", trafostaniceUpoligonu);
-//document.querySelector("#uparivanjeTrafostanica").addEventListener("click", prikazUparivanje);
-//document.querySelector("#selekcijaNapojneTrafostanice").addEventListener("click", selektujNapojnuTS);
 document.querySelector("#btnPoveziTS").addEventListener("click", poveziTS);
 document.querySelector("#btnOdabirNapojneTS").addEventListener("click", selektujNapojnuTS);
 document.querySelector("#btnOdabirNapojneTS").style.display = "none";
@@ -43,7 +40,6 @@ function provjeriTrafostanice() {
   option.value = "";
   document.querySelector("#ddlPovezivanjeTSselektovane").appendChild(option);
   for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
-    //console.log("feature trafotanica i", selektovaneTrafostaniceFeatures[i]);
     let tempNazivTs = "";
     trafostaniceZaWS += selektovaneTrafostaniceFeatures[i].values_.originalId + ",";
     option = document.createElement("option");
@@ -73,7 +69,6 @@ function trafostaniceUpoligonu(napon) {
     globalCqlZaNaponskiNivo(napon, "trafostanice") +
     "&access_token=" +
     geoserverToken;
-  //console.log("url filter", urlZaFilter);
 
   $.ajax({
     method: "POST",
@@ -97,7 +92,7 @@ function trafostaniceUpoligonu(napon) {
 }
 
 /**
- * Motoda koja bi trebala da vrati jednu trafostanicu. Poziva se samo za 0.4 naponski nivo i ne vrši provjere
+ * Motoda koja bi trebala da vrati jednu trafostanicu. Poziva se samo za 0.4 naponski nivo i ne vrši dodatne provjere
  * @param {*} napon
  */
 function nnTrafostaniceUPoligonu(napon) {
@@ -109,7 +104,6 @@ function nnTrafostaniceUPoligonu(napon) {
     globalCqlZaNaponskiNivo(napon, "trafostanice") +
     "&access_token=" +
     geoserverToken;
-  console.log("url filter", urlZaFilter);
 
   $.ajax({
     method: "POST",
@@ -124,14 +118,12 @@ function nnTrafostaniceUPoligonu(napon) {
   });
 }
 
+/** Prikaz forme za uparivanje trafostanica */
 function prikazUparivanje() {
-  /*if (sifraNapojneTrafostanice === "") {
-    poruka("Upozorenje", "Potrebno je odabrati napojnu trafostanicu");
-    return false;
-  }*/
   showDiv("#povezivanjeTSdiv");
 }
 
+/** Aktivacija opcije odabira napojne trafostanice sa mape. Opcija kad se klikne na dugne sa čiodom. */
 function selektujNapojnuTS() {
   poruka("Uspjeh", "Odaberite napojnu trafostanicu");
   map.removeInteraction(draw);
@@ -140,6 +132,11 @@ function selektujNapojnuTS() {
   blnSelekcijaNapojneTS = true;
 }
 
+/**
+ * Metoda koja povezuje trafostanice iz GIS-a i TBP-a. Vrši provjere da li su odabrane i jedna i druga trafostanica.
+ * Parovi trafostanica za uparivanje se dodaju u niz paroviTS
+ * @returns
+ */
 function poveziTS() {
   if (
     !document.querySelector("#uparivanjeTxtNazivIzvodaTS").value ||
@@ -182,7 +179,6 @@ function poveziTS() {
     document.querySelector("#ddlPovezivanjeTSselektovane").length === 1 &&
     document.querySelector("#ddlPovezivanjeTSpronadjene").length === 0
   ) {
-    console.log("Uspješno uparene sve trafostanice:", paroviTS);
     blnZavrsenoUparivanjeTrafostanica = true;
     prikaziCetvrtuFormuWizarda();
   }
@@ -194,7 +190,7 @@ document.querySelector("#ddlPovezivanjeTSselektovane").addEventListener("change"
 });
 
 /**
- * Metoda koja zumira na trafostanicu prilikom selekcije iz liste
+ * Metoda koja zumira na trafostanicu prilikom selekcije iz liste za uparivanje- obrada eventa iz prethodne komande/linije.
  * @param {} value
  */
 function zumTsIzListe(value) {

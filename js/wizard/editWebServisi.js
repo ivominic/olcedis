@@ -1,6 +1,4 @@
-/**
- * Metode koje pozivaju Jovanove web servise
- */
+/** Metode koje pozivaju Jovanove web servise */
 
 /**
  * Metoda koja za predatu šifru i izvod napojne trafostanice vrati spisak šifara svih neuparenih trafostanica. Ovim podacima popuniti listu iz koje se bira trafostanica koja se unosi u gis, a svi podaci se već nalaze u TBP. Na ovaj način neće biti moguće unijeti trafostanice koje nemaju napojnu (110kV)
@@ -20,7 +18,6 @@ function neupareneTrafostanice(sifraNapojne, izvodNapojne) {
     data: "",
     type: "GET",
     success: function (data) {
-      //console.log("šifre neuparenih trafostanica", data);
       if (data) {
         data.neuparene.forEach(function (vrijednost) {
           $("#ddlTrafostanice").append(
@@ -33,7 +30,6 @@ function neupareneTrafostanice(sifraNapojne, izvodNapojne) {
       }
     },
     error: function (x, y, z) {
-      //alert(x.responseText +"  " +x.status);
       console.log("greška popuniDdlAtributima", x.responseText);
     },
   });
@@ -103,7 +99,6 @@ function popuniPoljaTrafostaniceWS() {
       }
     },
     error: function (x, y, z) {
-      //alert(x.responseText +"  " +x.status);
       console.log("greška popuniDdlAtributima", x.responseText);
       return retval;
     },
@@ -124,9 +119,6 @@ function detaljiTrafostanica(sifraTS) {
     success: function (data) {
       console.log("detalji trafostanica, odgovor servisa", data);
       if (data) {
-        //Popuniti polja - TESTIRATI
-        //document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = data.ts.naziv;
-        //document.querySelector("#uparivanjeTxtSifraTS").textContent = data.ts.sifra;
         document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = data.naziv;
         document.querySelector("#uparivanjeTxtSifraTS").textContent = data.sifra;
       }

@@ -1,4 +1,4 @@
-/**Inicijalna deklaracija promjenljivih koje su vezane za konkretan lejer */
+/**Metode i promjenljive koje su vezane za konkretan lejer - priključno mjesto */
 
 let layernamePrikljucnoMjesto = "prikljucno_mjesto",
   fulllayernamePrikljucnoMjesto = "geonode:prikljucno_mjesto",
@@ -21,7 +21,7 @@ let wmsPrikljucnoMjesto = new ol.layer.Image({
 map.addLayer(wmsPrikljucnoMjesto);
 
 /**
- * Metoda koja za odabrani naponski nivo vraća sve NKRO tog nivoa
+ * Metoda koja za odabrani naponski nivo vraća sva priključna mjesta. Za sad je to na 0.4, ali se može desiti da bude i 10kV
  * @param {} napon
  */
 function prikljucnaMjestaUpoligonu(napon) {
@@ -31,7 +31,6 @@ function prikljucnaMjestaUpoligonu(napon) {
     formiraniFilter += " AND (" + params.CQL_FILTER + ")";
   }
   formiraniFilter = encodeURIComponent(formiraniFilter);
-  //console.log("filter za cql", formiraniFilter);
   let urlZaFilter =
     wfsUrl +
     "?version=1.0.0&request=GetFeature&typeName=" +
