@@ -1,6 +1,8 @@
-/**Metode koje se odnose na multiselect kontrole */
+/**Metode koje se odnose na multiselect kontrole, ukoliko se bude koristilo */
+
 let multikontrola;
-/**Metodsa koja vraća niz selektovanih vrijednosti multiselect ddl-a*/
+
+/**Metoda koja vraća niz selektovanih vrijednosti multiselect ddl-a*/
 function nizSelektovanihVrijednostiMultiselecta(idPolja) {
   let nizVrijednosti = [];
   let collection = document.querySelectorAll("#" + idPolja + " option");

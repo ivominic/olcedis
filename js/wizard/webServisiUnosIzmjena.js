@@ -84,7 +84,6 @@ function cudVod(feature, akcija, wizard) {
   podaciForme.append("Geometry", feature.Geometry);
   podaciForme.append("id", feature.id); //Ovo provjeriti
   podaciForme.append("fid1", feature.fid_1);
-  //podaciForme.append("fid_1", feature.id_.split(".")[1]);
   podaciForme.append("name", feature.name);
   podaciForme.append("id_br", feature.id_br);
   podaciForme.append("materijal", feature.materijal);
@@ -230,15 +229,12 @@ function cudStub(feature, akcija, wizard) {
  * @param {*} akcija
  */
 function cudPotrosac(feature, akcija, wizard) {
-  //onsole.log("Geometrija potrošača", feature.values_);
-  //console.log("Potrošač", feature);
   let podaciForme = new FormData();
   podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
   podaciForme.append("Geometry", feature.Geometry);
   podaciForme.append("id", feature.id); //Ovo provjeriti
   podaciForme.append("fid_1", feature.fid_1);
-  //podaciForme.append("fid_1", feature.id_.split(".")[1]);
   podaciForme.append("name", feature.name);
   podaciForme.append("prik_kabal", feature.prik_kabal);
   podaciForme.append("pod", feature.pod);
@@ -296,7 +292,6 @@ function cudNKRO(feature, akcija, wizard) {
   podaciForme.append("Geometry", feature.Geometry);
   podaciForme.append("id", feature.id); //Ovo provjeriti
   podaciForme.append("fid_1", feature.fid_1);
-  //podaciForme.append("fid_1", feature.id_.split(".")[1]);
   podaciForme.append("name", feature.name);
   podaciForme.append("materijal", feature.materijal);
   podaciForme.append("montaza", feature.montaza);
@@ -353,7 +348,6 @@ function cudPrikljucnoMjesto(feature, akcija, wizard) {
   podaciForme.append("Geometry", feature.Geometry);
   podaciForme.append("id", feature.id); //Ovo provjeriti
   podaciForme.append("fid_1", feature.fid_1);
-  //podaciForme.append("fid_1", feature.id_.split(".")[1]);
   podaciForme.append("name", feature.name);
   podaciForme.append("osiguraci", feature.osiguraci);
   podaciForme.append("opstina", feature.opstina);
@@ -409,7 +403,6 @@ function cudPOD(feature, akcija, wizard) {
   podaciForme.append("Geometry", feature.Geometry);
   podaciForme.append("id", feature.id); //Ovo provjeriti
   podaciForme.append("fid_1", feature.fid_1);
-  //podaciForme.append("fid_1", feature.id_.split(".")[1]);
   podaciForme.append("name", feature.name);
   podaciForme.append("prik_kabal", feature.prik_kabal);
   podaciForme.append("pod", feature.pod);

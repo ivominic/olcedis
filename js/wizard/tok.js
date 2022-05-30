@@ -1,3 +1,5 @@
+/** Metode koje se odnose na korake toka wizarda */
+
 let prviKorakWizarda = "Odabir naponskog nivoa";
 let drugiKorakWizarda = "Odabir napojne trafostanice";
 let treciKorakWizarda = "Uparivanje trafostanica";
@@ -7,6 +9,7 @@ let blnPrikazPorukeOPrekidu = true; //Promjenljiva dobija vrijednost false, nako
 
 document.querySelector("#wizard").addEventListener("click", prikazWizardForme);
 document.querySelector("#btnWizardNext").addEventListener("click", wizardNext);
+
 /**
  * Pokreće proces za wizard - prikazuje formu, ako je ozačen reon poligonom
  */
@@ -25,18 +28,15 @@ function prikazWizardForme() {
   document.querySelector("#uparivanjeTxtSifraTS").textContent = "";
 
   showDiv("#wizardDiv");
-  //trafostaniceUpoligonu();
-  //vodoviUpoligonu();
 }
 
 /**
- * Metoda koja izvršava jedan po jedan korak vizarda
+ * Metoda koja izvršava jedan po jedan korak wizard-a
  */
 function wizardNext() {
   if (document.querySelector("#wizardHeader").innerText === prviKorakWizarda) {
     //Na klik se bira naponski nivo i filtriraju se trafostanice i vodovi selektovanog reona (zahvat iscrtanog poligona)
     odabraniNaponskiNivo = document.querySelector("#ddlWizardNaponskiNivo").value;
-    //document.querySelector("#wizardHeader").innerHTML = drugiKorakWizarda;
 
     if (odabraniNaponskiNivo === "0.4") {
       potrosaciUpoligonu(odabraniNaponskiNivo);
@@ -44,12 +44,10 @@ function wizardNext() {
       prikljucnaMjestaUpoligonu(odabraniNaponskiNivo);
       nnTrafostaniceUPoligonu(odabraniNaponskiNivo);
       vodoviUpoligonu(odabraniNaponskiNivo);
-      //povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
-      //TODO: Provjeriti kako će funkcionisati poziv sa async/await
 
+      //TODO: Provjeriti kako će funkcionisati poziv sa async/await
       setTimeout(function () {
         //TODO: Provjeriti vezu od trafostanice. Ako ne postoji vod koji ide iz trafostanice, onda uraditi poziv funkcije ispod
-        //Ako postoji vod, koristiti logiku iz napona 10 i 35, od trafostanice, ka dolje
         nnGeometrijaTrafostanica();
       }, 1500);
       //Ovo će trebati da se uradi u koraku wizarda nakon odabira napojne trafostanice i izvoda
@@ -60,34 +58,15 @@ function wizardNext() {
       console.log("NN PRVI KORAK ELSE");
     }
 
-    //stuboviUpoligonu(odabraniNaponskiNivo);
-
-    /*if (selektovaneTrafostaniceFeatures.length === 0) {
-      poruka("Upozorenje", "Nema trafostanica u odabranom zahvatu.");
-      return false;
-    }
-    if (selektovaniVodoviFeatures.length === 0) {
-      poruka("Upozorenje", "Nema vodova u odabranom zahvatu.");
-      return false;
-    }*/
     document.querySelector("#divWizardOdabirNaponskogNivoa").style.display = "none";
-    //Provjeriti da li je moguće odabrati napojnu trafostanicu i izvod na osnovu selektovanih trafostanica
-    //TODO: poziv metode za provjeru i uparivanje trafostanica
-    //document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
+
     if (sifraNapojneTrafostanice !== "" && nazivNapojneTrafostanice !== "") {
       document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = nazivNapojneTrafostanice;
       document.querySelector("#uparivanjeTxtSifraTS").textContent = sifraNapojneTrafostanice;
       console.log("NN DRUGI KORAK");
-      //TODO: prikazati formu
-    } else {
-      console.log("NN DRUGI KORAK ELSE");
-      //TODO: provjeriti da li se poklapa broj trafostanica
-      //TODO: provjeriti konektivnost vodova
-      //TODO: odabrati trafostanicu sa mape
     }
   } else if (document.querySelector("#wizardHeader").innerText === drugiKorakWizarda) {
     document.querySelector("#divWizardOdabirNaponskogNivoa").style.display = "none";
-    //document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
     console.log("NN TRECI KORAK");
     trafostaniceIzBilingaZaUparivanje(nizSelektovanihTrafostanicaOriginalId, "", "", "");
   } else if (document.querySelector("#wizardHeader").innerText === treciKorakWizarda) {
@@ -101,8 +80,6 @@ function wizardNext() {
         console.log("NN PETI KORAK 2");
       } else {
         console.log("NN PETI KORAK 3");
-        //povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
-        //Ovo uklonjeno jer se ne sprovodi više bottom up povezivanje
       }
     } else {
       console.log("NN PETI KORAK 4");
@@ -112,10 +89,6 @@ function wizardNext() {
         blnPrikazPorukeOPrekidu = false;
       }
     }
-    //povezivanjePotrosacaVodova(selektovaniPotrosaciFeatures, selektovaniVodoviFeatures);
-
-    //document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
-    //document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
 
     if (
       !blnOnemogucitiWizard &&
@@ -123,9 +96,6 @@ function wizardNext() {
         document.querySelector("#ddlPovezivanjeVodovaPronadjene").length !== 0)
     ) {
       console.log("NN PETI KORAK OSTALI NEUPARENI VODOVI");
-      //blnOnemogucitiWizard = true;
-      //poruka("Upozorenje", "Nisu upareni svi vodovi");
-      //return false;
     }
 
     if (blnOnemogucitiWizard) {
@@ -141,6 +111,7 @@ function wizardNext() {
   }
 }
 
+/** Provjerava ispunjenost uslova prije prikaza četvrte forme wizard-a. */
 function prikaziCetvrtuFormuWizarda() {
   if (
     document.querySelector("#ddlPovezivanjeTSselektovane").length > 1 ||
@@ -157,9 +128,6 @@ function prikaziCetvrtuFormuWizarda() {
     poruka("Upozorenje", "Nije odabrana napojna trafostanica");
     return false;
   } else {
-    console.log("broj vodova", selektovaniVodoviFeatures.length);
-    console.log("selektovani vodovi prije poziva za uparivanje", selektovaniVodoviFeatures);
-    console.log("selektovana napojna trafostanica", featureNapojnaTrafostanica);
     povezivanjeVodova(featureNapojnaTrafostanica, selektovaniVodoviFeatures);
 
     //Dodavanje selektovanih vodova u listu za uparivanje
@@ -169,7 +137,6 @@ function prikaziCetvrtuFormuWizarda() {
     document.querySelector("#ddlPovezivanjeVodovaSelektovane").appendChild(option);
 
     for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
-      //console.log("vodovi originalId", selektovaniVodoviFeatures[i].values_.originalId);
       nizSelektovanihVodovaOriginalId.push(selektovaniVodoviFeatures[i].values_.originalId);
 
       //Dodavanje selektovanih vodova u listu za uparivanje
@@ -242,7 +209,6 @@ function konacniUpisIzmjena() {
     potrosaciArrayFinal,
     nkroArrayFinal
   );
-  //poruka("Uspjeh", "Uspješno kompletiran wizard");
 }
 
 /**
@@ -269,14 +235,6 @@ function finalniKorakWizarda() {
   restartParametaraWizard();
 }
 
-function testUpisTrafostanice() {
-  for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
-    if (selektovaneTrafostaniceFeatures[i].akcija && selektovaneTrafostaniceFeatures[i].akcija === "Izmjena") {
-      cudTrafostanica(selektovaneTrafostaniceFeatures[i], "U", 1);
-    }
-  }
-}
-
 function insertFinalniKorakNiskonaponskiObjekti() {
   for (let i = 0; i < selektovaniPotrosaciFeatures.length; i++) {
     if (selektovaniPotrosaciFeatures[i].akcija && selektovaniPotrosaciFeatures[i].akcija === "Izmjena") {
@@ -301,6 +259,9 @@ function insertFinalniKorakNiskonaponskiObjekti() {
   //TODO: Dodati NKRO
 }
 
+/**
+ * Metoda koja vrši reset svih vrijednosti i polja, po završetku wizard-a
+ */
 function restartParametaraWizard() {
   nazivNapojneTrafostanice = "";
   sifraNapojneTrafostanice = "";

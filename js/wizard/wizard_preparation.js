@@ -12,7 +12,6 @@ function stubArrayElement(el, action, wizard, serialNo) {
     fid_1: el.values_.originalId,
     Geometry: wkt3Du2D(wktGeometrije(el)),
     name: el.values_.name,
-    //fid: el.values_.fid,
     br_izol_faza: el.values_.br_izol_faza,
     uzemljivac: el.values_.uzemljivac,
     pripadnost: el.values_.pripadnost,
@@ -26,7 +25,6 @@ function stubArrayElement(el, action, wizard, serialNo) {
     nad_visina: el.values_.nad_visina,
     vod_10: el.values_.vod10, //Jovanu je polje 10vod - vidjeti može li se json poslati ovako ili da mijenjamo naziv
     desetvod: el.values_.desetvod,
-    //tip_nosac_izol: el.values_.tip_nosac_izol,
     tip_nosac_izol: el.values_.nosaci_izolatora,
     vlasnistvo: el.values_.vlasnistvo,
     tip: el.values_.tip,
@@ -63,7 +61,6 @@ function stubArrayElement(el, action, wizard, serialNo) {
     wizard: wizard,
     isEditable: isEditable,
   };
-  console.log("Stubovi finalno", item);
   stuboviArrayFinal.push(item);
 }
 
@@ -127,11 +124,8 @@ function vodArrayElement(el, action, wizard, serialNo) {
     wizard: wizard,
     isEditable: isEditable,
   };
-  console.log("Vodovi finalno", item);
   vodoviArrayFinal.push(item);
 }
-
-//TODO: Made procedures for other layers
 
 /**
  * Preparing JSON object from feature
@@ -189,7 +183,6 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     wizard: wizard,
     isEditable: isEditable,
   };
-  console.log("Trafostanice finalno", item);
   trafostaniceArrayFinal.push(item);
 }
 
@@ -233,7 +226,6 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
     wizard: wizard,
     isEditable: isEditable,
   };
-  console.log("Priključno mjesto finalno", item);
   prikljucnaMjestaArrayFinal.push(item);
 }
 
@@ -282,7 +274,6 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
     wizard: wizard,
     isEditable: isEditable,
   };
-  console.log("Potrošači finalno", item);
   potrosaciArrayFinal.push(item);
 }
 
@@ -331,7 +322,6 @@ function podArrayElement(el, action, wizard, serialNo) {
     wizard: wizard,
     isEditable: isEditable,
   };
-  console.log("Podovi finalno", item);
   podoviArrayFinal.push(item);
 }
 
@@ -378,6 +368,5 @@ function nkroArrayElement(el, action, wizard, serialNo) {
     wizard: wizard,
     isEditable: isEditable,
   };
-  console.log("Nkro finalno", item);
   nkroArrayFinal.push(item);
 }

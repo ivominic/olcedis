@@ -175,7 +175,6 @@ function pretragaTrafostanicaGpx(sifraTS) {
       }
     },
     error: function (x, y, z) {
-      //alert(x.responseText +"  " +x.status);
       console.log("greška popuniDdlAtributima", x.responseText);
     },
   });
@@ -197,14 +196,10 @@ function pretragaTrafostanica(sifraTS) {
       console.log("pretraga trafostanica, odgovor servisa", data);
       if (data && data.ts) {
         console.log("response", data);
-        console.log("naziv", data.ts.naziv); //Naziv trafostanice
-        console.log("izvodi", data.ts.izvodi); //izvodi trafostanice - niz
-        console.log("sifra", data.ts.sifra); //sifra trafostanice
         sifraNapojneTrafostanice = data.ts.sifra;
         nazivNapojneTrafostanice = data.ts.naziv;
         data.ts.izvodi.forEach(function (vrijednost) {
           izvodNapojneTrafostanice = vrijednost; //Dodao u poslednjim izmjenama
-          console.log("vrijednost niza", vrijednost);
           $("#uparivanjeTxtNazivIzvodaTS").append(
             $("<option>", {
               value: vrijednost,
@@ -259,7 +254,6 @@ function trafostaniceIzBilingaZaUparivanje(
     poruka("Upozorenje", "Nije odabrana nijedna trafostanica");
     return false;
   }
-  //TODO: Prazniti vrijednosti ovih komponenti prilikom svakog pokretanja wizarda
   sifraOdabraneNapojneTS = document.querySelector("#uparivanjeTxtSifraTS").textContent;
   nazivOdabranaNapojneTS = document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent;
   izvodOdabraneNapojneTS = document.querySelector("#uparivanjeTxtNazivIzvodaTS").value;
@@ -280,23 +274,12 @@ function trafostaniceIzBilingaZaUparivanje(
       $("#ddlPovezivanjeTSpronadjene").empty();
       $("#uparivanjeTxtNazivIzvodaTS").empty();
       console.log("responseTSuparivanje", data);
-      console.log("niz neuparenih TS", data.neuparene);
-      console.log("niz uparenih TS", data.uparene);
-      console.log("niz predlozenih TS za uparivanje", data.predlog);
-      console.log("šifra napojne TS", data.sifra_napojne);
-      console.log("naziv izvoda TS", data.naziv_izvoda);
-      console.log("naziv napojne TS", data.naziv_napojne);
-      console.log("geometrija napojne TS", data.geometrija_napojne);
-      console.log("geohash napojne TS", data.geohash_napojne);
-      console.log("poruka", data.poruka);
       nazivNapojneTrafostanice = data.naziv_napojne;
       sifraNapojneTrafostanice = data.sifra_napojne;
       geometrijaNapojneTrafostanice = data.geometrija_napojne;
       geohashNapojneTrafostanice = data.geohash_napojne;
       document.querySelector("#uparivanjeTxtSifraTS").textContent = sifraNapojneTrafostanice;
-      //document.querySelector("#uparivanjeTxtNazivIzvodaTS").textContent = data.naziv_izvoda;
       izvodNapojneTrafostanice = data.naziv_izvoda;
-      //featureNapojnaTrafostanica = sifraNapojneTrafostanice;// Ovo treba da bude sam feature, iz kojeg se čita geometrija
 
       document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = data.naziv_napojne;
       $("#uparivanjeTxtNazivIzvodaTS").append(
@@ -306,12 +289,7 @@ function trafostaniceIzBilingaZaUparivanje(
         })
       );
 
-      data.neuparene.forEach(function (vrijednost) {
-        //console.log("trafostanice za uparivanje", vrijednost);
-        //TODO: Ovim podacima napuniti listu trafostanica za uparivanje ili iz spiska uparenih brisati one koje se tamo nađu
-      });
       data.uparene.forEach(function (vrijednost) {
-        //console.log("uparene TS - brisati iz liste", vrijednost);
         for (let i = 0; i < document.querySelector("#ddlPovezivanjeTSselektovane").length; i++) {
           if (document.querySelector("#ddlPovezivanjeTSselektovane").options[i].value === vrijednost.toString()) {
             document.querySelector("#ddlPovezivanjeTSselektovane").remove(i);
@@ -319,8 +297,6 @@ function trafostaniceIzBilingaZaUparivanje(
         }
       });
       data.predlog.forEach(function (vrijednost) {
-        //console.log("predlog TS za uparivanje", vrijednost);
-        //TODO: Ovim podacima napuniti listu trafostanica za uparivanje ili iz spiska uparenih brisati one koje se tamo nađu
         $("#ddlPovezivanjeTSpronadjene").append(
           $("<option>", {
             value: vrijednost.sifra_biling,
@@ -335,33 +311,22 @@ function trafostaniceIzBilingaZaUparivanje(
         );
       }
       if (data.naziv_izvoda) {
-        console.log("DATA NAZIV IZVODA");
         document.querySelector("#wizardHeader").innerText = treciKorakWizarda;
         document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "block";
         document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
         blnSelekcijaNapojneTS = false;
       } else {
-        console.log("DATA NAZIV IZVODA ELSE");
         document.querySelector("#wizardHeader").inneText = drugiKorakWizarda;
         document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
         document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
         blnSelekcijaNapojneTS = true;
       }
-
-      /*if (!data.naziv_izvoda) {
-        //Ako nije predložen naziv izvoda, omogućiti odabir napojne trafostanice sa mape
-        document.querySelector("#btnOdabirNapojneTS").style.display = "inline-block";
-      }*/
     },
     error: function (x, y, z) {
-      //alert(x.responseText +"  " +x.status);
       if (x.responseJSON["error"] === "Selektovane trafostanice nisu uparene") {
-        //document.querySelector("#btnOdabirNapojneTS").style.display = "inline-block";
-        //Potrebno je ručno odabrati trafostanicu sa mape
         blnSelekcijaNapojneTS = true;
         document.querySelector("#wizardHeader").innerText = drugiKorakWizarda;
         document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
-        //wizardNext();
         poruka("Greska", x.responseJSON["error"] + "\n Odaberite napojnu trafostanicu i izvod!");
       } else {
         poruka("Greska", x.responseJSON["error"]);
@@ -397,8 +362,6 @@ function nnGeometrijaTrafostanica(sifraOdabraneNapojneTS, nazivOdabranaNapojneTS
     type: "GET",
     success: function (data) {
       console.log("ODGOVOR SERVISA nnGeometrijaTrafostanica", data);
-      console.log("geometrija napojne TS", data.geometrija_napojne);
-      console.log("geohash napojne TS", data.geohash_napojne);
       geometrijaNapojneTrafostanice = data.geometrija_napojne;
       geohashNapojneTrafostanice = data.geohash_napojne;
       provjeriVodIzTrafostanice();
@@ -409,6 +372,11 @@ function nnGeometrijaTrafostanica(sifraOdabraneNapojneTS, nazivOdabranaNapojneTS
   });
 }
 
+/**
+ * Metoda koja za lejer i geometriju vrati generisan geohash
+ * @param {Naziv lejera} lejer
+ * @param {WKT zapis geometrije objekta} wkt
+ */
 function generisiGeohashId(lejer, wkt) {
   let retval = "";
   console.log("Geohash ID");
@@ -430,8 +398,6 @@ function generisiGeohashId(lejer, wkt) {
     if (this.readyState === 4) {
       if (this.status === 200) {
         let jsonResponse = JSON.parse(xhr.responseText);
-        console.log("response uspjeh", jsonResponse.geohash_id);
-        console.log("response uspjeh geohash", jsonResponse["geohash_id"]);
         retval = jsonResponse["geohash_id"];
         //closeModalSpinner();
       } else {
@@ -443,6 +409,10 @@ function generisiGeohashId(lejer, wkt) {
   };
 }
 
+/**
+ * Metoda koja za username korisnika vrati username vlasnika podataka
+ * @param {Username korisnika aplikacije} username
+ */
 function procitajVlasnika(username) {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/vlasnik";
   urlServisa += "?t=" + Date.now();
@@ -462,15 +432,21 @@ function procitajVlasnika(username) {
       if (this.status === 200) {
         let jsonResponse = JSON.parse(xhr.responseText);
         console.log("response uspjeh", jsonResponse);
+        globalVlasnik = "";
         //closeModalSpinner();
       } else {
-        alert(xhr.statusText);
+        console.log("Greška", xhr.statusText);
         //closeModalSpinner();
       }
     }
   };
 }
 
+/**
+ * Metoda za prikaz fotografije.
+ * @param {Naziv lejera} lejer
+ * @param {id objekta} id
+ */
 function prikazFotografija(lejer, id) {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/slike?tip_objekta=" + lejer + "&id_objekta=" + id;
   urlServisa += "&t=" + Date.now();
@@ -492,23 +468,19 @@ function prikazFotografija(lejer, id) {
       document.querySelector("#zatvoriModalFotografija").onclick = function () {
         document.querySelector("#modalFotografija").style.display = "none";
       };
-      //setujAktivnu("#slika"); //Da ne zatvara stranicu sa atributima
     },
     error: function (x, y, z) {
-      //alert(x.responseText +"  " +x.status);
       console.log("greška popuniDdlAtributima", x.responseText);
     },
   });
 }
 
 /**
- * Metoda koja za predati nizVodova (original id-eva)
- * @param {} nizVodova
+ * Metoda koja za predati nizVodova (original id-eva) vraća odgovarajuće vodove iz TBP, kako bi vodovi iz GIS i TBP mogli da se upare.
+ * @param {Niz koji sadrži id-eve vodova} nizVodova
  */
 function vodoviIzBilingaZaUparivanje(nizVodova) {
-  //Niz id-jeva vodova
   let dodatniParametriWS = "";
-  console.log("Poziva vodove za uparivanje ws", nizVodova);
   if (nizVodova.length === 0) {
     poruka("Upozorenje", "Nije odabran nijedan vod");
     return false;
@@ -536,25 +508,8 @@ function vodoviIzBilingaZaUparivanje(nizVodova) {
     success: function (data) {
       $("#ddlPovezivanjeTSpronadjene").empty();
       console.log("responseVodovi", data);
-      console.log("niz neuparenih vodova", data.neupareni);
-      console.log("niz predlozenih vodova za uparivanje", data.predlog);
-      console.log("poruka", data.poruka);
 
-      data.neupareni.forEach(function (vrijednost) {
-        console.log("vodovi za uparivanje", vrijednost);
-        //TODO: Ovim podacima napuniti listu trafostanica za uparivanje ili iz spiska uparenih brisati one koje se tamo nađu
-      });
-      /*data.uparene.forEach(function (vrijednost) {
-        console.log("uparene TS - brisati iz liste", vrijednost);
-        for (let i = 0; i < document.querySelector("#ddlPovezivanjeTSselektovane").length; i++) {
-          if (document.querySelector("#ddlPovezivanjeTSselektovane").options[i].value === vrijednost.toString()) {
-            document.querySelector("#ddlPovezivanjeTSselektovane").remove(i);
-          }
-        }
-      });*/
       data.predlog.forEach(function (vrijednost) {
-        console.log("predlog vodova za uparivanje", vrijednost);
-        //TODO: Ovim podacima napuniti listu trafostanica za uparivanje ili iz spiska uparenih brisati one koje se tamo nađu
         $("#ddlPovezivanjeVodovaPronadjene").append(
           $("<option>", {
             value: vrijednost.sifra_dionice,
@@ -562,14 +517,8 @@ function vodoviIzBilingaZaUparivanje(nizVodova) {
           })
         );
       });
-
-      /*if (!data.naziv_izvoda) {
-        //Ako nije predložen naziv izvoda, omogućiti odabir napojne trafostanice sa mape
-        document.querySelector("#btnOdabirNapojneTS").style.display = "inline-block";
-      }*/
     },
     error: function (x, y, z) {
-      //alert(x.responseText +"  " +x.status);
       if (x.responseJSON["error"] === "Selektovane trafostanice nisu uparene") {
         document.querySelector("#btnOdabirNapojneTS").style.display = "inline-block";
       }
@@ -607,6 +556,9 @@ function podaciZaSpisakPotrosaca(nizPretplatnihBrojeva) {
   });
 }
 
+/**
+ * Metoda koja setuje vrijednost geoserverToken promjenljive, koja se koristi za pozive drugih web servisa.
+ */
 function tokenGeoserver() {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/geonode_login";
   $.ajax({
@@ -643,6 +595,10 @@ function pravaPristupaStranici(username) {
   });
 }
 
+/**
+ * Metoda koja poziva servis za ažuriranje objekata, kada je pokrenut import iz kml fajla.
+ * @param {*} objects
+ */
 function kmlConnectionLog(objects) {
   let retval = true;
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/objekti_za_azuriranje";
@@ -660,7 +616,7 @@ function kmlConnectionLog(objects) {
 }
 
 /**
- * Method that returns username of logged user
+ * Metoda koja vraća username logovanog korisnika
  */
 function readSignedUser() {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/get_remote_user";
@@ -674,7 +630,6 @@ function readSignedUser() {
       document.querySelector("#userName").textContent = globalUsername;
     },
     error: function (x, y, z) {
-      //alert(x.responseText +"  " +x.status);
       console.log("greška readSignedUser", x.responseText);
       return "";
     },
@@ -683,7 +638,7 @@ function readSignedUser() {
 readSignedUser();
 
 /**
- * Method that returns allowed radius in meters to move gpx points, or distance from kml point.
+ * Metoda koja vraća dozvoljeni pomjeraj za gpx ili kml, u metrima
  */
 function readRadius() {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/get_radius";
@@ -699,7 +654,6 @@ function readRadius() {
     data: "",
     type: "GET",
     success: function (data) {
-      console.log({ data });
       let tempRadius = parseFloat(data.response.radius);
       dozvoljeniPomjeraj = tempRadius / 1000; //Distance in kilometers
       kmlRadius = tempRadius;
@@ -708,13 +662,15 @@ function readRadius() {
     error: function (x, y, z) {
       //alert(x.responseText +"  " +x.status);
       console.log("greška readSignedUser", x.responseText);
+      dozvoljeniPomjeraj = 0;
+      kmlRadius = 0;
       return 0;
     },
   });
 }
 
 /**
- * Method that fills ddl_sloj_podataka depending on powerLevel.
+ * Metoda koja popunjava listu slojeva u zavisnosti od odabranog naponskog nivoa.
  * @param {*} powerLevel
  */
 function availableLayersPerPowerLevel(powerLevel) {
@@ -739,7 +695,8 @@ function availableLayersPerPowerLevel(powerLevel) {
 }
 
 /**
- * Metoda koja za odabranu napojnu trafostanicu i izvod popunjava listu šiframa dionica vodova iz odabrnog izvoda.
+ * Metoda koja za odabranu napojnu trafostanicu i izvod popunjava listu šiframa dionica vodova iz odabrnog izvoda,
+ *  za potrebe uparivanja podataka iz dva sistema.
  * @param {*} nazivTs
  * @param {*} sifraTs
  * @param {*} izvodTs
@@ -767,7 +724,7 @@ function sifreDionicaVodova(nazivTs, sifraTs, izvodTs) {
 }
 
 /**
- * Method for inserting all updated objects into database
+ * Metoda za unos svih tipova objekata u bazu. Predaju se nizovi objekata, razvrstani prema slojevima/tipovima podataka.
  * @param {*} stubovi
  * @param {*} vodovi
  * @param {*} trafostanice
@@ -794,12 +751,6 @@ function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucna_mjes
   let retval = true;
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/object_control";
   console.log("stubovi insert all objects   ", JSON.stringify(stubovi));
-  console.log("vodovi insert all objects   ", JSON.stringify(vodovi));
-  console.log("trafostanice insert all objects   ", JSON.stringify(trafostanice));
-  console.log("podovi insert all objects   ", JSON.stringify(podovi));
-  console.log("prikljucna_mjesta insert all objects   ", JSON.stringify(prikljucna_mjesta));
-  console.log("potrosaci insert all objects   ", JSON.stringify(potrosaci));
-  console.log("nkro insert all objects   ", JSON.stringify(nkro));
   $.ajax({
     url: urlServisa,
     data: {

@@ -1,4 +1,4 @@
-//document.querySelector("#selekecijaPoligon").addEventListener("click", izPoligona);
+/** Metode koje vrše presjek objekata sa iscrtanim poligonom */
 
 function izPoligona() {
   if (poligoni.length === 0) {
@@ -10,7 +10,7 @@ function izPoligona() {
 }
 
 /**
- * Selekcija tačaka iz gpx fajla koje su obuhvaćene poligonima
+ * Metoda koja sve gpx tačke, obuhvaćene poligonom, dodaje u niz selectedFeatures
  */
 function gpxUPoligonu() {
   if (poligoni.length === 0) {
@@ -21,9 +21,6 @@ function gpxUPoligonu() {
   let selectItems = new ol.interaction.Select();
   map.addInteraction(selectItems);
   let selectedFeatures = selectItems.getFeatures();
-
-  //let polygon = featurePolygonOverlay.getSource().getFeatures()[0].getGeometry();
-  //var polygon = event.feature.getGeometry();
   let features = vectorSource.getFeatures();
 
   for (let j = 0; j < featurePolygonOverlay.getSource().getFeatures().length; j++) {

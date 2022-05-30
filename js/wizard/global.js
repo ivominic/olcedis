@@ -17,6 +17,7 @@ const point = "Point",
   lineString = "LineString",
   polygon = "Polygon";
 let globalUsername = ""; //Username korisnika aplikacije
+let globalVlasnik = ""; //Username vlasnika za korisnika aplikacije
 let geoserverToken = ""; //Promjenljiva koja čuva token za wfs servise
 let isEditable = true; //Promjenljiva koja definiše da li je dozvoljeno pomjeranje objekata iz fajla. Za kml nije dozvoljeno.
 let tacke = [],
@@ -124,7 +125,6 @@ let ortofotoBaseMap = new ol.layer.Image({
 let bezBaseMap = new ol.layer.Tile({
   source: new ol.source.XYZ({
     url: null,
-    //url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWNgYGD4DwABBAEAHnOcQAAAAABJRU5ErkJggg==",
   }),
 });
 
@@ -237,8 +237,6 @@ let kreiranjeTekstStila = function (feature) {
     font: "14px Verdana",
     offsetX: 14,
     text: feature.values_.name,
-
-    //fill: fill,
     stroke: stroke,
   });
 };
@@ -307,17 +305,12 @@ let map = new ol.Map({
 map.addControl(razmjera);
 
 let vektorNeupareniVodovi = new ol.layer.Vector({
-  source: new ol.source.Vector({
-    //features: features
-  }),
+  source: new ol.source.Vector({}),
   style: vectorStyleUnmatched,
 });
-//vektorNeupareniVodovi.setSource(new ol.source.Vector({features: features}));
 
 let vektorKreiraniVodovi = new ol.layer.Vector({
-  source: new ol.source.Vector({
-    //features: features
-  }),
+  source: new ol.source.Vector({}),
   style: vectorStyleKreirani,
 });
 map.addLayer(vektorKreiraniVodovi);
@@ -335,7 +328,6 @@ map.addLayer(vectorKmlFocusedObject);
  * @param {*} nivo
  */
 function globalNaponskiNivoPrenosOdnos(nivo) {
-  console.log("NIVO U GLOBAL ", nivo);
   let retVal = "";
   if (nivo === "10/0,4" || nivo === "10/0,69" || nivo === "6/0,4" || nivo === "35/0.4" || nivo === "35/0,4") {
     retVal = "0.4";
@@ -344,13 +336,13 @@ function globalNaponskiNivoPrenosOdnos(nivo) {
   } else if (nivo === "110/35" || nivo === "35/35") {
     retVal = "35";
   }
-  //console.log("retval nivo", retVal);
   return retVal;
 }
 
 /**
  * Metoda koja za naponski nivo vraća cql text za filter objekata prema iscrtanim poligonima i naponskom nivou
- * @param {*} nivo
+ * @param {Naponski nivo} nivo
+ * @param { Tip objekta} sloj
  */
 function globalCqlZaNaponskiNivo(nivo, sloj) {
   let retVal = "";
@@ -372,13 +364,13 @@ function globalCqlZaNaponskiNivo(nivo, sloj) {
       retVal += " AND napon='0.4'";
     }
   }
-  //console.log("cql retval", retVal);
   return retVal;
 }
 
-//x/y uzimam sve koje počinju sa y
-
-//Popunjavanje ddl listi
+/**
+ * Inicijalno popunjavanje svih ddl listi, za stubove, u zavisnosti od odabranog naponskog nivoa
+ * @param { Naponski nivo} napon
+ */
 function popuniListeZaStubove(napon) {
   popuniDdlAtributima("#tip_stub", "stubovi", "tip", "", "");
   popuniDdlAtributima("#rasvjeta_stub", "stubovi", "rasvjeta", "", "");
@@ -439,6 +431,10 @@ function popuniListeZaStubove(napon) {
   popuniDdlAtributima("#pretraga_10_vod", "stubovi", "10_vod", "napon", napon);
 }
 
+/**
+ * Inicijalno popunjavanje svih ddl listi, za vodove, u zavisnosti od odabranog naponskog nivoa
+ * @param { Naponski nivo} napon
+ */
 function popuniListeZaVodove(napon) {
   popuniDdlAtributima("#br_faza", "vodovi", "br_faza", "", "");
   popuniDdlAtributima("#vrsta_vod_04", "vodovi", "vrsta", "napon", "0.4");
@@ -471,6 +467,10 @@ function popuniListeZaVodove(napon) {
   popuniDdlAtributima("#pretraga_uze", "vodovi", "uze", "napon", napon);
 }
 
+/**
+ * Inicijalno popunjavanje svih ddl listi, za trafostanice, u zavisnosti od odabranog naponskog nivoa
+ * @param { Naponski nivo} napon
+ */
 function popuniListeZaTrafostanice(napon) {
   popuniDdlAtributima("#funkcija", "trafostanice", "funkcija", "napon", napon);
   popuniDdlAtributima("#tip", "trafostanice", "tip", "napon", napon);
@@ -489,26 +489,36 @@ function popuniListeZaTrafostanice(napon) {
   popuniDdlAtributima("#pretraga_inst_snaga_t4", "trafostanice", "inst_snaga_t4", "napon", napon);
 }
 
+/**
+ * Inicijalno popunjavanje svih ddl listi, za priključna mjesta
+ */
 function popuniListeZaPrikljucnaMjesta() {
   popuniDdlAtributima("#osiguraci", "prikljucno_mjesto", "osiguraci", "", "");
 
   popuniDdlAtributima("#pretraga_osiguraci", "prikljucno_mjesto", "osiguraci", "", "");
 }
 
+/**
+ * Inicijalno popunjavanje svih ddl listi, za nkro
+ */
 function popuniListeZaNkro() {
   popuniDdlAtributima("#vrsta_materijal", "nkro", "materijal", "", "");
   popuniDdlAtributima("#montaza", "nkro", "montaza", "", "");
   popuniDdlAtributima("#vrata", "nkro", "vrata", "", "");
-  //popuniDdlAtributima("#pog_sprem", "nkro", "pog_sprem", "", "");
 
   popuniDdlAtributima("#pretraga_materijal", "nkro", "materijal", "", "");
   popuniDdlAtributima("#pretraga_montaza", "nkro", "montaza", "", "");
   popuniDdlAtributima("#pretraga_vrata", "nkro", "vrata", "", "");
-  //popuniDdlAtributima("#pretraga_pog_sprem", "nkro", "pog_sprem", "", "");
 }
 
+/**
+ * Inicijalno popunjavanje svih ddl listi, za potrošače
+ */
 function popuniListeZaPotrosace() {}
 
+/**
+ * Inicijalno popunjavanje svih ddl listi, za pod
+ */
 function popuniListeZaPod() {}
 
 window.addEventListener("load", function () {
