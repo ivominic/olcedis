@@ -75,11 +75,9 @@ function sacuvaj() {
     }
     if (odabraniLejerUnos === "vodovi") {
       if (selectGpxFeature.get("lejer") === "vodovi") {
-        //If user selects already created power line
         dodajPoljaUcrtanomVodu(selectGpxFeature);
       } else {
         if (isEditable) {
-          //TODO: Provjera da li je iscrtan poligon
           showDiv("#odabirPoveznicaDiv");
           closeDiv("#atributiDiv");
         } else {
@@ -87,8 +85,6 @@ function sacuvaj() {
             poruka("Upozorenje", "Potrebno je odabrati vod iz kml fajla.");
             return false;
           }
-          console.log("kml za atribute vodovima");
-          //ucrtaniVod = selectGpxFeature;
           dodajPoljaUcrtanomVodu(selectGpxFeature);
         }
       }
@@ -111,12 +107,10 @@ function sacuvaj() {
     }
     if (odabraniLejerUnos === "pod") {
       dodajPoljaOdabranomGpxPod();
-      //sledecaGpxTacka();
       return false;
     }
     if (odabraniLejerUnos === "potrosaci") {
       dodajPoljaOdabranomGpxPotrosac();
-      //sledecaGpxTacka();
       return false;
     }
   }
@@ -154,6 +148,7 @@ featureTekuciOverlay.setMap(map);
 map.addLayer(vektorNeupareniVodovi);
 
 let blnFreeHandDraw = false;
+
 /**Podešava kada da se omogući crtanje i izmjena i na kojim lejerima */
 function podesiInterakciju() {
   //uklanja draw i modify
@@ -240,7 +235,6 @@ function podesiInterakciju() {
     modify.on("modifyend", function (e) {
       modifikovan = true;
       geometrijaZaBazuWkt = wktGeometrije(e.features.getArray()[0]);
-      console.log("feature geometrija", wktGeometrije(e.features.getArray()[0]));
     });
     var snap = new ol.interaction.Snap({
       source: featureSnapOverlay.getSource(),
@@ -264,14 +258,11 @@ function podesiInterakciju() {
       featureTekuciOverlay.getSource().clear(); //Samo jedan može da se crta
       geometrijaZaBazuWkt = wktGeometrije(e.feature);
       showDiv("#atributiDiv");
-      console.log("feature nova geometrija", geometrijaZaBazuWkt);
     });
     modify.on("modifyend", function (e) {
       //Iz nekog razloga na brisanje čvora ne očitava odmah izmjenu
-      console.log("broj geometrija", e.features.getArray().length);
       geometrijaZaBazuWkt = wktGeometrije(e.features.getArray()[0]);
       showDiv("#atributiDiv");
-      console.log("feature nova mijenjana geometrija", geometrijaZaBazuWkt);
     });
     map.addInteraction(draw);
     map.addInteraction(modify);
@@ -291,7 +282,6 @@ function onMouseMove(evt) {
     return;
   }
   map.getTargetElement().style.cursor = "";
-  let pixel = map.getEventPixel(evt.originalEvent);
 }
 
 /**Omogućava dodavanje novog vektor lejera drag-drop metodom */
@@ -301,7 +291,6 @@ let dragAndDrop = new ol.interaction.DragAndDrop({
   formatConstructors: [ol.format.GPX, ol.format.GeoJSON, ol.format.IGC, ol.format.KML, ol.format.TopoJSON],
 });
 dragAndDrop.on("addfeatures", function (event) {
-  console.log("aaaa", event);
   kmlLinksArray.length = 0; //Emptying array of links with  nearby objects
   let layerNameImport = vectorLayerType(event);
   closeDiv("#atributiDiv");
@@ -311,25 +300,11 @@ dragAndDrop.on("addfeatures", function (event) {
 
   blnDodijeljenoGpxProperties = false;
   event.features.forEach(function (feature) {
-    console.log("feature unos", feature);
     let tempTimestamp = new Date().getTime() + "_" + feature.ol_uid;
     feature.set("originalId", tempTimestamp);
     feature.set("layer_name", layerNameImport);
     feature.set("isEditable", isEditable);
     feature.set("napon", naponskiNivoNapojneTrafostanice);
-    /*if (!isEditable) {
-      //if (feature.getGeometry().getType().toString().includes("oint")) {
-      //TODO: ovo zakomentarisati. Pravi probleme za veći fajl.
-      objectNearKmlFeature(feature, feature, "stubovi");
-      objectNearKmlFeature(feature, feature, "trafostanice");
-      objectNearKmlFeature(feature, feature, "vodovi");
-      objectNearKmlFeature(feature, feature, "pod");
-      objectNearKmlFeature(feature, feature, "nkro");
-      objectNearKmlFeature(feature, feature, "prikljucno_mjesto");
-      objectNearKmlFeature(feature, feature, "view_potrosaci");
-    }*/
-
-    //let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
     let position = feature.values_.geometry.flatCoordinates;
     nizKml.push({
       lat: position[1],
@@ -341,29 +316,15 @@ dragAndDrop.on("addfeatures", function (event) {
   });
 
   gpxFeatures = event.features;
-
-  console.log("niz", nizKml);
-  //distanceFromKmlPoints();
   vectorSource = new ol.source.Vector({
     features: event.features,
     projection: event.projection,
   });
-  //generisanjeGpxPodaIzGeometrije(20, 20);
-
-  //Provjera za kml tačke sa krajeva linije
   extractKmlLinestringEndPoints();
-  /*kmlEndPoints.forEach(function (feature) {
-    if (feature.getGeometry().getType().toString().includes("oint")) {
-      objectNearKmlFeature(feature, "stubovi");
-      objectNearKmlFeature(feature, "trafostanice");
-      objectNearKmlFeature(feature, "vodovi");
-    }
-  });*/
 
   //On drag'n'drop layer, all other vector layers are removed
   map.getLayers().forEach(function (layer) {
     if (layer instanceof ol.layer.Vector) {
-      console.log("vektorski lejeri", layer);
       map.removeLayer(layer);
     }
   });
@@ -383,14 +344,10 @@ let snap = new ol.interaction.Snap({
 });
 map.addInteraction(snap);
 
-/*** Završena selekcija i modifikacija */
-
 map.addInteraction(select);
-//map.addInteraction(modifyV);
-
-//Klik na mapu - prikaz vektora ili rastera
 map.on("click", klikNaVektore);
 
+/** Brisanje odabranog wms objekta */
 function izbrisi() {
   if (select.getFeatures().array_[0] === undefined && !selektovaniWmsObjekat) {
     poruka("Upozorenje", "Potrebno je selektovati objekat koji želite da izbrišete.");
@@ -398,8 +355,6 @@ function izbrisi() {
   }
   Swal.fire({
     title: "Da li ste sigurni da želite da izbrišete odabrani objekat?",
-    //text: "",
-    //icon: "info",
     position: "top-end",
     showDenyButton: true,
     confirmButtonText: `Da`,
@@ -415,10 +370,8 @@ function izbrisi() {
             .getFeatures()
             .forEach(function (el, index, nizZaBrisanje) {
               if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
-                //if (el.values_.name == select.getFeatures().array_[0].values_.name) {
                 nizZaBrisanje.splice(index, 1);
                 select.getFeatures().array_.splice(0, 1);
-                console.log("ol_uid", el.ol_uid);
                 selectGpxFeature = null;
                 vektorKreiraniVodovi.getSource().clear();
                 vektorKreiraniVodovi.getSource().addFeatures(nizZaBrisanje);
@@ -428,15 +381,14 @@ function izbrisi() {
           let nizZaBrisanje = vectorSource.getFeatures();
           vectorSource.getFeatures().forEach(function (el, index, nizZaBrisanje) {
             if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
-              //if (el.values_.name == select.getFeatures().array_[0].values_.name) {
               nizZaBrisanje.splice(index, 1);
               select.getFeatures().array_.splice(0, 1);
-              console.log("ol_uid", el.ol_uid);
               selectGpxFeature = null;
               vectorSource.clear();
               vectorSource.addFeatures(nizZaBrisanje);
             }
           });
+
           //TODO: Dodao ovaj blok koda za uklanjanje dugmadi next/prev kod brisanja gpx tačke. Ali ne radi kako trevba.
           if (nizGpxTacakaZaObradu.length) {
             console.log("nizGpxTacakaZaObradu", nizGpxTacakaZaObradu.length);
@@ -457,12 +409,8 @@ function izbrisi() {
               }
             }
           }
-          //TODO: Novi blok, koji ne radi, se završava ovdje
         }
       } else {
-        console.log("WMS objekat", selektovaniWmsObjekat);
-        alert("Briše se objekat iz wms-a");
-        //TODO: Poziv servisa za brisanje objekata
         dodajObjekatZaBrisanje(selektovaniWmsObjekat);
       }
     } else if (result.isDenied) {
@@ -471,6 +419,7 @@ function izbrisi() {
   });
 }
 
+/** Funkcija koja vrši dupliranje selektovanog objekta (tačke) iz gpx fajla */
 function dupliraj() {
   if (select.getFeatures().array_[0] === undefined) {
     poruka("Upozorenje", "Potrebno je selektovati objekat iz gpx fajla.");
@@ -497,7 +446,8 @@ function ponisti() {
   restartovanje();
 }
 
-function brisanje() {
+/** Brisanje json objekta. Mislim da se ne koristi i da se može ukloniti. */
+/*function brisanje() {
   let podaciForme = new FormData();
   podaciForme.append("id", idObjekta);
   let xhr = new XMLHttpRequest();
@@ -526,7 +476,7 @@ function brisanje() {
       }
     }
   };
-}
+}*/
 
 /* Filter wms-a po prostornim i atributskim podacima*/
 function filtriranje() {
@@ -577,8 +527,6 @@ function kreiranjeCqlFilteraAtributi() {
     (retVal += "izolator_funkcija = '" + document.querySelector("#pretraga_izolator_funkcija").value + "' AND ");
   document.querySelector("#pretraga_br_izol_faza").value !== "" &&
     (retVal += "br_izol_faza = '" + document.querySelector("#pretraga_br_izol_faza").value + "' AND ");
-  //document.querySelector("#pretraga_nosaci_izolatora").value !== "" &&
-  //  (retVal += "nosaci_izolatora = '" + document.querySelector("#pretraga_nosaci_izolatora").value + "' AND ");
   document.querySelector("#pretraga_odvodnik_prenapona").value !== "" &&
     (retVal += "odvodnik_prenapona = '" + document.querySelector("#pretraga_odvodnik_prenapona").value + "' AND ");
   document.querySelector("#pretraga_uzemljivac").value !== "" &&
@@ -597,8 +545,6 @@ function kreiranjeCqlFilteraAtributi() {
     (retVal += "pog_sprem = '" + document.querySelector("#pretraga_pog_sprem").value + "' AND ");
   document.querySelector("#pretraga_vlasnistvo").value !== "" &&
     (retVal += "vlasnistvo = '" + document.querySelector("#pretraga_vlasnistvo").value + "' AND ");
-  //document.querySelector("#pretraga_opstina").value !== "" &&
-  //  (retVal += "opstina = '" + document.querySelector("#pretraga_opstina").value + "' AND ");
   document.querySelector("#pretraga_napon").value !== "" &&
     (retVal += "napon = '" + document.querySelector("#pretraga_napon").value + "' AND ");
   document.querySelector("#pretraga_prikljucak_otcjep").value !== "" &&
@@ -629,14 +575,8 @@ function wfsFilter() {
       CQL_FILTER: cqlFilter,
     },
     success: function (response) {
-      console.log(response);
       let features = new ol.format.GeoJSON().readFeatures(response);
-      console.log(features);
       vektorSource.addFeatures(features);
-      console.log(vektorSource.getExtent());
-      let boundingExtent = ol.extent.boundingExtent(vektorSource.getExtent());
-      console.log(boundingExtent);
-      console.log("size", map.getSize());
     },
     fail: function (jqXHR, textStatus) {
       console.log("Request failed: " + textStatus);
