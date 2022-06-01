@@ -18,6 +18,7 @@ function izmijeni() {
 
 function atributi() {
   akcija = "atributi";
+  blnShowAttribute = true;
   setujAktivnu("#atributi");
 }
 
@@ -184,8 +185,9 @@ function prikazPanelaAtributa(sloj) {
   //TODO: Ovdje detaljno podesiti kad se prikazuje forma za unos atributa
   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   //if (akcija !== "pomjeranje") {
-  if (akcija !== "pan" && akcija !== "pomjeranje") {
-    console.log("Akcija", akcija);
+
+  if (blnShowAttribute) {
+    console.log("Akcija atributi", akcija);
     showDiv("#atributiDiv");
   }
   console.log("akcijaLejerNivo", akcijaLejerNivo);
@@ -291,15 +293,15 @@ document.querySelector("#shp").addEventListener("click", shpDownload);
 document.querySelector("#kml").addEventListener("click", kmlDownload);
 document.querySelector("#excel").addEventListener("click", excelDownload);
 
-document.querySelector("#editStub35").addEventListener("click", noviStub35);
-document.querySelector("#editStub10Kv").addEventListener("click", noviStub10);
-document.querySelector("#editVod35").addEventListener("click", noviVod35);
-document.querySelector("#editVod10Kv").addEventListener("click", noviVod10);
-document.querySelector("#editTrafostanica35").addEventListener("click", novaTrafostanica35x);
-document.querySelector("#editTrafostanica10Kv").addEventListener("click", novaTrafostanica110x);
-document.querySelector("#editNKRO").addEventListener("click", noviNkro);
-document.querySelector("#editPrikljucnoMjesto").addEventListener("click", novoPrikljucnoMjesto);
-
+document.querySelector("#vodDodvanjeObjektaBtn").addEventListener("click", function(){
+  showDiv("#odabirCvorovaVodaDiv");
+});
+document.querySelector("#vodPomjeranjeObjektaBtn").addEventListener("click", function(){
+  showDiv("#odabirObjektaZaPomjeranjeDiv");
+});
+document.querySelector("#vodProduzenjeKrakaBtn").addEventListener("click", function(){
+  map.on("singleclick", vodEditGeometrije);
+});
 document.querySelector("#ddl_sloj_podataka").addEventListener("click", ddlLejerChange);
 document.querySelector("#btnPrethodniObjekat").addEventListener("click", prethodniObjekatGpx);
 document.querySelector("#btnSljedeciObjekat").addEventListener("click", sljedeciObjekatGpx);

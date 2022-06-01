@@ -8,6 +8,7 @@
 
 /** Poziva se na klik na čiodu za odabir sa mape */
 function odabirObjektaZaPomjeranje() {
+  document.querySelector("#btnObjekatZaPomjeranje").className = "dugmeodabirmapa greenClass";
   map.removeInteraction(draw);
   map.removeInteraction(modify);
   odabirSaMape = true;
@@ -16,6 +17,7 @@ function odabirObjektaZaPomjeranje() {
 }
 
 function klikNaRastereZaPomjeranjeObjekta(browserEvent) {
+  document.querySelector("#btnObjekatZaPomjeranje").className = "dugmeodabirmapa";
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
   let brojLejera = 0;

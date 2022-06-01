@@ -48,6 +48,9 @@ function klikNaRastere(browserEvent) {
 }
 
 function klikNaVektore(browserEvent) {
+  if(gpxFeatures.length === 0){
+    return false;
+  }
   nizGpxTacakaZaObradu.length = 0;
   indexGpxTacakaZaObradu = 0;
   select.getFeatures().clear();
@@ -361,6 +364,9 @@ modifyV.on("modifyend", function (e) {
 });
 
 function prikazPodatakaIzGpxTacaka() {
+  if(gpxFeatures.length === 0){
+    return false;
+  }
   console.log("prikaz podataka iz GPX tačke", selectGpxFeature.get("lejer"));
   //if (selectGpxFeature.hasOwnProperty("lejer")) {
   //console.log("prikaz podataka iz GPX tačke", selectGpxFeature.get("lejer"));
