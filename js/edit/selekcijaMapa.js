@@ -48,9 +48,6 @@ function klikNaRastere(browserEvent) {
 }
 
 function klikNaVektore(browserEvent) {
-  if(gpxFeatures.length === 0){
-    return false;
-  }
   nizGpxTacakaZaObradu.length = 0;
   indexGpxTacakaZaObradu = 0;
   select.getFeatures().clear();
@@ -364,9 +361,6 @@ modifyV.on("modifyend", function (e) {
 });
 
 function prikazPodatakaIzGpxTacaka() {
-  if(gpxFeatures.length === 0){
-    return false;
-  }
   console.log("prikaz podataka iz GPX tačke", selectGpxFeature.get("lejer"));
   //if (selectGpxFeature.hasOwnProperty("lejer")) {
   //console.log("prikaz podataka iz GPX tačke", selectGpxFeature.get("lejer"));
@@ -878,6 +872,7 @@ function odabirNapojneTrafostaniceSaMape() {
 }
 
 function klikNapojnaTrafostanicaMapa(browserEvent) {
+  blnShowAttribute = false;
   let url = wmsTrafostanice
     .getSource()
     .getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
@@ -920,10 +915,7 @@ function odabirPrikljucnogMjestaZaUnosPotrosaca() {
  * @param {*} browserEvent
  */
 function odabirSvihRasterObjekataKlik(browserEvent) {
-  if (akcija !== "pomjeranje") {
-    akcija = "atribut";
-  }
-  //akcija = "atribut"; //TODO: Ovo ukloniti kad se bude pristupalo iz menija
+  console.log("odabirSvihRasterObjekataKlik");
   //TODO: Dodati loader dok se ne završi učitavanje podataka
   nizSelektovanihObjekata.length = 0;
   let coordinate = browserEvent.coordinate;
