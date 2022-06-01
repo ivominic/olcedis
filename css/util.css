@@ -210,6 +210,7 @@
 }
 
 .greenClass{
-  background: green !important;
-  border: 1px solid green !important;
+  background: linear-gradient(to bottom, #ff9398 25%, #ff000c 100%) !important;
+  -webkit-box-shadow: 0 0 10px #ca2129;
+  box-shadow: 0 0 10px #ca2129;
 }
