@@ -866,12 +866,14 @@ function restartNakonUnosaVoda() {
 }
 
 function odabirNapojneTrafostaniceSaMape() {
+  document.querySelector("#btnOdabirNapojneTrafostanice").className = "dugmeodabirmapa greenClass";
   map.removeInteraction(draw);
   map.removeInteraction(modify);
   map.on("singleclick", klikNapojnaTrafostanicaMapa);
 }
 
 function klikNapojnaTrafostanicaMapa(browserEvent) {
+  document.querySelector("#btnOdabirNapojneTrafostanice").className = "dugmeodabirmapa";
   blnShowAttribute = false;
   let url = wmsTrafostanice
     .getSource()

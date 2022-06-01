@@ -62,7 +62,6 @@ function odabirPocetnogCvoraVoda() {
  */
 function odabirKrajnjegCvoraVoda() {
   document.querySelector("#btnKrajnjiCvorVoda").className = "dugmeodabirmapa greenClass";
-  blnShowAttribute = false;
   map.removeInteraction(draw);
   map.removeInteraction(modify);
   odabirSaMape = true;
@@ -83,6 +82,8 @@ function odabirKrajnjegCvoraVoda() {
  * @param {klik na neku lokaciju na mapi} browserEvent
  */
 function klikNaRastereZaCvorVoda(browserEvent) {
+  btnPocetniCvorVoda = false;
+  blnShowAttribute = false;
   document.querySelector("#btnPocetniCvorVoda").className = "dugmeodabirmapa";
   document.querySelector("#btnKrajnjiCvorVoda").className = "dugmeodabirmapa";
   let coordinate = browserEvent.coordinate;
@@ -141,7 +142,6 @@ function klikNaRastereZaCvorVoda(browserEvent) {
                         text: newId,
                       })
                     );
-                    blnShowAttribute = true;
                   }
                 });
 
