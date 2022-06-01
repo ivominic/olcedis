@@ -46,6 +46,7 @@ function potvrdaDodavanjaVodu() {
  * Metoda koja se poziva kod klika na dugme za odabir prve tačke sa mape
  */
 function odabirPocetnogCvoraVoda() {
+  document.querySelector("#btnPocetniCvorVoda").className = "dugmeodabirmapa greenClass";
   map.removeInteraction(draw);
   map.removeInteraction(modify);
   odabirSaMape = true;
@@ -60,6 +61,8 @@ function odabirPocetnogCvoraVoda() {
  * Metoda koja se poziva kod klika na dugme za odabir druge tačke sa mape
  */
 function odabirKrajnjegCvoraVoda() {
+  document.querySelector("#btnKrajnjiCvorVoda").className = "dugmeodabirmapa greenClass";
+  blnShowAttribute = false;
   map.removeInteraction(draw);
   map.removeInteraction(modify);
   odabirSaMape = true;
@@ -80,6 +83,8 @@ function odabirKrajnjegCvoraVoda() {
  * @param {klik na neku lokaciju na mapi} browserEvent
  */
 function klikNaRastereZaCvorVoda(browserEvent) {
+  document.querySelector("#btnPocetniCvorVoda").className = "dugmeodabirmapa";
+  document.querySelector("#btnKrajnjiCvorVoda").className = "dugmeodabirmapa";
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
   let brojLejera = 0;
@@ -136,8 +141,10 @@ function klikNaRastereZaCvorVoda(browserEvent) {
                         text: newId,
                       })
                     );
+                    blnShowAttribute = true;
                   }
                 });
+
                 if (blnNijeSelektovanVod) {
                   poruka("Upozorenje", "Nije odabran objekat koji pripada nekom vodu");
                   $(selektovaniDdlZaPovezivanjeVoda).empty();

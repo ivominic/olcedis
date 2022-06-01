@@ -61,6 +61,7 @@ let nizTrafostanicaGeohashZaWebServis = []; //Wizard, niz u koji će se dodavati
 
 let blnTopDown = false; //Wizard, za niskonaponsku mrežu, određuje da li će se raditi top-down ili bottom-up uparivanje
 let odabirSaMape = false; //Promjenljiva koja označava da li je u toku funkcionalnost odabira vrijednosti sa mape
+let blnShowAttribute = false; //Promjenljiva koja označava da li je potrebno prikazati modal atributi
 let nizKoordinataPrikljucnihMjesta = {}; //Čuva koordinate nakon odabira priključnog mjesta kod unosa novog potrošača
 
 let draw,
