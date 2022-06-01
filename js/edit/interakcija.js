@@ -371,6 +371,10 @@ function promjenaSifreNapojneTrafostanice() {
 }
 
 function disableMenija() {
+  let pocetnaDiv = document.getElementsByClassName("pocetni-div");
+  if(pocetnaDiv){
+    pocetnaDiv[0].style.opacity = "0.3";
+  }
   let akcija = document.getElementsByClassName("akcija");
   kontroleZaDisable = akcija;
   for (i = 0; i < akcija.length; i++) {
@@ -384,6 +388,10 @@ function disableMenija() {
 }
 
 function enableMenija() {
+  let pocetnaDiv = document.getElementsByClassName("pocetni-div");
+  if(pocetnaDiv){
+    pocetnaDiv[0].style.opacity = "1";
+  }
   let akcija = document.getElementsByClassName("akcija");
   for (i = 0; i < akcija.length; i++) {
     akcija[i].style.cursor = "pointer";
