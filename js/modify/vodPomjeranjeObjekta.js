@@ -4,8 +4,6 @@
  * Ovo treba uraditi na serverskoj strani, da bi znali koji dio sadrži nadređeni, a koji podređeni objekat.
  */
 
-//showDiv("#odabirObjektaZaPomjeranjeDiv");
-
 /** Poziva se na klik na čiodu za odabir sa mape */
 function odabirObjektaZaPomjeranje() {
   document.querySelector("#btnObjekatZaPomjeranje").className = "dugmeodabirmapa greenClass";
@@ -17,6 +15,7 @@ function odabirObjektaZaPomjeranje() {
 }
 
 function klikNaRastereZaPomjeranjeObjekta(browserEvent) {
+  console.log("Poziva ispravno");
   document.querySelector("#btnObjekatZaPomjeranje").className = "dugmeodabirmapa";
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
@@ -56,14 +55,12 @@ function klikNaRastereZaPomjeranjeObjekta(browserEvent) {
                 tempNiz.forEach((el) => {
                   console.log("el čitanje", el);
                   if (el.id.split(".")[0] === "vodovi") {
-                    if (selektovaniDdlZaPovezivanjeVoda === "#ddlObjekatZaPomjeranje") {
-                      nizPocetnihVodova.push(el.properties.originalId);
-                    }
+                    nizPocetnihVodova.push(el.properties.originalId);
                   }
                   let newId = el.id.split(".")[0] + "." + el.properties.originalId;
 
                   if (el.id.split(".")[0] !== "vodovi") {
-                    $(selektovaniDdlZaPovezivanjeVoda).append(
+                    $("#ddlObjekatZaPomjeranje").append(
                       $("<option>", {
                         value: newId,
                         text: newId,
@@ -72,7 +69,6 @@ function klikNaRastereZaPomjeranjeObjekta(browserEvent) {
                   }
                 });
                 map.un("singleclick", klikNaRastereZaPomjeranjeObjekta);
-                selektovaniDdlZaPovezivanjeVoda = "";
               }
             });
         }
