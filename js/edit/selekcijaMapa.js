@@ -56,6 +56,7 @@ function klikNaVektore(browserEvent) {
   let pixel = map.getPixelFromCoordinate(coordinate);
   map.forEachFeatureAtPixel(pixel, function (feature) {
     console.log("feature", feature);
+    selektovaniWmsObjekat = null;
     if (feature.values_.name) {
       //To avoid dark blue dot that represents selected feature
       nizGpxTacakaZaObradu.push(feature);
@@ -513,21 +514,28 @@ function sledecaGpxTacka() {
     }
   });
 
+  if (nijeOdabranaNovaTacka) {
+    select.getFeatures().clear();
+    selectGpxFeature = null;
+  }
+
   nizGpxTacakaZaObradu.length = 0;
-  vectorSource.getFeatures().forEach(function (el) {
-    if (
-      el.values_.geometry.flatCoordinates[0] === selectGpxFeature.values_.geometry.flatCoordinates[0] &&
-      el.values_.geometry.flatCoordinates[1] === selectGpxFeature.values_.geometry.flatCoordinates[1]
-    ) {
-      //if (el.getGeometry() === selectGpxFeature.getGeometry()) {
-      console.log("prva geom", el);
-      console.log("druga geom", selectGpxFeature);
-      nizGpxTacakaZaObradu.push(el);
-      if (nizGpxTacakaZaObradu.length > 1) {
-        document.querySelector("#divSljedeciObjekat").style.display = "flex";
+  if (selectGpxFeature) {
+    vectorSource.getFeatures().forEach(function (el) {
+      if (
+        el.values_.geometry.flatCoordinates[0] === selectGpxFeature.values_.geometry.flatCoordinates[0] &&
+        el.values_.geometry.flatCoordinates[1] === selectGpxFeature.values_.geometry.flatCoordinates[1]
+      ) {
+        //if (el.getGeometry() === selectGpxFeature.getGeometry()) {
+        console.log("prva geom", el);
+        console.log("druga geom", selectGpxFeature);
+        nizGpxTacakaZaObradu.push(el);
+        if (nizGpxTacakaZaObradu.length > 1) {
+          document.querySelector("#divSljedeciObjekat").style.display = "flex";
+        }
       }
-    }
-  });
+    });
+  }
 }
 
 function odabirPocetneTackeVoda() {

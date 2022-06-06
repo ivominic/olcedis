@@ -8,6 +8,7 @@ function pan() {
 
 function dodaj() {
   akcija = "dodaj";
+  blnShowAttribute = true;
   setujAktivnu("#dodaj");
 }
 
@@ -293,13 +294,13 @@ document.querySelector("#shp").addEventListener("click", shpDownload);
 document.querySelector("#kml").addEventListener("click", kmlDownload);
 document.querySelector("#excel").addEventListener("click", excelDownload);
 
-document.querySelector("#vodDodvanjeObjektaBtn").addEventListener("click", function(){
+document.querySelector("#vodDodvanjeObjektaBtn").addEventListener("click", function () {
   showDiv("#odabirCvorovaVodaDiv");
 });
-document.querySelector("#vodPomjeranjeObjektaBtn").addEventListener("click", function(){
+document.querySelector("#vodPomjeranjeObjektaBtn").addEventListener("click", function () {
   showDiv("#odabirObjektaZaPomjeranjeDiv");
 });
-document.querySelector("#vodProduzenjeKrakaBtn").addEventListener("click", function(){
+document.querySelector("#vodProduzenjeKrakaBtn").addEventListener("click", function () {
   map.on("singleclick", vodEditGeometrije);
 });
 document.querySelector("#ddl_sloj_podataka").addEventListener("click", ddlLejerChange);
@@ -372,7 +373,7 @@ function promjenaSifreNapojneTrafostanice() {
 
 function disableMenija() {
   let pocetnaDiv = document.getElementsByClassName("pocetni-div");
-  if(pocetnaDiv){
+  if (pocetnaDiv) {
     pocetnaDiv[0].style.opacity = "0.3";
   }
   let akcija = document.getElementsByClassName("akcija");
@@ -389,7 +390,7 @@ function disableMenija() {
 
 function enableMenija() {
   let pocetnaDiv = document.getElementsByClassName("pocetni-div");
-  if(pocetnaDiv){
+  if (pocetnaDiv) {
     pocetnaDiv[0].style.opacity = "1";
   }
   let akcija = document.getElementsByClassName("akcija");
