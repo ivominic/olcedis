@@ -207,8 +207,8 @@ function setujAktivnu(element) {
   document.querySelector(element).classList.add("active");
   closeDiv("#pretragaDiv");
   closeDiv("#atributiDiv");
-  //if (element === "#atributi" || element === "#dodaj") {
-  if (element === "#atributi") {
+  if (element === "#atributi" || element === "#dodaj") {
+    //if (element === "#atributi") {
     showDiv("#atributiDiv");
   }
   if (element === "#pretraga") {
@@ -376,26 +376,16 @@ function restart() {
 
 /**Povezivanje kontrola sa akcijama */
 document.querySelector("#pan").addEventListener("click", pan);
-//document.querySelector("#dodaj").addEventListener("click", dodaj);
-//document.querySelector("#izmijeni").addEventListener("click", izmijeni);
-//document.querySelector("#atributi").addEventListener("click", atributi);
-//document.querySelector("#slika").addEventListener("click", slika);
 document.querySelector("#marker").addEventListener("click", crtajTacku);
 document.querySelector("#linija").addEventListener("click", crtajLiniju);
 document.querySelector("#poligon").addEventListener("click", crtajPoligon);
 document.querySelector("#brisanje").addEventListener("click", brisanje);
 document.querySelector("#pretraga").addEventListener("click", pretraga);
-//document.querySelector("#selekcijaPocetnogStuba").addEventListener("click", selekcijaPocetnogStuba);
-//document.querySelector("#selekcijaZavrsnogStuba").addEventListener("click", selekcijaZavrsnogStuba);
 document.querySelector("#restart").addEventListener("click", restart);
 document.querySelector("#podloga_osm").addEventListener("click", osmPodloga);
 document.querySelector("#podloga_satelit").addEventListener("click", satelitPodloga);
 document.querySelector("#podloga_ortofoto").addEventListener("click", ortofotoPodloga);
 document.querySelector("#podloga_bez").addEventListener("click", bezPodloga);
-//document.querySelector("#shp").addEventListener("click", shpDownload);
-//document.querySelector("#kml").addEventListener("click", kmlDownload);
-//document.querySelector("#excel").addEventListener("click", excelDownload);
-//document.querySelector("#btnPrikaziVektor").addEventListener("click", prikaziVektor);
 //Ovo otkomentarisati za snap
 
 document.querySelector("#confirmPotvrdi").addEventListener("click", confirmPotvrdi);

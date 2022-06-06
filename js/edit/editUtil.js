@@ -182,8 +182,8 @@ function setujAktivnu(element) {
   document.querySelector(element).classList.add("active");
   closeDiv("#pretragaDiv");
   closeDiv("#atributiDiv");
-  //if (element === "#atributi" || element === "#dodaj") {
-  if (element === "#atributi") {
+  if (element === "#atributi" || element === "#dodaj") {
+    //if (element === "#atributi") {
     showDiv("#atributiDiv");
   }
   if (element === "#pretraga") {

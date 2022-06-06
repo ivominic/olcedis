@@ -241,7 +241,7 @@ function podesiInterakciju() {
     });
     map.addInteraction(snap);
   }
-  if (akcija === "dodaj") {
+  /*if (akcija === "dodaj") {
     draw = new ol.interaction.Draw({
       features: featuresTekuci,
       type: tipGeometrije,
@@ -270,7 +270,7 @@ function podesiInterakciju() {
       source: featureSnapOverlay.getSource(),
     });
     map.addInteraction(snap);
-  }
+  }*/
 }
 
 map.on("pointermove", onMouseMove);

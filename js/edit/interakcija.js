@@ -272,7 +272,8 @@ function finalnaPotvrdaUnosa() {
 
 /**Povezivanje kontrola sa akcijama */
 document.querySelector("#pan").addEventListener("click", pan);
-document.querySelector("#dodaj").addEventListener("click", ddlLejerChange);
+//document.querySelector("#dodaj").addEventListener("click", ddlLejerChange);
+document.querySelector("#dodaj").addEventListener("click", dodaj);
 //document.querySelector("#izmijeni").addEventListener("click", izmijeni);
 document.querySelector("#atributi").addEventListener("click", atributi);
 document.querySelector("#slika").addEventListener("click", slika);
@@ -341,6 +342,7 @@ function potvrdaNapojneTrafostaniceUnos() {
     poruka("Upozorenje", "Potrebno je odabrati izvod trafostanice");
     return false;
   }
+  selektovaniWmsObjekat = null;
   sifraNapojneTrafostanice = document.querySelector("#txtSifraNapojneTrafostanice").value;
   nazivNapojneTrafostanice = document.querySelector("#txtNazivNapojneTrafostanice").value;
   izvodNapojneTrafostanice = izvod;

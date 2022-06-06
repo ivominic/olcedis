@@ -318,8 +318,8 @@ function setujAktivnu(element) {
   document.querySelector(element).classList.add("active");
   closeDiv("#pretragaDiv");
   closeDiv("#atributiDiv");
-  //if (element === "#atributi" || element === "#dodaj") {
-  if (element === "#atributi") {
+  if (element === "#atributi" || element === "#dodaj") {
+    //if (element === "#atributi") {
     showDiv("#atributiDiv");
   }
   if (element === "#pretraga") {
@@ -417,6 +417,7 @@ function pan() {
 
 function dodaj() {
   akcija = "dodaj";
+  blnShowAttribute = true;
   setujAktivnu("#dodaj");
 }
 
@@ -427,6 +428,7 @@ function izmijeni() {
 
 function atributi() {
   akcija = "atributi";
+  blnShowAttribute = true;
   setujAktivnu("#atributi");
 }
 
