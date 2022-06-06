@@ -1,5 +1,5 @@
 /** Metode za kreiranje voda koji čini jedan broj postojećih, a jedan broj stubova iz gopx fajla */
 
-function wmsObjektiUPoligonu() {}
-
-function gpxObjektiUPoligonu() {}
+async function dodajWmsObjekte() {
+  console.log("AKo je čekirano da se pravi mješoviti vod");
+}

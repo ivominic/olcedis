@@ -568,8 +568,11 @@ function odabirTackePovezivanjaKmla() {
   map.on("singleclick", klikNaRastereZaVodove);
 }
 
-function potvrdaUnosaVoda() {
+async function potvrdaUnosaVoda() {
   selekcijaGpxPoligonom();
+  if (document.querySelector("#chkMjesovitiVod").checked) {
+    await dodajWmsObjekte();
+  }
   koordinateObjekataIzDdlova();
 }
 
