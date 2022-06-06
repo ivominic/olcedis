@@ -335,7 +335,10 @@ dragAndDrop.on("addfeatures", function (event) {
       style: kreiranjeLabeleZaGpxTacke(),
     })
   );
-  view.fit(vectorSource.getExtent(), map.getSize());
+  view.fit(vectorSource.getExtent(), {
+    size: map.getSize(),
+    padding: [10, 30, 70, 30],
+  });
 });
 map.addInteraction(dragAndDrop);
 
