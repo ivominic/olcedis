@@ -10,6 +10,7 @@ function dodaj() {
   akcija = "dodaj";
   blnShowAttribute = true;
   setujAktivnu("#dodaj");
+  ddlLejerChange();
 }
 
 function izmijeni() {

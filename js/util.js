@@ -415,10 +415,13 @@ function pan() {
   setujAktivnu("#pan");
 }
 
+//Ova funkcija se ne koristi, već dodaj() iz interakcija.js
 function dodaj() {
+  console.log("DODAJ");
   akcija = "dodaj";
   blnShowAttribute = true;
   setujAktivnu("#dodaj");
+  ddlLejerChange();
 }
 
 function izmijeni() {

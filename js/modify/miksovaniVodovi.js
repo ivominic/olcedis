@@ -31,11 +31,6 @@ function dodajWmsObjekte() {
       stuboviZaDodavanje.forEach((item) => {
         nizStubovaLinije.push(item.values_.geometry.flatCoordinates);
       });
-      console.log("STUBOVI", stuboviZaDodavanje);
-      console.log("GPX STUBOVI", nizTacakaLinije[0]);
-      console.log("NOVI STUBOVI", nizStubovaLinije[0]);
-      console.log("STUBOVI 1", stuboviZaDodavanje[0]);
-      console.log("STUBOVI 1", stuboviZaDodavanje[0].values_.geometry.flatCoordinates);
       objedinjavanjeNizovaGpxWms(nizStubovaLinije);
       koordinateObjekataIzDdlova();
     },
