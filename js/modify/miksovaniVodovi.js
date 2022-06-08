@@ -1,6 +1,7 @@
-/** Metode za kreiranje voda koji čini jedan broj postojećih, a jedan broj stubova iz gopx fajla */
+/** Metode za kreiranje voda koji čini jedan broj postojećih, a jedan broj stubova iz gpx fajla */
 
-async function dodajWmsObjekte() {
+// Dodavanje tačaka iz wms-a nizu gpx tačaka nizTacakaLinije. Ovaj niz sadrži koordinate tačaka oblika [x, y]
+function dodajWmsObjekte() {
   let napon = "10";
   console.log("AKo je čekirano da se pravi mješoviti vod");
   let params = wmsStubovi.getSource().getParams();
@@ -27,6 +28,10 @@ async function dodajWmsObjekte() {
       console.log("RESPONSE", response);
       let stuboviZaDodavanje = new ol.format.GeoJSON().readFeatures(response);
       console.log("STUBOVI", stuboviZaDodavanje);
+      console.log("GPX STUBOVI", nizTacakaLinije);
+      console.log("STUBOVI 1", stuboviZaDodavanje[0]);
+      console.log("STUBOVI 1", stuboviZaDodavanje[0].values_.geometry.flatCoordinates);
+      koordinateObjekataIzDdlova();
       if (stuboviZaDodavanje.length === 0) {
         poruka("Upozorenje", "Nema stubova u odabranom zahvatu.");
         return false;

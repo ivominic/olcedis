@@ -568,12 +568,17 @@ function odabirTackePovezivanjaKmla() {
   map.on("singleclick", klikNaRastereZaVodove);
 }
 
-async function potvrdaUnosaVoda() {
+/**
+ * Ukoliko je odabran vod koji se formira od gpx i postojećih tačaka, finalno formiranje niza se radi u dodajWmsObjekte metodi
+ * Tamo se objedinjavaju tačke iz oba izvora i ponovo poziva metoda koordinateObjekataIzDdlova
+ */
+function potvrdaUnosaVoda() {
   selekcijaGpxPoligonom();
   if (document.querySelector("#chkMjesovitiVod").checked) {
-    await dodajWmsObjekte();
+    dodajWmsObjekte();
+  } else {
+    koordinateObjekataIzDdlova();
   }
-  koordinateObjekataIzDdlova();
 }
 
 function klikNaRastereZaVodove(browserEvent) {
