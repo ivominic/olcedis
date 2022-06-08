@@ -27,18 +27,69 @@ function dodajWmsObjekte() {
     success: function (response) {
       console.log("RESPONSE", response);
       let stuboviZaDodavanje = new ol.format.GeoJSON().readFeatures(response);
+      let nizStubovaLinije = [];
+      stuboviZaDodavanje.forEach((item) => {
+        nizStubovaLinije.push(item.values_.geometry.flatCoordinates);
+      });
       console.log("STUBOVI", stuboviZaDodavanje);
-      console.log("GPX STUBOVI", nizTacakaLinije);
+      console.log("GPX STUBOVI", nizTacakaLinije[0]);
+      console.log("NOVI STUBOVI", nizStubovaLinije[0]);
       console.log("STUBOVI 1", stuboviZaDodavanje[0]);
       console.log("STUBOVI 1", stuboviZaDodavanje[0].values_.geometry.flatCoordinates);
+      objedinjavanjeNizovaGpxWms(nizStubovaLinije);
       koordinateObjekataIzDdlova();
-      if (stuboviZaDodavanje.length === 0) {
-        poruka("Upozorenje", "Nema stubova u odabranom zahvatu.");
-        return false;
-      }
     },
     fail: function (jqXHR, textStatus) {
       console.log("Request failed: " + textStatus);
     },
   });
+}
+
+/** Dodavanje tačaka iz wmsStubovi nizuTacakaLinije: dodajemo najbližu sljedeću tačku */
+function objedinjavanjeNizovaGpxWms(wmsStubovi) {
+  let brojWmsStubova = wmsStubovi.length;
+  let mjera = {
+    units: "kilometers",
+  };
+
+  for (i = 0; i < brojWmsStubova - 1; i++) {
+    let pocetnaTacka = turf.point(nizTacakaLinije[0]);
+    let krajnjaTacka = turf.point(nizTacakaLinije[nizTacakaLinije.length - 1]);
+    let nizIndex = 0,
+      tempIndex = 0;
+    let blnDodatiNaPocetakNiza = false;
+    let minDistance = 0;
+    wmsStubovi.forEach((item) => {
+      if (
+        (item[0] === pocetnaTacka[0] && item[1] === pocetnaTacka[0]) ||
+        (item[0] === krajnjaTacka[0] && item[1] === krajnjaTacka[0])
+      ) {
+        alert("Poklapaju se koordinate postojećeg i snimljenog stuba.");
+        return false;
+      }
+      let trenutnaTacka = turf.point([item[0], item[1]]);
+      let trenutnaUdaljenost = turf.distance(pocetnaTacka, trenutnaTacka, mjera);
+      let blnTrenutniPocetak = true;
+      let udaljenostKranja = turf.distance(krajnjaTacka, trenutnaTacka, mjera);
+      if (udaljenostKranja < trenutnaUdaljenost) {
+        trenutnaUdaljenost = udaljenostKranja;
+        blnTrenutniPocetak = false;
+      }
+
+      if (tempIndex === 0 || minDistance > trenutnaUdaljenost) {
+        minDistance = trenutnaUdaljenost;
+        blnDodatiNaPocetakNiza = blnTrenutniPocetak;
+        nizIndex = tempIndex;
+      }
+      tempIndex++;
+    });
+
+    //Uklanjanje iz jednog i dodavanje drugom nizu
+    if (blnDodatiNaPocetakNiza) {
+      nizTacakaLinije.unshift(wmsStubovi[nizIndex]);
+    } else {
+      nizTacakaLinije.push(wmsStubovi[nizIndex]);
+    }
+    wmsStubovi.splice(nizIndex, 1);
+  }
 }
