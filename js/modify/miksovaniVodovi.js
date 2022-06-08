@@ -52,7 +52,7 @@ function objedinjavanjeNizovaGpxWms(wmsStubovi) {
     units: "kilometers",
   };
 
-  for (i = 0; i < brojWmsStubova - 1; i++) {
+  for (i = 0; i < brojWmsStubova; i++) {
     let pocetnaTacka = turf.point(nizTacakaLinije[0]);
     let krajnjaTacka = turf.point(nizTacakaLinije[nizTacakaLinije.length - 1]);
     let nizIndex = 0,
