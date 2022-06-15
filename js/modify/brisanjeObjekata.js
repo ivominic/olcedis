@@ -20,7 +20,7 @@ function dodajObjekatZaBrisanje(objekat) {
 
 function brisanjeWmsObjekata() {
   //TODO: CALL WEB SERVICE
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/object_control";
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/brisanje_objekta";
   $.ajax({
     url: urlServisa,
     data: {

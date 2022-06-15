@@ -75,7 +75,7 @@ function insertObjekataIzGpx() {
   //poruka("Uspjeh", "Uspješno sačuvani podaci.");
   //TODO: Resetovati polja, trafostanicu, izvod..
   //Removin vector file from map, after completing action.
-  vectorSource.clear();
+  vectorSource && vectorSource.clear();
   vektorKreiraniVodovi.getSource().clear();
   gpxFeatures.length = 0;
 }
