@@ -88,11 +88,14 @@ function sacuvaj() {
           dodajPoljaUcrtanomVodu(selectGpxFeature);
         }
       }
-
+      select.getFeatures().clear();
+      selectGpxFeature = null;
       return false;
     }
     if (odabraniLejerUnos === "trafostanice") {
       dodajPoljaOdabranojGpxTrafostanici();
+      select.getFeatures().clear();
+      selectGpxFeature = null;
       return false;
     }
     if (odabraniLejerUnos === "nkro") {
@@ -107,10 +110,14 @@ function sacuvaj() {
     }
     if (odabraniLejerUnos === "pod") {
       dodajPoljaOdabranomGpxPod();
+      select.getFeatures().clear();
+      selectGpxFeature = null;
       return false;
     }
     if (odabraniLejerUnos === "potrosaci") {
       dodajPoljaOdabranomGpxPotrosac();
+      select.getFeatures().clear();
+      selectGpxFeature = null;
       return false;
     }
   }
