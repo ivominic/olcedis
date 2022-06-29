@@ -27,6 +27,7 @@ function neupareneTrafostanice(sifraNapojne, izvodNapojne) {
             })
           );
         });
+        popuniPoljaTrafostaniceWS();
       }
     },
     error: function (x, y, z) {

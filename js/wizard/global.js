@@ -264,7 +264,6 @@ let kreiranjeLabeleZaGpxTacke = function () {
     });
 
     if (feature.values_.lejer && feature.values_.lejer !== undefined) {
-      console.log(" feature", feature.values_.lejer);
       return [styleObradjeni];
     } else if (feature.values_.lejer) {
       //Postaviti uslov za koji će prikazati crvenu boju
