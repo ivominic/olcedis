@@ -3,6 +3,7 @@ document.querySelector("#ddlTrafostanice").addEventListener("change", popuniPolj
 function dodajPoljaOdabranojGpxTrafostanici() {
   selectGpxFeature.set("wizard", 0);
   selectGpxFeature.set("lejer", "trafostanice");
+  selectGpxFeature.set("ddl_sloj_podataka", document.querySelector("#ddl_sloj_podataka").value);
   selectGpxFeature.set("fid_1", document.querySelector("#read_fid_1").value);
   selectGpxFeature.set("name", document.querySelector("#read_name").value);
   selectGpxFeature.set("id_br", document.querySelector("#read_id_br").value);

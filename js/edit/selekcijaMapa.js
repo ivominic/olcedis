@@ -375,12 +375,16 @@ function prikazPodatakaIzGpxTacaka() {
     prikazPanelaAtributa(pomLejer);
   } else if (selectGpxFeature.get("lejer") === "trafostanice") {
     prikaziPoljaOdabraneGpxTrafostanice();
-    let pomLejer = "Trafostanica 35KV";
-    if (selectGpxFeature.get("napon") === "10") {
-      pomLejer = "Trafostanica 10KV";
-    }
-    if (selectGpxFeature.get("napon") === "0.4") {
-      pomLejer = "Trafostanica 04KV";
+    let pomLejer = selectGpxFeature.get("ddl_sloj_podataka");
+    if (!pomLejer) {
+      //TODO: MISLIM DA KOMPLETAN OVAJ IF TREBA UKLONITI
+      pomLejer = "trafostanica35";
+      if (selectGpxFeature.get("napon") === "10") {
+        pomLejer = "trafostanica10";
+      }
+      if (selectGpxFeature.get("napon") === "0.4") {
+        pomLejer = "trafostanica10";
+      }
     }
     prikazPanelaAtributa(pomLejer);
   } else if (selectGpxFeature.get("lejer") === "vodovi") {
