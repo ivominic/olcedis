@@ -98,6 +98,9 @@ function klikNaVektore(browserEvent) {
       document.querySelector("#divPrethodniObjekat").style.display = "none";
       document.querySelector("#divSljedeciObjekat").style.display = "none";
     }
+  } else {
+    document.querySelector("#divPrethodniObjekat").style.display = "none";
+    document.querySelector("#divSljedeciObjekat").style.display = "none";
   }
 
   if (nizGpxTacakaZaObradu.length === 0) {
@@ -888,6 +891,7 @@ function odabirNapojneTrafostaniceSaMape() {
 }
 
 function klikNapojnaTrafostanicaMapa(browserEvent) {
+  odabirSaMape = true;
   document.querySelector("#btnOdabirNapojneTrafostanice").className = "dugmeodabirmapa";
   blnShowAttribute = false;
   let url = wmsTrafostanice
@@ -899,6 +903,7 @@ function klikNapojnaTrafostanicaMapa(browserEvent) {
     fetch(url)
       .then(function (response) {
         //restartovanje();
+        odabirSaMape = false;
         return response.text();
       })
       .then(function (json) {
@@ -914,6 +919,9 @@ function klikNapojnaTrafostanicaMapa(browserEvent) {
         } else {
           poruka("Upozorenje", "Nije odabrana trafostanica koja ima šifru iz bilinga.");
         }
+        //Dodao jer se inicijalno prikazivalo dugme za prelazak na sljedeći objekat
+        document.querySelector("#divPrethodniObjekat").style.display = "none";
+        document.querySelector("#divSljedeciObjekat").style.display = "none";
       });
   }
 }
