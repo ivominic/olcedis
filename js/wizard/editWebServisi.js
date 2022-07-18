@@ -684,6 +684,7 @@ function availableLayersPerPowerLevel(powerLevel) {
     type: "POST",
     success: function (data) {
       console.log("DATA spisakLejeraZaNaponskiNivo", data);
+      fillDdl("ddl_sloj_podataka", "", "Izaberite vrijednost");
       data.slojevi.forEach((item) => {
         fillDdl("ddl_sloj_podataka", item.slug, item.naziv);
       });

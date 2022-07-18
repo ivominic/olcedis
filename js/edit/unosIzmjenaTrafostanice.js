@@ -102,46 +102,48 @@ function prikaziPoljaOdabraneGpxTrafostanice() {
 
 function popuniKontroleIzTrafostanice(data) {
   //document.querySelector("#ddlTrafostanice").value;
-  document.querySelector("#read_fid_1").value = data.fid_1;
-  document.querySelector("#read_name").value = data.name;
-  document.querySelector("#read_id_br").value = data.id_br;
-  document.querySelector("#read_celije_10").value = data.celije_10;
-  document.querySelector("#read_izvod_celija").value = data.izvod_celija;
-  document.querySelector("#read_funkcija").value = data.funkcija;
-  document.querySelector("#read_br_nn_izvoda").value = data.br_nn_izvoda;
-  document.querySelector("#read_geohash_id").value = data.geohash_id;
-  document.querySelector("#read_geohash_id_no").value = data.geohash_id_no;
-  document.querySelector("#read_br_vod_cel_nizi_nap").value = data.br_vod_cel_nizi_nap;
-  document.querySelector("#read_br_vod_cel_visi_nap").value = data.br_vod_cel_visi_nap;
-  document.querySelector("#read_layer_name").value = data.layer_name;
-  document.querySelector("#read_god_izg").value = data.god_izg;
-  document.querySelector("#read_vlasnistvo").value = data.vlasnistvo;
-  document.querySelector("#read_datum_azuriranja").value = data.datum_azuriranja;
-  document.querySelector("#read_layer_id").value = data.layer_id;
-  document.querySelector("#read_nad_vis").value = data.nad_vis;
-  document.querySelector("#read_gps").value = data.gps;
-  document.querySelector("#read_pog_sprem").value = data.pog_sprem;
-  document.querySelector("#read_napon").value = data.napon;
-  document.querySelector("#read_posjeduje_sliku").value = data.posjeduje_sliku;
-  document.querySelector("#read_originalId").value = data.originalId;
-  document.querySelector("#read_korisnik").value = data.korisnik;
-  document.querySelector("#read_vlasnik").value = data.vlasnik;
-  document.querySelector("#read_katastar").value = data.katastar;
-  document.querySelector("#read_id_trafostanice").value = data.id_trafostanice;
-  document.querySelector("#read_region").value = data.region;
-  document.querySelector("#read_naziv_napojne").value = data.naziv_napojne;
-  document.querySelector("#read_sifra_napojne").value = data.sifra_napojne;
-  document.querySelector("#read_izvod_napojne").value = data.izvod_napojne;
-  document.querySelector("#read_prenos_odnos").value = data.prenos_odnos;
-  document.querySelector("#read_id_billing").value = data.id_billing;
-  document.querySelector("#read_adresa").value = data.adresa;
-  document.querySelector("#read_tip").value = data.tip;
-  document.querySelector("#read_naziv").value = data.naziv;
-  document.querySelector("#read_inst_snaga_t1").value = data.inst_snaga_t1;
-  document.querySelector("#read_inst_snaga_t2").value = data.inst_snaga_t2;
-  document.querySelector("#read_inst_snaga_t3").value = data.inst_snaga_t3;
-  document.querySelector("#read_inst_snaga_t4").value = data.inst_snaga_t4;
-  document.querySelector("#read_tabela").value = data.tabela;
+  if (data) {
+    document.querySelector("#read_fid_1").value = data.fid_1;
+    document.querySelector("#read_name").value = data.name;
+    document.querySelector("#read_id_br").value = data.id_br;
+    document.querySelector("#read_celije_10").value = data.celije_10;
+    document.querySelector("#read_izvod_celija").value = data.izvod_celija;
+    document.querySelector("#read_funkcija").value = data.funkcija;
+    document.querySelector("#read_br_nn_izvoda").value = data.br_nn_izvoda;
+    document.querySelector("#read_geohash_id").value = data.geohash_id;
+    document.querySelector("#read_geohash_id_no").value = data.geohash_id_no;
+    document.querySelector("#read_br_vod_cel_nizi_nap").value = data.br_vod_cel_nizi_nap;
+    document.querySelector("#read_br_vod_cel_visi_nap").value = data.br_vod_cel_visi_nap;
+    document.querySelector("#read_layer_name").value = data.layer_name;
+    document.querySelector("#read_god_izg").value = data.god_izg;
+    document.querySelector("#read_vlasnistvo").value = data.vlasnistvo;
+    document.querySelector("#read_datum_azuriranja").value = data.datum_azuriranja;
+    document.querySelector("#read_layer_id").value = data.layer_id;
+    document.querySelector("#read_nad_vis").value = data.nad_vis;
+    document.querySelector("#read_gps").value = data.gps;
+    document.querySelector("#read_pog_sprem").value = data.pog_sprem;
+    document.querySelector("#read_napon").value = data.napon;
+    document.querySelector("#read_posjeduje_sliku").value = data.posjeduje_sliku;
+    document.querySelector("#read_originalId").value = data.originalId;
+    document.querySelector("#read_korisnik").value = data.korisnik;
+    document.querySelector("#read_vlasnik").value = data.vlasnik;
+    document.querySelector("#read_katastar").value = data.katastar;
+    document.querySelector("#read_id_trafostanice").value = data.id_trafostanice;
+    document.querySelector("#read_region").value = data.region;
+    document.querySelector("#read_naziv_napojne").value = data.naziv_napojne;
+    document.querySelector("#read_sifra_napojne").value = data.sifra_napojne;
+    document.querySelector("#read_izvod_napojne").value = data.izvod_napojne;
+    document.querySelector("#read_prenos_odnos").value = data.prenos_odnos;
+    document.querySelector("#read_id_billing").value = data.id_billing;
+    document.querySelector("#read_adresa").value = data.adresa;
+    document.querySelector("#read_tip").value = data.tip;
+    document.querySelector("#read_naziv").value = data.naziv;
+    document.querySelector("#read_inst_snaga_t1").value = data.inst_snaga_t1;
+    document.querySelector("#read_inst_snaga_t2").value = data.inst_snaga_t2;
+    document.querySelector("#read_inst_snaga_t3").value = data.inst_snaga_t3;
+    document.querySelector("#read_inst_snaga_t4").value = data.inst_snaga_t4;
+    document.querySelector("#read_tabela").value = data.tabela;
+  }
 }
 
 function prikaziPoljaWmsTrafostanice(objekat) {
@@ -231,4 +233,48 @@ function izmijeniAtributeWmsTrafostanice(objekat) {
   objekat.properties.projek_snaga = document.querySelector("#projek_snaga").value;
 
   return objekat;
+}
+
+function isprazniVrijednostiPoljaTrafostanice() {
+  document.querySelector("#read_fid_1").value = "";
+  document.querySelector("#read_name").value = "";
+  document.querySelector("#read_id_br").value = "";
+  document.querySelector("#read_celije_10").value = "";
+  document.querySelector("#read_izvod_celija").value = "";
+  document.querySelector("#read_funkcija").value = "";
+  document.querySelector("#read_br_nn_izvoda").value = "";
+  document.querySelector("#read_geohash_id").value = "";
+  document.querySelector("#read_geohash_id_no").value = "";
+  document.querySelector("#read_br_vod_cel_nizi_nap").value = "";
+  document.querySelector("#read_br_vod_cel_visi_nap").value = "";
+  document.querySelector("#read_layer_name").value = "";
+  document.querySelector("#read_god_izg").value = "";
+  document.querySelector("#read_vlasnistvo").value = "";
+  document.querySelector("#read_datum_azuriranja").value = "";
+  document.querySelector("#read_layer_id").value = "";
+  document.querySelector("#read_nad_vis").value = "";
+  document.querySelector("#read_gps").value = "";
+  document.querySelector("#read_pog_sprem").value = "";
+  document.querySelector("#read_napon").value = "";
+  document.querySelector("#read_posjeduje_sliku").value = "";
+  document.querySelector("#read_originalId").value = "";
+  document.querySelector("#read_korisnik").value = "";
+  document.querySelector("#read_vlasnik").value = "";
+  document.querySelector("#read_katastar").value = "";
+  document.querySelector("#read_id_trafostanice").value = "";
+  document.querySelector("#read_region").value = "";
+  document.querySelector("#read_naziv_napojne").value = "";
+  document.querySelector("#read_sifra_napojne").value = "";
+  document.querySelector("#read_izvod_napojne").value = "";
+  document.querySelector("#read_prenos_odnos").value = "";
+  document.querySelector("#read_id_billing").value = "";
+  document.querySelector("#read_adresa").value = "";
+  document.querySelector("#read_tip").value = "";
+  document.querySelector("#read_naziv").value = "";
+  document.querySelector("#read_inst_snaga_t1").value = "";
+  document.querySelector("#read_inst_snaga_t2").value = "";
+  document.querySelector("#read_inst_snaga_t3").value = "";
+  document.querySelector("#read_inst_snaga_t4").value = "";
+  document.querySelector("#read_tabela").value = "";
+  document.querySelector("#projek_snaga").value = "";
 }

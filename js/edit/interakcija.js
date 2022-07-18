@@ -108,7 +108,7 @@ $("#topNav").children().prop("disabled", true);
 
 function prikazPanelaAtributa(sloj) {
   console.log("prikazPanelAtributa", sloj);
-  sakrijSvaPoljaAtributDiv();
+  //sakrijSvaPoljaAtributDiv();
   if (sloj === "Stub 35KV" || sloj === "stub35") {
     odabraniLejerUnos = "stubovi";
     akcijaLejerNivo = "35";
@@ -231,6 +231,7 @@ function novoPrikljucnoMjesto() {
 
 function ddlLejerChange() {
   borderClear();
+  sakrijSvaPoljaAtributDiv();
   let value = document.querySelector("#ddl_sloj_podataka").value;
   if (value === "stub04") {
     prikazPanelaAtributa("Stub 04KV");
@@ -352,6 +353,7 @@ function potvrdaNapojneTrafostaniceUnos() {
   document.querySelector("#izvod_ts").value = izvodNapojneTrafostanice;
   closeDiv("#odabirNapojneTrafostaniceDiv");
   poruka("Uspjeh", "Uspješno odabran izvod napojne trafostanice.");
+  isprazniVrijednostiPoljaTrafostanice();
   enableMenija();
   readRadius();
   if (!isEditable) {
