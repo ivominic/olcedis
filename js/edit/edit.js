@@ -360,11 +360,11 @@ map.on("click", klikNaVektore);
 /** Brisanje odabranog wms objekta */
 function izbrisi() {
   if (select.getFeatures().array_[0] === undefined && !selektovaniWmsObjekat) {
-    poruka("Upozorenje", "Potrebno je selektovati objekat koji želite da izbrišete.");
+    poruka("Upozorenje", "Potrebno je selektovati objekat koji želite da označite za brisanje.");
     return false;
   }
   Swal.fire({
-    title: "Da li ste sigurni da želite da izbrišete odabrani objekat?",
+    title: "Da li ste sigurni da odabrani objekat želite da označite za brisanje?",
     position: "top-end",
     showDenyButton: true,
     confirmButtonText: `Da`,
