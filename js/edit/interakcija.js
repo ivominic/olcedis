@@ -297,13 +297,22 @@ document.querySelector("#shp").addEventListener("click", shpDownload);
 document.querySelector("#kml").addEventListener("click", kmlDownload);
 document.querySelector("#excel").addEventListener("click", excelDownload);
 
+function closeAllDivs() {
+  closeDiv("#odabirCvorovaVodaDiv");
+  closeDiv("#odabirObjektaZaPomjeranjeDiv");
+  closeDiv("#atributiDiv");
+}
+
 document.querySelector("#vodDodvanjeObjektaBtn").addEventListener("click", function () {
+  closeAllDivs();
   showDiv("#odabirCvorovaVodaDiv");
 });
 document.querySelector("#vodPomjeranjeObjektaBtn").addEventListener("click", function () {
+  closeAllDivs();
   showDiv("#odabirObjektaZaPomjeranjeDiv");
 });
 document.querySelector("#vodProduzenjeKrakaBtn").addEventListener("click", function () {
+  closeAllDivs();
   map.on("singleclick", vodEditGeometrije);
 });
 document.querySelector("#ddl_sloj_podataka").addEventListener("click", ddlLejerChange);
