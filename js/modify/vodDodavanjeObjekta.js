@@ -218,7 +218,11 @@ function azuriranjeWebService(vodId, prvaTacka, drugaTacka, nizObjekataZaDodavan
     type: "POST",
     success: function (data) {
       console.log("success ažuriranje", data);
-      poruka("Uspjeh", data);
+      if (data.includes("reška")) {
+        poruka("Greška", data);
+      } else {
+        poruka("Uspjeh", data);
+      }
       availableLayersPerPowerLevel("");
       vectorSource.clear();
       vektorKreiraniVodovi.getSource().clear();

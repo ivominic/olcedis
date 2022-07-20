@@ -12,14 +12,16 @@ function dodajObjekatZaIzmjenu(objekat) {
   let temp_geohash = objekat.properties.geohash_id;
   let blnDodaoObjekat = false;
   nizWmsZaIzmjenu.forEach((item) => {
+    console.log("OBJEKAT U KOJI SE DODAJE", item);
     if (item[0] === temp_geohash) {
       item[1].push(objekat.id);
       blnDodaoObjekat = true;
     }
   });
   if (!blnDodaoObjekat) {
-    nizWmsZaIzmjenu.push([temp_geohash, objekat]);
+    nizWmsZaIzmjenu.push([temp_geohash, [objekat.id]]);
   }
+  poruka("Uspjeh", "Objekat sa izmijenjenim atributima spreman za slanje na validaciju");
   console.log("NIZ ZA IZMJENU", nizWmsZaIzmjenu);
 }
 

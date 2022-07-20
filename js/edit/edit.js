@@ -54,7 +54,7 @@ function popuniKontrole(odgovor) {
 function sacuvaj() {
   console.log("Administracija sacuvaj()");
   if (selektovaniWmsObjekat) {
-    alert("Odabran je wms objekat");
+    //alert("Odabran je wms objekat");
     //TODO: Logika za slanje ažuriranja atributa
     izmjenaAtributaWmsLejer(selektovaniWmsObjekat);
   } else {
