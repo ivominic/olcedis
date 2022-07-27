@@ -894,6 +894,9 @@ function klikNapojnaTrafostanicaMapa(browserEvent) {
   odabirSaMape = true;
   document.querySelector("#btnOdabirNapojneTrafostanice").className = "dugmeodabirmapa";
   blnShowAttribute = false;
+  document.querySelector("#txtNazivNapojneTrafostanice").value = "";
+  document.querySelector("#txtSifraNapojneTrafostanice").value = "";
+  $("#ddlIzvodNapojneTrafostanice").empty();
   let url = wmsTrafostanice
     .getSource()
     .getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
