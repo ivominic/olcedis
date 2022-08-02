@@ -58,7 +58,7 @@ function klikNaVektore(browserEvent) {
     console.log("feature", feature);
     //selektovaniWmsObjekat = null;
     //nizGpxTacakaZaObradu.push(feature);
-    if (feature.values_.name) {
+    if (feature.values_.name || feature.values_.lejer) {
       //To avoid dark blue dot that represents selected feature
       nizGpxTacakaZaObradu.push(feature);
       //Izvukao iznad if uslova, jer gpx koji postane TS nema name i nije prikazivao atribute
@@ -361,6 +361,7 @@ modifyV.on("modifyend", function (e) {
 
 function prikazPodatakaIzGpxTacaka() {
   console.log("prikaz podataka iz GPX tačke", selectGpxFeature.get("lejer"));
+  //sakrijSvaPoljaAtributDiv();
   //if (selectGpxFeature.hasOwnProperty("lejer")) {
   //console.log("prikaz podataka iz GPX tačke", selectGpxFeature.get("lejer"));
   //prikazPanelaAtributa se nalazi u fajlu interakcija.js

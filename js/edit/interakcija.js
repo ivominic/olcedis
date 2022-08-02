@@ -108,7 +108,7 @@ $("#topNav").children().prop("disabled", true);
 
 function prikazPanelaAtributa(sloj) {
   console.log("prikazPanelAtributa", sloj);
-  //sakrijSvaPoljaAtributDiv();
+  sakrijSvaPoljaAtributDiv();
   if (sloj === "Stub 35KV" || sloj === "stub35") {
     odabraniLejerUnos = "stubovi";
     akcijaLejerNivo = "35";
