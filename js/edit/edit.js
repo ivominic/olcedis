@@ -116,7 +116,7 @@ function sacuvaj() {
     }
     if (odabraniLejerUnos === "potrosaci") {
       dodajPoljaOdabranomGpxPotrosac();
-      select.getFeatures().clear();
+      //select.getFeatures().clear();
       selectGpxFeature = null;
       return false;
     }
