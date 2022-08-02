@@ -652,7 +652,6 @@ function klikNaRastereZaVodove(browserEvent) {
 }
 
 function klikNaRastereZaOdabirPrikljucnogMjesta(browserEvent) {
-  let coordinate = browserEvent.coordinate;
   let tempNiz = [];
   let url = wmsPrikljucnoMjesto
     .getSource()
@@ -686,6 +685,7 @@ function klikNaRastereZaOdabirPrikljucnogMjesta(browserEvent) {
             })
           );
         });
+        odabirPrikljucnogMjestaSaMape = false;
         //Ukloniti metodu koja se poziva na klik
         map.un("singleclick", klikNaRastereZaOdabirPrikljucnogMjesta);
       });
@@ -932,6 +932,7 @@ function klikNapojnaTrafostanicaMapa(browserEvent) {
 function odabirPrikljucnogMjestaZaUnosPotrosaca() {
   map.removeInteraction(draw);
   map.removeInteraction(modify);
+  odabirPrikljucnogMjestaSaMape = true;
   odabirSaMape = true;
   nizKoordinataPrikljucnihMjesta = {};
   $(prik_mjesto).empty();
@@ -944,6 +945,10 @@ function odabirPrikljucnogMjestaZaUnosPotrosaca() {
  */
 function odabirSvihRasterObjekataKlik(browserEvent) {
   console.log("odabirSvihRasterObjekataKlik");
+  if (odabirPrikljucnogMjestaSaMape) {
+    odabirPrikljucnogMjestaSaMape = false;
+    return false;
+  }
   //TODO: Dodati loader dok se ne završi učitavanje podataka
   nizSelektovanihObjekata.length = 0;
   let coordinate = browserEvent.coordinate;
