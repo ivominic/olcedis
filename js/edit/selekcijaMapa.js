@@ -57,10 +57,10 @@ function klikNaVektore(browserEvent) {
   map.forEachFeatureAtPixel(pixel, function (feature) {
     console.log("feature", feature);
     //selektovaniWmsObjekat = null;
-    nizGpxTacakaZaObradu.push(feature);
+    //nizGpxTacakaZaObradu.push(feature);
     if (feature.values_.name) {
       //To avoid dark blue dot that represents selected feature
-      //nizGpxTacakaZaObradu.push(feature);
+      nizGpxTacakaZaObradu.push(feature);
       //Izvukao iznad if uslova, jer gpx koji postane TS nema name i nije prikazivao atribute
       if (selektovaniDdlZaPovezivanjeVoda !== "") {
         $(selektovaniDdlZaPovezivanjeVoda).append(
