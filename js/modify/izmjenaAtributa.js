@@ -21,6 +21,7 @@ function dodajObjekatZaIzmjenu(objekat) {
   if (!blnDodaoObjekat) {
     nizWmsZaIzmjenu.push([temp_geohash, [objekat.id]]);
   }
+  azuriranjeDodajObjekatVektorskomLejeru(objekat);
   poruka("Uspjeh", "Objekat sa izmijenjenim atributima spreman za slanje na validaciju");
   console.log("NIZ ZA IZMJENU", nizWmsZaIzmjenu);
 }
