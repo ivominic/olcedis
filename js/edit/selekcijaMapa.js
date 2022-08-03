@@ -58,7 +58,11 @@ function klikNaVektore(browserEvent) {
     console.log("feature", feature);
     //selektovaniWmsObjekat = null;
     //nizGpxTacakaZaObradu.push(feature);
-    if (feature.values_.name || feature.values_.lejer) {
+    if (
+      (feature.values_.name || feature.values_.lejer) &&
+      feature.values_.lejer !== "brisanje" &&
+      feature.values_.lejer !== "azuriranje"
+    ) {
       //To avoid dark blue dot that represents selected feature
       nizGpxTacakaZaObradu.push(feature);
       //Izvukao iznad if uslova, jer gpx koji postane TS nema name i nije prikazivao atribute
@@ -198,6 +202,9 @@ function prethodniObjekatGpx() {
 let select = new ol.interaction.Select({
   wrapX: false,
   hitTolerance: 5,
+  layers: function (layer) {
+    return layer.get("id") !== "brisanje" && layer.get("id") !== "azuriranje";
+  },
 });
 
 select.on("select", function (e) {

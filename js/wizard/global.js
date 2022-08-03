@@ -361,12 +361,14 @@ let vectorKmlFocusedObject = new ol.layer.Vector({
 map.addLayer(vectorKmlFocusedObject);
 
 let vektorObjektiZaAzuriranje = new ol.layer.Vector({
+  id: "azuriranje",
   source: new ol.source.Vector({}),
   style: vectorStyleAzuriranje,
 });
 map.addLayer(vektorObjektiZaAzuriranje);
 
 let vektorObjektiZaBrisanje = new ol.layer.Vector({
+  id: "brisanje",
   source: new ol.source.Vector({}),
   style: vectorStyleBrisanje,
 });

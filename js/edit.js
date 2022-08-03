@@ -365,6 +365,9 @@ map.addInteraction(dragAndDrop);
 
 var select = new ol.interaction.Select({
   wrapX: false,
+  layers: function (layer) {
+    return layer.get("id") !== "brisanje" && layer.get("id") !== "azuriranje";
+  },
 });
 
 select.on("select", function (e) {

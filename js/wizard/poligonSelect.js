@@ -18,7 +18,11 @@ function gpxUPoligonu() {
     return false;
   }
 
-  let selectItems = new ol.interaction.Select();
+  let selectItems = new ol.interaction.Select({
+    layers: function (layer) {
+      return layer.get("id") !== "brisanje" && layer.get("id") !== "azuriranje";
+    },
+  });
   map.addInteraction(selectItems);
   let selectedFeatures = selectItems.getFeatures();
   let features = vectorSource.getFeatures();
