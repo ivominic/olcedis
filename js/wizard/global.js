@@ -324,6 +324,18 @@ let vectorKmlFocusedObject = new ol.layer.Vector({
 });
 map.addLayer(vectorKmlFocusedObject);
 
+let vektorObjektiZaAzuriranje = new ol.layer.Vector({
+  source: new ol.source.Vector({}),
+  style: vectorStyleKreirani,
+});
+map.addLayer(vektorObjektiZaAzuriranje);
+
+let vektorObjektiZaBrisanje = new ol.layer.Vector({
+  source: new ol.source.Vector({}),
+  style: vectorStyleKreirani,
+});
+map.addLayer(vektorObjektiZaBrisanje);
+
 /**
  * Metoda koja za naponski nivo trafostanice vraća odgovarajući nivo naponskog voda
  * @param {*} nivo
