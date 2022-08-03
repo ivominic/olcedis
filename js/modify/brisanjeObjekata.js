@@ -15,6 +15,7 @@ function dodajObjekatZaBrisanje(objekat) {
   if (!blnDodaoObjekat) {
     nizWmsZaBrisanje.push([temp_geohash, [objekat.id]]);
   }
+  brisanjeDodajObjekatVektorskomLejeru(objekat);
   console.log("NIZ ZA BRISANJE", nizWmsZaBrisanje);
 }
 

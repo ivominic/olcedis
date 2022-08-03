@@ -189,10 +189,10 @@ let vectorStyleUnmatched = new ol.style.Style({
 
 /**Stilizacija vektora za kreirane elemente*/
 let fillKreirani = new ol.style.Fill({
-  color: "rgba(255,0,0,0.8)",
+  color: "rgba(0,0,255,0.8)",
 });
 let strokeKreirani = new ol.style.Stroke({
-  color: "#ff0000",
+  color: "#0000ff",
   width: 8,
 });
 let circleKreirani = new ol.style.Circle({
@@ -204,6 +204,42 @@ let vectorStyleKreirani = new ol.style.Style({
   fill: fillKreirani,
   stroke: strokeKreirani,
   image: circleKreirani,
+});
+
+let fillBrisanje = new ol.style.Fill({
+  color: "rgba(255,0,0,0.8)",
+});
+let strokeBrisanje = new ol.style.Stroke({
+  color: "#ff0000",
+  width: 8,
+});
+let circleBrisanje = new ol.style.Circle({
+  radius: 8,
+  fill: fillBrisanje,
+  stroke: strokeBrisanje,
+});
+let vectorStyleBrisanje = new ol.style.Style({
+  fill: fillBrisanje,
+  stroke: strokeBrisanje,
+  image: circleBrisanje,
+});
+
+let fillAzuriranje = new ol.style.Fill({
+  color: "rgba(255,140,0,0.8)",
+});
+let strokeAzuriranje = new ol.style.Stroke({
+  color: "#FF8C00",
+  width: 8,
+});
+let circleAzuriranje = new ol.style.Circle({
+  radius: 8,
+  fill: fillAzuriranje,
+  stroke: strokeAzuriranje,
+});
+let vectorStyleAzuriranje = new ol.style.Style({
+  fill: fillAzuriranje,
+  stroke: strokeAzuriranje,
+  image: circleAzuriranje,
 });
 
 let neobradjenaTacka = new ol.style.Circle({
@@ -326,13 +362,13 @@ map.addLayer(vectorKmlFocusedObject);
 
 let vektorObjektiZaAzuriranje = new ol.layer.Vector({
   source: new ol.source.Vector({}),
-  style: vectorStyleKreirani,
+  style: vectorStyleAzuriranje,
 });
 map.addLayer(vektorObjektiZaAzuriranje);
 
 let vektorObjektiZaBrisanje = new ol.layer.Vector({
   source: new ol.source.Vector({}),
-  style: vectorStyleKreirani,
+  style: vectorStyleBrisanje,
 });
 map.addLayer(vektorObjektiZaBrisanje);
 

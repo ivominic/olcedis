@@ -372,7 +372,17 @@ function izbrisi() {
   }).then((result) => {
     if (result.isConfirmed) {
       //Brisati
+      if (select.getFeatures().array_.length && select.getFeatures().array_[0].values_.lejer === "brisanje") {
+        poruka("Upozorenje", "Odabran je objekat iz lejera objekata selektovanih za brisanje.");
+        return false;
+      }
+      if (select.getFeatures().array_.length && select.getFeatures().array_[0].values_.lejer === "azuriranje") {
+        poruka("Upozorenje", "Odabran je objekat iz lejera objekata selektovanih za ažuriranje.");
+        return false;
+      }
+      //console.log("WMS objekat za brisanje", selektovaniWmsObjekat);
       if (select.getFeatures().array_.length) {
+        //console.log("Lejer vektorskog objekta", select.getFeatures().array_[0].values_.lejer);
         if (select.getFeatures().array_[0].values_.lejer === "vodovi") {
           let nizZaBrisanje = nizVodovaGpx;
           vektorKreiraniVodovi
