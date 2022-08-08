@@ -84,11 +84,17 @@ function distanceFromKmlPoints() {
  * @param {Name of Geoserver layer} layerName
  */
 function objectNearKmlFeature(originalFeature, feature, layerName) {
-  let coordinates = feature.values_.geometry.flatCoordinates;
+  let coordinates;
+  if (feature.values_.geometry) {
+    coordinates = feature.values_.geometry.flatCoordinates;
+  } else {
+    coordinates = feature.flatCoordinates;
+  }
   //let position = ol.proj.transform(feature.values_.geometry.flatCoordinates, "EPSG:4326", "EPSG:4326");
   let cqlCondition = "";
 
-  if (feature.getGeometry().getType().toString().includes("oint")) {
+  if (typeof coordinates[0] === "number" && typeof coordinates[1] === "number") {
+    //if (feature.getGeometry().getType().toString().includes("oint")) {
     cqlCondition =
       "(DWITHIN(Geometry,POINT(" +
       coordinates[0] +

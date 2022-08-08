@@ -135,3 +135,38 @@ function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucna_mjes
     },
   });
 }
+
+/**
+ * Metoda za insert objekata za koje je korisnik tražio usaglašavanje
+ * @param {*} nizZaUsaglasavanje - niz objekata za povezivanje
+ */
+function insertUsaglasenihObjekata(nizZaUsaglasavanje) {
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/usaglasavanje";
+  /*    "objects":{
+        "old_object": "vodovi.39970",
+        "new_object":{
+            "fid_1":12345,
+            "Geometry":"iujhdfiudshifc",
+            ...
+        }
+    }*/
+  $.ajax({
+    url: urlServisa,
+    data: {
+      temp_stubovi: JSON.stringify(stubovi),
+      temp_vodovi: JSON.stringify(vodovi),
+      temp_trafostanice: JSON.stringify(trafostanice),
+      temp_pod: JSON.stringify(podovi),
+      temp_prikljucno_mjesto: JSON.stringify(prikljucna_mjesta),
+      temp_potrosaci: JSON.stringify(potrosaci),
+      temp_nkro: JSON.stringify(nkro),
+    },
+    type: "POST",
+    success: function (data) {
+      console.log("success insert all objects", data);
+    },
+    error: function (x, y, z) {
+      console.log("Greška", JSON.parse(x.responseText).response);
+    },
+  });
+}
