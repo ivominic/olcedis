@@ -3,12 +3,12 @@
 function insertObjekataIzGpx() {
   let postojiNeobradjenaTacka = false;
   let iterator = 0;
-  stuboviArrayFinal.length = 0;
+  /*stuboviArrayFinal.length = 0;
   trafostaniceArrayFinal.length = 0;
   podoviArrayFinal.length = 0;
   prikljucnaMjestaArrayFinal.length = 0;
   potrosaciArrayFinal.length = 0;
-  nkroArrayFinal.length = 0;
+  nkroArrayFinal.length = 0;*/
   gpxFeatures.forEach((el) => {
     iterator++;
     console.log("finalno lejer", el.get("lejer"));

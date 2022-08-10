@@ -8,7 +8,7 @@
 function dodajObjekatZaIzmjenu(objekat) {
   //let temp_geohash = objekat.properties.geohash_id_no;
   //TODO: Podesiti prije produkcije na id_no. Trenutno su null vrijednosti.
-  console.log("OBJEKAT IZMIJENJEN", objekat);
+  /*console.log("OBJEKAT IZMIJENJEN", objekat);
   let temp_geohash = objekat.properties.geohash_id;
   let blnDodaoObjekat = false;
   nizWmsZaIzmjenu.forEach((item) => {
@@ -20,7 +20,8 @@ function dodajObjekatZaIzmjenu(objekat) {
   });
   if (!blnDodaoObjekat) {
     nizWmsZaIzmjenu.push([temp_geohash, [objekat.id]]);
-  }
+  }*/
+  nizWmsZaIzmjenu.push(pripremaZaAzuriranjeWmsObjekta(objekat));
   azuriranjeDodajObjekatVektorskomLejeru(objekat);
   poruka("Uspjeh", "Objekat sa izmijenjenim atributima spreman za slanje na validaciju");
   console.log("NIZ ZA IZMJENU", nizWmsZaIzmjenu);
@@ -72,7 +73,7 @@ function izmjenaAtributaSvihObjekata() {
     url: urlServisa,
     data: {
       korisnik: globalUsername,
-      objekti: nizWmsZaIzmjenu,
+      objekti: JSON.stringify(nizWmsZaIzmjenu),
     },
     type: "POST",
     success: function (data) {
