@@ -2,9 +2,7 @@
 
 /**Dodaje wms objekat u niz za brisanje */
 function dodajObjekatZaBrisanje(objekat) {
-  //let temp_geohash = objekat.properties.geohash_id_no;
-  //TODO: Podesiti prije produkcije na id_no. Trenutno su null vrijednosti.
-  let temp_geohash = objekat.properties.geohash_id;
+  let temp_geohash = objekat.properties.geohash_id_no;
   let blnDodaoObjekat = false;
   nizWmsZaBrisanje.forEach((item) => {
     if (item[0] === temp_geohash) {
@@ -16,17 +14,16 @@ function dodajObjekatZaBrisanje(objekat) {
     nizWmsZaBrisanje.push([temp_geohash, [objekat.id]]);
   }
   brisanjeDodajObjekatVektorskomLejeru(objekat);
-  console.log("NIZ ZA BRISANJE", nizWmsZaBrisanje);
 }
 
+/** Poziv web servis za brisanje objekata. Poziva se na finalnoj potvrdi akcija (ikonica dvostruki štrik) */
 function brisanjeWmsObjekata() {
-  //TODO: CALL WEB SERVICE
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/brisanje_objekta";
   $.ajax({
     url: urlServisa,
     data: {
       korisnik: globalUsername,
-      objekti: nizWmsZaBrisanje,
+      objekti: JSON.stringify(nizWmsZaBrisanje),
     },
     type: "POST",
     success: function (data) {
