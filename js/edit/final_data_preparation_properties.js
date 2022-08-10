@@ -46,6 +46,8 @@ function stubArrayElementProperties(el, action) {
     uzemljivac_otpor: el.properties.uzemljivac_otpor,
     sifra: el.properties.sifra,
     layer_id: el.properties.layer_id,
+    geohash_id: el.properties.geohash_id,
+    geohash_id_no: el.properties.geohash_id_no,
     rasp_prov: el.properties.rasp_prov,
     nn_vod: el.properties.nn_vod,
     pog_sprem: el.properties.pog_sprem,
@@ -58,6 +60,8 @@ function stubArrayElementProperties(el, action) {
     wizard: 0,
     isEditable: isEditable,
     lejer: "stubovi",
+    posjeduje_sliku: el.properties.posjeduje_sliku,
+    originalId: el.properties.originalId,
   };
   return item;
 }
@@ -119,6 +123,9 @@ function vodArrayElementProperties(el, action) {
     akcija: action,
     wizard: 0,
     isEditable: isEditable,
+    geohash_id: el.properties.geohash_id,
+    geohash_id_no: el.properties.geohash_id_no,
+    posjeduje_sliku: el.properties.posjeduje_sliku,
   };
   return item;
 }
@@ -171,6 +178,10 @@ function trafostanicaArrayElementProperties(el, action) {
     wizard: 0,
     isEditable: isEditable,
     lejer: "trafostanice",
+    geohash_id: el.properties.geohash_id,
+    geohash_id_no: el.properties.geohash_id_no,
+    posjeduje_sliku: el.properties.posjeduje_sliku,
+    originalId: el.properties.originalId,
   };
   return item;
 }
@@ -208,6 +219,10 @@ function prikljucnoMjestoArrayElementProperties(el, action) {
     wizard: 0,
     isEditable: isEditable,
     lejer: "prikljucno_mjesto",
+    geohash_id: el.properties.geohash_id,
+    geohash_id_no: el.properties.geohash_id_no,
+    posjeduje_sliku: el.properties.posjeduje_sliku,
+    originalId: el.properties.originalId,
   };
   return item;
 }
@@ -249,6 +264,10 @@ function potrosacArrayElementProperties(el, action) {
     wizard: 0,
     isEditable: isEditable,
     lejer: "potrosac",
+    geohash_id: el.properties.geohash_id,
+    geohash_id_no: el.properties.geohash_id_no,
+    posjeduje_sliku: el.properties.posjeduje_sliku,
+    originalId: el.properties.originalId,
   };
   return item;
 }
@@ -290,6 +309,10 @@ function podArrayElementProperties(el, action) {
     wizard: 0,
     isEditable: isEditable,
     lejer: "pod",
+    geohash_id: el.properties.geohash_id,
+    geohash_id_no: el.properties.geohash_id_no,
+    posjeduje_sliku: el.properties.posjeduje_sliku,
+    originalId: el.properties.originalId,
   };
   return item;
 }
@@ -329,6 +352,10 @@ function nkroArrayElementProperties(el, action) {
     wizard: 0,
     isEditable: isEditable,
     lejer: "nkro",
+    geohash_id: el.properties.geohash_id,
+    geohash_id_no: el.properties.geohash_id_no,
+    posjeduje_sliku: el.properties.posjeduje_sliku,
+    originalId: el.properties.originalId,
   };
   return item;
 }
