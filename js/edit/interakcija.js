@@ -264,10 +264,16 @@ function ddlLejerChange() {
 
 function finalnaPotvrdaUnosa() {
   //Pozivanje web servisa za finalni unos
+  unosBrojFunkcija = 0;
+  unosUspjeh = true;
+  unosPostojeObjekti = true;
   kmlConnectionLog(kmlLinksArray);
   insertObjekataIzGpx();
   //poruka("Uspjeh", "Završen unos podataka");
   brisanjeWmsObjekata();
+  if (!unosPostojeObjekti) {
+    poruka("Upozorenje", "Ne postoje objekti koje je potrebno obraditi");
+  }
 
   console.log("Finalno features", gpxFeatures);
 }

@@ -57,6 +57,10 @@ function sacuvaj() {
     //alert("Odabran je wms objekat");
     //TODO: Logika za slanje ažuriranja atributa
     izmjenaAtributaWmsLejer(selektovaniWmsObjekat);
+    if (obaveznaPolja(document.querySelector("#ddl_sloj_podataka").value) === false) {
+      poruka("Upozorenje", "Potrebno je popuniti obavezna polja.");
+      return false;
+    }
   } else {
     if (!selectGpxFeature && odabraniLejerUnos !== "vodovi") {
       poruka("Upozorenje", "Potrebno je odabrati tačku iz gpx fajla.");

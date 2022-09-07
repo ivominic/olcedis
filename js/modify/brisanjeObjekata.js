@@ -28,11 +28,24 @@ function brisanjeWmsObjekata() {
     type: "POST",
     success: function (data) {
       console.log("success brisanje objekata", data);
-      poruka("Uspjeh", data);
       nizWmsZaBrisanje.length = 0;
+      unosBrojFunkcija++;
+      if (unosPostojeObjekti) {
+        if (unosBrojFunkcija === 3 && unosUspjeh) {
+          poruka("Uspjeh", "Uspješno sačuvani podaci.");
+        }
+        if (unosBrojFunkcija === 3 && !unosUspjeh) {
+          poruka("Greška", "Akcija nije izvršena");
+        }
+      }
     },
     error: function (x, y, z) {
-      poruka("Greška", JSON.parse(x.responseText).response);
+      unosBrojFunkcija++;
+      unosUspjeh = false;
+      if (unosBrojFunkcija === 3 && unosPostojeObjekti) {
+        poruka("Greška", "Akcija nije izvršena");
+      }
+      console.log("Greška brisanje objekata", JSON.parse(x.responseText).response);
     },
   });
 }

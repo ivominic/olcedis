@@ -609,8 +609,22 @@ function kmlConnectionLog(objects) {
     type: "POST",
     success: function (data) {
       console.log("success", data);
+      unosBrojFunkcija++;
+      if (unosPostojeObjekti) {
+        if (unosBrojFunkcija === 3 && unosUspjeh) {
+          poruka("Uspjeh", "Uspješno sačuvani podaci.");
+        }
+        if (unosBrojFunkcija === 3 && !unosUspjeh) {
+          poruka("Greška", "Akcija nije izvršena");
+        }
+      }
     },
     error: function (x, y, z) {
+      unosBrojFunkcija++;
+      unosUspjeh = false;
+      if (unosBrojFunkcija === 3 && unosPostojeObjekti) {
+        poruka("Greška", "Akcija nije izvršena");
+      }
       console.log("error kml connection log", x.responseText);
     },
   });
