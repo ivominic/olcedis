@@ -470,17 +470,19 @@ function selekcijaGpxPoligonom() {
 
   //TODO: Prevesti vod u feature i dodati propertije
 
-  let vod = new ol.geom.LineString([nizTacakaLinije]);
-  let format = new ol.format.WKT();
+  if (nizTacakaLinije.length) {
+    let vod = new ol.geom.LineString([nizTacakaLinije]);
+    let format = new ol.format.WKT();
 
-  let wktVod = format.writeGeometry(vod, {});
-  wktVod = wktVod.replace(/ /g, "_");
-  wktVod = wktVod.replace(/,/g, " ");
-  wktVod = wktVod.replace(/_/g, ",");
-  wktVod = wktVod.replace(",ZM", "");
-  wktVod = wktVod.replace(",Z", "");
-  let feature = format.readFeature(wktVod, {});
-  //TODO: Ovdje dodati properties
+    let wktVod = format.writeGeometry(vod, {});
+    wktVod = wktVod.replace(/ /g, "_");
+    wktVod = wktVod.replace(/,/g, " ");
+    wktVod = wktVod.replace(/_/g, ",");
+    wktVod = wktVod.replace(",ZM", "");
+    wktVod = wktVod.replace(",Z", "");
+    let feature = format.readFeature(wktVod, {});
+    //TODO: Ovdje dodati properties
+  }
 
   vektorKreiraniVodovi.getSource().clear();
   vektorKreiraniVodovi.getSource().addFeatures(nizVodovaGpx);
