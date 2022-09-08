@@ -104,18 +104,18 @@ function kreiranjeCqlFilteraProstorno() {
   pretragaTacka &&
     tacke.forEach((item) => {
       if (retVal === "") {
-        retVal = "DWITHIN(geom," + item + "," + pretragaTackaUdaljenost + ",meters) ";
+        retVal = "DWITHIN(Geometry," + item + "," + pretragaTackaUdaljenost + ",meters) ";
       } else {
-        retVal += " OR DWITHIN(geom," + item + "," + pretragaTackaUdaljenost + ",meters) ";
+        retVal += " OR DWITHIN(Geometry," + item + "," + pretragaTackaUdaljenost + ",meters) ";
       }
     });
 
   pretragaLinije &&
     linije.forEach((item) => {
       if (retVal === "") {
-        retVal = "INTERSECTS(geom," + item + ") ";
+        retVal = "INTERSECTS(Geometry," + item + ") ";
       } else {
-        retVal += " OR INTERSECTS(geom," + item + ") ";
+        retVal += " OR INTERSECTS(Geometry," + item + ") ";
       }
     });
 
@@ -123,15 +123,15 @@ function kreiranjeCqlFilteraProstorno() {
     poligoni.forEach((item) => {
       if (retVal === "") {
         if (pretragaPoligonPresijeca) {
-          retVal = "INTERSECTS(geom," + item + ") ";
+          retVal = "INTERSECTS(Geometry," + item + ") ";
         } else {
-          retVal = "WITHIN(geom," + item + ") ";
+          retVal = "WITHIN(Geometry," + item + ") ";
         }
       } else {
         if (pretragaPoligonPresijeca) {
-          retVal += " OR INTERSECTS(geom," + item + ") ";
+          retVal += " OR INTERSECTS(Geometry," + item + ") ";
         } else {
-          retVal += " OR WITHIN(geom," + item + ") ";
+          retVal += " OR WITHIN(Geometry," + item + ") ";
         }
       }
     });

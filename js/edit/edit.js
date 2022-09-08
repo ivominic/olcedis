@@ -504,6 +504,7 @@ function ponisti() {
 
 /* Filter wms-a po prostornim i atributskim podacima*/
 function filtriranje() {
+  let rasterLayer = podesiLejerZaPretragu();
   let prostorniFilter = kreiranjeCqlFilteraProstorno();
   let atributniFilter = kreiranjeCqlFilteraAtributi();
   if (prostorniFilter !== "" && atributniFilter !== "") {
@@ -511,12 +512,34 @@ function filtriranje() {
   } else {
     cqlFilter = prostorniFilter + atributniFilter;
   }
+  console.log("CQL FILTER", cqlFilter);
   if (cqlFilter === "") {
     return false;
   }
+
   let params = rasterLayer.getSource().getParams();
   params.CQL_FILTER = cqlFilter;
   rasterLayer.getSource().updateParams(params);
+}
+
+function podesiLejerZaPretragu() {
+  let ddlValue = document.querySelector("#ddlLejer").value;
+
+  if (ddlValue === "stubovi") {
+    return wmsStubovi;
+  }
+  if (ddlValue === "vodovi") {
+    return wmsVodovi;
+  }
+  if (ddlValue === "trafostanice") {
+    return wmsTrafostanice;
+  }
+  if (ddlValue === "prikljucno_mjesto") {
+    return wmsPrikljucnoMjesto;
+  }
+  if (ddlValue === "nkro") {
+    return wmsNKRO;
+  }
 }
 
 /** Filtriranje po atributima */

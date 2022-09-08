@@ -91,6 +91,8 @@ function ddlLejerNaziv(elId, napon) {
  * @param {Ovo je selektovaniWmsObjekat koji je definisan na globalnom nivou} objekat
  */
 function prikazAtributaWmsLejer(objekat) {
+  document.querySelector("#ddl_sloj_podataka").classList.add("disabledInput");
+  document.querySelector("#ddl_sloj_podataka").disabled = true;
   console.log("WMS OBJEKAT", objekat);
   originalnaGeometrijaWmsVoda = objekat.geometry;
   document.querySelector("#ddl_sloj_podataka").value = objekat.ddlLejer;

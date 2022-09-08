@@ -10,7 +10,15 @@ function dodaj() {
   akcija = "dodaj";
   blnShowAttribute = true;
   setujAktivnu("#dodaj");
+  document.querySelector("#ddl_sloj_podataka").classList.remove("disabledInput");
+  document.querySelector("#ddl_sloj_podataka").disabled = false;
   ddlLejerChange();
+  if (!sifraNapojneTrafostanice) {
+    closeDiv("#atributiDiv");
+    closeDiv("#pretragaDiv");
+    disableMenija();
+    showDiv("#odabirNapojneTrafostaniceDiv");
+  }
 }
 
 function izmijeni() {
@@ -22,6 +30,8 @@ function atributi() {
   akcija = "atributi";
   blnShowAttribute = true;
   setujAktivnu("#atributi");
+  document.querySelector("#ddl_sloj_podataka").classList.add("disabledInput");
+  document.querySelector("#ddl_sloj_podataka").disabled = true;
 }
 
 function pretraga() {
@@ -108,6 +118,13 @@ $("#topNav").children().prop("disabled", true);
 
 function prikazPanelaAtributa(sloj) {
   console.log("prikazPanelAtributa", sloj);
+  let blnPronadjenSloj = false;
+  for (i = 0; i < document.querySelector("#ddl_sloj_podataka").options.length; i++) {
+    console.log(document.querySelector("#ddl_sloj_podataka").options[i].value);
+    if (document.querySelector("#ddl_sloj_podataka").options[i].value === sloj) {
+      blnPronadjenSloj = true;
+    }
+  }
   sakrijSvaPoljaAtributDiv();
   if (sloj === "Stub 35KV" || sloj === "stub35") {
     odabraniLejerUnos = "stubovi";
@@ -191,6 +208,14 @@ function prikazPanelaAtributa(sloj) {
   if (blnShowAttribute) {
     console.log("Akcija atributi", akcija);
     showDiv("#atributiDiv");
+    if (blnPronadjenSloj) {
+      //document.querySelector("#ddl_sloj_podataka").classList.add("disabledInput");
+      //document.querySelector("#ddl_sloj_podataka").disabled = true;
+      console.log("NAĐEN");
+    } else {
+      //poruka("Upozorenje", "Objekat ne pripada odabranom naponskom nivou");
+      console.log("NIJE PRONAĐEN LEJER");
+    }
   }
   console.log("akcijaLejerNivo", akcijaLejerNivo);
 }

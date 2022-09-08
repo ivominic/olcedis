@@ -490,17 +490,21 @@ function selekcijaGpxPoligonom() {
 
 function minGpxName(tacke) {
   let retval = 99999;
-  tacke.getFeatures().forEach(function (el) {
-    parseInt(el.values_.name) < retval && (retval = parseInt(el.values_.name));
-  });
+  if (tacke && tacke.length > 0) {
+    tacke.getFeatures().forEach(function (el) {
+      parseInt(el.values_.name) < retval && (retval = parseInt(el.values_.name));
+    });
+  }
   return retval;
 }
 
 function maxGpxName(tacke) {
   let retval = 0;
-  tacke.getFeatures().forEach(function (el) {
-    parseInt(el.values_.name) > retval && (retval = parseInt(el.values_.name));
-  });
+  if (tacke && tacke.length > 0) {
+    tacke.getFeatures().forEach(function (el) {
+      parseInt(el.values_.name) > retval && (retval = parseInt(el.values_.name));
+    });
+  }
   return retval;
 }
 

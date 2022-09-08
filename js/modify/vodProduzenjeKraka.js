@@ -57,6 +57,10 @@ map.addInteraction(modifyVod);
 modifyVod.on("modifyend", function (e) {
   console.log("MODIFY VOD END - features", e.features.getArray()[0]);
 
+  if (!originalnaGeometrijaWmsVoda) {
+    return false;
+  }
+
   let coordinates = e.features.getArray()[0].getGeometry().getCoordinates();
 
   if (coordinates.length !== originalnaGeometrijaWmsVoda.coordinates.length) {
