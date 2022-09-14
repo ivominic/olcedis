@@ -207,7 +207,8 @@ function prikazPanelaAtributa(sloj) {
 
   if (blnShowAttribute) {
     console.log("Akcija atributi", akcija);
-    showDiv("#atributiDiv");
+    console.log("PRikaz 6", odabirSaMape);
+    blnShowAttribute && showDiv("#atributiDiv");
     if (blnPronadjenSloj) {
       //document.querySelector("#ddl_sloj_podataka").classList.add("disabledInput");
       //document.querySelector("#ddl_sloj_podataka").disabled = true;

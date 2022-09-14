@@ -184,7 +184,8 @@ function setujAktivnu(element) {
   closeDiv("#atributiDiv");
   if (element === "#atributi" || element === "#dodaj") {
     //if (element === "#atributi") {
-    showDiv("#atributiDiv");
+    console.log("PRikaz 5", odabirSaMape);
+    !odabirSaMape && showDiv("#atributiDiv");
   }
   if (element === "#pretraga") {
     showDiv("#pretragaDiv");

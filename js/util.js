@@ -320,6 +320,7 @@ function setujAktivnu(element) {
   closeDiv("#atributiDiv");
   if (element === "#atributi" || element === "#dodaj") {
     //if (element === "#atributi") {
+    console.log("PRikaz 4");
     showDiv("#atributiDiv");
   }
   if (element === "#pretraga") {

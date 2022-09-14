@@ -558,6 +558,7 @@ function odabirPocetneTackeVoda() {
   map.removeInteraction(draw);
   map.removeInteraction(modify);
   odabirSaMape = true;
+  blnShowAttribute = false;
   selektovaniDdlZaPovezivanjeVoda = "#ddlPocetnaTackaVodovi";
   nizPocetnihTacakaVoda.length = 0;
   $(selektovaniDdlZaPovezivanjeVoda).empty();
@@ -568,6 +569,7 @@ function odabirKrajnjeTackeVoda() {
   map.removeInteraction(draw);
   map.removeInteraction(modify);
   odabirSaMape = true;
+  blnShowAttribute = false;
   selektovaniDdlZaPovezivanjeVoda = "#ddlKrajnjaTackaVodovi";
   nizKrajnjihTacakaVoda.length = 0;
   $(selektovaniDdlZaPovezivanjeVoda).empty();
@@ -589,6 +591,7 @@ function odabirTackePovezivanjaKmla() {
  * Tamo se objedinjavaju tačke iz oba izvora i ponovo poziva metoda koordinateObjekataIzDdlova
  */
 function potvrdaUnosaVoda() {
+  blnShowAttribute = true;
   selekcijaGpxPoligonom();
   if (document.querySelector("#chkMjesovitiVod").checked) {
     dodajWmsObjekte();

@@ -260,6 +260,7 @@ function podesiInterakciju() {
       //TODO: ovo možda dodati u promjeni akcije i poništi
       featureTekuciOverlay.getSource().clear(); //Samo jedan može da se crta
       geometrijaZaBazuWkt = wktGeometrije(e.feature);
+      console.log("PRikaz 1");
       showDiv("#atributiDiv");
       console.log("feature nova geometrija", geometrijaZaBazuWkt);
     });
@@ -267,6 +268,7 @@ function podesiInterakciju() {
       //Iz nekog razloga na brisanje čvora ne očitava odmah izmjenu
       console.log("broj geometrija", e.features.getArray().length);
       geometrijaZaBazuWkt = wktGeometrije(e.features.getArray()[0]);
+      console.log("PRikaz 2");
       showDiv("#atributiDiv");
       console.log("feature nova mijenjana geometrija", geometrijaZaBazuWkt);
     });

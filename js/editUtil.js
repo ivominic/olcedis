@@ -209,6 +209,7 @@ function setujAktivnu(element) {
   closeDiv("#atributiDiv");
   if (element === "#atributi" || element === "#dodaj") {
     //if (element === "#atributi") {
+    console.log("PRikaz 3");
     showDiv("#atributiDiv");
   }
   if (element === "#pretraga") {
