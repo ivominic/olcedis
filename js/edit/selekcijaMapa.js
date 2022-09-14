@@ -592,12 +592,18 @@ function odabirTackePovezivanjaKmla() {
  */
 function potvrdaUnosaVoda() {
   blnShowAttribute = true;
+  if (document.querySelector("#chkSpajanjePostojecihVodova").checked) {
+    blnSpajanjeVodova = true;
+  } else {
+    blnSpajanjeVodova = false;
+  }
   selekcijaGpxPoligonom();
   if (document.querySelector("#chkMjesovitiVod").checked) {
     dodajWmsObjekte();
   } else {
     koordinateObjekataIzDdlova();
   }
+  document.querySelector("#chkSpajanjePostojecihVodova").checked = false;
 }
 
 function klikNaRastereZaVodove(browserEvent) {

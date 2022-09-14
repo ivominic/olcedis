@@ -76,6 +76,7 @@ function vodArrayElement(el, action, wizard, serialNo) {
     fid_1: el.values_.originalId,
     Geometry: wktGeometrije(el),
     name: el.values_.name,
+    merge: el.values_.merge,
     fid: el.values_.fid,
     materijal: el.values_.materijal,
     zajednicka_dion: el.values_.zajednicka_dion,

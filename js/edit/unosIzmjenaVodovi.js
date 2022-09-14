@@ -3,8 +3,12 @@
  */
 function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   //let napon = document.querySelector("#ddl_sloj_podataka").value;
-  let napon = document.querySelector("#napon").value;
-  napon === "";
+  //let napon = document.querySelector("#napon").value;
+  let napon = vodNaponskiNivoPrijeOdabira;
+  console.log("DODAJ POLJA UCRTANOM VODU", napon);
+  console.log("DODAJ POLJA UCRTANOM VODU", document.querySelector("#napon").value);
+  console.log("naponskiNivoNapojneTrafostanice", naponskiNivoNapojneTrafostanice);
+  console.log(vodNaponskiNivoPrijeOdabira, vodNaponskiNivoPrijeOdabira);
   if (napon === "0.4") {
     ucrtaniVod.set("rasvjeta", document.querySelector("#rasvjeta_vod").value);
     ucrtaniVod.set("vrsta", document.querySelector("#vrsta_vod_04").value);
@@ -37,8 +41,10 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("lejer", "vodovi");
   ucrtaniVod.set("fid_1", document.querySelector("#fid_1").value);
   ucrtaniVod.set("gps", "");
+  ucrtaniVod.set("merge", blnSpajanjeVodova);
   //ucrtaniVod.set("gps", document.querySelector("#gps").value);
-  ucrtaniVod.set("napon", document.querySelector("#napon").value);
+  ucrtaniVod.set("napon", vodNaponskiNivoPrijeOdabira);
+  //ucrtaniVod.set("napon", document.querySelector("#napon").value);
   ucrtaniVod.set("pog_sprem", document.querySelector("#pog_sprem").value);
   ucrtaniVod.set("vlasnistvo", document.querySelector("#vlasnistvo").value);
   ucrtaniVod.set("dionica", document.querySelector("#dionica").value);

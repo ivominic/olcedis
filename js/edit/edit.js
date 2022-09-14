@@ -53,6 +53,7 @@ function popuniKontrole(odgovor) {
 /** Unos izmijenjenih vrijednosti atributa, nove fotografije ili unos svih podataka za novu geometriju */
 function sacuvaj() {
   console.log("Administracija sacuvaj()");
+  vodNaponskiNivoPrijeOdabira = document.querySelector("#napon").value;
   if (selektovaniWmsObjekat) {
     //alert("Odabran je wms objekat");
     //TODO: Logika za slanje ažuriranja atributa

@@ -76,6 +76,7 @@ function vodArrayElementProperties(el, action) {
     fid_1: el.properties.fid_1,
     Geometry: prepareGeometryWms(el),
     name: el.properties.name,
+    merge: el.properties.merge,
     fid: el.properties.fid,
     materijal: el.properties.materijal,
     zajednicka_dion: el.properties.zajednicka_dion,

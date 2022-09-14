@@ -40,7 +40,9 @@ let blnDodijeljenoGpxProperties = false; //Promjenljiva koja označava da li su 
 let selectGpxFeature; //Feature iz gpx-a koji se selektuje
 let naponskiNivoNapojneTrafostanice = ""; //Prenos-odnos: ova promjenljiva se setuje, ali se nigdje ne koristi.
 let odabraniNaponskiNivo = "",
-  filePowerLevel = "";
+  filePowerLevel = "",
+  vodNaponskiNivoPrijeOdabira = "";
+let blnSpajanjeVodova = false;
 let sifraNapojneTrafostanice = "";
 let nazivNapojneTrafostanice = "";
 let izvodNapojneTrafostanice = "";
