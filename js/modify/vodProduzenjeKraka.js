@@ -128,4 +128,81 @@ modifyVod.on("modifyend", function (e) {
   }
 
   //TODO: Dodati u niz objekata za izmjenu. Dodati i novu geometriju kao property "geometrija"
+  vodArrayValuesProperties(e.features.getArray()[0], "U");
 });
+
+/**
+ * Preparing JSON object from feature, for powerline update geometry
+ * @param {* Feature of element for insert} el
+ * @param {* "I" for insert, "U" for update} action
+ */
+function vodArrayValuesProperties(el, action) {
+  let item = {
+    //fid_1: el.values_.fid_1,
+    fid_1: el.id_.split(".")[1],
+    Geometry: geometrijaIzmijenjenogVoda(el),
+    name: el.values_.name,
+    merge: el.values_.merge,
+    fid: el.values_.fid,
+    materijal: el.values_.materijal,
+    zajednicka_dion: el.values_.zajednicka_dion,
+    id_br: el.values_.id_br,
+    dionica_nn: el.values_.dionica_nn,
+    napon: el.values_.napon,
+    dionica: el.values_.dionica,
+    dionica_gps: el.values_.dionica_gps,
+    rasvjeta: el.values_.rasvjeta,
+    rac_duzina: el.values_.rac_duzina,
+    poc_dion: el.values_.poc_dion,
+    vrsta: el.values_.vrsta,
+    vlasnistvo: el.values_.vlasnistvo,
+    tip: el.values_.tip,
+    br_spojnica: el.values_.br_spojnica,
+    id: el.values_.id, //Vidjeti šta ovdje predajem
+    kraj_dion: el.values_.kraj_dion,
+    uze_presjek: el.values_.uze_presjek,
+    layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
+    izvod_ts: el.values_.izvod_ts,
+    uze: el.values_.uze,
+    br_faza: el.values_.br_faza,
+    presjek: el.values_.presjek,
+    opstina: el.values_.opstina,
+    naziv: el.values_.naziv,
+    god_izg: el.values_.god_izg,
+    gps: el.values_.gps,
+    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
+    pog_sprem: el.values_.pog_sprem,
+    duzina: el.values_.duzina,
+    layer_id: el.values_.layer_id,
+    broj_spojnica: el.values_.broj_spojnica,
+    geohash_id: "", //Provjeriti da li treba da se šalje
+    geohash_id_no: "", //Provjeriti da li treba da se šalje
+    korisnik: globalUsername,
+    katastar: el.values_.katastar,
+    posjeduje_sliku: el.values_.posjeduje_sliku,
+    originalId: el.values_.originalId,
+    sifra_dionice: el.values_.sifra_dionice,
+    sifra_napojne: el.values_.sifra_napojne,
+    naziv_napojne: el.values_.naziv_napojne,
+    izvod_napojne: el.values_.izvod_napojne,
+    vlasnik: el.values_.vlasnik,
+    ts: el.values_.ts,
+    akcija: action,
+    wizard: 0,
+    isEditable: isEditable,
+    geohash_id: el.values_.geohash_id,
+    geohash_id_no: el.values_.geohash_id_no,
+    posjeduje_sliku: el.values_.posjeduje_sliku,
+  };
+  vodoviArrayFinal.push(item);
+  return item;
+}
+
+function geometrijaIzmijenjenogVoda(objekat) {
+  //console.log("Izvlačenje geometrije", objekat);
+  let format = new ol.format.WKT();
+  //let geomObject = objekat.values_.geometry;
+  let geom = format.writeGeometry(objekat.getGeometry());
+  //let geom = format.writeGeometry(new ol.geom.LineString(geomObject.flatCoordinates), {});
+  return geom;
+}

@@ -362,7 +362,13 @@ function nkroArrayElementProperties(el, action) {
 }
 
 function pripremaZaAzuriranjeWmsObjekta(el) {
-  let lejer = el.id.split(".")[0];
+  let lejer;
+  if (el.id) {
+    lejer = el.id.split(".")[0];
+  }
+  if (el.id_) {
+    lejer = el.id_.split(".")[0];
+  }
   let item;
   console.log("Lejer ažuriranje", lejer);
   if (lejer === "stubovi") {
