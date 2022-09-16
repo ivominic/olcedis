@@ -437,8 +437,8 @@ function selekcijaGpxPoligonom() {
   //console.log("vectorSource prije for each", featuresPolygon);
   //console.log("vectorSource prije for each array", featuresPolygon.array_);
   //console.log("vectorSource prije for each array[0]", featuresPolygon.array_[0].getGeometry());
-  let minValue = minGpxName(vectorSource);
-  let maxValue = maxGpxName(vectorSource);
+  let minValue = minGpxName(vectorSource.getFeatures());
+  let maxValue = maxGpxName(vectorSource.getFeatures());
   (minGpsPointName = 0), (maxGpsPointName = 0);
   let pocetnaTacka, krajnjaTacka;
   for (let i = minValue; i <= maxValue; i++) {
@@ -491,7 +491,7 @@ function selekcijaGpxPoligonom() {
 function minGpxName(tacke) {
   let retval = 99999;
   if (tacke && tacke.length > 0) {
-    tacke.getFeatures().forEach(function (el) {
+    tacke.forEach(function (el) {
       parseInt(el.values_.name) < retval && (retval = parseInt(el.values_.name));
     });
   }
@@ -501,7 +501,7 @@ function minGpxName(tacke) {
 function maxGpxName(tacke) {
   let retval = 0;
   if (tacke && tacke.length > 0) {
-    tacke.getFeatures().forEach(function (el) {
+    tacke.forEach(function (el) {
       parseInt(el.values_.name) > retval && (retval = parseInt(el.values_.name));
     });
   }
