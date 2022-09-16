@@ -20,6 +20,7 @@ let globalUsername = ""; //Username korisnika aplikacije
 let globalVlasnik = ""; //Username vlasnika za korisnika aplikacije
 let geoserverToken = ""; //Promjenljiva koja čuva token za wfs servise
 let isEditable = true; //Promjenljiva koja definiše da li je dozvoljeno pomjeranje objekata iz fajla. Za kml nije dozvoljeno.
+let globalTimestamp = Date.now();
 let tacke = [],
   linije = [],
   poligoni = [];

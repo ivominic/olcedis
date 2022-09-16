@@ -117,6 +117,7 @@ function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucna_mjes
       temp_prikljucno_mjesto: JSON.stringify(prikljucna_mjesta),
       temp_potrosaci: JSON.stringify(potrosaci),
       temp_nkro: JSON.stringify(nkro),
+      group_id: globalTimestamp,
     },
     type: "POST",
     success: function (data) {

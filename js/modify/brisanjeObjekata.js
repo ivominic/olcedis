@@ -24,6 +24,7 @@ function brisanjeWmsObjekata() {
     data: {
       korisnik: globalUsername,
       objekti: JSON.stringify(nizWmsZaBrisanje),
+      group_id: globalTimestamp,
     },
     type: "POST",
     success: function (data) {
