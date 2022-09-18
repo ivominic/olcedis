@@ -94,6 +94,21 @@ function klikNaVektore(browserEvent) {
     }
   });
 
+  vectorSource.getFeatures().forEach(function (el) {
+    if (odabirPrikljucnogMjestaSaMapeVektor) {
+      //odabirPrikljucnogMjestaSaMapeVektor = false;
+      console.log("PRIKLJUČNOMJESTO");
+      console.log(potrosacZaKogSeBiraPrikljucnoMjesto, el.ol_uid);
+      if (el.ol_uid === potrosacZaKogSeBiraPrikljucnoMjesto) {
+        potrosacZaKogSeBiraPrikljucnoMjesto = "";
+        selectGpxFeature = el;
+        select.getFeatures().clear();
+        select.getFeatures().push(selectGpxFeature);
+        console.log("Odabrani feature priključnog mjesta", selectGpxFeature);
+      }
+    }
+  });
+
   if (!odabirSaMape) {
     if (nizGpxTacakaZaObradu.length > 1) {
       document.querySelector("#divPrethodniObjekat").style.display = "none";
@@ -219,9 +234,11 @@ select.on("select", function (e) {
   if (selectGpxFeature.values_.lejer) {
     //Popuni polja vrijednostima
     console.log("ulazi ovdje", selectGpxFeature.get("lejer"));
-    if (!odabirSaMape) {
+    if (!odabirSaMape && !odabirPrikljucnogMjestaSaMapeVektor) {
+      console.log("Prošao PM");
       prikazPodatakaIzGpxTacaka();
     }
+    odabirPrikljucnogMjestaSaMapeVektor = false;
   } else {
     if (!odabirSaMape) {
       if (selectGpxFeature.values_.name !== undefined) {
@@ -962,9 +979,15 @@ function klikNapojnaTrafostanicaMapa(browserEvent) {
 }
 
 function odabirPrikljucnogMjestaZaUnosPotrosaca() {
+  console.log("Trenutni objekat", selectGpxFeature);
+  potrosacZaKogSeBiraPrikljucnoMjesto = "";
+  if (selectGpxFeature) {
+    potrosacZaKogSeBiraPrikljucnoMjesto = selectGpxFeature.ol_uid;
+  }
   map.removeInteraction(draw);
   map.removeInteraction(modify);
   odabirPrikljucnogMjestaSaMape = true;
+  odabirPrikljucnogMjestaSaMapeVektor = true;
   odabirSaMape = true;
   nizKoordinataPrikljucnihMjesta = {};
   $(prik_mjesto).empty();
