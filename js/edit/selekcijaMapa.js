@@ -259,6 +259,7 @@ var modifyV = new ol.interaction.Modify({
 
 modifyV.on("modifyend", function (e) {
   let featureName = e.features.getArray()[0].values_.name;
+  console.log("isEditable", isEditable);
 
   console.log("select m", e.features.getArray()[0].values_);
   console.log("ime tačke m", e.features.getArray()[0].values_.name);
@@ -306,6 +307,14 @@ modifyV.on("modifyend", function (e) {
         original = item;
       }
     });
+
+    if (!original) {
+      let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat], "EPSG:4326"));
+      e.features.getArray()[0].getGeometry().setCoordinates(pocetnaTacka.flatCoordinates);
+      //e.features.getArray()[0].getGeometry().setCoordinates(original.coordinates);
+      poruka("Upozorenje", "Nije dozvoljeno pomjeranje kml tačke.");
+      return false;
+    }
 
     let coordinates = e.features.getArray()[0].getGeometry().getCoordinates();
 
