@@ -511,8 +511,9 @@ a.active {
 }
 
 .sadrzaj-scroll {
-  overflow-y: scroll;
-  height: 450px;
+    overflow-y: scroll;
+    height: auto;
+    max-height: 450px !important;
 }
 
 .style-2::-webkit-scrollbar-track {
