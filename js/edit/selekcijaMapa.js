@@ -94,20 +94,22 @@ function klikNaVektore(browserEvent) {
     }
   });
 
-  vectorSource.getFeatures().forEach(function (el) {
-    if (odabirPrikljucnogMjestaSaMapeVektor) {
-      //odabirPrikljucnogMjestaSaMapeVektor = false;
-      console.log("PRIKLJUČNOMJESTO");
-      console.log(potrosacZaKogSeBiraPrikljucnoMjesto, el.ol_uid);
-      if (el.ol_uid === potrosacZaKogSeBiraPrikljucnoMjesto) {
-        potrosacZaKogSeBiraPrikljucnoMjesto = "";
-        selectGpxFeature = el;
-        select.getFeatures().clear();
-        select.getFeatures().push(selectGpxFeature);
-        console.log("Odabrani feature priključnog mjesta", selectGpxFeature);
+  if (vectorSource) {
+    vectorSource.getFeatures().forEach(function (el) {
+      if (odabirPrikljucnogMjestaSaMapeVektor) {
+        //odabirPrikljucnogMjestaSaMapeVektor = false;
+        console.log("PRIKLJUČNOMJESTO");
+        console.log(potrosacZaKogSeBiraPrikljucnoMjesto, el.ol_uid);
+        if (el.ol_uid === potrosacZaKogSeBiraPrikljucnoMjesto) {
+          potrosacZaKogSeBiraPrikljucnoMjesto = "";
+          selectGpxFeature = el;
+          select.getFeatures().clear();
+          select.getFeatures().push(selectGpxFeature);
+          console.log("Odabrani feature priključnog mjesta", selectGpxFeature);
+        }
       }
-    }
-  });
+    });
+  }
 
   if (!odabirSaMape) {
     if (nizGpxTacakaZaObradu.length > 1) {
@@ -463,8 +465,8 @@ function selekcijaGpxPoligonom() {
   //console.log("vectorSource prije for each", featuresPolygon);
   //console.log("vectorSource prije for each array", featuresPolygon.array_);
   //console.log("vectorSource prije for each array[0]", featuresPolygon.array_[0].getGeometry());
-  let minValue = minGpxName(vectorSource.getFeatures());
-  let maxValue = maxGpxName(vectorSource.getFeatures());
+  let minValue = minGpxName(vectorSource);
+  let maxValue = maxGpxName(vectorSource);
   (minGpsPointName = 0), (maxGpsPointName = 0);
   let pocetnaTacka, krajnjaTacka;
   for (let i = minValue; i <= maxValue; i++) {
@@ -516,7 +518,7 @@ function selekcijaGpxPoligonom() {
 
 function minGpxName(tacke) {
   let retval = 99999;
-  if (tacke && tacke.length > 0) {
+  if (tacke && tacke.getFeatures() && tacke.getFeatures().length > 0) {
     tacke.forEach(function (el) {
       parseInt(el.values_.name) < retval && (retval = parseInt(el.values_.name));
     });
@@ -526,7 +528,7 @@ function minGpxName(tacke) {
 
 function maxGpxName(tacke) {
   let retval = 0;
-  if (tacke && tacke.length > 0) {
+  if (tacke && tacke.getFeatures() && tacke.getFeatures().length > 0) {
     tacke.forEach(function (el) {
       parseInt(el.values_.name) > retval && (retval = parseInt(el.values_.name));
     });

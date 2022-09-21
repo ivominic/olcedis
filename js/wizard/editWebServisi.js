@@ -162,6 +162,14 @@ function pretragaTrafostanicaGpx(sifraTS) {
           console.log("prenosni odnos: " + data.ts.prenosni_odnos, "filePowerLevel: " + filePowerLevel);
         }
 
+        $("#ddlIzvodNapojneTrafostanice").empty();
+        $("#ddlIzvodNapojneTrafostanice").append(
+          $("<option>", {
+            value: "",
+            text: "",
+          })
+        );
+
         data.ts.izvodi.forEach(function (vrijednost) {
           console.log("vrijednost niza", vrijednost);
           $("#ddlIzvodNapojneTrafostanice").append(
