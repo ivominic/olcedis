@@ -80,24 +80,7 @@ function objectsFinalInsert(objects, methodName) {
  * @param {*} potrosaci
  * @param {*} nkro
  */
-function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucna_mjesta, potrosaci, nkro) {
-  if (
-    !(
-      stubovi.length +
-      vodovi.length +
-      trafostanice.length +
-      podovi.length +
-      prikljucna_mjesta.length +
-      potrosaci.length +
-      nkro.length +
-      nizWmsZaBrisanje.length +
-      kmlLinksArray.length
-    )
-  ) {
-    //poruka("Upozorenje", "Ne postoje objekti za unos.");
-    unosPostojeObjekti = false;
-    return false;
-  }
+async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucna_mjesta, potrosaci, nkro) {
   let retval = true;
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/object_control";
   console.log("stubovi insert all objects   ", JSON.stringify(stubovi));
@@ -107,40 +90,42 @@ function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucna_mjes
   console.log("prikljucna_mjesta insert all objects   ", JSON.stringify(prikljucna_mjesta));
   console.log("potrosaci insert all objects   ", JSON.stringify(potrosaci));
   console.log("nkro insert all objects   ", JSON.stringify(nkro));
-  $.ajax({
-    url: urlServisa,
-    data: {
-      temp_stubovi: JSON.stringify(stubovi),
-      temp_vodovi: JSON.stringify(vodovi),
-      temp_trafostanice: JSON.stringify(trafostanice),
-      temp_pod: JSON.stringify(podovi),
-      temp_prikljucno_mjesto: JSON.stringify(prikljucna_mjesta),
-      temp_potrosaci: JSON.stringify(potrosaci),
-      temp_nkro: JSON.stringify(nkro),
-      group_id: globalTimestamp,
-    },
-    type: "POST",
-    success: function (data) {
-      console.log("success insert all objects", data);
-      unosBrojFunkcija++;
-      if (unosPostojeObjekti) {
-        if (unosBrojFunkcija === 3 && unosUspjeh) {
-          poruka("Uspjeh", "Uspješno sačuvani podaci.");
+
+  promiseArray.push(
+    fetch(urlServisa, {
+      method: "POST",
+      body: JSON.stringify({
+        temp_stubovi: JSON.stringify(stubovi),
+        temp_vodovi: JSON.stringify(vodovi),
+        temp_trafostanice: JSON.stringify(trafostanice),
+        temp_pod: JSON.stringify(podovi),
+        temp_prikljucno_mjesto: JSON.stringify(prikljucna_mjesta),
+        temp_potrosaci: JSON.stringify(potrosaci),
+        temp_nkro: JSON.stringify(nkro),
+        group_id: globalTimestamp,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((res) => {
+        console.log("BITNO", res);
+        console.log("BITNO", res.status);
+        if (res.status !== 200) {
+          finalImportMessage += "Unos objekata nije izvršen.\n";
+          unosUspjeh = false;
         }
-        if (unosBrojFunkcija === 3 && !unosUspjeh) {
-          poruka("Greška", "Akcija nije izvršena");
-        }
-      }
-    },
-    error: function (x, y, z) {
-      unosBrojFunkcija++;
-      unosUspjeh = false;
-      if (unosBrojFunkcija === 3 && unosPostojeObjekti) {
-        poruka("Greška", "Akcija nije izvršena");
-      }
-      console.log("Greška insertAllObjects", JSON.parse(x.responseText).response);
-    },
-  });
+        return res.text();
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(status, (err) => {
+        finalImportMessage += "Unos objekata nije izvršen.\n";
+        unosUspjeh = false;
+        return console.log("insertAllObject greška", err);
+      })
+  );
 }
 
 /**

@@ -1,14 +1,8 @@
 /**Metode koje vrše finalnu obradu podataka prije inserta u bazu */
 
-function insertObjekataIzGpx() {
+async function insertObjekataIzGpx() {
   let postojiNeobradjenaTacka = false;
   let iterator = 0;
-  /*stuboviArrayFinal.length = 0;
-  trafostaniceArrayFinal.length = 0;
-  podoviArrayFinal.length = 0;
-  prikljucnaMjestaArrayFinal.length = 0;
-  potrosaciArrayFinal.length = 0;
-  nkroArrayFinal.length = 0;*/
   gpxFeatures.forEach((el) => {
     iterator++;
     console.log("finalno lejer", el.get("lejer"));
@@ -44,24 +38,16 @@ function insertObjekataIzGpx() {
     console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
     vodArrayElement(el, "I", 0);
   });
-  /*vektorKreiraniVodovi.getSource().forEach((el) => {
-    vodArrayElement(el, "I", 0);
-  });*/
 
-  console.log("stubovi finalni array", stuboviArrayFinal);
-  console.log("vodovi finalni array", vodoviArrayFinal);
-  console.log("trafostanice finalni array", trafostaniceArrayFinal);
-  console.log("nkro finalni array", nkroArrayFinal);
-  console.log("potrosaci finalni array", potrosaciArrayFinal);
-  console.log("podovi finalni array", podoviArrayFinal);
-  console.log("prikljucna mjesta finalni array", prikljucnaMjestaArrayFinal);
 
   if (postojiNeobradjenaTacka) {
+    console.log("Upozorenje", "Nisu obradjeni svi objekti iz fajla za uvoz.");
     poruka("Upozorenje", "Nisu obradjeni svi objekti iz fajla za uvoz.");
+    unosUspjeh = false;
     return false;
   } else {
     //TODO: Unijeti sve nizove u bazu (pozvati servis za svaki od nizova)
-    insertAllObjects(
+    await insertAllObjects(
       stuboviArrayFinal,
       vodoviArrayFinal,
       trafostaniceArrayFinal,
@@ -71,7 +57,7 @@ function insertObjekataIzGpx() {
       nkroArrayFinal
     );
   }
-  availableLayersPerPowerLevel(""); //After completion fill ddl with all items.
+  await availableLayersPerPowerLevel(""); //After completion fill ddl with all items.
   //poruka("Uspjeh", "Uspješno sačuvani podaci.");
   //TODO: Resetovati polja, trafostanicu, izvod..
   //Removin vector file from map, after completing action.

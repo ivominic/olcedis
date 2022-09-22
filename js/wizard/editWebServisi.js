@@ -608,34 +608,31 @@ function pravaPristupaStranici(username) {
  * Metoda koja poziva servis za ažuriranje objekata, kada je pokrenut import iz kml fajla.
  * @param {*} objects
  */
-function kmlConnectionLog(objects) {
-  let retval = true;
+async function kmlConnectionLog(objects) {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/objekti_za_azuriranje";
-  $.ajax({
-    url: urlServisa,
-    data: { objekti: JSON.stringify(objects), group_id: globalTimestamp },
-    type: "POST",
-    success: function (data) {
-      console.log("success", data);
-      unosBrojFunkcija++;
-      if (unosPostojeObjekti) {
-        if (unosBrojFunkcija === 3 && unosUspjeh) {
-          poruka("Uspjeh", "Uspješno sačuvani podaci.");
+  promiseArray.push(
+    fetch(urlServisa, {
+      method: "POST",
+      body: JSON.stringify({ objekti: JSON.stringify(objects), group_id: globalTimestamp }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((res) => {
+        if (res.status !== 200) {
+          finalImportMessage += "Ažuriranje objekata nije izvršeno.\n";
+          unosUspjeh = false;
         }
-        if (unosBrojFunkcija === 3 && !unosUspjeh) {
-          poruka("Greška", "Akcija nije izvršena");
-        }
-      }
-    },
-    error: function (x, y, z) {
-      unosBrojFunkcija++;
-      unosUspjeh = false;
-      if (unosBrojFunkcija === 3 && unosPostojeObjekti) {
-        poruka("Greška", "Akcija nije izvršena");
-      }
-      console.log("error kml connection log", x.responseText);
-    },
-  });
+        return res.text();
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(status, (err) => {
+        finalImportMessage += "Ažuriranje objekata nije izvršeno.\n";
+        return console.log(status, err);
+      })
+  );
 }
 
 /**
@@ -696,7 +693,7 @@ function readRadius() {
  * Metoda koja popunjava listu slojeva u zavisnosti od odabranog naponskog nivoa.
  * @param {*} powerLevel
  */
-function availableLayersPerPowerLevel(powerLevel) {
+async function availableLayersPerPowerLevel(powerLevel) {
   $("#ddl_sloj_podataka").empty();
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/slojevi?nivo=" + powerLevel;
   urlServisa += "&t=" + Date.now();
@@ -757,7 +754,7 @@ function sifreDionicaVodova(nazivTs, sifraTs, izvodTs) {
  * @param {*} potrosaci
  * @param {*} nkro
  */
-function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucna_mjesta, potrosaci, nkro) {
+async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucna_mjesta, potrosaci, nkro) {
   if (
     !(
       stubovi.length +

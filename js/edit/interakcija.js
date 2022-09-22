@@ -288,18 +288,35 @@ function ddlLejerChange() {
   }
 }
 
-function finalnaPotvrdaUnosa() {
+/** Funkcija koja se pripremljene podatke šalje servisima za  unos u bazu */
+async function finalnaPotvrdaUnosa() {
   //Pozivanje web servisa za finalni unos
-  unosBrojFunkcija = 0;
+  finalImportMessage = "";
+  if (
+    !(
+      gpxFeatures.length +
+      vodoviArrayFinal.length +
+      nizVodovaGpx.length +
+      nizWmsZaBrisanje.length +
+      kmlLinksArray.length
+    )
+  ) {
+    poruka("Upozorenje", "Ne postoje objekti koje je potrebno obraditi");
+    return false;
+  }
   unosUspjeh = true;
   unosPostojeObjekti = true;
-  kmlConnectionLog(kmlLinksArray);
-  insertObjekataIzGpx();
-  //poruka("Uspjeh", "Završen unos podataka");
-  brisanjeWmsObjekata();
-  if (!unosPostojeObjekti) {
-    poruka("Upozorenje", "Ne postoje objekti koje je potrebno obraditi");
-  }
+  await kmlConnectionLog(kmlLinksArray);
+  await insertObjekataIzGpx();
+  await brisanjeWmsObjekata();
+  Promise.all(promiseArray).then(function () {
+    console.log("Kompletiran unos podataka", finalImportMessage);
+    if (finalImportMessage) {
+      poruka("Greska", finalImportMessage);
+    } else {
+      poruka("Uspjeh", "Uspješno izvršena akcija");
+    }
+  });
 
   console.log("Finalno features", gpxFeatures);
 }

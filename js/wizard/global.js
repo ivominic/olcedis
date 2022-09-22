@@ -24,9 +24,10 @@ let globalTimestamp = Date.now();
 let tacke = [],
   linije = [],
   poligoni = [];
-let unosBrojFunkcija = 0,
-  unosUspjeh = true,
-  unosPostojeObjekti = true;
+let unosUspjeh = true,
+  unosPostojeObjekti = true,
+  finalImportMessage = "";
+let promiseArray = [];
 let selektovaniWmsObjekat; //Objekat koji je selektovan sa wms lejera. Prazniti ga kada se odabere druga akcija.
 let originalnaGeometrijaWmsVoda;
 let nizWmsZaBrisanje = []; //Niz postojećih objekata za brisanje, grupisan po geohash_no

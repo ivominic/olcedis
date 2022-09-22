@@ -17,36 +17,34 @@ function dodajObjekatZaBrisanje(objekat) {
 }
 
 /** Poziv web servis za brisanje objekata. Poziva se na finalnoj potvrdi akcija (ikonica dvostruki štrik) */
-function brisanjeWmsObjekata() {
+async function brisanjeWmsObjekata() {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/brisanje_objekta";
-  $.ajax({
-    url: urlServisa,
-    data: {
-      korisnik: globalUsername,
-      objekti: JSON.stringify(nizWmsZaBrisanje),
-      group_id: globalTimestamp,
-    },
-    type: "POST",
-    success: function (data) {
-      console.log("success brisanje objekata", data);
-      nizWmsZaBrisanje.length = 0;
-      unosBrojFunkcija++;
-      if (unosPostojeObjekti) {
-        if (unosBrojFunkcija === 3 && unosUspjeh) {
-          poruka("Uspjeh", "Uspješno sačuvani podaci.");
+
+  promiseArray.push(
+    fetch(urlServisa, {
+      method: "POST",
+      body: JSON.stringify({
+        korisnik: globalUsername,
+        objekti: JSON.stringify(nizWmsZaBrisanje),
+        group_id: globalTimestamp,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((res) => {
+        if (res.status !== 200) {
+          finalImportMessage += "Brisanje objekata nije izvršeno.\n";
+          unosUspjeh = false;
         }
-        if (unosBrojFunkcija === 3 && !unosUspjeh) {
-          poruka("Greška", "Akcija nije izvršena");
-        }
-      }
-    },
-    error: function (x, y, z) {
-      unosBrojFunkcija++;
-      unosUspjeh = false;
-      if (unosBrojFunkcija === 3 && unosPostojeObjekti) {
-        poruka("Greška", "Akcija nije izvršena");
-      }
-      console.log("Greška brisanje objekata", JSON.parse(x.responseText).response);
-    },
-  });
+        return res.text();
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(status, (err) => {
+        finalImportMessage += "Brisanje objekata nije izvršeno.\n";
+        return console.log(status, err);
+      })
+  );
 }
