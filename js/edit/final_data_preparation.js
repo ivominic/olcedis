@@ -67,11 +67,6 @@ function stubArrayElement(el, action, wizard, serialNo) {
   console.log("Stubovi finalno", item);
   stuboviArrayFinal.push(item);
   return item;
-  /*kmlLinksArray.push({
-    new_object_id: kmlFeature.get("originalId"),
-    old_object_id: oldObject[1],
-    old_object_type: oldObject[0],
-  });*/
 }
 
 /**

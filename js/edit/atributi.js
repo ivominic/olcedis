@@ -419,4 +419,37 @@ function prikaziAtributDivPod() {
   document.querySelector("#divUnosBrBrojila").style.display = "flex";
 }
 
+function ddlLejerChange() {
+  borderClear();
+  sakrijSvaPoljaAtributDiv();
+  let value = document.querySelector("#ddl_sloj_podataka").value;
+  if (value === "stub04") {
+    prikazPanelaAtributa("Stub 04KV");
+  } else if (value === "stub10") {
+    prikazPanelaAtributa("Stub 10KV");
+  } else if (value === "stub35") {
+    prikazPanelaAtributa("Stub 35KV");
+  } else if (value === "vod04") {
+    prikazPanelaAtributa("Vod 04KV");
+  } else if (value === "vod10") {
+    prikazPanelaAtributa("Vod 10KV");
+  } else if (value === "vod35") {
+    prikazPanelaAtributa("Vod 35KV");
+  } else if (value === "trafostanica10") {
+    prikazPanelaAtributa("Trafostanica1004");
+  } else if (value === "trafostanica35") {
+    prikazPanelaAtributa("Trafostanica35x");
+  } else if (value === "vod35") {
+    prikazPanelaAtributa("trafostanica110");
+  } else if (value === "nkro") {
+    prikazPanelaAtributa("NKRO");
+  } else if (value === "prikljucno_mjesto") {
+    prikazPanelaAtributa("Priključno mjesto");
+  } else if (value === "potrosac") {
+    prikazPanelaAtributa("Potrošač");
+  } else if (value === "pod") {
+    prikazPanelaAtributa("POD");
+  }
+}
+
 ddlLejerChange(); //Inicijalno prikazivanje

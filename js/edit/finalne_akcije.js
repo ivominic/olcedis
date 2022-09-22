@@ -39,7 +39,6 @@ async function insertObjekataIzGpx() {
     vodArrayElement(el, "I", 0);
   });
 
-
   if (postojiNeobradjenaTacka) {
     console.log("Upozorenje", "Nisu obradjeni svi objekti iz fajla za uvoz.");
     poruka("Upozorenje", "Nisu obradjeni svi objekti iz fajla za uvoz.");
@@ -57,10 +56,56 @@ async function insertObjekataIzGpx() {
       nkroArrayFinal
     );
   }
-  await availableLayersPerPowerLevel(""); //After completion fill ddl with all items.
-  //poruka("Uspjeh", "Uspješno sačuvani podaci.");
-  //TODO: Resetovati polja, trafostanicu, izvod..
-  //Removin vector file from map, after completing action.
+}
+
+/** Funkcija koja se pripremljene podatke šalje servisima za  unos u bazu */
+async function finalnaPotvrdaUnosa() {
+  //Pozivanje web servisa za finalni unos
+  finalImportMessage = "";
+  if (
+    !(
+      gpxFeatures.length +
+      vodoviArrayFinal.length +
+      nizVodovaGpx.length +
+      nizWmsZaBrisanje.length +
+      kmlLinksArray.length
+    )
+  ) {
+    poruka("Upozorenje", "Ne postoje objekti koje je potrebno obraditi");
+    return false;
+  }
+  unosUspjeh = true;
+  unosPostojeObjekti = true;
+  await kmlConnectionLog(kmlLinksArray);
+  await insertObjekataIzGpx();
+  await brisanjeWmsObjekata();
+  Promise.all(promiseArray).then(function () {
+    console.log("Kompletiran unos podataka", finalImportMessage);
+    if (finalImportMessage) {
+      poruka("Greska", finalImportMessage);
+      resetovanjeNizovaNakonGreske();
+    } else {
+      poruka("Uspjeh", "Uspješno izvršena akcija");
+      resetovanjeNizovaNakonUspjeha();
+    }
+  });
+
+  console.log("Finalno features", gpxFeatures);
+}
+
+function resetovanjeNizovaNakonGreske() {
+  stuboviArrayFinal.length = 0;
+  vodoviArrayFinal.length = 0;
+  trafostaniceArrayFinal.length = 0;
+  podoviArrayFinal.length = 0;
+  prikljucnaMjestaArrayFinal.length = 0;
+  potrosaciArrayFinal.length = 0;
+  nkroArrayFinal.length = 0;
+}
+
+function resetovanjeNizovaNakonUspjeha() {
+  resetovanjeNizovaNakonGreske();
+  availableLayersPerPowerLevel("");
   vectorSource && vectorSource.clear();
   vektorKreiraniVodovi.getSource().clear();
   gpxFeatures.length = 0;
