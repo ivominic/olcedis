@@ -104,3 +104,42 @@ function potvrdaPomjeranjaObjekta() {
 }
 
 //TODO: Poziv servisa za slanje niza parova za pomjeranje.
+
+/** Poziv web servis za pomjeranje objekata na lokaciju gpx tačaka. Poziva se na finalnoj potvrdi akcija (ikonica dvostruki štrik) */
+async function pomjeranjeObjekataVodaWS() {
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/pomjeranje_objekata";
+
+  let jsonDataArray = [];
+  nizWmsZaPomjeranje.forEach((el) => {
+    jsonDataArray.push({ stariObjekat: el[0], novaGeometrija: el[1] });
+  });
+
+  console.log("Pomjeranje voda niz", jsonDataArray);
+
+  promiseArray.push(
+    fetch(urlServisa, {
+      method: "POST",
+      body: JSON.stringify({
+        objects: jsonDataArray,
+        korisnik: globalUsername,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+      .then((res) => {
+        if (res.status !== 200) {
+          finalImportMessage += "Izmjena geometrije voda nije izvršena.\n";
+          unosUspjeh = false;
+        }
+        return res.text();
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(status, (err) => {
+        finalImportMessage += "Izmjena geometrije voda nije izvršena.\n";
+        return console.log(status, err);
+      })
+  );
+}

@@ -77,9 +77,14 @@ async function finalnaPotvrdaUnosa() {
   }
   unosUspjeh = true;
   unosPostojeObjekti = true;
-  await kmlConnectionLog(kmlLinksArray);
-  await insertObjekataIzGpx();
-  await brisanjeWmsObjekata();
+  if (nizWmsZaPomjeranje.length > 0) {
+    pomjeranjeObjekataVodaWS();
+  } else {
+    await kmlConnectionLog(kmlLinksArray);
+    await insertObjekataIzGpx();
+    await brisanjeWmsObjekata();
+  }
+
   Promise.all(promiseArray).then(function () {
     console.log("Kompletiran unos podataka", finalImportMessage);
     if (finalImportMessage) {
