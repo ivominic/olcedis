@@ -68,7 +68,8 @@ async function finalnaPotvrdaUnosa() {
       vodoviArrayFinal.length +
       nizVodovaGpx.length +
       nizWmsZaBrisanje.length +
-      kmlLinksArray.length
+      kmlLinksArray.length +
+      nizWmsZaIzmjenu.length
     )
   ) {
     poruka("Upozorenje", "Ne postoje objekti koje je potrebno obraditi");
@@ -101,6 +102,7 @@ function resetovanjeNizovaNakonGreske() {
   prikljucnaMjestaArrayFinal.length = 0;
   potrosaciArrayFinal.length = 0;
   nkroArrayFinal.length = 0;
+  //vektorKreiraniVodovi
 }
 
 function resetovanjeNizovaNakonUspjeha() {
@@ -109,4 +111,7 @@ function resetovanjeNizovaNakonUspjeha() {
   vectorSource && vectorSource.clear();
   vektorKreiraniVodovi.getSource().clear();
   gpxFeatures.length = 0;
+  nizWmsZaIzmjenu.length = 0;
+  nizZaVektorAzuriranje.length = 0;
+  vektorObjektiZaAzuriranje.getSource().clear();
 }
