@@ -100,7 +100,7 @@ function brisanje() {
   featureLineOverlay.getSource().clear();
   featurePointOverlay.getSource().clear();
   featurePolygonOverlay.getSource().clear();
-  vectorSource.clear();
+  vectorSource && vectorSource.clear();
 }
 
 /**Funkcija koja prolazi kroz nizove tačaka, linija i polgiona i kreira CQL uslov u zavisnosti od odabranih opcija */
