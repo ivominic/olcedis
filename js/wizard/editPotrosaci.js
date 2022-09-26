@@ -103,7 +103,11 @@ function potrosaciUpoligonu(napon) {
     success: function (response) {
       selektovaniPotrosaciFeatures = new ol.format.GeoJSON().readFeatures(response);
       nizWizardDodatniPotrosaci.forEach((el) => {
-        selektovaniPotrosaciFeatures.push(el);
+        let blnNePostoji = true;
+        selektovaniPotrosaciFeatures.forEach((elOld) => {
+          el.id_ === elOld.id_ && (blnNePostoji = false);
+        });
+        blnNePostoji && selektovaniPotrosaciFeatures.push(el);
       });
       if (selektovaniPotrosaciFeatures.length === 0) {
         //poruka("Upozorenje", "Nema potrošača u odabranom zahvatu.");

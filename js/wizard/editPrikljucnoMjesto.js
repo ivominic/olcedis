@@ -47,7 +47,11 @@ function prikljucnaMjestaUpoligonu(napon) {
     success: function (response) {
       selektovanaPrikljucnaMjestaFeatures = new ol.format.GeoJSON().readFeatures(response);
       nizWizardDodatnaPrikljucnaMjesta.forEach((el) => {
-        selektovanaPrikljucnaMjestaFeatures.push(el);
+        let blnNePostoji = true;
+        selektovanaPrikljucnaMjestaFeatures.forEach((elOld) => {
+          el.id_ === elOld.id_ && (blnNePostoji = false);
+        });
+        blnNePostoji && selektovanaPrikljucnaMjestaFeatures.push(el);
       });
       if (selektovanaPrikljucnaMjestaFeatures.length === 0) {
         poruka("Upozorenje", "Nema priključnih mjesta u odabranom zahvatu.");
