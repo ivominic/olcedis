@@ -39,28 +39,48 @@ function potvrdaObjektaZaDodavanjeWizard() {
   let objectId = document.querySelector("#ddlObjekatZaDodavanjeWizard").value;
   let tip = objectId.split(".")[0];
   let blnNadjen = false;
+  let blnNePostoji = true;
   nizDodatnihObjekataJsonWizard.forEach((el) => {
     if (objectId === el.id_) {
       blnNadjen = true;
       if (tip === "vodovi") {
-        nizWizardDodatniVodovi.push(el);
+        nizWizardDodatniVodovi.forEach((elTemp) => {
+          objectId === elTemp.id_ && (blnNePostoji = false);
+        });
+        blnNePostoji && nizWizardDodatniVodovi.push(el);
       }
       if (tip === "trafostanice") {
-        nizWizardDodatneTrafostanice.push(el);
+        nizWizardDodatneTrafostanice.forEach((elTemp) => {
+          objectId === elTemp.id_ && (blnNePostoji = false);
+        });
+        blnNePostoji && nizWizardDodatneTrafostanice.push(el);
       }
       if (tip === "potrosaci") {
-        nizWizardDodatniPotrosaci.push(el);
+        nizWizardDodatniPotrosaci.forEach((elTemp) => {
+          objectId === elTemp.id_ && (blnNePostoji = false);
+        });
+        blnNePostoji && nizWizardDodatniPotrosaci.push(el);
       }
       if (tip === "pod") {
-        nizWizardDodatniPodovi.push(el);
+        nizWizardDodatniPodovi.forEach((elTemp) => {
+          objectId === elTemp.id_ && (blnNePostoji = false);
+        });
+        blnNePostoji && nizWizardDodatniPodovi.push(el);
       }
       if (tip === "prikljucno_mjesto") {
-        nizWizardDodatnaPrikljucnaMjesta.push(el);
+        nizWizardDodatnaPrikljucnaMjesta.forEach((elTemp) => {
+          objectId === elTemp.id_ && (blnNePostoji = false);
+        });
+        blnNePostoji && nizWizardDodatnaPrikljucnaMjesta.push(el);
       }
     }
   });
   if (blnNadjen) {
-    poruka("Uspjeh", "Uspješno dodata objekat");
+    if (blnNePostoji) {
+      poruka("Uspjeh", "Uspješno dodat objekat");
+    } else {
+      poruka("Upozorenje", "Pokušali ste da dodate objekat koji je već selektovan");
+    }
   } else {
     poruka("Upozorenje", "Nije dodat objekat");
   }
@@ -69,7 +89,6 @@ function potvrdaObjektaZaDodavanjeWizard() {
 function klikNaRastereZaWizardDodavanje(browserEvent) {
   showDiv("#odabirObjektaZaDodavanjeWizardDiv");
   let trenutniDdl = "#ddlObjekatZaDodavanjeWizard";
-  $(trenutniDdl).empty();
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
   let promiseWizardArray = [];
@@ -115,6 +134,7 @@ function klikNaRastereZaWizardDodavanje(browserEvent) {
 
   Promise.all(promiseWizardArray).then(function () {
     console.log("nizDodatnihObjekataJsonWizard", nizDodatnihObjekataJsonWizard);
+    $(trenutniDdl).empty();
     nizDodatnihObjekataJsonWizard.forEach((el) => {
       console.log("el čitanje", el);
       //let newId = el.id_.split(".")[0] + "." + el.values_.originalId;
