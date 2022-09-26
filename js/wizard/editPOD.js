@@ -66,6 +66,9 @@ function podUpoligonu(napon) {
     data: {},
     success: function (response) {
       selektovaniPODoviFeatures = new ol.format.GeoJSON().readFeatures(response);
+      nizWizardDodatniPodovi.forEach((el) => {
+        selektovaniPODoviFeatures.push(el);
+      });
       if (selektovaniPODoviFeatures.length === 0) {
         poruka("Upozorenje", "Nema PODova u odabranom zahvatu.");
         return false;

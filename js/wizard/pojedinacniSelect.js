@@ -5,6 +5,25 @@ document
   .querySelector("#btnPotvrdiObjekatZaDodavanjeWizard")
   .addEventListener("click", potvrdaObjektaZaDodavanjeWizard);
 
+let nizDodatnihObjekataWizard = [],
+  nizDodatnihObjekataJsonWizard = [];
+
+let nizWizardDodatniVodovi = [],
+  nizWizardDodatneTrafostanice = [],
+  nizWizardDodatniPotrosaci = [],
+  nizWizardDodatniPodovi = [],
+  nizWizardDodatnaPrikljucnaMjesta = [];
+
+function isprazniNizoveDodatnihObjekataWizard() {
+  nizDodatnihObjekataWizard.length = 0;
+  nizDodatnihObjekataJsonWizard.length = 0;
+  nizWizardDodatniVodovi.length = 0;
+  nizWizardDodatneTrafostanice.length = 0;
+  nizWizardDodatniPotrosaci.length = 0;
+  nizWizardDodatniPodovi.length = 0;
+  nizWizardDodatnaPrikljucnaMjesta.length = 0;
+}
+
 function prikazFormeZaOdabirWizard() {
   showDiv("#odabirObjektaZaDodavanjeWizardDiv");
 }
@@ -15,8 +34,36 @@ function selekcijaObjektaZaDodavanjeWizard() {
   map.on("singleclick", klikNaRastereZaWizardDodavanje);
 }
 
+/**Metoda za dodavanje odabranog objekta */
 function potvrdaObjektaZaDodavanjeWizard() {
-  alert("Dugme za potvrdu");
+  let objectId = document.querySelector("#ddlObjekatZaDodavanjeWizard").value;
+  let tip = objectId.split(".")[0];
+  let blnNadjen = false;
+  nizDodatnihObjekataJsonWizard.forEach((el) => {
+    if (objectId === el.id_) {
+      blnNadjen = true;
+      if (tip === "vodovi") {
+        nizWizardDodatniVodovi.push(el);
+      }
+      if (tip === "trafostanice") {
+        nizWizardDodatneTrafostanice.push(el);
+      }
+      if (tip === "potrosaci") {
+        nizWizardDodatniPotrosaci.push(el);
+      }
+      if (tip === "pod") {
+        nizWizardDodatniPodovi.push(el);
+      }
+      if (tip === "prikljucno_mjesto") {
+        nizWizardDodatnaPrikljucnaMjesta.push(el);
+      }
+    }
+  });
+  if (blnNadjen) {
+    poruka("Uspjeh", "Uspješno dodata objekat");
+  } else {
+    poruka("Upozorenje", "Nije dodat objekat");
+  }
 }
 
 function klikNaRastereZaWizardDodavanje(browserEvent) {
@@ -25,7 +72,6 @@ function klikNaRastereZaWizardDodavanje(browserEvent) {
   $(trenutniDdl).empty();
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
-  let tempNizWizard = [];
   let promiseWizardArray = [];
   map.forEachLayerAtPixel(pixel, function (layer) {
     if (layer instanceof ol.layer.Image) {
@@ -49,8 +95,12 @@ function klikNaRastereZaWizardDodavanje(browserEvent) {
                 console.log("Odgovor", odgovor);
                 if (odgovor.features.length > 0) {
                   odgovor.features.forEach(function (el) {
-                    tempNizWizard.push(el);
+                    nizDodatnihObjekataWizard.push(el);
                     console.log("el", el);
+                  });
+                  new ol.format.GeoJSON().readFeatures(json).forEach(function (el) {
+                    nizDodatnihObjekataJsonWizard.push(el);
+                    console.log("elJSON", el);
                   });
                 }
               })
@@ -64,10 +114,12 @@ function klikNaRastereZaWizardDodavanje(browserEvent) {
   });
 
   Promise.all(promiseWizardArray).then(function () {
-    tempNizWizard.forEach((el) => {
+    console.log("nizDodatnihObjekataJsonWizard", nizDodatnihObjekataJsonWizard);
+    nizDodatnihObjekataJsonWizard.forEach((el) => {
       console.log("el čitanje", el);
-      let newId = el.id.split(".")[0] + "." + el.properties.originalId;
-      let newText = el.id.split(".")[0] + "." + el.properties.name;
+      //let newId = el.id_.split(".")[0] + "." + el.values_.originalId;
+      let newId = el.id_;
+      let newText = el.id_.split(".")[0] + "." + el.values_.name;
 
       $(trenutniDdl).append(
         $("<option>", {
@@ -80,3 +132,5 @@ function klikNaRastereZaWizardDodavanje(browserEvent) {
     trenutniDdl = "";
   });
 }
+
+function dodajObjekat() {}

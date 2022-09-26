@@ -27,6 +27,8 @@ function prikazWizardForme() {
   document.querySelector("#uparivanjeTxtSifraTS").textContent = "";
   document.querySelector("#uparivanjeTxtSifraTS").textContent = "";
 
+  closeDiv("#odabirObjektaZaDodavanjeWizardDiv");
+
   showDiv("#wizardDiv");
 }
 

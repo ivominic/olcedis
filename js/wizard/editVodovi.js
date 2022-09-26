@@ -56,6 +56,9 @@ function vodoviUpoligonu(napon) {
     data: {},
     success: function (response) {
       selektovaniVodoviFeatures = new ol.format.GeoJSON().readFeatures(response);
+      nizWizardDodatniVodovi.forEach((el) => {
+        selektovaniVodoviFeatures.push(el);
+      });
       if (selektovaniVodoviFeatures.length === 0) {
         poruka("Upozorenje", "Nema vodova u odabranom zahvatu.");
         return false;

@@ -46,6 +46,9 @@ function prikljucnaMjestaUpoligonu(napon) {
     data: {},
     success: function (response) {
       selektovanaPrikljucnaMjestaFeatures = new ol.format.GeoJSON().readFeatures(response);
+      nizWizardDodatnaPrikljucnaMjesta.forEach((el) => {
+        selektovanaPrikljucnaMjestaFeatures.push(el);
+      });
       if (selektovanaPrikljucnaMjestaFeatures.length === 0) {
         poruka("Upozorenje", "Nema priključnih mjesta u odabranom zahvatu.");
         return false;

@@ -76,6 +76,9 @@ function trafostaniceUpoligonu(napon) {
     data: {},
     success: function (response) {
       selektovaneTrafostaniceFeatures = new ol.format.GeoJSON().readFeatures(response);
+      nizWizardDodatneTrafostanice.forEach((el) => {
+        selektovaneTrafostaniceFeatures.push(el);
+      });
       if (selektovaneTrafostaniceFeatures.length === 0) {
         poruka("Upozorenje", "Nema trafostanica u odabranom zahvatu.");
         return false;
@@ -111,6 +114,9 @@ function nnTrafostaniceUPoligonu(napon) {
     data: {},
     success: function (response) {
       selektovaneTrafostaniceFeatures = new ol.format.GeoJSON().readFeatures(response);
+      nizWizardDodatneTrafostanice.forEach((el) => {
+        selektovaneTrafostaniceFeatures.push(el);
+      });
     },
     fail: function (jqXHR, textStatus) {
       console.log("Request failed: " + textStatus);

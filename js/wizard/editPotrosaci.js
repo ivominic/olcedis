@@ -102,6 +102,9 @@ function potrosaciUpoligonu(napon) {
     data: {},
     success: function (response) {
       selektovaniPotrosaciFeatures = new ol.format.GeoJSON().readFeatures(response);
+      nizWizardDodatniPotrosaci.forEach((el) => {
+        selektovaniPotrosaciFeatures.push(el);
+      });
       if (selektovaniPotrosaciFeatures.length === 0) {
         //poruka("Upozorenje", "Nema potrošača u odabranom zahvatu.");
         return false;
