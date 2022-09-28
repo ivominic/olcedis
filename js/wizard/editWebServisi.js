@@ -436,12 +436,11 @@ function procitajVlasnika(username) {
     .then(function (json) {
       let odgovor = JSON.parse(json);
       if (odgovor && odgovor.owner) {
-        console.log("Vlasnik", odgovor.owner.owner);
         globalVlasnik = odgovor.owner.owner;
       }
     })
     .catch((error) => {
-      console.log("Bez vlasnika", error);
+      console.log("Bez vlasnika", username);
     });
 }
 

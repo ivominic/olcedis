@@ -644,3 +644,21 @@ function fillDdl(ddl, value, text) {
     })
   );
 }
+
+/**
+ * Metoda koja vraća true ukoliko je vlasnik objekata istovremeno i vlasnik vezan za logovanog korisnika
+ * vlasnikObjekta može da bude prazan string, za objekte koji se tek unose
+ * @param {Username logovanog korisnika} username
+ * @param {Username vlasnika za koga je vezan logovani korisnik} vlasnik
+ * @param {Username vlasnika koji se čita iz podataka} vlasnikObjekta
+ * @returns
+ */
+function provjeraPravaUnosIzmjena(username, vlasnik, vlasnikObjekta) {
+  let retval = false;
+  if (username !== "" && vlasnik !== "" && (vlasnik === vlasnikObjekta || !vlasnikObjekta)) {
+    retval = true;
+  } else {
+    poruka("Upozorenje", "Nemate pravo za izvršenje akcije nad odabranim objektom.");
+  }
+  return retval;
+}
