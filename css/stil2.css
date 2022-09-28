@@ -283,9 +283,6 @@ a.active {
   margin: 16px 0;
 }
 
-.titleAndClose:hover {
-  cursor: move;
-}
 
 /* Na ekranima manjim od 600px skriva sve ikonice osim prve i prikazuje hamburger (icon) */
 @media screen and (max-width: 1150px) {
