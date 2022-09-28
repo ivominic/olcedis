@@ -141,7 +141,8 @@ function klikNaRastereZaWizardDodavanje(browserEvent) {
       console.log("el čitanje", el);
       //let newId = el.id_.split(".")[0] + "." + el.values_.originalId;
       let newId = el.id_;
-      let newText = el.id_.split(".")[0] + "." + el.values_.name;
+      let newText = el.id_.split(".")[0] + "." + el.values_.name + "-" + el.values_.originalId;
+      //let newText = el.id_.split(".")[0] + "." + el.values_.name;
 
       $(trenutniDdl).append(
         $("<option>", {
