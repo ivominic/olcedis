@@ -14,6 +14,7 @@ function dodajObjekatZaBrisanje(objekat) {
     nizWmsZaBrisanje.push([temp_geohash, [objekat.id]]);
   }
   brisanjeDodajObjekatVektorskomLejeru(objekat);
+  poruka("Uspjeh", "Objekat označen za brisanje.");
 }
 
 /** Poziv web servis za brisanje objekata. Poziva se na finalnoj potvrdi akcija (ikonica dvostruki štrik) */

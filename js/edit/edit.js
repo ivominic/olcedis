@@ -368,6 +368,12 @@ function izbrisi() {
     poruka("Upozorenje", "Potrebno je selektovati objekat koji želite da označite za brisanje.");
     return false;
   }
+  if (selektovaniWmsObjekat) {
+    console.log("PROVJERA", selektovaniWmsObjekat.properties.vlasnik);
+    if (!provjeraPravaUnosIzmjena(globalUsername, globalVlasnik, selektovaniWmsObjekat.properties.vlasnik)) {
+      return false;
+    }
+  }
   Swal.fire({
     title: "Da li ste sigurni da odabrani objekat želite da označite za brisanje?",
     position: "top-end",
