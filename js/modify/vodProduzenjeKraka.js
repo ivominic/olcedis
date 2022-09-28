@@ -7,8 +7,6 @@
  * Dodavanje izmjena u niz za slanje na validaciju
  */
 
-//map.on("singleclick", vodEditGeometrije);
-
 /**
  * Metoda koja obrađuje klik na mapu, za prikaz geometrije voda
  * @param {klik na neku lokaciju na mapi} browserEvent
@@ -44,92 +42,93 @@ function vodEditGeometrije(browserEvent) {
       }
     }
   });
-}
 
-var modifyVod = new ol.interaction.Modify({
-  condition: false,
-  features: select.getFeatures(),
-});
+  //Dodaje interakciju u ovom koraku
+  var modifyVod = new ol.interaction.Modify({
+    condition: false,
+    features: select.getFeatures(),
+  });
 
-//TODO: Provjeriti da li funkcionišu prethodne modifikacije
-map.addInteraction(modifyVod);
+  //TODO: Provjeriti da li funkcionišu prethodne modifikacije
+  map.addInteraction(modifyVod);
 
-modifyVod.on("modifyend", function (e) {
-  console.log("MODIFY VOD END - features", e.features.getArray()[0]);
+  modifyVod.on("modifyend", function (e) {
+    console.log("MODIFY VOD END - features", e.features.getArray()[0]);
 
-  if (!originalnaGeometrijaWmsVoda) {
-    return false;
-  }
+    if (!originalnaGeometrijaWmsVoda) {
+      return false;
+    }
 
-  let coordinates = e.features.getArray()[0].getGeometry().getCoordinates();
+    let coordinates = e.features.getArray()[0].getGeometry().getCoordinates();
 
-  if (coordinates.length !== originalnaGeometrijaWmsVoda.coordinates.length) {
-    e.features.getArray()[0].getGeometry().setCoordinates(originalnaGeometrijaWmsVoda.coordinates);
-    poruka(
-      "Upozorenje",
-      "Geometrija linije je izmijenjena na način da su joj dodate nove prelomne tačke, što nije dozvoljeno."
-    );
-    return false;
-  }
+    if (coordinates.length !== originalnaGeometrijaWmsVoda.coordinates.length) {
+      e.features.getArray()[0].getGeometry().setCoordinates(originalnaGeometrijaWmsVoda.coordinates);
+      poruka(
+        "Upozorenje",
+        "Geometrija linije je izmijenjena na način da su joj dodate nove prelomne tačke, što nije dozvoljeno."
+      );
+      return false;
+    }
 
-  let isLineModifiedInMiddle = false;
-  let isViolatedAllowedDistance = false;
-  for (i = 1; i < coordinates.length - 1; i++) {
+    let isLineModifiedInMiddle = false;
+    let isViolatedAllowedDistance = false;
+    for (i = 1; i < coordinates.length - 1; i++) {
+      if (
+        coordinates[i][0] !== originalnaGeometrijaWmsVoda.coordinates[i][0] ||
+        coordinates[i][1] !== originalnaGeometrijaWmsVoda.coordinates[i][1]
+      ) {
+        isLineModifiedInMiddle = true;
+      }
+    }
+    if (isLineModifiedInMiddle) {
+      e.features.getArray()[0].getGeometry().setCoordinates(originalnaGeometrijaWmsVoda.coordinates);
+      poruka("Upozorenje", "Nije dozvoljena izmjena geometrije linije, osim pomjeranjem krajnjih tačaka.");
+      return false;
+    }
+
+    let coordinateLength = coordinates.length;
+    let mjera = {
+      units: "kilometers",
+    };
     if (
-      coordinates[i][0] !== originalnaGeometrijaWmsVoda.coordinates[i][0] ||
-      coordinates[i][1] !== originalnaGeometrijaWmsVoda.coordinates[i][1]
+      coordinates[0][0] !== originalnaGeometrijaWmsVoda.coordinates[0][0] ||
+      coordinates[0][1] !== originalnaGeometrijaWmsVoda.coordinates[0][1]
     ) {
-      isLineModifiedInMiddle = true;
+      let distancaOd = turf.point([coordinates[0][0], coordinates[0][1]]);
+      let distancaDo = turf.point([
+        originalnaGeometrijaWmsVoda.coordinates[0][0],
+        originalnaGeometrijaWmsVoda.coordinates[0][1],
+      ]);
+      let distanca = turf.distance(distancaOd, distancaDo, mjera);
+      if (distanca > dozvoljeniPomjeraj) {
+        isViolatedAllowedDistance = true;
+      }
     }
-  }
-  if (isLineModifiedInMiddle) {
-    e.features.getArray()[0].getGeometry().setCoordinates(originalnaGeometrijaWmsVoda.coordinates);
-    poruka("Upozorenje", "Nije dozvoljena izmjena geometrije linije, osim pomjeranjem krajnjih tačaka.");
-    return false;
-  }
-
-  let coordinateLength = coordinates.length;
-  let mjera = {
-    units: "kilometers",
-  };
-  if (
-    coordinates[0][0] !== originalnaGeometrijaWmsVoda.coordinates[0][0] ||
-    coordinates[0][1] !== originalnaGeometrijaWmsVoda.coordinates[0][1]
-  ) {
-    let distancaOd = turf.point([coordinates[0][0], coordinates[0][1]]);
-    let distancaDo = turf.point([
-      originalnaGeometrijaWmsVoda.coordinates[0][0],
-      originalnaGeometrijaWmsVoda.coordinates[0][1],
-    ]);
-    let distanca = turf.distance(distancaOd, distancaDo, mjera);
-    if (distanca > dozvoljeniPomjeraj) {
-      isViolatedAllowedDistance = true;
+    if (
+      coordinates[coordinateLength - 1][0] !== originalnaGeometrijaWmsVoda.coordinates[coordinateLength - 1][0] ||
+      coordinates[coordinateLength - 1][1] !== originalnaGeometrijaWmsVoda.coordinates[coordinateLength - 1][1]
+    ) {
+      let distancaOd = turf.point([coordinates[coordinateLength - 1][0], coordinates[coordinateLength - 1][1]]);
+      let distancaDo = turf.point([
+        originalnaGeometrijaWmsVoda.coordinates[coordinateLength - 1][0],
+        originalnaGeometrijaWmsVoda.coordinates[coordinateLength - 1][1],
+      ]);
+      let distanca = turf.distance(distancaOd, distancaDo, mjera);
+      if (distanca > dozvoljeniPomjeraj) {
+        isViolatedAllowedDistance = true;
+      }
     }
-  }
-  if (
-    coordinates[coordinateLength - 1][0] !== originalnaGeometrijaWmsVoda.coordinates[coordinateLength - 1][0] ||
-    coordinates[coordinateLength - 1][1] !== originalnaGeometrijaWmsVoda.coordinates[coordinateLength - 1][1]
-  ) {
-    let distancaOd = turf.point([coordinates[coordinateLength - 1][0], coordinates[coordinateLength - 1][1]]);
-    let distancaDo = turf.point([
-      originalnaGeometrijaWmsVoda.coordinates[coordinateLength - 1][0],
-      originalnaGeometrijaWmsVoda.coordinates[coordinateLength - 1][1],
-    ]);
-    let distanca = turf.distance(distancaOd, distancaDo, mjera);
-    if (distanca > dozvoljeniPomjeraj) {
-      isViolatedAllowedDistance = true;
+
+    if (isViolatedAllowedDistance) {
+      e.features.getArray()[0].getGeometry().setCoordinates(originalnaGeometrijaWmsVoda.coordinates);
+      poruka("Upozorenje", "Tačka ne može biti pomjerena više od " + kmlRadius.toString() + "m od snimljene pozicije.");
+      return false;
     }
-  }
 
-  if (isViolatedAllowedDistance) {
-    e.features.getArray()[0].getGeometry().setCoordinates(originalnaGeometrijaWmsVoda.coordinates);
-    poruka("Upozorenje", "Tačka ne može biti pomjerena više od " + kmlRadius.toString() + "m od snimljene pozicije.");
-    return false;
-  }
-
-  //TODO: Dodati u niz objekata za izmjenu. Dodati i novu geometriju kao property "geometrija"
-  vodArrayValuesProperties(e.features.getArray()[0], "U");
-});
+    //TODO: Dodati u niz objekata za izmjenu. Dodati i novu geometriju kao property "geometrija"
+    vodArrayValuesProperties(e.features.getArray()[0], "U");
+  });
+}
 
 /**
  * Preparing JSON object from feature, for powerline update geometry
