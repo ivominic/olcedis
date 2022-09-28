@@ -214,7 +214,7 @@ function prikazPanelaAtributa(sloj) {
       //document.querySelector("#ddl_sloj_podataka").disabled = true;
       console.log("NAĐEN");
     } else {
-      //poruka("Upozorenje", "Objekat ne pripada odabranom naponskom nivou");
+      poruka("Upozorenje", "Objekat ne pripada odabranom naponskom nivou");
       console.log("NIJE PRONAĐEN LEJER");
     }
   }
