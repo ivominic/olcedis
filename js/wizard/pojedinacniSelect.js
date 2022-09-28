@@ -87,6 +87,7 @@ function potvrdaObjektaZaDodavanjeWizard() {
 }
 
 function klikNaRastereZaWizardDodavanje(browserEvent) {
+  console.log("klikNaRastereZaWizardDodavanje");
   showDiv("#odabirObjektaZaDodavanjeWizardDiv");
   nizDodatnihObjekataWizard.length = 0;
   nizDodatnihObjekataJsonWizard.length = 0;
@@ -96,14 +97,13 @@ function klikNaRastereZaWizardDodavanje(browserEvent) {
   let promiseWizardArray = [];
   map.forEachLayerAtPixel(pixel, function (layer) {
     if (layer instanceof ol.layer.Image) {
-      console.log(layer.values_.name);
       let vidljivost = layer.get("visible");
       if (vidljivost) {
         let url = layer
           .getSource()
           .getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
             INFO_FORMAT: "application/json",
-            feature_count: "5",
+            feature_count: "50",
           });
         if (url) {
           promiseWizardArray.push(
@@ -113,15 +113,12 @@ function klikNaRastereZaWizardDodavanje(browserEvent) {
               })
               .then(function (json) {
                 let odgovor = JSON.parse(json);
-                console.log("Odgovor", odgovor);
                 if (odgovor.features.length > 0) {
                   odgovor.features.forEach(function (el) {
                     nizDodatnihObjekataWizard.push(el);
-                    console.log("el", el);
                   });
                   new ol.format.GeoJSON().readFeatures(json).forEach(function (el) {
                     nizDodatnihObjekataJsonWizard.push(el);
-                    console.log("elJSON", el);
                   });
                 }
               })
@@ -138,7 +135,6 @@ function klikNaRastereZaWizardDodavanje(browserEvent) {
     console.log("nizDodatnihObjekataJsonWizard", nizDodatnihObjekataJsonWizard);
     $(trenutniDdl).empty();
     nizDodatnihObjekataJsonWizard.forEach((el) => {
-      console.log("el čitanje", el);
       //let newId = el.id_.split(".")[0] + "." + el.values_.originalId;
       let newId = el.id_;
       let newText = el.id_.split(".")[0] + "." + el.values_.name + "-" + el.values_.originalId;

@@ -134,12 +134,13 @@ function klikNaRastereZaCvorVoda(browserEvent) {
                     }
                   }
                   let newId = el.id.split(".")[0] + "." + el.properties.originalId;
+                  let newText = el.id.split(".")[0] + "." + el.properties.name + "-" + el.properties.originalId;
 
                   if (el.id.split(".")[0] !== "vodovi") {
                     $(selektovaniDdlZaPovezivanjeVoda).append(
                       $("<option>", {
                         value: newId,
-                        text: newId,
+                        text: newText,
                       })
                     );
                   }

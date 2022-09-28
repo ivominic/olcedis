@@ -58,12 +58,13 @@ function klikNaRastereZaPomjeranjeObjekta(browserEvent) {
                     nizPocetnihVodova.push(el.properties.originalId);
                   }
                   let newId = el.id.split(".")[0] + "." + el.properties.originalId;
+                  let newText = el.id.split(".")[0] + "." + el.properties.name + "-" + el.properties.originalId;
 
                   if (el.id.split(".")[0] !== "vodovi") {
                     $("#ddlObjekatZaPomjeranje").append(
                       $("<option>", {
                         value: newId,
-                        text: newId,
+                        text: newText,
                       })
                     );
                   }

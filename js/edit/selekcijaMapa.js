@@ -683,11 +683,12 @@ function klikNaRastereZaVodove(browserEvent) {
                   console.log("el čitanje", el);
                   //let newId = el.id.split(".")[0] + "." + el.values_.originalId;
                   let newId = el.id.split(".")[0] + "." + el.properties.originalId;
+                  let newText = el.id.split(".")[0] + "." + el.properties.name + "-" + el.properties.originalId;
 
                   $(selektovaniDdlZaPovezivanjeVoda).append(
                     $("<option>", {
                       value: newId,
-                      text: newId,
+                      text: newText,
                     })
                   );
                 });
