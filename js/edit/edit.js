@@ -55,6 +55,9 @@ function sacuvaj() {
   console.log("Administracija sacuvaj()");
   vodNaponskiNivoPrijeOdabira = document.querySelector("#napon").value;
   if (selektovaniWmsObjekat) {
+    if (!provjeraPravaUnosIzmjena(globalUsername, globalVlasnik, selektovaniWmsObjekat.properties.vlasnik)) {
+      return false;
+    }
     //alert("Odabran je wms objekat");
     //TODO: Logika za slanje ažuriranja atributa
     izmjenaAtributaWmsLejer(selektovaniWmsObjekat);
