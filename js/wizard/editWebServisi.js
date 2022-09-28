@@ -419,36 +419,30 @@ function generisiGeohashId(lejer, wkt) {
 }
 
 /**
- * Metoda koja za username korisnika vrati username vlasnika podataka
+ * Metoda koja za username logovanog korisnika vrati username vlasnika podataka.
+ * Poziva se nakon čitanja logovanog korisnika (metoda signedUser).
  * @param {Username korisnika aplikacije} username
  */
 function procitajVlasnika(username) {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/vlasnik";
   urlServisa += "?t=" + Date.now();
-  let podaciForme = new FormData();
-  podaciForme.append("user", username);
-  let xhr = new XMLHttpRequest();
-  xhr.open("GET", urlServisa, true);
-  xhr.timeout = 10000000;
-  xhr.ontimeout = function () {
-    alert("Akcija je prekinuta jer je trajala predugo.");
-  };
-  xhr.send(podaciForme);
-  //openModalSpinner();
+  urlServisa += "&user=" + username;
+  globalVlasnik = "";
 
-  xhr.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      if (this.status === 200) {
-        let jsonResponse = JSON.parse(xhr.responseText);
-        console.log("response uspjeh", jsonResponse);
-        globalVlasnik = "";
-        //closeModalSpinner();
-      } else {
-        console.log("Greška", xhr.statusText);
-        //closeModalSpinner();
+  fetch(urlServisa)
+    .then(function (response) {
+      return response.text();
+    })
+    .then(function (json) {
+      let odgovor = JSON.parse(json);
+      if (odgovor && odgovor.owner) {
+        console.log("Vlasnik", odgovor.owner.owner);
+        globalVlasnik = odgovor.owner.owner;
       }
-    }
-  };
+    })
+    .catch((error) => {
+      console.log("Bez vlasnika", error);
+    });
 }
 
 /**
@@ -648,6 +642,7 @@ function readSignedUser() {
     success: function (data) {
       globalUsername = data.response;
       document.querySelector("#userName").textContent = globalUsername;
+      procitajVlasnika(globalUsername);
     },
     error: function (x, y, z) {
       console.log("greška readSignedUser", x.responseText);
