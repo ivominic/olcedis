@@ -137,6 +137,7 @@ modifyVod.on("modifyend", function (e) {
  * @param {* "I" for insert, "U" for update} action
  */
 function vodArrayValuesProperties(el, action) {
+  if (!el.id_) return false;
   let item = {
     //fid_1: el.values_.fid_1,
     fid_1: el.id_.split(".")[1],

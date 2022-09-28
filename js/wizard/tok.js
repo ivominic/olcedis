@@ -98,6 +98,10 @@ function wizardNext() {
         document.querySelector("#ddlPovezivanjeVodovaPronadjene").length !== 0)
     ) {
       console.log("NN PETI KORAK OSTALI NEUPARENI VODOVI");
+      if (odabraniNaponskiNivo !== "0.4") {
+        alert("Postoje neupareni vodovi");
+        return false;
+      }
     }
 
     if (blnOnemogucitiWizard) {

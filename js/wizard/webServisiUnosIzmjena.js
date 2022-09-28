@@ -11,10 +11,11 @@ function cudTrafostanica(feature, akcija, wizard) {
   let podaciForme = new FormData();
   podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
+  podaciForme.append("group_id", globalTimestamp);
   podaciForme.append("Geometry", feature.Geometry);
   podaciForme.append("id", feature.id); //Ovo provjeriti
   podaciForme.append("fid_1", feature.fid_1);
-  podaciForme.append("fid_1", feature.id_.split(".")[1]);
+  //podaciForme.append("fid_1", feature.id_.split(".")[1]);
   podaciForme.append("name", feature.name);
   podaciForme.append("id_br", feature.id_br);
   podaciForme.append("celije_10", feature.celije_10);
@@ -81,6 +82,7 @@ function cudVod(feature, akcija, wizard) {
   let podaciForme = new FormData();
   podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
+  podaciForme.append("group_id", globalTimestamp);
   podaciForme.append("Geometry", feature.Geometry);
   podaciForme.append("id", feature.id); //Ovo provjeriti
   podaciForme.append("fid1", feature.fid_1);
@@ -156,10 +158,10 @@ function cudStub(feature, akcija, wizard) {
   let podaciForme = new FormData();
   podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
+  podaciForme.append("group_id", globalTimestamp);
   podaciForme.append("Geometry", feature.Geometry);
   podaciForme.append("id", feature.id); //Ovo provjeriti
   podaciForme.append("fid_1", feature.fid_1);
-
   podaciForme.append("name", feature.name);
   podaciForme.append("br_izol_faza", feature.br_izol_faza);
   podaciForme.append("uzemljivac", feature.uzemljivac);
@@ -232,6 +234,7 @@ function cudPotrosac(feature, akcija, wizard) {
   let podaciForme = new FormData();
   podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
+  podaciForme.append("group_id", globalTimestamp);
   podaciForme.append("Geometry", feature.Geometry);
   podaciForme.append("id", feature.id); //Ovo provjeriti
   podaciForme.append("fid_1", feature.fid_1);
@@ -289,6 +292,7 @@ function cudNKRO(feature, akcija, wizard) {
   let podaciForme = new FormData();
   podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
+  podaciForme.append("group_id", globalTimestamp);
   podaciForme.append("Geometry", feature.Geometry);
   podaciForme.append("id", feature.id); //Ovo provjeriti
   podaciForme.append("fid_1", feature.fid_1);
@@ -345,6 +349,7 @@ function cudPrikljucnoMjesto(feature, akcija, wizard) {
   let podaciForme = new FormData();
   podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
+  podaciForme.append("group_id", globalTimestamp);
   podaciForme.append("Geometry", feature.Geometry);
   podaciForme.append("id", feature.id); //Ovo provjeriti
   podaciForme.append("fid_1", feature.fid_1);
@@ -400,6 +405,7 @@ function cudPOD(feature, akcija, wizard) {
   let podaciForme = new FormData();
   podaciForme.append("wizard", wizard);
   podaciForme.append("akcija", akcija);
+  podaciForme.append("group_id", globalTimestamp);
   podaciForme.append("Geometry", feature.Geometry);
   podaciForme.append("id", feature.id); //Ovo provjeriti
   podaciForme.append("fid_1", feature.fid_1);
