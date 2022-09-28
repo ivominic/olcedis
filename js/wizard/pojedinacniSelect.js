@@ -88,6 +88,8 @@ function potvrdaObjektaZaDodavanjeWizard() {
 
 function klikNaRastereZaWizardDodavanje(browserEvent) {
   showDiv("#odabirObjektaZaDodavanjeWizardDiv");
+  nizDodatnihObjekataWizard.length = 0;
+  nizDodatnihObjekataJsonWizard.length = 0;
   let trenutniDdl = "#ddlObjekatZaDodavanjeWizard";
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
