@@ -214,6 +214,9 @@ function zatvoriHamburger() {
 
 function closeDiv(nazivDiva) {
   document.querySelector(nazivDiva).style.width = "0";
+  if (blnShowAttribute && nazivDiva === "#atributiDiv") {
+    blnShowAttribute = false;
+  }
 }
 
 function showDiv(nazivDiva) {
