@@ -92,7 +92,7 @@ async function finalnaPotvrdaUnosa() {
       resetovanjeNizovaNakonGreske();
     } else {
       poruka("Uspjeh", "Uspješno izvršena akcija");
-      resetovanjeNizovaNakonUspjeha();
+      resetovanjeNakonUspjeha();
     }
   });
 
@@ -110,7 +110,7 @@ function resetovanjeNizovaNakonGreske() {
   //vektorKreiraniVodovi
 }
 
-function resetovanjeNizovaNakonUspjeha() {
+function resetovanjeNakonUspjeha() {
   resetovanjeNizovaNakonGreske();
   availableLayersPerPowerLevel("");
   vectorSource && vectorSource.clear();
@@ -119,4 +119,8 @@ function resetovanjeNizovaNakonUspjeha() {
   nizWmsZaIzmjenu.length = 0;
   nizZaVektorAzuriranje.length = 0;
   vektorObjektiZaAzuriranje.getSource().clear();
+
+  sifraNapojneTrafostanice = "";
+  nazivNapojneTrafostanice = "";
+  izvodNapojneTrafostanice = "";
 }

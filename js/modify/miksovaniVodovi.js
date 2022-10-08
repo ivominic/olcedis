@@ -1,6 +1,6 @@
 /** Metode za kreiranje voda koji čini jedan broj postojećih, a jedan broj stubova iz gpx fajla */
 
-// Dodavanje tačaka iz wms-a nizu gpx tačaka nizTacakaLinije. Ovaj niz sadrži koordinate tačaka oblika [x, y]
+/** Dodavanje tačaka iz wms-a nizu gpx tačaka nizTacakaLinije. Ovaj niz sadrži koordinate tačaka oblika [x, y] */
 function dodajWmsObjekte() {
   let napon = "10";
   console.log("AKo je čekirano da se pravi mješoviti vod");
@@ -27,17 +27,69 @@ function dodajWmsObjekte() {
     success: function (response) {
       console.log("RESPONSE", response);
       let stuboviZaDodavanje = new ol.format.GeoJSON().readFeatures(response);
-      let nizStubovaLinije = [];
-      stuboviZaDodavanje.forEach((item) => {
-        nizStubovaLinije.push(item.values_.geometry.flatCoordinates);
-      });
-      objedinjavanjeNizovaGpxWms(nizStubovaLinije);
-      koordinateObjekataIzDdlova();
+      let naziviVisestrukihStubova = provjeraVisestruktihStubova(stuboviZaDodavanje);
+      if (naziviVisestrukihStubova) {
+        console.log("Višestruki", naziviVisestrukihStubova);
+        let tekstPoruke = "Postoje višestruki stubovi u istoj tački, od kojih je pokušano kreiranje voda.\n";
+        tekstPoruke += "Te stubove treba ukloniti, prije iscrtavanja voda. Parovi stubova u istoj tački:\n";
+        tekstPoruke += naziviVisestrukihStubova;
+        poruka("Greška", tekstPoruke);
+      } else {
+        let nizStubovaLinije = [];
+        stuboviZaDodavanje.forEach((item) => {
+          nizStubovaLinije.push(item.values_.geometry.flatCoordinates);
+        });
+        objedinjavanjeNizovaGpxWms(nizStubovaLinije);
+        koordinateObjekataIzDdlova();
+      }
     },
     fail: function (jqXHR, textStatus) {
       console.log("Request failed: " + textStatus);
+      poruka("Greška", "Problem pri čitanju stubova obuhvaćenih iscrtanim poligonima");
     },
   });
+}
+
+/**
+ * Metoda koja vraća parove naziva stubova koji se nalaze u istoj tački, ukoliko postoje.
+ * Ako ne postoje višestruki stubovi, vrati prazan string.
+ * @param {*} array - niz stubova koji vraća metoda dodajWmsObjekte (stuboviZaDodavanje)
+ */
+function provjeraVisestruktihStubova(array) {
+  let retVal = "";
+  if (array.length > 1) {
+    for (let i = 0; i < array.length - 1; i++) {
+      for (let j = i + 1; j < array.length; j++) {
+        if (
+          provjeraPoklapanjaKoordinata(
+            array[i].values_.geometry.flatCoordinates,
+            array[j].values_.geometry.flatCoordinates
+          )
+        ) {
+          console.log("Objekat za provjeru koordinata 1", array[i]);
+          retVal += `(${array[i].values_.name}, ${array[j].values_.name})\n`;
+        }
+      }
+    }
+  }
+  return retVal;
+}
+
+/**
+ * Metoda koja vraća true ukoliko se koordinate dvije tačke poklapaju, inače false.
+ * @param {*} koordinate1 - koordinate provog objekta, kao niz [x,y]
+ * @param {*} koordinate2 - koordinate provog objekta, kao niz [x,y]
+ */
+function provjeraPoklapanjaKoordinata(koordinate1, koordinate2) {
+  let retVal = false;
+  if (koordinate1.length < 2 && koordinate2.length < 2) {
+    throw new Error("Koordinate nisu u formi niza od dva elementa");
+  } else {
+    if (koordinate1[0] === koordinate2[0] && koordinate1[1] === koordinate2[1]) {
+      retVal = true;
+    }
+  }
+  return retVal;
 }
 
 /** Dodavanje tačaka iz wmsStubovi nizuTacakaLinije: dodajemo najbližu sljedeću tačku */
