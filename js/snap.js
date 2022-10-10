@@ -98,6 +98,7 @@ function prikaziSnapVektor(lejer, nivo, poligon) {
     method: "POST",
     url: wfsUrl,
     data: {
+      access_token: geoserverToken,
       service: "WFS",
       version: "1.0.0",
       request: "GetFeature",
