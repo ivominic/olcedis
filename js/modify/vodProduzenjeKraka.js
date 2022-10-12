@@ -52,6 +52,11 @@ function vodEditGeometrije(browserEvent) {
   //TODO: Provjeriti da li funkcionišu prethodne modifikacije
   map.addInteraction(modifyVod);
 
+  let snap = new ol.interaction.Snap({
+    source: featureSnapOverlay.getSource(),
+  });
+  map.addInteraction(snap);
+
   modifyVod.on("modifyend", function (e) {
     console.log("MODIFY VOD END - features", e.features.getArray()[0]);
 
