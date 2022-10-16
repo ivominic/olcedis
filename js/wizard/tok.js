@@ -15,7 +15,7 @@ document.querySelector("#btnWizardNext").addEventListener("click", wizardNext);
  */
 function prikazWizardForme() {
   if (poligoni.length === 0) {
-    poruka("Upozorenje", "Potrebno je nacrtati poligon prije pokretanja wizard-a.");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.NacrtatiPoligon);
     return false;
   }
   map.removeInteraction(draw);
@@ -87,7 +87,7 @@ function wizardNext() {
       console.log("NN PETI KORAK 4");
       if (odabraniNaponskiNivo === 0.4 && selektovaniPotrosaciFeatures.length === 0) {
         console.log("NN PETI KORAK 5");
-        blnPrikazPorukeOPrekidu && poruka("Uspjeh", "U selektovanom zahvatu ne postoji nijedan potrošač.");
+        blnPrikazPorukeOPrekidu && poruka(StatusPoruke.Uspjeh, WizardPoruke.NemaPotrosacaUZahvatu);
         blnPrikazPorukeOPrekidu = false;
       }
     }
@@ -99,7 +99,7 @@ function wizardNext() {
     ) {
       console.log("NN PETI KORAK OSTALI NEUPARENI VODOVI");
       if (odabraniNaponskiNivo !== "0.4") {
-        alert("Postoje neupareni vodovi");
+        alert(WizardPoruke.PostojeNeupareniVodovi);
         return false;
       }
     }
@@ -107,8 +107,7 @@ function wizardNext() {
     if (blnOnemogucitiWizard) {
       console.log("NN SESTI KORAK");
       prekidWizarda();
-      blnPrikazPorukeOPrekidu &&
-        poruka("Upozorenje", "Potrebno je otkloniti uočene nedostatke da bi podaci mogli biti sačuvani.");
+      blnPrikazPorukeOPrekidu && poruka(StatusPoruke.Upozorenje, WizardPoruke.OtklonitiNedostatke);
       blnPrikazPorukeOPrekidu = false;
     } else {
       console.log("NN SESTI KORAK ELSE");
@@ -123,7 +122,7 @@ function prikaziCetvrtuFormuWizarda() {
     document.querySelector("#ddlPovezivanjeTSselektovane").length > 1 ||
     document.querySelector("#ddlPovezivanjeTSpronadjene").length > 0
   ) {
-    poruka("Upozorenje", "Nisu uparene sve trafostanice iz oba sistema");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.NeupareneTrafostanice);
     return false;
   }
   document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "none";
@@ -131,7 +130,7 @@ function prikaziCetvrtuFormuWizarda() {
   document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
   document.querySelector("#wizardHeader").innerText = cetvrtiKorakWizarda;
   if (geometrijaNapojneTrafostanice === "" && !featureNapojnaTrafostanica) {
-    poruka("Upozorenje", "Nije odabrana napojna trafostanica");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.NijeOdabranaNapojnaTS);
     return false;
   } else {
     povezivanjeVodova(featureNapojnaTrafostanica, selektovaniVodoviFeatures);
