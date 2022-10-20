@@ -140,15 +140,16 @@ function prikaziCetvrtuFormuWizarda() {
     option.text = "Odaberite vod";
     option.value = "";
     document.querySelector("#ddlPovezivanjeVodovaSelektovane").appendChild(option);
-
+    let nizSelektovanihVodovaOriginalId = [];
     for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
-      nizSelektovanihVodovaOriginalId.push(selektovaniVodoviFeatures[i].values_.originalId);
-
-      //Dodavanje selektovanih vodova u listu za uparivanje
-      option = document.createElement("option");
-      option.text = selektovaniVodoviFeatures[i].values_.name + "-" + selektovaniVodoviFeatures[i].values_.originalId;
-      option.value = selektovaniVodoviFeatures[i].values_.originalId;
-      document.querySelector("#ddlPovezivanjeVodovaSelektovane").appendChild(option);
+      if (selektovaniVodoviFeatures[i].values_.sifra_dionice) {
+        //Ne prikazujemo vodove koji imaju popunjenu šifru dionice
+        nizSelektovanihVodovaOriginalId.push(selektovaniVodoviFeatures[i].values_.originalId);
+        option = document.createElement("option");
+        option.text = selektovaniVodoviFeatures[i].values_.name + "-" + selektovaniVodoviFeatures[i].values_.originalId;
+        option.value = selektovaniVodoviFeatures[i].values_.originalId;
+        document.querySelector("#ddlPovezivanjeVodovaSelektovane").appendChild(option);
+      }
     }
     vodoviIzBilingaZaUparivanje(nizSelektovanihVodovaOriginalId);
   }

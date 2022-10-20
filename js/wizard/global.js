@@ -53,7 +53,6 @@ let geohashNapojneTrafostanice = "";
 let blnZavrsenoUparivanjeTrafostanica = false; //Wizard, true ako su uparene sve trafostanice. Setuje se, a ne koristi.
 let blnZavrsenoUparivanjeVodova = false; //Wizard, true ako su upareni svi vodovi.
 let nizSelektovanihTrafostanicaOriginalId = []; //Wizard, niz vrijednosti original_id polja trafostanica iz zahvata
-let nizSelektovanihVodovaOriginalId = []; //Wizard, niz vrijednosti originalId polja vodova iz zahvata
 let nizSelektovanihPotrosacaOriginalId = []; //Wizard, niz vrijednosti originalId polja potrošači iz zahvata - ovo je null - moguće da je nepotrebno
 
 let paroviTS = []; //Wizard, niz koji se popunjava parovima trafostanica iz GIS-a i TBP-a

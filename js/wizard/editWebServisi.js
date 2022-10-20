@@ -675,7 +675,7 @@ function readRadius() {
     },
     error: function (x, y, z) {
       //alert(x.responseText +"  " +x.status);
-      console.log("greška readSignedUser", x.responseText);
+      console.log("greška readRadius", x.responseText);
       dozvoljeniPomjeraj = 0;
       kmlRadius = 0;
       return 0;
