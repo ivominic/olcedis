@@ -142,7 +142,7 @@ function prikaziCetvrtuFormuWizarda() {
     document.querySelector("#ddlPovezivanjeVodovaSelektovane").appendChild(option);
     let nizSelektovanihVodovaOriginalId = [];
     for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
-      if (selektovaniVodoviFeatures[i].values_.sifra_dionice) {
+      if (!selektovaniVodoviFeatures[i].values_.sifra_dionice) {
         //Ne prikazujemo vodove koji imaju popunjenu šifru dionice
         nizSelektovanihVodovaOriginalId.push(selektovaniVodoviFeatures[i].values_.originalId);
         option = document.createElement("option");
