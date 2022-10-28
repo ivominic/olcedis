@@ -50,11 +50,11 @@ function stuboviUpoligonu(napon) {
       if (selektovaniStuboviFeatures.length === 0) {
         poruka("Upozorenje", "Nema stubova u odabranom zahvatu.");
         return false;
-      } else {
+      } /* else {
         for (let i = 0; i < selektovaniStuboviFeatures.length; i++) {
           cudStub(selektovaniStuboviFeatures[i], "akcija");
         }
-      }
+      }*/
     },
     fail: function (jqXHR, textStatus) {
       console.log("Request failed: " + textStatus);

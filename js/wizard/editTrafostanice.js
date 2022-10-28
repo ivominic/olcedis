@@ -148,7 +148,6 @@ function selektujNapojnuTS() {
 
 /**
  * Metoda koja povezuje trafostanice iz GIS-a i TBP-a. Vrši provjere da li su odabrane i jedna i druga trafostanica.
- * Parovi trafostanica za uparivanje se dodaju u niz paroviTS
  * @returns
  */
 function poveziTS() {
@@ -176,7 +175,6 @@ function poveziTS() {
       document.querySelector("#ddlPovezivanjeTSpronadjene").remove(i);
     }
   }
-  paroviTS.push({ gis: odabranaTS, tbp: tsIzSistema });
   //Kreiranje niza sa trafostanicama za koje je potrebno izvršiti izmjenu podataka
   for (let i = 0; i < selektovaneTrafostaniceFeatures.length; i++) {
     if (odabranaTS === selektovaneTrafostaniceFeatures[i].values_.originalId.toString()) {
@@ -188,7 +186,6 @@ function poveziTS() {
     }
   }
 
-  console.log("povezane trafostanice", paroviTS);
   if (
     document.querySelector("#ddlPovezivanjeTSselektovane").length === 1 &&
     document.querySelector("#ddlPovezivanjeTSpronadjene").length === 0

@@ -8,6 +8,7 @@
  * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
  */
 function stubArrayElement(el, action, wizard, serialNo) {
+  console.log("AAAAAAAAA STUB", el);
   let item = {
     fid_1: el.values_.originalId,
     Geometry: wkt3Du2D(wktGeometrije(el)),
@@ -24,8 +25,8 @@ function stubArrayElement(el, action, wizard, serialNo) {
     br_pmo: el.values_.br_pmo,
     nad_visina: el.values_.nad_visina,
     vod_10: el.values_.vod10, //Jovanu je polje 10vod - vidjeti može li se json poslati ovako ili da mijenjamo naziv
-    desetvod: el.values_.desetvod,
-    tip_nosac_izol: el.values_.nosaci_izolatora,
+    desetvod: el.values_["10vod"],
+    tip_nosac_izol: el.values_.tip_nosac_izol,
     vlasnistvo: el.values_.vlasnistvo,
     tip: el.values_.tip,
     id: el.values_.id, //Vidjeti šta ovdje predajem
@@ -56,7 +57,7 @@ function stubArrayElement(el, action, wizard, serialNo) {
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
-    vlasnik: "test", //el.values_.vlasnik,
+    vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
@@ -119,7 +120,7 @@ function vodArrayElement(el, action, wizard, serialNo) {
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
-    vlasnik: "test", //el.values_.vlasnik,
+    vlasnik: el.values_.vlasnik,
     ts: el.values_.ts,
     akcija: action,
     wizard: wizard,
@@ -179,7 +180,7 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
-    vlasnik: "test", //el.values_.vlasnik,
+    vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
@@ -222,7 +223,7 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
-    vlasnik: "test", //el.values_.vlasnik,
+    vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
@@ -270,7 +271,7 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
     status: el.values_.status,
-    vlasnik: "test", //el.values_.vlasnik,
+    vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
@@ -318,7 +319,7 @@ function podArrayElement(el, action, wizard, serialNo) {
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
     status: el.values_.status,
-    vlasnik: "test", //el.values_.vlasnik,
+    vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
@@ -364,7 +365,7 @@ function nkroArrayElement(el, action, wizard, serialNo) {
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
-    vlasnik: "test", //el.values_.vlasnik,
+    vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,

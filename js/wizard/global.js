@@ -55,8 +55,6 @@ let blnZavrsenoUparivanjeVodova = false; //Wizard, true ako su upareni svi vodov
 let nizSelektovanihTrafostanicaOriginalId = []; //Wizard, niz vrijednosti original_id polja trafostanica iz zahvata
 let nizSelektovanihPotrosacaOriginalId = []; //Wizard, niz vrijednosti originalId polja potrošači iz zahvata - ovo je null - moguće da je nepotrebno
 
-let paroviTS = []; //Wizard, niz koji se popunjava parovima trafostanica iz GIS-a i TBP-a
-let paroviVodova = []; //Wizard, niz koji se popunjava parovim vodova iz GIS-a i TBP-a
 let nizTrafostanicaZaWebServis = []; //Wizard, niz u koji će se dodavati svi zapisi za trafostanice koje je potebno upariti.
 //Ne koristi se. Izmjene se odnose na polja: originalId, sifra napojne trafostanice, izvod napojne trafostanice i naziv napojne trafostanice
 let nizVodovaZaWebServis = []; //Wizard, niz u koji će se dodati svi vodovi za unos u bazu, sa geohash_id vrijednostima nadređenog

@@ -22,6 +22,7 @@ const WizardPoruke = {
   OtklonitiNedostatke: "Potrebno je otkloniti uočene nedostatke kako bi podaci mogli biti sačuvani",
   NeupareneTrafostanice: "Nisu uparene sve trafostanice iz oba sistema",
   NijeOdabranaNapojnaTS: "Nije odabrana napojna trafostanica",
+  UspjesnoUpareniVodovi: "Uspješno upareni svi vodovi.\n Prelazak na sljedeći korak wizard-a",
 };
 
 const UnosPoruke = {

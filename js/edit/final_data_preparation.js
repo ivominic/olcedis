@@ -8,6 +8,8 @@
  * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
  */
 function stubArrayElement(el, action, wizard, serialNo) {
+  let tempVlasnik = el.values_.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
   let item = {
     //fid_1: el.values_.fid_1,
     Geometry: wkt3Du2D(wktGeometrije(el)),
@@ -58,7 +60,7 @@ function stubArrayElement(el, action, wizard, serialNo) {
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
-    vlasnik: el.values_.vlasnik,
+    vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
@@ -77,6 +79,8 @@ function stubArrayElement(el, action, wizard, serialNo) {
  * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
  */
 function vodArrayElement(el, action, wizard, serialNo) {
+  let tempVlasnik = el.values_.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
   let item = {
     fid_1: el.values_.fid_1,
     Geometry: wktGeometrije(el),
@@ -125,7 +129,7 @@ function vodArrayElement(el, action, wizard, serialNo) {
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
-    vlasnik: el.values_.vlasnik,
+    vlasnik: tempVlasnik,
     ts: el.values_.ts,
     akcija: action,
     wizard: wizard,
@@ -146,6 +150,8 @@ function vodArrayElement(el, action, wizard, serialNo) {
  * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
  */
 function trafostanicaArrayElement(el, action, wizard, serialNo) {
+  let tempVlasnik = el.values_.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
   let item = {
     fid_1: el.values_.fid_1,
     Geometry: wkt3Du2D(wktGeometrije(el)),
@@ -189,7 +195,7 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
-    vlasnik: el.values_.vlasnik,
+    vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
@@ -208,6 +214,8 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
  * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
  */
 function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
+  let tempVlasnik = el.values_.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
   let item = {
     fid_1: el.values_.fid_1,
     Geometry: wkt3Du2D(wktGeometrije(el)),
@@ -236,7 +244,7 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
-    vlasnik: el.values_.vlasnik,
+    vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
@@ -255,6 +263,8 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
  * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
  */
 function potrosacArrayElement(el, action, wizard, serialNo) {
+  let tempVlasnik = el.values_.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
   let item = {
     fid_1: el.values_.fid_1,
     Geometry: wkt3Du2D(wktGeometrije(el)),
@@ -287,7 +297,7 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
     status: el.values_.status,
-    vlasnik: el.values_.vlasnik,
+    vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
@@ -306,6 +316,8 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
  * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
  */
 function podArrayElement(el, action, wizard, serialNo) {
+  let tempVlasnik = el.values_.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
   let item = {
     fid_1: el.values_.fid_1,
     Geometry: wkt3Du2D(wktGeometrije(el)),
@@ -338,7 +350,7 @@ function podArrayElement(el, action, wizard, serialNo) {
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
     status: el.values_.status,
-    vlasnik: el.values_.vlasnik,
+    vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,
@@ -357,6 +369,8 @@ function podArrayElement(el, action, wizard, serialNo) {
  * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
  */
 function nkroArrayElement(el, action, wizard, serialNo) {
+  let tempVlasnik = el.values_.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
   let item = {
     fid_1: el.values_.fid_1,
     Geometry: wkt3Du2D(wktGeometrije(el)),
@@ -387,7 +401,7 @@ function nkroArrayElement(el, action, wizard, serialNo) {
     sifra_napojne: el.values_.sifra_napojne,
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
-    vlasnik: el.values_.vlasnik,
+    vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
     isEditable: isEditable,

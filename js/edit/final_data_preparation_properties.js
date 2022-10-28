@@ -7,6 +7,8 @@
 
  */
 function stubArrayElementProperties(el, action) {
+  let tempVlasnik = el.properties.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
   let item = {
     //fid_1: el.properties.fid_1,
     Geometry: wkt3Du2D(prepareGeometryWms(el)),
@@ -55,7 +57,7 @@ function stubArrayElementProperties(el, action) {
     sifra_napojne: el.properties.sifra_napojne,
     naziv_napojne: el.properties.naziv_napojne,
     izvod_napojne: el.properties.izvod_napojne,
-    vlasnik: el.properties.vlasnik,
+    vlasnik: tempVlasnik,
     akcija: action,
     wizard: 0,
     isEditable: isEditable,
@@ -72,6 +74,8 @@ function stubArrayElementProperties(el, action) {
  * @param {* "I" for insert, "U" for update} action
  */
 function vodArrayElementProperties(el, action) {
+  let tempVlasnik = el.properties.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
   let item = {
     fid_1: el.properties.fid_1,
     Geometry: prepareGeometryWms(el),
@@ -119,7 +123,7 @@ function vodArrayElementProperties(el, action) {
     sifra_napojne: el.properties.sifra_napojne,
     naziv_napojne: el.properties.naziv_napojne,
     izvod_napojne: el.properties.izvod_napojne,
-    vlasnik: el.properties.vlasnik,
+    vlasnik: tempVlasnik,
     ts: el.properties.ts,
     akcija: action,
     wizard: 0,
@@ -137,6 +141,8 @@ function vodArrayElementProperties(el, action) {
  * @param {* "I" for insert, "U" for update} action
  */
 function trafostanicaArrayElementProperties(el, action) {
+  let tempVlasnik = el.properties.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
   let item = {
     fid_1: el.properties.fid_1,
     Geometry: wkt3Du2D(prepareGeometryWms(el)),
@@ -174,7 +180,7 @@ function trafostanicaArrayElementProperties(el, action) {
     sifra_napojne: el.properties.sifra_napojne,
     naziv_napojne: el.properties.naziv_napojne,
     izvod_napojne: el.properties.izvod_napojne,
-    vlasnik: el.properties.vlasnik,
+    vlasnik: tempVlasnik,
     akcija: action,
     wizard: 0,
     isEditable: isEditable,
@@ -193,6 +199,8 @@ function trafostanicaArrayElementProperties(el, action) {
  * @param {* "I" for insert, "U" for update} action
  */
 function prikljucnoMjestoArrayElementProperties(el, action) {
+  let tempVlasnik = el.properties.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
   let item = {
     fid_1: el.properties.fid_1,
     Geometry: wkt3Du2D(prepareGeometryWms(el)),
@@ -214,7 +222,7 @@ function prikljucnoMjestoArrayElementProperties(el, action) {
     sifra_napojne: el.properties.sifra_napojne,
     naziv_napojne: el.properties.naziv_napojne,
     izvod_napojne: el.properties.izvod_napojne,
-    vlasnik: el.properties.vlasnik,
+    vlasnik: tempVlasnik,
     layer_id: el.properties.layer_id,
     akcija: action,
     wizard: 0,
@@ -234,6 +242,8 @@ function prikljucnoMjestoArrayElementProperties(el, action) {
  * @param {* "I" for insert, "U" for update} action
  */
 function potrosacArrayElementProperties(el, action) {
+  let tempVlasnik = el.properties.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
   let item = {
     fid_1: el.properties.fid_1,
     Geometry: wkt3Du2D(prepareGeometryWms(el)),
@@ -259,7 +269,7 @@ function potrosacArrayElementProperties(el, action) {
     naziv_napojne: el.properties.naziv_napojne,
     izvod_napojne: el.properties.izvod_napojne,
     status: el.properties.status,
-    vlasnik: el.properties.vlasnik,
+    vlasnik: tempVlasnik,
     layer_id: el.properties.layer_id,
     akcija: action,
     wizard: 0,
@@ -279,6 +289,8 @@ function potrosacArrayElementProperties(el, action) {
  * @param {* "I" for insert, "U" for update} action
  */
 function podArrayElementProperties(el, action) {
+  let tempVlasnik = el.properties.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
   let item = {
     fid_1: el.properties.fid_1,
     Geometry: wkt3Du2D(prepareGeometryWms(el)),
@@ -304,7 +316,7 @@ function podArrayElementProperties(el, action) {
     naziv_napojne: el.properties.naziv_napojne,
     izvod_napojne: el.properties.izvod_napojne,
     status: el.properties.status,
-    vlasnik: el.properties.vlasnik,
+    vlasnik: tempVlasnik,
     layer_id: el.properties.layer_id,
     akcija: action,
     wizard: 0,
@@ -324,6 +336,8 @@ function podArrayElementProperties(el, action) {
  * @param {* "I" for insert, "U" for update} action
  */
 function nkroArrayElementProperties(el, action) {
+  let tempVlasnik = el.properties.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
   let item = {
     fid_1: el.properties.fid_1,
     Geometry: wkt3Du2D(prepareGeometryWms(el)),
@@ -347,7 +361,7 @@ function nkroArrayElementProperties(el, action) {
     sifra_napojne: el.properties.sifra_napojne,
     naziv_napojne: el.properties.naziv_napojne,
     izvod_napojne: el.properties.izvod_napojne,
-    vlasnik: el.properties.vlasnik,
+    vlasnik: tempVlasnik,
     layer_id: el.properties.layer_id,
     akcija: action,
     wizard: 0,

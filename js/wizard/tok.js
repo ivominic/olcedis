@@ -46,6 +46,7 @@ function wizardNext() {
       prikljucnaMjestaUpoligonu(odabraniNaponskiNivo);
       nnTrafostaniceUPoligonu(odabraniNaponskiNivo);
       vodoviUpoligonu(odabraniNaponskiNivo);
+      stuboviUpoligonu(odabraniNaponskiNivo);
 
       //TODO: Provjeriti kako će funkcionisati poziv sa async/await
       setTimeout(function () {
@@ -57,6 +58,7 @@ function wizardNext() {
     } else {
       vodoviUpoligonu(odabraniNaponskiNivo);
       trafostaniceUpoligonu(odabraniNaponskiNivo);
+      stuboviUpoligonu(odabraniNaponskiNivo);
       console.log("NN PRVI KORAK ELSE");
     }
 
@@ -204,6 +206,17 @@ function konacniUpisIzmjena() {
       iterator++;
       prikljucnoMjestoArrayElement(selektovanaPrikljucnaMjestaFeatures[i], "U", 1, iterator);
     }
+  }
+  for (let i = 0; i < selektovaniStuboviFeatures.length; i++) {
+    console.log("stubovi", selektovaniStuboviFeatures[i]);
+    iterator++;
+    selektovaniStuboviFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
+    selektovaniStuboviFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
+    selektovaniStuboviFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
+    stubArrayElement(selektovaniStuboviFeatures[i], "U", 1, iterator);
+    /*if (selektovaniStuboviFeatures[i].akcija && selektovaniStuboviFeatures[i].akcija === "Izmjena") {
+      
+    }*/
   }
 
   insertAllObjects(

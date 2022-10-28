@@ -252,7 +252,7 @@ function poveziVodove() {
     document.querySelector("#ddlPovezivanjeVodovaSelektovane").length === 1 &&
     document.querySelector("#ddlPovezivanjeVodovaPronadjene").length === 0
   ) {
-    alert("Uspješno upareni svi vodovi: \n" + paroviVodova.join(",") + "\n Prelazak na sljedeći korak wizard-a");
+    poruka(StatusPoruke.Uspjeh, WizardPoruke.UspjesnoUpareniVodovi);
     blnZavrsenoUparivanjeVodova = true;
   }
 }
