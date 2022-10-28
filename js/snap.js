@@ -2,6 +2,7 @@ document.querySelector("#snapStub35").addEventListener("click", snapStub35);
 document.querySelector("#snapStub10Kv").addEventListener("click", snapStub10Kv);
 document.querySelector("#snapVod35").addEventListener("click", snapVod35);
 document.querySelector("#snapVod10Kv").addEventListener("click", snapVod10Kv);
+document.querySelector("#snapTrafostanica110").addEventListener("click", snapTrafostanica110);
 document.querySelector("#snapTrafostanica35").addEventListener("click", snapTrafostanica35);
 document.querySelector("#snapTrafostanica10Kv").addEventListener("click", snapTrafostanica10Kv);
 document.querySelector("#snapNKRO").addEventListener("click", snapNKRO);
@@ -19,6 +20,9 @@ function snapVod35() {
 }
 function snapVod10Kv() {
   citajExtent("vodovi", 10);
+}
+function snapTrafostanica110() {
+  citajExtent("trafostanice", 110);
 }
 function snapTrafostanica35() {
   citajExtent("trafostanice", 35);

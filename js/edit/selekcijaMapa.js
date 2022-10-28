@@ -465,9 +465,14 @@ function selekcijaGpxPoligonom() {
   //console.log("vectorSource prije for each", featuresPolygon);
   //console.log("vectorSource prije for each array", featuresPolygon.array_);
   //console.log("vectorSource prije for each array[0]", featuresPolygon.array_[0].getGeometry());
-  let minValue = minGpxName(vectorSource.getFeatures());
-  let maxValue = maxGpxName(vectorSource.getFeatures());
-  (minGpsPointName = 0), (maxGpsPointName = 0);
+  let minValue = 99999,
+    maxValue = 0;
+  minGpsPointName = 0;
+  maxGpsPointName = 0;
+  if (vectorSource && vectorSource.getFeatures().length) {
+    minValue = minGpxName(vectorSource.getFeatures());
+    maxValue = maxGpxName(vectorSource.getFeatures());
+  }
   let pocetnaTacka, krajnjaTacka;
   for (let i = minValue; i <= maxValue; i++) {
     vectorSource.getFeatures().forEach(function (el) {
