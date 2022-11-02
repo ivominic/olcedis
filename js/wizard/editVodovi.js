@@ -125,12 +125,6 @@ function povezivanjeVodova(pocetna, features) {
     for (let i = 0; i < nizSvihGeometrija.length; i++) {
       let pojedinacnaLinijaTurf = writer.writeFeatureObject(new ol.Feature(nizSvihGeometrija[i].getGeometry()));
       //Ne postoji funkcija za presjek linije i tačke pa se, ukoliko je prva linija tačka, koristi provjera da je udaljenost = 0
-      let presjektElemenata = false;
-      if (trenutnaGJ.geometry.type === "Point") {
-        presjektElemenata = turf.pointToLineDistance(trenutnaGJ, pojedinacnaLinijaTurf, { units: "kilometers" }) === 0;
-      } else {
-        presjektElemenata = turf.lineIntersect(pojedinacnaLinijaTurf, trenutnaGJ).features.length > 0;
-      }
 
       if (trenutnaGJ.geometry.type === "Point") {
         if (turf.pointToLineDistance(trenutnaGJ, pojedinacnaLinijaTurf, { units: "kilometers" }) === 0) {
@@ -152,7 +146,7 @@ function povezivanjeVodova(pocetna, features) {
         }
       } else {
         let presjek = turf.lineIntersect(pojedinacnaLinijaTurf, trenutnaGJ);
-        if (presjek.features.length > 0) {
+        if (presjek.features.length > 0 || provjeraPovezanostiLinija(pojedinacnaLinijaTurf, trenutnaGJ)) {
           if (nizObradjenihVodova.indexOf(nizSvihGeometrija[i]) < 0) {
             nizPodredjenihVodova.push(nizSvihGeometrija[i]);
             nizObradjenihVodova.push(nizSvihGeometrija[i]);
@@ -214,6 +208,29 @@ function povezivanjeVodova(pocetna, features) {
       }
     }
   }
+}
+
+/**
+ * Metoda koja provjerava da li su koordinate početne ili krajnje tačke jedne linije
+ * identične koordinatama krajnjih tačaka druge linije
+ * @param {*} linija1
+ * @param {*} linija2
+ * @returns true ako se dvije linije presijecaju u krajnjoj tački, false inače
+ */
+function provjeraPovezanostiLinija(linija1, linija2) {
+  let retVal = false;
+  if (linija1.geometry.type === linija2.geometry.type && linija1.geometry.type === lineString) {
+    let coord1 = linija1.geometry.coordinates;
+    let coord2 = linija2.geometry.coordinates;
+    let prviUslov = coord1[0][0] === coord2[0][0] && coord1[0][1] === coord2[0][1];
+    let drugiUslov =
+      coord1[coord1.length - 1][0] === coord2[coord2.length - 1][0] &&
+      coord1[coord1.length - 1][1] === coord2[coord2.length - 1][1];
+    let treciUslov = coord1[coord1.length - 1][0] === coord2[0][0] && coord1[coord1.length - 1][1] === coord2[0][1];
+    let cetvrtiUslov = coord1[0][0] === coord2[coord2.length - 1][0] && coord1[0][1] === coord2[coord2.length - 1][1];
+    retVal = prviUslov || drugiUslov || treciUslov || cetvrtiUslov;
+  }
+  return retVal;
 }
 
 /**

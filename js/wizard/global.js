@@ -565,8 +565,6 @@ window.addEventListener("load", function () {
   popuniListeZaTrafostanice(NaponskiNivo.String04kV);
   popuniListeZaPrikljucnaMjesta();
   popuniListeZaNkro();
-  popuniListeZaPotrosace();
-  popuniListeZaPod();
 });
 
 /**
