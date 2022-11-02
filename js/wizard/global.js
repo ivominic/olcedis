@@ -1,21 +1,12 @@
 /**
  * Modul koji sadrži sve promjenljive koje se koriste na globalnom nivou u aplikaciji / wizardu kao i opšte metode
  */
+
 let dozvoljeniPomjeraj = 0.01; //0.01km - deset metara je dozvoljeo pomjeriti tačke iz gpx fajlova prije uvoza u bazu
 let kmlRadius = 2; //Radijus (u metrima) za koji se vrši provjera da li postoje objekti koji bi, potencijalno,
 //trebali biti povezani na geometriju iz kml fajla, koja se smatra apsolutno preciznom
 let minGpsPointName = 0,
   maxGpsPointName = 0; //min i max gps vrijednost tačaka koje formiraju jedan vod (krajnje tačke voda iz fajla)
-//const domainUrl = location.origin;
-//const wsServerOriginLocation = window.location.protocol + "//" + window.location.hostname;
-const wsServerOriginLocation = "https://razvojgis.cedis.me";
-const domainUrl = "https://razvojgis.cedis.me";
-const wmsUrl = domainUrl + "/geoserver/geonode/wms";
-const wfsUrl = domainUrl + "/geoserver/geonode/wfs";
-const imageUrl = domainUrl + "/slike/";
-const point = "Point",
-  lineString = "LineString",
-  polygon = "Polygon";
 let globalUsername = ""; //Username korisnika aplikacije
 let globalVlasnik = ""; //Username vlasnika za korisnika aplikacije
 let geoserverToken = ""; //Promjenljiva koja čuva token za wfs servise
@@ -386,11 +377,11 @@ map.addLayer(vektorObjektiZaBrisanje);
  */
 function globalNaponskiNivoPrenosOdnos(nivo) {
   let retVal = "";
-  if (nivo === "10/0,4" || nivo === "10/0,69" || nivo === "6/0,4" || nivo === "35/0.4" || nivo === "35/0,4") {
+  if (["10/0,4", "10/0,69", "6/0,4", "35/0.4", "35/0,4"].includes(nivo)) {
     retVal = "0.4";
-  } else if (nivo === "10/10" || nivo === "35/10" || nivo === "35/6" || nivo === "110/10") {
+  } else if (["10/10", "35/10", "35/6", "110/10"].includes(nivo)) {
     retVal = "10";
-  } else if (nivo === "110/35" || nivo === "35/35") {
+  } else if (["110/35", "35/35"].includes(nivo)) {
     retVal = "35";
   }
   return retVal;
@@ -568,20 +559,10 @@ function popuniListeZaNkro() {
   popuniDdlAtributima("#pretraga_vrata", "nkro", "vrata", "", "");
 }
 
-/**
- * Inicijalno popunjavanje svih ddl listi, za potrošače
- */
-function popuniListeZaPotrosace() {}
-
-/**
- * Inicijalno popunjavanje svih ddl listi, za pod
- */
-function popuniListeZaPod() {}
-
 window.addEventListener("load", function () {
-  popuniListeZaStubove("0.4");
-  popuniListeZaVodove("0.4");
-  popuniListeZaTrafostanice("0.4");
+  popuniListeZaStubove(NaponskiNivo.String04kV);
+  popuniListeZaVodove(NaponskiNivo.String04kV);
+  popuniListeZaTrafostanice(NaponskiNivo.String04kV);
   popuniListeZaPrikljucnaMjesta();
   popuniListeZaNkro();
   popuniListeZaPotrosace();
@@ -655,7 +636,7 @@ function provjeraPravaUnosIzmjena(username, vlasnik, vlasnikObjekta) {
   if (username !== "" && vlasnik !== "" && (vlasnik === vlasnikObjekta || !vlasnikObjekta)) {
     retval = true;
   } else {
-    poruka("Upozorenje", "Nemate pravo za izvršenje akcije nad odabranim objektom.");
+    poruka(StatusPoruke.Upozorenje, GlobalPoruke.NedostatakPrava);
   }
   return retval;
 }

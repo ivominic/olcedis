@@ -55,6 +55,8 @@ function povezivanjeNnVodovaTopDown(pocetna, features) {
         }
       } else {
         let presjek = turf.lineIntersect(pojedinacnaLinijaTurf, trenutnaGJ);
+        console.log("PRESJEK");
+        console.log(pojedinacnaLinijaTurf, trenutnaGJ);
         if (presjek.features.length > 0) {
           if (nizObradjenihVodova.indexOf(nizSvihGeometrija[i]) < 0) {
             nizPodredjenihVodova.push(nizSvihGeometrija[i]);

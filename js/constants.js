@@ -1,5 +1,14 @@
 /** Modul koji sadrži sve poruke i konstante koje se koriste u projektu */
 
+const wsServerOriginLocation = "https://razvojgis.cedis.me";
+const domainUrl = "https://razvojgis.cedis.me";
+const wmsUrl = domainUrl + "/geoserver/geonode/wms";
+const wfsUrl = domainUrl + "/geoserver/geonode/wfs";
+const imageUrl = domainUrl + "/slike/";
+const point = "Point",
+  lineString = "LineString",
+  polygon = "Polygon";
+
 const NaponskiNivo = {
   String04kV: "0.4",
   String10kV: "10",
@@ -27,4 +36,8 @@ const WizardPoruke = {
 
 const UnosPoruke = {
   Uspjeh: "Uspješno izvršena akcija",
+};
+
+const GlobalPoruke = {
+  NedostatakPrava: "Nemate pravo za izvršenje akcije nad odabranim objektom",
 };
