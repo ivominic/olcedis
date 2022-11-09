@@ -1,7 +1,9 @@
 document.querySelector("#snapStub35").addEventListener("click", snapStub35);
 document.querySelector("#snapStub10Kv").addEventListener("click", snapStub10Kv);
+document.querySelector("#snapStub04Kv").addEventListener("click", snapStub04Kv);
 document.querySelector("#snapVod35").addEventListener("click", snapVod35);
 document.querySelector("#snapVod10Kv").addEventListener("click", snapVod10Kv);
+document.querySelector("#snapVod04Kv").addEventListener("click", snapVod04Kv);
 document.querySelector("#snapTrafostanica110").addEventListener("click", snapTrafostanica110);
 document.querySelector("#snapTrafostanica35").addEventListener("click", snapTrafostanica35);
 document.querySelector("#snapTrafostanica10Kv").addEventListener("click", snapTrafostanica10Kv);
@@ -15,11 +17,17 @@ function snapStub35() {
 function snapStub10Kv() {
   citajExtent("stubovi", 10);
 }
+function snapStub04Kv() {
+  citajExtent("stubovi", 0.4);
+}
 function snapVod35() {
   citajExtent("vodovi", 35);
 }
 function snapVod10Kv() {
   citajExtent("vodovi", 10);
+}
+function snapVod04Kv() {
+  citajExtent("vodovi", 0.4);
 }
 function snapTrafostanica110() {
   citajExtent("trafostanice", 110);
