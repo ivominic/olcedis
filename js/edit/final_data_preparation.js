@@ -17,7 +17,6 @@ function stubArrayElement(el, action, wizard, serialNo) {
     //fid: el.values_.fid,
     br_izol_faza: el.values_.br_izol_faza,
     uzemljivac: el.values_.uzemljivac,
-    pripadnost: el.values_.pripadnost,
     broj: el.values_.broj,
     napon: el.values_.napon,
     vrsta_namjena: el.values_.vrsta_namjena,

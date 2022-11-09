@@ -22,10 +22,6 @@ function obaveznaPolja(sloj) {
       popunjen = false;
       borderChange(document.querySelector("#fid_1"));
     }*/
-    if (document.querySelector("#pripadnost").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#pripadnost"));
-    }
     if (document.querySelector("#rasp_prov").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#rasp_prov"));
@@ -69,10 +65,6 @@ function obaveznaPolja(sloj) {
       popunjen = false;
       borderChange(document.querySelector("#fid_1"));
     }*/
-    if (document.querySelector("#pripadnost").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#pripadnost"));
-    }
     if (document.querySelector("#rasp_prov").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#rasp_prov"));

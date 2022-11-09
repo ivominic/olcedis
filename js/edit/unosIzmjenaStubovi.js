@@ -73,7 +73,6 @@ function dodajPoljaGpxStubovi() {
 
       el.set("broj", document.querySelector("#broj").value);
       el.set("sifra", document.querySelector("#sifra").value);
-      el.set("pripadnost", document.querySelector("#pripadnost").value);
       el.set("nad_visina", document.querySelector("#nad_visina").value);
       el.set("visina", document.querySelector("#visina").value);
       el.set("rasp_prov", document.querySelector("#rasp_prov").value);
@@ -176,7 +175,6 @@ function dodajPoljaOdabranomGpxStubu() {
   selectGpxFeature.set("gps", document.querySelector("#gps").value);
   selectGpxFeature.set("broj", document.querySelector("#broj").value);
   selectGpxFeature.set("sifra", document.querySelector("#sifra").value);
-  selectGpxFeature.set("pripadnost", document.querySelector("#pripadnost").value);
   selectGpxFeature.set("nad_visina", document.querySelector("#nad_visina").value);
   selectGpxFeature.set("visina", document.querySelector("#visina").value);
   selectGpxFeature.set("rasp_prov", document.querySelector("#rasp_prov").value);
@@ -211,7 +209,6 @@ function prikaziPoljaOdabranogGpxStuba() {
   //document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#broj").value = selectGpxFeature.values_.broj;
   document.querySelector("#sifra").value = selectGpxFeature.values_.sifra;
-  document.querySelector("#pripadnost").value = selectGpxFeature.values_.pripadnost;
   document.querySelector("#nad_visina").value = selectGpxFeature.values_.nad_visina;
   document.querySelector("#visina").value = selectGpxFeature.values_.visina;
   document.querySelector("#rasp_prov").value = selectGpxFeature.values_.rasp_prov;
@@ -281,7 +278,6 @@ function prikaziAtributeWmsStuba(objekat) {
   //document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#broj").value = objekat.properties.broj;
   document.querySelector("#sifra").value = objekat.properties.sifra;
-  document.querySelector("#pripadnost").value = objekat.properties.pripadnost;
   document.querySelector("#nad_visina").value = objekat.properties.nad_visina;
   document.querySelector("#visina").value = objekat.properties.visina;
   document.querySelector("#rasp_prov").value = objekat.properties.rasp_prov;
@@ -345,7 +341,6 @@ function prikaziAtributeWmsStuba(objekat) {
 function izmijeniAtributeWmsStuba(objekat) {
   objekat.properties.broj = document.querySelector("#broj").value;
   objekat.properties.sifra = document.querySelector("#sifra").value;
-  objekat.properties.pripadnost = document.querySelector("#pripadnost").value;
   objekat.properties.nad_visina = document.querySelector("#nad_visina").value;
   objekat.properties.visina = document.querySelector("#visina").value;
   objekat.properties.rasp_prov = document.querySelector("#rasp_prov").value;

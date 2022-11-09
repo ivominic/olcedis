@@ -165,7 +165,6 @@ function cudStub(feature, akcija, wizard) {
   podaciForme.append("name", feature.name);
   podaciForme.append("br_izol_faza", feature.br_izol_faza);
   podaciForme.append("uzemljivac", feature.uzemljivac);
-  podaciForme.append("pripadnost", feature.pripadnost);
   podaciForme.append("broj", feature.broj);
   podaciForme.append("napon", feature.napon);
   podaciForme.append("vrsta_namjena", feature.vrsta_namjena);

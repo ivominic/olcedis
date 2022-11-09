@@ -16,7 +16,6 @@ function stubArrayElementProperties(el, action) {
     //fid: el.properties.fid,
     br_izol_faza: el.properties.br_izol_faza,
     uzemljivac: el.properties.uzemljivac,
-    pripadnost: el.properties.pripadnost,
     broj: el.properties.broj,
     napon: el.properties.napon,
     vrsta_namjena: el.properties.vrsta_namjena,

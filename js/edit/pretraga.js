@@ -19,7 +19,6 @@ function sakrijSvaPoljaPretrage() {
   document.querySelector("#divPretragaGps").style.display = "none";
   document.querySelector("#divPretragaBroj").style.display = "none";
   document.querySelector("#divPretragaSifra").style.display = "none";
-  document.querySelector("#divPretragaPripadnost").style.display = "none";
   document.querySelector("#divPretragaTip").style.display = "none";
   document.querySelector("#divPretragaNamjena").style.display = "none";
   document.querySelector("#divPretragaMaterijal").style.display = "none";
@@ -91,7 +90,6 @@ function prikaziPretraguStubove() {
   document.querySelector("#divPretragaGps").style.display = "flex";
   document.querySelector("#divPretragaBroj").style.display = "flex";
   document.querySelector("#divPretragaSifra").style.display = "flex";
-  document.querySelector("#divPretragaPripadnost").style.display = "flex";
   document.querySelector("#divPretragaTip").style.display = "flex";
   document.querySelector("#divPretragaNamjena").style.display = "flex";
   document.querySelector("#divPretragaMaterijal").style.display = "flex";

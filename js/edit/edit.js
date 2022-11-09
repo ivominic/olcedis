@@ -15,7 +15,6 @@ function popuniKontrole(odgovor) {
   document.querySelector("#gps").value = atributi["gps"];
   document.querySelector("#broj").value = atributi["broj"];
   document.querySelector("#sifra").value = atributi["sifra"];
-  document.querySelector("#pripadnost").value = atributi["pripadnost"];
   document.querySelector("#nad_visina").value = atributi["nad_visina"];
   document.querySelector("#visina").value = atributi["visina"];
   document.querySelector("#rasp_prov").value = atributi["rasp_prov"];
@@ -562,8 +561,6 @@ function kreiranjeCqlFilteraAtributi() {
     (retVal += "broj = '" + document.querySelector("#pretraga_broj").value + "' AND ");
   document.querySelector("#pretraga_sifra").value !== "" &&
     (retVal += "sifra = '" + document.querySelector("#pretraga_sifra").value + "' AND ");
-  document.querySelector("#pretraga_pripadnost").value !== "" &&
-    (retVal += "pripadnost = '" + document.querySelector("#pretraga_pripadnost").value + "' AND ");
   document.querySelector("#pretraga_tip").value !== "" &&
     (retVal += "tip = '" + document.querySelector("#pretraga_tip").value + "' AND ");
   document.querySelector("#pretraga_vrsta_namjena").value !== "" &&

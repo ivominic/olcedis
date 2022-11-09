@@ -4,7 +4,6 @@ function sakrijSvaPoljaZaUnos() {
   document.querySelector("#divUnosGps").style.display = "none";
   document.querySelector("#divUnosBroj").style.display = "none";
   document.querySelector("#divUnosSifra").style.display = "none";
-  document.querySelector("#divUnosPripadnost").style.display = "none";
   document.querySelector("#divUnosTip").style.display = "none";
   document.querySelector("#divUnosNamjena").style.display = "none";
   document.querySelector("#divUnosMaterijal").style.display = "none";
@@ -76,7 +75,6 @@ function prikaziUnosStubove() {
   document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosBroj").style.display = "flex";
   document.querySelector("#divUnosSifra").style.display = "flex";
-  document.querySelector("#divUnosPripadnost").style.display = "flex";
   document.querySelector("#divUnosTip").style.display = "flex";
   document.querySelector("#divUnosNamjena").style.display = "flex";
   document.querySelector("#divUnosMaterijal").style.display = "flex";
@@ -195,7 +193,6 @@ function unosStubova() {
   podaciForme.append("gps", document.querySelector("#gps").value);
   podaciForme.append("broj", document.querySelector("#broj").value);
   podaciForme.append("sifra", document.querySelector("#sifra").value);
-  podaciForme.append("pripadnost", document.querySelector("#pripadnost").value);
   podaciForme.append("tip", document.querySelector("#tip").value);
   podaciForme.append("vrsta_namjena", document.querySelector("#vrsta_namjena").value);
   podaciForme.append("vrsta_materijal", document.querySelector("#vrsta_materijal").value);
@@ -488,7 +485,6 @@ function popuniPoljaStubovi(odgovor) {
   document.querySelector("#gps").value = atributi["gps"];
   document.querySelector("#broj").value = atributi["broj"];
   document.querySelector("#sifra").value = atributi["sifra"];
-  document.querySelector("#pripadnost").value = atributi["pripadnost"];
   document.querySelector("#nad_visina").value = atributi["nad_visina"];
   document.querySelector("#visina").value = atributi["visina"];
   document.querySelector("#rasp_prov").value = atributi["rasp_prov"];
@@ -725,7 +721,6 @@ function unosStubova1() {
   podaciForme.append("gps", document.querySelector("#gps").value);
   podaciForme.append("broj", document.querySelector("#broj").value);
   podaciForme.append("sifra", document.querySelector("#sifra").value);
-  podaciForme.append("pripadnost", document.querySelector("#pripadnost").value);
   podaciForme.append("tip", document.querySelector("#tip").value);
   podaciForme.append("vrsta_namjena", document.querySelector("#vrsta_namjena").value);
   podaciForme.append("vrsta_materijal", document.querySelector("#vrsta_materijal").value);

@@ -4,7 +4,6 @@ function sakrijSvaPoljaZaUnos() {
   document.querySelector("#divUnosGps").style.display = "none";
   document.querySelector("#divUnosBroj").style.display = "none";
   document.querySelector("#divUnosSifra").style.display = "none";
-  document.querySelector("#divUnosPripadnost").style.display = "none";
   document.querySelector("#divUnosTip").style.display = "none";
   document.querySelector("#divUnosNamjena").style.display = "none";
   document.querySelector("#divUnosMaterijal").style.display = "none";
@@ -76,7 +75,6 @@ function prikaziUnosStubove() {
   document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosBroj").style.display = "flex";
   document.querySelector("#divUnosSifra").style.display = "flex";
-  document.querySelector("#divUnosPripadnost").style.display = "flex";
   document.querySelector("#divUnosTip").style.display = "flex";
   document.querySelector("#divUnosNamjena").style.display = "flex";
   document.querySelector("#divUnosMaterijal").style.display = "flex";
@@ -189,77 +187,6 @@ function unosStubova(geometrijaWkt, servisAkcija) {
   } else {
     console.log("izmijeniti vrijednosti za svaki stub");
   }
-  //servisAkcija = "I";
-  /*let podaciForme = new FormData();
-  podaciForme.append("wizard", 0);
-  podaciForme.append("id", idObjekta);
-  podaciForme.append("akcija", servisAkcija);
-  podaciForme.append("Geometry", geometrijaWkt);
-  podaciForme.append("fid_1", document.querySelector("#fid_1").value);
-  podaciForme.append("gps", document.querySelector("#gps").value);
-  podaciForme.append("broj", document.querySelector("#broj").value);
-  podaciForme.append("sifra", document.querySelector("#sifra").value);
-  podaciForme.append("pripadnost", document.querySelector("#pripadnost").value);
-  podaciForme.append("tip", document.querySelector("#tip").value);
-  podaciForme.append("vrsta_namjena", document.querySelector("#vrsta_namjena").value);
-  podaciForme.append("vrsta_materijal", document.querySelector("#vrsta_materijal").value);
-  podaciForme.append("vrsta_drvenog", document.querySelector("#vrsta_drvenog").value);
-  podaciForme.append("nad_visina", document.querySelector("#nad_visina").value);
-  podaciForme.append("visina", document.querySelector("#visina").value);
-  podaciForme.append("rasp_prov", document.querySelector("#rasp_prov").value);
-  podaciForme.append("izolator_vrsta", document.querySelector("#izolator_vrsta").value);
-  podaciForme.append("izolator_funkcija", document.querySelector("#izolator_funkcija").value);
-  podaciForme.append("br_izol_faza", document.querySelector("#br_izol_faza").value);
-  podaciForme.append("nosaci_izolatora", document.querySelector("#nosaci_izolatora").value);
-  podaciForme.append("odvodnik_prenapona", document.querySelector("#odvodnik_prenapona").value);
-  podaciForme.append("uzemljivac", document.querySelector("#uzemljivac").value);
-  podaciForme.append("uzemljivac_otpor", document.querySelector("#uzemljivac_otpor").value);
-  podaciForme.append("optika", document.querySelector("#optika").value);
-  podaciForme.append("rasvjeta", document.querySelector("#rasvjeta").value);
-  podaciForme.append("br_pmo", document.querySelector("#br_pmo").value);
-  podaciForme.append("br_nnv", document.querySelector("#br_nnv").value);
-  podaciForme.append("pog_sprem", document.querySelector("#pog_sprem").value);
-  podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
-  podaciForme.append("opstina", document.querySelector("#opstina").value);
-  podaciForme.append("napon", document.querySelector("#napon").value);
-  podaciForme.append("prikljucak_otcjep", document.querySelector("#prikljucak_otcjep").value);
-  podaciForme.append("nn_vod", document.querySelector("#nn_vod").value);
-  podaciForme.append("rastavljac", document.querySelector("#rastavljac").value);
-  podaciForme.append("10vod", document.querySelector("#vod_10").value);
-
-  //Dodao za poziv Jovanovog servisa
-  podaciForme.append("name", "test");
-  podaciForme.append("fid", "test");
-  podaciForme.append("layer_name", "test");
-  podaciForme.append("br_pmo", 2);
-  podaciForme.append("datum_azuriranja", "");
-
-  podaciForme.append("layer_id", 0);
-  podaciForme.append("geohash_id", "test");
-  podaciForme.append("korisnik", "test");
-  podaciForme.append("katastar", "");
-  podaciForme.append("originalId", 0);
-  podaciForme.append("posjeduje_sliku", "test");
-  podaciForme.append("vlasnik", "test");
-  podaciForme.append("geohash_id_no", "test");
-  podaciForme.append("sifra_napojne", "test");
-  podaciForme.append("izvod_napojne", "test");
-  podaciForme.append("naziv_napojne", "test");
-
-  $.ajax({
-    url: wsServerOriginLocation + "/novi_portal/api/stubovi_store",
-    method: "post",
-    data: podaciForme,
-    processData: false,
-    contentType: false,
-    success: function (response) {
-      console.log("success", response);
-      poruka("Uspjeh", response.message);
-    },
-    error: function (response) {
-      console.log("error", response);
-    },
-  });*/
 }
 
 //unosStubova("POINT(0 0)", "I");
@@ -643,7 +570,6 @@ function popuniPoljaStubovi(odgovor) {
   document.querySelector("#gps").value = atributi["gps"];
   document.querySelector("#broj").value = atributi["broj"];
   document.querySelector("#sifra").value = atributi["sifra"];
-  document.querySelector("#pripadnost").value = atributi["pripadnost"];
   document.querySelector("#nad_visina").value = atributi["nad_visina"];
   document.querySelector("#visina").value = atributi["visina"];
   document.querySelector("#rasp_prov").value = atributi["rasp_prov"];
