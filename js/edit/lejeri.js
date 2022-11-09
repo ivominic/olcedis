@@ -188,6 +188,7 @@ map.addLayer(wmsPOD);
 map.addLayer(wmsNelegalniPotrosaci);
 map.addLayer(wmsValidations);
 wmsValidations.setVisible(false);
+wmsNelegalniPotrosaci.setVisible(false);
 
 /**Dio za filtriranje lejera koji se pošalju sa mape map_energetika */
 
