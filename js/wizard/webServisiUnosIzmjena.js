@@ -31,7 +31,6 @@ function cudTrafostanica(feature, akcija, wizard) {
   podaciForme.append("inst_snaga_t1", feature.inst_snaga_t1);
   podaciForme.append("br_nn_izvoda", feature.br_nn_izvoda);
   podaciForme.append("br_vod_cel_nizi_nap", feature.br_vod_cel_nizi_nap);
-  podaciForme.append("layer_name", feature.layer_name);
   podaciForme.append("napojna_ts", feature.napojna_ts);
   podaciForme.append("opstina", feature.opstina);
   podaciForme.append("naziv", feature.naziv);
@@ -96,7 +95,6 @@ function cudVod(feature, akcija, wizard) {
   podaciForme.append("br_spojnica", feature.br_spojnica);
   podaciForme.append("kraj_dion", feature.kraj_dion);
   podaciForme.append("uze_presjek", feature.uze_presjek);
-  podaciForme.append("layer_name", feature.layer_name);
   podaciForme.append("izvod_ts", feature.izvod_ts);
   podaciForme.append("uze", feature.uze);
   podaciForme.append("br_faza", feature.br_faza);
@@ -170,7 +168,6 @@ function cudStub(feature, akcija, wizard) {
   podaciForme.append("tip_nosac_izol", feature.tip_nosac_izol);
   podaciForme.append("vlasnistvo", feature.vlasnistvo);
   podaciForme.append("tip", feature.tip);
-  podaciForme.append("layer_name", feature.layer_name);
   podaciForme.append("br_pmo", feature.br_pmo);
   podaciForme.append("visina", feature.visina);
   podaciForme.append("optika", feature.optika);
@@ -234,7 +231,6 @@ function cudPotrosac(feature, akcija, wizard) {
   podaciForme.append("name", feature.name);
   podaciForme.append("prik_kabal", feature.prik_kabal);
   podaciForme.append("pod", feature.pod);
-  podaciForme.append("layer_name", feature.layer_name);
   podaciForme.append("adresa_mm", feature.adresa_mm);
   podaciForme.append("naziv_ts", feature.naziv_ts);
   podaciForme.append("prik_mjesto", feature.prik_mjesto);
@@ -294,7 +290,6 @@ function cudNKRO(feature, akcija, wizard) {
   podaciForme.append("montaza", feature.montaza);
   podaciForme.append("vlasnistvo", feature.vlasnistvo);
   podaciForme.append("br_prikljucaka", feature.br_prikljucaka);
-  podaciForme.append("layer_name", feature.layer_name);
   podaciForme.append("izvod_ts", feature.izvod_ts);
   podaciForme.append("vrata", feature.vrata);
   podaciForme.append("opstina", feature.opstina);
@@ -354,7 +349,6 @@ function cudPrikljucnoMjesto(feature, akcija, wizard) {
   podaciForme.append("datum_azuriranja", feature.datum_azuriranja);
   podaciForme.append("vlasnistvo", feature.vlasnistvo);
   podaciForme.append("tip", feature.tip);
-  podaciForme.append("layer_name", feature.layer_name);
   podaciForme.append("izvod_ts", feature.izvod_ts);
   podaciForme.append("ts", feature.ts);
   podaciForme.append("layer_id", feature.layer_id);
@@ -405,7 +399,6 @@ function cudPOD(feature, akcija, wizard) {
   podaciForme.append("name", feature.name);
   podaciForme.append("prik_kabal", feature.prik_kabal);
   podaciForme.append("pod", feature.pod);
-  podaciForme.append("layer_name", feature.layer_name);
   podaciForme.append("adresa_mm", feature.adresa_mm);
   podaciForme.append("naziv_ts", feature.naziv_ts);
   podaciForme.append("prik_mjesto", feature.prik_mjesto);

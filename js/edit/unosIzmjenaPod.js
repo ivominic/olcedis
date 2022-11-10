@@ -74,7 +74,6 @@ function generisanjeGpxPodaIzGeometrije(lat, lng, jsonPretplatnik) {
   //featureTacka.values_.lejer = "pod";
   featureTacka.set("wizard", 0);
   featureTacka.set("lejer", "pod");
-  featureTacka.set("layer_name", "");
   featureTacka.set("gps", document.querySelector("#gps").value); //šta sa ovim?
   //featureTacka.set("fid_1", jsonPretplatnik.fid_1);
   featureTacka.set("izvod_ts", jsonPretplatnik.izvod_vod); //ILI izvodNapojneTrafostanice

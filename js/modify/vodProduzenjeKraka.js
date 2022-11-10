@@ -161,7 +161,6 @@ function vodArrayValuesProperties(el, action) {
     id: el.values_.id, //Vidjeti šta ovdje predajem
     kraj_dion: el.values_.kraj_dion,
     uze_presjek: el.values_.uze_presjek,
-    layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     izvod_ts: el.values_.izvod_ts,
     uze: el.values_.uze,
     br_faza: el.values_.br_faza,

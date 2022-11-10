@@ -31,7 +31,6 @@ function stubArrayElementProperties(el, action) {
     vlasnistvo: el.properties.vlasnistvo,
     tip: el.properties.tip,
     id: el.properties.id, //Vidjeti šta ovdje predajem
-    layer_name: el.properties.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     br_pmo: el.properties.br_pmo,
     visina: el.properties.visina,
     optika: el.properties.optika,
@@ -93,7 +92,6 @@ function vodArrayElementProperties(el, action) {
     id: el.properties.id, //Vidjeti šta ovdje predajem
     kraj_dion: el.properties.kraj_dion,
     uze_presjek: el.properties.uze_presjek,
-    layer_name: el.properties.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     izvod_ts: el.properties.izvod_ts,
     uze: el.properties.uze,
     br_faza: el.properties.br_faza,
@@ -162,7 +160,6 @@ function trafostanicaArrayElementProperties(el, action) {
     vlasnistvo: el.properties.vlasnistvo,
     tip: el.properties.tip,
     id: el.properties.id, //Vidjeti šta ovdje predajem
-    layer_name: el.properties.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     layer_id: el.properties.layer_id,
     opstina: el.properties.opstina,
     naziv: el.properties.naziv,
@@ -208,7 +205,6 @@ function prikljucnoMjestoArrayElementProperties(el, action) {
     tip: el.properties.tip,
     tip: el.properties.tip_pm,
     id: el.properties.id, //Vidjeti šta ovdje predajem
-    layer_name: el.properties.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     opstina: el.properties.opstina,
     gps: el.properties.gps,
     korisnik: globalUsername,
@@ -254,7 +250,6 @@ function potrosacArrayElementProperties(el, action) {
     br_brojila: el.properties.br_brojila,
     napon: el.properties.napon,
     id: el.properties.id, //Vidjeti šta ovdje predajem
-    layer_name: el.properties.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     opstina: el.properties.opstina,
     gps: el.properties.gps,
     korisnik: globalUsername,
@@ -301,7 +296,6 @@ function podArrayElementProperties(el, action) {
     br_brojila: el.properties.br_brojila,
     napon: el.properties.napon,
     id: el.properties.id, //Vidjeti šta ovdje predajem
-    layer_name: el.properties.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     opstina: el.properties.opstina,
     gps: el.properties.gps,
     korisnik: globalUsername,
@@ -347,7 +341,6 @@ function nkroArrayElementProperties(el, action) {
     ts: el.properties.ts,
     napon: el.properties.napon,
     id: el.properties.id, //Vidjeti šta ovdje predajem
-    layer_name: el.properties.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     opstina: el.properties.opstina,
     gps: el.properties.gps,
     korisnik: globalUsername,

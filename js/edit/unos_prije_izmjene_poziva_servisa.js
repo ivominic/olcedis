@@ -220,7 +220,6 @@ function unosStubova() {
   podaciForme.append("phoneNumber", "");
   podaciForme.append("Folder", "test");
   podaciForme.append("fid", "test");
-  podaciForme.append("layer_name", "test");
   podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
@@ -645,7 +644,6 @@ function testunosPrikljucnoMjesto() {
   podaciForme.append("phoneNumber", "");
   podaciForme.append("Folder", "test");
   podaciForme.append("fid", "test");
-  podaciForme.append("layer_name", "test");
   podaciForme.append("datum_azuriranja", "");
 
   podaciForme.append("layer_id", "test");
@@ -740,7 +738,6 @@ function unosStubova1() {
   podaciForme.append("phoneNumber", "");
   podaciForme.append("Folder", "test");
   podaciForme.append("fid", "test");
-  podaciForme.append("layer_name", "test");
   podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 

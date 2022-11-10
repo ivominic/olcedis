@@ -53,7 +53,6 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("naziv_napojne", nazivNapojneTrafostanice);
   ucrtaniVod.set("izvod_napojne", izvodNapojneTrafostanice);
   ucrtaniVod.set("izvod_ts", izvodNapojneTrafostanice);
-  ucrtaniVod.set("layer_name", izvodNapojneTrafostanice);
   ucrtaniVod.set("br_faza", document.querySelector("#br_faza").value);
   ucrtaniVod.set("br_spojnica", document.querySelector("#br_spojnica").value);
   ucrtaniVod.set("god_izg", document.querySelector("#god_izgr").value);

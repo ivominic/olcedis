@@ -219,8 +219,6 @@ function unosVodova(geometrijaWkt, servisAkcija) {
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");
   podaciForme.append("fid", "test");
-  podaciForme.append("layer_name", "test");
-  //podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
   podaciForme.append("layer_id", 0);
@@ -287,8 +285,6 @@ function unosTrafostanica(geometrijaWkt, servisAkcija) {
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");
   podaciForme.append("fid", "test");
-  podaciForme.append("layer_name", "test");
-  //podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
   podaciForme.append("layer_id", 0);
@@ -344,8 +340,6 @@ function unosNkro(geometrijaWkt, servisAkcija) {
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");
   podaciForme.append("fid", "test");
-  podaciForme.append("layer_name", "test");
-  //podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
   podaciForme.append("layer_id", 0);
@@ -398,8 +392,6 @@ function unosPrikljucnoMjesto(geometrijaWkt, servisAkcija) {
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");
   podaciForme.append("fid", "test");
-  podaciForme.append("layer_name", "test");
-  //podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
   podaciForme.append("layer_id", 0);
@@ -456,8 +448,6 @@ function unosPotrosac(geometrijaWkt, servisAkcija) {
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");
   podaciForme.append("fid", "test");
-  podaciForme.append("layer_name", "test");
-  //podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
   podaciForme.append("layer_id", 0);
@@ -514,8 +504,6 @@ function unosPod(geometrijaWkt, servisAkcija) {
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");
   podaciForme.append("fid", "test");
-  podaciForme.append("layer_name", "test");
-  //podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
   podaciForme.append("layer_id", 0);
@@ -655,7 +643,6 @@ function popuniPoljaTrafostanice(odgovor) {
   document.querySelector("#read_geohash_id_no").value = atributi["geohash_id_no"];
   document.querySelector("#read_br_vod_cel_nizi_nap").value = atributi["br_vod_cel_nizi_nap"];
   document.querySelector("#read_br_vod_cel_visi_nap").value = atributi["br_vod_cel_visi_nap"];
-  document.querySelector("#read_layer_name").value = atributi["layer_name"];
   document.querySelector("#read_god_izg").value = atributi["god_izg"];
   document.querySelector("#read_vlasnistvo").value = atributi["vlasnistvo"];
   document.querySelector("#read_datum_azuriranja").value = atributi["datum_azuriranja"];

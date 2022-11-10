@@ -95,7 +95,6 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
               //TODO: Dodijeliti vrijednosti el feature-u iz jsonPretplatnik objekta
               noviEl.set("wizard", 0);
               noviEl.set("lejer", "potrosac");
-              noviEl.set("layer_name", "");
               noviEl.set("gps", document.querySelector("#gps").value); //šta sa ovim
               //noviEl.set("fid_1", jsonPretplatnik.fid_1);
               noviEl.set("izvod_ts", jsonPretplatnik.izvod_vod); //ILI izvodNapojneTrafostanice

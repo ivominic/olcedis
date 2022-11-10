@@ -14,7 +14,6 @@ function dodajPoljaOdabranojGpxTrafostanici() {
   selectGpxFeature.set("geohash_id_no", document.querySelector("#read_geohash_id_no").value);
   selectGpxFeature.set("br_vod_cel_nizi_nap", document.querySelector("#read_br_vod_cel_nizi_nap").value);
   selectGpxFeature.set("br_vod_cel_visi_nap", document.querySelector("#read_br_vod_cel_visi_nap").value);
-  selectGpxFeature.set("layer_name", document.querySelector("#read_layer_name").value);
   selectGpxFeature.set("god_izg", document.querySelector("#read_god_izg").value);
   selectGpxFeature.set("vlasnistvo", document.querySelector("#read_vlasnistvo").value);
   selectGpxFeature.set("datum_azuriranja", document.querySelector("#read_datum_azuriranja").value);
@@ -66,7 +65,6 @@ function prikaziPoljaOdabraneGpxTrafostanice() {
   document.querySelector("#read_geohash_id_no").value = selectGpxFeature.values_.geohash_id_no;
   document.querySelector("#read_br_vod_cel_nizi_nap").value = selectGpxFeature.values_.br_vod_cel_nizi_nap;
   document.querySelector("#read_br_vod_cel_visi_nap").value = selectGpxFeature.values_.br_vod_cel_visi_nap;
-  document.querySelector("#read_layer_name").value = selectGpxFeature.values_.layer_name;
   document.querySelector("#read_god_izg").value = selectGpxFeature.values_.god_izg;
   document.querySelector("#read_vlasnistvo").value = selectGpxFeature.values_.vlasnistvo;
   document.querySelector("#read_datum_azuriranja").value = selectGpxFeature.values_.datum_azuriranja;
@@ -111,7 +109,6 @@ function popuniKontroleIzTrafostanice(data) {
     document.querySelector("#read_geohash_id_no").value = data.geohash_id_no;
     document.querySelector("#read_br_vod_cel_nizi_nap").value = data.br_vod_cel_nizi_nap;
     document.querySelector("#read_br_vod_cel_visi_nap").value = data.br_vod_cel_visi_nap;
-    document.querySelector("#read_layer_name").value = data.layer_name;
     document.querySelector("#read_god_izg").value = data.god_izg;
     document.querySelector("#read_vlasnistvo").value = data.vlasnistvo;
     document.querySelector("#read_datum_azuriranja").value = data.datum_azuriranja;
@@ -154,7 +151,6 @@ function prikaziPoljaWmsTrafostanice(objekat) {
   document.querySelector("#read_geohash_id_no").value = objekat.properties.geohash_id_no;
   document.querySelector("#read_br_vod_cel_nizi_nap").value = objekat.properties.br_vod_cel_nizi_nap;
   document.querySelector("#read_br_vod_cel_visi_nap").value = objekat.properties.br_vod_cel_visi_nap;
-  document.querySelector("#read_layer_name").value = objekat.properties.layer_name;
   document.querySelector("#read_god_izg").value = objekat.properties.god_izg;
   document.querySelector("#read_vlasnistvo").value = objekat.properties.vlasnistvo;
   document.querySelector("#read_datum_azuriranja").value = objekat.properties.datum_azuriranja;
@@ -196,7 +192,6 @@ function izmijeniAtributeWmsTrafostanice(objekat) {
   objekat.properties.geohash_id_no = document.querySelector("#read_geohash_id_no").value;
   objekat.properties.br_vod_cel_nizi_nap = document.querySelector("#read_br_vod_cel_nizi_nap").value;
   objekat.properties.br_vod_cel_visi_nap = document.querySelector("#read_br_vod_cel_visi_nap").value;
-  objekat.properties.layer_name = document.querySelector("#read_layer_name").value;
   objekat.properties.god_izg = document.querySelector("#read_god_izg").value;
   objekat.properties.vlasnistvo = document.querySelector("#read_vlasnistvo").value;
   objekat.properties.datum_azuriranja = document.querySelector("#read_datum_azuriranja").value;
@@ -241,7 +236,6 @@ function isprazniVrijednostiPoljaTrafostanice() {
   document.querySelector("#read_geohash_id_no").value = "";
   document.querySelector("#read_br_vod_cel_nizi_nap").value = "";
   document.querySelector("#read_br_vod_cel_visi_nap").value = "";
-  document.querySelector("#read_layer_name").value = "";
   document.querySelector("#read_god_izg").value = "";
   document.querySelector("#read_vlasnistvo").value = "";
   document.querySelector("#read_datum_azuriranja").value = "";

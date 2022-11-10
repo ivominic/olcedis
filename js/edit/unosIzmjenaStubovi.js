@@ -87,7 +87,6 @@ function dodajPoljaGpxStubovi() {
       //Dodao za poziv Jovanovog servisa
       el.set("name", el.values_.name);
       el.set("fid", "test");
-      el.set("layer_name", "test");
       el.set("datum_azuriranja", "");
 
       el.set("layer_id", 0);

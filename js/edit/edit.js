@@ -316,7 +316,6 @@ dragAndDrop.on("addfeatures", function (event) {
   event.features.forEach(function (feature) {
     let tempTimestamp = new Date().getTime() + "_" + feature.ol_uid;
     feature.set("originalId", tempTimestamp);
-    feature.set("layer_name", layerNameImport);
     feature.set("isEditable", isEditable);
     feature.set("napon", naponskiNivoNapojneTrafostanice);
     let position = feature.values_.geometry.flatCoordinates;

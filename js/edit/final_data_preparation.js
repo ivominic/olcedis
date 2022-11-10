@@ -32,7 +32,6 @@ function stubArrayElement(el, action, wizard, serialNo) {
     vlasnistvo: el.values_.vlasnistvo,
     tip: el.values_.tip,
     id: el.values_.id, //Vidjeti šta ovdje predajem
-    layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     br_pmo: el.values_.br_pmo,
     visina: el.values_.visina,
     optika: el.values_.optika,
@@ -98,7 +97,6 @@ function vodArrayElement(el, action, wizard, serialNo) {
     id: el.values_.id, //Vidjeti šta ovdje predajem
     kraj_dion: el.values_.kraj_dion,
     uze_presjek: el.values_.uze_presjek,
-    layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     izvod_ts: el.values_.izvod_ts,
     uze: el.values_.uze,
     br_faza: el.values_.br_faza,
@@ -171,7 +169,6 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     vlasnistvo: el.values_.vlasnistvo,
     tip: el.values_.tip,
     id: el.values_.id, //Vidjeti šta ovdje predajem
-    layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     opstina: el.values_.opstina,
     naziv: el.values_.naziv,
     god_izg: el.values_.god_izg,
@@ -223,7 +220,6 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
     tip: el.values_.tip,
     tip: el.values_.tip_pm,
     id: el.values_.id, //Vidjeti šta ovdje predajem
-    layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     opstina: el.values_.opstina,
     gps: el.values_.gps,
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
@@ -275,7 +271,6 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
     br_brojila: el.values_.br_brojila,
     napon: el.values_.napon,
     id: el.values_.id, //Vidjeti šta ovdje predajem
-    layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     opstina: el.values_.opstina,
     gps: el.values_.gps,
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
@@ -328,7 +323,6 @@ function podArrayElement(el, action, wizard, serialNo) {
     br_brojila: el.values_.br_brojila,
     napon: el.values_.napon,
     id: el.values_.id, //Vidjeti šta ovdje predajem
-    layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     opstina: el.values_.opstina,
     gps: el.values_.gps,
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
@@ -380,7 +374,6 @@ function nkroArrayElement(el, action, wizard, serialNo) {
     ts: el.values_.ts,
     napon: el.values_.napon,
     id: el.values_.id, //Vidjeti šta ovdje predajem
-    layer_name: el.values_.layer_name, //Mislim da se ovo ne popunjava. Provjeriti
     opstina: el.values_.opstina,
     gps: el.values_.gps,
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
