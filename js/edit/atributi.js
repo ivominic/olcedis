@@ -76,7 +76,6 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosTipVod10").style.display = "none";
   document.querySelector("#divUnosTipVod35").style.display = "none";
   document.querySelector("#divUnosNaziv").style.display = "none";
-  document.querySelector("#divUnosTs").style.display = "none";
   document.querySelector("#divUnosBrFaza").style.display = "none";
   document.querySelector("#divUnosVrsta").style.display = "none";
   document.querySelector("#divUnosVrstaVod04").style.display = "none";
@@ -100,7 +99,6 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosUzeVod35").style.display = "none";
   document.querySelector("#divUnosRacDuzina").style.display = "none";
   document.querySelector("#divUnosDuzina").style.display = "none";
-  document.querySelector("#divUnosBrojSpojnica").style.display = "none";
   document.querySelector("#divUnosSifraDionice").style.display = "none";
 
   document.querySelector("#divUnosBrNnIzvoda").style.display = "none";
@@ -271,13 +269,11 @@ function prikaziAtributDivVodove(napon) {
   document.querySelector("#divUnosPogSprem").style.display = "flex";
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
   document.querySelector("#divUnosNaziv").style.display = "flex";
-  document.querySelector("#divUnosTs").style.display = "flex";
   document.querySelector("#divUnosBrFaza").style.display = "flex";
   document.querySelector("#divUnosBrSpojnica").style.display = "flex";
   document.querySelector("#divUnosGodIzgr").style.display = "flex";
   document.querySelector("#divUnosRacDuzina").style.display = "flex";
   document.querySelector("#divUnosDuzina").style.display = "flex";
-  document.querySelector("#divUnosBrojSpojnica").style.display = "flex";
 }
 
 function prikaziAtributDivTrafostanice(napon) {
@@ -352,7 +348,6 @@ function prikaziAtributDivNkro() {
   document.querySelector("#divUnosSifraTs").style.display = "flex";
   document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
-  document.querySelector("#divUnosTs").style.display = "flex";
   document.querySelector("#divUnosId").style.display = "flex";
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
   document.querySelector("#divUnosNapon").style.display = "flex";

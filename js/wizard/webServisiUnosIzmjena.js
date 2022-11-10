@@ -92,7 +92,6 @@ function cudVod(feature, akcija, wizard) {
   podaciForme.append("tip", feature.tip);
   podaciForme.append("br_spojnica", feature.br_spojnica);
   podaciForme.append("uze_presjek", feature.uze_presjek);
-  podaciForme.append("izvod_ts", feature.izvod_ts);
   podaciForme.append("uze", feature.uze);
   podaciForme.append("br_faza", feature.br_faza);
   podaciForme.append("presjek", feature.presjek);
@@ -104,7 +103,6 @@ function cudVod(feature, akcija, wizard) {
   podaciForme.append("pog_sprem", feature.pog_sprem);
   podaciForme.append("duzina", feature.duzina);
   podaciForme.append("ts", feature.ts);
-  podaciForme.append("broj_spojnica", feature.broj_spojnica);
   podaciForme.append("geohash_id", feature.geohash_id);
   podaciForme.append("korisnik", feature.korisnik);
   podaciForme.append("katastar", feature.katastar);
@@ -284,7 +282,6 @@ function cudNKRO(feature, akcija, wizard) {
   podaciForme.append("montaza", feature.montaza);
   podaciForme.append("vlasnistvo", feature.vlasnistvo);
   podaciForme.append("br_prikljucaka", feature.br_prikljucaka);
-  podaciForme.append("izvod_ts", feature.izvod_ts);
   podaciForme.append("vrata", feature.vrata);
   podaciForme.append("opstina", feature.opstina);
   podaciForme.append("gps", feature.gps);
@@ -342,7 +339,6 @@ function cudPrikljucnoMjesto(feature, akcija, wizard) {
   podaciForme.append("datum_azuriranja", feature.datum_azuriranja);
   podaciForme.append("vlasnistvo", feature.vlasnistvo);
   podaciForme.append("tip", feature.tip);
-  podaciForme.append("izvod_ts", feature.izvod_ts);
   podaciForme.append("ts", feature.ts);
   podaciForme.append("napon", feature.napon);
   podaciForme.append("geohash_id", feature.geohash_id);

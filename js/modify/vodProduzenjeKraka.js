@@ -159,18 +159,15 @@ function vodArrayValuesProperties(el, action) {
     br_spojnica: el.values_.br_spojnica,
     id: el.values_.id, //Vidjeti šta ovdje predajem
     uze_presjek: el.values_.uze_presjek,
-    izvod_ts: el.values_.izvod_ts,
     uze: el.values_.uze,
     br_faza: el.values_.br_faza,
     presjek: el.values_.presjek,
     opstina: el.values_.opstina,
-    naziv: el.values_.naziv,
     god_izg: el.values_.god_izg,
     gps: el.values_.gps,
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
     pog_sprem: el.values_.pog_sprem,
     duzina: el.values_.duzina,
-    broj_spojnica: el.values_.broj_spojnica,
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: globalUsername,

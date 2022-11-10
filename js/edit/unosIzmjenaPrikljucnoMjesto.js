@@ -6,7 +6,6 @@ function dodajPoljaOdabranomGpxPM() {
   selectGpxFeature.set("fid_1", document.querySelector("#fid_1").value);
   selectGpxFeature.set("vlasnistvo", document.querySelector("#vlasnistvo").value);
   selectGpxFeature.set("napon", document.querySelector("#napon").value);
-  selectGpxFeature.set("izvod_ts", document.querySelector("#izvod_ts").value); //ILI izvodNapojneTrafostanice
   selectGpxFeature.set("napojna_ts", document.querySelector("#napojna_ts").value); //ILI sifraNapojneTrafostanice
   selectGpxFeature.set("id", document.querySelector("#id").value);
   selectGpxFeature.set("osiguraci", document.querySelector("#osiguraci").value);
@@ -34,7 +33,6 @@ function prikaziPoljaOdabranogGpxPM() {
   //document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#vlasnistvo").value = selectGpxFeature.values_.vlasnistvo;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
-  document.querySelector("#izvod_ts").value = selectGpxFeature.values_.izvod_ts;
   document.querySelector("#napojna_ts").value = selectGpxFeature.values_.napojna_ts;
   document.querySelector("#id").value = selectGpxFeature.values_.id;
   document.querySelector("#osiguraci").value = selectGpxFeature.values_.osiguraci;
@@ -53,7 +51,6 @@ function prikaziPoljaWmsPM(objekat) {
 
   document.querySelector("#vlasnistvo").value = objekat.properties.vlasnistvo;
   document.querySelector("#napon").value = objekat.properties.napon;
-  document.querySelector("#izvod_ts").value = objekat.properties.izvod_ts;
   document.querySelector("#napojna_ts").value = objekat.properties.napojna_ts;
   document.querySelector("#id").value = objekat.properties.id;
   document.querySelector("#osiguraci").value = objekat.properties.osiguraci;
@@ -65,7 +62,6 @@ function prikaziPoljaWmsPM(objekat) {
 
 function izmijeniAtributeWmsPM(objekat) {
   objekat.properties.napon = document.querySelector("#napon").value;
-  objekat.properties.izvod_ts = document.querySelector("#izvod_ts").value;
   objekat.properties.napojna_ts = document.querySelector("#napojna_ts").value;
   objekat.properties.id = document.querySelector("#id").value;
   objekat.properties.osiguraci = document.querySelector("#osiguraci").value;

@@ -46,19 +46,16 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("pog_sprem", document.querySelector("#pog_sprem").value);
   ucrtaniVod.set("vlasnistvo", document.querySelector("#vlasnistvo").value);
   ucrtaniVod.set("id", document.querySelector("#id").value);
-  ucrtaniVod.set("naziv", document.querySelector("#naziv").value);
-  ucrtaniVod.set("name", document.querySelector("#naziv").value);
+  ucrtaniVod.set("name", document.querySelector("#read_name").value);
   ucrtaniVod.set("ts", sifraNapojneTrafostanice);
   ucrtaniVod.set("sifra_napojne", sifraNapojneTrafostanice);
   ucrtaniVod.set("naziv_napojne", nazivNapojneTrafostanice);
   ucrtaniVod.set("izvod_napojne", izvodNapojneTrafostanice);
-  ucrtaniVod.set("izvod_ts", izvodNapojneTrafostanice);
   ucrtaniVod.set("br_faza", document.querySelector("#br_faza").value);
   ucrtaniVod.set("br_spojnica", document.querySelector("#br_spojnica").value);
   ucrtaniVod.set("god_izg", document.querySelector("#god_izgr").value);
   ucrtaniVod.set("rac_duzina", document.querySelector("#rac_duzina").value);
   ucrtaniVod.set("duzina", document.querySelector("#duzina").value);
-  ucrtaniVod.set("broj_spojnica", document.querySelector("#broj_spojnica").value);
   ucrtaniVod.set("sifra_dionice", document.querySelector("#sifra_dionice").value);
   ucrtaniVod.set("originalId", new Date().getTime());
   ucrtaniVod.set("vlasnik", "");
@@ -78,14 +75,12 @@ function prikaziPoljaOdabranogVoda() {
   document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
   document.querySelector("#pog_sprem").value = selectGpxFeature.values_.pog_sprem;
-  document.querySelector("#naziv").value = selectGpxFeature.values_.naziv;
   document.querySelector("#ts").value = selectGpxFeature.values_.ts;
   document.querySelector("#br_faza").value = selectGpxFeature.values_.br_faza;
   document.querySelector("#br_spojnica").value = selectGpxFeature.values_.br_spojnica;
   document.querySelector("#god_izgr").value = selectGpxFeature.values_.god_izg;
   document.querySelector("#rac_duzina").value = selectGpxFeature.values_.rac_duzina;
   document.querySelector("#duzina").value = selectGpxFeature.values_.duzina;
-  document.querySelector("#broj_spojnica").value = selectGpxFeature.values_.broj_spojnica;
 
   if (selectGpxFeature.values_.napon === "0.4") {
     document.querySelector("#rasvjeta_vod").value = selectGpxFeature.values_.rasvjeta;
@@ -127,14 +122,12 @@ function prikaziPoljaWmsVoda(objekat) {
   document.querySelector("#fid_1").value = objekat.properties.fid_1;
   document.querySelector("#napon").value = objekat.properties.napon;
   document.querySelector("#pog_sprem").value = objekat.properties.pog_sprem;
-  document.querySelector("#naziv").value = objekat.properties.naziv;
   document.querySelector("#ts").value = objekat.properties.ts;
   document.querySelector("#br_faza").value = objekat.properties.br_faza;
   document.querySelector("#br_spojnica").value = objekat.properties.br_spojnica;
   document.querySelector("#god_izgr").value = objekat.properties.god_izg;
   document.querySelector("#rac_duzina").value = objekat.properties.rac_duzina;
   document.querySelector("#duzina").value = objekat.properties.duzina;
-  document.querySelector("#broj_spojnica").value = objekat.properties.broj_spojnica;
 
   if (objekat.properties.napon === "0.4") {
     document.querySelector("#rasvjeta_vod").value = objekat.properties.rasvjeta;
@@ -168,14 +161,12 @@ function prikaziPoljaWmsVoda(objekat) {
 function izmijeniAtributeWmsVoda(objekat) {
   objekat.properties.napon = document.querySelector("#napon").value;
   objekat.properties.pog_sprem = document.querySelector("#pog_sprem").value;
-  objekat.properties.naziv = document.querySelector("#naziv").value;
   objekat.properties.ts = document.querySelector("#ts").value;
   objekat.properties.br_faza = document.querySelector("#br_faza").value;
   objekat.properties.br_spojnica = document.querySelector("#br_spojnica").value;
   objekat.properties.god_izg = document.querySelector("#god_izgr").value;
   objekat.properties.rac_duzina = document.querySelector("#rac_duzina").value;
   objekat.properties.duzina = document.querySelector("#duzina").value;
-  objekat.properties.broj_spojnica = document.querySelector("#broj_spojnica").value;
 
   if (objekat.properties.napon === "0.4") {
     objekat.properties.rasvjeta = document.querySelector("#rasvjeta_vod").value;

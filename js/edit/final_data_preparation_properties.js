@@ -87,18 +87,15 @@ function vodArrayElementProperties(el, action) {
     br_spojnica: el.properties.br_spojnica,
     id: el.properties.id, //Vidjeti šta ovdje predajem    
     uze_presjek: el.properties.uze_presjek,
-    izvod_ts: el.properties.izvod_ts,
     uze: el.properties.uze,
     br_faza: el.properties.br_faza,
     presjek: el.properties.presjek,
     opstina: el.properties.opstina,
-    naziv: el.properties.naziv,
     god_izg: el.properties.god_izg,
     gps: el.properties.gps,
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
     pog_sprem: el.properties.pog_sprem,
     duzina: el.properties.duzina,
-    broj_spojnica: el.properties.broj_spojnica,
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: globalUsername,
@@ -154,7 +151,6 @@ function trafostanicaArrayElementProperties(el, action) {
     tip: el.properties.tip,
     id: el.properties.id, //Vidjeti šta ovdje predajem
     opstina: el.properties.opstina,
-    naziv: el.properties.naziv,
     god_izg: el.properties.god_izg,
     gps: el.properties.gps,
     pog_sprem: el.properties.pog_sprem,
@@ -189,7 +185,6 @@ function prikljucnoMjestoArrayElementProperties(el, action) {
     fid: el.properties.fid,
     osiguraci: el.properties.osiguraci,
     br_pretplatnika: el.properties.br_pretplatnika,
-    izvod_ts: el.properties.izvod_ts,
     ts: el.properties.ts,
     napon: el.properties.napon,
     vlasnistvo: el.properties.vlasnistvo,
@@ -319,7 +314,6 @@ function nkroArrayElementProperties(el, action) {
     montaza: el.properties.montaza,
     vlasnistvo: el.properties.vlasnistvo,
     br_prikljucaka: el.properties.br_prikljucaka,
-    izvod_ts: el.properties.izvod_ts,
     vrata: el.properties.vrata,
     br_izvoda: el.properties.br_izvoda,
     pog_sprem: el.properties.pog_sprem,

@@ -342,7 +342,7 @@ function potvrdaNapojneTrafostaniceUnos() {
   izvodNapojneTrafostanice = izvod;
   document.querySelector("#sifra_ts").value = sifraNapojneTrafostanice;
   document.querySelector("#naziv_ts").value = nazivNapojneTrafostanice;
-  document.querySelector("#izvod_ts").value = izvodNapojneTrafostanice;
+  document.querySelector("#izvod_napojne").value = izvodNapojneTrafostanice;
   closeDiv("#odabirNapojneTrafostaniceDiv");
   poruka("Uspjeh", "Uspješno odabran izvod napojne trafostanice.");
   isprazniVrijednostiPoljaTrafostanice();

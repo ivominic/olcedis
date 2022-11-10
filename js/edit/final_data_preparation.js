@@ -92,18 +92,15 @@ function vodArrayElement(el, action, wizard, serialNo) {
     br_spojnica: el.values_.br_spojnica,
     id: el.values_.id, //Vidjeti šta ovdje predajem
     uze_presjek: el.values_.uze_presjek,
-    izvod_ts: el.values_.izvod_ts,
     uze: el.values_.uze,
     br_faza: el.values_.br_faza,
     presjek: el.values_.presjek,
     opstina: el.values_.opstina,
-    naziv: el.values_.naziv,
     god_izg: el.values_.god_izg,
     gps: el.values_.gps,
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
     pog_sprem: el.values_.pog_sprem,
     duzina: el.values_.duzina,
-    broj_spojnica: el.values_.broj_spojnica,
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: globalUsername,
@@ -163,7 +160,6 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     tip: el.values_.tip,
     id: el.values_.id, //Vidjeti šta ovdje predajem
     opstina: el.values_.opstina,
-    naziv: el.values_.naziv,
     god_izg: el.values_.god_izg,
     gps: el.values_.gps,
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
@@ -204,7 +200,6 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
     fid: el.values_.fid,
     osiguraci: el.values_.osiguraci,
     br_pretplatnika: el.values_.br_pretplatnika,
-    izvod_ts: el.values_.izvod_ts,
     ts: el.values_.ts,
     napon: el.values_.napon,
     vlasnistvo: el.values_.vlasnistvo,
@@ -352,7 +347,6 @@ function nkroArrayElement(el, action, wizard, serialNo) {
     montaza: el.values_.montaza,
     vlasnistvo: el.values_.vlasnistvo,
     br_prikljucaka: el.values_.br_prikljucaka,
-    izvod_ts: el.values_.izvod_ts,
     vrata: el.values_.vrata,
     br_izvoda: el.values_.br_izvoda,
     pog_sprem: el.values_.pog_sprem,
@@ -361,7 +355,7 @@ function nkroArrayElement(el, action, wizard, serialNo) {
     id: el.values_.id, //Vidjeti šta ovdje predajem
     opstina: el.values_.opstina,
     gps: el.values_.gps,
-    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani    
+    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: globalUsername,

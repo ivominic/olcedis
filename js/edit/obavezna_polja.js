@@ -109,22 +109,6 @@ function obaveznaPolja(sloj) {
   } else if (sloj === "stub35") {
   } else if (sloj === "vod04") {
     //Inputi
-    /*if (document.querySelector("#fid_1").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#fid_1"));
-    }*/
-    if (document.querySelector("#naziv").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#naziv"));
-    }
-    if (document.querySelector("#broj_spojnica").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#broj_spojnica"));
-    }
-    /*if (document.querySelector("#sifra_dionice").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#sifra_dionice"));
-    }*/
     //Selekti
     if (document.querySelector("#tip_vod_04").value === "") {
       popunjen = false;
@@ -156,18 +140,6 @@ function obaveznaPolja(sloj) {
     }
   } else if (sloj === "vod10") {
     //Inputi
-    /*if (document.querySelector("#fid_1").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#fid_1"));
-    }*/
-    if (document.querySelector("#naziv").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#naziv"));
-    }
-    if (document.querySelector("#broj_spojnica").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#broj_spojnica"));
-    }
     if (document.querySelector("#sifra_dionice").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#sifra_dionice"));
@@ -207,18 +179,6 @@ function obaveznaPolja(sloj) {
     }
   } else if (sloj === "vod35") {
     //Inputi
-    /*if (document.querySelector("#fid_1").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#fid_1"));
-    }*/
-    if (document.querySelector("#naziv").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#naziv"));
-    }
-    if (document.querySelector("#broj_spojnica").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#broj_spojnica"));
-    }
     if (document.querySelector("#sifra_dionice").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#sifra_dionice"));
@@ -316,64 +276,16 @@ function obaveznaPolja(sloj) {
     }
   } else if (sloj === "potrosac") {
     //Inputi
-    /*if (document.querySelector("#fid_1").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#fid_1"));
-    }
-    if (document.querySelector("#prik_kabal").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#prik_kabal"));
-    }
-    if (document.querySelector("#pod").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#pod"));
-    }
-    if (document.querySelector("#adresa_mm").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#adresa_mm"));
-    } */
     if (document.querySelector("#prik_mjesto").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#prik_mjesto"));
     }
-    /*if (document.querySelector("#naziv_nn_izvod").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#naziv_nn_izvod"));
-    }*/
     if (document.querySelector("#pretplatni_br").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#pretplatni_br"));
     }
-    /*if (document.querySelector("#br_brojila").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#br_brojila"));
-    }
-    if (document.querySelector("#naziv_ts").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#naziv_ts"));
-    }
-    if (document.querySelector("#sifra_ts").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#sifra_ts"));
-    }
-    if (document.querySelector("#izvod_ts").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#izvod_ts"));
-    } 
-    if (document.querySelector("#napojna_ts").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#napojna_ts"));
-    }
-    if (document.querySelector("#id").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#id"));
-    }*/
   } else if (sloj === "pod") {
     //Inputi
-    /*if (document.querySelector("#fid_1").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#fid_1"));
-    }*/
     if (document.querySelector("#prik_kabal").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#prik_kabal"));
@@ -410,10 +322,7 @@ function obaveznaPolja(sloj) {
       popunjen = false;
       borderChange(document.querySelector("#sifra_ts"));
     }
-    if (document.querySelector("#izvod_ts").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#izvod_ts"));
-    }
+
     if (document.querySelector("#napojna_ts").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#napojna_ts"));
