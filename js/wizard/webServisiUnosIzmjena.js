@@ -31,7 +31,6 @@ function cudTrafostanica(feature, akcija, wizard) {
   podaciForme.append("inst_snaga_t1", feature.inst_snaga_t1);
   podaciForme.append("br_nn_izvoda", feature.br_nn_izvoda);
   podaciForme.append("br_vod_cel_nizi_nap", feature.br_vod_cel_nizi_nap);
-  podaciForme.append("napojna_ts", feature.napojna_ts);
   podaciForme.append("opstina", feature.opstina);
   podaciForme.append("naziv", feature.naziv);
   podaciForme.append("god_izg", feature.god_izg);

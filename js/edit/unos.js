@@ -247,7 +247,6 @@ function unosTrafostanica(geometrijaWkt, servisAkcija) {
   podaciForme.append("id_billing", document.querySelector("#id_billing").value);
   podaciForme.append("funkcija", document.querySelector("#funkcija").value);
   podaciForme.append("tip", document.querySelector("#tip").value);
-  podaciForme.append("napojna_ts", document.querySelector("#napojna_ts").value);
   podaciForme.append("izvod_celija", document.querySelector("#izvod_celija").value);
   podaciForme.append("prenos_odnos", document.querySelector("#prenos_odnos").value);
   podaciForme.append("inst_snaga_t1", document.querySelector("#inst_snaga_t1").value);
@@ -633,7 +632,6 @@ function popuniPoljaNkro(odgovor) {
   document.querySelector("#idObjekta").value = idObjekta;
   document.querySelector("#gps").value = atributi["gps"];
   document.querySelector("#id_billing").value = atributi["id_billing"];
-  document.querySelector("#napojna_ts").value = atributi["napojna_ts"];
   document.querySelector("#izvod_celija").value = atributi["izvod_celija"];
   document.querySelector("#projek_snaga").value = atributi["projek_snaga"];
   document.querySelector("#celije_10").value = atributi["celije_10"];

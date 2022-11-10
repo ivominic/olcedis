@@ -142,7 +142,6 @@ function trafostanicaArrayElementProperties(el, action) {
     inst_snaga_t2: el.properties.inst_snaga_t2,
     inst_snaga_t1: el.properties.inst_snaga_t1,
     br_nn_izvoda: el.properties.br_nn_izvoda,
-    napojna_ts: el.properties.napojna_ts,
     br_vod_cel_visi_nap: el.properties.br_vod_cel_visi_nap,
     br_vod_cel_nizi_nap: el.properties.br_vod_cel_nizi_nap,
     projek_snaga: el.properties.projek_snaga,

@@ -322,11 +322,6 @@ function obaveznaPolja(sloj) {
       popunjen = false;
       borderChange(document.querySelector("#sifra_ts"));
     }
-
-    if (document.querySelector("#napojna_ts").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#napojna_ts"));
-    }
     if (document.querySelector("#id").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#id"));

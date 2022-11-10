@@ -10,7 +10,6 @@ function prikaziPoljaOdabranogGpxPod() {
     document.querySelector("#gps").value = "";
   }
   //document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;  
-  document.querySelector("#napojna_ts").value = selectGpxFeature.values_.napojna_ts;
   document.querySelector("#id").value = selectGpxFeature.values_.id;
   document.querySelector("#naziv_ts").value = selectGpxFeature.values_.naziv_ts;
   document.querySelector("#sifra_ts").value = selectGpxFeature.values_.sifra_ts;
@@ -29,7 +28,6 @@ function prikaziPoljaWmsPod(objekat) {
   } else {
     document.querySelector("#gps").value = "";
   }
-  document.querySelector("#napojna_ts").value = objekat.properties.napojna_ts;
   document.querySelector("#id").value = objekat.properties.id;
   document.querySelector("#naziv_ts").value = objekat.properties.naziv_ts;
   document.querySelector("#sifra_ts").value = objekat.properties.sifra_ts;
@@ -48,8 +46,7 @@ function generisanjeGpxPodaIzGeometrije(lat, lng, jsonPretplatnik) {
   //featureTacka.values_.lejer = "pod";
   featureTacka.set("wizard", 0);
   featureTacka.set("lejer", "pod");
-  featureTacka.set("gps", document.querySelector("#gps").value); //šta sa ovim?
-  featureTacka.set("napojna_ts", jsonPretplatnik.sifra_trafostanice); //ILI sifraNapojneTrafostanice
+  featureTacka.set("gps", document.querySelector("#gps").value); //šta sa ovim?  
   featureTacka.set("id", jsonPretplatnik.id);
   featureTacka.set("naziv", jsonPretplatnik.naziv_potrosaca);
   featureTacka.set("name", jsonPretplatnik.naziv_potrosaca);
@@ -76,7 +73,6 @@ function generisanjeGpxPodaIzGeometrije(lat, lng, jsonPretplatnik) {
 }
 
 function izmijeniAtributeWmsPod(objekat) {
-  objekat.properties.napojna_ts = document.querySelector("#napojna_ts").value;
   objekat.properties.id = document.querySelector("#id").value;
   objekat.properties.naziv_ts = document.querySelector("#naziv_ts").value;
   objekat.properties.sifra_ts = document.querySelector("#sifra_ts").value;

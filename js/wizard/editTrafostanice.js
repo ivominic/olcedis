@@ -181,7 +181,7 @@ function poveziTS() {
       selektovaneTrafostaniceFeatures[i].akcija = "Izmjena";
       selektovaneTrafostaniceFeatures[i].values_.id_billing = tsIzSistema;
       selektovaneTrafostaniceFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
-      selektovaneTrafostaniceFeatures[i].values_.napojna_ts = nazivNapojneTrafostanice;
+      selektovaneTrafostaniceFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
       selektovaneTrafostaniceFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
     }
   }

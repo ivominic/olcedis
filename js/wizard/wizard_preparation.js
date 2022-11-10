@@ -136,7 +136,6 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     inst_snaga_t2: el.values_.inst_snaga_t2,
     inst_snaga_t1: el.values_.inst_snaga_t1,
     br_nn_izvoda: el.values_.br_nn_izvoda,
-    napojna_ts: el.values_.napojna_ts,
     br_vod_cel_visi_nap: el.values_.br_vod_cel_visi_nap,
     br_vod_cel_nizi_nap: el.values_.br_vod_cel_nizi_nap,
     projek_snaga: el.values_.projek_snaga,

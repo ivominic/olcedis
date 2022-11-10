@@ -258,7 +258,6 @@ function poveziVodove() {
   for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
     if (odabraniVod === selektovaniVodoviFeatures[i].values_.originalId.toString()) {
       selektovaniVodoviFeatures[i].akcija = "Izmjena";
-      selektovaniVodoviFeatures[i].values_.napojna_ts = nazivNapojneTrafostanice;
       selektovaniVodoviFeatures[i].values_.sifra_dionice = vodIzSistema;
       selektovaniVodoviFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
       selektovaniVodoviFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
