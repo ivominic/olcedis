@@ -110,7 +110,6 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosInstSnaga4").style.display = "none";
   document.querySelector("#divUnosPrenosOdnos").style.display = "none";
   document.querySelector("#divUnosIzvodCelija").style.display = "none";
-  document.querySelector("#divUnosNapojnaTs").style.display = "none";
   document.querySelector("#divUnosFunkcija").style.display = "none";
   document.querySelector("#divUnosIdBilling").style.display = "none";
 
@@ -334,7 +333,6 @@ function prikaziAtributDivPrikljucnoMjesto() {
   document.querySelector("#divUnosSifraTs").style.display = "flex";
   document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
-  document.querySelector("#divUnosNapojnaTs").style.display = "flex";
   document.querySelector("#divUnosId").style.display = "flex";
   document.querySelector("#divUnosOsiguraci").style.display = "flex";
   document.querySelector("#divUnosBrPretplatnika").style.display = "flex";
@@ -364,7 +362,6 @@ function prikaziAtributDivPotrosac() {
   document.querySelector("#divUnosSifraTs").style.display = "flex";
   document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
-  document.querySelector("#divUnosNapojnaTs").style.display = "flex";
   document.querySelector("#divUnosPrikKabal").style.display = "flex";
   document.querySelector("#divUnosPod").style.display = "flex";
   document.querySelector("#divUnosAdresaMm").style.display = "flex";
@@ -379,7 +376,6 @@ function prikaziAtributDivPod() {
   document.querySelector("#divUnosSifraTs").style.display = "flex";
   document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
-  document.querySelector("#divUnosNapojnaTs").style.display = "flex";
   document.querySelector("#divUnosId").style.display = "flex";
   document.querySelector("#divUnosPrikKabal").style.display = "flex";
   document.querySelector("#divUnosPod").style.display = "flex";

@@ -49,7 +49,6 @@ function sakrijSvaPoljaZaUnos() {
   document.querySelector("#divUnosInstSnaga4").style.display = "none";
   document.querySelector("#divUnosPrenosOdnos").style.display = "none";
   document.querySelector("#divUnosIzvodCelija").style.display = "none";
-  document.querySelector("#divUnosNapojnaTs").style.display = "none";
   document.querySelector("#divUnosFunkcija").style.display = "none";
   document.querySelector("#divUnosIdBilling").style.display = "none";
 
@@ -131,14 +130,12 @@ function prikaziUnosTrafostanice() {
   document.querySelector("#divUnosInstSnaga4").style.display = "flex";
   document.querySelector("#divUnosPrenosOdnos").style.display = "flex";
   document.querySelector("#divUnosIzvodCelija").style.display = "flex";
-  document.querySelector("#divUnosNapojnaTs").style.display = "flex";
   document.querySelector("#divUnosFunkcija").style.display = "flex";
   document.querySelector("#divUnosIdBilling").style.display = "flex";
 }
 
 function prikaziUnosPrikljucnoMjesto() {
   document.querySelector("#divUnosGps").style.display = "flex";
-  document.querySelector("#divUnosNapojnaTs").style.display = "flex";
   document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosId").style.display = "flex";
   document.querySelector("#divUnosTip").style.display = "flex";
