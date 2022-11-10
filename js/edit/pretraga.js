@@ -61,7 +61,6 @@ function sakrijSvaPoljaPretrage() {
   document.querySelector("#divPretragaKrajDion").style.display = "none";
   document.querySelector("#divPretragaUzePresjek").style.display = "none";
   document.querySelector("#divPretragaUze").style.display = "none";
-  document.querySelector("#divPretragaZajednickaDion").style.display = "none";
 
   document.querySelector("#divPretragaBrNnIzvoda").style.display = "none";
   document.querySelector("#divPretragaCelije10").style.display = "none";
@@ -142,7 +141,6 @@ function prikaziPretraguVodove() {
   document.querySelector("#divPretragaKrajDion").style.display = "flex";
   document.querySelector("#divPretragaUzePresjek").style.display = "flex";
   document.querySelector("#divPretragaUze").style.display = "flex";
-  document.querySelector("#divPretragaZajednickaDion").style.display = "flex";
 }
 
 function prikaziPretraguTrafostanice() {

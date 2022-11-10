@@ -117,10 +117,6 @@ function obaveznaPolja(sloj) {
       popunjen = false;
       borderChange(document.querySelector("#naziv"));
     }
-    if (document.querySelector("#zajednicka_dion").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#zajednicka_dion"));
-    }
     if (document.querySelector("#dionica_gps").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#dionica_gps"));
@@ -171,10 +167,6 @@ function obaveznaPolja(sloj) {
     if (document.querySelector("#naziv").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#naziv"));
-    }
-    if (document.querySelector("#zajednicka_dion").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#zajednicka_dion"));
     }
     if (document.querySelector("#dionica_gps").value === "") {
       popunjen = false;
@@ -230,10 +222,6 @@ function obaveznaPolja(sloj) {
     if (document.querySelector("#naziv").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#naziv"));
-    }
-    if (document.querySelector("#zajednicka_dion").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#zajednicka_dion"));
     }
     if (document.querySelector("#dionica_gps").value === "") {
       popunjen = false;

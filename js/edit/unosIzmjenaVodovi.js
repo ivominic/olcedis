@@ -64,7 +64,6 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("god_izg", document.querySelector("#god_izgr").value);
   ucrtaniVod.set("poc_dion", document.querySelector("#poc_dion").value);
   ucrtaniVod.set("kraj_dion", document.querySelector("#kraj_dion").value);
-  ucrtaniVod.set("zajednicka_dion", document.querySelector("#zajednicka_dion").value);
   ucrtaniVod.set("dionica_gps", document.querySelector("#dionica_gps").value);
   ucrtaniVod.set("rac_duzina", document.querySelector("#rac_duzina").value);
   ucrtaniVod.set("duzina", document.querySelector("#duzina").value);
@@ -93,15 +92,11 @@ function prikaziPoljaOdabranogVoda() {
   document.querySelector("#naziv").value = selectGpxFeature.values_.naziv;
   document.querySelector("#dionica_nn").value = selectGpxFeature.values_.dionica_nn;
   document.querySelector("#ts").value = selectGpxFeature.values_.ts;
-  //document.querySelector("#sifra_napojne").value = selectGpxFeature.values_.sifra_napojne;
-  //document.querySelector("#naziv_napojne").value = selectGpxFeature.values_.naziv_napojne;
-  //document.querySelector("#izvod_napojne").value = selectGpxFeature.values_.izvod_napojne;
   document.querySelector("#br_faza").value = selectGpxFeature.values_.br_faza;
   document.querySelector("#br_spojnica").value = selectGpxFeature.values_.br_spojnica;
   document.querySelector("#god_izgr").value = selectGpxFeature.values_.god_izg;
   document.querySelector("#poc_dion").value = selectGpxFeature.values_.poc_dion;
   document.querySelector("#kraj_dion").value = selectGpxFeature.values_.kraj_dion;
-  document.querySelector("#zajednicka_dion").value = selectGpxFeature.values_.zajednicka_dion;
   document.querySelector("#dionica_gps").value = selectGpxFeature.values_.dionica_gps;
   document.querySelector("#rac_duzina").value = selectGpxFeature.values_.rac_duzina;
   document.querySelector("#duzina").value = selectGpxFeature.values_.duzina;
@@ -157,7 +152,6 @@ function prikaziPoljaWmsVoda(objekat) {
   document.querySelector("#god_izgr").value = objekat.properties.god_izg;
   document.querySelector("#poc_dion").value = objekat.properties.poc_dion;
   document.querySelector("#kraj_dion").value = objekat.properties.kraj_dion;
-  document.querySelector("#zajednicka_dion").value = objekat.properties.zajednicka_dion;
   document.querySelector("#dionica_gps").value = objekat.properties.dionica_gps;
   document.querySelector("#rac_duzina").value = objekat.properties.rac_duzina;
   document.querySelector("#duzina").value = objekat.properties.duzina;
@@ -205,7 +199,6 @@ function izmijeniAtributeWmsVoda(objekat) {
   objekat.properties.god_izg = document.querySelector("#god_izgr").value;
   objekat.properties.poc_dion = document.querySelector("#poc_dion").value;
   objekat.properties.kraj_dion = document.querySelector("#kraj_dion").value;
-  objekat.properties.zajednicka_dion = document.querySelector("#zajednicka_dion").value;
   objekat.properties.dionica_gps = document.querySelector("#dionica_gps").value;
   objekat.properties.rac_duzina = document.querySelector("#rac_duzina").value;
   objekat.properties.duzina = document.querySelector("#duzina").value;

@@ -82,7 +82,6 @@ function vodArrayElementProperties(el, action) {
     merge: el.properties.merge,
     fid: el.properties.fid,
     materijal: el.properties.materijal,
-    zajednicka_dion: el.properties.zajednicka_dion,
     id_br: el.properties.id_br,
     dionica_nn: el.properties.dionica_nn,
     napon: el.properties.napon,

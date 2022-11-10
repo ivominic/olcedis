@@ -46,7 +46,6 @@ function sakrijSvaPoljaZaUnos() {
   document.querySelector("#divUnosKrajDion").style.display = "none";
   document.querySelector("#divUnosUzePresjek").style.display = "none";
   document.querySelector("#divUnosUze").style.display = "none";
-  document.querySelector("#divUnosZajednickaDion").style.display = "none";
 
   document.querySelector("#divUnosBrNnIzvoda").style.display = "none";
   document.querySelector("#divUnosCelije10").style.display = "none";
@@ -127,7 +126,6 @@ function prikaziUnosVodove() {
   document.querySelector("#divUnosKrajDion").style.display = "flex";
   document.querySelector("#divUnosUzePresjek").style.display = "flex";
   document.querySelector("#divUnosUze").style.display = "flex";
-  document.querySelector("#divUnosZajednickaDion").style.display = "flex";
 }
 
 function prikaziUnosTrafostanice() {
@@ -310,7 +308,6 @@ function unosVodova() {
   podaciForme.append("kraj_dion", document.querySelector("#kraj_dion").value);
   podaciForme.append("uze_presjek", document.querySelector("#uze_presjek").value);
   podaciForme.append("uze", document.querySelector("#uze").value);
-  podaciForme.append("zajednicka_dion", document.querySelector("#zajednicka_dion").value);
 
   let xhr = new XMLHttpRequest();
   xhr.open("POST", sacuvajZapisUrl, true);
@@ -534,7 +531,6 @@ function popuniPoljaVodovi(odgovor) {
   document.querySelector("#god_izg").value = atributi["god_izg"];
   document.querySelector("#poc_dion").value = atributi["poc_dion"];
   document.querySelector("#kraj_dion").value = atributi["kraj_dion"];
-  document.querySelector("#zajednicka_dion").value = atributi["zajednicka_dion"];
 
   setujDdlVrijednost("#br_faza", atributi["br_faza"]);
   setujDdlVrijednost("#vrsta", atributi["vrsta"]);

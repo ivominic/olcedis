@@ -104,7 +104,6 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosUze").style.display = "none";
   document.querySelector("#divUnosUzeVod10").style.display = "none";
   document.querySelector("#divUnosUzeVod35").style.display = "none";
-  document.querySelector("#divUnosZajednickaDion").style.display = "none";
   document.querySelector("#divUnosDionicaGPS").style.display = "none";
   document.querySelector("#divUnosRacDuzina").style.display = "none";
   document.querySelector("#divUnosDuzina").style.display = "none";
@@ -292,7 +291,6 @@ function prikaziAtributDivVodove(napon) {
   document.querySelector("#divUnosGodIzgr").style.display = "flex";
   document.querySelector("#divUnosPocDion").style.display = "flex";
   document.querySelector("#divUnosKrajDion").style.display = "flex";
-  document.querySelector("#divUnosZajednickaDion").style.display = "flex";
   document.querySelector("#divUnosDionicaGPS").style.display = "flex";
   document.querySelector("#divUnosRacDuzina").style.display = "flex";
   document.querySelector("#divUnosDuzina").style.display = "flex";
