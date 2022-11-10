@@ -56,8 +56,6 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("br_faza", document.querySelector("#br_faza").value);
   ucrtaniVod.set("br_spojnica", document.querySelector("#br_spojnica").value);
   ucrtaniVod.set("god_izg", document.querySelector("#god_izgr").value);
-  ucrtaniVod.set("poc_dion", document.querySelector("#poc_dion").value);
-  ucrtaniVod.set("kraj_dion", document.querySelector("#kraj_dion").value);
   ucrtaniVod.set("rac_duzina", document.querySelector("#rac_duzina").value);
   ucrtaniVod.set("duzina", document.querySelector("#duzina").value);
   ucrtaniVod.set("broj_spojnica", document.querySelector("#broj_spojnica").value);
@@ -85,8 +83,6 @@ function prikaziPoljaOdabranogVoda() {
   document.querySelector("#br_faza").value = selectGpxFeature.values_.br_faza;
   document.querySelector("#br_spojnica").value = selectGpxFeature.values_.br_spojnica;
   document.querySelector("#god_izgr").value = selectGpxFeature.values_.god_izg;
-  document.querySelector("#poc_dion").value = selectGpxFeature.values_.poc_dion;
-  document.querySelector("#kraj_dion").value = selectGpxFeature.values_.kraj_dion;
   document.querySelector("#rac_duzina").value = selectGpxFeature.values_.rac_duzina;
   document.querySelector("#duzina").value = selectGpxFeature.values_.duzina;
   document.querySelector("#broj_spojnica").value = selectGpxFeature.values_.broj_spojnica;
@@ -136,8 +132,6 @@ function prikaziPoljaWmsVoda(objekat) {
   document.querySelector("#br_faza").value = objekat.properties.br_faza;
   document.querySelector("#br_spojnica").value = objekat.properties.br_spojnica;
   document.querySelector("#god_izgr").value = objekat.properties.god_izg;
-  document.querySelector("#poc_dion").value = objekat.properties.poc_dion;
-  document.querySelector("#kraj_dion").value = objekat.properties.kraj_dion;
   document.querySelector("#rac_duzina").value = objekat.properties.rac_duzina;
   document.querySelector("#duzina").value = objekat.properties.duzina;
   document.querySelector("#broj_spojnica").value = objekat.properties.broj_spojnica;
@@ -179,8 +173,6 @@ function izmijeniAtributeWmsVoda(objekat) {
   objekat.properties.br_faza = document.querySelector("#br_faza").value;
   objekat.properties.br_spojnica = document.querySelector("#br_spojnica").value;
   objekat.properties.god_izg = document.querySelector("#god_izgr").value;
-  objekat.properties.poc_dion = document.querySelector("#poc_dion").value;
-  objekat.properties.kraj_dion = document.querySelector("#kraj_dion").value;
   objekat.properties.rac_duzina = document.querySelector("#rac_duzina").value;
   objekat.properties.duzina = document.querySelector("#duzina").value;
   objekat.properties.broj_spojnica = document.querySelector("#broj_spojnica").value;

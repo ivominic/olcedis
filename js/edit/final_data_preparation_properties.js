@@ -81,13 +81,11 @@ function vodArrayElementProperties(el, action) {
     napon: el.properties.napon,
     rasvjeta: el.properties.rasvjeta,
     rac_duzina: el.properties.rac_duzina,
-    poc_dion: el.properties.poc_dion,
     vrsta: el.properties.vrsta,
     vlasnistvo: el.properties.vlasnistvo,
     tip: el.properties.tip,
     br_spojnica: el.properties.br_spojnica,
-    id: el.properties.id, //Vidjeti šta ovdje predajem
-    kraj_dion: el.properties.kraj_dion,
+    id: el.properties.id, //Vidjeti šta ovdje predajem    
     uze_presjek: el.properties.uze_presjek,
     izvod_ts: el.properties.izvod_ts,
     uze: el.properties.uze,

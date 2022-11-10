@@ -78,13 +78,11 @@ function vodArrayElement(el, action, wizard, serialNo) {
     napon: el.values_.napon,
     rasvjeta: el.values_.rasvjeta,
     rac_duzina: el.values_.rac_duzina,
-    poc_dion: el.values_.poc_dion,
     vrsta: el.values_.vrsta,
     vlasnistvo: el.values_.vlasnistvo,
     tip: el.values_.tip,
     br_spojnica: el.values_.br_spojnica,
     id: el.values_.id, //Vidjeti šta ovdje predajem
-    kraj_dion: el.values_.kraj_dion,
     uze_presjek: el.values_.uze_presjek,
     izvod_ts: el.values_.izvod_ts,
     uze: el.values_.uze,

@@ -38,8 +38,6 @@ function sakrijSvaPoljaZaUnos() {
   document.querySelector("#divUnosPresjek").style.display = "none";
   document.querySelector("#divUnosBrSpojnica").style.display = "none";
   document.querySelector("#divUnosGodIzgr").style.display = "none";
-  document.querySelector("#divUnosPocDion").style.display = "none";
-  document.querySelector("#divUnosKrajDion").style.display = "none";
   document.querySelector("#divUnosUzePresjek").style.display = "none";
   document.querySelector("#divUnosUze").style.display = "none";
 
@@ -114,8 +112,6 @@ function prikaziUnosVodove() {
   document.querySelector("#divUnosPresjek").style.display = "flex";
   document.querySelector("#divUnosBrSpojnica").style.display = "flex";
   document.querySelector("#divUnosGodIzgr").style.display = "flex";
-  document.querySelector("#divUnosPocDion").style.display = "flex";
-  document.querySelector("#divUnosKrajDion").style.display = "flex";
   document.querySelector("#divUnosUzePresjek").style.display = "flex";
   document.querySelector("#divUnosUze").style.display = "flex";
 }
@@ -204,8 +200,6 @@ function unosVodova(geometrijaWkt, servisAkcija) {
   podaciForme.append("god_izg", document.querySelector("#god_izg").value);
   podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
   podaciForme.append("opstina", document.querySelector("#opstina").value);
-  podaciForme.append("poc_dion", document.querySelector("#poc_dion").value);
-  podaciForme.append("kraj_dion", document.querySelector("#kraj_dion").value);
   podaciForme.append("uze_presjek", document.querySelector("#uze_presjek").value);
   podaciForme.append("uze", document.querySelector("#uze").value);
   podaciForme.append("rac_duzina", document.querySelector("#rac_duzina").value);
@@ -579,8 +573,6 @@ function popuniPoljaVodovi(odgovor) {
   document.querySelector("#napon").value = atributi["napon"];
   document.querySelector("#br_spojnica").value = atributi["br_spojnica"];
   document.querySelector("#god_izg").value = atributi["god_izg"];
-  document.querySelector("#poc_dion").value = atributi["poc_dion"];
-  document.querySelector("#kraj_dion").value = atributi["kraj_dion"];
 
   setujDdlVrijednost("#br_faza", atributi["br_faza"]);
   setujDdlVrijednost("#vrsta", atributi["vrsta"]);
