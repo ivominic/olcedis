@@ -77,7 +77,6 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosTipVod10").style.display = "none";
   document.querySelector("#divUnosTipVod35").style.display = "none";
   document.querySelector("#divUnosDionica").style.display = "none";
-  document.querySelector("#divUnosIdBr").style.display = "none";
   document.querySelector("#divUnosNaziv").style.display = "none";
   document.querySelector("#divUnosDionicaNn").style.display = "none";
   document.querySelector("#divUnosTs").style.display = "none";
@@ -127,7 +126,6 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosDdlTrafostanice").style.display = "none";
   document.querySelector("#divReadFid1").style.display = "none";
   document.querySelector("#divReadName").style.display = "none";
-  document.querySelector("#divReadIdBr").style.display = "none";
   document.querySelector("#divReadCelije10").style.display = "none";
   document.querySelector("#divReadIzvodCelija").style.display = "none";
   document.querySelector("#divReadFunkcija").style.display = "none";
@@ -282,7 +280,6 @@ function prikaziAtributDivVodove(napon) {
   document.querySelector("#divUnosPogSprem").style.display = "flex";
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
   document.querySelector("#divUnosDionica").style.display = "flex";
-  document.querySelector("#divUnosIdBr").style.display = "flex";
   document.querySelector("#divUnosNaziv").style.display = "flex";
   document.querySelector("#divUnosDionicaNn").style.display = "flex";
   document.querySelector("#divUnosTs").style.display = "flex";
@@ -319,7 +316,6 @@ function prikaziAtributDivTrafostanice(napon) {
   document.querySelector("#divUnosGps").style.display = "flex";
 
   document.querySelector("#divReadName").style.display = "flex";
-  document.querySelector("#divReadIdBr").style.display = "flex";
   document.querySelector("#divReadFunkcija").style.display = "flex";
   document.querySelector("#divReadGeohashId").style.display = "flex";
   document.querySelector("#divReadGeohashIdNo").style.display = "flex";

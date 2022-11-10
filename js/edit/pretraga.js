@@ -47,7 +47,6 @@ function sakrijSvaPoljaPretrage() {
   document.querySelector("#divPretraga10KvVod").style.display = "none";
 
   document.querySelector("#divPretragaDionica").style.display = "none";
-  document.querySelector("#divPretragaIdBr").style.display = "none";
   document.querySelector("#divPretragaNaziv").style.display = "none";
   document.querySelector("#divPretragaDionicaNn").style.display = "none";
   document.querySelector("#divPretragaTs").style.display = "none";
@@ -127,7 +126,6 @@ function prikaziPretraguVodove() {
   document.querySelector("#divPretragaVlasnistvo").style.display = "flex";
   document.querySelector("#divPretragaOpstina").style.display = "flex";
   document.querySelector("#divPretragaDionica").style.display = "flex";
-  document.querySelector("#divPretragaIdBr").style.display = "flex";
   document.querySelector("#divPretragaNaziv").style.display = "flex";
   document.querySelector("#divPretragaDionicaNn").style.display = "flex";
   document.querySelector("#divPretragaTs").style.display = "flex";

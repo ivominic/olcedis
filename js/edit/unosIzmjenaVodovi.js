@@ -48,7 +48,6 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("pog_sprem", document.querySelector("#pog_sprem").value);
   ucrtaniVod.set("vlasnistvo", document.querySelector("#vlasnistvo").value);
   ucrtaniVod.set("dionica", document.querySelector("#dionica").value);
-  ucrtaniVod.set("id_br", document.querySelector("#id_br").value);
   ucrtaniVod.set("id", document.querySelector("#id").value);
   ucrtaniVod.set("naziv", document.querySelector("#naziv").value);
   ucrtaniVod.set("name", document.querySelector("#naziv").value);
@@ -88,7 +87,6 @@ function prikaziPoljaOdabranogVoda() {
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
   document.querySelector("#pog_sprem").value = selectGpxFeature.values_.pog_sprem;
   document.querySelector("#dionica").value = selectGpxFeature.values_.dionica;
-  document.querySelector("#id_br").value = selectGpxFeature.values_.id_br;
   document.querySelector("#naziv").value = selectGpxFeature.values_.naziv;
   document.querySelector("#dionica_nn").value = selectGpxFeature.values_.dionica_nn;
   document.querySelector("#ts").value = selectGpxFeature.values_.ts;
@@ -143,7 +141,6 @@ function prikaziPoljaWmsVoda(objekat) {
   document.querySelector("#napon").value = objekat.properties.napon;
   document.querySelector("#pog_sprem").value = objekat.properties.pog_sprem;
   document.querySelector("#dionica").value = objekat.properties.dionica;
-  document.querySelector("#id_br").value = objekat.properties.id_br;
   document.querySelector("#naziv").value = objekat.properties.naziv;
   document.querySelector("#dionica_nn").value = objekat.properties.dionica_nn;
   document.querySelector("#ts").value = objekat.properties.ts;
@@ -190,7 +187,6 @@ function izmijeniAtributeWmsVoda(objekat) {
   objekat.properties.napon = document.querySelector("#napon").value;
   objekat.properties.pog_sprem = document.querySelector("#pog_sprem").value;
   objekat.properties.dionica = document.querySelector("#dionica").value;
-  objekat.properties.id_br = document.querySelector("#id_br").value;
   objekat.properties.naziv = document.querySelector("#naziv").value;
   objekat.properties.dionica_nn = document.querySelector("#dionica_nn").value;
   objekat.properties.ts = document.querySelector("#ts").value;

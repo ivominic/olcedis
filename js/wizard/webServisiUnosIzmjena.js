@@ -15,9 +15,7 @@ function cudTrafostanica(feature, akcija, wizard) {
   podaciForme.append("Geometry", feature.Geometry);
   podaciForme.append("id", feature.id); //Ovo provjeriti
   podaciForme.append("fid_1", feature.fid_1);
-  //podaciForme.append("fid_1", feature.id_.split(".")[1]);
   podaciForme.append("name", feature.name);
-  podaciForme.append("id_br", feature.id_br);
   podaciForme.append("celije_10", feature.celije_10);
   podaciForme.append("prenos_odnos", feature.prenos_odnos);
   podaciForme.append("id_billing", feature.id_billing);
@@ -87,7 +85,6 @@ function cudVod(feature, akcija, wizard) {
   podaciForme.append("id", feature.id); //Ovo provjeriti
   podaciForme.append("fid1", feature.fid_1);
   podaciForme.append("name", feature.name);
-  podaciForme.append("id_br", feature.id_br);
   podaciForme.append("materijal", feature.materijal);
   podaciForme.append("dionica_nn", feature.dionica_nn);
   podaciForme.append("napon", feature.napon);

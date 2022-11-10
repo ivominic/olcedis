@@ -32,7 +32,6 @@ function sakrijSvaPoljaZaUnos() {
   document.querySelector("#divUnos10KvVod").style.display = "none";
 
   document.querySelector("#divUnosDionica").style.display = "none";
-  document.querySelector("#divUnosIdBr").style.display = "none";
   document.querySelector("#divUnosNaziv").style.display = "none";
   document.querySelector("#divUnosDionicaNn").style.display = "none";
   document.querySelector("#divUnosTs").style.display = "none";
@@ -112,7 +111,6 @@ function prikaziUnosVodove() {
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
   document.querySelector("#divUnosOpstina").style.display = "flex";
   document.querySelector("#divUnosDionica").style.display = "flex";
-  document.querySelector("#divUnosIdBr").style.display = "flex";
   document.querySelector("#divUnosNaziv").style.display = "flex";
   document.querySelector("#divUnosDionicaNn").style.display = "flex";
   document.querySelector("#divUnosTs").style.display = "flex";
@@ -198,7 +196,6 @@ function unosVodova(geometrijaWkt, servisAkcija) {
   podaciForme.append("fid_1", document.querySelector("#fid_1").value);
   podaciForme.append("gps", document.querySelector("#gps").value);
   podaciForme.append("dionica", document.querySelector("#dionica").value);
-  podaciForme.append("id_br", document.querySelector("#id_br").value);
   podaciForme.append("naziv", document.querySelector("#naziv").value);
   podaciForme.append("dionica_nn", document.querySelector("#dionica_nn").value);
   podaciForme.append("ts", document.querySelector("#ts").value);
@@ -293,7 +290,6 @@ function unosTrafostanica(geometrijaWkt, servisAkcija) {
   podaciForme.append("br_vod_cel_visi_nap", document.querySelector("#br_vod_cel_visi_nap").value);
   podaciForme.append("br_vod_cel_nizi_nap", document.querySelector("#br_vod_cel_nizi_nap").value);
   podaciForme.append("napon", document.querySelector("#napon").value);
-  podaciForme.append("id_br", document.querySelector("#id_br").value);
 
   //Dodao za poziv Jovanovog servisa
   podaciForme.append("name", "test");
@@ -606,7 +602,6 @@ function popuniPoljaVodovi(odgovor) {
   document.querySelector("#idObjekta").value = idObjekta;
   document.querySelector("#gps").value = atributi["gps"];
   document.querySelector("#dionica").value = atributi["dionica"];
-  document.querySelector("#id_br").value = atributi["id_br"];
   document.querySelector("#naziv").value = atributi["naziv"];
   document.querySelector("#dionica_nn").value = atributi["dionica_nn"];
   document.querySelector("#ts").value = atributi["ts"];
@@ -661,7 +656,6 @@ function popuniPoljaTrafostanice(odgovor) {
 
   document.querySelector("#ddlTrafostanice").value = atributi["ddlTrafostanice"];
   document.querySelector("#read_fid_1").value = atributi["fid_1"];
-  document.querySelector("#read_id_br").value = atributi["id_br"];
   document.querySelector("#read_celije_10").value = atributi["celije_10"];
   document.querySelector("#read_izvod_celija").value = atributi["izvod_celija"];
   document.querySelector("#read_funkcija").value = atributi["funkcija"];

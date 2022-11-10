@@ -32,7 +32,6 @@ function sakrijSvaPoljaZaUnos() {
   document.querySelector("#divUnos10KvVod").style.display = "none";
 
   document.querySelector("#divUnosDionica").style.display = "none";
-  document.querySelector("#divUnosIdBr").style.display = "none";
   document.querySelector("#divUnosNaziv").style.display = "none";
   document.querySelector("#divUnosDionicaNn").style.display = "none";
   document.querySelector("#divUnosTs").style.display = "none";
@@ -112,7 +111,6 @@ function prikaziUnosVodove() {
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
   document.querySelector("#divUnosOpstina").style.display = "flex";
   document.querySelector("#divUnosDionica").style.display = "flex";
-  document.querySelector("#divUnosIdBr").style.display = "flex";
   document.querySelector("#divUnosNaziv").style.display = "flex";
   document.querySelector("#divUnosDionicaNn").style.display = "flex";
   document.querySelector("#divUnosTs").style.display = "flex";
@@ -287,7 +285,6 @@ function unosVodova() {
   podaciForme.append("geom", geometrijaZaBazuWkt);
   podaciForme.append("gps", document.querySelector("#gps").value);
   podaciForme.append("dionica", document.querySelector("#dionica").value);
-  podaciForme.append("id_br", document.querySelector("#id_br").value);
   podaciForme.append("naziv", document.querySelector("#naziv").value);
   podaciForme.append("dionica_nn", document.querySelector("#dionica_nn").value);
   podaciForme.append("ts", document.querySelector("#ts").value);
@@ -521,7 +518,6 @@ function popuniPoljaVodovi(odgovor) {
   document.querySelector("#idObjekta").value = idObjekta;
   document.querySelector("#gps").value = atributi["gps"];
   document.querySelector("#dionica").value = atributi["dionica"];
-  document.querySelector("#id_br").value = atributi["id_br"];
   document.querySelector("#naziv").value = atributi["naziv"];
   document.querySelector("#dionica_nn").value = atributi["dionica_nn"];
   document.querySelector("#ts").value = atributi["ts"];
