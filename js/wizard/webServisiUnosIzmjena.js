@@ -87,7 +87,6 @@ function cudVod(feature, akcija, wizard) {
   podaciForme.append("name", feature.name);
   podaciForme.append("materijal", feature.materijal);
   podaciForme.append("napon", feature.napon);
-  podaciForme.append("dionica", feature.dionica);
   podaciForme.append("rasvjeta", feature.rasvjeta);
   podaciForme.append("rac_duzina", feature.rac_duzina);
   podaciForme.append("poc_dion", feature.poc_dion);

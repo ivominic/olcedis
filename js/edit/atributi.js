@@ -76,7 +76,6 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosTipVod04").style.display = "none";
   document.querySelector("#divUnosTipVod10").style.display = "none";
   document.querySelector("#divUnosTipVod35").style.display = "none";
-  document.querySelector("#divUnosDionica").style.display = "none";
   document.querySelector("#divUnosNaziv").style.display = "none";
   document.querySelector("#divUnosTs").style.display = "none";
   document.querySelector("#divUnosBrFaza").style.display = "none";
@@ -102,7 +101,6 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosUze").style.display = "none";
   document.querySelector("#divUnosUzeVod10").style.display = "none";
   document.querySelector("#divUnosUzeVod35").style.display = "none";
-  document.querySelector("#divUnosDionicaGPS").style.display = "none";
   document.querySelector("#divUnosRacDuzina").style.display = "none";
   document.querySelector("#divUnosDuzina").style.display = "none";
   document.querySelector("#divUnosBrojSpojnica").style.display = "none";
@@ -278,7 +276,6 @@ function prikaziAtributDivVodove(napon) {
   document.querySelector("#divUnosNapon").style.display = "flex";
   document.querySelector("#divUnosPogSprem").style.display = "flex";
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
-  document.querySelector("#divUnosDionica").style.display = "flex";
   document.querySelector("#divUnosNaziv").style.display = "flex";
   document.querySelector("#divUnosTs").style.display = "flex";
   document.querySelector("#divUnosBrFaza").style.display = "flex";
@@ -286,7 +283,6 @@ function prikaziAtributDivVodove(napon) {
   document.querySelector("#divUnosGodIzgr").style.display = "flex";
   document.querySelector("#divUnosPocDion").style.display = "flex";
   document.querySelector("#divUnosKrajDion").style.display = "flex";
-  document.querySelector("#divUnosDionicaGPS").style.display = "flex";
   document.querySelector("#divUnosRacDuzina").style.display = "flex";
   document.querySelector("#divUnosDuzina").style.display = "flex";
   document.querySelector("#divUnosBrojSpojnica").style.display = "flex";

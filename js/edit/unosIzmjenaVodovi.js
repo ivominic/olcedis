@@ -42,12 +42,9 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("fid_1", document.querySelector("#fid_1").value);
   ucrtaniVod.set("gps", "");
   ucrtaniVod.set("merge", blnSpajanjeVodova);
-  //ucrtaniVod.set("gps", document.querySelector("#gps").value);
   ucrtaniVod.set("napon", vodNaponskiNivoPrijeOdabira);
-  //ucrtaniVod.set("napon", document.querySelector("#napon").value);
   ucrtaniVod.set("pog_sprem", document.querySelector("#pog_sprem").value);
   ucrtaniVod.set("vlasnistvo", document.querySelector("#vlasnistvo").value);
-  ucrtaniVod.set("dionica", document.querySelector("#dionica").value);
   ucrtaniVod.set("id", document.querySelector("#id").value);
   ucrtaniVod.set("naziv", document.querySelector("#naziv").value);
   ucrtaniVod.set("name", document.querySelector("#naziv").value);
@@ -84,7 +81,6 @@ function prikaziPoljaOdabranogVoda() {
   document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
   document.querySelector("#pog_sprem").value = selectGpxFeature.values_.pog_sprem;
-  document.querySelector("#dionica").value = selectGpxFeature.values_.dionica;
   document.querySelector("#naziv").value = selectGpxFeature.values_.naziv;
   document.querySelector("#ts").value = selectGpxFeature.values_.ts;
   document.querySelector("#br_faza").value = selectGpxFeature.values_.br_faza;
@@ -136,7 +132,6 @@ function prikaziPoljaWmsVoda(objekat) {
   document.querySelector("#fid_1").value = objekat.properties.fid_1;
   document.querySelector("#napon").value = objekat.properties.napon;
   document.querySelector("#pog_sprem").value = objekat.properties.pog_sprem;
-  document.querySelector("#dionica").value = objekat.properties.dionica;
   document.querySelector("#naziv").value = objekat.properties.naziv;
   document.querySelector("#ts").value = objekat.properties.ts;
   document.querySelector("#br_faza").value = objekat.properties.br_faza;
@@ -180,7 +175,6 @@ function prikaziPoljaWmsVoda(objekat) {
 function izmijeniAtributeWmsVoda(objekat) {
   objekat.properties.napon = document.querySelector("#napon").value;
   objekat.properties.pog_sprem = document.querySelector("#pog_sprem").value;
-  objekat.properties.dionica = document.querySelector("#dionica").value;
   objekat.properties.naziv = document.querySelector("#naziv").value;
   objekat.properties.ts = document.querySelector("#ts").value;
   objekat.properties.br_faza = document.querySelector("#br_faza").value;
