@@ -3,7 +3,6 @@
 function sakrijSvaPoljaZaUnos() {
   document.querySelector("#divUnosGps").style.display = "none";
   document.querySelector("#divUnosBroj").style.display = "none";
-  document.querySelector("#divUnosSifra").style.display = "none";
   document.querySelector("#divUnosTip").style.display = "none";
   document.querySelector("#divUnosNamjena").style.display = "none";
   document.querySelector("#divUnosMaterijal").style.display = "none";
@@ -70,7 +69,6 @@ function sakrijSvaPoljaZaUnos() {
 function prikaziUnosStubove() {
   document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosBroj").style.display = "flex";
-  document.querySelector("#divUnosSifra").style.display = "flex";
   document.querySelector("#divUnosTip").style.display = "flex";
   document.querySelector("#divUnosNamjena").style.display = "flex";
   document.querySelector("#divUnosMaterijal").style.display = "flex";
@@ -537,7 +535,6 @@ function popuniPoljaStubovi(odgovor) {
   idObjekta = atributi["id"];
   document.querySelector("#gps").value = atributi["gps"];
   document.querySelector("#broj").value = atributi["broj"];
-  document.querySelector("#sifra").value = atributi["sifra"];
   document.querySelector("#nad_visina").value = atributi["nad_visina"];
   document.querySelector("#visina").value = atributi["visina"];
   document.querySelector("#rasp_prov").value = atributi["rasp_prov"];

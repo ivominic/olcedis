@@ -7,7 +7,6 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosGps").style.display = "none";
   document.querySelector("#divUnosFid1").style.display = "none";
   document.querySelector("#divUnosBroj").style.display = "none";
-  document.querySelector("#divUnosSifra").style.display = "none";
   document.querySelector("#divUnosTip").style.display = "none";
   document.querySelector("#divUnosTipStub").style.display = "none";
   document.querySelector("#divUnosNamjena").style.display = "none";
@@ -229,7 +228,6 @@ function prikaziAtributDivStubove(napon) {
   }
   document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosBroj").style.display = "flex";
-  document.querySelector("#divUnosSifra").style.display = "flex";
   document.querySelector("#divUnosNadmorskaVisina").style.display = "flex";
   document.querySelector("#divUnosVisina").style.display = "flex";
   document.querySelector("#divUnosRasporedProvodnika").style.display = "flex";

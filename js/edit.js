@@ -13,7 +13,6 @@ function popuniKontrole(odgovor) {
   idObjekta = atributi["id"];
   document.querySelector("#gps").value = atributi["gps"];
   document.querySelector("#broj").value = atributi["broj"];
-  document.querySelector("#sifra").value = atributi["sifra"];
   //document.querySelector("#tip").value = atributi["tip"];
   //document.querySelector("#vrsta_namjena").value = atributi["vrsta_namjena"];
   //document.querySelector("#vrsta_materijal").value = atributi["vrsta_materijal"];
@@ -85,7 +84,6 @@ function sacuvaj() {
   podaciForme.append("geom", geometrijaZaBazuWkt);
   podaciForme.append("gps", document.querySelector("#gps").value);
   podaciForme.append("broj", document.querySelector("#broj").value);
-  podaciForme.append("sifra", document.querySelector("#sifra").value);
   podaciForme.append("tip", document.querySelector("#tip").value);
   podaciForme.append("vrsta_namjena", document.querySelector("#vrsta_namjena").value);
   podaciForme.append("vrsta_materijal", document.querySelector("#vrsta_materijal").value);
@@ -613,8 +611,6 @@ function kreiranjeCqlFilteraAtributi() {
     (retVal += "gps = '" + document.querySelector("#pretraga_gps").value + "' AND ");
   document.querySelector("#pretraga_broj").value !== "" &&
     (retVal += "broj = '" + document.querySelector("#pretraga_broj").value + "' AND ");
-  document.querySelector("#pretraga_sifra").value !== "" &&
-    (retVal += "sifra = '" + document.querySelector("#pretraga_sifra").value + "' AND ");
   document.querySelector("#pretraga_tip").value !== "" &&
     (retVal += "tip = '" + document.querySelector("#pretraga_tip").value + "' AND ");
   document.querySelector("#pretraga_vrsta_namjena").value !== "" &&

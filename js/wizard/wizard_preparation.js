@@ -42,7 +42,6 @@ function stubArrayElement(el, action, wizard, serialNo) {
     datum_azuriranja: el.values_.datum_azuriranja,
     izolator_vrsta: el.values_.izolator_vrsta,
     uzemljivac_otpor: el.values_.uzemljivac_otpor,
-    sifra: el.values_.sifra,
     rasp_prov: el.values_.rasp_prov,
     nn_vod: el.values_.nn_vod,
     pog_sprem: el.values_.pog_sprem,

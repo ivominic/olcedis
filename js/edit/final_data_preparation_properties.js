@@ -44,7 +44,6 @@ function stubArrayElementProperties(el, action) {
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
     izolator_vrsta: el.properties.izolator_vrsta,
     uzemljivac_otpor: el.properties.uzemljivac_otpor,
-    sifra: el.properties.sifra,
     geohash_id: el.properties.geohash_id,
     geohash_id_no: el.properties.geohash_id_no,
     rasp_prov: el.properties.rasp_prov,

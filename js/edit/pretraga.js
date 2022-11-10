@@ -18,7 +18,6 @@ document.querySelector("#ddlLejer").addEventListener("change", function () {
 function sakrijSvaPoljaPretrage() {
   document.querySelector("#divPretragaGps").style.display = "none";
   document.querySelector("#divPretragaBroj").style.display = "none";
-  document.querySelector("#divPretragaSifra").style.display = "none";
   document.querySelector("#divPretragaTip").style.display = "none";
   document.querySelector("#divPretragaNamjena").style.display = "none";
   document.querySelector("#divPretragaMaterijal").style.display = "none";
@@ -85,7 +84,6 @@ function sakrijSvaPoljaPretrage() {
 function prikaziPretraguStubove() {
   document.querySelector("#divPretragaGps").style.display = "flex";
   document.querySelector("#divPretragaBroj").style.display = "flex";
-  document.querySelector("#divPretragaSifra").style.display = "flex";
   document.querySelector("#divPretragaTip").style.display = "flex";
   document.querySelector("#divPretragaNamjena").style.display = "flex";
   document.querySelector("#divPretragaMaterijal").style.display = "flex";
@@ -122,7 +120,7 @@ function prikaziPretraguVodove() {
   document.querySelector("#divPretragaRasvjeta").style.display = "flex";
   document.querySelector("#divPretragaPogSprem").style.display = "flex";
   document.querySelector("#divPretragaVlasnistvo").style.display = "flex";
-  document.querySelector("#divPretragaOpstina").style.display = "flex";  
+  document.querySelector("#divPretragaOpstina").style.display = "flex";
   document.querySelector("#divPretragaNaziv").style.display = "flex";
   document.querySelector("#divPretragaTs").style.display = "flex";
   document.querySelector("#divPretragaIzvodTs").style.display = "flex";
