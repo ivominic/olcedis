@@ -134,7 +134,6 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divReadGodIzg").style.display = "none";
   document.querySelector("#divReadVlasnistvo").style.display = "none";
   document.querySelector("#divReadDatumAzuriranja").style.display = "none";
-  document.querySelector("#divReadLayerId").style.display = "none";
   document.querySelector("#divReadNadVis").style.display = "none";
   document.querySelector("#divReadGPS").style.display = "none";
   document.querySelector("#divReadPogSprem").style.display = "none";
@@ -315,7 +314,6 @@ function prikaziAtributDivTrafostanice(napon) {
   document.querySelector("#divReadGodIzg").style.display = "flex";
   document.querySelector("#divReadVlasnistvo").style.display = "flex";
   document.querySelector("#divReadDatumAzuriranja").style.display = "flex";
-  document.querySelector("#divReadLayerId").style.display = "flex";
   document.querySelector("#divReadGPS").style.display = "flex";
   document.querySelector("#divReadPogSprem").style.display = "flex";
   document.querySelector("#divReadNapon").style.display = "flex";

@@ -646,7 +646,6 @@ function popuniPoljaTrafostanice(odgovor) {
   document.querySelector("#read_god_izg").value = atributi["god_izg"];
   document.querySelector("#read_vlasnistvo").value = atributi["vlasnistvo"];
   document.querySelector("#read_datum_azuriranja").value = atributi["datum_azuriranja"];
-  document.querySelector("#read_layer_id").value = atributi["layer_id"];
   document.querySelector("#read_nad_vis").value = atributi["nad_vis"];
   document.querySelector("#read_gps").value = atributi["gps"];
   document.querySelector("#read_pog_sprem").value = atributi["pog_sprem"];
