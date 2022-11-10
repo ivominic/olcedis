@@ -78,7 +78,6 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosTipVod35").style.display = "none";
   document.querySelector("#divUnosDionica").style.display = "none";
   document.querySelector("#divUnosNaziv").style.display = "none";
-  document.querySelector("#divUnosDionicaNn").style.display = "none";
   document.querySelector("#divUnosTs").style.display = "none";
   document.querySelector("#divUnosBrFaza").style.display = "none";
   document.querySelector("#divUnosVrsta").style.display = "none";
@@ -281,7 +280,6 @@ function prikaziAtributDivVodove(napon) {
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
   document.querySelector("#divUnosDionica").style.display = "flex";
   document.querySelector("#divUnosNaziv").style.display = "flex";
-  document.querySelector("#divUnosDionicaNn").style.display = "flex";
   document.querySelector("#divUnosTs").style.display = "flex";
   document.querySelector("#divUnosBrFaza").style.display = "flex";
   document.querySelector("#divUnosBrSpojnica").style.display = "flex";

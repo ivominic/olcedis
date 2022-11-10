@@ -87,7 +87,6 @@ function vodArrayElement(el, action, wizard, serialNo) {
     merge: el.values_.merge,
     fid: el.values_.fid,
     materijal: el.values_.materijal,
-    dionica_nn: el.values_.dionica_nn,
     napon: el.values_.napon,
     dionica: el.values_.dionica,
     dionica_gps: el.values_.dionica_gps,

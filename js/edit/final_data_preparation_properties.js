@@ -82,7 +82,6 @@ function vodArrayElementProperties(el, action) {
     merge: el.properties.merge,
     fid: el.properties.fid,
     materijal: el.properties.materijal,
-    dionica_nn: el.properties.dionica_nn,
     napon: el.properties.napon,
     dionica: el.properties.dionica,
     dionica_gps: el.properties.dionica_gps,

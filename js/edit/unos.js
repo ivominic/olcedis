@@ -33,7 +33,6 @@ function sakrijSvaPoljaZaUnos() {
 
   document.querySelector("#divUnosDionica").style.display = "none";
   document.querySelector("#divUnosNaziv").style.display = "none";
-  document.querySelector("#divUnosDionicaNn").style.display = "none";
   document.querySelector("#divUnosTs").style.display = "none";
   document.querySelector("#divUnosIzvodTs").style.display = "none";
   document.querySelector("#divUnosBrFaza").style.display = "none";
@@ -112,7 +111,6 @@ function prikaziUnosVodove() {
   document.querySelector("#divUnosOpstina").style.display = "flex";
   document.querySelector("#divUnosDionica").style.display = "flex";
   document.querySelector("#divUnosNaziv").style.display = "flex";
-  document.querySelector("#divUnosDionicaNn").style.display = "flex";
   document.querySelector("#divUnosTs").style.display = "flex";
   document.querySelector("#divUnosIzvodTs").style.display = "flex";
   document.querySelector("#divUnosBrFaza").style.display = "flex";
@@ -197,7 +195,6 @@ function unosVodova(geometrijaWkt, servisAkcija) {
   podaciForme.append("gps", document.querySelector("#gps").value);
   podaciForme.append("dionica", document.querySelector("#dionica").value);
   podaciForme.append("naziv", document.querySelector("#naziv").value);
-  podaciForme.append("dionica_nn", document.querySelector("#dionica_nn").value);
   podaciForme.append("ts", document.querySelector("#ts").value);
   podaciForme.append("izvod_ts", document.querySelector("#izvod_ts").value);
   podaciForme.append("napon", document.querySelector("#napon").value);
@@ -603,7 +600,6 @@ function popuniPoljaVodovi(odgovor) {
   document.querySelector("#gps").value = atributi["gps"];
   document.querySelector("#dionica").value = atributi["dionica"];
   document.querySelector("#naziv").value = atributi["naziv"];
-  document.querySelector("#dionica_nn").value = atributi["dionica_nn"];
   document.querySelector("#ts").value = atributi["ts"];
   document.querySelector("#izvod_ts").value = atributi["izvod_ts"];
   document.querySelector("#napon").value = atributi["napon"];
