@@ -62,7 +62,6 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("god_izg", document.querySelector("#god_izgr").value);
   ucrtaniVod.set("poc_dion", document.querySelector("#poc_dion").value);
   ucrtaniVod.set("kraj_dion", document.querySelector("#kraj_dion").value);
-  ucrtaniVod.set("dionica_gps", document.querySelector("#dionica_gps").value);
   ucrtaniVod.set("rac_duzina", document.querySelector("#rac_duzina").value);
   ucrtaniVod.set("duzina", document.querySelector("#duzina").value);
   ucrtaniVod.set("broj_spojnica", document.querySelector("#broj_spojnica").value);
@@ -93,7 +92,6 @@ function prikaziPoljaOdabranogVoda() {
   document.querySelector("#god_izgr").value = selectGpxFeature.values_.god_izg;
   document.querySelector("#poc_dion").value = selectGpxFeature.values_.poc_dion;
   document.querySelector("#kraj_dion").value = selectGpxFeature.values_.kraj_dion;
-  document.querySelector("#dionica_gps").value = selectGpxFeature.values_.dionica_gps;
   document.querySelector("#rac_duzina").value = selectGpxFeature.values_.rac_duzina;
   document.querySelector("#duzina").value = selectGpxFeature.values_.duzina;
   document.querySelector("#broj_spojnica").value = selectGpxFeature.values_.broj_spojnica;
@@ -146,7 +144,6 @@ function prikaziPoljaWmsVoda(objekat) {
   document.querySelector("#god_izgr").value = objekat.properties.god_izg;
   document.querySelector("#poc_dion").value = objekat.properties.poc_dion;
   document.querySelector("#kraj_dion").value = objekat.properties.kraj_dion;
-  document.querySelector("#dionica_gps").value = objekat.properties.dionica_gps;
   document.querySelector("#rac_duzina").value = objekat.properties.rac_duzina;
   document.querySelector("#duzina").value = objekat.properties.duzina;
   document.querySelector("#broj_spojnica").value = objekat.properties.broj_spojnica;
@@ -191,7 +188,6 @@ function izmijeniAtributeWmsVoda(objekat) {
   objekat.properties.god_izg = document.querySelector("#god_izgr").value;
   objekat.properties.poc_dion = document.querySelector("#poc_dion").value;
   objekat.properties.kraj_dion = document.querySelector("#kraj_dion").value;
-  objekat.properties.dionica_gps = document.querySelector("#dionica_gps").value;
   objekat.properties.rac_duzina = document.querySelector("#rac_duzina").value;
   objekat.properties.duzina = document.querySelector("#duzina").value;
   objekat.properties.broj_spojnica = document.querySelector("#broj_spojnica").value;

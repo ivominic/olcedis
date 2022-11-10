@@ -84,7 +84,6 @@ function vodArrayElementProperties(el, action) {
     materijal: el.properties.materijal,
     napon: el.properties.napon,
     dionica: el.properties.dionica,
-    dionica_gps: el.properties.dionica_gps,
     rasvjeta: el.properties.rasvjeta,
     rac_duzina: el.properties.rac_duzina,
     poc_dion: el.properties.poc_dion,

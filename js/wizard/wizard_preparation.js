@@ -81,7 +81,6 @@ function vodArrayElement(el, action, wizard, serialNo) {
     materijal: el.values_.materijal,
     napon: el.values_.napon,
     dionica: el.values_.dionica,
-    dionica_gps: el.values_.dionica_gps,
     rasvjeta: el.values_.rasvjeta,
     rac_duzina: el.values_.rac_duzina,
     poc_dion: el.values_.poc_dion,

@@ -213,7 +213,6 @@ function unosVodova(geometrijaWkt, servisAkcija) {
   podaciForme.append("kraj_dion", document.querySelector("#kraj_dion").value);
   podaciForme.append("uze_presjek", document.querySelector("#uze_presjek").value);
   podaciForme.append("uze", document.querySelector("#uze").value);
-  podaciForme.append("dionica_gps", document.querySelector("#dionica_gps").value);
   podaciForme.append("rac_duzina", document.querySelector("#rac_duzina").value);
   podaciForme.append("duzina", document.querySelector("#duzina").value);
   podaciForme.append("broj_spojnica", document.querySelector("#broj_spojnica").value);
