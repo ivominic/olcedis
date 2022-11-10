@@ -31,23 +31,23 @@ function provjeriPotrosace() {
   let razliciteSifre = [],
     razlicitiIzvodi = [];
   let retVal = true;
-  let tempSifraTS = selektovaniPotrosaciFeatures[0].values_.sifra_ts,
-    tempNazivTS = selektovaniPotrosaciFeatures[0].values_.naziv_ts,
-    tempIzvodTS = selektovaniPotrosaciFeatures[0].values_.naziv_nn_izvod;
+  let tempSifraTS = selektovaniPotrosaciFeatures[0].values_.sifra_napojne,
+    tempNazivTS = selektovaniPotrosaciFeatures[0].values_.naziv_napojne,
+    tempIzvodTS = selektovaniPotrosaciFeatures[0].values_.izvod_napojne;
 
   razliciteSifre.push(tempSifraTS);
   razlicitiIzvodi.push(tempIzvodTS);
   //Provjera da li neki od potrošača ima različit izvod ili trafostanicu od početnog potrošača
   for (let i = 0; i < selektovaniPotrosaciFeatures.length; i++) {
     if (
-      tempSifraTS !== selektovaniPotrosaciFeatures[i].values_.sifra_ts ||
-      tempNazivTS !== selektovaniPotrosaciFeatures[i].values_.naziv_ts ||
-      tempIzvodTS !== selektovaniPotrosaciFeatures[i].values_.naziv_nn_izvod
+      tempSifraTS !== selektovaniPotrosaciFeatures[i].values_.sifra_napojne ||
+      tempNazivTS !== selektovaniPotrosaciFeatures[i].values_.naziv_napojne ||
+      tempIzvodTS !== selektovaniPotrosaciFeatures[i].values_.izvod_napojne
     ) {
-      !razliciteSifre.includes(selektovaniPotrosaciFeatures[i].values_.sifra_ts) &&
-        razliciteSifre.push(selektovaniPotrosaciFeatures[i].values_.sifra_ts);
-      !razlicitiIzvodi.includes(selektovaniPotrosaciFeatures[i].values_.naziv_nn_izvod) &&
-        razliciteSifre.push(selektovaniPotrosaciFeatures[i].values_.naziv_nn_izvod);
+      !razliciteSifre.includes(selektovaniPotrosaciFeatures[i].values_.sifra_napojne) &&
+        razliciteSifre.push(selektovaniPotrosaciFeatures[i].values_.sifra_napojne);
+      !razlicitiIzvodi.includes(selektovaniPotrosaciFeatures[i].values_.izvod_napojne) &&
+        razliciteSifre.push(selektovaniPotrosaciFeatures[i].values_.izvod_napojne);
       //console.log("provjeriPotrosace prekidWizarda", selektovaniPotrosaciFeatures[i]);
       retVal = false;
     }
@@ -154,14 +154,14 @@ function povezivanjePotrosacaVodova(potrosaci, vodovi) {
             potrosaci[j].values_.geohash_id_no = nizSvihGeometrija[i].values_.geohash_id;
           }
           if (
-            vodovi[i].values_.sifra_ts !== potrosaci[j].values_.sifra_ts ||
-            vodovi[i].values_.naziv_ts !== potrosaci[j].values_.naziv_ts ||
-            vodovi[i].values_.naziv_nn_izvod !== potrosaci[j].values_.naziv_nn_izvod
+            vodovi[i].values_.sifra_napojne !== potrosaci[j].values_.sifra_napojne ||
+            vodovi[i].values_.naziv_napojne !== potrosaci[j].values_.naziv_napojne ||
+            vodovi[i].values_.izvod_napojne !== potrosaci[j].values_.izvod_napojne
           ) {
             vodovi[i].akcija = "Izmjena";
-            vodovi[i].values_.sifra_ts = potrosaci[j].values_.sifra_ts;
-            vodovi[i].values_.naziv_ts = potrosaci[j].values_.naziv_ts;
-            vodovi[i].values_.naziv_nn_izvod = potrosaci[j].values_.naziv_nn_izvod;
+            vodovi[i].values_.sifra_napojne = potrosaci[j].values_.sifra_napojne;
+            vodovi[i].values_.naziv_napojne = potrosaci[j].values_.naziv_napojne;
+            vodovi[i].values_.izvod_napojne = potrosaci[j].values_.izvod_napojne;
           }
         }
       }
@@ -214,9 +214,9 @@ function povezivanjePotrosacaVodova(potrosaci, vodovi) {
               podredjenaLinijaFeature = nizSvihGeometrija[i];
               podredjenaLinijaFeature.akcija = "Izmjena";
               podredjenaLinijaFeature.values_.geohash_id_no = nizSvihGeometrija[i].values_.geohash_id;
-              podredjenaLinijaFeature.values_.sifra_ts = nizSvihGeometrija[i].values_.sifra_ts;
-              podredjenaLinijaFeature.values_.naziv_ts = nizSvihGeometrija[i].values_.naziv_ts;
-              podredjenaLinijaFeature.values_.naziv_nn_izvod = nizSvihGeometrija[i].values_.naziv_nn_izvod;
+              podredjenaLinijaFeature.values_.sifra_napojne = nizSvihGeometrija[i].values_.sifra_napojne;
+              podredjenaLinijaFeature.values_.naziv_napojne = nizSvihGeometrija[i].values_.naziv_napojne;
+              podredjenaLinijaFeature.values_.izvod_napojne = nizSvihGeometrija[i].values_.izvod_napojne;
             }
           }
         }

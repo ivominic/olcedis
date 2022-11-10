@@ -224,14 +224,11 @@ function cudPotrosac(feature, akcija, wizard) {
   podaciForme.append("prik_kabal", feature.prik_kabal);
   podaciForme.append("pod", feature.pod);
   podaciForme.append("adresa_mm", feature.adresa_mm);
-  podaciForme.append("naziv_ts", feature.naziv_ts);
   podaciForme.append("prik_mjesto", feature.prik_mjesto);
   podaciForme.append("opstina", feature.opstina);
-  podaciForme.append("sifra_ts", feature.sifra_ts);
   podaciForme.append("naziv", feature.naziv);
   podaciForme.append("gps", feature.gps);
   podaciForme.append("datum_azuriranja", feature.datum_azuriranja);
-  podaciForme.append("naziv_nn_izvod", feature.naziv_nn_izvod);
   podaciForme.append("pretplatni_br", feature.pretplatni_br);
   podaciForme.append("br_brojila", feature.br_brojila);
   podaciForme.append("napon", feature.napon);
@@ -242,9 +239,9 @@ function cudPotrosac(feature, akcija, wizard) {
   podaciForme.append("originalId", feature.originalId);
   podaciForme.append("geohash_id_no", feature.geohash_id_no);
   podaciForme.append("vlasnik", feature.vlasnik);
+  podaciForme.append("naziv_napojne", feature.naziv_napojne);
   podaciForme.append("sifra_napojne", feature.sifra_napojne);
   podaciForme.append("izvod_napojne", feature.izvod_napojne);
-  podaciForme.append("naziv_napojne", feature.naziv_napojne);
   podaciForme.append("fid", feature.fid);
 
   $.ajax({
@@ -387,14 +384,11 @@ function cudPOD(feature, akcija, wizard) {
   podaciForme.append("prik_kabal", feature.prik_kabal);
   podaciForme.append("pod", feature.pod);
   podaciForme.append("adresa_mm", feature.adresa_mm);
-  podaciForme.append("naziv_ts", feature.naziv_ts);
   podaciForme.append("prik_mjesto", feature.prik_mjesto);
   podaciForme.append("opstina", feature.opstina);
-  podaciForme.append("sifra_ts", feature.sifra_ts);
   podaciForme.append("naziv", feature.naziv);
   podaciForme.append("gps", feature.gps);
   podaciForme.append("datum_azuriranja", feature.datum_azuriranja);
-  podaciForme.append("naziv_nn_izvod", feature.naziv_nn_izvod);
   podaciForme.append("pretplatni_br", feature.pretplatni_br);
   podaciForme.append("br_brojila", feature.br_brojila);
   podaciForme.append("napon", feature.napon);
@@ -405,9 +399,9 @@ function cudPOD(feature, akcija, wizard) {
   podaciForme.append("originalId", feature.originalId);
   podaciForme.append("geohash_id_no", feature.geohash_id_no);
   podaciForme.append("vlasnik", feature.vlasnik);
-  podaciForme.append("sifra_napojne", feature.sifra_napojne);
-  podaciForme.append("izvod_napojne", feature.izvod_napojne);
   podaciForme.append("naziv_napojne", feature.naziv_napojne);
+  podaciForme.append("sifra_napojne", feature.sifra_napojne);
+  podaciForme.append("izvod_napojne", feature.izvod_napojne);  
   podaciForme.append("fid", feature.fid);
 
   $.ajax({

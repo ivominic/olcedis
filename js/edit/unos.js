@@ -406,8 +406,6 @@ function unosPotrosac(geometrijaWkt, servisAkcija) {
   podaciForme.append("Geometry", geometrijaWkt);
   podaciForme.append("fid_1", document.querySelector("#fid_1").value);
   podaciForme.append("gps", document.querySelector("#gps").value);
-  podaciForme.append("naziv_ts", document.querySelector("#naziv_ts").value);
-  podaciForme.append("sifra_ts", document.querySelector("#sifra_ts").value);
   podaciForme.append("id", document.querySelector("#id").value);
   podaciForme.append("opstina", document.querySelector("#opstina").value);
   podaciForme.append("napon", document.querySelector("#napon").value);
@@ -416,25 +414,24 @@ function unosPotrosac(geometrijaWkt, servisAkcija) {
   podaciForme.append("adresa_mm", document.querySelector("#adresa_mm").value);
   podaciForme.append("prik_mjesto", document.querySelector("#prik_mjesto").value);
   podaciForme.append("naziv", document.querySelector("#naziv").value);
-  podaciForme.append("naziv_nn_izvod", document.querySelector("#naziv_nn_izvod").value);
   podaciForme.append("pretplatni_br", document.querySelector("#pretplatni_br").value);
   podaciForme.append("br_brojila", document.querySelector("#br_brojila").value);
 
   //Dodao za poziv Jovanovog servisa
-  podaciForme.append("name", "test");
-  podaciForme.append("fid", "test");
+  podaciForme.append("name", "");
+  podaciForme.append("fid", "");
   podaciForme.append("datum_azuriranja", "");
 
-  podaciForme.append("geohash_id", "test");
-  podaciForme.append("korisnik", "test");
+  podaciForme.append("geohash_id", "");
+  podaciForme.append("korisnik", globalUsername);
   podaciForme.append("katastar", "");
   podaciForme.append("originalId", 0);
-  podaciForme.append("posjeduje_sliku", "test");
-  podaciForme.append("vlasnik", "test");
-  podaciForme.append("geohash_id_no", "test");
-  podaciForme.append("sifra_napojne", "test");
-  podaciForme.append("izvod_napojne", "test");
-  podaciForme.append("naziv_napojne", "test");
+  podaciForme.append("posjeduje_sliku", "");
+  podaciForme.append("vlasnik", globalUsername);
+  podaciForme.append("geohash_id_no", "");
+  podaciForme.append("sifra_napojne", document.querySelector("#sifra_napojne").value);
+  podaciForme.append("izvod_napojne", document.querySelector("#izvod_napojne").value);
+  podaciForme.append("naziv_napojne", document.querySelector("#naziv_napojne").value);
 
   $.ajax({
     url: wsServerOriginLocation + "/novi_portal/api/potrosaci_store",
@@ -461,8 +458,6 @@ function unosPod(geometrijaWkt, servisAkcija) {
   podaciForme.append("Geometry", geometrijaWkt);
   podaciForme.append("fid_1", document.querySelector("#fid_1").value);
   podaciForme.append("gps", document.querySelector("#gps").value);
-  podaciForme.append("naziv_ts", document.querySelector("#naziv_ts").value);
-  podaciForme.append("sifra_ts", document.querySelector("#sifra_ts").value);
   podaciForme.append("id", document.querySelector("#id").value);
   podaciForme.append("opstina", document.querySelector("#opstina").value);
   podaciForme.append("napon", document.querySelector("#napon").value);
@@ -476,20 +471,20 @@ function unosPod(geometrijaWkt, servisAkcija) {
   podaciForme.append("br_brojila", document.querySelector("#br_brojila").value);
 
   //Dodao za poziv Jovanovog servisa
-  podaciForme.append("name", "test");
-  podaciForme.append("fid", "test");
+  podaciForme.append("name", "");
+  podaciForme.append("fid", "");
   podaciForme.append("datum_azuriranja", "");
 
-  podaciForme.append("geohash_id", "test");
-  podaciForme.append("korisnik", "test");
+  podaciForme.append("geohash_id", "");
+  podaciForme.append("korisnik", globalUsername);
   podaciForme.append("katastar", "");
   podaciForme.append("originalId", 0);
-  podaciForme.append("posjeduje_sliku", "test");
-  podaciForme.append("vlasnik", "test");
-  podaciForme.append("geohash_id_no", "test");
-  podaciForme.append("sifra_napojne", "test");
-  podaciForme.append("izvod_napojne", "test");
-  podaciForme.append("naziv_napojne", "test");
+  podaciForme.append("posjeduje_sliku", "");
+  podaciForme.append("vlasnik", globalUsername);
+  podaciForme.append("geohash_id_no", "");
+  podaciForme.append("sifra_napojne", document.querySelector("#sifra_napojne").value);
+  podaciForme.append("izvod_napojne", document.querySelector("#izvod_napojne").value);
+  podaciForme.append("naziv_napojne", document.querySelector("#naziv_napojne").value);
 
   $.ajax({
     url: wsServerOriginLocation + "/novi_portal/api/pod_store",

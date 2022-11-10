@@ -340,8 +340,8 @@ function potvrdaNapojneTrafostaniceUnos() {
   sifraNapojneTrafostanice = document.querySelector("#txtSifraNapojneTrafostanice").value;
   nazivNapojneTrafostanice = document.querySelector("#txtNazivNapojneTrafostanice").value;
   izvodNapojneTrafostanice = izvod;
-  document.querySelector("#sifra_ts").value = sifraNapojneTrafostanice;
-  document.querySelector("#naziv_ts").value = nazivNapojneTrafostanice;
+  document.querySelector("#sifra_napojne").value = sifraNapojneTrafostanice;
+  document.querySelector("#naziv_napojne").value = nazivNapojneTrafostanice;
   document.querySelector("#izvod_napojne").value = izvodNapojneTrafostanice;
   closeDiv("#odabirNapojneTrafostaniceDiv");
   poruka("Uspjeh", "Uspješno odabran izvod napojne trafostanice.");

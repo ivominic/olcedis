@@ -65,7 +65,6 @@ function sakrijSvaPoljaPretrage() {
   document.querySelector("#divPretragaInstSnaga4").style.display = "none";
   document.querySelector("#divPretragaPrenosOdnos").style.display = "none";
   document.querySelector("#divPretragaIzvodCelija").style.display = "none";
-  document.querySelector("#divPretragaNapojnaTs").style.display = "none";
   document.querySelector("#divPretragaFunkcija").style.display = "none";
   document.querySelector("#divPretragaIdBilling").style.display = "none";
 
@@ -148,14 +147,12 @@ function prikaziPretraguTrafostanice() {
   document.querySelector("#divPretragaInstSnaga4").style.display = "flex";
   document.querySelector("#divPretragaPrenosOdnos").style.display = "flex";
   document.querySelector("#divPretragaIzvodCelija").style.display = "flex";
-  document.querySelector("#divPretragaNapojnaTs").style.display = "flex";
   document.querySelector("#divPretragaFunkcija").style.display = "flex";
   document.querySelector("#divPretragaIdBilling").style.display = "flex";
 }
 
 function prikaziPretraguPrikljucnoMjesto() {
   document.querySelector("#divPretragaGps").style.display = "flex";
-  document.querySelector("#divPretragaNapojnaTs").style.display = "flex";
   document.querySelector("#divPretragaIzvodTs").style.display = "flex";
   document.querySelector("#divPretragaId").style.display = "flex";
   document.querySelector("#divPretragaTip").style.display = "flex";

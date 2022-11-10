@@ -1,9 +1,9 @@
 /**Metode za prikaz odgovarajućih polja atributDiv-a u zavisnosti od odabranog sloja podataka*/
 
 function sakrijSvaPoljaAtributDiv() {
-  document.querySelector("#divUnosNazivTs").style.display = "none";
-  document.querySelector("#divUnosSifraTs").style.display = "none";
-  document.querySelector("#divUnosIzvodTs").style.display = "none";
+  document.querySelector("#divUnosNazivNapojne").style.display = "none";
+  document.querySelector("#divUnosSifraNapojne").style.display = "none";
+  document.querySelector("#divUnosIzvodNapojne").style.display = "none";
   document.querySelector("#divUnosGps").style.display = "none";
   document.querySelector("#divUnosFid1").style.display = "none";
   document.querySelector("#divUnosBroj").style.display = "none";
@@ -179,9 +179,9 @@ function sakrijSvaPoljaAtributDiv() {
 }
 
 function prikaziAtributDivStubove(napon) {
-  document.querySelector("#divUnosNazivTs").style.display = "flex";
-  document.querySelector("#divUnosSifraTs").style.display = "flex";
-  document.querySelector("#divUnosIzvodTs").style.display = "flex";
+  document.querySelector("#divUnosNazivNapojne").style.display = "flex";
+  document.querySelector("#divUnosSifraNapojne").style.display = "flex";
+  document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
   if (napon === "0.4") {
     document.querySelector("#divUnosTipStub").style.display = "flex";
     document.querySelector("#divUnosRasvjetaStub").style.display = "flex";
@@ -236,9 +236,9 @@ function prikaziAtributDivStubove(napon) {
 }
 
 function prikaziAtributDivVodove(napon) {
-  document.querySelector("#divUnosNazivTs").style.display = "flex";
-  document.querySelector("#divUnosSifraTs").style.display = "flex";
-  document.querySelector("#divUnosIzvodTs").style.display = "flex";
+  document.querySelector("#divUnosNazivNapojne").style.display = "flex";
+  document.querySelector("#divUnosSifraNapojne").style.display = "flex";
+  document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
   if (napon === "0.4") {
     document.querySelector("#divUnosRasvjetaVod").style.display = "flex";
     document.querySelector("#divUnosVrstaVod04").style.display = "flex";
@@ -276,9 +276,9 @@ function prikaziAtributDivVodove(napon) {
 }
 
 function prikaziAtributDivTrafostanice(napon) {
-  document.querySelector("#divUnosNazivTs").style.display = "flex";
-  document.querySelector("#divUnosSifraTs").style.display = "flex";
-  document.querySelector("#divUnosIzvodTs").style.display = "flex";
+  document.querySelector("#divUnosNazivNapojne").style.display = "flex";
+  document.querySelector("#divUnosSifraNapojne").style.display = "flex";
+  document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
   document.querySelector("#divUnosDdlTrafostanice").style.display = "flex";
   if (napon === "10") {
     //10/04
@@ -329,9 +329,9 @@ function prikaziAtributDivTrafostanice(napon) {
 }
 
 function prikaziAtributDivPrikljucnoMjesto() {
-  document.querySelector("#divUnosNazivTs").style.display = "flex";
-  document.querySelector("#divUnosSifraTs").style.display = "flex";
-  document.querySelector("#divUnosIzvodTs").style.display = "flex";
+  document.querySelector("#divUnosNazivNapojne").style.display = "flex";
+  document.querySelector("#divUnosSifraNapojne").style.display = "flex";
+  document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosId").style.display = "flex";
   document.querySelector("#divUnosOsiguraci").style.display = "flex";
@@ -342,9 +342,9 @@ function prikaziAtributDivPrikljucnoMjesto() {
 }
 
 function prikaziAtributDivNkro() {
-  document.querySelector("#divUnosNazivTs").style.display = "flex";
-  document.querySelector("#divUnosSifraTs").style.display = "flex";
-  document.querySelector("#divUnosIzvodTs").style.display = "flex";
+  document.querySelector("#divUnosNazivNapojne").style.display = "flex";
+  document.querySelector("#divUnosSifraNapojne").style.display = "flex";
+  document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosId").style.display = "flex";
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
@@ -358,9 +358,9 @@ function prikaziAtributDivNkro() {
 }
 
 function prikaziAtributDivPotrosac() {
-  document.querySelector("#divUnosNazivTs").style.display = "flex";
-  document.querySelector("#divUnosSifraTs").style.display = "flex";
-  document.querySelector("#divUnosIzvodTs").style.display = "flex";
+  document.querySelector("#divUnosNazivNapojne").style.display = "flex";
+  document.querySelector("#divUnosSifraNapojne").style.display = "flex";
+  document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosPrikKabal").style.display = "flex";
   document.querySelector("#divUnosPod").style.display = "flex";
@@ -372,9 +372,9 @@ function prikaziAtributDivPotrosac() {
 }
 
 function prikaziAtributDivPod() {
-  document.querySelector("#divUnosNazivTs").style.display = "flex";
-  document.querySelector("#divUnosSifraTs").style.display = "flex";
-  document.querySelector("#divUnosIzvodTs").style.display = "flex";
+  document.querySelector("#divUnosNazivNapojne").style.display = "flex";
+  document.querySelector("#divUnosSifraNapojne").style.display = "flex";
+  document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosId").style.display = "flex";
   document.querySelector("#divUnosPrikKabal").style.display = "flex";

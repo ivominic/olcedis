@@ -302,10 +302,6 @@ function obaveznaPolja(sloj) {
       popunjen = false;
       borderChange(document.querySelector("#prik_mjesto"));
     }
-    if (document.querySelector("#naziv_nn_izvod").value === "") {
-      popunjen = false;
-      borderChange(document.querySelector("#naziv_nn_izvod"));
-    }
     if (document.querySelector("#pretplatni_br").value === "") {
       popunjen = false;
       borderChange(document.querySelector("#pretplatni_br"));
@@ -314,13 +310,17 @@ function obaveznaPolja(sloj) {
       popunjen = false;
       borderChange(document.querySelector("#br_brojila"));
     }
-    if (document.querySelector("#naziv_ts").value === "") {
+    if (document.querySelector("#naziv_napojne").value === "") {
       popunjen = false;
-      borderChange(document.querySelector("#naziv_ts"));
+      borderChange(document.querySelector("#naziv_napojne"));
     }
-    if (document.querySelector("#sifra_ts").value === "") {
+    if (document.querySelector("#sifra_napojne").value === "") {
       popunjen = false;
-      borderChange(document.querySelector("#sifra_ts"));
+      borderChange(document.querySelector("#sifra_napojne"));
+    }
+    if (document.querySelector("#izvod_napojne").value === "") {
+      popunjen = false;
+      borderChange(document.querySelector("#izvod_napojne"));
     }
     if (document.querySelector("#id").value === "") {
       popunjen = false;

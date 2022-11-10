@@ -98,14 +98,11 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
               noviEl.set("gps", document.querySelector("#gps").value); //šta sa ovim
               noviEl.set("id", jsonPretplatnik.id);
               noviEl.set("naziv", jsonPretplatnik.naziv_potrosaca);
-              noviEl.set("naziv_ts", jsonPretplatnik.naziv_trafostanice);
-              noviEl.set("sifra_ts", jsonPretplatnik.sifra_trafostanice);
               noviEl.set("prik_kabal", jsonPretplatnik.provodnik_spolja + " " + jsonPretplatnik.presjek_spolja);
               noviEl.set("pod", jsonPretplatnik.pod_na_mm);
               noviEl.set("status", jsonPretplatnik.status);
               noviEl.set("adresa_mm", jsonPretplatnik.adresa_mjesta_mjerenja);
               noviEl.set("prik_mjesto", document.querySelector("#prik_mjesto").value);
-              noviEl.set("naziv_nn_izvod", jsonPretplatnik.naziv_voda);
               noviEl.set("pretplatni_br", jsonPretplatnik.sifra);
               noviEl.set("br_brojila", jsonPretplatnik.broj_brojila);
               noviEl.set("sifra_napojne", sifraNapojneTrafostanice);
@@ -144,13 +141,13 @@ function prikaziPoljaOdabranogGpxPotrosac() {
     document.querySelector("#gps").value = "";
   }
   document.querySelector("#id").value = selectGpxFeature.values_.id;
-  document.querySelector("#naziv_ts").value = selectGpxFeature.values_.naziv_ts;
-  document.querySelector("#sifra_ts").value = selectGpxFeature.values_.sifra_ts;
+  document.querySelector("#naziv_napojne").value = selectGpxFeature.values_.naziv_napojne;
+  document.querySelector("#sifra_napojne").value = selectGpxFeature.values_.sifra_napojne;
+  document.querySelector("#izvod_napojne").value = selectGpxFeature.values_.izvod_napojne;
   document.querySelector("#prik_kabal").value = selectGpxFeature.values_.prik_kabal;
   document.querySelector("#pod").value = selectGpxFeature.values_.pod;
   document.querySelector("#adresa_mm").value = selectGpxFeature.values_.adresa_mm;
   document.querySelector("#prik_mjesto").value = selectGpxFeature.values_.prik_mjesto;
-  document.querySelector("#naziv_nn_izvod").value = selectGpxFeature.values_.naziv_nn_izvod;
   document.querySelector("#pretplatni_br").value = selectGpxFeature.values_.pretplatni_br;
   document.querySelector("#br_brojila").value = selectGpxFeature.values_.br_brojila;
 }
@@ -162,8 +159,9 @@ function prikaziPoljaWmsPotrosac(objekat) {
     document.querySelector("#gps").value = "";
   }
   document.querySelector("#id").value = objekat.properties.id;
-  document.querySelector("#naziv_ts").value = objekat.properties.naziv_ts;
-  document.querySelector("#sifra_ts").value = objekat.properties.sifra_ts;
+  document.querySelector("#naziv_napojne").value = objekat.properties.naziv_napojne;
+  document.querySelector("#sifra_napojne").value = objekat.properties.sifra_napojne;
+  document.querySelector("#izvod_napojne").value = objekat.properties.izvod_napojne;
   document.querySelector("#prik_kabal").value = objekat.properties.prik_kabal;
   document.querySelector("#pod").value = objekat.properties.pod;
   document.querySelector("#adresa_mm").value = objekat.properties.adresa_mm;
@@ -175,13 +173,13 @@ function prikaziPoljaWmsPotrosac(objekat) {
 
 function izmijeniAtributeWmsPotrosac(objekat) {
   objekat.properties.id = document.querySelector("#id").value;
-  objekat.properties.naziv_ts = document.querySelector("#naziv_ts").value;
-  objekat.properties.sifra_ts = document.querySelector("#sifra_ts").value;
+  objekat.properties.naziv_napojne = document.querySelector("#naziv_napojne").value;
+  objekat.properties.sifra_napojne = document.querySelector("#sifra_napojne").value;
+  objekat.properties.izvod_napojne = document.querySelector("#izvod_napojne").value;
   objekat.properties.prik_kabal = document.querySelector("#prik_kabal").value;
   objekat.properties.pod = document.querySelector("#pod").value;
   objekat.properties.adresa_mm = document.querySelector("#adresa_mm").value;
   objekat.properties.prik_mjesto = document.querySelector("#prik_mjesto").value;
-  objekat.properties.naziv_nn_izvod = document.querySelector("#naziv_nn_izvod").value;
   objekat.properties.pretplatni_br = document.querySelector("#pretplatni_br").value;
   objekat.properties.br_brojila = document.querySelector("#br_brojila").value;
 
