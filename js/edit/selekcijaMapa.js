@@ -278,7 +278,6 @@ var modifyV = new ol.interaction.Modify({
 
 modifyV.on("modifyend", function (e) {
   let featureName = e.features.getArray()[0].values_.name;
-  console.log("isEditable", isEditable);
 
   console.log("select m", e.features.getArray()[0].values_);
   console.log("ime tačke m", e.features.getArray()[0].values_.name);

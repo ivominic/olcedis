@@ -172,7 +172,6 @@ function vodArrayValuesProperties(el, action) {
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
     pog_sprem: el.values_.pog_sprem,
     duzina: el.values_.duzina,
-    layer_id: el.values_.layer_id,
     broj_spojnica: el.values_.broj_spojnica,
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
@@ -188,7 +187,6 @@ function vodArrayValuesProperties(el, action) {
     ts: el.values_.ts,
     akcija: action,
     wizard: 0,
-    isEditable: isEditable,
     geohash_id: el.values_.geohash_id,
     geohash_id_no: el.values_.geohash_id_no,
     posjeduje_sliku: el.values_.posjeduje_sliku,

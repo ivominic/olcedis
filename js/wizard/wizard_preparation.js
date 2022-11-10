@@ -46,7 +46,6 @@ function stubArrayElement(el, action, wizard, serialNo) {
     rasp_prov: el.values_.rasp_prov,
     nn_vod: el.values_.nn_vod,
     pog_sprem: el.values_.pog_sprem,
-    layer_id: el.values_.layer_id,
     geohash_id: el.values_.geohash_id,
     geohash_id_no: el.values_.geohash_id_no,
     korisnik: globalUsername,
@@ -58,7 +57,6 @@ function stubArrayElement(el, action, wizard, serialNo) {
     vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
-    isEditable: isEditable,
   };
   stuboviArrayFinal.push(item);
 }
@@ -101,7 +99,6 @@ function vodArrayElement(el, action, wizard, serialNo) {
     pog_sprem: el.values_.pog_sprem,
     duzina: el.values_.duzina,
     broj_spojnica: el.values_.broj_spojnica,
-    layer_id: el.values_.layer_id,
     geohash_id: el.values_.geohash_id,
     geohash_id_no: el.values_.geohash_id_no,
     korisnik: globalUsername,
@@ -116,7 +113,6 @@ function vodArrayElement(el, action, wizard, serialNo) {
     ts: el.values_.ts,
     akcija: action,
     wizard: wizard,
-    isEditable: isEditable,
   };
   vodoviArrayFinal.push(item);
 }
@@ -160,7 +156,6 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     gps: el.values_.gps,
     datum_azuriranja: el.values_.datum_azuriranja,
     pog_sprem: el.values_.pog_sprem,
-    layer_id: el.values_.layer_id,
     geohash_id: el.values_.geohash_id,
     geohash_id_no: el.values_.geohash_id_no,
     korisnik: globalUsername,
@@ -173,7 +168,6 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
-    isEditable: isEditable,
   };
   trafostaniceArrayFinal.push(item);
 }
@@ -202,7 +196,6 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
     opstina: el.values_.opstina,
     gps: el.values_.gps,
     datum_azuriranja: el.values_.datum_azuriranja,
-    layer_id: el.values_.layer_id,
     geohash_id: el.values_.geohash_id,
     geohash_id_no: el.values_.geohash_id_no,
     korisnik: globalUsername,
@@ -215,7 +208,6 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
     vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
-    isEditable: isEditable,
   };
   prikljucnaMjestaArrayFinal.push(item);
 }
@@ -248,7 +240,6 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
     opstina: el.values_.opstina,
     gps: el.values_.gps,
     datum_azuriranja: el.values_.datum_azuriranja,
-    layer_id: el.values_.layer_id,
     geohash_id: el.values_.geohash_id,
     geohash_id_no: el.values_.geohash_id_no,
     korisnik: globalUsername,
@@ -262,7 +253,6 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
     vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
-    isEditable: isEditable,
   };
   potrosaciArrayFinal.push(item);
 }
@@ -295,7 +285,6 @@ function podArrayElement(el, action, wizard, serialNo) {
     opstina: el.values_.opstina,
     gps: el.values_.gps,
     datum_azuriranja: el.values_.datum_azuriranja,
-    layer_id: el.values_.layer_id,
     geohash_id: el.values_.geohash_id,
     geohash_id_no: el.values_.geohash_id_no,
     korisnik: globalUsername,
@@ -309,7 +298,6 @@ function podArrayElement(el, action, wizard, serialNo) {
     vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
-    isEditable: isEditable,
   };
   podoviArrayFinal.push(item);
 }
@@ -341,7 +329,6 @@ function nkroArrayElement(el, action, wizard, serialNo) {
     opstina: el.values_.opstina,
     gps: el.values_.gps,
     datum_azuriranja: el.values_.datum_azuriranja,
-    layer_id: el.values_.layer_id,
     geohash_id: el.values_.geohash_id,
     geohash_id_no: el.values_.geohash_id_no,
     korisnik: globalUsername,
@@ -354,7 +341,6 @@ function nkroArrayElement(el, action, wizard, serialNo) {
     vlasnik: el.values_.vlasnik,
     akcija: action,
     wizard: wizard,
-    isEditable: isEditable,
   };
   nkroArrayFinal.push(item);
 }

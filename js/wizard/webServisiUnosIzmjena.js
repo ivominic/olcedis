@@ -40,7 +40,6 @@ function cudTrafostanica(feature, akcija, wizard) {
   podaciForme.append("datum_azuriranja", feature.datum_azuriranja);
   podaciForme.append("projek_snaga", feature.projek_snaga);
   podaciForme.append("pog_sprem", feature.pog_sprem);
-  podaciForme.append("layer_id", feature.layer_id);
   podaciForme.append("napon", feature.napon);
   podaciForme.append("geohash_id", feature.geohash_id);
   podaciForme.append("korisnik", feature.korisnik);
@@ -107,7 +106,6 @@ function cudVod(feature, akcija, wizard) {
   podaciForme.append("pog_sprem", feature.pog_sprem);
   podaciForme.append("duzina", feature.duzina);
   podaciForme.append("ts", feature.ts);
-  podaciForme.append("layer_id", feature.layer_id);
   podaciForme.append("broj_spojnica", feature.broj_spojnica);
   podaciForme.append("geohash_id", feature.geohash_id);
   podaciForme.append("korisnik", feature.korisnik);
@@ -186,7 +184,6 @@ function cudStub(feature, akcija, wizard) {
   podaciForme.append("nn_vod", feature.nn_vod);
   podaciForme.append("pog_sprem", feature.pog_sprem);
   podaciForme.append("vrsta_materijal", feature.vrsta_materijal);
-  podaciForme.append("layer_id", feature.layer_id);
   podaciForme.append("geohash_id", feature.geohash_id);
   podaciForme.append("korisnik", feature.korisnik);
   podaciForme.append("katastar", feature.katastar);
@@ -242,7 +239,6 @@ function cudPotrosac(feature, akcija, wizard) {
   podaciForme.append("naziv_nn_izvod", feature.naziv_nn_izvod);
   podaciForme.append("pretplatni_br", feature.pretplatni_br);
   podaciForme.append("br_brojila", feature.br_brojila);
-  podaciForme.append("layer_id", feature.layer_id);
   podaciForme.append("napon", feature.napon);
   podaciForme.append("geohash_id", feature.geohash_id);
   podaciForme.append("korisnik", feature.korisnik);
@@ -298,7 +294,6 @@ function cudNKRO(feature, akcija, wizard) {
   podaciForme.append("br_izvoda", feature.br_izvoda);
   podaciForme.append("pog_sprem", feature.pog_sprem);
   podaciForme.append("ts", feature.ts);
-  podaciForme.append("layer_id", feature.layer_id);
   podaciForme.append("napon", feature.napon);
   podaciForme.append("geohash_id", feature.geohash_id);
   podaciForme.append("korisnik", feature.korisnik);
@@ -351,7 +346,6 @@ function cudPrikljucnoMjesto(feature, akcija, wizard) {
   podaciForme.append("tip", feature.tip);
   podaciForme.append("izvod_ts", feature.izvod_ts);
   podaciForme.append("ts", feature.ts);
-  podaciForme.append("layer_id", feature.layer_id);
   podaciForme.append("napon", feature.napon);
   podaciForme.append("geohash_id", feature.geohash_id);
   podaciForme.append("korisnik", feature.korisnik);
@@ -410,7 +404,6 @@ function cudPOD(feature, akcija, wizard) {
   podaciForme.append("naziv_nn_izvod", feature.naziv_nn_izvod);
   podaciForme.append("pretplatni_br", feature.pretplatni_br);
   podaciForme.append("br_brojila", feature.br_brojila);
-  podaciForme.append("layer_id", feature.layer_id);
   podaciForme.append("napon", feature.napon);
   podaciForme.append("geohash_id", feature.geohash_id);
   podaciForme.append("korisnik", feature.korisnik);

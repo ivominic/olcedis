@@ -223,7 +223,6 @@ function unosStubova() {
   podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
-  podaciForme.append("layer_id", "test");
   podaciForme.append("geohash_id", "test");
   podaciForme.append("korisnik", "test");
   podaciForme.append("katastar", "");
@@ -646,7 +645,6 @@ function testunosPrikljucnoMjesto() {
   podaciForme.append("fid", "test");
   podaciForme.append("datum_azuriranja", "");
 
-  podaciForme.append("layer_id", "test");
   podaciForme.append("geohash_id", "test");
   podaciForme.append("korisnik", "test");
   podaciForme.append("katastar", "");
@@ -741,7 +739,6 @@ function unosStubova1() {
   podaciForme.append("br_pmo", 2);
   podaciForme.append("datum_azuriranja", "");
 
-  podaciForme.append("layer_id", "test");
   podaciForme.append("geohash_id", "test");
   podaciForme.append("korisnik", "test");
   podaciForme.append("katastar", "");

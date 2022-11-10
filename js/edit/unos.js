@@ -221,7 +221,6 @@ function unosVodova(geometrijaWkt, servisAkcija) {
   podaciForme.append("fid", "test");
   podaciForme.append("datum_azuriranja", "");
 
-  podaciForme.append("layer_id", 0);
   podaciForme.append("geohash_id", "test");
   podaciForme.append("korisnik", "test");
   podaciForme.append("katastar", "");
@@ -287,7 +286,6 @@ function unosTrafostanica(geometrijaWkt, servisAkcija) {
   podaciForme.append("fid", "test");
   podaciForme.append("datum_azuriranja", "");
 
-  podaciForme.append("layer_id", 0);
   podaciForme.append("geohash_id", "test");
   podaciForme.append("korisnik", "test");
   podaciForme.append("katastar", "");
@@ -342,7 +340,6 @@ function unosNkro(geometrijaWkt, servisAkcija) {
   podaciForme.append("fid", "test");
   podaciForme.append("datum_azuriranja", "");
 
-  podaciForme.append("layer_id", 0);
   podaciForme.append("geohash_id", "test");
   podaciForme.append("korisnik", "test");
   podaciForme.append("katastar", "");
@@ -394,7 +391,6 @@ function unosPrikljucnoMjesto(geometrijaWkt, servisAkcija) {
   podaciForme.append("fid", "test");
   podaciForme.append("datum_azuriranja", "");
 
-  podaciForme.append("layer_id", 0);
   podaciForme.append("geohash_id", "test");
   podaciForme.append("korisnik", "test");
   podaciForme.append("katastar", "");
@@ -450,7 +446,6 @@ function unosPotrosac(geometrijaWkt, servisAkcija) {
   podaciForme.append("fid", "test");
   podaciForme.append("datum_azuriranja", "");
 
-  podaciForme.append("layer_id", 0);
   podaciForme.append("geohash_id", "test");
   podaciForme.append("korisnik", "test");
   podaciForme.append("katastar", "");
@@ -506,7 +501,6 @@ function unosPod(geometrijaWkt, servisAkcija) {
   podaciForme.append("fid", "test");
   podaciForme.append("datum_azuriranja", "");
 
-  podaciForme.append("layer_id", 0);
   podaciForme.append("geohash_id", "test");
   podaciForme.append("korisnik", "test");
   podaciForme.append("katastar", "");

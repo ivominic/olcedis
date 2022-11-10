@@ -49,7 +49,6 @@ function stubArrayElement(el, action, wizard, serialNo) {
     rasp_prov: el.values_.rasp_prov,
     nn_vod: el.values_.nn_vod,
     pog_sprem: el.values_.pog_sprem,
-    layer_id: 0, //Provjeriti da li treba da se šalje
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: globalUsername,
@@ -61,7 +60,6 @@ function stubArrayElement(el, action, wizard, serialNo) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
-    isEditable: isEditable,
     lejer: "stubovi",
   };
   console.log("Stubovi finalno", item);
@@ -108,7 +106,6 @@ function vodArrayElement(el, action, wizard, serialNo) {
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
     pog_sprem: el.values_.pog_sprem,
     duzina: el.values_.duzina,
-    layer_id: "", //Provjeriti da li treba da se šalje
     broj_spojnica: el.values_.broj_spojnica,
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
@@ -125,7 +122,6 @@ function vodArrayElement(el, action, wizard, serialNo) {
     ts: el.values_.ts,
     akcija: action,
     wizard: wizard,
-    isEditable: isEditable,
   };
   console.log("Vodovi finalno", item);
   vodoviArrayFinal.push(item);
@@ -175,7 +171,6 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     gps: el.values_.gps,
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
     pog_sprem: el.values_.pog_sprem,
-    layer_id: 0, //Provjeriti da li treba da se šalje
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: globalUsername,
@@ -188,7 +183,6 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
-    isEditable: isEditable,
     lejer: "trafostanice",
   };
   console.log("Trafostanice finalno", item);
@@ -223,7 +217,6 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
     opstina: el.values_.opstina,
     gps: el.values_.gps,
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
-    layer_id: el.values_.layer_id,
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: globalUsername,
@@ -236,7 +229,6 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
-    isEditable: isEditable,
     lejer: "prikljucno_mjesto",
   };
   console.log("Priključno mjesto finalno", item);
@@ -274,7 +266,6 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
     opstina: el.values_.opstina,
     gps: el.values_.gps,
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
-    layer_id: "", //Provjeriti da li treba da se šalje
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: globalUsername,
@@ -288,7 +279,6 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
-    isEditable: isEditable,
     lejer: "potrosac",
   };
   console.log("Potrošači finalno", item);
@@ -326,7 +316,6 @@ function podArrayElement(el, action, wizard, serialNo) {
     opstina: el.values_.opstina,
     gps: el.values_.gps,
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
-    layer_id: "", //Provjeriti da li treba da se šalje
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: globalUsername,
@@ -340,7 +329,6 @@ function podArrayElement(el, action, wizard, serialNo) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
-    isEditable: isEditable,
     lejer: "pod",
   };
   console.log("Podovi finalno", item);
@@ -376,8 +364,7 @@ function nkroArrayElement(el, action, wizard, serialNo) {
     id: el.values_.id, //Vidjeti šta ovdje predajem
     opstina: el.values_.opstina,
     gps: el.values_.gps,
-    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
-    layer_id: "", //Provjeriti da li treba da se šalje
+    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani    
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: globalUsername,
@@ -390,7 +377,6 @@ function nkroArrayElement(el, action, wizard, serialNo) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
-    isEditable: isEditable,
     lejer: "nkro",
   };
   console.log("Nkro finalno", item);

@@ -89,7 +89,6 @@ function dodajPoljaGpxStubovi() {
       el.set("fid", "test");
       el.set("datum_azuriranja", "");
 
-      el.set("layer_id", 0);
       el.set("geohash_id", "test");
       el.set("korisnik", "test");
       el.set("katastar", "");
