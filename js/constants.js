@@ -39,6 +39,7 @@ const Podsloj = {
 const StatusPoruke = {
   Uspjeh: "Uspjeh",
   Upozorenje: "Upozorenje",
+  Greska: "Greška",
 };
 
 const WizardPoruke = {
@@ -54,6 +55,7 @@ const WizardPoruke = {
 
 const UnosPoruke = {
   Uspjeh: "Uspješno izvršena akcija",
+  PopunitiObaveznaPolja: "Potrebno je popuniti obavezna polja"
 };
 
 const GlobalPoruke = {

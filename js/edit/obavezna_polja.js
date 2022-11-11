@@ -1,13 +1,11 @@
 function pozivButton() {
   let sloj = document.querySelector("#ddl_sloj_podataka").value;
-  let poruka = obaveznaPolja(sloj);
 
-  if (poruka) {
-  } else {
+  if (!obaveznaPolja(sloj)) {
     Swal.fire({
       icon: "error",
-      title: "Greška",
-      text: "Morate popuniti obavezna polja",
+      title: StatusPoruke.Greska,
+      text: UnosPoruke.PopunitiObaveznaPolja,
     });
   }
 }
