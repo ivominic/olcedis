@@ -242,27 +242,21 @@ function provjeraObaveznostiVodovi() {
 
 function provjeraObaveznostiNkro() {
   let isFilled = true;
-  //Inputi
-  if (document.querySelector("#napon").value === "") {
-    isFilled = false;
-    borderChange(document.querySelector("#napon"));
-  }
   if (document.querySelector("#id").value === "") {
     isFilled = false;
     borderChange(document.querySelector("#id"));
   }
-  //Selekti
-  if (document.querySelector("#vlasnistvo").value === "") {
+  if (document.querySelector("#vrsta_materijal").value === "") {
     isFilled = false;
-    borderChange(document.querySelector("#vlasnistvo"));
+    borderChange(document.querySelector("#vrsta_materijal"));
   }
   if (document.querySelector("#montaza").value === "") {
     isFilled = false;
     borderChange(document.querySelector("#montaza"));
   }
-  if (document.querySelector("#vrsta_materijal").value === "") {
+  if (document.querySelector("#vlasnistvo").value === "") {
     isFilled = false;
-    borderChange(document.querySelector("#vrsta_materijal"));
+    borderChange(document.querySelector("#vlasnistvo"));
   }
   if (document.querySelector("#vrata").value === "") {
     isFilled = false;
@@ -272,7 +266,6 @@ function provjeraObaveznostiNkro() {
     isFilled = false;
     borderChange(document.querySelector("#pog_sprem"));
   }
-
   return popunjen;
 }
 
