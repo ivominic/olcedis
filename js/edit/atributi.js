@@ -182,7 +182,7 @@ function prikaziAtributDivStubove(napon) {
   document.querySelector("#divUnosNazivNapojne").style.display = "flex";
   document.querySelector("#divUnosSifraNapojne").style.display = "flex";
   document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
-  if (napon === "0.4") {
+  if (napon === NaponskiNivo.String04kV) {
     document.querySelector("#divUnosTipStub").style.display = "flex";
     document.querySelector("#divUnosRasvjetaStub").style.display = "flex";
     document.querySelector("#divUnosNamjenaStub04").style.display = "flex";
@@ -194,8 +194,9 @@ function prikaziAtributDivStubove(napon) {
     document.querySelector("#divUnosOdvodnikPrenaponaStub04").style.display = "flex";
     document.querySelector("#divUnosUzemljivacStub04").style.display = "flex";
     document.querySelector("#divUnosOptikaStub04").style.display = "flex";
+    document.querySelector("#divUnosBrPmo").style.display = "flex";
   }
-  if (napon === "10") {
+  if (napon === NaponskiNivo.String10kV) {
     document.querySelector("#divUnosNamjenaStub10").style.display = "flex";
     document.querySelector("#divUnosVrstaDrvenogStuba10").style.display = "flex";
     document.querySelector("#divUnosIzolatorVrstaStub10").style.display = "flex";
@@ -208,7 +209,7 @@ function prikaziAtributDivStubove(napon) {
     document.querySelector("#divUnosNnVodStub10").style.display = "flex";
     document.querySelector("#divUnosRastavljacStub10").style.display = "flex";
   }
-  if (napon === "35") {
+  if (napon === NaponskiNivo.String35kV) {
     document.querySelector("#divUnosNamjenaStub35").style.display = "flex";
     document.querySelector("#divUnosVrstaDrvenogStuba35").style.display = "flex";
     document.querySelector("#divUnosIzolatorVrstaStub35").style.display = "flex";
@@ -228,7 +229,6 @@ function prikaziAtributDivStubove(napon) {
   document.querySelector("#divUnosRasporedProvodnika").style.display = "flex";
   document.querySelector("#divUnosBrIzolFaza").style.display = "flex";
   document.querySelector("#divUnosOtporUzemljivaca").style.display = "flex";
-  document.querySelector("#divUnosBrPmo").style.display = "flex";
   document.querySelector("#divUnosBrNnv").style.display = "flex";
   document.querySelector("#divUnosPogSprem").style.display = "flex";
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
@@ -390,33 +390,7 @@ function ddlLejerChange() {
   borderClear();
   sakrijSvaPoljaAtributDiv();
   let value = document.querySelector("#ddl_sloj_podataka").value;
-  if (value === "stub04") {
-    prikazPanelaAtributa("Stub 04KV");
-  } else if (value === "stub10") {
-    prikazPanelaAtributa("Stub 10KV");
-  } else if (value === "stub35") {
-    prikazPanelaAtributa("Stub 35KV");
-  } else if (value === "vod04") {
-    prikazPanelaAtributa("Vod 04KV");
-  } else if (value === "vod10") {
-    prikazPanelaAtributa("Vod 10KV");
-  } else if (value === "vod35") {
-    prikazPanelaAtributa("Vod 35KV");
-  } else if (value === "trafostanica10") {
-    prikazPanelaAtributa("Trafostanica1004");
-  } else if (value === "trafostanica35") {
-    prikazPanelaAtributa("Trafostanica35x");
-  } else if (value === "vod35") {
-    prikazPanelaAtributa("trafostanica110");
-  } else if (value === "nkro") {
-    prikazPanelaAtributa("NKRO");
-  } else if (value === "prikljucno_mjesto") {
-    prikazPanelaAtributa("Priključno mjesto");
-  } else if (value === "potrosac") {
-    prikazPanelaAtributa("Potrošač");
-  } else if (value === "pod") {
-    prikazPanelaAtributa("POD");
-  }
+  value && prikazPanelaAtributa(value);
 }
 
 ddlLejerChange(); //Inicijalno prikazivanje

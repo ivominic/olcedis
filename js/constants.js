@@ -13,9 +13,27 @@ const NaponskiNivo = {
   String04kV: "0.4",
   String10kV: "10",
   String35kV: "35",
+  String110kV: "110",
   Numeric04kV: 0.4,
   Numeric10kV: 10,
   Numeric35kV: 35,
+  Numeric110kV: 110,
+};
+
+const Podsloj = {
+  Stub04: "stub04",
+  Stub10: "stub10",
+  Stub35: "stub35",
+  Vod04: "vod04",
+  Vod10: "vod10",
+  Vod35: "vod35",
+  Nkro: "nkro",
+  PrikljucnoMjesto: "prikljucno_mjesto",
+  Potrosac: "potrosac",
+  Pod: "pod",
+  TS10: "trafostanica10",
+  TS35: "trafostanica35",
+  TS110: "trafostanica110",
 };
 
 const StatusPoruke = {
