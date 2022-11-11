@@ -20,7 +20,6 @@ function stubArrayElement(el, action, wizard, serialNo) {
     broj: el.values_.broj,
     napon: el.values_.napon,
     vrsta_namjena: el.values_.vrsta_namjena,
-    vrsta_materijal: el.values_.vrsta_materijal,
     rasvjeta: el.values_.rasvjeta,
     prikljucak_otcjep: el.values_.prikljucak_otcjep,
     br_pmo: el.values_.br_pmo,
@@ -31,8 +30,6 @@ function stubArrayElement(el, action, wizard, serialNo) {
     tip_nosac_izol: el.values_.nosaci_izolatora,
     vlasnistvo: el.values_.vlasnistvo,
     tip: el.values_.tip,
-    id: el.values_.id, //Vidjeti šta ovdje predajem
-    br_pmo: el.values_.br_pmo,
     visina: el.values_.visina,
     optika: el.values_.optika,
     opstina: el.values_.opstina,
@@ -48,6 +45,7 @@ function stubArrayElement(el, action, wizard, serialNo) {
     rasp_prov: el.values_.rasp_prov,
     nn_vod: el.values_.nn_vod,
     pog_sprem: el.values_.pog_sprem,
+    vrsta_materijal: el.values_.vrsta_materijal,
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: globalUsername,
@@ -90,7 +88,6 @@ function vodArrayElement(el, action, wizard, serialNo) {
     vlasnistvo: el.values_.vlasnistvo,
     tip: el.values_.tip,
     br_spojnica: el.values_.br_spojnica,
-    id: el.values_.id, //Vidjeti šta ovdje predajem
     uze_presjek: el.values_.uze_presjek,
     uze: el.values_.uze,
     br_faza: el.values_.br_faza,
@@ -142,7 +139,6 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     celije_10: el.values_.celije_10,
     prenos_odnos: el.values_.prenos_odnos,
     id_billing: el.values_.id_billing,
-    id: el.values_.id_billing,
     izvod_celija: el.values_.izvod_celija,
     funkcija: el.values_.funkcija,
     nad_vis: el.values_.nad_vis,
@@ -157,7 +153,6 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     napon: el.values_.napon,
     vlasnistvo: el.values_.vlasnistvo,
     tip: el.values_.tip,
-    id: el.values_.id, //Vidjeti šta ovdje predajem
     opstina: el.values_.opstina,
     god_izg: el.values_.god_izg,
     gps: el.values_.gps,
@@ -251,7 +246,6 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
     pretplatni_br: el.values_.pretplatni_br,
     br_brojila: el.values_.br_brojila,
     napon: el.values_.napon,
-    id: el.values_.id, //Vidjeti šta ovdje predajem
     opstina: el.values_.opstina,
     gps: el.values_.gps,
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
@@ -299,7 +293,6 @@ function podArrayElement(el, action, wizard, serialNo) {
     pretplatni_br: el.values_.pretplatni_br,
     br_brojila: el.values_.br_brojila,
     napon: el.values_.napon,
-    id: el.values_.id, //Vidjeti šta ovdje predajem
     opstina: el.values_.opstina,
     gps: el.values_.gps,
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani

@@ -19,7 +19,6 @@ function stubArrayElementProperties(el, action) {
     broj: el.properties.broj,
     napon: el.properties.napon,
     vrsta_namjena: el.properties.vrsta_namjena,
-    vrsta_materijal: el.properties.vrsta_materijal,
     rasvjeta: el.properties.rasvjeta,
     prikljucak_otcjep: el.properties.prikljucak_otcjep,
     br_pmo: el.properties.br_pmo,
@@ -30,8 +29,6 @@ function stubArrayElementProperties(el, action) {
     tip_nosac_izol: el.properties.nosaci_izolatora,
     vlasnistvo: el.properties.vlasnistvo,
     tip: el.properties.tip,
-    id: el.properties.id, //Vidjeti šta ovdje predajem
-    br_pmo: el.properties.br_pmo,
     visina: el.properties.visina,
     optika: el.properties.optika,
     opstina: el.properties.opstina,
@@ -49,6 +46,7 @@ function stubArrayElementProperties(el, action) {
     rasp_prov: el.properties.rasp_prov,
     nn_vod: el.properties.nn_vod,
     pog_sprem: el.properties.pog_sprem,
+    vrsta_materijal: el.properties.vrsta_materijal,
     korisnik: globalUsername,
     sifra_napojne: el.properties.sifra_napojne,
     naziv_napojne: el.properties.naziv_napojne,
@@ -85,7 +83,6 @@ function vodArrayElementProperties(el, action) {
     vlasnistvo: el.properties.vlasnistvo,
     tip: el.properties.tip,
     br_spojnica: el.properties.br_spojnica,
-    id: el.properties.id, //Vidjeti šta ovdje predajem    
     uze_presjek: el.properties.uze_presjek,
     uze: el.properties.uze,
     br_faza: el.properties.br_faza,
@@ -133,7 +130,6 @@ function trafostanicaArrayElementProperties(el, action) {
     celije_10: el.properties.celije_10,
     prenos_odnos: el.properties.prenos_odnos,
     id_billing: el.properties.id_billing,
-    id: el.properties.id_billing,
     izvod_celija: el.properties.izvod_celija,
     funkcija: el.properties.funkcija,
     nad_vis: el.properties.nad_vis,
@@ -148,7 +144,6 @@ function trafostanicaArrayElementProperties(el, action) {
     napon: el.properties.napon,
     vlasnistvo: el.properties.vlasnistvo,
     tip: el.properties.tip,
-    id: el.properties.id, //Vidjeti šta ovdje predajem
     opstina: el.properties.opstina,
     god_izg: el.properties.god_izg,
     gps: el.properties.gps,
@@ -230,7 +225,6 @@ function potrosacArrayElementProperties(el, action) {
     pretplatni_br: el.properties.pretplatni_br,
     br_brojila: el.properties.br_brojila,
     napon: el.properties.napon,
-    id: el.properties.id, //Vidjeti šta ovdje predajem
     opstina: el.properties.opstina,
     gps: el.properties.gps,
     korisnik: globalUsername,
@@ -272,7 +266,6 @@ function podArrayElementProperties(el, action) {
     pretplatni_br: el.properties.pretplatni_br,
     br_brojila: el.properties.br_brojila,
     napon: el.properties.napon,
-    id: el.properties.id, //Vidjeti šta ovdje predajem
     opstina: el.properties.opstina,
     gps: el.properties.gps,
     korisnik: globalUsername,
