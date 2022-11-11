@@ -122,7 +122,7 @@ function provjeraObaveznostiStubovi() {
     }
   } else if (sloj === Podsloj.Stub35) {
   }
-  return popunjen;
+  return isFilled;
 }
 
 function provjeraObaveznostiVodovi() {
@@ -237,7 +237,7 @@ function provjeraObaveznostiVodovi() {
       borderChange(document.querySelector("#uze_presjek_vod_35"));
     }
   }
-  return popunjen;
+  return isFilled;
 }
 
 function provjeraObaveznostiNkro() {
@@ -266,7 +266,7 @@ function provjeraObaveznostiNkro() {
     isFilled = false;
     borderChange(document.querySelector("#pog_sprem"));
   }
-  return popunjen;
+  return isFilled;
 }
 
 function provjeraObaveznostiPrikljucnoMjesto() {
@@ -292,7 +292,7 @@ function provjeraObaveznostiPrikljucnoMjesto() {
     isFilled = false;
     borderChange(document.querySelector("#osiguraci"));
   }
-  return popunjen;
+  return isFilled;
 }
 
 function provjeraObaveznostiPotrosac() {
@@ -305,23 +305,11 @@ function provjeraObaveznostiPotrosac() {
     isFilled = false;
     borderChange(document.querySelector("#pretplatni_br"));
   }
-  return popunjen;
+  return isFilled;
 }
 
 function provjeraObaveznostiPod() {
   let isFilled = true;
-  if (document.querySelector("#prik_kabal").value === "") {
-    isFilled = false;
-    borderChange(document.querySelector("#prik_kabal"));
-  }
-  if (document.querySelector("#pod").value === "") {
-    isFilled = false;
-    borderChange(document.querySelector("#pod"));
-  }
-  if (document.querySelector("#adresa_mm").value === "") {
-    isFilled = false;
-    borderChange(document.querySelector("#adresa_mm"));
-  }
   if (document.querySelector("#prik_mjesto").value === "") {
     isFilled = false;
     borderChange(document.querySelector("#prik_mjesto"));
@@ -330,25 +318,5 @@ function provjeraObaveznostiPod() {
     isFilled = false;
     borderChange(document.querySelector("#pretplatni_br"));
   }
-  if (document.querySelector("#br_brojila").value === "") {
-    isFilled = false;
-    borderChange(document.querySelector("#br_brojila"));
-  }
-  if (document.querySelector("#naziv_napojne").value === "") {
-    isFilled = false;
-    borderChange(document.querySelector("#naziv_napojne"));
-  }
-  if (document.querySelector("#sifra_napojne").value === "") {
-    isFilled = false;
-    borderChange(document.querySelector("#sifra_napojne"));
-  }
-  if (document.querySelector("#izvod_napojne").value === "") {
-    isFilled = false;
-    borderChange(document.querySelector("#izvod_napojne"));
-  }
-  if (document.querySelector("#id").value === "") {
-    isFilled = false;
-    borderChange(document.querySelector("#id"));
-  }
-  return popunjen;
+  return isFilled;
 }
