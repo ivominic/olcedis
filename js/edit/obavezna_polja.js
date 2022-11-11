@@ -271,6 +271,10 @@ function provjeraObaveznostiNkro() {
 
 function provjeraObaveznostiPrikljucnoMjesto() {
   let isFilled = true;
+  if (document.querySelector("#osiguraci").value === "") {
+    isFilled = false;
+    borderChange(document.querySelector("#osiguraci"));
+  }
   if (document.querySelector("#vlasnistvo").value === "") {
     isFilled = false;
     borderChange(document.querySelector("#vlasnistvo"));
@@ -278,19 +282,6 @@ function provjeraObaveznostiPrikljucnoMjesto() {
   if (document.querySelector("#id").value === "") {
     isFilled = false;
     borderChange(document.querySelector("#id"));
-  }
-  if (document.querySelector("#br_pretplatnika").value === "") {
-    isFilled = false;
-    borderChange(document.querySelector("#br_pretplatnika"));
-  }
-  //Selekti
-  if (document.querySelector("#vlasnistvo").value === "") {
-    isFilled = false;
-    borderChange(document.querySelector("#vlasnistvo"));
-  }
-  if (document.querySelector("#osiguraci").value === "") {
-    isFilled = false;
-    borderChange(document.querySelector("#osiguraci"));
   }
   return isFilled;
 }
