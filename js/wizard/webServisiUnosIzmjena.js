@@ -169,6 +169,8 @@ function cudStub(feature, akcija, wizard) {
   podaciForme.append("odvodnik_prenapona", feature.odvodnik_prenapona);
   podaciForme.append("vrsta_drvenog", feature.vrsta_drvenog);
   podaciForme.append("br_nnv", feature.br_nnv);
+  podaciForme.append("br_10kv_vodova", feature.br_10kv_vodova);
+  podaciForme.append("br_35kv_vodova", feature.br_35kv_vodova);
   podaciForme.append("rastavljac", feature.rastavljac);
   podaciForme.append("gps", feature.gps);
   podaciForme.append("datum_azuriranja", feature.datum_azuriranja);
@@ -401,7 +403,7 @@ function cudPOD(feature, akcija, wizard) {
   podaciForme.append("vlasnik", feature.vlasnik);
   podaciForme.append("naziv_napojne", feature.naziv_napojne);
   podaciForme.append("sifra_napojne", feature.sifra_napojne);
-  podaciForme.append("izvod_napojne", feature.izvod_napojne);  
+  podaciForme.append("izvod_napojne", feature.izvod_napojne);
   podaciForme.append("fid", feature.fid);
 
   $.ajax({

@@ -36,6 +36,8 @@ function stubArrayElementProperties(el, action) {
     odvodnik_prenapona: el.properties.odvodnik_prenapona,
     vrsta_drvenog: el.properties.vrsta_drvenog,
     br_nnv: el.properties.br_nnv,
+    br_10kv_vodova: el.properties.br_10kv_vodova,
+    br_35kv_vodova: el.properties.br_35kv_vodova,
     gps: el.properties.gps,
     rastavljac: el.properties.rastavljac,
     datum_azuriranja: "", //Jovan će popuniti na serverskoj strani

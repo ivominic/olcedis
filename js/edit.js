@@ -31,6 +31,8 @@ function popuniKontrole(odgovor) {
   //document.querySelector("#rasvjeta").value = atributi["rasvjeta"];
   document.querySelector("#br_pmo").value = atributi["br_pmo"];
   document.querySelector("#br_nnv").value = atributi["br_nnv"];
+  //document.querySelector("#br_10kv_vodova").value = atributi["br_10kv_vodova"];
+  //document.querySelector("#br_35kv_vodova").value = atributi["br_35kv_vodova"];
   document.querySelector("#pog_sprem").value = atributi["pog_sprem"];
   //document.querySelector("#vlasnistvo").value = atributi["vlasnistvo"];
   document.querySelector("#opstina").value = atributi["opstina"];
@@ -101,7 +103,9 @@ function sacuvaj() {
   podaciForme.append("optika", document.querySelector("#optika").value);
   podaciForme.append("rasvjeta", document.querySelector("#rasvjeta").value);
   podaciForme.append("br_pmo", document.querySelector("#br_pmo").value);
-  podaciForme.append("br_nnv", document.querySelector("#").value);
+  podaciForme.append("br_nnv", document.querySelector("#br_nnv").value);
+  //podaciForme.append("br_10kv_vodova", document.querySelector("#br_10kv_vodova").value);
+  //podaciForme.append("br_35kv_vodova", document.querySelector("#br_35kv_vodova").value);
   podaciForme.append("pog_sprem", document.querySelector("#pog_sprem").value);
   podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
   podaciForme.append("opstina", document.querySelector("#opstina").value);

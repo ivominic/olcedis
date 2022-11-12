@@ -452,7 +452,6 @@ function popuniListeZaStubove(napon) {
   popuniDdlAtributima("#uzemljivac_stub_10", "stubovi", "uzemljivac", "napon", "10");
   popuniDdlAtributima("#uzemljivac_stub_35", "stubovi", "uzemljivac", "napon", "35");
   popuniDdlAtributima("#optika_stub_04", "stubovi", "optika", "napon", "0.4");
-  popuniDdlAtributima("#optika_stub_10", "stubovi", "optika", "napon", "10");
   popuniDdlAtributima("#optika_stub_35", "stubovi", "optika", "napon", "35");
   popuniDdlAtributima("#vlasnistvo", "stubovi", "vlasnistvo", "napon", "0.4");
   popuniDdlAtributima("#prikljucak_otcjep_stub_10", "stubovi", "prikljucak_otcjep", "napon", "10");

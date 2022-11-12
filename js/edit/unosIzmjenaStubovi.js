@@ -48,7 +48,6 @@ function dodajPoljaGpxStubovi() {
         el.set("nosaci_izolatora", document.querySelector("#nosaci_izolatora_stub_10").value);
         el.set("odvodnik_prenapona", document.querySelector("#odvodnik_prenapona_stub_10").value);
         el.set("uzemljivac", document.querySelector("#uzemljivac_stub_10").value);
-        el.set("optika", document.querySelector("#optika_stub_10").value);
         el.set("prikljucak_otcjep", document.querySelector("#prikljucak_otcjep_stub_10").value);
         el.set("nn_vod", document.querySelector("#nn_vod_stub_10").value);
         el.set("rastavljac", document.querySelector("#rastavljac_stub_10").value);
@@ -77,6 +76,8 @@ function dodajPoljaGpxStubovi() {
       el.set("uzemljivac_otpor", document.querySelector("#uzemljivac_otpor").value);
       el.set("br_pmo", document.querySelector("#br_pmo").value);
       el.set("br_nnv", document.querySelector("#br_nnv").value);
+      el.set("br_10kv_vodova", document.querySelector("#br_10kv_vodova").value);
+      el.set("br_35kv_vodova", document.querySelector("#br_35kv_vodova").value);
       el.set("pog_sprem", document.querySelector("#pog_sprem").value);
       el.set("vlasnistvo", document.querySelector("#vlasnistvo").value);
       el.set("opstina", document.querySelector("#opstina").value);
@@ -138,7 +139,6 @@ function dodajPoljaOdabranomGpxStubu() {
     selectGpxFeature.set("nosaci_izolatora", document.querySelector("#nosaci_izolatora_stub_10").value);
     selectGpxFeature.set("odvodnik_prenapona", document.querySelector("#odvodnik_prenapona_stub_10").value);
     selectGpxFeature.set("uzemljivac", document.querySelector("#uzemljivac_stub_10").value);
-    selectGpxFeature.set("optika", document.querySelector("#optika_stub_10").value);
     selectGpxFeature.set("prikljucak_otcjep", document.querySelector("#prikljucak_otcjep_stub_10").value);
     selectGpxFeature.set("nn_vod", document.querySelector("#nn_vod_stub_10").value);
     selectGpxFeature.set("rastavljac", document.querySelector("#rastavljac_stub_10").value);
@@ -177,6 +177,8 @@ function dodajPoljaOdabranomGpxStubu() {
   selectGpxFeature.set("uzemljivac_otpor", document.querySelector("#uzemljivac_otpor").value);
   selectGpxFeature.set("br_pmo", document.querySelector("#br_pmo").value);
   selectGpxFeature.set("br_nnv", document.querySelector("#br_nnv").value);
+  selectGpxFeature.set("br_10kv_vodova", document.querySelector("#br_10kv_vodova").value);
+  selectGpxFeature.set("br_35kv_vodova", document.querySelector("#br_35kv_vodova").value);
   selectGpxFeature.set("pog_sprem", document.querySelector("#pog_sprem").value);
   selectGpxFeature.set("vlasnistvo", document.querySelector("#vlasnistvo").value);
   selectGpxFeature.set("opstina", document.querySelector("#opstina").value);
@@ -210,6 +212,8 @@ function prikaziPoljaOdabranogGpxStuba() {
   document.querySelector("#uzemljivac_otpor").value = selectGpxFeature.values_.uzemljivac_otpor;
   document.querySelector("#br_pmo").value = selectGpxFeature.values_.br_pmo;
   document.querySelector("#br_nnv").value = selectGpxFeature.values_.br_nnv;
+  document.querySelector("#br_10kv_vodova").value = selectGpxFeature.values_.br_10kv_vodova;
+  document.querySelector("#br_35kv_vodova").value = selectGpxFeature.values_.br_35kv_vodova;
   document.querySelector("#pog_sprem").value = selectGpxFeature.values_.pog_sprem;
   document.querySelector("#opstina").value = selectGpxFeature.values_.opstina;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
@@ -239,7 +243,6 @@ function prikaziPoljaOdabranogGpxStuba() {
     setujDdlVrijednost("#nosaci_izolatora_stub_10", selectGpxFeature.values_.nosaci_izolatora);
     setujDdlVrijednost("#odvodnik_prenapona_stub_10", selectGpxFeature.values_.odvodnik_prenapona);
     setujDdlVrijednost("#uzemljivac_stub_10", selectGpxFeature.values_.uzemljivac);
-    setujDdlVrijednost("#optika_stub_10", selectGpxFeature.values_.optika);
     setujDdlVrijednost("#prikljucak_otcjep_stub_10", selectGpxFeature.values_.prikljucak_otcjep);
     setujDdlVrijednost("#nn_vod_stub_10", selectGpxFeature.values_.nn_vod);
     setujDdlVrijednost("#rastavljac_stub_10", selectGpxFeature.values_.rastavljac);
@@ -278,6 +281,8 @@ function prikaziAtributeWmsStuba(objekat) {
   document.querySelector("#uzemljivac_otpor").value = objekat.properties.uzemljivac_otpor;
   document.querySelector("#br_pmo").value = objekat.properties.br_pmo;
   document.querySelector("#br_nnv").value = objekat.properties.br_nnv;
+  document.querySelector("#br_10kv_vodova").value = objekat.properties.br_10kv_vodova;
+  document.querySelector("#br_35kv_vodova").value = objekat.properties.br_35kv_vodova;
   document.querySelector("#pog_sprem").value = objekat.properties.pog_sprem;
   document.querySelector("#opstina").value = objekat.properties.opstina;
   document.querySelector("#napon").value = objekat.properties.napon;
@@ -307,7 +312,6 @@ function prikaziAtributeWmsStuba(objekat) {
     setujDdlVrijednost("#nosaci_izolatora_stub_10", objekat.properties.nosaci_izolatora);
     setujDdlVrijednost("#odvodnik_prenapona_stub_10", objekat.properties.odvodnik_prenapona);
     setujDdlVrijednost("#uzemljivac_stub_10", objekat.properties.uzemljivac);
-    setujDdlVrijednost("#optika_stub_10", objekat.properties.optika);
     setujDdlVrijednost("#prikljucak_otcjep_stub_10", objekat.properties.prikljucak_otcjep);
     setujDdlVrijednost("#nn_vod_stub_10", objekat.properties.nn_vod);
     setujDdlVrijednost("#rastavljac_stub_10", objekat.properties.rastavljac);
@@ -341,6 +345,8 @@ function izmijeniAtributeWmsStuba(objekat) {
   objekat.properties.uzemljivac_otpor = document.querySelector("#uzemljivac_otpor").value;
   objekat.properties.br_pmo = document.querySelector("#br_pmo").value;
   objekat.properties.br_nnv = document.querySelector("#br_nnv").value;
+  objekat.properties.br_10kv_vodova = document.querySelector("#br_10kv_vodova").value;
+  objekat.properties.br_35kv_vodova = document.querySelector("#br_35kv_vodova").value;
   objekat.properties.pog_sprem = document.querySelector("#pog_sprem").value;
   objekat.properties.opstina = document.querySelector("#opstina").value;
   objekat.properties.napon = document.querySelector("#napon").value;
@@ -370,7 +376,6 @@ function izmijeniAtributeWmsStuba(objekat) {
     objekat.properties.nosaci_izolatora = document.querySelector("#nosaci_izolatora_stub_10").value;
     objekat.properties.odvodnik_prenapona = document.querySelector("#odvodnik_prenapona_stub_10").value;
     objekat.properties.uzemljivac = document.querySelector("#uzemljivac_stub_10").value;
-    objekat.properties.optika = document.querySelector("#optika_stub_10").value;
     objekat.properties.prikljucak_otcjep = document.querySelector("#prikljucak_otcjep_stub_10").value;
     objekat.properties.nn_vod = document.querySelector("#nn_vod_stub_10").value;
     objekat.properties.rastavljac = document.querySelector("#rastavljac_stub_10").value;

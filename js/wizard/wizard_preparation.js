@@ -37,6 +37,8 @@ function stubArrayElement(el, action, wizard, serialNo) {
     odvodnik_prenapona: el.values_.odvodnik_prenapona,
     vrsta_drvenog: el.values_.vrsta_drvenog,
     br_nnv: el.values_.br_nnv,
+    br_10kv_vodova: el.values_.br_10kv_vodova,
+    br_35kv_vodova: el.values_.br_35kv_vodova,
     gps: el.values_.gps,
     rastavljac: el.values_.rastavljac,
     datum_azuriranja: el.values_.datum_azuriranja,

@@ -49,63 +49,73 @@ function provjeraObaveznostiStubovi() {
   if (document.querySelector("#name").value === "") {
     isFilled = borderChange(document.querySelector("#name"));
   }
-
+  if (document.querySelector("#vlasnistvo").value === "") {
+    isFilled = borderChange(document.querySelector("#vlasnistvo"));
+  }
+  if (document.querySelector("#tip_stub").value === "") {
+    isFilled = borderChange(document.querySelector("#tip_stub"));
+  }
   if (document.querySelector("#rasp_prov").value === "") {
     isFilled = borderChange(document.querySelector("#rasp_prov"));
   }
+  if (document.querySelector("#pog_sprem").value === "") {
+    isFilled = borderChange(document.querySelector("#pog_sprem"));
+  }
 
   if (sloj === Podsloj.Stub04) {
-    //Input
-    if (document.querySelector("#br_pmo").value === "") {
-      isFilled = borderChange(document.querySelector("#br_pmo"));
-    }
-    //Select
-    if (document.querySelector("#tip_stub").value === "") {
-      isFilled = borderChange(document.querySelector("#tip_stub"));
+    if (document.querySelector("#uzemljivac_stub_04").value === "") {
+      isFilled = borderChange(document.querySelector("#uzemljivac_stub_04"));
     }
     if (document.querySelector("#vrsta_namjena_stub_04").value === "") {
       isFilled = borderChange(document.querySelector("#vrsta_namjena_stub_04"));
     }
-    if (document.querySelector("#uzemljivac_stub_04").value === "") {
-      isFilled = borderChange(document.querySelector("#uzemljivac_stub_04"));
+    if (document.querySelector("#rasvjeta_stub").value === "") {
+      isFilled = borderChange(document.querySelector("#rasvjeta_stub"));
+    }
+    if (document.querySelector("#br_pmo").value === "") {
+      isFilled = borderChange(document.querySelector("#br_pmo"));
     }
     if (document.querySelector("#optika_stub_04").value === "") {
       isFilled = borderChange(document.querySelector("#optika_stub_04"));
     }
-    if (document.querySelector("#rasvjeta_stub").value === "") {
-      isFilled = borderChange(document.querySelector("#rasvjeta_stub"));
-    }
-    if (document.querySelector("#pog_sprem").value === "") {
-      isFilled = borderChange(document.querySelector("#pog_sprem"));
-    }
-    if (document.querySelector("#vlasnistvo").value === "") {
-      isFilled = borderChange(document.querySelector("#vlasnistvo"));
-    }
-  } else if (sloj === Podsloj.Stub10) {
-    //Input
     if (document.querySelector("#br_nnv").value === "") {
       isFilled = borderChange(document.querySelector("#br_nnv"));
     }
-    //Selekti
-    if (document.querySelector("#vrsta_namjena_stub_10").value === "") {
-      isFilled = borderChange(document.querySelector("#vrsta_namjena_stub_10"));
+    if (document.querySelector("#vrsta_materijal_stub_04").value === "") {
+      isFilled = borderChange(document.querySelector("#vrsta_materijal_stub_04"));
     }
+  } else if (sloj === Podsloj.Stub10) {
     if (document.querySelector("#uzemljivac_stub_10").value === "") {
       isFilled = borderChange(document.querySelector("#uzemljivac_stub_10"));
     }
-    if (document.querySelector("#optika_stub_10").value === "") {
-      isFilled = borderChange(document.querySelector("#optika_stub_10"));
+    if (document.querySelector("#vrsta_namjena_stub_10").value === "") {
+      isFilled = borderChange(document.querySelector("#vrsta_namjena_stub_10"));
     }
-    if (document.querySelector("#pog_sprem").value === "") {
-      isFilled = borderChange(document.querySelector("#pog_sprem"));
-    }
-    if (document.querySelector("#vlasnistvo").value === "") {
-      isFilled = borderChange(document.querySelector("#vlasnistvo"));
+    if (document.querySelector("#br_10kv_vodova").value === "") {
+      isFilled = borderChange(document.querySelector("#br_10kv_vodova"));
     }
     if (document.querySelector("#nn_vod_stub_10").value === "") {
       isFilled = borderChange(document.querySelector("#nn_vod_stub_10"));
     }
+    if (document.querySelector("#vrsta_materijal_stub_10").value === "") {
+      isFilled = borderChange(document.querySelector("#vrsta_materijal_stub_10"));
+    }
   } else if (sloj === Podsloj.Stub35) {
+    if (document.querySelector("#uzemljivac_stub_35").value === "") {
+      isFilled = borderChange(document.querySelector("#uzemljivac_stub_35"));
+    }
+    if (document.querySelector("#vrsta_namjena_stub_35").value === "") {
+      isFilled = borderChange(document.querySelector("#vrsta_namjena_stub_35"));
+    }
+    if (document.querySelector("#optika_stub_35").value === "") {
+      isFilled = borderChange(document.querySelector("#optika_stub_35"));
+    }
+    if (document.querySelector("#br_35kv_vodova").value === "") {
+      isFilled = borderChange(document.querySelector("#br_35kv_vodova"));
+    }
+    if (document.querySelector("#vrsta_materijal_stub_35").value === "") {
+      isFilled = borderChange(document.querySelector("#vrsta_materijal_stub_35"));
+    }
   }
   return isFilled;
 }
