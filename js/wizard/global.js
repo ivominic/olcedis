@@ -499,7 +499,6 @@ function popuniListeZaVodove(napon) {
   popuniDdlAtributima("#vrsta_materijal_vod_35", "vodovi", "materijal", "napon", "35");
   popuniDdlAtributima("#rasvjeta_vod", "vodovi", "rasvjeta", "", "");
   popuniDdlAtributima("#pog_sprem", "vodovi", "pog_sprem", "napon", "0.4");
-  popuniDdlAtributima("#uze_presjek_vod_10", "vodovi", "uze_presjek", "napon", "10");
   popuniDdlAtributima("#uze_presjek_vod_35", "vodovi", "uze_presjek", "napon", "35");
   popuniDdlAtributima("#uze_vod_10", "vodovi", "uze", "napon", "10");
   popuniDdlAtributima("#uze_vod_35", "vodovi", "uze", "napon", "35");

@@ -86,7 +86,7 @@ function vodArrayElementProperties(el, action) {
     uze_presjek: el.properties.uze_presjek,
     uze: el.properties.uze,
     br_faza: el.properties.br_faza,
-    presjek: el.properties.presjek,
+    vod_presjek: el.properties.vod_presjek,
     opstina: el.properties.opstina,
     god_izg: el.properties.god_izg,
     gps: el.properties.gps,

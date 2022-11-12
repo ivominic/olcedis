@@ -161,7 +161,7 @@ function vodArrayValuesProperties(el, action) {
     uze_presjek: el.values_.uze_presjek,
     uze: el.values_.uze,
     br_faza: el.values_.br_faza,
-    presjek: el.values_.presjek,
+    vod_presjek: el.values_.vod_presjek,
     opstina: el.values_.opstina,
     god_izg: el.values_.god_izg,
     gps: el.values_.gps,

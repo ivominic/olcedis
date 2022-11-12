@@ -93,7 +93,6 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosGodIzgr").style.display = "none";
   document.querySelector("#divUnosRasvjetaVod").style.display = "none";
   document.querySelector("#divUnosUzePresjek").style.display = "none";
-  document.querySelector("#divUnosUzePresjekVod10").style.display = "none";
   document.querySelector("#divUnosUzePresjekVod35").style.display = "none";
   document.querySelector("#divUnosUze").style.display = "none";
   document.querySelector("#divUnosUzeVod10").style.display = "none";
@@ -242,29 +241,29 @@ function prikaziAtributDivVodove(napon) {
   document.querySelector("#divUnosSifraNapojne").style.display = "flex";
   document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
   document.querySelector("#divUnosName").style.display = "flex";
-  if (napon === "0.4") {
+  if (napon === NaponskiNivo.String04kV) {
     document.querySelector("#divUnosRasvjetaVod").style.display = "flex";
     document.querySelector("#divUnosVrstaVod04").style.display = "flex";
     document.querySelector("#divUnosTipVod04").style.display = "flex";
     document.querySelector("#divUnosPresjekVod04").style.display = "flex";
     document.querySelector("#divUnosMaterijalVod04").style.display = "flex";
+    document.querySelector("#divUnosUze").style.display = "flex";
   }
-  if (napon === "10") {
+  if (napon === NaponskiNivo.String10kV) {
     document.querySelector("#divUnosVrstaVod10").style.display = "flex";
     document.querySelector("#divUnosTipVod10").style.display = "flex";
     document.querySelector("#divUnosPresjekVod10").style.display = "flex";
     document.querySelector("#divUnosMaterijalVod10").style.display = "flex";
-    document.querySelector("#divUnosUzePresjekVod10").style.display = "flex";
     document.querySelector("#divUnosUzeVod10").style.display = "flex";
     document.querySelector("#divUnosSifraDionice").style.display = "flex";
   }
-  if (napon === "35") {
+  if (napon === NaponskiNivo.String35kV) {
     document.querySelector("#divUnosVrstaVod35").style.display = "flex";
     document.querySelector("#divUnosTipVod35").style.display = "flex";
     document.querySelector("#divUnosPresjekVod35").style.display = "flex";
     document.querySelector("#divUnosMaterijalVod35").style.display = "flex";
     document.querySelector("#divUnosUzePresjekVod35").style.display = "flex";
-    document.querySelector("#divUnosUzeVod10").style.display = "flex";
+    document.querySelector("#divUnosUzeVod35").style.display = "flex";
     document.querySelector("#divUnosSifraDionice").style.display = "flex";
   }
   document.querySelector("#divUnosNapon").style.display = "flex";
