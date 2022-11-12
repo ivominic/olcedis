@@ -199,21 +199,20 @@ function unosVodova(geometrijaWkt, servisAkcija) {
   podaciForme.append("sifra_dionice", document.querySelector("#sifra_dionice").value);
   //podaciForme.append("sifra_dionice", "obavezno polje");
 
-  //Dodao za poziv Jovanovog servisa
-  podaciForme.append("name", "test");
-  podaciForme.append("fid", "test");
+  podaciForme.append("name", document.querySelector("#naziv").value);
+  podaciForme.append("fid", "");
   podaciForme.append("datum_azuriranja", "");
 
-  podaciForme.append("geohash_id", "test");
-  podaciForme.append("korisnik", "test");
+  podaciForme.append("geohash_id", "");
+  podaciForme.append("korisnik", globalUsername);
   podaciForme.append("katastar", "");
   podaciForme.append("originalId", 0);
-  podaciForme.append("posjeduje_sliku", "test");
-  podaciForme.append("vlasnik", "test");
-  podaciForme.append("geohash_id_no", "test");
-  podaciForme.append("sifra_napojne", "test");
-  podaciForme.append("izvod_napojne", "test");
-  podaciForme.append("naziv_napojne", "test");
+  podaciForme.append("posjeduje_sliku", false);
+  podaciForme.append("vlasnik", "");
+  podaciForme.append("geohash_id_no", "");
+  podaciForme.append("sifra_napojne", document.querySelector("#sifra_napojne").value);
+  podaciForme.append("izvod_napojne", document.querySelector("#izvod_napojne").value);
+  podaciForme.append("naziv_napojne", document.querySelector("#naziv_napojne").value);
 
   $.ajax({
     url: wsServerOriginLocation + "/novi_portal/api/vodovi_store",

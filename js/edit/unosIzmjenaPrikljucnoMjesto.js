@@ -3,6 +3,7 @@ function dodajPoljaOdabranomGpxPM() {
   selectGpxFeature.set("wizard", 0);
   selectGpxFeature.set("lejer", "prikljucno_mjesto");
   selectGpxFeature.set("gps", document.querySelector("#gps").value);
+  selectGpxFeature.set("name", document.querySelector("#name").value);
   selectGpxFeature.set("fid_1", document.querySelector("#fid_1").value);
   selectGpxFeature.set("vlasnistvo", document.querySelector("#vlasnistvo").value);
   selectGpxFeature.set("napon", document.querySelector("#napon").value);
@@ -29,7 +30,7 @@ function prikaziPoljaOdabranogGpxPM() {
   } else {
     document.querySelector("#gps").value = "";
   }
-  //document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
+  document.querySelector("#name").value = selectGpxFeature.values_.name;
   document.querySelector("#vlasnistvo").value = selectGpxFeature.values_.vlasnistvo;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
   document.querySelector("#id").value = selectGpxFeature.values_.id;
@@ -47,6 +48,7 @@ function prikaziPoljaWmsPM(objekat) {
     document.querySelector("#gps").value = "";
   }
 
+  document.querySelector("#name").value = objekat.properties.name;
   document.querySelector("#vlasnistvo").value = objekat.properties.vlasnistvo;
   document.querySelector("#napon").value = objekat.properties.napon;
   document.querySelector("#id").value = objekat.properties.id;
@@ -58,6 +60,7 @@ function prikaziPoljaWmsPM(objekat) {
 }
 
 function izmijeniAtributeWmsPM(objekat) {
+  objekat.properties.name = document.querySelector("#name").value;
   objekat.properties.napon = document.querySelector("#napon").value;
   objekat.properties.id = document.querySelector("#id").value;
   objekat.properties.osiguraci = document.querySelector("#osiguraci").value;

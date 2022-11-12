@@ -45,8 +45,11 @@ function borderClear() {
 
 function provjeraObaveznostiStubovi() {
   let isFilled = true;
+  if (document.querySelector("#name").value === "") {
+    isFilled = false;
+    borderChange(document.querySelector("#name"));
+  }
 
-  //Input
   if (document.querySelector("#rasp_prov").value === "") {
     isFilled = false;
     borderChange(document.querySelector("#rasp_prov"));
@@ -125,9 +128,12 @@ function provjeraObaveznostiStubovi() {
 
 function provjeraObaveznostiVodovi() {
   let isFilled = true;
-  if (sloj === "vod04") {
-    //Inputi
-    //Selekti
+  if (document.querySelector("#name").value === "") {
+    isFilled = false;
+    borderChange(document.querySelector("#name"));
+  }
+
+  if (sloj === Podsloj.Vod04) {
     if (document.querySelector("#tip_vod_04").value === "") {
       isFilled = false;
       borderChange(document.querySelector("#tip_vod_04"));
@@ -156,7 +162,7 @@ function provjeraObaveznostiVodovi() {
       isFilled = false;
       borderChange(document.querySelector("#presjek_vod_04"));
     }
-  } else if (sloj === "vod10") {
+  } else if (sloj === Podsloj.Vod10) {
     //Inputi
     if (document.querySelector("#sifra_dionice").value === "") {
       isFilled = false;
@@ -195,7 +201,7 @@ function provjeraObaveznostiVodovi() {
       isFilled = false;
       borderChange(document.querySelector("#uze_presjek_vod_10"));
     }
-  } else if (sloj === "vod35") {
+  } else if (sloj === Podsloj.Vod35) {
     //Inputi
     if (document.querySelector("#sifra_dionice").value === "") {
       isFilled = false;
@@ -240,6 +246,10 @@ function provjeraObaveznostiVodovi() {
 
 function provjeraObaveznostiNkro() {
   let isFilled = true;
+  if (document.querySelector("#name").value === "") {
+    isFilled = false;
+    borderChange(document.querySelector("#name"));
+  }
   if (document.querySelector("#id").value === "") {
     isFilled = false;
     borderChange(document.querySelector("#id"));
@@ -269,6 +279,10 @@ function provjeraObaveznostiNkro() {
 
 function provjeraObaveznostiPrikljucnoMjesto() {
   let isFilled = true;
+  if (document.querySelector("#name").value === "") {
+    isFilled = false;
+    borderChange(document.querySelector("#name"));
+  }
   if (document.querySelector("#osiguraci").value === "") {
     isFilled = false;
     borderChange(document.querySelector("#osiguraci"));
@@ -286,6 +300,10 @@ function provjeraObaveznostiPrikljucnoMjesto() {
 
 function provjeraObaveznostiPotrosac() {
   let isFilled = true;
+  if (document.querySelector("#name").value === "") {
+    isFilled = false;
+    borderChange(document.querySelector("#name"));
+  }
   if (document.querySelector("#prik_mjesto").value === "") {
     isFilled = false;
     borderChange(document.querySelector("#prik_mjesto"));
@@ -299,6 +317,10 @@ function provjeraObaveznostiPotrosac() {
 
 function provjeraObaveznostiPod() {
   let isFilled = true;
+  if (document.querySelector("#name").value === "") {
+    isFilled = false;
+    borderChange(document.querySelector("#name"));
+  }
   if (document.querySelector("#prik_mjesto").value === "") {
     isFilled = false;
     borderChange(document.querySelector("#prik_mjesto"));

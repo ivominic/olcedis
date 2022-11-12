@@ -95,7 +95,8 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
               //TODO: Dodijeliti vrijednosti el feature-u iz jsonPretplatnik objekta
               noviEl.set("wizard", 0);
               noviEl.set("lejer", "potrosac");
-              noviEl.set("gps", document.querySelector("#gps").value); //šta sa ovim
+              noviEl.set("gps", document.querySelector("#gps").value);
+              noviEl.set("name", document.querySelector("#name").value);
               noviEl.set("id", jsonPretplatnik.id);
               noviEl.set("naziv", jsonPretplatnik.naziv_potrosaca);
               noviEl.set("prik_kabal", jsonPretplatnik.provodnik_spolja + " " + jsonPretplatnik.presjek_spolja);
@@ -140,6 +141,7 @@ function prikaziPoljaOdabranogGpxPotrosac() {
   } else {
     document.querySelector("#gps").value = "";
   }
+  document.querySelector("#name").value = selectGpxFeature.values_.name;
   document.querySelector("#id").value = selectGpxFeature.values_.id;
   document.querySelector("#naziv_napojne").value = selectGpxFeature.values_.naziv_napojne;
   document.querySelector("#sifra_napojne").value = selectGpxFeature.values_.sifra_napojne;
@@ -158,6 +160,7 @@ function prikaziPoljaWmsPotrosac(objekat) {
   } else {
     document.querySelector("#gps").value = "";
   }
+  document.querySelector("#name").value = objekat.properties.name;
   document.querySelector("#id").value = objekat.properties.id;
   document.querySelector("#naziv_napojne").value = objekat.properties.naziv_napojne;
   document.querySelector("#sifra_napojne").value = objekat.properties.sifra_napojne;
@@ -172,6 +175,7 @@ function prikaziPoljaWmsPotrosac(objekat) {
 }
 
 function izmijeniAtributeWmsPotrosac(objekat) {
+  objekat.properties.name = document.querySelector("#name").value;
   objekat.properties.id = document.querySelector("#id").value;
   objekat.properties.naziv_napojne = document.querySelector("#naziv_napojne").value;
   objekat.properties.sifra_napojne = document.querySelector("#sifra_napojne").value;

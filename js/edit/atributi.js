@@ -6,6 +6,7 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosIzvodNapojne").style.display = "none";
   document.querySelector("#divUnosGps").style.display = "none";
   document.querySelector("#divUnosFid1").style.display = "none";
+  document.querySelector("#divUnosName").style.display = "none";
   document.querySelector("#divUnosBroj").style.display = "none";
   document.querySelector("#divUnosTip").style.display = "none";
   document.querySelector("#divUnosTipStub").style.display = "none";
@@ -182,6 +183,7 @@ function prikaziAtributDivStubove(napon) {
   document.querySelector("#divUnosNazivNapojne").style.display = "flex";
   document.querySelector("#divUnosSifraNapojne").style.display = "flex";
   document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
+  document.querySelector("#divUnosName").style.display = "flex";
   if (napon === NaponskiNivo.String04kV) {
     document.querySelector("#divUnosTipStub").style.display = "flex";
     document.querySelector("#divUnosRasvjetaStub").style.display = "flex";
@@ -239,6 +241,7 @@ function prikaziAtributDivVodove(napon) {
   document.querySelector("#divUnosNazivNapojne").style.display = "flex";
   document.querySelector("#divUnosSifraNapojne").style.display = "flex";
   document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
+  document.querySelector("#divUnosName").style.display = "flex";
   if (napon === "0.4") {
     document.querySelector("#divUnosRasvjetaVod").style.display = "flex";
     document.querySelector("#divUnosVrstaVod04").style.display = "flex";
@@ -280,6 +283,7 @@ function prikaziAtributDivTrafostanice(napon) {
   document.querySelector("#divUnosSifraNapojne").style.display = "flex";
   document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
   document.querySelector("#divUnosDdlTrafostanice").style.display = "flex";
+  document.querySelector("#divUnosName").style.display = "flex";
   if (napon === "10") {
     //10/04
     document.querySelector("#divReadCelije10").style.display = "flex";
@@ -332,6 +336,7 @@ function prikaziAtributDivPrikljucnoMjesto() {
   document.querySelector("#divUnosNazivNapojne").style.display = "flex";
   document.querySelector("#divUnosSifraNapojne").style.display = "flex";
   document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
+  document.querySelector("#divUnosName").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosId").style.display = "flex";
   document.querySelector("#divUnosOsiguraci").style.display = "flex";
@@ -345,6 +350,7 @@ function prikaziAtributDivNkro() {
   document.querySelector("#divUnosNazivNapojne").style.display = "flex";
   document.querySelector("#divUnosSifraNapojne").style.display = "flex";
   document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
+  document.querySelector("#divUnosName").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosId").style.display = "flex";
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
@@ -361,6 +367,7 @@ function prikaziAtributDivPotrosac() {
   document.querySelector("#divUnosNazivNapojne").style.display = "flex";
   document.querySelector("#divUnosSifraNapojne").style.display = "flex";
   document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
+  document.querySelector("#divUnosName").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosPrikKabal").style.display = "flex";
   document.querySelector("#divUnosPod").style.display = "flex";
@@ -375,6 +382,7 @@ function prikaziAtributDivPod() {
   document.querySelector("#divUnosNazivNapojne").style.display = "flex";
   document.querySelector("#divUnosSifraNapojne").style.display = "flex";
   document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
+  document.querySelector("#divUnosName").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
   document.querySelector("#divUnosId").style.display = "flex";
   document.querySelector("#divUnosPrikKabal").style.display = "flex";

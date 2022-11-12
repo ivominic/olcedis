@@ -6,10 +6,9 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   //let napon = document.querySelector("#napon").value;
   let napon = vodNaponskiNivoPrijeOdabira;
   console.log("DODAJ POLJA UCRTANOM VODU", napon);
-  console.log("DODAJ POLJA UCRTANOM VODU", document.querySelector("#napon").value);
-  console.log("naponskiNivoNapojneTrafostanice", naponskiNivoNapojneTrafostanice);
-  console.log(vodNaponskiNivoPrijeOdabira, vodNaponskiNivoPrijeOdabira);
-  if (napon === "0.4") {
+  console.log(naponskiNivoNapojneTrafostanice, document.querySelector("#napon").value);
+
+  if (napon === NaponskiNivo.String04kV) {
     ucrtaniVod.set("rasvjeta", document.querySelector("#rasvjeta_vod").value);
     ucrtaniVod.set("vrsta", document.querySelector("#vrsta_vod_04").value);
     ucrtaniVod.set("tip", document.querySelector("#tip_vod_04").value);
@@ -18,7 +17,7 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
     ucrtaniVod.set("uze_presjek", "");
     ucrtaniVod.set("uze", "");
   }
-  if (napon === "10") {
+  if (napon === NaponskiNivo.String10kV) {
     ucrtaniVod.set("vrsta", document.querySelector("#vrsta_vod_10").value);
     ucrtaniVod.set("tip", document.querySelector("#tip_vod_10").value);
     ucrtaniVod.set("presjek", document.querySelector("#presjek_vod_10").value);
@@ -27,7 +26,7 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
     ucrtaniVod.set("uze", document.querySelector("#uze_vod_10").value);
     ucrtaniVod.set("rasvjeta", "");
   }
-  if (napon === "35") {
+  if (napon === NaponskiNivo.String35kV) {
     ucrtaniVod.set("vrsta", document.querySelector("#vrsta_vod_35").value);
     ucrtaniVod.set("tip", document.querySelector("#tip_vod_35").value);
     ucrtaniVod.set("presjek", document.querySelector("#presjek_vod_35").value);
@@ -41,12 +40,11 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("lejer", "vodovi");
   ucrtaniVod.set("fid_1", document.querySelector("#fid_1").value);
   ucrtaniVod.set("gps", "");
+  ucrtaniVod.set("name", document.querySelector("#name").value);
   ucrtaniVod.set("merge", blnSpajanjeVodova);
   ucrtaniVod.set("napon", vodNaponskiNivoPrijeOdabira);
   ucrtaniVod.set("pog_sprem", document.querySelector("#pog_sprem").value);
   ucrtaniVod.set("vlasnistvo", document.querySelector("#vlasnistvo").value);
-  ucrtaniVod.set("id", document.querySelector("#id").value);
-  ucrtaniVod.set("name", document.querySelector("#read_name").value);
   ucrtaniVod.set("ts", sifraNapojneTrafostanice);
   ucrtaniVod.set("sifra_napojne", sifraNapojneTrafostanice);
   ucrtaniVod.set("naziv_napojne", nazivNapojneTrafostanice);
@@ -69,9 +67,8 @@ function prikaziPoljaOdabranogVoda() {
   } else {
     document.querySelector("#gps").value = "";
   }
-  console.log("vod napon", selectGpxFeature.values_.napon);
   console.log("vod feature", selectGpxFeature);
-  //document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
+  document.querySelector("#name").value = selectGpxFeature.values_.name;
   document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
   document.querySelector("#pog_sprem").value = selectGpxFeature.values_.pog_sprem;
@@ -82,7 +79,7 @@ function prikaziPoljaOdabranogVoda() {
   document.querySelector("#rac_duzina").value = selectGpxFeature.values_.rac_duzina;
   document.querySelector("#duzina").value = selectGpxFeature.values_.duzina;
 
-  if (selectGpxFeature.values_.napon === "0.4") {
+  if (selectGpxFeature.values_.napon === NaponskiNivo.String04kV) {
     document.querySelector("#rasvjeta_vod").value = selectGpxFeature.values_.rasvjeta;
     document.querySelector("#vrsta_vod_04").value = selectGpxFeature.values_.vrsta;
     document.querySelector("#tip_vod_04").value = selectGpxFeature.values_.tip;
@@ -91,7 +88,7 @@ function prikaziPoljaOdabranogVoda() {
 
     //setujDdlVrijednost("#optika_stub_04", selectGpxFeature.values_.optika);
   }
-  if (selectGpxFeature.values_.napon === "10") {
+  if (selectGpxFeature.values_.napon === NaponskiNivo.String10kV) {
     document.querySelector("#vrsta_vod_10").value = selectGpxFeature.values_.vrsta;
     document.querySelector("#tip_vod_10").value = selectGpxFeature.values_.tip;
     document.querySelector("#presjek_vod_10").value = selectGpxFeature.values_.presjek;
@@ -100,7 +97,7 @@ function prikaziPoljaOdabranogVoda() {
     document.querySelector("#uze_vod_10").value = selectGpxFeature.values_.uze;
     document.querySelector("#sifra_dionice").value = selectGpxFeature.values_.sifra_dionice;
   }
-  if (selectGpxFeature.values_.napon === "35") {
+  if (selectGpxFeature.values_.napon === NaponskiNivo.String35kV) {
     document.querySelector("#vrsta_vod_35").value = selectGpxFeature.values_.vrsta;
     document.querySelector("#tip_vod_35").value = selectGpxFeature.values_.tip;
     document.querySelector("#presjek_vod_35").value = selectGpxFeature.values_.presjek;
@@ -119,6 +116,7 @@ function prikaziPoljaWmsVoda(objekat) {
   } else {
     document.querySelector("#gps").value = "";
   }
+  document.querySelector("#name").value = objekat.properties.name;
   document.querySelector("#fid_1").value = objekat.properties.fid_1;
   document.querySelector("#napon").value = objekat.properties.napon;
   document.querySelector("#pog_sprem").value = objekat.properties.pog_sprem;
@@ -129,14 +127,14 @@ function prikaziPoljaWmsVoda(objekat) {
   document.querySelector("#rac_duzina").value = objekat.properties.rac_duzina;
   document.querySelector("#duzina").value = objekat.properties.duzina;
 
-  if (objekat.properties.napon === "0.4") {
+  if (objekat.properties.napon === NaponskiNivo.String04kV) {
     document.querySelector("#rasvjeta_vod").value = objekat.properties.rasvjeta;
     document.querySelector("#vrsta_vod_04").value = objekat.properties.vrsta;
     document.querySelector("#tip_vod_04").value = objekat.properties.tip;
     document.querySelector("#presjek_vod_04").value = objekat.properties.presjek;
     document.querySelector("#vrsta_materijal_vod_04").value = objekat.properties.materijal;
   }
-  if (objekat.properties.napon === "10") {
+  if (objekat.properties.napon === NaponskiNivo.String10kV) {
     document.querySelector("#vrsta_vod_10").value = objekat.properties.vrsta;
     document.querySelector("#tip_vod_10").value = objekat.properties.tip;
     document.querySelector("#presjek_vod_10").value = objekat.properties.presjek;
@@ -145,7 +143,7 @@ function prikaziPoljaWmsVoda(objekat) {
     document.querySelector("#uze_vod_10").value = objekat.properties.uze;
     document.querySelector("#sifra_dionice").value = objekat.properties.sifra_dionice;
   }
-  if (objekat.properties.napon === "35") {
+  if (objekat.properties.napon === NaponskiNivo.String35kV) {
     document.querySelector("#vrsta_vod_35").value = objekat.properties.vrsta;
     document.querySelector("#tip_vod_35").value = objekat.properties.tip;
     document.querySelector("#presjek_vod_35").value = objekat.properties.presjek;
@@ -159,6 +157,7 @@ function prikaziPoljaWmsVoda(objekat) {
 }
 
 function izmijeniAtributeWmsVoda(objekat) {
+  objekat.properties.name = document.querySelector("#name").value;
   objekat.properties.napon = document.querySelector("#napon").value;
   objekat.properties.pog_sprem = document.querySelector("#pog_sprem").value;
   objekat.properties.ts = document.querySelector("#ts").value;
@@ -168,14 +167,14 @@ function izmijeniAtributeWmsVoda(objekat) {
   objekat.properties.rac_duzina = document.querySelector("#rac_duzina").value;
   objekat.properties.duzina = document.querySelector("#duzina").value;
 
-  if (objekat.properties.napon === "0.4") {
+  if (objekat.properties.napon === NaponskiNivo.String04kV) {
     objekat.properties.rasvjeta = document.querySelector("#rasvjeta_vod").value;
     objekat.properties.vrsta = document.querySelector("#vrsta_vod_04").value;
     objekat.properties.tip = document.querySelector("#tip_vod_04").value;
     objekat.properties.presjek = document.querySelector("#presjek_vod_04").value;
     objekat.properties.materijal = document.querySelector("#vrsta_materijal_vod_04").value;
   }
-  if (objekat.properties.napon === "10") {
+  if (objekat.properties.napon === NaponskiNivo.String10kV) {
     objekat.properties.vrsta = document.querySelector("#vrsta_vod_10").value;
     objekat.properties.tip = document.querySelector("#tip_vod_10").value;
     objekat.properties.presjek = document.querySelector("#presjek_vod_10").value;
@@ -184,7 +183,7 @@ function izmijeniAtributeWmsVoda(objekat) {
     objekat.properties.uze = document.querySelector("#uze_vod_10").value;
     objekat.properties.sifra_dionice = document.querySelector("#sifra_dionice").value;
   }
-  if (objekat.properties.napon === "35") {
+  if (objekat.properties.napon === NaponskiNivo.String35kV) {
     objekat.properties.vrsta = document.querySelector("#vrsta_vod_35").value;
     objekat.properties.tip = document.querySelector("#tip_vod_35").value;
     objekat.properties.presjek = document.querySelector("#presjek_vod_35").value;
