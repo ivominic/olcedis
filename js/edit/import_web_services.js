@@ -110,7 +110,6 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
     })
       .then((res) => {
         console.log("BITNO", res);
-        console.log("BITNO", res.status);
         if (res.status !== 200) {
           finalImportMessage += "Unos objekata nije izvršen.\n";
           unosUspjeh = false;
@@ -118,7 +117,11 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
         return res.text();
       })
       .then((res) => {
-        console.log(res);
+        let resp = JSON.parse(res);
+        if (!unosUspjeh) {
+          finalImportMessage += resp.response;
+        }
+        console.log(resp);
       })
       .catch(status, (err) => {
         finalImportMessage += "Unos objekata nije izvršen.\n";
