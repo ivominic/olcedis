@@ -32,7 +32,8 @@ function vodEditGeometrije(browserEvent) {
             let odgovor = JSON.parse(json);
             if (odgovor.features.length > 0) {
               odabirSaMape = false;
-              console.log("PRELAZAK NA FEATURE");
+              console.log("PRELAZAK NA FEATURE", odgovor);
+              radijusZaPomjeranjeKrajevaVoda(odgovor.features[0].properties.napon);
               featureTekuciOverlay.getSource().clear();
               featureTekuciOverlay.getSource().addFeatures(new ol.format.GeoJSON().readFeatures(odgovor.features[0]));
 
@@ -105,7 +106,7 @@ function vodEditGeometrije(browserEvent) {
         originalnaGeometrijaWmsVoda.coordinates[0][1],
       ]);
       let distanca = turf.distance(distancaOd, distancaDo, mjera);
-      if (distanca > dozvoljeniPomjeraj) {
+      if (distanca > dozvoljenoPomjeranjeKrajaVoda) {
         isViolatedAllowedDistance = true;
       }
     }
@@ -119,18 +120,20 @@ function vodEditGeometrije(browserEvent) {
         originalnaGeometrijaWmsVoda.coordinates[coordinateLength - 1][1],
       ]);
       let distanca = turf.distance(distancaOd, distancaDo, mjera);
-      if (distanca > dozvoljeniPomjeraj) {
+      if (distanca > dozvoljenoPomjeranjeKrajaVoda) {
         isViolatedAllowedDistance = true;
       }
     }
 
     if (isViolatedAllowedDistance) {
       e.features.getArray()[0].getGeometry().setCoordinates(originalnaGeometrijaWmsVoda.coordinates);
-      poruka("Upozorenje", "Tačka ne može biti pomjerena više od " + kmlRadius.toString() + "m od snimljene pozicije.");
+      poruka(
+        "Upozorenje",
+        "Tačka ne može biti pomjerena više od " + pomjerajZaPoruku.toString() + "m od snimljene pozicije."
+      );
       return false;
     }
 
-    //TODO: Dodati u niz objekata za izmjenu. Dodati i novu geometriju kao property "geometrija"
     vodArrayValuesProperties(e.features.getArray()[0], "U");
   });
 }
@@ -197,4 +200,35 @@ function geometrijaIzmijenjenogVoda(objekat) {
   let geom = format.writeGeometry(objekat.getGeometry());
   //let geom = format.writeGeometry(new ol.geom.LineString(geomObject.flatCoordinates), {});
   return geom;
+}
+
+let dozvoljenoPomjeranjeKrajaVoda = 0; //Promjenljiva koja označava za koju dužinu je moguće pomjeriti kraj voda
+let pomjerajZaPoruku = 0;
+/**
+ * Metoda koja vraća dozvoljeni pomjeraj za slučaj pomjeranja krajeva voda (snap).
+ * Za ovaj slučaj nije potrebno da se odabere unos gpx ili kml.
+ * @param {Naponski nivo za koji se čita radijus u kojem je dozvoljen pomjeraj} naponskiNivo
+ */
+function radijusZaPomjeranjeKrajevaVoda(naponskiNivo) {
+  if (!naponskiNivo) {
+    poruka("Greška", "Za odabrani objekat nije popunjen atribut napon, pa nije moguće odrediti dozvoljeni pomjeraj.");
+  }
+  let urlServisa =
+    wsServerOriginLocation + "/novi_portal/api/get_radius?tip_fajla=gpx&napon=" + naponskiNivo.replace(",", ".");
+  urlServisa += "&t=" + Date.now();
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "GET",
+    success: function (data) {
+      pomjerajZaPoruku = parseFloat(data.response.radius);
+      dozvoljenoPomjeranjeKrajaVoda = pomjerajZaPoruku / 1000; //Distance in kilometers
+    },
+    error: function (x, y, z) {
+      //alert(x.responseText +"  " +x.status);
+      console.log("greška radijusZaPomjeranjeKrajevaVoda", x.responseText);
+      dozvoljenoPomjeranjeKrajaVoda = 0;
+      pomjerajZaPoruku = 0;
+    },
+  });
 }
