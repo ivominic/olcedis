@@ -215,6 +215,7 @@ function azuriranjeWebService(vodId, prvaTacka, drugaTacka, nizObjekataZaDodavan
     data: {
       stari_objekti: JSON.stringify([vodId, prvaTacka, drugaTacka]),
       novi_objekti: JSON.stringify(nizObjekataZaDodavanjeVodu),
+      group_id: globalTimestamp,
     },
     type: "POST",
     success: function (data) {
