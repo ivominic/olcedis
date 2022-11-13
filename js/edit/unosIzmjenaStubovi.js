@@ -32,7 +32,7 @@ function dodajPoljaGpxStubovi() {
         el.set("izolator_vrsta", document.querySelector("#izolator_vrsta_stub_04").value);
         el.set("izolator_funkcija", document.querySelector("#izolator_funkcija_stub_04").value);
         el.set("tip_izolatora", document.querySelector("#tip_izolatora_stub_04").value);
-        el.set("nosaci_izolatora", document.querySelector("#nosaci_izolatora_stub_04").value);
+        el.set("tip_nosac_izol", document.querySelector("#nosaci_izolatora_stub_04").value);
         el.set("odvodnik_prenapona", document.querySelector("#odvodnik_prenapona_stub_04").value);
         el.set("uzemljivac", document.querySelector("#uzemljivac_stub_04").value);
         el.set("optika", document.querySelector("#optika_stub_04").value);
@@ -45,7 +45,7 @@ function dodajPoljaGpxStubovi() {
         el.set("izolator_vrsta", document.querySelector("#izolator_vrsta_stub_10").value);
         el.set("izolator_funkcija", document.querySelector("#izolator_funkcija_stub_10").value);
         el.set("tip_izolatora", document.querySelector("#tip_izolatora_stub_10").value);
-        el.set("nosaci_izolatora", document.querySelector("#nosaci_izolatora_stub_10").value);
+        el.set("tip_nosac_izol", document.querySelector("#nosaci_izolatora_stub_10").value);
         el.set("odvodnik_prenapona", document.querySelector("#odvodnik_prenapona_stub_10").value);
         el.set("uzemljivac", document.querySelector("#uzemljivac_stub_10").value);
         el.set("prikljucak_otcjep", document.querySelector("#prikljucak_otcjep_stub_10").value);
@@ -59,7 +59,7 @@ function dodajPoljaGpxStubovi() {
         el.set("izolator_vrsta", document.querySelector("#izolator_vrsta_stub_35").value);
         el.set("izolator_funkcija", document.querySelector("#izolator_funkcija_stub_35").value);
         el.set("tip_izolatora", document.querySelector("#tip_izolatora_stub_35").value);
-        el.set("nosaci_izolatora", document.querySelector("#nosaci_izolatora_stub_35").value);
+        el.set("tip_nosac_izol", document.querySelector("#nosaci_izolatora_stub_35").value);
         el.set("odvodnik_prenapona", document.querySelector("#odvodnik_prenapona_stub_35").value);
         el.set("uzemljivac", document.querySelector("#uzemljivac_stub_35").value);
         el.set("optika", document.querySelector("#optika_stub_35").value);
@@ -117,7 +117,7 @@ function dodajPoljaOdabranomGpxStubu() {
     selectGpxFeature.set("izolator_vrsta", document.querySelector("#izolator_vrsta_stub_04").value);
     selectGpxFeature.set("izolator_funkcija", document.querySelector("#izolator_funkcija_stub_04").value);
     selectGpxFeature.set("tip_izolatora", document.querySelector("#tip_izolatora_stub_04").value);
-    selectGpxFeature.set("nosaci_izolatora", document.querySelector("#nosaci_izolatora_stub_04").value);
+    selectGpxFeature.set("tip_nosac_izol", document.querySelector("#nosaci_izolatora_stub_04").value);
     selectGpxFeature.set("odvodnik_prenapona", document.querySelector("#odvodnik_prenapona_stub_04").value);
     selectGpxFeature.set("uzemljivac", document.querySelector("#uzemljivac_stub_04").value);
     selectGpxFeature.set("optika", document.querySelector("#optika_stub_04").value);
@@ -136,7 +136,7 @@ function dodajPoljaOdabranomGpxStubu() {
     selectGpxFeature.set("izolator_vrsta", document.querySelector("#izolator_vrsta_stub_10").value);
     selectGpxFeature.set("izolator_funkcija", document.querySelector("#izolator_funkcija_stub_10").value);
     selectGpxFeature.set("tip_izolatora", document.querySelector("#tip_izolatora_stub_10").value);
-    selectGpxFeature.set("nosaci_izolatora", document.querySelector("#nosaci_izolatora_stub_10").value);
+    selectGpxFeature.set("tip_nosac_izol", document.querySelector("#nosaci_izolatora_stub_10").value);
     selectGpxFeature.set("odvodnik_prenapona", document.querySelector("#odvodnik_prenapona_stub_10").value);
     selectGpxFeature.set("uzemljivac", document.querySelector("#uzemljivac_stub_10").value);
     selectGpxFeature.set("prikljucak_otcjep", document.querySelector("#prikljucak_otcjep_stub_10").value);
@@ -153,7 +153,7 @@ function dodajPoljaOdabranomGpxStubu() {
     selectGpxFeature.set("izolator_vrsta", document.querySelector("#izolator_vrsta_stub_35").value);
     selectGpxFeature.set("izolator_funkcija", document.querySelector("#izolator_funkcija_stub_35").value);
     selectGpxFeature.set("tip_izolatora", document.querySelector("#tip_izolatora_stub_35").value);
-    selectGpxFeature.set("nosaci_izolatora", document.querySelector("#nosaci_izolatora_stub_35").value);
+    selectGpxFeature.set("tip_nosac_izol", document.querySelector("#nosaci_izolatora_stub_35").value);
     selectGpxFeature.set("odvodnik_prenapona", document.querySelector("#odvodnik_prenapona_stub_35").value);
     selectGpxFeature.set("uzemljivac", document.querySelector("#uzemljivac_stub_35").value);
     selectGpxFeature.set("optika", document.querySelector("#optika_stub_35").value);
@@ -227,7 +227,7 @@ function prikaziPoljaOdabranogGpxStuba() {
     setujDdlVrijednost("#izolator_vrsta_stub_04", selectGpxFeature.values_.izolator_vrsta);
     setujDdlVrijednost("#izolator_funkcija_stub_04", selectGpxFeature.values_.izolator_funkcija);
     setujDdlVrijednost("#tip_izolatora_stub_04", selectGpxFeature.values_.tip_izolatora);
-    setujDdlVrijednost("#nosaci_izolatora_stub_04", selectGpxFeature.values_.nosaci_izolatora);
+    setujDdlVrijednost("#nosaci_izolatora_stub_04", selectGpxFeature.values_.tip_nosac_izol);
     setujDdlVrijednost("#odvodnik_prenapona_stub_04", selectGpxFeature.values_.odvodnik_prenapona);
     setujDdlVrijednost("#uzemljivac_stub_04", selectGpxFeature.values_.uzemljivac);
     setujDdlVrijednost("#optika_stub_04", selectGpxFeature.values_.optika);
@@ -240,7 +240,7 @@ function prikaziPoljaOdabranogGpxStuba() {
     setujDdlVrijednost("#izolator_vrsta_stub_10", selectGpxFeature.values_.izolator_vrsta);
     setujDdlVrijednost("#izolator_funkcija_stub_10", selectGpxFeature.values_.izolator_funkcija);
     setujDdlVrijednost("#tip_izolatora_stub_10", selectGpxFeature.values_.tip_izolatora);
-    setujDdlVrijednost("#nosaci_izolatora_stub_10", selectGpxFeature.values_.nosaci_izolatora);
+    setujDdlVrijednost("#nosaci_izolatora_stub_10", selectGpxFeature.values_.tip_nosac_izol);
     setujDdlVrijednost("#odvodnik_prenapona_stub_10", selectGpxFeature.values_.odvodnik_prenapona);
     setujDdlVrijednost("#uzemljivac_stub_10", selectGpxFeature.values_.uzemljivac);
     setujDdlVrijednost("#prikljucak_otcjep_stub_10", selectGpxFeature.values_.prikljucak_otcjep);
@@ -254,7 +254,7 @@ function prikaziPoljaOdabranogGpxStuba() {
     setujDdlVrijednost("#izolator_vrsta_stub_35", selectGpxFeature.values_.izolator_vrsta);
     setujDdlVrijednost("#izolator_funkcija_stub_35", selectGpxFeature.values_.izolator_funkcija);
     setujDdlVrijednost("#tip_izolatora_stub_35", selectGpxFeature.values_.tip_izolatora);
-    setujDdlVrijednost("#nosaci_izolatora_stub_35", selectGpxFeature.values_.nosaci_izolatora);
+    setujDdlVrijednost("#nosaci_izolatora_stub_35", selectGpxFeature.values_.tip_nosac_izol);
     setujDdlVrijednost("#odvodnik_prenapona_stub_35", selectGpxFeature.values_.odvodnik_prenapona);
     setujDdlVrijednost("#uzemljivac_stub_35", selectGpxFeature.values_.uzemljivac);
     setujDdlVrijednost("#optika_stub_35", selectGpxFeature.values_.optika);
@@ -296,7 +296,7 @@ function prikaziAtributeWmsStuba(objekat) {
     setujDdlVrijednost("#izolator_vrsta_stub_04", objekat.properties.izolator_vrsta);
     setujDdlVrijednost("#izolator_funkcija_stub_04", objekat.properties.izolator_funkcija);
     setujDdlVrijednost("#tip_izolatora_stub_04", objekat.properties.tip_izolatora);
-    setujDdlVrijednost("#nosaci_izolatora_stub_04", objekat.properties.nosaci_izolatora);
+    setujDdlVrijednost("#nosaci_izolatora_stub_04", objekat.properties.tip_nosac_izol);
     setujDdlVrijednost("#odvodnik_prenapona_stub_04", objekat.properties.odvodnik_prenapona);
     setujDdlVrijednost("#uzemljivac_stub_04", objekat.properties.uzemljivac);
     setujDdlVrijednost("#optika_stub_04", objekat.properties.optika);
@@ -309,7 +309,7 @@ function prikaziAtributeWmsStuba(objekat) {
     setujDdlVrijednost("#izolator_vrsta_stub_10", objekat.properties.izolator_vrsta);
     setujDdlVrijednost("#izolator_funkcija_stub_10", objekat.properties.izolator_funkcija);
     setujDdlVrijednost("#tip_izolatora_stub_10", objekat.properties.tip_izolatora);
-    setujDdlVrijednost("#nosaci_izolatora_stub_10", objekat.properties.nosaci_izolatora);
+    setujDdlVrijednost("#nosaci_izolatora_stub_10", objekat.properties.tip_nosac_izol);
     setujDdlVrijednost("#odvodnik_prenapona_stub_10", objekat.properties.odvodnik_prenapona);
     setujDdlVrijednost("#uzemljivac_stub_10", objekat.properties.uzemljivac);
     setujDdlVrijednost("#prikljucak_otcjep_stub_10", objekat.properties.prikljucak_otcjep);
@@ -323,7 +323,7 @@ function prikaziAtributeWmsStuba(objekat) {
     setujDdlVrijednost("#izolator_vrsta_stub_35", objekat.properties.izolator_vrsta);
     setujDdlVrijednost("#izolator_funkcija_stub_35", objekat.properties.izolator_funkcija);
     setujDdlVrijednost("#tip_izolatora_stub_35", objekat.properties.tip_izolatora);
-    setujDdlVrijednost("#nosaci_izolatora_stub_35", objekat.properties.nosaci_izolatora);
+    setujDdlVrijednost("#nosaci_izolatora_stub_35", objekat.properties.tip_nosac_izol);
     setujDdlVrijednost("#odvodnik_prenapona_stub_35", objekat.properties.odvodnik_prenapona);
     setujDdlVrijednost("#uzemljivac_stub_35", objekat.properties.uzemljivac);
     setujDdlVrijednost("#optika_stub_35", objekat.properties.optika);
@@ -360,7 +360,7 @@ function izmijeniAtributeWmsStuba(objekat) {
     objekat.properties.izolator_vrsta = document.querySelector("#izolator_vrsta_stub_04").value;
     objekat.properties.izolator_funkcija = document.querySelector("#izolator_funkcija_stub_04").value;
     objekat.properties.tip_izolatora = document.querySelector("#tip_izolatora_stub_04").value;
-    objekat.properties.nosaci_izolatora = document.querySelector("#nosaci_izolatora_stub_04").value;
+    objekat.properties.tip_nosac_izol = document.querySelector("#nosaci_izolatora_stub_04").value;
     objekat.properties.odvodnik_prenapona = document.querySelector("#odvodnik_prenapona_stub_04").value;
     objekat.properties.uzemljivac = document.querySelector("#uzemljivac_stub_04").value;
     objekat.properties.optika = document.querySelector("#optika_stub_04").value;
@@ -373,7 +373,7 @@ function izmijeniAtributeWmsStuba(objekat) {
     objekat.properties.izolator_vrsta = document.querySelector("#izolator_vrsta_stub_10").value;
     objekat.properties.izolator_funkcija = document.querySelector("#izolator_funkcija_stub_10").value;
     objekat.properties.tip_izolatora = document.querySelector("#tip_izolatora_stub_10").value;
-    objekat.properties.nosaci_izolatora = document.querySelector("#nosaci_izolatora_stub_10").value;
+    objekat.properties.tip_nosac_izol = document.querySelector("#nosaci_izolatora_stub_10").value;
     objekat.properties.odvodnik_prenapona = document.querySelector("#odvodnik_prenapona_stub_10").value;
     objekat.properties.uzemljivac = document.querySelector("#uzemljivac_stub_10").value;
     objekat.properties.prikljucak_otcjep = document.querySelector("#prikljucak_otcjep_stub_10").value;
@@ -387,7 +387,7 @@ function izmijeniAtributeWmsStuba(objekat) {
     objekat.properties.izolator_vrsta = document.querySelector("#izolator_vrsta_stub_35").value;
     objekat.properties.izolator_funkcija = document.querySelector("#izolator_funkcija_stub_35").value;
     objekat.properties.tip_izolatora = document.querySelector("#tip_izolatora_stub_35").value;
-    objekat.properties.nosaci_izolatora = document.querySelector("#nosaci_izolatora_stub_35").value;
+    objekat.properties.tip_nosac_izol = document.querySelector("#nosaci_izolatora_stub_35").value;
     objekat.properties.odvodnik_prenapona = document.querySelector("#odvodnik_prenapona_stub_35").value;
     objekat.properties.uzemljivac = document.querySelector("#uzemljivac_stub_35").value;
     objekat.properties.optika = document.querySelector("#optika_stub_35").value;

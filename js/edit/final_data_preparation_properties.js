@@ -25,8 +25,7 @@ function stubArrayElementProperties(el, action) {
     nad_visina: el.properties.nad_visina,
     vod_10: el.properties.vod10, //Jovanu je polje 10vod - vidjeti može li se json poslati ovako ili da mijenjamo naziv
     desetvod: el.properties["10vod"],
-    //tip_nosac_izol: el.properties.tip_nosac_izol,
-    tip_nosac_izol: el.properties.nosaci_izolatora,
+    tip_nosac_izol: el.properties.tip_nosac_izol,
     vlasnistvo: el.properties.vlasnistvo,
     tip: el.properties.tip,
     visina: el.properties.visina,
