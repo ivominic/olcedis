@@ -120,6 +120,8 @@ function resetovanjeNakonUspjeha() {
   nizZaVektorAzuriranje.length = 0;
   vektorObjektiZaAzuriranje.getSource().clear();
 
+  globalTimestamp = Date.now();
+
   sifraNapojneTrafostanice = "";
   nazivNapojneTrafostanice = "";
   izvodNapojneTrafostanice = "";
