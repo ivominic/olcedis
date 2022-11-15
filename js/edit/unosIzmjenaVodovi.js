@@ -44,7 +44,6 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("napon", vodNaponskiNivoPrijeOdabira);
   ucrtaniVod.set("pog_sprem", document.querySelector("#pog_sprem").value);
   ucrtaniVod.set("vlasnistvo", document.querySelector("#vlasnistvo").value);
-  ucrtaniVod.set("ts", sifraNapojneTrafostanice);
   ucrtaniVod.set("sifra_napojne", sifraNapojneTrafostanice);
   ucrtaniVod.set("naziv_napojne", nazivNapojneTrafostanice);
   ucrtaniVod.set("izvod_napojne", izvodNapojneTrafostanice);
@@ -71,7 +70,6 @@ function prikaziPoljaOdabranogVoda() {
   document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
   document.querySelector("#pog_sprem").value = selectGpxFeature.values_.pog_sprem;
-  document.querySelector("#ts").value = selectGpxFeature.values_.ts;
   document.querySelector("#br_faza").value = selectGpxFeature.values_.br_faza;
   document.querySelector("#br_spojnica").value = selectGpxFeature.values_.br_spojnica;
   document.querySelector("#god_izgr").value = selectGpxFeature.values_.god_izg;
@@ -118,7 +116,6 @@ function prikaziPoljaWmsVoda(objekat) {
   document.querySelector("#fid_1").value = objekat.properties.fid_1;
   document.querySelector("#napon").value = objekat.properties.napon;
   document.querySelector("#pog_sprem").value = objekat.properties.pog_sprem;
-  document.querySelector("#ts").value = objekat.properties.ts;
   document.querySelector("#br_faza").value = objekat.properties.br_faza;
   document.querySelector("#br_spojnica").value = objekat.properties.br_spojnica;
   document.querySelector("#god_izgr").value = objekat.properties.god_izg;
@@ -157,7 +154,6 @@ function izmijeniAtributeWmsVoda(objekat) {
   objekat.properties.name = document.querySelector("#name").value;
   objekat.properties.napon = document.querySelector("#napon").value;
   objekat.properties.pog_sprem = document.querySelector("#pog_sprem").value;
-  objekat.properties.ts = document.querySelector("#ts").value;
   objekat.properties.br_faza = document.querySelector("#br_faza").value;
   objekat.properties.br_spojnica = document.querySelector("#br_spojnica").value;
   objekat.properties.god_izg = document.querySelector("#god_izgr").value;

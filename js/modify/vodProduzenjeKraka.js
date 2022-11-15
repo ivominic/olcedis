@@ -182,7 +182,6 @@ function vodArrayValuesProperties(el, action) {
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
     vlasnik: el.values_.vlasnik,
-    ts: el.values_.ts,
     akcija: action,
     wizard: 0,
     geohash_id: el.values_.geohash_id,

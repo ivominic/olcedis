@@ -272,7 +272,7 @@ function prikaziAtributeWmsStuba(objekat) {
   } else {
     document.querySelector("#gps").value = "";
   }
-  document.querySelector("#name").value = selectGpxFeature.values_.name;
+  document.querySelector("#name").value = objekat.properties.name;
   document.querySelector("#broj").value = objekat.properties.broj;
   document.querySelector("#nad_visina").value = objekat.properties.nad_visina;
   document.querySelector("#visina").value = objekat.properties.visina;

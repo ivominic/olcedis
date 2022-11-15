@@ -277,7 +277,6 @@ function prikaziAtributDivVodove(napon) {
   document.querySelector("#divUnosNapon").style.display = "flex";
   document.querySelector("#divUnosPogSprem").style.display = "flex";
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
-  document.querySelector("#divUnosNaziv").style.display = "flex";
   document.querySelector("#divUnosBrFaza").style.display = "flex";
   document.querySelector("#divUnosBrSpojnica").style.display = "flex";
   document.querySelector("#divUnosGodIzgr").style.display = "flex";
@@ -383,6 +382,7 @@ function prikaziAtributDivPotrosac() {
   document.querySelector("#divUnosNazivNnIzvod").style.display = "flex";
   document.querySelector("#divUnosPretplatniBr").style.display = "flex";
   document.querySelector("#divUnosBrBrojila").style.display = "flex";
+  document.querySelector("#divUnosNaziv").style.display = "none";
 }
 
 function prikaziAtributDivPod() {
@@ -399,6 +399,7 @@ function prikaziAtributDivPod() {
   document.querySelector("#divUnosNazivNnIzvod").style.display = "flex";
   document.querySelector("#divUnosPretplatniBr").style.display = "flex";
   document.querySelector("#divUnosBrBrojila").style.display = "flex";
+  document.querySelector("#divUnosNaziv").style.display = "flex";
 }
 
 function ddlLejerChange() {

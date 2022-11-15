@@ -8,7 +8,6 @@ function dodajPoljaOdabranomGpxNKRO() {
   selectGpxFeature.set("name", document.querySelector("#name").value);
   selectGpxFeature.set("vlasnistvo", document.querySelector("#vlasnistvo").value);
   selectGpxFeature.set("napon", document.querySelector("#napon").value);
-  selectGpxFeature.set("ts", document.querySelector("#ts").value);
   selectGpxFeature.set("id", document.querySelector("#id").value);
   selectGpxFeature.set("montaza", document.querySelector("#montaza").value);
   selectGpxFeature.set("materijal", document.querySelector("#vrsta_materijal").value);
@@ -34,7 +33,6 @@ function prikaziPoljaOdabranogGpxNKRO() {
   }
   document.querySelector("#name").value = selectGpxFeature.values_.name;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
-  document.querySelector("#ts").value = selectGpxFeature.values_.ts;
   document.querySelector("#id").value = selectGpxFeature.values_.id;
   document.querySelector("#montaza").value = selectGpxFeature.values_.montaza;
   document.querySelector("#vrata").value = selectGpxFeature.values_.vrata;
@@ -52,7 +50,6 @@ function prikaziPoljaWmsNKRO(objekat) {
   }
   document.querySelector("#name").value = objekat.properties.name;
   document.querySelector("#napon").value = objekat.properties.napon;
-  document.querySelector("#ts").value = objekat.properties.ts;
   document.querySelector("#id").value = objekat.properties.id;
   document.querySelector("#montaza").value = objekat.properties.montaza;
   document.querySelector("#vrata").value = objekat.properties.vrata;
@@ -65,7 +62,6 @@ function prikaziPoljaWmsNKRO(objekat) {
 function izmijeniAtributeWmsNKRO(objekat) {
   objekat.properties.name = document.querySelector("#napon").name;
   objekat.properties.napon = document.querySelector("#napon").value;
-  objekat.properties.ts = document.querySelector("#ts").value;
   objekat.properties.id = document.querySelector("#id").value;
   objekat.properties.montaza = document.querySelector("#montaza").value;
   objekat.properties.vrata = document.querySelector("#vrata").value;

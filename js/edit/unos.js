@@ -18,7 +18,6 @@ function unosVodova(geometrijaWkt, servisAkcija) {
   podaciForme.append("Geometry", geometrijaWkt);
   podaciForme.append("fid_1", document.querySelector("#fid_1").value);
   podaciForme.append("gps", document.querySelector("#gps").value);
-  podaciForme.append("ts", document.querySelector("#ts").value);
   podaciForme.append("napon", document.querySelector("#napon").value);
   podaciForme.append("br_faza", document.querySelector("#br_faza").value);
   podaciForme.append("vrsta", document.querySelector("#vrsta").value);
@@ -38,7 +37,7 @@ function unosVodova(geometrijaWkt, servisAkcija) {
   podaciForme.append("sifra_dionice", document.querySelector("#sifra_dionice").value);
   //podaciForme.append("sifra_dionice", "obavezno polje");
 
-  podaciForme.append("name", document.querySelector("#naziv").value);
+  podaciForme.append("name", document.querySelector("#name").value);
   podaciForme.append("fid", "");
   podaciForme.append("datum_azuriranja", "");
 
@@ -141,7 +140,6 @@ function unosNkro(geometrijaWkt, servisAkcija) {
   podaciForme.append("Geometry", geometrijaWkt);
   podaciForme.append("fid_1", document.querySelector("#fid_1").value);
   podaciForme.append("gps", document.querySelector("#gps").value);
-  podaciForme.append("ts", document.querySelector("#ts").value);
   podaciForme.append("id", document.querySelector("#id").value);
   podaciForme.append("materijal", document.querySelector("#vrsta_materijal").value);
   podaciForme.append("montaza", document.querySelector("#montaza").value);
@@ -194,7 +192,6 @@ function unosPrikljucnoMjesto(geometrijaWkt, servisAkcija) {
   podaciForme.append("Geometry", geometrijaWkt);
   podaciForme.append("fid_1", document.querySelector("#fid_1").value);
   podaciForme.append("gps", document.querySelector("#gps").value);
-  podaciForme.append("ts", document.querySelector("#ts").value);
   podaciForme.append("id", document.querySelector("#id").value);
   podaciForme.append("tip", document.querySelector("#tip").value);
   podaciForme.append("osiguraci", document.querySelector("#osiguraci").value);
@@ -389,7 +386,6 @@ function popuniPoljaVodovi(odgovor) {
   idObjekta = atributi["id"];
   document.querySelector("#idObjekta").value = idObjekta;
   document.querySelector("#gps").value = atributi["gps"];
-  document.querySelector("#ts").value = atributi["ts"];
   document.querySelector("#napon").value = atributi["napon"];
   document.querySelector("#br_spojnica").value = atributi["br_spojnica"];
   document.querySelector("#god_izg").value = atributi["god_izg"];
@@ -491,7 +487,6 @@ function popuniPoljaPrikljucnoMjesto(odgovor) {
   idObjekta = atributi["id"];
   document.querySelector("#idObjekta").value = idObjekta;
   document.querySelector("#gps").value = atributi["gps"];
-  document.querySelector("#ts").value = atributi["ts"];
   document.querySelector("#id").value = atributi["id"];
   document.querySelector("#tip").value = atributi["tip"];
   document.querySelector("#osiguraci").value = atributi["osiguraci"];

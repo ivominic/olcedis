@@ -106,7 +106,6 @@ function unosVodova() {
   podaciForme.append("akcija", akcija);
   podaciForme.append("geom", geometrijaZaBazuWkt);
   podaciForme.append("gps", document.querySelector("#gps").value);
-  podaciForme.append("ts", document.querySelector("#ts").value);
   podaciForme.append("napon", document.querySelector("#napon").value);
   podaciForme.append("br_faza", document.querySelector("#br_faza").value);
   podaciForme.append("vrsta", document.querySelector("#vrsta").value);
@@ -203,7 +202,6 @@ function unosNkro() {
   podaciForme.append("akcija", akcija);
   podaciForme.append("geom", geometrijaZaBazuWkt);
   podaciForme.append("gps", document.querySelector("#gps").value);
-  podaciForme.append("ts", document.querySelector("#ts").value);
   podaciForme.append("id", document.querySelector("#id").value);
   podaciForme.append("materijal", document.querySelector("#materijal").value);
   podaciForme.append("montaza", document.querySelector("#montaza").value);
@@ -248,7 +246,6 @@ function unosPrikljucnoMjesto() {
   podaciForme.append("akcija", akcija);
   podaciForme.append("geom", geometrijaZaBazuWkt);
   podaciForme.append("gps", document.querySelector("#gps").value);
-  podaciForme.append("ts", document.querySelector("#ts").value);
   podaciForme.append("id", document.querySelector("#id").value);
   podaciForme.append("tip", document.querySelector("#tip").value);
   podaciForme.append("osiguraci", document.querySelector("#osiguraci").value);
@@ -330,7 +327,6 @@ function popuniPoljaVodovi(odgovor) {
   idObjekta = atributi["id"];
   document.querySelector("#idObjekta").value = idObjekta;
   document.querySelector("#gps").value = atributi["gps"];
-  document.querySelector("#ts").value = atributi["ts"];
   document.querySelector("#napon").value = atributi["napon"];
   document.querySelector("#br_spojnica").value = atributi["br_spojnica"];
   document.querySelector("#god_izg").value = atributi["god_izg"];
@@ -413,7 +409,6 @@ function popuniPoljaPrikljucnoMjesto(odgovor) {
   idObjekta = atributi["id"];
   document.querySelector("#idObjekta").value = idObjekta;
   document.querySelector("#gps").value = atributi["gps"];
-  document.querySelector("#ts").value = atributi["ts"];
   document.querySelector("#id").value = atributi["id"];
   document.querySelector("#tip").value = atributi["tip"];
   document.querySelector("#osiguraci").value = atributi["osiguraci"];
@@ -438,7 +433,6 @@ function testunosPrikljucnoMjesto() {
   podaciForme.append("Geometry", "POINT (0,0)");
   podaciForme.append("fid_1", "1");
   podaciForme.append("gps", "");
-  podaciForme.append("ts", "");
   podaciForme.append("id", "");
   podaciForme.append("tip", "");
   podaciForme.append("osiguraci", "");

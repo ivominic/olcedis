@@ -12,7 +12,6 @@ function dodajPoljaOdabranomGpxPM() {
   selectGpxFeature.set("tip_pm", document.querySelector("#tip_pm").value);
   selectGpxFeature.set("tip", document.querySelector("#tip_pm").value);
   selectGpxFeature.set("br_pretplatnika", document.querySelector("#br_pretplatnika").value);
-  selectGpxFeature.set("ts", sifraNapojneTrafostanice);
   selectGpxFeature.set("sifra_napojne", sifraNapojneTrafostanice);
   selectGpxFeature.set("naziv_napojne", nazivNapojneTrafostanice);
   selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);

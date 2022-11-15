@@ -111,7 +111,6 @@ function vodArrayElement(el, action, wizard, serialNo) {
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
     vlasnik: tempVlasnik,
-    ts: el.values_.ts,
     akcija: action,
     wizard: wizard,
   };
@@ -195,7 +194,6 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
     fid: el.values_.fid,
     osiguraci: el.values_.osiguraci,
     br_pretplatnika: el.values_.br_pretplatnika,
-    ts: el.values_.ts,
     napon: el.values_.napon,
     vlasnistvo: el.values_.vlasnistvo,
     tip: el.values_.tip,
@@ -339,7 +337,6 @@ function nkroArrayElement(el, action, wizard, serialNo) {
     vrata: el.values_.vrata,
     br_izvoda: el.values_.br_izvoda,
     pog_sprem: el.values_.pog_sprem,
-    ts: el.values_.ts,
     napon: el.values_.napon,
     id: el.values_.id, //Vidjeti šta ovdje predajem
     opstina: el.values_.opstina,
