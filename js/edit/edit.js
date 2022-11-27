@@ -1,12 +1,4 @@
 /**Inicijalna deklaracija promjenljivih koje su vezane za konkretan lejer */
-//TODO: Trebalo bi da sljedećih 5-6 linija mogu da se uklone.
-let layername = "trafostanice",
-  fulllayername = "geonode:trafostanice",
-  layertitle = "Trafostanice";
-let tipGeometrije = point;
-let opisSlike = "";
-let vrijednostPocetneTacke = 0,
-  vrijednostKrajnjeTacke = 0;
 
 /**Popunjavanje komponenti u divu za prikaz atributa, nakon pročitanog odgovora za WMS objekat */
 function popuniKontrole(odgovor) {
@@ -51,25 +43,29 @@ function popuniKontrole(odgovor) {
 /** Unos izmijenjenih vrijednosti atributa, nove fotografije ili unos svih podataka za novu geometriju */
 function sacuvaj() {
   console.log("Administracija sacuvaj()");
+  let odabraniSloj = document.querySelector("#ddl_sloj_podataka").value;
   vodNaponskiNivoPrijeOdabira = document.querySelector("#napon").value;
   if (selektovaniWmsObjekat) {
+    if (odabraniSloj === Podsloj.Pod) {
+      poruka(StatusPoruke.Upozorenje, UnosPoruke.NijeMoguceMijenjatiPod);
+      return false;
+    }
     if (!provjeraPravaUnosIzmjena(globalUsername, globalVlasnik, selektovaniWmsObjekat.properties.vlasnik)) {
       return false;
     }
-    //alert("Odabran je wms objekat");
-    //TODO: Logika za slanje ažuriranja atributa
+
     izmjenaAtributaWmsLejer(selektovaniWmsObjekat);
-    if (obaveznaPolja(document.querySelector("#ddl_sloj_podataka").value) === false) {
-      poruka("Upozorenje", "Potrebno je popuniti obavezna polja.");
+    if (obaveznaPolja(odabraniSloj) === false) {
+      poruka(StatusPoruke.Upozorenje, UnosPoruke.PopunitiObaveznaPolja);
       return false;
     }
   } else {
     if (!selectGpxFeature && odabraniLejerUnos !== "vodovi") {
-      poruka("Upozorenje", "Potrebno je odabrati tačku iz gpx fajla.");
+      poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabratiGpxTacku);
       return false;
     }
-    if (obaveznaPolja(document.querySelector("#ddl_sloj_podataka").value) === false) {
-      poruka("Upozorenje", "Potrebno je popuniti obavezna polja.");
+    if (obaveznaPolja(odabraniSloj) === false) {
+      poruka(StatusPoruke.Upozorenje, UnosPoruke.PopunitiObaveznaPolja);
       return false;
     }
     if (odabraniLejerUnos === "stubovi") {
@@ -88,7 +84,7 @@ function sacuvaj() {
           closeDiv("#atributiDiv");
         } else {
           if (!selectGpxFeature) {
-            poruka("Upozorenje", "Potrebno je odabrati vod iz kml fajla.");
+            poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabratiKmlVod);
             return false;
           }
           dodajPoljaUcrtanomVodu(selectGpxFeature);
@@ -254,36 +250,6 @@ function podesiInterakciju() {
     });
     map.addInteraction(snap);
   }
-  /*if (akcija === "dodaj") {
-    draw = new ol.interaction.Draw({
-      features: featuresTekuci,
-      type: tipGeometrije,
-    });
-    modify = new ol.interaction.Modify({
-      features: featuresTekuci,
-      deleteCondition: function (event) {
-        return ol.events.condition.shiftKeyOnly(event) && ol.events.condition.singleClick(event);
-      },
-    });
-    draw.on("drawend", function (e) {
-      nacrtan = true;
-      //TODO: ovo možda dodati u promjeni akcije i poništi
-      featureTekuciOverlay.getSource().clear(); //Samo jedan može da se crta
-      geometrijaZaBazuWkt = wktGeometrije(e.feature);
-      showDiv("#atributiDiv");
-    });
-    modify.on("modifyend", function (e) {
-      //Iz nekog razloga na brisanje čvora ne očitava odmah izmjenu
-      geometrijaZaBazuWkt = wktGeometrije(e.features.getArray()[0]);
-      showDiv("#atributiDiv");
-    });
-    map.addInteraction(draw);
-    map.addInteraction(modify);
-    var snap = new ol.interaction.Snap({
-      source: featureSnapOverlay.getSource(),
-    });
-    map.addInteraction(snap);
-  }*/
 }
 
 map.on("pointermove", onMouseMove);

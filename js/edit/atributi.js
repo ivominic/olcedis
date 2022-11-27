@@ -391,7 +391,6 @@ function prikaziAtributDivPod() {
   document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
   document.querySelector("#divUnosName").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
-  document.querySelector("#divUnosId").style.display = "flex";
   document.querySelector("#divUnosPrikKabal").style.display = "flex";
   document.querySelector("#divUnosPod").style.display = "flex";
   document.querySelector("#divUnosAdresaMm").style.display = "flex";
@@ -399,7 +398,6 @@ function prikaziAtributDivPod() {
   document.querySelector("#divUnosNazivNnIzvod").style.display = "flex";
   document.querySelector("#divUnosPretplatniBr").style.display = "flex";
   document.querySelector("#divUnosBrBrojila").style.display = "flex";
-  document.querySelector("#divUnosNaziv").style.display = "flex";
 }
 
 function ddlLejerChange() {
