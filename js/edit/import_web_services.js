@@ -117,11 +117,10 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
         return res.text();
       })
       .then((res) => {
-        let resp = JSON.parse(res);
+        let resp = res;
         if (!unosUspjeh) {
-          finalImportMessage += resp.response;
+          finalImportMessage += JSON.parse(JSON.stringify(resp)).response;
         }
-        console.log(resp);
       })
       .catch(status, (err) => {
         finalImportMessage += "Unos objekata nije izvršen.\n";

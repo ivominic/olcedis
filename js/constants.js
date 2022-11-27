@@ -60,6 +60,7 @@ const UnosPoruke = {
     "Nije moguće direktno mijenjati PODove. Izmjenom potrošača i priključnog mjesta, POD se automatski mijenja.",
   OdabratiGpxTacku: "Potrebno je odabrati tačku iz gpx fajla.",
   OdabratiKmlVod: "Potrebno je odabrati vod iz kml fajla.",
+  OznacenZaBrisanje: "Objekat označen za brisanje.",
 };
 
 const GlobalPoruke = {

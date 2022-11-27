@@ -1,20 +1,27 @@
 /** Metode koje se odnose na brisanje objekata sa mape */
 
-/**Dodaje wms objekat u niz za brisanje */
+/**
+ * Dodaje wms objekat u niz za brisanje. Id za view_potrosaci formira u obliku "potrosaci.${originalid}"
+ * @param {Objekat koji se dodaje u niz za uklanjanje} objekat
+ */
 function dodajObjekatZaBrisanje(objekat) {
   let temp_geohash = objekat.properties.geohash_id_no;
   let blnDodaoObjekat = false;
+  let objekatId = objekat.id;
+  if (objekatId.includes("view_potrosaci")) {
+    objekatId = `potrosaci.${objekat.properties.originalid}`;
+  }
   nizWmsZaBrisanje.forEach((item) => {
     if (item[0] === temp_geohash) {
-      item[1].push(objekat.id);
+      item[1].push(objekatId);
       blnDodaoObjekat = true;
     }
   });
   if (!blnDodaoObjekat) {
-    nizWmsZaBrisanje.push([temp_geohash, [objekat.id]]);
+    nizWmsZaBrisanje.push([temp_geohash, [objekatId]]);
   }
   brisanjeDodajObjekatVektorskomLejeru(objekat);
-  poruka("Uspjeh", "Objekat označen za brisanje.");
+  poruka(StatusPoruke.Uspjeh, UnosPoruke.OznacenZaBrisanje);
 }
 
 /** Poziv web servis za brisanje objekata. Poziva se na finalnoj potvrdi akcija (ikonica dvostruki štrik) */
