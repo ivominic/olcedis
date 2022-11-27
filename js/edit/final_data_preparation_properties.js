@@ -104,7 +104,7 @@ function vodArrayElementProperties(el, action) {
     sifra_napojne: el.properties.sifra_napojne,
     naziv_napojne: el.properties.naziv_napojne,
     izvod_napojne: el.properties.izvod_napojne,
-    vlasnik: tempVlasnik,    
+    vlasnik: tempVlasnik,
     akcija: action,
     wizard: 0,
     geohash_id: el.properties.geohash_id,
@@ -343,7 +343,8 @@ function pripremaZaAzuriranjeWmsObjekta(el) {
   } else if (lejer === "nkro") {
     item = nkroArrayElementProperties(el, "U");
     nkroArrayFinal.push(item);
-  } else if (lejer === "potrosac") {
+  } else if (lejer === "potrosac" || lejer === "view_potrosaci") {
+    //Ovo dodao jer se ovaj lejer prikazuje iz view-a
     item = potrosacArrayElementProperties(el, "U");
     potrosaciArrayFinal.push(item);
   } else if (lejer === "pod") {
