@@ -377,7 +377,7 @@ map.addLayer(vektorObjektiZaBrisanje);
  */
 function globalNaponskiNivoPrenosOdnos(nivo) {
   let retVal = "";
-  if (["10/0,4", "10/0,69", "6/0,4", "35/0.4", "35/0,4"].includes(nivo)) {
+  if (["10/04", "10/0,4", "10/0,69", "6/0,4", "35/0.4", "35/0,4"].includes(nivo)) {
     retVal = "0.4";
   } else if (["10/10", "35/10", "35/6", "110/10"].includes(nivo)) {
     retVal = "10";

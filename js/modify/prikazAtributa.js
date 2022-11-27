@@ -14,7 +14,7 @@ function prikazAtributaSelektovanihObjekata() {
   console.log("prikazAtributaSelektovanihObjekata", nizSelektovanihObjekata);
   //TODO: Ne dozvoliti izmjenu/brisanje potrošača, nelegalnih potrošača i svih temp_ tabela
   nizSelektovanihObjekata.forEach((el) => {
-    el.ddlLejer = ddlLejerNaziv(el.id, el.properties.napon);
+    el.ddlLejer = ddlLejerNaziv(el);
   });
   //Zadržavamo sve funkcionalnosti prikaza za rad sa nizom gpx tačaka
 
@@ -36,51 +36,55 @@ function prikazAtributaSelektovanihObjekata() {
  * @param {zapis oblika "stubovi.3243"} elId
  * @param {04, 10 ili 35} napon
  */
-function ddlLejerNaziv(elId, napon) {
+function ddlLejerNaziv(el) {
+  let elId = el.id,
+    napon = el.properties.napon;
   if (elId.startsWith("nkro") || elId.startsWith("temp_nkro")) {
-    return "nkro";
+    return Podsloj.Nkro;
   }
   if (elId.startsWith("priklj") || elId.startsWith("temp_priklj")) {
-    return "prikljucno_mjesto";
+    return Podsloj.PrikljucnoMjesto;
   }
   if (elId.startsWith("view_potrosac") || elId.startsWith("temp_potrosac")) {
-    return "potrosac";
+    return Podsloj.Potrosac;
   }
   if (elId.startsWith("pod") || elId.startsWith("temp_pod")) {
-    return "pod";
+    return Podsloj.Pod;
+  }
+
+  if (elId.startsWith("trafostanic") || elId.startsWith("temp_trafostanic")) {
+    let prenosOdnos = el.properties.prenos_odnos;
+    if (globalNaponskiNivoPrenosOdnos(prenosOdnos) === "0.4") {
+      return Podsloj.TS10;
+    } else if (globalNaponskiNivoPrenosOdnos(prenosOdnos) === "10") {
+      return Podsloj.TS35;
+    } else if (globalNaponskiNivoPrenosOdnos(prenosOdnos) === "35") {
+      return Podsloj.TS110;
+    }
   }
 
   if (napon === "0.4" || napon === "0,4") {
     if (elId.startsWith("stub") || elId.startsWith("temp_stub")) {
-      return "stub04";
+      return Podsloj.Stub04;
     }
     if (elId.startsWith("vod") || elId.startsWith("temp_vod")) {
-      return "vod04";
-    }
-    if (elId.startsWith("trafostanic") || elId.startsWith("temp_trafostanic")) {
-      return "trafostanica10";
+      return Podsloj.Vod04;
     }
   }
   if (napon === "10") {
     if (elId.startsWith("stub") || elId.startsWith("temp_stub")) {
-      return "stub10";
+      return Podsloj.Stub10;
     }
     if (elId.startsWith("vod") || elId.startsWith("temp_vod")) {
-      return "vod10";
-    }
-    if (elId.startsWith("trafostanic") || elId.startsWith("temp_trafostanic")) {
-      return "trafostanica35";
+      return Podsloj.Vod10;
     }
   }
   if (napon === "35") {
     if (elId.startsWith("stub") || elId.startsWith("temp_stub")) {
-      return "stub35";
+      return Podsloj.Stub35;
     }
     if (elId.startsWith("vod") || elId.startsWith("temp_vod")) {
-      return "vod35";
-    }
-    if (elId.startsWith("trafostanic") || elId.startsWith("temp_trafostanic")) {
-      return "trafostanica110";
+      return Podsloj.Vod35;
     }
   }
 }
