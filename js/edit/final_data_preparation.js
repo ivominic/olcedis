@@ -92,7 +92,7 @@ function vodArrayElement(el, action, wizard, serialNo) {
     uze_presjek: el.values_.uze_presjek,
     uze: el.values_.uze,
     br_faza: el.values_.br_faza,
-    vod_presjek: el.values_.vod_presjek,
+    presjek: el.values_.presjek,
     opstina: el.values_.opstina,
     god_izg: el.values_.god_izg,
     gps: el.values_.gps,

@@ -164,13 +164,13 @@ function izmijeniAtributeWmsVoda(objekat) {
     objekat.properties.rasvjeta = document.querySelector("#rasvjeta_vod").value;
     objekat.properties.vrsta = document.querySelector("#vrsta_vod_04").value;
     objekat.properties.tip = document.querySelector("#tip_vod_04").value;
-    objekat.properties.vod_presjek = document.querySelector("#presjek_vod_04").value;
+    objekat.properties.presjek = document.querySelector("#presjek_vod_04").value;
     objekat.properties.materijal = document.querySelector("#vrsta_materijal_vod_04").value;
   }
   if (objekat.properties.napon === NaponskiNivo.String10kV) {
     objekat.properties.vrsta = document.querySelector("#vrsta_vod_10").value;
     objekat.properties.tip = document.querySelector("#tip_vod_10").value;
-    objekat.properties.vod_presjek = document.querySelector("#presjek_vod_10").value;
+    objekat.properties.presjek = document.querySelector("#presjek_vod_10").value;
     objekat.properties.materijal = document.querySelector("#vrsta_materijal_vod_10").value;
     objekat.properties.uze = document.querySelector("#uze_vod_10").value;
     objekat.properties.sifra_dionice = document.querySelector("#sifra_dionice").value;
@@ -178,7 +178,7 @@ function izmijeniAtributeWmsVoda(objekat) {
   if (objekat.properties.napon === NaponskiNivo.String35kV) {
     objekat.properties.vrsta = document.querySelector("#vrsta_vod_35").value;
     objekat.properties.tip = document.querySelector("#tip_vod_35").value;
-    objekat.properties.vod_presjek = document.querySelector("#presjek_vod_35").value;
+    objekat.properties.presjek = document.querySelector("#presjek_vod_35").value;
     objekat.properties.materijal = document.querySelector("#vrsta_materijal_vod_35").value;
     objekat.properties.uze_presjek = document.querySelector("#uze_presjek_vod_35").value;
     objekat.properties.uze = document.querySelector("#uze_vod_35").value;
