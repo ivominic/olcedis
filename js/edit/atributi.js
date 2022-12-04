@@ -255,7 +255,7 @@ function prikaziAtributDivVodove(napon) {
     document.querySelector("#divUnosTipVod04").style.display = "flex";
     document.querySelector("#divUnosPresjekVod04").style.display = "flex";
     document.querySelector("#divUnosMaterijalVod04").style.display = "flex";
-    document.querySelector("#divUnosUze").style.display = "flex";
+    //document.querySelector("#divUnosUze").style.display = "flex";
   }
   if (napon === NaponskiNivo.String10kV) {
     document.querySelector("#divUnosVrstaVod10").style.display = "flex";

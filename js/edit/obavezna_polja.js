@@ -137,9 +137,9 @@ function provjeraObaveznostiVodovi(sloj) {
     if (document.querySelector("#tip_vod_04").value === "") {
       isFilled = borderChange(document.querySelector("#tip_vod_04"));
     }
-    if (document.querySelector("#uze").value === "") {
+    /*if (document.querySelector("#uze").value === "") {
       isFilled = borderChange(document.querySelector("#uze"));
-    }
+    }*/
     if (document.querySelector("#presjek_vod_04").value === "") {
       isFilled = borderChange(document.querySelector("#presjek_vod_04"));
     }
