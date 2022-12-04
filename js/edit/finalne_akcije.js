@@ -119,6 +119,9 @@ function resetovanjeNakonUspjeha() {
   nizWmsZaIzmjenu.length = 0;
   nizZaVektorAzuriranje.length = 0;
   vektorObjektiZaAzuriranje.getSource().clear();
+  nizWmsZaBrisanje.length = 0;
+  nizZaVektorBrisanje.length = 0;
+  vektorObjektiZaBrisanje.getSource().clear();
 
   globalTimestamp = Date.now();
 
