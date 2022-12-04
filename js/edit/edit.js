@@ -332,17 +332,21 @@ map.on("click", klikNaVektore);
 /** Brisanje odabranog wms objekta */
 function izbrisi() {
   if (select.getFeatures().array_[0] === undefined && !selektovaniWmsObjekat) {
-    poruka("Upozorenje", "Potrebno je selektovati objekat koji želite da označite za brisanje.");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.SelektovatiObjekatZaBrisanje);
     return false;
   }
   if (selektovaniWmsObjekat) {
     console.log("PROVJERA", selektovaniWmsObjekat.properties.vlasnik);
+    if (document.querySelector("#ddl_sloj_podataka").value === Podsloj.Pod) {
+      poruka(StatusPoruke.Upozorenje, UnosPoruke.NijeMoguceUklanjatiPod);
+      return false;
+    }
     if (!provjeraPravaUnosIzmjena(globalUsername, globalVlasnik, selektovaniWmsObjekat.properties.vlasnik)) {
       return false;
     }
   }
   Swal.fire({
-    title: "Da li ste sigurni da odabrani objekat želite da označite za brisanje?",
+    title: UnosPoruke.DaLiObjekatBrisanje,
     position: "top-end",
     showDenyButton: true,
     confirmButtonText: `Da`,
@@ -420,7 +424,7 @@ function izbrisi() {
 /** Funkcija koja vrši dupliranje selektovanog objekta (tačke) iz gpx fajla */
 function dupliraj() {
   if (select.getFeatures().array_[0] === undefined) {
-    poruka("Upozorenje", "Potrebno je selektovati objekat iz gpx fajla.");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabratiGpxTacku);
     return false;
   }
 
@@ -429,7 +433,7 @@ function dupliraj() {
       select.getFeatures().clear(); //Da bi uklonili stil selektovane tačke
       let feature = el.clone();
       let timestamp = Date.now();
-      if (feature.values_.lejer === "prikljucno_mjesto") {
+      if (feature.values_.lejer === Podsloj.PrikljucnoMjesto) {
         feature.values_.id = timestamp;
         provjeraWfsPrikljucnaMjesta(feature, timestamp);
       } else {

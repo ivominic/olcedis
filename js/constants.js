@@ -58,9 +58,12 @@ const UnosPoruke = {
   PopunitiObaveznaPolja: "Potrebno je popuniti obavezna polja",
   NijeMoguceMijenjatiPod:
     "Nije moguće direktno mijenjati PODove. Izmjenom potrošača i priključnog mjesta, POD se automatski mijenja.",
+  NijeMoguceUklanjatiPod: "Nije moguće direktno uklanjati PODove. Uklanjanjem potrošača, POD se automatski uklanja.",
   OdabratiGpxTacku: "Potrebno je odabrati tačku iz gpx fajla.",
   OdabratiKmlVod: "Potrebno je odabrati vod iz kml fajla.",
   OznacenZaBrisanje: "Objekat označen za brisanje.",
+  SelektovatiObjekatZaBrisanje: "Potrebno je selektovati objekat koji želite da označite za brisanje.",
+  DaLiObjekatBrisanje: "Da li ste sigurni da odabrani objekat želite da označite za brisanje?",
 };
 
 const GlobalPoruke = {
