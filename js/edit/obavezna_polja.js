@@ -1,22 +1,10 @@
-function pozivButton() {
-  let sloj = document.querySelector("#ddl_sloj_podataka").value;
-
-  if (!obaveznaPolja(sloj)) {
-    Swal.fire({
-      icon: "error",
-      title: StatusPoruke.Greska,
-      text: UnosPoruke.PopunitiObaveznaPolja,
-    });
-  }
-}
-
 function obaveznaPolja(sloj) {
   borderClear();
   //Iz ddl_sloj_podataka ddl liste
   if ([Podsloj.Stub04, Podsloj.Stub10, Podsloj.Stub35].includes(sloj)) {
-    return provjeraObaveznostiStubovi();
+    return provjeraObaveznostiStubovi(sloj);
   } else if ([Podsloj.Vod04, Podsloj.Vod10, Podsloj.Vod35].includes(sloj)) {
-    return provjeraObaveznostiVodovi();
+    return provjeraObaveznostiVodovi(sloj);
   } else if (sloj === Podsloj.Nkro) {
     return provjeraObaveznostiNkro();
   } else if (sloj === Podsloj.PrikljucnoMjesto) {
@@ -27,6 +15,7 @@ function obaveznaPolja(sloj) {
     return provjeraObaveznostiPod();
   }
 }
+
 function borderChange(el) {
   el.style.border = "1px solid red";
   return false;
@@ -44,7 +33,7 @@ function borderClear() {
   }
 }
 
-function provjeraObaveznostiStubovi() {
+function provjeraObaveznostiStubovi(sloj) {
   let isFilled = true;
   if (document.querySelector("#name").value === "") {
     isFilled = borderChange(document.querySelector("#name"));
@@ -120,7 +109,7 @@ function provjeraObaveznostiStubovi() {
   return isFilled;
 }
 
-function provjeraObaveznostiVodovi() {
+function provjeraObaveznostiVodovi(sloj) {
   let isFilled = true;
   if (document.querySelector("#name").value === "") {
     isFilled = borderChange(document.querySelector("#name"));

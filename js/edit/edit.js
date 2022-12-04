@@ -54,11 +54,12 @@ function sacuvaj() {
       return false;
     }
 
-    izmjenaAtributaWmsLejer(selektovaniWmsObjekat);
     if (obaveznaPolja(odabraniSloj) === false) {
       poruka(StatusPoruke.Upozorenje, UnosPoruke.PopunitiObaveznaPolja);
       return false;
     }
+
+    izmjenaAtributaWmsLejer(selektovaniWmsObjekat);
   } else {
     if (!selectGpxFeature && odabraniLejerUnos !== "vodovi") {
       poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabratiGpxTacku);
