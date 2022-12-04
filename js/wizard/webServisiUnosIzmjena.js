@@ -331,7 +331,6 @@ function cudPrikljucnoMjesto(feature, akcija, wizard) {
   podaciForme.append("osiguraci", feature.osiguraci);
   podaciForme.append("opstina", feature.opstina);
   podaciForme.append("gps", feature.gps);
-  podaciForme.append("br_pretplatnika", feature.br_pretplatnika);
   podaciForme.append("datum_azuriranja", feature.datum_azuriranja);
   podaciForme.append("vlasnistvo", feature.vlasnistvo);
   podaciForme.append("tip", feature.tip);

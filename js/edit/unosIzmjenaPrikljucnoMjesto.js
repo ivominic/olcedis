@@ -11,7 +11,6 @@ function dodajPoljaOdabranomGpxPM() {
   selectGpxFeature.set("osiguraci", document.querySelector("#osiguraci").value);
   selectGpxFeature.set("tip_pm", document.querySelector("#tip_pm").value);
   selectGpxFeature.set("tip", document.querySelector("#tip_pm").value);
-  selectGpxFeature.set("br_pretplatnika", document.querySelector("#br_pretplatnika").value);
   selectGpxFeature.set("sifra_napojne", sifraNapojneTrafostanice);
   selectGpxFeature.set("naziv_napojne", nazivNapojneTrafostanice);
   selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
@@ -35,7 +34,6 @@ function prikaziPoljaOdabranogGpxPM() {
   document.querySelector("#id").value = selectGpxFeature.values_.id;
   document.querySelector("#osiguraci").value = selectGpxFeature.values_.osiguraci;
   document.querySelector("#tip_pm").value = selectGpxFeature.values_.tip_pm;
-  document.querySelector("#br_pretplatnika").value = selectGpxFeature.values_.br_pretplatnika;
 
   setujDdlVrijednost("#vlasnistvo", selectGpxFeature.values_.vlasnistvo);
 }
@@ -53,7 +51,6 @@ function prikaziPoljaWmsPM(objekat) {
   document.querySelector("#id").value = objekat.properties.id;
   document.querySelector("#osiguraci").value = objekat.properties.osiguraci;
   document.querySelector("#tip_pm").value = objekat.properties.tip_pm;
-  document.querySelector("#br_pretplatnika").value = objekat.properties.br_pretplatnika;
 
   setujDdlVrijednost("#vlasnistvo", objekat.properties.vlasnistvo);
 }
@@ -64,7 +61,6 @@ function izmijeniAtributeWmsPM(objekat) {
   objekat.properties.id = document.querySelector("#id").value;
   objekat.properties.osiguraci = document.querySelector("#osiguraci").value;
   objekat.properties.tip_pm = document.querySelector("#tip_pm").value;
-  objekat.properties.br_pretplatnika = document.querySelector("#br_pretplatnika").value;
 
   return objekat;
 }

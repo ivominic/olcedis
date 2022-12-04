@@ -249,7 +249,6 @@ function unosPrikljucnoMjesto() {
   podaciForme.append("id", document.querySelector("#id").value);
   podaciForme.append("tip", document.querySelector("#tip").value);
   podaciForme.append("osiguraci", document.querySelector("#osiguraci").value);
-  podaciForme.append("br_pretplatnika", document.querySelector("#br_pretplatnika").value);
   podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
   podaciForme.append("opstina", document.querySelector("#opstina").value);
   podaciForme.append("napon", document.querySelector("#napon").value);
@@ -412,7 +411,6 @@ function popuniPoljaPrikljucnoMjesto(odgovor) {
   document.querySelector("#id").value = atributi["id"];
   document.querySelector("#tip").value = atributi["tip"];
   document.querySelector("#osiguraci").value = atributi["osiguraci"];
-  document.querySelector("#br_pretplatnika").value = atributi["br_pretplatnika"];
   document.querySelector("#vlasnistvo").value = atributi["vlasnistvo"];
   document.querySelector("#opstina").value = atributi["opstina"];
   document.querySelector("#napon").value = atributi["napon"];
@@ -436,7 +434,6 @@ function testunosPrikljucnoMjesto() {
   podaciForme.append("id", "");
   podaciForme.append("tip", "");
   podaciForme.append("osiguraci", "");
-  podaciForme.append("br_pretplatnika", "");
   podaciForme.append("vlasnistvo", "");
   podaciForme.append("opstina", "");
   podaciForme.append("napon", "");

@@ -70,7 +70,6 @@ function sakrijSvaPoljaPretrage() {
 
   document.querySelector("#divPretragaId").style.display = "none";
   document.querySelector("#divPretragaOsiguraci").style.display = "none";
-  document.querySelector("#divPretragaBrPretplatnika").style.display = "none";
 
   document.querySelector("#divPretragaMontaza").style.display = "none";
   document.querySelector("#divPretragaVrata").style.display = "none";
@@ -157,7 +156,6 @@ function prikaziPretraguPrikljucnoMjesto() {
   document.querySelector("#divPretragaId").style.display = "flex";
   document.querySelector("#divPretragaTip").style.display = "flex";
   document.querySelector("#divPretragaOsiguraci").style.display = "none";
-  document.querySelector("#divPretragaBrPretplatnika").style.display = "none";
   document.querySelector("#divPretragaVlasnistvo").style.display = "flex";
   document.querySelector("#divPretragaOpstina").style.display = "flex";
   document.querySelector("#divPretragaNapon").style.display = "flex";

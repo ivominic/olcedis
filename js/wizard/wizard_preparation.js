@@ -179,7 +179,6 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
     name: el.values_.name,
     fid: el.values_.fid,
     osiguraci: el.values_.osiguraci,
-    br_pretplatnika: el.values_.br_pretplatnika,
     napon: el.values_.napon,
     vlasnistvo: el.values_.vlasnistvo,
     tip: el.values_.tip,

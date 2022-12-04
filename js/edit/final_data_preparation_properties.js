@@ -178,7 +178,6 @@ function prikljucnoMjestoArrayElementProperties(el, action) {
     name: el.properties.name,
     fid: el.properties.fid,
     osiguraci: el.properties.osiguraci,
-    br_pretplatnika: el.properties.br_pretplatnika,
     napon: el.properties.napon,
     vlasnistvo: el.properties.vlasnistvo,
     tip: el.properties.tip,
