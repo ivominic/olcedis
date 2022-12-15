@@ -68,4 +68,9 @@ const UnosPoruke = {
 
 const GlobalPoruke = {
   NedostatakPrava: "Nemate pravo za izvršenje akcije nad odabranim objektom",
+  UdaljenostZaPretragu:
+    "Potrebno je unijeti udaljenost od iscrtanih tačaka na kojoj će se prikazivati objekti iz sloja koji se pretražuje.",
+  TackaZaPretragu: "Potrebno je nacrtati bar jednu tačku za pretragu objekata po udaljenosti.",
+  LinijaZaPretragu: "Potrebno je nacrtati bar jednu liniju za pretragu objekata koje linija presijeca.",
+  PoligonZaPretragu: "Potrebno je nacrtati bar jedan poligon za pretragu objekata koje poligon presijeca ili obuhvata.",
 };

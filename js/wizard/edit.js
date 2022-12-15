@@ -516,8 +516,7 @@ function onMouseClick(browserEvent) {
 }
 
 function izbrisi() {
-  console.log("kml", vectorSource);
-  //confirmModal("UKLANJANJE", "Da li ste sigurni da želite da uklonite odabrani objekat?");
+  console.log("kml", vectorSource);  
 }
 
 /**Metoda koja će sve resetovati na početne vrijednosti */

@@ -1,4 +1,5 @@
 /** Metode koje vrše presjek objekata sa iscrtanim poligonom */
+//TODO: Ukloniti ovaj fajl, jer se ne koristi nigdje
 
 function izPoligona() {
   if (poligoni.length === 0) {

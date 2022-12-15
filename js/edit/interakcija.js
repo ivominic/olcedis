@@ -77,43 +77,6 @@ function brisanje() {
   featurePolygonOverlay.getSource().clear();
 }
 
-/**Funkcije za setovanje podloga */
-function osmPodloga() {
-  map.getLayers().setAt(0, osmBaseMap);
-  zatvoriHamburger();
-}
-
-function satelitPodloga() {
-  map.getLayers().setAt(0, satelitBaseMap);
-  zatvoriHamburger();
-}
-
-function ortofotoPodloga() {
-  map.getLayers().setAt(0, ortofotoBaseMap);
-  zatvoriHamburger();
-}
-
-function bezPodloga() {
-  map.getLayers().setAt(0, bezBaseMap);
-  zatvoriHamburger();
-}
-
-/**Funkcije za download WFS-a */
-function shpDownload() {
-  zatvoriHamburger();
-  wfsDownload("SHAPE-ZIP");
-}
-
-function kmlDownload() {
-  zatvoriHamburger();
-  wfsDownload("KML");
-}
-
-function excelDownload() {
-  zatvoriHamburger();
-  wfsDownload("excel2007");
-}
-
 $("#topNav").children().prop("disabled", true);
 
 function prikazPanelaAtributa(sloj) {

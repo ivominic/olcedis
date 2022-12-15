@@ -1,6 +1,7 @@
 /**
  * Metode za unos/izmjenu podataka
  */
+//TODO: Provjeriti na kraju da li se ove metode koriste. Pokušati uklanjanje ovog fajla.
 
 /**
  * Metoda koja za predati feature i akciju poziva web servis za unos/izmjenu/brisanje trafostanice

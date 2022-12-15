@@ -1,3 +1,40 @@
+
+
+/** Prikazuje sliku za odabrani objekat u modalnom prozoru */
+function slika() {
+  slikeIndex = 0;
+  slikeUrl = [];
+  akcija = "slika";
+}
+
+function crtajTacku() {
+  akcija = point;
+  setujAktivnu("#crtanje");
+}
+
+function crtajLiniju() {
+  akcija = lineString;
+  setujAktivnu("#crtanje");
+}
+
+function crtajPoligon() {
+  akcija = polygon;
+  setujAktivnu("#crtanje");
+}
+
+function brisanje() {
+  //vectorSelektovaniObjekat.getSource().clear();
+  poligoni.length = 0;
+  linije.length = 0;
+  tacke.length = 0;
+  featureLineOverlay.getSource().clear();
+  featurePointOverlay.getSource().clear();
+  featurePolygonOverlay.getSource().clear();
+  vectorSource && vectorSource.clear();
+}
+
+
+
 /** Akcija promjene ikonice u navbaru */
 function setujAktivnu(element) {
   if (nacrtan || modifikovan) {
@@ -16,8 +53,8 @@ function setujAktivnu(element) {
   closeDiv("#atributiDiv");
   if (element === "#atributi" || element === "#dodaj") {
     //if (element === "#atributi") {
-    console.log("PRikaz 5", odabirSaMape);
-    !odabirSaMape && showDiv("#atributiDiv");
+    console.log("PRikaz 3");
+    showDiv("#atributiDiv");
   }
   if (element === "#pretraga") {
     showDiv("#pretragaDiv");
@@ -82,6 +119,50 @@ var windows = document.querySelectorAll(".draggable");
   );
 });
 
+/** Funkcije za rad sa navigacionim barom*/
+function pan() {
+  akcija = "pan";
+  setujAktivnu("#pan");
+}
+
+function dodaj() {
+  akcija = "dodaj";
+  setujAktivnu("#dodaj");
+}
+
+function izmijeni() {
+  akcija = "izmijeni";
+  setujAktivnu("#izmijeni");
+}
+
+function atributi() {
+  akcija = "atributi";
+  setujAktivnu("#atributi");
+}
+
+function pretraga() {
+  akcija = "pretraga";
+  setujAktivnu("#pretraga");
+}
+
+function restart() {
+  location.reload(true);
+}
+
+/**Povezivanje kontrola sa akcijama */
+document.querySelector("#pan").addEventListener("click", pan);
+document.querySelector("#marker").addEventListener("click", crtajTacku);
+document.querySelector("#linija").addEventListener("click", crtajLiniju);
+document.querySelector("#poligon").addEventListener("click", crtajPoligon);
+document.querySelector("#brisanje").addEventListener("click", brisanje);
+document.querySelector("#pretraga").addEventListener("click", pretraga);
+document.querySelector("#restart").addEventListener("click", restart);
+document.querySelector("#podloga_osm").addEventListener("click", osmPodloga);
+document.querySelector("#podloga_satelit").addEventListener("click", satelitPodloga);
+document.querySelector("#podloga_ortofoto").addEventListener("click", ortofotoPodloga);
+document.querySelector("#podloga_bez").addEventListener("click", bezPodloga);
+//Ovo otkomentarisati za snap
+
 document.querySelector("#confirmPotvrdi").addEventListener("click", confirmPotvrdi);
 document.querySelector("#confirmOdustani").addEventListener("click", confirmOdustani);
 
@@ -99,7 +180,7 @@ function selekcijaPocetnogStuba() {
   }
 }
 
-/**Metoda koja bira krajnji stub */
+/**Metoda koja bira prvi stub */
 function selekcijaZavrsnogStuba() {
   akcija = "zavrsniStub";
   setujAktivnu("#selekcijaZavrsnogStuba");
@@ -115,7 +196,7 @@ function selekcijaZavrsnogStuba() {
 document.querySelector("#lejer_stubovi").addEventListener("click", prikazLejeraStubovi);
 document.querySelector("#lejer_vodovi").addEventListener("click", prikazLejeraVodovi);
 document.querySelector("#lejer_trafostanice").addEventListener("click", prikazLejeraTrafostanice);
-document.querySelector("#lejer_trafostanice_poligoni").addEventListener("click", prikazLejeraTrafostanicePoligoni);
+document.querySelector("#lejer_trafostanice_poligoni").addEventListener("click", prikazLejeraTrafostanice);
 document.querySelector("#lejer_prikljucno_mjesto").addEventListener("click", prikazLejeraPrikljucnoMjesto);
 document.querySelector("#lejer_nkro").addEventListener("click", prikazLejeraNkro);
 document.querySelector("#lejer_potrosac").addEventListener("click", prikazLejeraPotrosac);
