@@ -122,12 +122,9 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
               );
             }
           });
-          poruka("Uspjeh", "Uspješno kreirani potrošači");
+          poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
         });
-        //izbrisiFeatureIzVektora(selFeature);
       }
-    } else if (result.isDenied) {
-      //Swal.fire("Odbijeno", "", "error");
     }
   });
 }

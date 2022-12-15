@@ -305,7 +305,7 @@ function potvrdaNapojneTrafostaniceUnos() {
   document.querySelector("#naziv_napojne").value = nazivNapojneTrafostanice;
   document.querySelector("#izvod_napojne").value = izvodNapojneTrafostanice;
   closeDiv("#odabirNapojneTrafostaniceDiv");
-  poruka("Uspjeh", "Uspješno odabran izvod napojne trafostanice.");
+  poruka(StatusPoruke.Uspjeh, UnosPoruke.OdabranIzvodTS);
   isprazniVrijednostiPoljaTrafostanice();
   enableMenija();
   readRadius();

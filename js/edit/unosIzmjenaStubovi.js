@@ -186,7 +186,7 @@ function dodajPoljaOdabranomGpxStubu() {
 
   console.log("obrađeni fajl", selectGpxFeature);
 
-  poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
+  poruka(StatusPoruke.Uspjeh, UnosPoruke.UspjehAzurirani);
 }
 
 function prikaziPoljaOdabranogGpxStuba() {

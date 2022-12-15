@@ -128,38 +128,38 @@ let bezBaseMap = new ol.layer.Tile({
 });
 
 /**Stilizacija vektora */
-var fill = new ol.style.Fill({
+let fill = new ol.style.Fill({
   color: "rgba(0,255,255,0.6)",
 });
-var stroke = new ol.style.Stroke({
+let stroke = new ol.style.Stroke({
   color: "#00ffff",
   width: 4,
 });
-var circle = new ol.style.Circle({
+let circle = new ol.style.Circle({
   radius: 7,
   fill: fill,
   stroke: stroke,
 });
-var vectorStyle = new ol.style.Style({
+let vectorStyle = new ol.style.Style({
   fill: fill,
   stroke: stroke,
   image: circle,
 });
 
 /**Stilizacija vektora za snap*/
-var fillSnap = new ol.style.Fill({
+let fillSnap = new ol.style.Fill({
   color: "rgba(128,0,128,0.5)",
 });
-var strokeSnap = new ol.style.Stroke({
+let strokeSnap = new ol.style.Stroke({
   color: "#C807FE",
   width: 2,
 });
-var circleSnap = new ol.style.Circle({
+let circleSnap = new ol.style.Circle({
   radius: 7,
   fill: fillSnap,
   stroke: strokeSnap,
 });
-var vectorStyleSnap = new ol.style.Style({
+let vectorStyleSnap = new ol.style.Style({
   fill: fillSnap,
   stroke: strokeSnap,
   image: circleSnap,

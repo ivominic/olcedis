@@ -75,7 +75,10 @@ const WizardPoruke = {
   OdabratiVodObaSistema: "Potrebno je odabrati vodove iz oba sistema",
   DodatObjekat: "Uspješno dodat objekat",
   NijeDodatObjekat: "Nije dodat objekat",
-  VecDodatObjekat: "Pokušali ste da dodate objekat koji je već selektovan",  
+  VecDodatObjekat: "Pokušali ste da dodate objekat koji je već selektovan",
+  OdabirNapojneTS: "Odaberite napojnu trafostanicu",
+  ZavrsniStubVodaJe: "Završni stub voda je ",
+  PocetniStubVodaJe: "Početni stub voda je ",
 };
 
 const UnosPoruke = {
@@ -123,6 +126,12 @@ const UnosPoruke = {
   NijeIstiVod: "Nisu elementi istog voda",
   OdabratiSaVoda: "Nije odabran objekat koji pripada nekom vodu",
   OdabratiTackuZaPomjeranje: "Nije odabrana tačka i objekat za pomjeranje.",
+  OdabranIzvodTS: "Uspješno odabran izvod napojne trafostanice.",
+  NemaSledecegObjekta: "Ne postoji sljedeći objekat.",
+  NemaPrethodnogObjekta: "Ne postoji prethodni objekat.",
+  UspjehAzurirani: "Ažurirani podaci za odabranu gpx tačku",
+  IzmjenaNaValidaciju: "Objekat sa izmijenjenim atributima spreman za slanje na validaciju",
+  PomjerenObjekat: "Uspješno povezana nova tačka i postojeći objekat",
 };
 
 const GlobalPoruke = {

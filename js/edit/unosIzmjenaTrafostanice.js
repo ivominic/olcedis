@@ -46,7 +46,7 @@ function dodajPoljaOdabranojGpxTrafostanici() {
   selectGpxFeature.set("korisnik", globalUsername);
   selectGpxFeature.set("vlasnik", "");
   console.log("selectGpxFeature trafostanica", selectGpxFeature);
-  poruka("Uspjeh", "Uspješno dodijeljene vrijednosti objektu");
+  poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
 }
 
 function prikaziPoljaOdabraneGpxTrafostanice() {

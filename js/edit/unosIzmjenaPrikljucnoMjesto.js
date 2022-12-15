@@ -15,7 +15,7 @@ function dodajPoljaOdabranomGpxPM() {
   selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
   selectGpxFeature.set("korisnik", globalUsername);
   selectGpxFeature.set("vlasnik", "");
-  poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
+  poruka(StatusPoruke.Uspjeh, UnosPoruke.UspjehAzurirani);
 }
 
 function prikaziPoljaOdabranogGpxPM() {

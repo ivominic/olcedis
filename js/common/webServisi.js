@@ -781,7 +781,7 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
     type: "POST",
     success: function (data) {
       console.log("success wizard unos", data);
-      poruka("Uspjeh", data);
+      poruka(StatusPoruke.Uspjeh, data);
     },
     error: function (x, y, z) {
       poruka(StatusPoruke.Greska, JSON.parse(x.responseText).response);

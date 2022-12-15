@@ -378,12 +378,12 @@ select.on("select", function (e) {
   if (blnZavrsniStub) {
     blnZavrsniStub = false;
     vrijednostKrajnjeTacke = parseInt(e.target.getFeatures().array_[0].values_.name);
-    poruka("Uspjeh", "Završni stub voda je " + e.target.getFeatures().array_[0].values_.name);
+    poruka(StatusPoruke.Uspjeh, WizardPoruke.ZavrsniStubVodaJe + e.target.getFeatures().array_[0].values_.name);
   }
   if (blnPocetniStub) {
     blnPocetniStub = false;
     vrijednostPocetneTacke = parseInt(e.target.getFeatures().array_[0].values_.name);
-    poruka("Uspjeh", "Početni stub voda je " + e.target.getFeatures().array_[0].values_.name);
+    poruka(StatusPoruke.Uspjeh, WizardPoruke.PocetniStubVodaJe + e.target.getFeatures().array_[0].values_.name);
   }
   if (vrijednostPocetneTacke > 0 && vrijednostKrajnjeTacke > 0 && vrijednostPocetneTacke !== vrijednostKrajnjeTacke) {
     kreirajVod(vrijednostPocetneTacke, vrijednostKrajnjeTacke);

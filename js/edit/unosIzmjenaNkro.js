@@ -16,7 +16,7 @@ function dodajPoljaOdabranomGpxNKRO() {
   selectGpxFeature.set("sifra_napojne", sifraNapojneTrafostanice);
   selectGpxFeature.set("naziv_napojne", nazivNapojneTrafostanice);
   selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
-  poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
+  poruka(StatusPoruke.Uspjeh, UnosPoruke.UspjehAzurirani);
 }
 
 function prikaziPoljaOdabranogGpxNKRO() {

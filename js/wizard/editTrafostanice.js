@@ -137,9 +137,9 @@ function prikazUparivanje() {
   showDiv("#povezivanjeTSdiv");
 }
 
-/** Aktivacija opcije odabira napojne trafostanice sa mape. Opcija kad se klikne na dugne sa čiodom. */
+/** Aktivacija opcije odabira napojne trafostanice sa mape. Opcija kad se klikne na dugme sa čiodom. */
 function selektujNapojnuTS() {
-  poruka("Uspjeh", "Odaberite napojnu trafostanicu");
+  poruka(StatusPoruke.Uspjeh, WizardPoruke.OdabirNapojneTS);
   map.removeInteraction(draw);
   map.removeInteraction(modify);
   sifraNapojneTrafostanice = "";

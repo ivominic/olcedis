@@ -82,7 +82,7 @@ function unosStubova() {
         console.log("test", xhr.responseText);
         let jsonResponse = JSON.parse(xhr.responseText);
         if (jsonResponse["success"] === true) {
-          poruka("Uspjeh", jsonResponse["message"]);
+          poruka(StatusPoruke.Uspjeh, jsonResponse["message"]);
           //restartovanje();
         } else {
           poruka(StatusPoruke.Upozorenje, jsonResponse["message"]);
@@ -130,7 +130,7 @@ function unosVodova() {
       if (this.status === 200) {
         let jsonResponse = JSON.parse(xhr.responseText);
         if (jsonResponse["success"] === true) {
-          poruka("Uspjeh", jsonResponse["message"]);
+          poruka(StatusPoruke.Uspjeh, jsonResponse["message"]);
         } else {
           poruka(StatusPoruke.Upozorenje, jsonResponse["message"]);
         }
@@ -179,7 +179,7 @@ function unosTrafostanica() {
       if (this.status === 200) {
         let jsonResponse = JSON.parse(xhr.responseText);
         if (jsonResponse["success"] === true) {
-          poruka("Uspjeh", jsonResponse["message"]);
+          poruka(StatusPoruke.Uspjeh, jsonResponse["message"]);
         } else {
           poruka(StatusPoruke.Upozorenje, jsonResponse["message"]);
         }
@@ -222,7 +222,7 @@ function unosNkro() {
       if (this.status === 200) {
         let jsonResponse = JSON.parse(xhr.responseText);
         if (jsonResponse["success"] === true) {
-          poruka("Uspjeh", jsonResponse["message"]);
+          poruka(StatusPoruke.Uspjeh, jsonResponse["message"]);
         } else {
           poruka(StatusPoruke.Upozorenje, jsonResponse["message"]);
         }
@@ -261,7 +261,7 @@ function unosPrikljucnoMjesto() {
       if (this.status === 200) {
         let jsonResponse = JSON.parse(xhr.responseText);
         if (jsonResponse["success"] === true) {
-          poruka("Uspjeh", jsonResponse["message"]);
+          poruka(StatusPoruke.Uspjeh, jsonResponse["message"]);
         } else {
           poruka(StatusPoruke.Upozorenje, jsonResponse["message"]);
         }
@@ -470,7 +470,7 @@ function testunosPrikljucnoMjesto() {
         console.log("odgovor servisa", xhr.responseText);
         let jsonResponse = JSON.parse(xhr.responseText);
         if (jsonResponse["success"] === true) {
-          poruka("Uspjeh", jsonResponse["message"]);
+          poruka(StatusPoruke.Uspjeh, jsonResponse["message"]);
         } else {
           poruka(StatusPoruke.Upozorenje, jsonResponse["message"]);
         }

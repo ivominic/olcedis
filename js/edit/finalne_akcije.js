@@ -91,7 +91,7 @@ async function finalnaPotvrdaUnosa() {
       poruka(StatusPoruke.Greska, finalImportMessage);
       resetovanjeNizovaNakonGreske();
     } else {
-      poruka("Uspjeh", "Uspješno izvršena akcija");
+      poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
       resetovanjeNakonUspjeha();
     }
   });

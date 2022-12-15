@@ -60,7 +60,7 @@ function unosVodova(geometrijaWkt, servisAkcija) {
     contentType: false,
     success: function (response) {
       console.log("success", response);
-      poruka("Uspjeh", response.message);
+      poruka(StatusPoruke.Uspjeh, response.message);
     },
     error: function (response) {
       console.log("error", response);
@@ -123,7 +123,7 @@ function unosTrafostanica(geometrijaWkt, servisAkcija) {
     contentType: false,
     success: function (response) {
       console.log("success", response);
-      poruka("Uspjeh", response.message);
+      poruka(StatusPoruke.Uspjeh, response.message);
     },
     error: function (response) {
       console.log("error", response);
@@ -175,7 +175,7 @@ function unosNkro(geometrijaWkt, servisAkcija) {
     contentType: false,
     success: function (response) {
       console.log("success", response);
-      poruka("Uspjeh", response.message);
+      poruka(StatusPoruke.Uspjeh, response.message);
     },
     error: function (response) {
       console.log("error", response);
@@ -223,7 +223,7 @@ function unosPrikljucnoMjesto(geometrijaWkt, servisAkcija) {
     contentType: false,
     success: function (response) {
       console.log("success", response);
-      poruka("Uspjeh", response.message);
+      poruka(StatusPoruke.Uspjeh, response.message);
     },
     error: function (response) {
       console.log("error", response);
@@ -275,7 +275,7 @@ function unosPotrosac(geometrijaWkt, servisAkcija) {
     contentType: false,
     success: function (response) {
       console.log("success", response);
-      poruka("Uspjeh", response.message);
+      poruka(StatusPoruke.Uspjeh, response.message);
     },
     error: function (response) {
       console.log("error", response);
@@ -328,7 +328,7 @@ function unosPod(geometrijaWkt, servisAkcija) {
     contentType: false,
     success: function (response) {
       console.log("success", response);
-      poruka("Uspjeh", response.message);
+      poruka(StatusPoruke.Uspjeh, response.message);
     },
     error: function (response) {
       console.log("error", response);

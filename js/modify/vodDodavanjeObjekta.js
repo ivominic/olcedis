@@ -223,7 +223,7 @@ function azuriranjeWebService(vodId, prvaTacka, drugaTacka, nizObjekataZaDodavan
       if (data.includes("reška")) {
         poruka(StatusPoruke.Greska, data);
       } else {
-        poruka("Uspjeh", data);
+        poruka(StatusPoruke.Uspjeh, data);
       }
       availableLayersPerPowerLevel("");
       vectorSource.clear();

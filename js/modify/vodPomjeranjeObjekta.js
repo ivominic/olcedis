@@ -100,7 +100,7 @@ function potvrdaPomjeranjaObjekta() {
       nizWmsZaPomjeranje.push([postojeciObjekat, novaGeometrija]);
     }
     console.log("niz wms za pomjeranje", nizWmsZaPomjeranje);
-    poruka("Uspjeh", "Uspješno povezana nova tačka i postojeći objekat");
+    poruka(StatusPoruke.Uspjeh, UnosPoruke.PomjerenObjekat);
   }
 }
 

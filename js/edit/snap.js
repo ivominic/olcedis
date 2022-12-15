@@ -72,21 +72,10 @@ function citajExtent(lejer, nivo) {
   let polygon = new ol.geom.Polygon([ring]);
 
   let format = new ol.format.WKT();
-  /*let wktPoligon = format.writeGeometry(polygon, {
-   dataProjection: "EPSG:4326",
-   featureProjection: "EPSG:3857",
- });*/
-
-  console.log("snap", polygon);
-  //polygon.transform('EPSG:4326', 'EPSG:3857');
-
   let wktPoligon = format.writeGeometry(polygon, {});
   console.log("wkt", wktPoligon);
 
   // Add the polygon to the layer and style it
-  /*var feature = new ol.Feature(polygon);
- extentSource.addFeature(feature);
- feature.setStyle(extentStyle);*/
   prikaziSnapVektor(lejer, nivo, wktPoligon);
 }
 

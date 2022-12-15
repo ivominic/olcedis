@@ -23,7 +23,7 @@ function dodajObjekatZaIzmjenu(objekat) {
   }*/
   nizWmsZaIzmjenu.push(pripremaZaAzuriranjeWmsObjekta(objekat));
   azuriranjeDodajObjekatVektorskomLejeru(objekat);
-  poruka("Uspjeh", "Objekat sa izmijenjenim atributima spreman za slanje na validaciju");
+  poruka(StatusPoruke.Uspjeh, UnosPoruke.IzmjenaNaValidaciju);
   console.log("NIZ ZA IZMJENU", nizWmsZaIzmjenu);
 }
 
@@ -78,7 +78,7 @@ function izmjenaAtributaSvihObjekata() {
     type: "POST",
     success: function (data) {
       console.log("success izmjena atributa objekata", data);
-      poruka("Uspjeh", data);
+      poruka(StatusPoruke.Uspjeh, data);
       nizWmsZaIzmjenu.length = 0;
     },
     error: function (x, y, z) {
