@@ -69,10 +69,7 @@ function vodEditGeometrije(browserEvent) {
 
     if (coordinates.length !== originalnaGeometrijaWmsVoda.coordinates.length) {
       e.features.getArray()[0].getGeometry().setCoordinates(originalnaGeometrijaWmsVoda.coordinates);
-      poruka(
-        "Upozorenje",
-        "Geometrija linije je izmijenjena na način da su joj dodate nove prelomne tačke, što nije dozvoljeno."
-      );
+      poruka(StatusPoruke.Upozorenje, UnosPoruke.NedozvoljenaIzmjenaGeometrijeLinije);
       return false;
     }
 
@@ -128,8 +125,8 @@ function vodEditGeometrije(browserEvent) {
     if (isViolatedAllowedDistance) {
       e.features.getArray()[0].getGeometry().setCoordinates(originalnaGeometrijaWmsVoda.coordinates);
       poruka(
-        "Upozorenje",
-        "Tačka ne može biti pomjerena više od " + pomjerajZaPoruku.toString() + "m od snimljene pozicije."
+        StatusPoruke.Upozorenje,
+        UnosPoruke.NedozvoljenPomjerajTacka1 + pomjerajZaPoruku.toString() + UnosPoruke.NedozvoljenPomjerajTacka2
       );
       return false;
     }
