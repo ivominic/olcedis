@@ -119,7 +119,7 @@ function sacuvaj() {
   xhr.open("POST", sacuvajZapisUrl, true);
   xhr.timeout = 100000;
   xhr.ontimeout = function () {
-    poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
+    poruka(StatusPoruke.Greska, UnosPoruke.PrekidTrajePredugo);
   };
   xhr.send(podaciForme);
   openModalSpinner();
@@ -135,7 +135,7 @@ function sacuvaj() {
         }
         closeModalSpinner();
       } else {
-        poruka("Greska", xhr.statusText);
+        poruka(StatusPoruke.Greska, xhr.statusText);
         closeModalSpinner();
       }
     }
@@ -516,44 +516,13 @@ function onMouseClick(browserEvent) {
 }
 
 function izbrisi() {
-  console.log("kml", vectorSource);  
+  console.log("kml", vectorSource);
 }
 
 /**Metoda koja će sve resetovati na početne vrijednosti */
 function ponisti() {
   restartovanje();
 }
-
-/*function brisanjeBaza() {
-  let podaciForme = new FormData();
-  podaciForme.append("id", idObjekta);
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", izbrisiZapisUrl, true);
-  xhr.timeout = 100000;
-  xhr.ontimeout = function () {
-    poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
-  };
-  xhr.send(podaciForme);
-  openModalSpinner();
-
-  xhr.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      if (this.status === 200) {
-        let jsonResponse = JSON.parse(xhr.responseText);
-        if (jsonResponse["success"] === true) {
-          poruka("Uspjeh", jsonResponse["message"]);
-          restartovanje();
-        } else {
-          poruka("Upozorenje", jsonResponse["message"]);
-        }
-        closeModalSpinner();
-      } else {
-        poruka("Greska", xhr.statusText);
-        closeModalSpinner();
-      }
-    }
-  };
-}*/
 
 /* Filter wms-a po prostornim i atributskim podacima*/
 function filtriranje() {

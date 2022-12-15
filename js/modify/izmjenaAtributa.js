@@ -82,7 +82,7 @@ function izmjenaAtributaSvihObjekata() {
       nizWmsZaIzmjenu.length = 0;
     },
     error: function (x, y, z) {
-      poruka("Greška", JSON.parse(x.responseText).response);
+      poruka(StatusPoruke.Greska, JSON.parse(x.responseText).response);
     },
   });
 }

@@ -72,10 +72,8 @@ function unosStubova() {
   xhr.setRequestHeader("Accept", "application/json");
   //xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhr.ontimeout = function () {
-    poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
+    poruka(StatusPoruke.Greska, UnosPoruke.PrekidTrajePredugo);
   };
-  let jsonSlanje = JSON.stringify('{ fid_1: 1, Geometry: "POINT(0,0)" }');
-  //xhr.send(jsonSlanje);
   xhr.send(podaciForme);
   //openModalSpinner();
   xhr.onreadystatechange = function () {
@@ -91,14 +89,12 @@ function unosStubova() {
         }
         //closeModalSpinner();
       } else {
-        poruka("Greska", xhr.statusText);
+        poruka(StatusPoruke.Greska, xhr.statusText);
         //closeModalSpinner();
       }
     }
   };
 }
-//console.log("stubovi");
-//unosStubova();
 
 function unosVodova() {
   let podaciForme = new FormData();
@@ -125,7 +121,7 @@ function unosVodova() {
   xhr.open("POST", sacuvajZapisUrl, true);
   xhr.timeout = 100000;
   xhr.ontimeout = function () {
-    poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
+    poruka(StatusPoruke.Greska, UnosPoruke.PrekidTrajePredugo);
   };
   xhr.send(podaciForme);
   openModalSpinner();
@@ -140,7 +136,7 @@ function unosVodova() {
         }
         closeModalSpinner();
       } else {
-        poruka("Greska", xhr.statusText);
+        poruka(StatusPoruke.Greska, xhr.statusText);
         closeModalSpinner();
       }
     }
@@ -174,7 +170,7 @@ function unosTrafostanica() {
   xhr.open("POST", sacuvajZapisUrl, true);
   xhr.timeout = 100000;
   xhr.ontimeout = function () {
-    poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
+    poruka(StatusPoruke.Greska, UnosPoruke.PrekidTrajePredugo);
   };
   xhr.send(podaciForme);
   openModalSpinner();
@@ -189,7 +185,7 @@ function unosTrafostanica() {
         }
         closeModalSpinner();
       } else {
-        poruka("Greska", xhr.statusText);
+        poruka(StatusPoruke.Greska, xhr.statusText);
         closeModalSpinner();
       }
     }
@@ -212,13 +208,12 @@ function unosNkro() {
   podaciForme.append("vlasnistvo", document.querySelector("#vlasnistvo").value);
   podaciForme.append("opstina", document.querySelector("#opstina").value);
   podaciForme.append("napon", document.querySelector("#napon").value);
-  podaciForme.append("", document.querySelector("#").value);
 
   let xhr = new XMLHttpRequest();
   xhr.open("POST", sacuvajZapisUrl, true);
   xhr.timeout = 100000;
   xhr.ontimeout = function () {
-    poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
+    poruka(StatusPoruke.Greska, UnosPoruke.PrekidTrajePredugo);
   };
   xhr.send(podaciForme);
   openModalSpinner();
@@ -233,7 +228,7 @@ function unosNkro() {
         }
         closeModalSpinner();
       } else {
-        poruka("Greska", xhr.statusText);
+        poruka(StatusPoruke.Greska, xhr.statusText);
         closeModalSpinner();
       }
     }
@@ -257,7 +252,7 @@ function unosPrikljucnoMjesto() {
   xhr.open("POST", sacuvajZapisUrl, true);
   xhr.timeout = 100000;
   xhr.ontimeout = function () {
-    poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
+    poruka(StatusPoruke.Greska, UnosPoruke.PrekidTrajePredugo);
   };
   xhr.send(podaciForme);
   openModalSpinner();
@@ -272,7 +267,7 @@ function unosPrikljucnoMjesto() {
         }
         closeModalSpinner();
       } else {
-        poruka("Greska", xhr.statusText);
+        poruka(StatusPoruke.Greska, xhr.statusText);
         closeModalSpinner();
       }
     }
@@ -465,7 +460,7 @@ function testunosPrikljucnoMjesto() {
   xhr.setRequestHeader("Accept", "application/json");
   xhr.setRequestHeader("Content-Type", "multipart/form-data");
   xhr.ontimeout = function () {
-    poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
+    poruka(StatusPoruke.Greska, StatusPoruke.PrekidTrajePredugo);
   };
   xhr.send(podaciForme);
   openModalSpinner();
@@ -481,7 +476,7 @@ function testunosPrikljucnoMjesto() {
         }
         closeModalSpinner();
       } else {
-        poruka("Greska", xhr.statusText);
+        poruka(StatusPoruke.Greska, xhr.statusText);
         closeModalSpinner();
       }
     }

@@ -336,9 +336,9 @@ function trafostaniceIzBilingaZaUparivanje(
         blnSelekcijaNapojneTS = true;
         document.querySelector("#wizardHeader").innerText = drugiKorakWizarda;
         document.querySelector("#divWizardOdabirNapojneTrafostanice").style.display = "block";
-        poruka("Greska", x.responseJSON["error"] + "\n Odaberite napojnu trafostanicu i izvod!");
+        poruka(StatusPoruke.Greska, x.responseJSON["error"] + GlobalPoruke.GreskaOdabirTsIzvod);
       } else {
-        poruka("Greska", x.responseJSON["error"]);
+        poruka(StatusPoruke.Greska, x.responseJSON["error"]);
       }
 
       //TODO: onemogućiti dalji nastavak rada na mapi - pošto se radi o nepoklapanju broja trafostanica ili nekoj sličnoj grešci
@@ -376,7 +376,7 @@ function nnGeometrijaTrafostanica(sifraOdabraneNapojneTS, nazivOdabranaNapojneTS
       provjeriVodIzTrafostanice();
     },
     error: function (x, y, z) {
-      poruka("Greska", x.responseJSON["error"]);
+      poruka(StatusPoruke.Greska, x.responseJSON["error"]);
     },
   });
 }
@@ -524,7 +524,7 @@ function vodoviIzBilingaZaUparivanje(nizVodova) {
       if (x.responseJSON["error"] === "Selektovane trafostanice nisu uparene") {
         document.querySelector("#btnOdabirNapojneTS").style.display = "inline-block";
       }
-      poruka("Greska", x.responseJSON["error"]);
+      poruka(StatusPoruke.Greska, x.responseJSON["error"]);
       //TODO: onemogućiti dalji nastavak rada na mapi - pošto se radi o nepoklapanju broja trafostanica ili nekoj sličnoj grešci
     },
   });
@@ -553,7 +553,7 @@ function podaciZaSpisakPotrosaca(nizPretplatnihBrojeva) {
     },
     error: function (x, y, z) {
       console.log("Greska", x.responseJSON["error"]);
-      poruka("Greska", x.responseJSON["error"]);
+      poruka(StatusPoruke.Greska, x.responseJSON["error"]);
     },
   });
 }
@@ -704,7 +704,7 @@ async function availableLayersPerPowerLevel(powerLevel) {
     },
     error: function (x, y, z) {
       console.log("Greska", x.responseJSON["error"]);
-      poruka("Greska", x.responseJSON["error"]);
+      poruka(StatusPoruke.Greska, x.responseJSON["error"]);
     },
   });
 }
@@ -733,7 +733,7 @@ function sifreDionicaVodova(nazivTs, sifraTs, izvodTs) {
     },
     error: function (x, y, z) {
       console.log("Greska", x.responseJSON["error"]);
-      poruka("Greska", x.responseJSON["error"]);
+      poruka(StatusPoruke.Greska, x.responseJSON["error"]);
     },
   });
 }
@@ -784,7 +784,7 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
       poruka("Uspjeh", data);
     },
     error: function (x, y, z) {
-      poruka("Greška", JSON.parse(x.responseText).response);
+      poruka(StatusPoruke.Greska, JSON.parse(x.responseText).response);
     },
   });
 }

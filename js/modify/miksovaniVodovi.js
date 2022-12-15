@@ -30,10 +30,7 @@ function dodajWmsObjekte() {
       let naziviVisestrukihStubova = provjeraVisestruktihStubova(stuboviZaDodavanje);
       if (naziviVisestrukihStubova) {
         console.log("Višestruki", naziviVisestrukihStubova);
-        let tekstPoruke = "Postoje višestruki stubovi u istoj tački, od kojih je pokušano kreiranje voda.\n";
-        tekstPoruke += "Te stubove treba ukloniti, prije iscrtavanja voda. Parovi stubova u istoj tački:\n";
-        tekstPoruke += naziviVisestrukihStubova;
-        poruka("Greška", tekstPoruke);
+        poruka(StatusPoruke.Greska, UnosPoruke.VodVisestrukiStubovi + naziviVisestrukihStubova);
       } else {
         let nizStubovaLinije = [];
         stuboviZaDodavanje.forEach((item) => {
@@ -45,7 +42,7 @@ function dodajWmsObjekte() {
     },
     fail: function (jqXHR, textStatus) {
       console.log("Request failed: " + textStatus);
-      poruka("Greška", "Problem pri čitanju stubova obuhvaćenih iscrtanim poligonima");
+      poruka(StatusPoruke.Greska, UnosPoruke.ProblemCitanjeStubova);
     },
   });
 }

@@ -88,7 +88,7 @@ async function finalnaPotvrdaUnosa() {
   Promise.all(promiseArray).then(function () {
     console.log("Kompletiran unos podataka", finalImportMessage);
     if (finalImportMessage) {
-      poruka("Greska", finalImportMessage);
+      poruka(StatusPoruke.Greska, finalImportMessage);
       resetovanjeNizovaNakonGreske();
     } else {
       poruka("Uspjeh", "Uspješno izvršena akcija");

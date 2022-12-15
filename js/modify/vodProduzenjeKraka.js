@@ -210,7 +210,7 @@ let pomjerajZaPoruku = 0;
  */
 function radijusZaPomjeranjeKrajevaVoda(naponskiNivo) {
   if (!naponskiNivo) {
-    poruka("Greška", "Za odabrani objekat nije popunjen atribut napon, pa nije moguće odrediti dozvoljeni pomjeraj.");
+    poruka(StatusPoruke.Greska, UnosPoruke.PomjerajNemaNapon);
   }
   let urlServisa =
     wsServerOriginLocation + "/novi_portal/api/get_radius?tip_fajla=gpx&napon=" + naponskiNivo.replace(",", ".");

@@ -19,6 +19,8 @@ function vrijednostMultiselecta(idPolja) {
   return nizSelektovanihVrijednostiMultiselecta(idPolja).join(",");
 }
 
+//TODO: Prethodni kod može biti uklonjen
+
 popuniMultiDdl("#pretraga_layer_name");
 
 function popuniMultiDdl(idDdl) {
@@ -59,13 +61,11 @@ function popuniMultiDdl(idDdl) {
           multikontrola.enable();
         }
       } else {
-        poruka("Greska", xhr.statusText);
+        poruka(StatusPoruke.Greska, xhr.statusText);
       }
     }
   };
 }
-
-//let vrijednost = vrijednostMultiselecta("multiKorisnik").replace(/,/g, "','");
 
 /**Multiselect **/
 

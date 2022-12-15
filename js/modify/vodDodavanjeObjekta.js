@@ -221,7 +221,7 @@ function azuriranjeWebService(vodId, prvaTacka, drugaTacka, nizObjekataZaDodavan
     success: function (data) {
       console.log("success ažuriranje", data);
       if (data.includes("reška")) {
-        poruka("Greška", data);
+        poruka(StatusPoruke.Greska, data);
       } else {
         poruka("Uspjeh", data);
       }
@@ -232,7 +232,7 @@ function azuriranjeWebService(vodId, prvaTacka, drugaTacka, nizObjekataZaDodavan
     },
     error: function (x, y, z) {
       console.log("Greška", x.responseText);
-      poruka("Greška", "Nije izvršen unos podataka.");
+      poruka(StatusPoruke.Greska, UnosPoruke.NijeIzvrsenUnos);
     },
   });
 }

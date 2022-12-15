@@ -61,7 +61,6 @@ function cudTrafostanica(feature, akcija, wizard) {
     contentType: false,
     success: function (response) {
       console.log("success", response);
-      //poruka("Uspjeh", response.message);
     },
     error: function (response) {
       console.log("error", response);
@@ -123,7 +122,6 @@ function cudVod(feature, akcija, wizard) {
     contentType: false,
     success: function (response) {
       console.log("success", response);
-      //poruka("Uspjeh", response.message);
     },
     error: function (response) {
       console.log("error", response);
@@ -201,7 +199,6 @@ function cudStub(feature, akcija, wizard) {
     contentType: false,
     success: function (response) {
       console.log("success", response);
-      //poruka("Uspjeh", response.message);
     },
     error: function (response) {
       console.log("error", response);
@@ -254,7 +251,6 @@ function cudPotrosac(feature, akcija, wizard) {
     contentType: false,
     success: function (response) {
       console.log("success", response);
-      //poruka("Uspjeh", response.message);
     },
     error: function (response) {
       console.log("error", response);
@@ -307,7 +303,6 @@ function cudNKRO(feature, akcija, wizard) {
     contentType: false,
     success: function (response) {
       console.log("success", response);
-      //poruka("Uspjeh", response.message);
     },
     error: function (response) {
       console.log("error", response);
@@ -356,7 +351,6 @@ function cudPrikljucnoMjesto(feature, akcija, wizard) {
     contentType: false,
     success: function (response) {
       console.log("success", response);
-      //poruka("Uspjeh", response.message);
     },
     error: function (response) {
       console.log("error", response);
@@ -411,7 +405,6 @@ function cudPOD(feature, akcija, wizard) {
     contentType: false,
     success: function (response) {
       console.log("success", response);
-      //poruka("Uspjeh", response.message);
     },
     error: function (response) {
       console.log("error", response);

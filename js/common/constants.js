@@ -64,6 +64,12 @@ const UnosPoruke = {
   OznacenZaBrisanje: "Objekat označen za brisanje.",
   SelektovatiObjekatZaBrisanje: "Potrebno je selektovati objekat koji želite da označite za brisanje.",
   DaLiObjekatBrisanje: "Da li ste sigurni da odabrani objekat želite da označite za brisanje?",
+  PrekidTrajePredugo: "Akcija je prekinuta jer je trajala predugo.",
+  VodVisestrukiStubovi:
+    "Postoje višestruki stubovi u istoj tački, od kojih je pokušano kreiranje voda.\nTe stubove treba ukloniti, prije iscrtavanja voda. Parovi stubova u istoj tački:\n",
+  ProblemCitanjeStubova: "Problem pri čitanju stubova obuhvaćenih iscrtanim poligonima",
+  NijeIzvrsenUnos: "Nije izvršen unos podataka.",
+  PomjerajNemaNapon: "Za odabrani objekat nije popunjen atribut napon, pa nije moguće odrediti dozvoljeni pomjeraj.",
 };
 
 const GlobalPoruke = {
@@ -73,4 +79,5 @@ const GlobalPoruke = {
   TackaZaPretragu: "Potrebno je nacrtati bar jednu tačku za pretragu objekata po udaljenosti.",
   LinijaZaPretragu: "Potrebno je nacrtati bar jednu liniju za pretragu objekata koje linija presijeca.",
   PoligonZaPretragu: "Potrebno je nacrtati bar jedan poligon za pretragu objekata koje poligon presijeca ili obuhvata.",
+  GreskaOdabirTsIzvod: "\n Odaberite napojnu trafostanicu i izvod!",
 };

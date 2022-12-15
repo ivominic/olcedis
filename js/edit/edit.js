@@ -448,38 +448,6 @@ function ponisti() {
   restartovanje();
 }
 
-/** Brisanje json objekta. Mislim da se ne koristi i da se može ukloniti. */
-/*function brisanje() {
-  let podaciForme = new FormData();
-  podaciForme.append("id", idObjekta);
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", izbrisiZapisUrl, true);
-  xhr.timeout = 100000;
-  xhr.ontimeout = function () {
-    poruka("Greska", "Akcija je prekinuta jer je trajala predugo.");
-  };
-  xhr.send(podaciForme);
-  openModalSpinner();
-
-  xhr.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      if (this.status === 200) {
-        let jsonResponse = JSON.parse(xhr.responseText);
-        if (jsonResponse["success"] === true) {
-          poruka("Uspjeh", jsonResponse["message"]);
-          restartovanje();
-        } else {
-          poruka("Upozorenje", jsonResponse["message"]);
-        }
-        closeModalSpinner();
-      } else {
-        poruka("Greska", xhr.statusText);
-        closeModalSpinner();
-      }
-    }
-  };
-}*/
-
 /* Filter wms-a po prostornim i atributskim podacima*/
 function filtriranje() {
   let rasterLayer = podesiLejerZaPretragu();
