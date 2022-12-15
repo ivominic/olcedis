@@ -92,9 +92,9 @@ function selekcijaPocetnogStuba() {
   akcija = "pocetniStub";
   setujAktivnu("#selekcijaPocetnogStuba");
   if (blnZavrsniStub) {
-    poruka("Upozorenje", "Potrebno je odabrati završni stub.");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabratiZavrsniStub);
   } else {
-    poruka("Uspjeh", "Odaberite početni stub voda koji želite da uvezete.");
+    poruka(StatusPoruke.Uspjeh, UnosPoruke.OdabirPocetnogStubaUvoz);
     blnPocetniStub = true;
   }
 }
@@ -104,9 +104,9 @@ function selekcijaZavrsnogStuba() {
   akcija = "zavrsniStub";
   setujAktivnu("#selekcijaZavrsnogStuba");
   if (blnPocetniStub) {
-    poruka("Upozorenje", "Potrebno je odabrati početni stub.");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabratiPocetniStub);
   } else {
-    poruka("Uspjeh", "Odaberite završni stub voda koji želite da uvezete.");
+    poruka(StatusPoruke.Uspjeh, UnosPoruke.OdabirZavrsnogStubaUvoz);
     blnZavrsniStub = true;
   }
 }

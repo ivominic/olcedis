@@ -263,8 +263,6 @@ select.on("select", function (e) {
         }
       } else {
         document.querySelector("#gps").value = "";
-        //select.getFeatures().clear();
-        //poruka("Upozorenje", "Potrebno je ponovo odabrati objekat sa mape.");
       }
     }
   }
@@ -330,7 +328,7 @@ modifyV.on("modifyend", function (e) {
       let pocetnaTacka = new ol.geom.Point(ol.proj.fromLonLat([pocetniElement.lng, pocetniElement.lat], "EPSG:4326"));
       e.features.getArray()[0].getGeometry().setCoordinates(pocetnaTacka.flatCoordinates);
       //e.features.getArray()[0].getGeometry().setCoordinates(original.coordinates);
-      poruka("Upozorenje", "Nije dozvoljeno pomjeranje kml tačke.");
+      poruka(StatusPoruke.Upozorenje, UnosPoruke.NedozvoljenoPomjeranjeKmlTacke);
       return false;
     }
 
@@ -338,10 +336,7 @@ modifyV.on("modifyend", function (e) {
 
     if (coordinates.length !== original.coordinates.length) {
       e.features.getArray()[0].getGeometry().setCoordinates(original.coordinates);
-      poruka(
-        "Upozorenje",
-        "Geometrija linije je izmijenjena na način da su joj dodate nove prelomne tačke, što nije dozvoljeno."
-      );
+      poruka(StatusPoruke.Upozorenje, UnosPoruke.NedozvoljenaIzmjenaGeometrijeLinije);
       return false;
     }
 
@@ -354,7 +349,7 @@ modifyV.on("modifyend", function (e) {
     }
     if (isLineModifiedInMiddle) {
       e.features.getArray()[0].getGeometry().setCoordinates(original.coordinates);
-      poruka("Upozorenje", "Nije dozvoljena izmjena geometrije linije, osim pomjeranjem krajnjih tačaka.");
+      poruka(StatusPoruke.Upozorenje, UnosPoruke.NedozvoljenaIzmjenaGeometrijeLinije);
       return false;
     }
 
@@ -387,7 +382,10 @@ modifyV.on("modifyend", function (e) {
 
     if (isViolatedAllowedDistance) {
       e.features.getArray()[0].getGeometry().setCoordinates(original.coordinates);
-      poruka("Upozorenje", "Tačka ne može biti pomjerena više od " + kmlRadius.toString() + "m od snimljene pozicije.");
+      poruka(
+        StatusPoruke.Upozorenje,
+        UnosPoruke.NedozvoljenPomjerajTacka1 + kmlRadius.toString() + StatusPoruke.NedozvoljenPomjerajTacka2
+      );
       return false;
     }
   }
@@ -804,17 +802,17 @@ function koordinateObjekataIzDdlova() {
  */
 function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
   if (nizTacakaLinije.length === 0) {
-    poruka("Upozorenje", "Potrebno je selektovati tačke za kreiranje voda.");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabirTacakaZaVod);
     return false;
   }
   let foundPocetna = nizTacakaLinije.some((r) => JSON.stringify(r) === JSON.stringify(pocetna));
   let foundKrajnja = nizTacakaLinije.some((r) => JSON.stringify(r) === JSON.stringify(krajnja));
   if (foundPocetna) {
-    poruka("Upozorenje", "Početna tačka ne može biti dio voda koji je potrebno kreirati.");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.PocetnaTackaDioVoda);
     return false;
   }
   if (foundKrajnja) {
-    poruka("Upozorenje", "Krajnja tačka ne može biti dio voda koji je potrebno kreirati.");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.KrajnjaTackaDioVoda);
     return false;
   }
 
@@ -824,15 +822,15 @@ function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
   if (startGpxValue || endGpxValue) {
     if (startGpxValue && endGpxValue) {
       if (startGpxValue === endGpxValue) {
-        poruka("Upozorenje", "Redni brojevi tačaka koje se povezuju na elemente mreže ne mogu biti isti.");
+        poruka(StatusPoruke.Upozorenje, UnosPoruke.NeMoguIstiRedniBrojeviTacaka);
         return false;
       }
       if (startGpxValue !== minGpsPointName && startGpxValue !== maxGpsPointName) {
-        poruka("Upozorenje", "Vrijednost treba da bude minimalna ili maksimalna vrijednost selektovanih tačaka.");
+        poruka(StatusPoruke.Upozorenje, UnosPoruke.TrebaMinIliMaxVrijednost);
         return false;
       }
       if (parseInt(endGpxValue) !== minGpsPointName && parseInt(endGpxValue) !== maxGpsPointName) {
-        poruka("Upozorenje", "Vrijednost treba da bude minimalna ili maksimalna vrijednost selektovanih tačaka.");
+        poruka(StatusPoruke.Upozorenje, UnosPoruke.TrebaMinIliMaxVrijednost);
         return false;
       }
       if (parseInt(startGpxValue) < parseInt(endGpxValue)) {
@@ -845,7 +843,7 @@ function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
     } else {
       if (startGpxValue) {
         if (parseInt(startGpxValue) !== minGpsPointName && parseInt(startGpxValue) !== maxGpsPointName) {
-          poruka("Upozorenje", "Vrijednost treba da bude minimalna ili maksimalna vrijednost selektovanih tačaka.");
+          poruka(StatusPoruke.Upozorenje, UnosPoruke.TrebaMinIliMaxVrijednost);
           return false;
         }
         if (parseInt(startGpxValue) === minGpsPointName) {
@@ -858,7 +856,7 @@ function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
       }
       if (endGpxValue) {
         if (parseInt(endGpxValue) !== minGpsPointName && parseInt(endGpxValue) !== maxGpsPointName) {
-          poruka("Upozorenje", "Vrijednost treba da bude minimalna ili maksimalna vrijednost selektovanih tačaka.");
+          poruka(StatusPoruke.Upozorenje, UnosPoruke.TrebaMinIliMaxVrijednost);
           return false;
         }
         if (parseInt(endGpxValue) === minGpsPointName) {
@@ -976,7 +974,7 @@ function klikNapojnaTrafostanicaMapa(browserEvent) {
         ) {
           pretragaTrafostanicaGpx(odgovor.features[0].properties.id_billing);
         } else {
-          poruka("Upozorenje", "Nije odabrana trafostanica koja ima šifru iz bilinga.");
+          poruka(StatusPoruke.Upozorenje, UnosPoruke.NijeOdabranaTsSaSifrom);
         }
         //Dodao jer se inicijalno prikazivalo dugme za prelazak na sljedeći objekat
         document.querySelector("#divPrethodniObjekat").style.display = "none";

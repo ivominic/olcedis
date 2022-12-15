@@ -41,7 +41,7 @@ async function insertObjekataIzGpx() {
 
   if (postojiNeobradjenaTacka) {
     console.log("Upozorenje", "Nisu obradjeni svi objekti iz fajla za uvoz.");
-    poruka("Upozorenje", "Nisu obradjeni svi objekti iz fajla za uvoz.");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.NisuObradjeniSviZaUvoz);
     unosUspjeh = false;
     return false;
   } else {
@@ -72,7 +72,7 @@ async function finalnaPotvrdaUnosa() {
       nizWmsZaIzmjenu.length
     )
   ) {
-    poruka("Upozorenje", "Ne postoje objekti koje je potrebno obraditi");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.NemaObjekataZaObradu);
     return false;
   }
   unosUspjeh = true;

@@ -355,11 +355,11 @@ function izbrisi() {
     if (result.isConfirmed) {
       //Brisati
       if (select.getFeatures().array_.length && select.getFeatures().array_[0].values_.lejer === "brisanje") {
-        poruka("Upozorenje", "Odabran je objekat iz lejera objekata selektovanih za brisanje.");
+        poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabranLejerBrisanje);
         return false;
       }
       if (select.getFeatures().array_.length && select.getFeatures().array_[0].values_.lejer === "azuriranje") {
-        poruka("Upozorenje", "Odabran je objekat iz lejera objekata selektovanih za ažuriranje.");
+        poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabranLejerAzuriranje);
         return false;
       }
       //console.log("WMS objekat za brisanje", selektovaniWmsObjekat);
@@ -576,7 +576,7 @@ function wfsFilter() {
 /**Vraća jedan objekat čiji se id predaje i čija geometrija će se mijenjati */
 function wfsZaEdit(id) {
   if (id === "") {
-    poruka("Upozorenje", "Nije odabran objekat čija geometrija se želi mijenjati.");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.NijeOdabranIzmjenaGeometrije);
     return false;
   }
   $.ajax({

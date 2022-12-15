@@ -175,7 +175,7 @@ function prikazPanelaAtributa(sloj) {
       //document.querySelector("#ddl_sloj_podataka").disabled = true;
       console.log("NAĐEN");
     } else {
-      poruka("Upozorenje", "Objekat ne pripada odabranom naponskom nivou");
+      poruka(StatusPoruke.Upozorenje, UnosPoruke.NePripadaNivou);
       console.log("NIJE PRONAĐEN LEJER");
     }
   }
@@ -294,7 +294,7 @@ function odabirNapojneTrafostaniceUnos() {
 function potvrdaNapojneTrafostaniceUnos() {
   let izvod = document.querySelector("#ddlIzvodNapojneTrafostanice").value;
   if (izvod === "") {
-    poruka("Upozorenje", "Potrebno je odabrati izvod trafostanice");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabratiIzvodTS);
     return false;
   }
   selektovaniWmsObjekat = null;

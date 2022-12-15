@@ -180,7 +180,7 @@ function pretragaTrafostanicaGpx(sifraTS) {
           );
         });
       } else {
-        poruka("Upozorenje", "Za odabranu trafostanicu nema podataka u tehničkoj bazi.");
+        poruka(StatusPoruke.Upozorenje, GlobalPoruke.NemaPodatakaZaTS);
       }
     },
     error: function (x, y, z) {
@@ -260,7 +260,7 @@ function trafostaniceIzBilingaZaUparivanje(
   let dodatniParametriWS = "";
   console.log("Poziva trafostanice za uparivanje ws", nizTS);
   if (nizTS.length === 0) {
-    poruka("Upozorenje", "Nije odabrana nijedna trafostanica");
+    poruka(StatusPoruke.Upozorenje, GlobalPoruke.NijeOdabranaTS);
     return false;
   }
   sifraOdabraneNapojneTS = document.querySelector("#uparivanjeTxtSifraTS").textContent;
@@ -484,7 +484,7 @@ function prikazFotografija(lejer, id) {
 function vodoviIzBilingaZaUparivanje(nizVodova) {
   let dodatniParametriWS = "";
   if (nizVodova.length === 0) {
-    poruka("Upozorenje", "Nije odabran nijedan vod");
+    poruka(StatusPoruke.Upozorenje, GlobalPoruke.NijeOdabranVod);
     return false;
   }
 
@@ -496,7 +496,7 @@ function vodoviIzBilingaZaUparivanje(nizVodova) {
     dodatniParametriWS += "&naziv_napojne=" + nazivOdabranaNapojneTS;
     dodatniParametriWS += "&izvod_napojne=" + izvodOdabraneNapojneTS;
   } else {
-    poruka("Upozorenje", "Nije odabrana napojna trafostanica");
+    poruka(StatusPoruke.Upozorenje, GlobalPoruke.NijeOdabranaNapojnaTS);
     return false;
   }
   let stringNiz = "[" + nizVodova.join(",") + "]";
@@ -537,7 +537,7 @@ function vodoviIzBilingaZaUparivanje(nizVodova) {
 function podaciZaSpisakPotrosaca(nizPretplatnihBrojeva) {
   //Niz id-jeva vodova
   if (nizPretplatnihBrojeva.length === 0) {
-    poruka("Upozorenje", "Nije zadat nijedan pretplatni broj.");
+    poruka(StatusPoruke.Upozorenje, GlobalPoruke.NijeZadatPretplatniBroj);
     return false;
   }
 
@@ -760,7 +760,7 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
       nkro.length
     )
   ) {
-    poruka("Upozorenje", "Nema izmijenjenih objekata.");
+    poruka(StatusPoruke.Upozorenje, GlobalPoruke.NemaIzmjena);
     return false;
   }
   let retval = true;
