@@ -1,5 +1,4 @@
 function dodajPoljaOdabranomGpxPM() {
-  //if (selectGpxFeature.get("lejer") === undefined || selectGpxFeature.get("lejer") === "prikljucno_mjesto") {
   selectGpxFeature.set("wizard", 0);
   selectGpxFeature.set("lejer", "prikljucno_mjesto");
   selectGpxFeature.set("gps", document.querySelector("#gps").value);
@@ -17,9 +16,6 @@ function dodajPoljaOdabranomGpxPM() {
   selectGpxFeature.set("korisnik", globalUsername);
   selectGpxFeature.set("vlasnik", "");
   poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
-  /*} else {
-    poruka("Upozorenje", "Odabrani objekat je već definisan kao drugi tip objekta");
-  }*/
 }
 
 function prikaziPoljaOdabranogGpxPM() {
@@ -87,13 +83,13 @@ function provjeraWfsPrikljucnaMjesta(feature, id) {
       console.log("RESPONSE CQL", response);
       let features = new ol.format.GeoJSON().readFeatures(response);
       if (features.length > 0) {
-        poruka("Upozorenje", "Na ovoj lokaciji već postoji priključno mjesto sa istom vrijednošću id polja");
+        poruka(StatusPoruke.Upozorenje, UnosPoruke.PostojiPM);
       } else {
         //TODO: provjeriti gpx tačke i izvršiti dupliranje. Vidjeti šta sa vrijednošću id polja
         if (provjeraGpxPrikljucnaMjesta(feature, id)) {
           vectorSource.addFeature(feature);
         } else {
-          poruka("Upozorenje", "Na ovoj lokaciji već postoji priključno mjesto sa istom vrijednošću id polja");
+          poruka(StatusPoruke.Upozorenje, UnosPoruke.PostojiPM);
         }
       }
     },

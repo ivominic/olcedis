@@ -83,7 +83,7 @@ function potvrdaPomjeranjaObjekta() {
   let blnDodaoObjekat = false;
   let postojeciObjekat = document.querySelector("#ddlObjekatZaPomjeranje").value;
   if (!selectGpxFeature || !postojeciObjekat) {
-    poruka("Upozorenje", "Nije odabrana tačka i objekat za pomjeranje.");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabratiTackuZaPomjeranje);
   } else {
     let novaGeometrija = wktGeometrije(selectGpxFeature);
     console.log("gpx tačka", selectGpxFeature);

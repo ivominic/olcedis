@@ -64,7 +64,7 @@ function vodoviUpoligonu(napon) {
         blnNePostoji && selektovaniVodoviFeatures.push(el);
       });
       if (selektovaniVodoviFeatures.length === 0) {
-        poruka("Upozorenje", "Nema vodova u odabranom zahvatu.");
+        poruka(StatusPoruke.Upozorenje, WizardPoruke.NemaVod);
         return false;
       } else {
         if (selektovaneTrafostaniceFeatures.length > 0) {
@@ -192,8 +192,8 @@ function povezivanjeVodova(pocetna, features) {
       if (nizTrenutnihVodova.length == 0) {
         if (nizSvihGeometrija.length > 0) {
           blnOnemogucitiWizard = true;
-          poruka("Upozorenje", "Postoje nepovezani vodovi");
-          alert("Postoje nepovezani vodovi");
+          poruka(StatusPoruke.Upozorenje, WizardPoruke.PostojeneNepovezaniVodovi);
+          alert(WizardPoruke.PostojeneNepovezaniVodovi); //TODO: ukloniti kad se riješi da prethodna poruka stoji dok se ne klikne
 
           prekidWizarda();
         }
@@ -240,7 +240,7 @@ function poveziVodove() {
   let odabraniVod = document.querySelector("#ddlPovezivanjeVodovaSelektovane").value;
   let vodIzSistema = document.querySelector("#ddlPovezivanjeVodovaPronadjene").value;
   if (!odabraniVod || !vodIzSistema) {
-    poruka("Upozorenje", "Potrebno je odabrati vodove iz oba sistema");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.OdabratiVodObaSistema);
     return false;
   }
   for (let i = 0; i < document.querySelector("#ddlPovezivanjeVodovaSelektovane").length; i++) {

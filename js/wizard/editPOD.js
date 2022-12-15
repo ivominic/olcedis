@@ -74,8 +74,8 @@ function podUpoligonu(napon) {
         blnNePostoji && selektovaniPODoviFeatures.push(el);
       });
       if (selektovaniPODoviFeatures.length === 0) {
-        poruka("Upozorenje", "Nema PODova u odabranom zahvatu.");
-        return false;
+        poruka(StatusPoruke.Upozorenje, WizardPoruke.NemaPod);
+        return false; //TODO: Ukloniti, bespotrebno
       }
     },
     fail: function (jqXHR, textStatus) {

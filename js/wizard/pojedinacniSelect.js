@@ -77,12 +77,12 @@ function potvrdaObjektaZaDodavanjeWizard() {
   });
   if (blnNadjen) {
     if (blnNePostoji) {
-      poruka("Uspjeh", "Uspješno dodat objekat");
+      poruka(StatusPoruke.Uspjeh, WizardPoruke.DodatObjekat);
     } else {
-      poruka("Upozorenje", "Pokušali ste da dodate objekat koji je već selektovan");
+      poruka(StatusPoruke.Upozorenje, WizardPoruke.VecDodatObjekat);
     }
   } else {
-    poruka("Upozorenje", "Nije dodat objekat");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.NijeDodatObjekat);
   }
 }
 

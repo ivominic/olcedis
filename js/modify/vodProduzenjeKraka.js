@@ -88,7 +88,7 @@ function vodEditGeometrije(browserEvent) {
     }
     if (isLineModifiedInMiddle) {
       e.features.getArray()[0].getGeometry().setCoordinates(originalnaGeometrijaWmsVoda.coordinates);
-      poruka("Upozorenje", "Nije dozvoljena izmjena geometrije linije, osim pomjeranjem krajnjih tačaka.");
+      poruka(StatusPoruke.Upozorenje, UnosPoruke.NedozvoljenaIzmjenaGeometrijeLinije);
       return false;
     }
 

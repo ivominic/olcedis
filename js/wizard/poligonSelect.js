@@ -3,7 +3,7 @@
 
 function izPoligona() {
   if (poligoni.length === 0) {
-    poruka("Upozorenje", "Potrebno je nacrtati poligon");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.NacrtatiPoligon);
     return false;
   }
   //trafostaniceUpoligonu();
@@ -15,7 +15,7 @@ function izPoligona() {
  */
 function gpxUPoligonu() {
   if (poligoni.length === 0) {
-    poruka("Upozorenje", "Potrebno je nacrtati poligon");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.NacrtatiPoligon);
     return false;
   }
 

@@ -68,15 +68,15 @@ function popuniKontrole(odgovor) {
 /** Unos izmijenjenih vrijednosti atributa, nove fotografije ili unos svih podataka za novu geometriju */
 function sacuvaj() {
   if (akcija === "dodaj" && geometrijaZaBazuWkt === "") {
-    poruka("Upozorenje", "Potrebno je nacrtati objekat.");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.NacrtatiObjekat);
     return false;
   }
   if (akcija === "izmijeni" && (geometrijaZaBazuWkt === "" || idObjekta === 0)) {
-    poruka("Upozorenje", "Potrebno je izmijeniti geometriju odabranog objekta.");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.IzmijenitiGeometriju);
     return false;
   }
   if (akcija === "atributi" && idObjekta === 0) {
-    poruka("Upozorenje", "Potrebno je odabrati objekat čije atribute mijenjate.");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.OdabratiObjekatIzmjenaAtributa);
     return false;
   }
 
@@ -128,10 +128,10 @@ function sacuvaj() {
       if (this.status === 200) {
         let jsonResponse = JSON.parse(xhr.responseText);
         if (jsonResponse["success"] === true) {
-          poruka("Uspjeh", jsonResponse["message"]);
+          poruka(StatusPoruke.Uspjeh, jsonResponse["message"]);
           restartovanje();
         } else {
-          poruka("Upozorenje", jsonResponse["message"]);
+          poruka(StatusPoruke.Upozorenje, jsonResponse["message"]);
         }
         closeModalSpinner();
       } else {
@@ -643,7 +643,7 @@ function kreiranjeCqlFilteraAtributi() {
 /**Vraća jedan objekat čiji se id predaje i čija geometrija će se mijenjati */
 function wfsZaEdit(id) {
   if (id === "") {
-    poruka("Upozorenje", "Nije odabran objekat čija geometrija se želi mijenjati.");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.OdabratiObjekatIzmjenaGeometrije);
     return false;
   }
   $.ajax({

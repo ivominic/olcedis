@@ -84,8 +84,8 @@ function trafostaniceUpoligonu(napon) {
         blnNePostoji && selektovaneTrafostaniceFeatures.push(el);
       });
       if (selektovaneTrafostaniceFeatures.length === 0) {
-        poruka("Upozorenje", "Nema trafostanica u odabranom zahvatu.");
-        return false;
+        poruka(StatusPoruke.Upozorenje, WizardPoruke.NemaTS);
+        return false; //TODO: Ukloniti
       } else {
         if (selektovaniVodoviFeatures.length > 0) {
           provjeriTrafostanice();
@@ -155,14 +155,14 @@ function poveziTS() {
     !document.querySelector("#uparivanjeTxtNazivIzvodaTS").value ||
     !document.querySelector("#ddlPovezivanjeTSselektovane").value
   ) {
-    poruka("Upozorenje", "Potrebno je odabrati napojnu trafostanicu i izvod");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.OdabratiNapojnuTSIzvod);
     return false;
   }
   izvodNapojneTrafostanice = document.querySelector("#uparivanjeTxtNazivIzvodaTS").value;
   let odabranaTS = document.querySelector("#ddlPovezivanjeTSselektovane").value;
   let tsIzSistema = document.querySelector("#ddlPovezivanjeTSpronadjene").value;
   if (!odabranaTS || !tsIzSistema) {
-    alert("Potrebno je odabrati trafostanice iz oba sistema");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.OdabratiTSObaSistema);
     return false;
   }
   for (let i = 0; i < document.querySelector("#ddlPovezivanjeTSselektovane").length; i++) {
@@ -213,6 +213,6 @@ function zumTsIzListe(value) {
       }
     }
   } else {
-    poruka("Upozorenje", "Potrebno je odabrati trafostanicu za uparivanje");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.OdabratiTSUparivanje);
   }
 }

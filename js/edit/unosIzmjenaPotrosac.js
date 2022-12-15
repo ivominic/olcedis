@@ -5,16 +5,13 @@ function dodajPoljaOdabranomGpxPotrosac() {
   //TODO: brišemo tačku u kojoj je unijeta vrijednost svih pretplatnih brojeva
   let pretplatniBrojevi = document.querySelector("#pretplatni_br").value.replace(/ /g, "");
   if (pretplatniBrojevi == "") {
-    poruka("Upozorenje", "Potrebno je unijeti pretplatne brojeve potrošača, odvojene zarezima.");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.UnijetiBrojevePotrosaca);
     return false;
   }
   if (selectGpxFeature.get("lejer") === undefined || selectGpxFeature.get("lejer") === "potrosac") {
     podaciZaSpisakPotrosaca(pretplatniBrojevi);
   } else {
-    poruka(
-      "Upozorenje",
-      `Pokušavate da kreirate potrošače za selektovani objekat iz lejera ${selectGpxFeature.get("lejer")}.`
-    );
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.PokusajKreiranjaPotrosaca + selectGpxFeature.get("lejer"));
   }
 }
 
@@ -30,7 +27,7 @@ function dupliraj() {
 
 function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
   if (select.getFeatures().array_[0] === undefined) {
-    poruka("Upozorenje", "Potrebno je selektovati objekat iz gpx fajla.");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabratiGpxTacku);
     return false;
   }
   let ispravno = true,
@@ -211,12 +208,13 @@ function parsiranjeProvjeraPotrosaca(nizObjekataPotrosaca) {
 
 function izbrisiFeatureIzVektora(elBrisanje) {
   if (elBrisanje === undefined) {
-    poruka("Upozorenje", "Potrebno je selektovati objekat za uklanjanje.");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.SelektovatiObjekatZaBrisanje);
     return false;
   }
   let nizZaBrisanje = vectorSource.getFeatures();
   //console.log("selektovani objekat", select.getFeatures().array_[0]);
   vectorSource.getFeatures().forEach(function (el, index, nizZaBrisanje) {
+    //TODO: Uslov zamijeniti sa !!elBrisanje && el.ol_uid...
     if (elBrisanje !== undefined && elBrisanje !== null && el.ol_uid == elBrisanje.ol_uid) {
       nizZaBrisanje.splice(index, 1);
       select.getFeatures().array_.splice(0, 1);

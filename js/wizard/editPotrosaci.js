@@ -25,7 +25,7 @@ map.addLayer(wmsPotrosaci);
  */
 function provjeriPotrosace() {
   if (selektovaniPotrosaciFeatures.length === 0) {
-    poruka("Upozorenje", "Ne postoji nijedan potrošač u odabranom zahvatu.");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.NemaPotrosacaUZahvatu);
     return false;
   }
   let razliciteSifre = [],
@@ -110,8 +110,7 @@ function potrosaciUpoligonu(napon) {
         blnNePostoji && selektovaniPotrosaciFeatures.push(el);
       });
       if (selektovaniPotrosaciFeatures.length === 0) {
-        //poruka("Upozorenje", "Nema potrošača u odabranom zahvatu.");
-        return false;
+        return false; //TODO: Ukloniti, nepotrebno
       } else {
         if (selektovaniPotrosaciFeatures.length > 0) {
           provjeriPotrosace();
@@ -180,15 +179,10 @@ function povezivanjePotrosacaVodova(potrosaci, vodovi) {
   nizTrenutnihVodova = nizPodredjenihVodova.slice();
   nizPodredjenihVodova.length = 0;
   if (blnPostojeNepovezaniZapisi && nizTrenutnihVodova.length === 0) {
-    poruka("Upozorenje", "Nijedan vod nije povezan sa selektovanim potrošačima");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.NepovezaniVodPotrosac);
     prekidWizarda();
     return false;
   }
-
-  nizSvihGeometrija.forEach((elem) => console.log("elementi početnog niza potrošači", elem.values_.name));
-  nizSvihGeometrija.forEach((elem) =>
-    console.log("geometrije početnog niza vodova potrošači", elem.values_.geometry.flatCoordinates)
-  );
 
   while (blnPostojeNepovezaniZapisi) {
     if (nizTrenutnihVodova.length > 0) {
@@ -249,7 +243,7 @@ function povezivanjePotrosacaVodova(potrosaci, vodovi) {
         console.log("neupareni", vektorNeupareniVodovi1);
         document.querySelector("#divWizardUparivanjeTrafostanica").style.display = "none";
         document.querySelector("#divWizardUparivanjeVodova").style.display = "block";
-        poruka("Upozorenje", "Postoje vodovi koji nisu povezani sa potrošačima.");
+        poruka(StatusPoruke.Upozorenje, WizardPoruke.PostojiNepovezanVodPotrosac);
         prekidWizarda();
       }
     }
@@ -320,7 +314,7 @@ function povezivanjeNiskonaponskihObjekata() {
     selektovaniPODoviFeatures.length === 0 ||
     selektovanaPrikljucnaMjestaFeatures.length === 0
   ) {
-    poruka("Upozorenje", "U zahvatu moraju postojati potrošači, PODovi i priključna mjesta.");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.NemaPodPotrosacPrikljucnoMjesto);
     return false;
   }
   let nizTrenutnihVodova = [],

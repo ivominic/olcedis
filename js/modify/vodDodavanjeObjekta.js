@@ -31,11 +31,11 @@ function potvrdaDodavanjaVodu() {
     });
   });
   if (!prviObjekat || !drugiObjekat) {
-    poruka("Upozorenje", "Nisu odabrane tačke između kojih se unosi novi objekat.");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.NisuOdabraneTackeIzmedju);
     return false;
   }
   if (!blnIstiVod) {
-    poruka("Upozorenje", "Nisu elementi istog voda");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.NijeIstiVod);
     return false;
   }
 
@@ -147,7 +147,7 @@ function klikNaRastereZaCvorVoda(browserEvent) {
                 });
 
                 if (blnNijeSelektovanVod) {
-                  poruka("Upozorenje", "Nije odabran objekat koji pripada nekom vodu");
+                  poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabratiSaVoda);
                   $(selektovaniDdlZaPovezivanjeVoda).empty();
                 }
                 map.un("singleclick", klikNaRastereZaCvorVoda);
@@ -200,7 +200,7 @@ function finalnaObradaGpxTacakaZaAzuriranjeVoda(vodId, prvaTacka, drugaTacka) {
   });
 
   if (postojiNeobradjenaTacka) {
-    poruka("Upozorenje", "Nisu obradjeni svi objekti iz fajla za uvoz.");
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.NisuObradjeniSviZaUvoz);
     return false;
   } else {
     azuriranjeWebService(vodId, prvaTacka, drugaTacka, nizObjekataZaDodavanjeVodu);

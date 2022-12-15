@@ -108,7 +108,7 @@ function povezivanjeNnVodovaTopDown(pocetna, features) {
           blnOnemogucitiWizard = true;
           prikazNepravilnihObjekataNaMapi(nizSvihGeometrija);
           brisanje();
-          poruka("Upozorenje", "Postoje nepovezani vodovi");
+          poruka(StatusPoruke.Upozorenje, WizardPoruke.PostojeneNepovezaniVodovi);
           prekidWizarda();
         }
         //TODO: Provjeriti ovaj prikaz divova, djeluje da ne treba tako da funkcioniše nakon što se utvrdi nepravilnost podataka.

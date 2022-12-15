@@ -85,7 +85,7 @@ function unosStubova() {
           poruka("Uspjeh", jsonResponse["message"]);
           //restartovanje();
         } else {
-          poruka("Upozorenje", jsonResponse["message"]);
+          poruka(StatusPoruke.Upozorenje, jsonResponse["message"]);
         }
         //closeModalSpinner();
       } else {
@@ -132,7 +132,7 @@ function unosVodova() {
         if (jsonResponse["success"] === true) {
           poruka("Uspjeh", jsonResponse["message"]);
         } else {
-          poruka("Upozorenje", jsonResponse["message"]);
+          poruka(StatusPoruke.Upozorenje, jsonResponse["message"]);
         }
         closeModalSpinner();
       } else {
@@ -181,7 +181,7 @@ function unosTrafostanica() {
         if (jsonResponse["success"] === true) {
           poruka("Uspjeh", jsonResponse["message"]);
         } else {
-          poruka("Upozorenje", jsonResponse["message"]);
+          poruka(StatusPoruke.Upozorenje, jsonResponse["message"]);
         }
         closeModalSpinner();
       } else {
@@ -224,7 +224,7 @@ function unosNkro() {
         if (jsonResponse["success"] === true) {
           poruka("Uspjeh", jsonResponse["message"]);
         } else {
-          poruka("Upozorenje", jsonResponse["message"]);
+          poruka(StatusPoruke.Upozorenje, jsonResponse["message"]);
         }
         closeModalSpinner();
       } else {
@@ -263,7 +263,7 @@ function unosPrikljucnoMjesto() {
         if (jsonResponse["success"] === true) {
           poruka("Uspjeh", jsonResponse["message"]);
         } else {
-          poruka("Upozorenje", jsonResponse["message"]);
+          poruka(StatusPoruke.Upozorenje, jsonResponse["message"]);
         }
         closeModalSpinner();
       } else {
@@ -472,7 +472,7 @@ function testunosPrikljucnoMjesto() {
         if (jsonResponse["success"] === true) {
           poruka("Uspjeh", jsonResponse["message"]);
         } else {
-          poruka("Upozorenje", jsonResponse["message"]);
+          poruka(StatusPoruke.Upozorenje, jsonResponse["message"]);
         }
         closeModalSpinner();
       } else {

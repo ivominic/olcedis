@@ -103,12 +103,7 @@ function dodajPoljaGpxStubovi() {
 }
 
 function dodajPoljaOdabranomGpxStubu() {
-  //console.log("dodajPoljaOdabranomGpxStubu", selectGpxFeature.values_.napon);
-  //console.log("feature polja", selectGpxFeature);
-  //alert(filePowerLevel);
-  //if (selectGpxFeature.get("lejer") === undefined || selectGpxFeature.get("lejer") === "stubovi") {
   if (filePowerLevel == NaponskiNivo.Numeric04kV) {
-    //if (selectGpxFeature.values_.napon === "0.4") {//Ovako je trebalo
     selectGpxFeature.set("tip", document.querySelector("#tip_stub").value);
     selectGpxFeature.set("rasvjeta", document.querySelector("#rasvjeta_stub").value);
     selectGpxFeature.set("vrsta_namjena", document.querySelector("#vrsta_namjena_stub_04").value);
@@ -192,9 +187,6 @@ function dodajPoljaOdabranomGpxStubu() {
   console.log("obrađeni fajl", selectGpxFeature);
 
   poruka("Uspjeh", "Ažurirani podaci za odabranu gpx tačku");
-  /*} else {
-    poruka("Upozorenje", "Odabrani objekat je već definisan kao drugi tip objekta");
-  }*/
 }
 
 function prikaziPoljaOdabranogGpxStuba() {

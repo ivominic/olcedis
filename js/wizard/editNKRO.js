@@ -47,7 +47,7 @@ function nkroUpoligonu(napon) {
     success: function (response) {
       selektovaniNKROFeatures = new ol.format.GeoJSON().readFeatures(response);
       if (selektovaniNKROFeatures.length === 0) {
-        poruka("Upozorenje", "Nema NKRO u odabranom zahvatu.");
+        poruka(StatusPoruke.Upozorenje, WizardPoruke.NemaNkro);
         return false;
       }
     },

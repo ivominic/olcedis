@@ -54,7 +54,7 @@ function prikljucnaMjestaUpoligonu(napon) {
         blnNePostoji && selektovanaPrikljucnaMjestaFeatures.push(el);
       });
       if (selektovanaPrikljucnaMjestaFeatures.length === 0) {
-        poruka("Upozorenje", "Nema priključnih mjesta u odabranom zahvatu.");
+        poruka(StatusPoruke.Upozorenje, WizardPoruke.NemaPM);
         return false;
       }
     },

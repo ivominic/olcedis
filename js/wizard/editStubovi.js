@@ -48,13 +48,9 @@ function stuboviUpoligonu(napon) {
     success: function (response) {
       selektovaniStuboviFeatures = new ol.format.GeoJSON().readFeatures(response);
       if (selektovaniStuboviFeatures.length === 0) {
-        poruka("Upozorenje", "Nema stubova u odabranom zahvatu.");
-        return false;
-      } /* else {
-        for (let i = 0; i < selektovaniStuboviFeatures.length; i++) {
-          cudStub(selektovaniStuboviFeatures[i], "akcija");
-        }
-      }*/
+        poruka(StatusPoruke.Upozorenje, WizardPoruke.NemaStub);
+        return false; //TODO: Nepotrebno
+      }
     },
     fail: function (jqXHR, textStatus) {
       console.log("Request failed: " + textStatus);

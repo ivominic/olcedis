@@ -1,5 +1,3 @@
-
-
 /** Prikazuje sliku za odabrani objekat u modalnom prozoru */
 function slika() {
   slikeIndex = 0;
@@ -32,8 +30,6 @@ function brisanje() {
   featurePolygonOverlay.getSource().clear();
   vectorSource && vectorSource.clear();
 }
-
-
 
 /** Akcija promjene ikonice u navbaru */
 function setujAktivnu(element) {
@@ -173,9 +169,9 @@ function selekcijaPocetnogStuba() {
   akcija = "pocetniStub";
   setujAktivnu("#selekcijaPocetnogStuba");
   if (blnZavrsniStub) {
-    poruka("Upozorenje", "Potrebno je odabrati završni stub.");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.OdabratiZavrsniStub);
   } else {
-    poruka("Uspjeh", "Odaberite početni stub voda koji želite da uvezete.");
+    poruka(StatusPoruke.Uspjeh, WizardPoruke.PocetniStubVodaUvoz);
     blnPocetniStub = true;
   }
 }
@@ -185,9 +181,9 @@ function selekcijaZavrsnogStuba() {
   akcija = "zavrsniStub";
   setujAktivnu("#selekcijaZavrsnogStuba");
   if (blnPocetniStub) {
-    poruka("Upozorenje", "Potrebno je odabrati početni stub.");
+    poruka(StatusPoruke.Upozorenje, WizardPoruke.OdabratiPocetniStub);
   } else {
-    poruka("Uspjeh", "Odaberite završni stub voda koji želite da uvezete.");
+    poruka(StatusPoruke.Uspjeh, WizardPoruke.ZavrsniStubVodaUvoz);
     blnZavrsniStub = true;
   }
 }
