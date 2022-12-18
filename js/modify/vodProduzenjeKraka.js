@@ -34,6 +34,7 @@ function vodEditGeometrije(browserEvent) {
             let odgovor = JSON.parse(json);
             if (odgovor.features.length > 0) {
               odabirSaMape = false;
+              showDiv("#potvrdaProduzenjaKrakaDiv");
               console.log("PRELAZAK NA FEATURE", odgovor.features[0]);
               map.un("singleclick", vodEditGeometrije); //Prebačeno sa dna ovdje, da se isključi nakon svakog klika
               //TODO: Ovaj un event prebaciti u global state aplikacije
@@ -138,7 +139,7 @@ function vodEditGeometrije(browserEvent) {
     }
 
     trenutnoModifikovaniVod = e.features.getArray()[0];
-    vodArrayValuesProperties(e.features.getArray()[0], "U");
+    //vodArrayValuesProperties(e.features.getArray()[0], "U");
   });
 }
 
@@ -192,7 +193,7 @@ function vodArrayValuesProperties(el, action) {
     geohash_id_no: el.values_.geohash_id_no,
     posjeduje_sliku: el.values_.posjeduje_sliku,
   };
-  vodoviArrayFinal.push(item);
+  //vodoviArrayFinal.push(item);
   return item;
 }
 
@@ -236,8 +237,34 @@ function radijusZaPomjeranjeKrajevaVoda(naponskiNivo) {
   });
 }
 
+/**
+ * Metoda koja na klik dugmeta za potvrdu produženja kraka voda provjerava da li je vod već modifikovan u toku sesije i ako jeste mijenja zapis o prethodnoj modifikaciji, inače dodaje novi.
+ * Takođe, dodaje geometriju modifikovanog voda u vektor za prikaz na mapi.
+ */
 function potvrdaProduzenjaKraka() {
-  console.log("POTVRDA");
+  if (trenutnoModifikovaniVod) {
+    let noviVod = vodArrayValuesProperties(trenutnoModifikovaniVod, "U");
+    let index = -1;
+    vodoviArrayFinal.forEach(function (item, i) {
+      if (item.fid_1 === noviVod.fid_1) index = i;
+    });
+    if (index >= 0) {
+      vodoviArrayFinal[index] = noviVod;
+    } else {
+      vodoviArrayFinal.push(noviVod);
+    }
+
+    let format = new ol.format.WKT();
+    let feature = format.readFeature(noviVod.Geometry, {});
+    feature.set("lejer", "azuriranje");
+    //TODO: Ukoliko se modifikuje geometrija istog voda, ukloniti i iz vekstorskog sloja za prikaz.
+    nizZaVektorAzuriranje.push(feature);
+    vektorObjektiZaAzuriranje.getSource().clear();
+    vektorObjektiZaAzuriranje.getSource().addFeatures(nizZaVektorAzuriranje);
+    poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
+  } else {
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.NijeProduzenKrakVoda);
+  }
 }
 
 document.querySelector("#btnPotvrdiProduzenjeKraka").addEventListener("click", potvrdaProduzenjaKraka);

@@ -132,6 +132,7 @@ const UnosPoruke = {
   UspjehAzurirani: "Ažurirani podaci za odabranu gpx tačku",
   IzmjenaNaValidaciju: "Objekat sa izmijenjenim atributima spreman za slanje na validaciju",
   PomjerenObjekat: "Uspješno povezana nova tačka i postojeći objekat",
+  NijeProduzenKrakVoda: "Nije produžen krak voda.",
 };
 
 const GlobalPoruke = {
