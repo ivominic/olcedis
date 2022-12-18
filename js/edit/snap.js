@@ -45,7 +45,7 @@ function snapPrikljucnoMjesto() {
   citajExtent("prikljucno_mjesto", 0);
 }
 function snapPotrosac() {
-  citajExtent("potrosac", 0);
+  citajExtent("view_potrosaci", 0);
 }
 function snapPOD() {
   citajExtent("pod", 0);
