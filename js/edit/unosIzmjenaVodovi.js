@@ -135,7 +135,8 @@ function prikaziPoljaWmsVoda(objekat) {
     document.querySelector("#presjek_vod_10").value = objekat.properties.presjek;
     document.querySelector("#vrsta_materijal_vod_10").value = objekat.properties.materijal;
     document.querySelector("#uze_vod_10").value = objekat.properties.uze;
-    document.querySelector("#sifra_dionice").value = objekat.properties.sifra_dionice;
+    //document.querySelector("#sifra_dionice").value = objekat.properties.sifra_dionice;
+    setovanjeSifreDioniceIzAtributa(objekat.properties.sifra_dionice);
   }
   if (objekat.properties.napon === NaponskiNivo.String35kV) {
     document.querySelector("#vrsta_vod_35").value = objekat.properties.vrsta;
@@ -144,7 +145,8 @@ function prikaziPoljaWmsVoda(objekat) {
     document.querySelector("#vrsta_materijal_vod_35").value = objekat.properties.materijal;
     document.querySelector("#uze_presjek_vod_35").value = objekat.properties.uze_presjek;
     document.querySelector("#uze_vod_35").value = objekat.properties.uze;
-    document.querySelector("#sifra_dionice").value = objekat.properties.sifra_dionice;
+    //document.querySelector("#sifra_dionice").value = objekat.properties.sifra_dionice;
+    setovanjeSifreDioniceIzAtributa(objekat.properties.sifra_dionice);
   }
 
   setujDdlVrijednost("#vlasnistvo", objekat.properties.vlasnistvo);

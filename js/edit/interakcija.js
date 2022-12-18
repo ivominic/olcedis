@@ -12,10 +12,14 @@ function dodaj() {
   setujAktivnu("#dodaj");
   document.querySelector("#ddl_sloj_podataka").classList.remove("disabledInput");
   document.querySelector("#ddl_sloj_podataka").disabled = false;
+
+  ponovnoPunjenjeSifreDionice();
   ddlLejerChange();
+
   if (!sifraNapojneTrafostanice) {
     closeDiv("#atributiDiv");
     closeDiv("#pretragaDiv");
+    closeDiv("#potvrdaProduzenjaKrakaDiv");
     disableMenija();
     showDiv("#odabirNapojneTrafostaniceDiv");
   }

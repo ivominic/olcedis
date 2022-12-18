@@ -727,9 +727,12 @@ function sifreDionicaVodova(nazivTs, sifraTs, izvodTs) {
     type: "GET",
     success: function (data) {
       console.log("DATA sifreDionicaVodova", data);
+      let array = [];
       data.dionice.forEach((item) => {
         fillDdl("sifra_dionice", item.sifra_dionice, item.sifra_dionice);
+        array.push(item.sifra_dionice);
       });
+      localStorage.setItem("sifraDionice", array);
     },
     error: function (x, y, z) {
       console.log("Greska", x.responseJSON["error"]);
