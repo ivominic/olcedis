@@ -425,6 +425,7 @@
               <option value="prikljucno_mjesto">Priključno mjesto</option>
               <option value="potrosac">Potrošač</option>
               <option value="pod">Pod</option>
+              <option value="nelegalni_potrosac" disabled>Nelegalni potrošač</option>
             </select>
           </div>
           <div class="flex-row-desno pb-8" id="divUnosNazivNapojne">
@@ -943,11 +944,7 @@
 
           <div class="flex-row-desno pb-8" id="divUnosDdlTrafostanice">
             <label for="ddlTrafostanice">Trafostanica iz TBP:</label>
-            <select id="ddlTrafostanice" class="select-css">
-              <!--<option value="HTREBJ">Trebjesa</option>
-              <option value="150273">Straševina geosonda</option>
-              <option value="150434">Žitan petrol - Brlja</option>-->
-            </select>
+            <select id="ddlTrafostanice" class="select-css"></select>
           </div>
           <div class="flex-row-desno pb-8" id="divReadFid1">
             <label for="read_fid_1">Fid_1:</label>
@@ -1104,6 +1101,95 @@
           <div class="flex-row-desno pb-8" id="divReadTabela">
             <label for="read_tabela">Tabela:</label>
             <input type="text" id="read_tabela" readonly class="disabledInput" />
+          </div>
+
+          <div class="flex-row-desno pb-8" id="divReadNpAdresa">
+            <label for="np_adresa">Adresa:</label>
+            <input type="text" id="np_adresa" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpBrojBrojila">
+            <label for="np_broj_brojila">Broj brojila:</label>
+            <input type="text" id="np_broj_brojila" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpBrojPlombe">
+            <label for="np_broj_plombe">Broj plombe:</label>
+            <input type="text" id="np_broj_plombe" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpBrojTelefona">
+            <label for="np_broj_telefona">Broj telefona:</label>
+            <input type="text" id="np_broj_telefona" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpBrojZapisnika">
+            <label for="np_broj_zapisnika">Broj zapisnika:</label>
+            <input type="text" id="np_broj_zapisnika" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpDatumKontrole">
+            <label for="np_datum_kontrole">Datum kontrole:</label>
+            <input type="text" id="np_datum_kontrole" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpJMB">
+            <label for="np_jmb">JMBG:</label>
+            <input type="text" id="np_jmb" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpKontroluIzvrsio1">
+            <label for="np_kontrolu_izvrsio_1">Kontrolisao:</label>
+            <input type="text" id="np_kontrolu_izvrsio_1" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpKontroluIzvrsio2">
+            <label for="np_kontrolu_izvrsio_2">Kontrolisao:</label>
+            <input type="text" id="np_kontrolu_izvrsio_2" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpKontroluIzvrsio3">
+            <label for="np_kontrolu_izvrsio_3">Kontrolisao:</label>
+            <input type="text" id="np_kontrolu_izvrsio_3" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpNazivPotrosaca">
+            <label for="np_naziv_potrosaca">Naziv potrošača:</label>
+            <input type="text" id="np_naziv_potrosaca" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpNazivTs">
+            <label for="np_naziv_ts">Naziv TS:</label>
+            <input type="text" id="np_naziv_ts" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpOpstina">
+            <label for="np_opstina">Opština:</label>
+            <input type="text" id="np_opstina" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpPotrosacIskljucen">
+            <label for="np_potrosac_iskljucen">Isključen:</label>
+            <input type="text" id="np_potrosac_iskljucen" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpPretplatniBroj">
+            <label for="np_pretplatni_broj">Pretplatni broj:</label>
+            <input type="text" id="np_pretplatni_broj" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpProizvodjac">
+            <label for="np_proizvodjac">Proizvođač:</label>
+            <input type="text" id="np_proizvodjac" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpRegion">
+            <label for="np_region">Region:</label>
+            <input type="text" id="np_region" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpSifraTs">
+            <label for="np_sifra_ts">Šifra TS:</label>
+            <input type="text" id="np_sifra_ts" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpStanjeMt">
+            <label for="np_stanje_mt">Stanje MT:</label>
+            <input type="text" id="np_stanje_mt" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpStanjeVt">
+            <label for="np_stanje_vt">Stanje VT:</label>
+            <input type="text" id="np_stanje_vt" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpStatusPotrosaca">
+            <label for="np_status_potrosaca">Status potrošača:</label>
+            <input type="text" id="np_status_potrosaca" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadNpTipBrojila">
+            <label for="np_tip_brojila">Tip brojila:</label>
+            <input type="text" id="np_tip_brojila" readonly class="disabledInput" />
           </div>
         </div>
       </div>
@@ -1484,6 +1570,7 @@
     <script src="../../administracija/olcedis/js/edit/unosIzmjenaStubovi.js"></script>
     <script src="../../administracija/olcedis/js/edit/unosIzmjenaTrafostanice.js"></script>
     <script src="../../administracija/olcedis/js/edit/unosIzmjenaVodovi.js"></script>
+    <script src="../../administracija/olcedis/js/edit/nelegalni_potrosac.js"></script>
     <script src="../../administracija/olcedis/js/edit/import_web_services.js"></script>
     <script src="../../administracija/olcedis/js/edit/interakcija.js"></script>
   </body>

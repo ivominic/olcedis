@@ -1018,7 +1018,7 @@ function odabirSvihRasterObjekataKlik(browserEvent) {
     if (layer instanceof ol.layer.Image) {
       //console.log(layer.values_.name);
       //Ne razmatramo nelegalne potrošače za prikaz
-      if (layer.get("visible") && !layer.values_.name.startsWith("nelegalni_potrosac")) {
+      if (layer.get("visible")) {
         brojLejera++;
         let url = layer
           .getSource()

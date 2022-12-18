@@ -16,5 +16,5 @@ function prikazDugmadiZaUnosBrisanje(blnValue) {
  * @param {*} lejer - vrijednost padajuće liste u kojoj se prikazuju lejeri
  */
 function dodatnaPodesavanjaNaPromjenuLejera(lejer) {
-  prikazDugmadiZaUnosBrisanje(lejer && lejer !== Podsloj.Pod);
+  prikazDugmadiZaUnosBrisanje(lejer && lejer !== Podsloj.Pod && lejer !== Podsloj.NelegalniPotrosac);
 }

@@ -179,6 +179,30 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosVrata").style.display = "none";
   document.querySelector("#divUnosBrIzvoda").style.display = "none";
   document.querySelector("#divUnosBrPrikljucaka").style.display = "none";
+
+  //Nelegalni potrošači
+  document.querySelector("#divReadNpAdresa").style.display = "none";
+  document.querySelector("#divReadNpBrojBrojila").style.display = "none";
+  document.querySelector("#divReadNpBrojPlombe").style.display = "none";
+  document.querySelector("#divReadNpBrojTelefona").style.display = "none";
+  document.querySelector("#divReadNpBrojZapisnika").style.display = "none";
+  document.querySelector("#divReadNpDatumKontrole").style.display = "none";
+  document.querySelector("#divReadNpJMB").style.display = "none";
+  document.querySelector("#divReadNpKontroluIzvrsio1").style.display = "none";
+  document.querySelector("#divReadNpKontroluIzvrsio2").style.display = "none";
+  document.querySelector("#divReadNpKontroluIzvrsio3").style.display = "none";
+  document.querySelector("#divReadNpNazivPotrosaca").style.display = "none";
+  document.querySelector("#divReadNpNazivTs").style.display = "none";
+  document.querySelector("#divReadNpOpstina").style.display = "none";
+  document.querySelector("#divReadNpPotrosacIskljucen").style.display = "none";
+  document.querySelector("#divReadNpPretplatniBroj").style.display = "none";
+  document.querySelector("#divReadNpProizvodjac").style.display = "none";
+  document.querySelector("#divReadNpRegion").style.display = "none";
+  document.querySelector("#divReadNpSifraTs").style.display = "none";
+  document.querySelector("#divReadNpStanjeMt").style.display = "none";
+  document.querySelector("#divReadNpStanjeVt").style.display = "none";
+  document.querySelector("#divReadNpStatusPotrosaca").style.display = "none";
+  document.querySelector("#divReadNpTipBrojila").style.display = "none";
 }
 
 function prikaziAtributDivStubove(napon) {
@@ -396,6 +420,31 @@ function prikaziAtributDivPod() {
   document.querySelector("#divUnosNazivNnIzvod").style.display = "flex";
   document.querySelector("#divUnosPretplatniBr").style.display = "flex";
   document.querySelector("#divUnosBrBrojila").style.display = "flex";
+}
+
+function prikaziAtributDivNelegalniPotrosac() {
+  document.querySelector("#divReadNpAdresa").style.display = "flex";
+  document.querySelector("#divReadNpBrojBrojila").style.display = "flex";
+  document.querySelector("#divReadNpBrojPlombe").style.display = "flex";
+  document.querySelector("#divReadNpBrojTelefona").style.display = "flex";
+  document.querySelector("#divReadNpBrojZapisnika").style.display = "flex";
+  document.querySelector("#divReadNpDatumKontrole").style.display = "flex";
+  document.querySelector("#divReadNpJMB").style.display = "flex";
+  document.querySelector("#divReadNpKontroluIzvrsio1").style.display = "flex";
+  document.querySelector("#divReadNpKontroluIzvrsio2").style.display = "flex";
+  document.querySelector("#divReadNpKontroluIzvrsio3").style.display = "flex";
+  document.querySelector("#divReadNpNazivPotrosaca").style.display = "flex";
+  document.querySelector("#divReadNpNazivTs").style.display = "flex";
+  document.querySelector("#divReadNpOpstina").style.display = "flex";
+  document.querySelector("#divReadNpPotrosacIskljucen").style.display = "flex";
+  document.querySelector("#divReadNpPretplatniBroj").style.display = "flex";
+  document.querySelector("#divReadNpProizvodjac").style.display = "flex";
+  document.querySelector("#divReadNpRegion").style.display = "flex";
+  document.querySelector("#divReadNpSifraTs").style.display = "flex";
+  document.querySelector("#divReadNpStanjeMt").style.display = "flex";
+  document.querySelector("#divReadNpStanjeVt").style.display = "flex";
+  document.querySelector("#divReadNpStatusPotrosaca").style.display = "flex";
+  document.querySelector("#divReadNpTipBrojila").style.display = "flex";
 }
 
 function ddlLejerChange() {

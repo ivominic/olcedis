@@ -34,6 +34,7 @@ const Podsloj = {
   TS10: "trafostanica10",
   TS35: "trafostanica35",
   TS110: "trafostanica110",
+  NelegalniPotrosac: "nelegalni_potrosac",
 };
 
 const StatusPoruke = {

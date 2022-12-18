@@ -51,6 +51,9 @@ function ddlLejerNaziv(el) {
   if (elId.startsWith("pod") || elId.startsWith("temp_pod")) {
     return Podsloj.Pod;
   }
+  if (elId.startsWith("nelegalni_potrosac")) {
+    return Podsloj.NelegalniPotrosac;
+  }
 
   if (elId.startsWith("trafostanic") || elId.startsWith("temp_trafostanic")) {
     let prenosOdnos = el.properties.prenos_odnos;
@@ -125,5 +128,8 @@ function prikazAtributaWmsLejer(objekat) {
   }
   if (objekat.ddlLejer === "pod") {
     prikaziPoljaWmsPod(objekat);
+  }
+  if (objekat.ddlLejer === Podsloj.NelegalniPotrosac) {
+    prikaziPoljaWmsNelegalniPotrosac(objekat);
   }
 }
