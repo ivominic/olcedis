@@ -85,10 +85,8 @@ function potvrdaPomjeranjaObjekta() {
   if (!selectGpxFeature || !postojeciObjekat) {
     poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabratiTackuZaPomjeranje);
   } else {
-    let novaGeometrija = wktGeometrije(selectGpxFeature);
-    console.log("gpx tačka", selectGpxFeature);
-    console.log("gpx wkt geometrija", novaGeometrija);
-    console.log("wms tačka", postojeciObjekat);
+    let novaGeometrija = wkt3Du2D(wktGeometrije(selectGpxFeature));
+    console.log("potvrdaPomjeranjaObjekta", selectGpxFeature, novaGeometrija, postojeciObjekat);
 
     nizWmsZaPomjeranje.forEach((item) => {
       if (item[0] === postojeciObjekat) {
@@ -123,6 +121,7 @@ async function pomjeranjeObjekataVodaWS() {
       body: JSON.stringify({
         objects: jsonDataArray,
         korisnik: globalUsername,
+        group_id: globalTimestamp,
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
