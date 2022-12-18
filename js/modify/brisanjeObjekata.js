@@ -1,7 +1,7 @@
 /** Metode koje se odnose na brisanje objekata sa mape */
 
 /**
- * Dodaje wms objekat u niz za brisanje. Id za view_potrosaci formira u obliku "potrosaci.${originalid}"
+ * Dodaje wms objekat u niz za brisanje. Id za view_potrosaci formira u obliku "potrosaci.${originalId}"
  * @param {Objekat koji se dodaje u niz za uklanjanje} objekat
  */
 function dodajObjekatZaBrisanje(objekat) {
@@ -9,7 +9,7 @@ function dodajObjekatZaBrisanje(objekat) {
   let blnDodaoObjekat = false;
   let objekatId = objekat.id;
   if (objekatId.includes("view_potrosaci")) {
-    objekatId = `potrosaci.${objekat.properties.originalid}`;
+    objekatId = `potrosaci.${objekat.properties.originalId}`;
   }
   nizWmsZaBrisanje.forEach((item) => {
     if (item[0] === temp_geohash) {

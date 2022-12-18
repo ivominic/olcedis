@@ -232,7 +232,7 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
     korisnik: globalUsername,
     katastar: el.values_.katastar,
     posjeduje_sliku: el.values_.posjeduje_sliku,
-    originalid: el.values_.originalid,
+    originalId: el.values_.originalId,
     naziv_napojne: el.values_.naziv_napojne,
     sifra_napojne: el.values_.sifra_napojne,
     izvod_napojne: el.values_.izvod_napojne,
