@@ -403,6 +403,7 @@ function ddlLejerChange() {
   sakrijSvaPoljaAtributDiv();
   let value = document.querySelector("#ddl_sloj_podataka").value;
   value && prikazPanelaAtributa(value);
+  dodatnaPodesavanjaNaPromjenuLejera(value);
 }
 
 ddlLejerChange(); //Inicijalno prikazivanje
