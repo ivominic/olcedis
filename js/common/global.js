@@ -628,7 +628,7 @@ function fillDdl(ddl, value, text) {
  */
 function provjeraPravaUnosIzmjena(username, vlasnik, vlasnikObjekta) {
   let retval = false;
-  if (username !== "" && vlasnik !== "" && (vlasnik === vlasnikObjekta || !vlasnikObjekta)) {
+  if (username !== "" && vlasnik !== "" && vlasnik === vlasnikObjekta) {
     retval = true;
   } else {
     poruka(StatusPoruke.Upozorenje, GlobalPoruke.NedostatakPrava);
