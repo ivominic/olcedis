@@ -22,14 +22,6 @@ function setujAktivnu(element) {
   if (element === "#pretraga") {
     showDiv("#pretragaDiv");
   }
-  if (element === "#selekcijaPocetnogStuba") {
-  }
-  if (element === "#selekcijaZavrsnogStuba") {
-  }
-  if (element === "#dijeljenjeVoda") {
-  }
-  if (element === "#spajanjeVoda") {
-  }
   podesiInterakciju();
   zatvoriHamburger();
 }
@@ -38,6 +30,11 @@ function closeDiv(nazivDiva) {
   document.querySelector(nazivDiva).style.width = "0";
   if (blnShowAttribute && nazivDiva === "#atributiDiv") {
     blnShowAttribute = false;
+  }
+  if (nazivDiva === "#potvrdaProduzenjaKrakaDiv") {
+    console.log("Na zatvaranje diva se isključuje mogućnost odabira voda sa mape.");
+    odabirSaMape = false;
+    map.un("singleclick", vodEditGeometrije);
   }
 }
 

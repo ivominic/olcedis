@@ -7,6 +7,8 @@
  * Dodavanje izmjena u niz za slanje na validaciju
  */
 
+let trenutnoModifikovaniVod;
+
 /**
  * Metoda koja obrađuje klik na mapu, za prikaz geometrije voda
  * @param {klik na neku lokaciju na mapi} browserEvent
@@ -63,6 +65,7 @@ function vodEditGeometrije(browserEvent) {
 
   modifyVod.on("modifyend", function (e) {
     console.log("MODIFY VOD END - features", e.features.getArray()[0]);
+    trenutnoModifikovaniVod = "";
 
     if (!originalnaGeometrijaWmsVoda) {
       return false;
@@ -134,6 +137,7 @@ function vodEditGeometrije(browserEvent) {
       return false;
     }
 
+    trenutnoModifikovaniVod = e.features.getArray()[0];
     vodArrayValuesProperties(e.features.getArray()[0], "U");
   });
 }
@@ -231,3 +235,9 @@ function radijusZaPomjeranjeKrajevaVoda(naponskiNivo) {
     },
   });
 }
+
+function potvrdaProduzenjaKraka() {
+  console.log("POTVRDA");
+}
+
+document.querySelector("#btnPotvrdiProduzenjeKraka").addEventListener("click", potvrdaProduzenjaKraka);
