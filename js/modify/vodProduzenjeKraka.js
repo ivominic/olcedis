@@ -262,6 +262,7 @@ function potvrdaProduzenjaKraka() {
     vektorObjektiZaAzuriranje.getSource().clear();
     vektorObjektiZaAzuriranje.getSource().addFeatures(nizZaVektorAzuriranje);
     poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
+    closeDiv("#potvrdaProduzenjaKrakaDiv");
   } else {
     poruka(StatusPoruke.Upozorenje, UnosPoruke.NijeProduzenKrakVoda);
   }

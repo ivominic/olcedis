@@ -122,6 +122,9 @@ function resetovanjeNakonUspjeha() {
   nizWmsZaBrisanje.length = 0;
   nizZaVektorBrisanje.length = 0;
   vektorObjektiZaBrisanje.getSource().clear();
+  vodoviArrayFinal.length = 0;
+  nizVodovaGpx.length = 0;
+  kmlLinksArray.length = 0;
 
   globalTimestamp = Date.now();
 
