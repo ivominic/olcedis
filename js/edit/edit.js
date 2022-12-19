@@ -77,7 +77,7 @@ function sacuvaj() {
       return false;
     }
     if (odabraniLejerUnos === "vodovi") {
-      if (selectGpxFeature.get("lejer") === "vodovi") {
+      if (selectGpxFeature?.get("lejer") === "vodovi") {
         dodajPoljaUcrtanomVodu(selectGpxFeature);
       } else {
         if (isEditable) {
