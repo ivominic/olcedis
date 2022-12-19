@@ -35,29 +35,25 @@ function dodajObjekatZaIzmjenu(objekat) {
  */
 function izmjenaAtributaWmsLejer(objekat) {
   console.log("WMS OBJEKAT ZA IZMJENU ATRIBUTA", objekat);
-  if (objekat.ddlLejer === "stub35" || objekat.ddlLejer === "stub10" || objekat.ddlLejer === "stub04") {
+  if ([Podsloj.Stub35, Podsloj.Stub10, Podsloj.Stub04].includes(objekat.ddlLejer)) {
     dodajObjekatZaIzmjenu(izmijeniAtributeWmsStuba(objekat));
   }
-  if (objekat.ddlLejer === "vod35" || objekat.ddlLejer === "vod10" || objekat.ddlLejer === "vod04") {
+  if ([Podsloj.Vod35, Podsloj.Vod10, Podsloj.Vod04].includes(objekat.ddlLejer)) {
     dodajObjekatZaIzmjenu(izmijeniAtributeWmsVoda(objekat));
   }
-  if (
-    objekat.ddlLejer === "trafostanica110" ||
-    objekat.ddlLejer === "trafostanica35" ||
-    objekat.ddlLejer === "trafostanica10"
-  ) {
+  if ([Podsloj.TS110, Podsloj.TS35, Podsloj.TS10].includes(objekat.ddlLejer)) {
     dodajObjekatZaIzmjenu(izmijeniAtributeWmsTrafostanice(objekat));
   }
-  if (objekat.ddlLejer === "nkro") {
+  if (objekat.ddlLejer === Podsloj.Nkro) {
     dodajObjekatZaIzmjenu(izmijeniAtributeWmsNKRO(objekat));
   }
-  if (objekat.ddlLejer === "prikljucno_mjesto") {
+  if (objekat.ddlLejer === Podsloj.PrikljucnoMjesto) {
     dodajObjekatZaIzmjenu(izmijeniAtributeWmsPM(objekat));
   }
-  if (objekat.ddlLejer === "potrosac") {
+  if (objekat.ddlLejer === Podsloj.Potrosac) {
     dodajObjekatZaIzmjenu(izmijeniAtributeWmsPotrosac(objekat));
   }
-  if (objekat.ddlLejer === "pod") {
+  if (objekat.ddlLejer === Podsloj.Pod) {
     dodajObjekatZaIzmjenu(izmijeniAtributeWmsPod(objekat));
   }
 }

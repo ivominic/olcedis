@@ -1009,6 +1009,9 @@ function odabirSvihRasterObjekataKlik(browserEvent) {
     odabirPrikljucnogMjestaSaMape = false;
     return false;
   }
+  if ([point, lineString, polygon].includes(akcija)) {
+    return false;
+  }
   //TODO: Dodati loader dok se ne završi učitavanje podataka
   nizSelektovanihObjekata.length = 0;
   let coordinate = browserEvent.coordinate;

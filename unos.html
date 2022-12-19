@@ -21,7 +21,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="js/ol.js"></script>
+    <script src="js/plugin/ol.js"></script>
   </head>
 
   <body>
@@ -1267,12 +1267,15 @@
           <div class="flex-row pb-8">
             <label for="ddlLejer">Lejer:</label>
             <select id="ddlLejer" class="select-css">
-              <option value=""></option>
+              <option value="">Izaberite sloj podataka</option>
               <option value="stubovi">Stubovi</option>
               <option value="vodovi">Vodovi</option>
               <option value="trafostanice">Trafostanice</option>
-              <option value="prikljucno_mjesto">Priključno mjesto</option>
               <option value="nkro">NKRO</option>
+              <option value="prikljucno_mjesto">Priključno mjesto</option>
+              <option value="view_potrosaci">Potrošači</option>
+              <option value="pod">POD</option>
+              <option value="nelegalni_potrosac">Nelegalni potrošači</option>
             </select>
           </div>
           <!--<button type="button" class="btn" id="btnPrikaziVektor">Prikaz</button>-->
@@ -1364,10 +1367,10 @@
             <label for="pretraga_vlasnistvo">Vlasnistvo:</label>
             <select id="pretraga_vlasnistvo" class="select-css"></select>
           </div>
-          <!--<div class="flex-row pb-8" id="divPretragaOpstina">
-            <label for="pretraga_opstina">Opština:</label>
-            <select id="pretraga_opstina" class="select-css"></select>
-          </div>-->
+          <div class="flex-row pb-8" id="divPretragaIzvodTs">
+            <label for="pretraga_izvod_ts">Izvod napojne TS:</label>
+            <select id="pretraga_izvod_ts" class="select-css"></select>
+          </div>
           <div class="flex-row pb-8" id="divPretragaNapon">
             <label for="pretraga_napon">Napon:</label>
             <input type="text" id="pretraga_napon" />
@@ -1476,10 +1479,6 @@
             <label for="pretraga_osiguraci">Osigurači:</label>
             <select id="pretraga_osiguraci" class="select-css"></select>
           </div>
-          <div class="flex-row pb-8" id="divPretragaBrPretplatnika">
-            <label for="pretraga_br_pretplatnika">Broj pretplatnika:</label>
-            <input type="text" id="pretraga_br_pretplatnika" />
-          </div>
           <div class="flex-row pb-8" id="divPretragaMontaza">
             <label for="pretraga_montaza">Montaža:</label>
             <select id="pretraga_montaza" class="select-css"></select>
@@ -1547,7 +1546,6 @@
     <script src="js/edit/obavezna_polja.js"></script>
     <script src="js/edit/selekcijaMapa.js"></script>
     <script src="js/plugin/turf.min.js"></script>
-    <script src="js/plugin/ol.js"></script>
     <script src="js/plugin/sweetalert2.all.min.js"></script>
     <script src="js/edit/editUtil.js"></script>
     <script src="js/edit/edit.js"></script>
@@ -1578,7 +1576,7 @@
     <script src="js/edit/unosIzmjenaTrafostanice.js"></script>
     <script src="js/edit/unosIzmjenaVodovi.js"></script>
     <script src="js/edit/sifra_dionice.js"></script>
-    <script src="js/edit/nelelegalni_potrosac.js"></script>
+    <script src="js/edit/nelegalni_potrosac.js"></script>
     <script src="js/edit/import_web_services.js"></script>
     <script src="js/edit/interakcija.js"></script>
   </body>

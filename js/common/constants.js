@@ -20,6 +20,17 @@ const NaponskiNivo = {
   Numeric110kV: 110,
 };
 
+const Lejeri = {
+  Stubovi: "stubovi",
+  Vodovi: "vodovi",
+  Trafostanice: "trafostanice",
+  NKRO: "nkro",
+  PrikljucnoMjesto: "prikljucno_mjesto",
+  Potrosac: "view_potrosaci",
+  POD: "pod",
+  NelegalniPotrosac: "nelegalni_potrosac",
+};
+
 const Podsloj = {
   Stub04: "stub04",
   Stub10: "stub10",
