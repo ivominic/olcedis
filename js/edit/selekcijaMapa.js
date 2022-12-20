@@ -50,6 +50,9 @@ function klikNaRastere(browserEvent) {
 function klikNaVektore(browserEvent) {
   nizGpxTacakaZaObradu.length = 0;
   indexGpxTacakaZaObradu = 0;
+  //TODO:
+  //select clear features pravi problem na klik nakon što se izbriše prethodna tačka. Probati sa ponovnim kreiranjem selekcije:
+  //select = kreiranjeSelectInterakcije();
   select.getFeatures().clear();
   console.log("feature111");
   let coordinate = browserEvent.coordinate;
