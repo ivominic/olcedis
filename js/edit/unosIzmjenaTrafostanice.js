@@ -90,6 +90,7 @@ function prikaziPoljaOdabraneGpxTrafostanice() {
   document.querySelector("#read_inst_snaga_t4").value = selectGpxFeature.values_.inst_snaga_t4;
   document.querySelector("#read_tabela").value = selectGpxFeature.values_.tabela;
   document.querySelector("#projek_snaga").value = selectGpxFeature.values_.projek_snaga;
+  document.querySelector("#ddlTrafostanice").value = selectGpxFeature.values_.id;
 }
 
 function popuniKontroleIzTrafostanice(data) {
