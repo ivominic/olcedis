@@ -62,11 +62,11 @@ function klikNaVektore(browserEvent) {
     //nizGpxTacakaZaObradu.push(feature);
     if (
       (feature.values_.name || feature.values_.lejer) &&
-      feature.values_.lejer !== "brisanje" &&
-      feature.values_.lejer !== "azuriranje"
+      !["brisanje", "azuriranje"].includes(feature.values_.lejer)
     ) {
       //To avoid dark blue dot that represents selected feature
       nizGpxTacakaZaObradu.push(feature);
+      selektovaniWmsObjekat = null;
       //Izvukao iznad if uslova, jer gpx koji postane TS nema name i nije prikazivao atribute
       if (selektovaniDdlZaPovezivanjeVoda !== "") {
         $(selektovaniDdlZaPovezivanjeVoda).append(
@@ -81,7 +81,7 @@ function klikNaVektore(browserEvent) {
 
   nizGpxTacakaZaObradu.forEach((el) => {
     //console.log("feature za priključno mjesto", el);
-    if (el.values_.lejer === "prikljucno_mjesto") {
+    if (el.values_.lejer === Podsloj.PrikljucnoMjesto) {
       if (!provjeraPostojanjaElementaDdla(document.querySelector("#prik_mjesto"), el.values_.id)) {
         //console.log("el za provjeru duplikata", el);
         //console.log("el.geometry.coordinates", el.values_.geometry.flatCoordinates);
@@ -100,8 +100,7 @@ function klikNaVektore(browserEvent) {
     vectorSource.getFeatures().forEach(function (el) {
       if (odabirPrikljucnogMjestaSaMapeVektor) {
         //odabirPrikljucnogMjestaSaMapeVektor = false;
-        console.log("PRIKLJUČNOMJESTO");
-        console.log(potrosacZaKogSeBiraPrikljucnoMjesto, el.ol_uid);
+        console.log("PRIKLJUČNOMJESTO", potrosacZaKogSeBiraPrikljucnoMjesto, el.ol_uid);
         if (el.ol_uid === potrosacZaKogSeBiraPrikljucnoMjesto) {
           potrosacZaKogSeBiraPrikljucnoMjesto = "";
           selectGpxFeature = el;
