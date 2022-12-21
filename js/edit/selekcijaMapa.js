@@ -48,13 +48,12 @@ function klikNaRastere(browserEvent) {
 }
 
 function klikNaVektore(browserEvent) {
+  console.log("klikNaVektore");
   nizGpxTacakaZaObradu.length = 0;
   indexGpxTacakaZaObradu = 0;
-  //TODO:
-  //select clear features pravi problem na klik nakon što se izbriše prethodna tačka. Probati sa ponovnim kreiranjem selekcije:
-  //select = kreiranjeSelectInterakcije();
-  select.getFeatures().clear();
-  console.log("feature111");
+  //Sledeća komanda (clear()) je izazivala grešku kod selekcije gpx tačke nakon što se ukloni jedna gpx tačka
+  //Provjeriti da li njeno uklanjanje iz metode nešto remeti.
+  //select.getFeatures().clear();
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
   map.forEachFeatureAtPixel(pixel, function (feature) {

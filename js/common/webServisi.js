@@ -171,7 +171,6 @@ function pretragaTrafostanicaGpx(sifraTS) {
         );
 
         data.ts.izvodi.forEach(function (vrijednost) {
-          console.log("vrijednost niza", vrijednost);
           $("#ddlIzvodNapojneTrafostanice").append(
             $("<option>", {
               value: vrijednost,
@@ -204,7 +203,6 @@ function pretragaTrafostanica(sifraTS) {
     success: function (data) {
       console.log("pretraga trafostanica, odgovor servisa", data);
       if (data && data.ts) {
-        console.log("response", data);
         sifraNapojneTrafostanice = data.ts.sifra;
         nazivNapojneTrafostanice = data.ts.naziv;
         data.ts.izvodi.forEach(function (vrijednost) {
@@ -220,7 +218,6 @@ function pretragaTrafostanica(sifraTS) {
         document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = data.ts.naziv;
         document.querySelector("#uparivanjeTxtSifraTS").textContent = data.ts.sifra;
         data.ts.izvodi.forEach(function (vrijednost) {
-          console.log("vrijednost niza", vrijednost);
           $("#uparivanjeTxtNazivIzvodaTSVod").append(
             $("<option>", {
               value: vrijednost,
@@ -388,8 +385,7 @@ function nnGeometrijaTrafostanica(sifraOdabraneNapojneTS, nazivOdabranaNapojneTS
  */
 function generisiGeohashId(lejer, wkt) {
   let retval = "";
-  console.log("Geohash ID");
-  console.log(lejer, wkt);
+  console.log("Geohash ID", lejer, wkt);
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/geohash_id";
   let podaciForme = new FormData();
   podaciForme.append("tip_objekta", lejer);
