@@ -1278,7 +1278,18 @@
               <option value="nelegalni_potrosac">Nelegalni potrošači</option>
             </select>
           </div>
-          <!--<button type="button" class="btn" id="btnPrikaziVektor">Prikaz</button>-->
+          <div class="flex-row pb-8" id="divPretragaNazivNapojneTS">
+            <label for="pretraga_naziv_napojne_ts">Naziv napojne TS:</label>
+            <input type="text" id="pretraga_naziv_napojne_ts" />
+          </div>
+          <div class="flex-row pb-8" id="divPretragaSifraNapojneTS">
+            <label for="pretraga_sifra_napojne_ts">Šifra napojne TS:</label>
+            <input type="text" id="pretraga_sifra_napojne_ts" />
+          </div>
+          <div class="flex-row pb-8" id="divPretragaIzvodNapojneTS">
+            <label for="pretraga_izvod_napojne_ts">Ime izvoda u TS:</label>
+            <input type="text" id="pretraga_izvod_napojne_ts" />
+          </div>
           <div class="flex-row pb-8" id="divPretragaGps">
             <label for="pretraga_gps">GPS:</label>
             <input type="text" id="pretraga_gps" />
@@ -1366,10 +1377,6 @@
           <div class="flex-row pb-8" id="divPretragaVlasnistvo">
             <label for="pretraga_vlasnistvo">Vlasnistvo:</label>
             <select id="pretraga_vlasnistvo" class="select-css"></select>
-          </div>
-          <div class="flex-row pb-8" id="divPretragaIzvodTs">
-            <label for="pretraga_izvod_ts">Izvod napojne TS:</label>
-            <select id="pretraga_izvod_ts" class="select-css"></select>
           </div>
           <div class="flex-row pb-8" id="divPretragaNapon">
             <label for="pretraga_napon">Napon:</label>
