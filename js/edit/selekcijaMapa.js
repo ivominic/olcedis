@@ -246,6 +246,7 @@ select.on("select", function (e) {
     if (!odabirSaMape) {
       if (selectGpxFeature.values_.name !== undefined) {
         document.querySelector("#gps").value = selectGpxFeature.values_.name;
+        document.querySelector("#name").value = selectGpxFeature.values_.name;
         //Kad se klikne na kml objekat da provjeri da li postoji u blizini objekat na koji treba biti povezan.
         //Kml vodovi imaju definisan name property.
         //TODO: Dodati uslov da se ova provjera sprovodi samo ako lejer nije definisan, tj za nove objekte.
@@ -399,6 +400,7 @@ function prikazPodatakaIzGpxTacaka() {
   //console.log("prikaz podataka iz GPX tačke", selectGpxFeature.get("lejer"));
   //prikazPanelaAtributa se nalazi u fajlu interakcija.js
   document.querySelector("#gps").value = selectGpxFeature.get("name");
+  document.querySelector("#name").value = selectGpxFeature.get("name");
   console.log("gpx vrijednost", selectGpxFeature.get("name"));
   if (selectGpxFeature.get("lejer") === "stubovi") {
     prikaziPoljaOdabranogGpxStuba();
