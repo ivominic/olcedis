@@ -145,6 +145,7 @@ const UnosPoruke = {
   IzmjenaNaValidaciju: "Objekat sa izmijenjenim atributima spreman za slanje na validaciju",
   PomjerenObjekat: "Uspješno povezana nova tačka i postojeći objekat",
   NijeProduzenKrakVoda: "Nije produžen krak voda.",
+  TsNijeZaBrisanje: "Ovu trafostanicu nije moguće ukloniti kroz aplikaciju.",
 };
 
 const GlobalPoruke = {

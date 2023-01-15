@@ -337,6 +337,10 @@ function izbrisi() {
   }
   if (selektovaniWmsObjekat) {
     console.log("PROVJERA", selektovaniWmsObjekat.properties.vlasnik);
+    if (selektovaniWmsObjekat.id.startsWith("trafostan") && !selektovaniWmsObjekat.properties.brisanje) {
+      poruka(StatusPoruke.Upozorenje, UnosPoruke.TsNijeZaBrisanje);
+      return false;
+    }
     if (document.querySelector("#ddl_sloj_podataka").value === Podsloj.Pod) {
       poruka(StatusPoruke.Upozorenje, UnosPoruke.NijeMoguceUklanjatiPod);
       return false;
