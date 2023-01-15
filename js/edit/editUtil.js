@@ -19,6 +19,9 @@ function setujAktivnu(element) {
     console.log("PRikaz 5", odabirSaMape);
     !odabirSaMape && showDiv("#atributiDiv");
   }
+  if (element === "#dodaj") {
+    blnIsChange = false;
+  }
   if (element === "#pretraga") {
     showDiv("#pretragaDiv");
   }

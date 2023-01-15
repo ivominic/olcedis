@@ -261,6 +261,7 @@ function potvrdaProduzenjaKraka() {
     nizZaVektorAzuriranje.push(feature);
     vektorObjektiZaAzuriranje.getSource().clear();
     vektorObjektiZaAzuriranje.getSource().addFeatures(nizZaVektorAzuriranje);
+    blnIsChange = false;
     poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
     closeDiv("#potvrdaProduzenjaKrakaDiv");
   } else {

@@ -98,6 +98,7 @@ function ddlLejerNaziv(el) {
  * @param {Ovo je selektovaniWmsObjekat koji je definisan na globalnom nivou} objekat
  */
 function prikazAtributaWmsLejer(objekat) {
+  blnIsChange = true;
   document.querySelector("#ddl_sloj_podataka").classList.add("disabledInput");
   document.querySelector("#ddl_sloj_podataka").disabled = true;
   console.log("WMS OBJEKAT", objekat);

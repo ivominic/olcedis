@@ -159,7 +159,7 @@ function provjeraObaveznostiVodovi(sloj) {
     if (document.querySelector("#presjek_vod_10").value === "") {
       isFilled = borderChange(document.querySelector("#presjek_vod_10"));
     }
-    if (document.querySelector("#sifra_dionice").value === "") {
+    if (document.querySelector("#sifra_dionice").value === "" && !blnIsChange) {
       isFilled = borderChange(document.querySelector("#sifra_dionice"));
     }
   } else if (sloj === Podsloj.Vod35) {
@@ -181,7 +181,7 @@ function provjeraObaveznostiVodovi(sloj) {
     if (document.querySelector("#uze_vod_35").value === "") {
       isFilled = borderChange(document.querySelector("#uze_vod_35"));
     }
-    if (document.querySelector("#sifra_dionice").value === "") {
+    if (document.querySelector("#sifra_dionice").value === "" && !blnIsChange) {
       isFilled = borderChange(document.querySelector("#sifra_dionice"));
     }
   }

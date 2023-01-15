@@ -468,4 +468,10 @@ function enableDisableFields(value) {
     document.querySelector("#pretplatni_br").classList.remove("disabledInput");
     document.querySelector("#prik_mjesto").classList.remove("disabledInput");
   }
+
+  if ([Podsloj.Vod04, Podsloj.Vod10, Podsloj.Vod35].includes(value) && blnIsChange) {
+    document.querySelector("#sifra_dionice").classList.add("disabledInput");
+  } else {
+    document.querySelector("#sifra_dionice").classList.remove("disabledInput");
+  }
 }

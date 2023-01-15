@@ -18,3 +18,5 @@ function prikazDugmadiZaUnosBrisanje(blnValue) {
 function dodatnaPodesavanjaNaPromjenuLejera(lejer) {
   prikazDugmadiZaUnosBrisanje(lejer && lejer !== Podsloj.Pod && lejer !== Podsloj.NelegalniPotrosac);
 }
+
+let blnIsChange = false;

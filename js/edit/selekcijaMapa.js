@@ -67,6 +67,7 @@ function klikNaVektore(browserEvent) {
       //To avoid dark blue dot that represents selected feature
       nizGpxTacakaZaObradu.push(feature);
       selektovaniWmsObjekat = null;
+      blnIsChange = false;
       //Izvukao iznad if uslova, jer gpx koji postane TS nema name i nije prikazivao atribute
       if (selektovaniDdlZaPovezivanjeVoda !== "") {
         $(selektovaniDdlZaPovezivanjeVoda).append(
@@ -209,6 +210,7 @@ function prethodniObjekatGpx() {
         }
         selektovaniWmsObjekat = nizSelektovanihObjekata[indexGpxTacakaZaObradu];
         prikazAtributaWmsLejer(selektovaniWmsObjekat);
+        blnIsChange = true;
       } else {
         indexGpxTacakaZaObradu++;
         poruka(StatusPoruke.Uspjeh, UnosPoruke.NemaPrethodnogObjekta);

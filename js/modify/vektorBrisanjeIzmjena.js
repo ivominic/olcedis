@@ -39,4 +39,5 @@ function azuriranjeDodajObjekatVektorskomLejeru(objekat) {
   nizZaVektorAzuriranje.push(feature);
   vektorObjektiZaAzuriranje.getSource().clear();
   vektorObjektiZaAzuriranje.getSource().addFeatures(nizZaVektorAzuriranje);
+  blnIsChange = false;
 }

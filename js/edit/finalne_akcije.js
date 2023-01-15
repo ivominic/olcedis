@@ -131,4 +131,6 @@ function resetovanjeNakonUspjeha() {
   sifraNapojneTrafostanice = "";
   nazivNapojneTrafostanice = "";
   izvodNapojneTrafostanice = "";
+
+  blnIsChange = false;
 }
