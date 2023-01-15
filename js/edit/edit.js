@@ -371,7 +371,7 @@ function izbrisi() {
         //console.log("Lejer vektorskog objekta", select.getFeatures().array_[0].values_.lejer);
         if (select.getFeatures().array_[0].values_.lejer === "vodovi") {
           let nizZaBrisanje = nizVodovaGpx;
-          vektorKreiraniVodovi
+          vektorKreiraniPonovo
             .getSource()
             .getFeatures()
             .forEach(function (el, index, nizZaBrisanje) {
@@ -379,8 +379,8 @@ function izbrisi() {
                 nizZaBrisanje.splice(index, 1);
                 select.getFeatures().array_.splice(0, 1);
                 selectGpxFeature = null;
-                vektorKreiraniVodovi.getSource().clear();
-                vektorKreiraniVodovi.getSource().addFeatures(nizZaBrisanje);
+                vektorKreiraniPonovo.getSource().clear();
+                vektorKreiraniPonovo.getSource().addFeatures(nizZaBrisanje);
               }
             });
         } else {

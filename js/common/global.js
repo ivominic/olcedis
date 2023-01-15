@@ -184,6 +184,25 @@ let vectorStyleUnmatched = new ol.style.Style({
   image: circleUnmatched,
 });
 
+/**Stilizacija vektora za kreirane vodove - ponovljen*/
+let fillKreiranPonovo = new ol.style.Fill({
+  color: "rgba(0,0,255,0.8)",
+});
+let strokeKreiranPonovo = new ol.style.Stroke({
+  color: "#0000ff",
+  width: 8,
+});
+let circleKreiranPonovo = new ol.style.Circle({
+  radius: 8,
+  fill: fillKreiranPonovo,
+  stroke: strokeKreiranPonovo,
+});
+let vectorStyleKreiranPonovo = new ol.style.Style({
+  fill: fillKreiranPonovo,
+  stroke: strokeKreiranPonovo,
+  image: circleKreiranPonovo,
+});
+
 /**Stilizacija vektora za kreirane elemente*/
 let fillKreirani = new ol.style.Fill({
   color: "rgba(0,0,255,0.8)",
@@ -347,6 +366,12 @@ let vektorKreiraniVodovi = new ol.layer.Vector({
   style: vectorStyleKreirani,
 });
 map.addLayer(vektorKreiraniVodovi);
+
+let vektorKreiraniPonovo = new ol.layer.Vector({
+  source: new ol.source.Vector({}),
+  style: vectorStyleKreiranPonovo,
+});
+map.addLayer(vektorKreiraniPonovo);
 
 let vectorKmlFocusedObject = new ol.layer.Vector({
   source: new ol.source.Vector({

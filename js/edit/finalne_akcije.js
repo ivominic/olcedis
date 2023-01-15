@@ -107,14 +107,13 @@ function resetovanjeNizovaNakonGreske() {
   prikljucnaMjestaArrayFinal.length = 0;
   potrosaciArrayFinal.length = 0;
   nkroArrayFinal.length = 0;
-  //vektorKreiraniVodovi
 }
 
 function resetovanjeNakonUspjeha() {
   resetovanjeNizovaNakonGreske();
   availableLayersPerPowerLevel("");
   vectorSource && vectorSource.clear();
-  vektorKreiraniVodovi.getSource().clear();
+  vektorKreiraniPonovo.getSource().clear();
   gpxFeatures.length = 0;
   nizWmsZaIzmjenu.length = 0;
   nizZaVektorAzuriranje.length = 0;

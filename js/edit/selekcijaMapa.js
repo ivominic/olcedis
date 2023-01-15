@@ -519,8 +519,10 @@ function selekcijaGpxPoligonom() {
     //TODO: Ovdje dodati properties
   }
 
-  vektorKreiraniVodovi.getSource().clear();
-  vektorKreiraniVodovi.getSource().addFeatures(nizVodovaGpx);
+  //vektorKreiraniVodovi.getSource().clear();
+  //vektorKreiraniVodovi.getSource().addFeatures(nizVodovaGpx);
+  vektorKreiraniPonovo.getSource().clear();
+  vektorKreiraniPonovo.getSource().addFeatures(nizVodovaGpx);
 }
 
 function minGpxName(tacke) {
@@ -922,8 +924,10 @@ function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
   var feature = format.readFeature(wktVod, {});
   dodajPoljaUcrtanomVodu(feature);
   nizVodovaGpx.push(feature);
-  vektorKreiraniVodovi.getSource().clear();
-  vektorKreiraniVodovi.getSource().addFeatures(nizVodovaGpx);
+  //vektorKreiraniVodovi.getSource().clear();
+  //vektorKreiraniVodovi.getSource().addFeatures(nizVodovaGpx);
+  vektorKreiraniPonovo.getSource().clear();
+  vektorKreiraniPonovo.getSource().addFeatures(nizVodovaGpx);
   restartNakonUnosaVoda();
   map.removeInteraction(modify);
   map.removeInteraction(modifyV);

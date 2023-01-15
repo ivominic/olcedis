@@ -227,7 +227,8 @@ function azuriranjeWebService(vodId, prvaTacka, drugaTacka, nizObjekataZaDodavan
       }
       availableLayersPerPowerLevel("");
       vectorSource.clear();
-      vektorKreiraniVodovi.getSource().clear();
+      //vektorKreiraniVodovi.getSource().clear();
+      vektorKreiraniPonovo.getSource().clear();
       gpxFeatures.length = 0;
     },
     error: function (x, y, z) {
