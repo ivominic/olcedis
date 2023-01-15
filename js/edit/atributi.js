@@ -416,7 +416,7 @@ function prikaziAtributDivPod() {
   document.querySelector("#divUnosPrikKabal").style.display = "flex";
   document.querySelector("#divUnosPod").style.display = "flex";
   document.querySelector("#divUnosAdresaMm").style.display = "flex";
-  document.querySelector("#divUnosPrikMjesto").style.display = "flex";
+  //document.querySelector("#divUnosPrikMjesto").style.display = "flex";
   document.querySelector("#divUnosNazivNnIzvod").style.display = "flex";
   document.querySelector("#divUnosPretplatniBr").style.display = "flex";
   document.querySelector("#divUnosBrBrojila").style.display = "flex";
@@ -453,6 +453,19 @@ function ddlLejerChange() {
   let value = document.querySelector("#ddl_sloj_podataka").value;
   value && prikazPanelaAtributa(value);
   dodatnaPodesavanjaNaPromjenuLejera(value);
+  enableDisableFields(value);
 }
 
 ddlLejerChange(); //Inicijalno prikazivanje
+
+function enableDisableFields(value) {
+  if (value === Podsloj.Pod) {
+    document.querySelector("#name").classList.add("disabledInput");
+    document.querySelector("#pretplatni_br").classList.add("disabledInput");
+    document.querySelector("#prik_mjesto").classList.add("disabledInput");
+  } else {
+    document.querySelector("#name").classList.remove("disabledInput");
+    document.querySelector("#pretplatni_br").classList.remove("disabledInput");
+    document.querySelector("#prik_mjesto").classList.remove("disabledInput");
+  }
+}
