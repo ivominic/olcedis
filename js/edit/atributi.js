@@ -459,14 +459,16 @@ function ddlLejerChange() {
 ddlLejerChange(); //Inicijalno prikazivanje
 
 function enableDisableFields(value) {
-  if (value === Podsloj.Pod) {
+  if ([Podsloj.TS10, Podsloj.TS35, Podsloj.TS110, Podsloj.Pod].includes(value)) {
     document.querySelector("#name").classList.add("disabledInput");
     document.querySelector("#pretplatni_br").classList.add("disabledInput");
     document.querySelector("#prik_mjesto").classList.add("disabledInput");
+    document.querySelector("#ddlTrafostanice").classList.add("disabledInput");
   } else {
     document.querySelector("#name").classList.remove("disabledInput");
     document.querySelector("#pretplatni_br").classList.remove("disabledInput");
     document.querySelector("#prik_mjesto").classList.remove("disabledInput");
+    document.querySelector("#ddlTrafostanice").classList.remove("disabledInput");
   }
 
   if ([Podsloj.Vod04, Podsloj.Vod10, Podsloj.Vod35].includes(value) && blnIsChange) {
