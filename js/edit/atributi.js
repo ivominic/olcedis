@@ -473,7 +473,9 @@ function enableDisableFields(value) {
 
   if ([Podsloj.Vod04, Podsloj.Vod10, Podsloj.Vod35].includes(value) && blnIsChange) {
     document.querySelector("#sifra_dionice").classList.add("disabledInput");
+    document.querySelector("#divUnosSifraDionice").getElementsByClassName("fontB")[0].innerHTML = "";
   } else {
     document.querySelector("#sifra_dionice").classList.remove("disabledInput");
+    document.querySelector("#divUnosSifraDionice").getElementsByClassName("fontB")[0].innerHTML = "*";
   }
 }
