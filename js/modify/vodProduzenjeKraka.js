@@ -34,13 +34,13 @@ function vodEditGeometrije(browserEvent) {
             let odgovor = JSON.parse(json);
             if (odgovor.features.length > 0) {
               odabirSaMape = false;
-              showDiv("#potvrdaProduzenjaKrakaDiv");
               console.log("PRELAZAK NA FEATURE", odgovor.features[0]);
               map.un("singleclick", vodEditGeometrije); //Prebačeno sa dna ovdje, da se isključi nakon svakog klika
               //TODO: Ovaj un event prebaciti u global state aplikacije
               if (!provjeraPravaUnosIzmjena(globalUsername, globalVlasnik, odgovor.features[0].properties.vlasnik)) {
                 return false;
               }
+              showDiv("#potvrdaProduzenjaKrakaDiv");
               radijusZaPomjeranjeKrajevaVoda(odgovor.features[0].properties.napon);
               featureTekuciOverlay.getSource().clear();
               featureTekuciOverlay.getSource().addFeatures(new ol.format.GeoJSON().readFeatures(odgovor.features[0]));

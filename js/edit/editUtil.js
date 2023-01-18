@@ -87,29 +87,7 @@ document.querySelector("#confirmOdustani").addEventListener("click", confirmOdus
 
 let blnPocetniStub = false,
   blnZavrsniStub = false;
-/**Metoda koja bira prvi stub voda */
-function selekcijaPocetnogStuba() {
-  akcija = "pocetniStub";
-  setujAktivnu("#selekcijaPocetnogStuba");
-  if (blnZavrsniStub) {
-    poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabratiZavrsniStub);
-  } else {
-    poruka(StatusPoruke.Uspjeh, UnosPoruke.OdabirPocetnogStubaUvoz);
-    blnPocetniStub = true;
-  }
-}
 
-/**Metoda koja bira krajnji stub */
-function selekcijaZavrsnogStuba() {
-  akcija = "zavrsniStub";
-  setujAktivnu("#selekcijaZavrsnogStuba");
-  if (blnPocetniStub) {
-    poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabratiPocetniStub);
-  } else {
-    poruka(StatusPoruke.Uspjeh, UnosPoruke.OdabirZavrsnogStubaUvoz);
-    blnZavrsniStub = true;
-  }
-}
 
 /**Paljenje i gašenje lejera */
 document.querySelector("#lejer_stubovi").addEventListener("click", prikazLejeraStubovi);

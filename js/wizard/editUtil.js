@@ -55,14 +55,6 @@ function setujAktivnu(element) {
   if (element === "#pretraga") {
     showDiv("#pretragaDiv");
   }
-  if (element === "#selekcijaPocetnogStuba") {
-  }
-  if (element === "#selekcijaZavrsnogStuba") {
-  }
-  if (element === "#dijeljenjeVoda") {
-  }
-  if (element === "#spajanjeVoda") {
-  }
   podesiInterakciju();
   zatvoriHamburger();
 }
