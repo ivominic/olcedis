@@ -27,7 +27,7 @@ const Lejeri = {
   NKRO: "nkro",
   PrikljucnoMjesto: "prikljucno_mjesto",
   Potrosac: "view_potrosaci",
-  POD: "pod",
+  POD: "view_pod",
   NelegalniPotrosac: "nelegalni_potrosac",
 };
 

@@ -48,7 +48,7 @@ function snapPotrosac() {
   citajExtent("view_potrosaci", 0);
 }
 function snapPOD() {
-  citajExtent("pod", 0);
+  citajExtent("view_pod", 0);
 }
 
 /**

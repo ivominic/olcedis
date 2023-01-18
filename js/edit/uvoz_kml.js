@@ -48,7 +48,7 @@ function distanceFromKmlPoints() {
     wfsUrl +
     "?version=1.0.0&request=GetFeature&typeName=" +
     //"geonode:stubovi" +
-    "geonode:stubovi,geonode:vodovi,geonode:trafostanice,geonode:view_potrosaci,geonode:prikljucno_mjesto,geonode:nkro,geonode:pod" +
+    "geonode:stubovi,geonode:vodovi,geonode:trafostanice,geonode:view_potrosaci,geonode:prikljucno_mjesto,geonode:nkro,geonode:view_pod" +
     "&outputformat=application/json&propertyname='originalId'" +
     cqlCondition +
     "&access_token=" +
@@ -62,7 +62,7 @@ function distanceFromKmlPoints() {
         request: "GetFeature",
         propertyName: "originalId",
         typename:
-          "geonode:stubovi,geonode:vodovi,geonode:trafostanice,geonode:view_potrosaci,geonode:prikljucno_mjesto,geonode:nkro,geonode:pod",
+          "geonode:stubovi,geonode:vodovi,geonode:trafostanice,geonode:view_potrosaci,geonode:prikljucno_mjesto,geonode:nkro,geonode:view_pod",
         outputFormat: "application/json",
         //srsname: "EPSG:4326",
         //"maxFeatures": 50,
@@ -115,7 +115,7 @@ function objectNearKmlFeature(originalFeature, feature, layerName) {
       wfsUrl +
       "?version=1.0.0&request=GetFeature&typeName=geonode:" +
       layerName +
-      //"geonode:stubovi,geonode:vodovi,geonode:trafostanice,geonode:view_potrosaci,geonode:prikljucno_mjesto,geonode:nkro,geonode:pod" +
+      //"geonode:stubovi,geonode:vodovi,geonode:trafostanice,geonode:view_potrosaci,geonode:prikljucno_mjesto,geonode:nkro,geonode:view_pod" +
       "&outputformat=application/json" +
       cqlCondition +
       "&access_token=" +
@@ -164,7 +164,7 @@ function objectNearKmlEndPoints(feature, layerName) {
       wfsUrl +
       "?version=1.0.0&request=GetFeature&typeName=geonode:" +
       layerName +
-      //"geonode:stubovi,geonode:vodovi,geonode:trafostanice,geonode:view_potrosaci,geonode:prikljucno_mjesto,geonode:nkro,geonode:pod" +
+      //"geonode:stubovi,geonode:vodovi,geonode:trafostanice,geonode:view_potrosaci,geonode:prikljucno_mjesto,geonode:nkro,geonode:view_pod" +
       "&outputformat=application/json" +
       cqlCondition +
       "&access_token=" +

@@ -346,7 +346,7 @@ function pripremaZaAzuriranjeWmsObjekta(el) {
     //Ovo dodao jer se ovaj lejer prikazuje iz view-a
     item = potrosacArrayElementProperties(el, "U");
     potrosaciArrayFinal.push(item);
-  } else if (lejer === "pod") {
+  } else if (lejer === "pod" || lejer === Lejeri.POD) {
     item = podArrayElementProperties(el, "U");
     podoviArrayFinal.push(item);
   } else if (lejer === "prikljucno_mjesto") {

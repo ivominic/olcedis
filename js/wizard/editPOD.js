@@ -1,8 +1,8 @@
 /**Metode i promjenljive koje su vezane za konkretan lejer - POD */
 
-let layernamePOD = "pod",
-  fulllayernamePOD = "geonode:pod",
-  layertitlePOD = "pod";
+let layernamePOD = "view_pod",
+  fulllayernamePOD = "geonode:view_pod",
+  layertitlePOD = "view_pod";
 let tipGeometrijePOD = point;
 
 let wmsPOD = new ol.layer.Image({
@@ -46,7 +46,7 @@ wmsValidations.setVisible(false);
  */
 function podUpoligonu(napon) {
   let params = wmsPOD.getSource().getParams();
-  let formiraniFilter = globalCqlZaNaponskiNivo(napon, "pod");
+  let formiraniFilter = globalCqlZaNaponskiNivo(napon, "view_pod");
   if (params.CQL_FILTER && params.CQL_FILTER.length > 0) {
     formiraniFilter += " AND (" + params.CQL_FILTER + ")";
   }

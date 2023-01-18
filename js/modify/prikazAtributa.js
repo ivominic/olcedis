@@ -48,7 +48,7 @@ function ddlLejerNaziv(el) {
   if (elId.startsWith("view_potrosac") || elId.startsWith("temp_potrosac")) {
     return Podsloj.Potrosac;
   }
-  if (elId.startsWith("pod") || elId.startsWith("temp_pod")) {
+  if (elId.startsWith("pod") || elId.startsWith("view_pod") || elId.startsWith("temp_pod")) {
     return Podsloj.Pod;
   }
   if (elId.startsWith("nelegalni_potrosac")) {

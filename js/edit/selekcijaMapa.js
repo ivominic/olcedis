@@ -258,7 +258,7 @@ select.on("select", function (e) {
             objectNearKmlFeature(selectGpxFeature, feature, "stubovi");
             objectNearKmlFeature(selectGpxFeature, feature, "trafostanice");
             objectNearKmlFeature(selectGpxFeature, feature, "vodovi");
-            objectNearKmlFeature(selectGpxFeature, feature, "pod");
+            objectNearKmlFeature(selectGpxFeature, feature, "view_pod");
             objectNearKmlFeature(selectGpxFeature, feature, "nkro");
             objectNearKmlFeature(selectGpxFeature, feature, "prikljucno_mjesto");
             objectNearKmlFeature(selectGpxFeature, feature, "view_potrosaci");

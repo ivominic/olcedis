@@ -142,9 +142,9 @@ let wmsNKRO = new ol.layer.Image({
   }),
 });
 
-let layernamePOD = "pod",
-  fulllayernamePOD = "geonode:pod",
-  layertitlePOD = "pod";
+let layernamePOD = "view_pod",
+  fulllayernamePOD = "geonode:view_pod",
+  layertitlePOD = "view_pod";
 let tipGeometrijePOD = point;
 
 let wmsPOD = new ol.layer.Image({
