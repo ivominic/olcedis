@@ -239,7 +239,7 @@ function radijusZaPomjeranjeKrajevaVoda(naponskiNivo) {
 
 /**
  * Metoda koja na klik dugmeta za potvrdu produženja kraka voda provjerava da li je vod već modifikovan u toku sesije i ako jeste mijenja zapis o prethodnoj modifikaciji, inače dodaje novi.
- * Takođe, dodaje geometriju modifikovanog voda u vektor za prikaz na mapi.
+ * Takođe, dodaje geometriju modifikovanog voda u vektor za prikaz na mapi, a prije toga provjerava da li se geometrija od prošle modifikacije već nalazi u nizu modifikacija.
  */
 function potvrdaProduzenjaKraka() {
   if (trenutnoModifikovaniVod) {
@@ -257,13 +257,21 @@ function potvrdaProduzenjaKraka() {
     let format = new ol.format.WKT();
     let feature = format.readFeature(noviVod.Geometry, {});
     feature.set("lejer", "azuriranje");
-    //TODO: Ukoliko se modifikuje geometrija istog voda, ukloniti i iz vekstorskog sloja za prikaz.
+    feature.set("id", noviVod.fid_1);
+
+    //Ukoliko se modifikuje geometrija istog voda, ukloniti i iz vekstorskog sloja za prikaz.
+    let idxObj = nizZaVektorAzuriranje.findIndex((object) => {
+      return object.id === noviVod.fid_1;
+    });
+    nizZaVektorAzuriranje.splice(idxObj, 1);
+
     nizZaVektorAzuriranje.push(feature);
     vektorObjektiZaAzuriranje.getSource().clear();
     vektorObjektiZaAzuriranje.getSource().addFeatures(nizZaVektorAzuriranje);
     blnIsChange = false;
     poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
     closeDiv("#potvrdaProduzenjaKrakaDiv");
+    featureTekuciOverlay.getSource().clear();
   } else {
     poruka(StatusPoruke.Upozorenje, UnosPoruke.NijeProduzenKrakVoda);
   }
