@@ -11,12 +11,19 @@ function prikazDugmadiZaUnosBrisanje(blnValue) {
   document.querySelector("#btnSacuvaj").style.display = display;
 }
 
+function skrivanjeUnosDupliranjeTS(blnValue) {
+  let display = blnValue ? "none" : "inline";
+  document.querySelector("#btnDupliraj").style.display = display;
+  document.querySelector("#btnSacuvaj").style.display = display;
+}
+
 /**
  * Dodatna podešavanja na lejer change event
  * @param {*} lejer - vrijednost padajuće liste u kojoj se prikazuju lejeri
  */
 function dodatnaPodesavanjaNaPromjenuLejera(lejer) {
   prikazDugmadiZaUnosBrisanje(lejer && lejer !== Podsloj.Pod && lejer !== Podsloj.NelegalniPotrosac);
+  skrivanjeUnosDupliranjeTS(lejer && [Podsloj.TS10, Podsloj.TS35, Podsloj.TS110].includes(lejer) && blnIsChange);
 }
 
 let blnIsChange = false;
