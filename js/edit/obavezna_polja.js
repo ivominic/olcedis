@@ -5,6 +5,8 @@ function obaveznaPolja(sloj) {
     return provjeraObaveznostiStubovi(sloj);
   } else if ([Podsloj.Vod04, Podsloj.Vod10, Podsloj.Vod35].includes(sloj)) {
     return provjeraObaveznostiVodovi(sloj);
+  } else if ([Podsloj.TS10, Podsloj.TS35, Podsloj.TS110].includes(sloj)) {
+    return provjeraObaveznostiTS(sloj);
   } else if (sloj === Podsloj.Nkro) {
     return provjeraObaveznostiNkro();
   } else if (sloj === Podsloj.PrikljucnoMjesto) {
@@ -255,6 +257,14 @@ function provjeraObaveznostiPod() {
   }
   if (document.querySelector("#pretplatni_br").value === "") {
     isFilled = borderChange(document.querySelector("#pretplatni_br"));
+  }
+  return isFilled;
+}
+
+function provjeraObaveznostiTS() {
+  let isFilled = true;
+  if (document.querySelector("#ddlTrafostanice").value === "") {
+    isFilled = borderChange(document.querySelector("#ddlTrafostanice"));
   }
   return isFilled;
 }

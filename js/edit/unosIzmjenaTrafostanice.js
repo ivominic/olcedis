@@ -50,7 +50,6 @@ function dodajPoljaOdabranojGpxTrafostanici() {
 }
 
 function prikaziPoljaOdabraneGpxTrafostanice() {
-  //document.querySelector("#ddlTrafostanice").value;
   console.log("prikaziPoljaOdabraneGpxTrafostanice", selectGpxFeature);
   document.querySelector("#read_fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#name").value = selectGpxFeature.values_.name;
@@ -94,7 +93,6 @@ function prikaziPoljaOdabraneGpxTrafostanice() {
 }
 
 function popuniKontroleIzTrafostanice(data) {
-  //document.querySelector("#ddlTrafostanice").value;
   if (data) {
     document.querySelector("#read_fid_1").value = data.fid_1;
     document.querySelector("#read_name").value = data.name;
