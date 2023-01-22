@@ -119,7 +119,8 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
       .then((res) => {
         let resp = res;
         if (!unosUspjeh) {
-          finalImportMessage += JSON.parse(JSON.stringify(resp)).response;
+          //finalImportMessage += JSON.parse(JSON.stringify(resp)).response;
+          finalImportMessage += resp;
         }
       })
       .catch(status, (err) => {
