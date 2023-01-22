@@ -349,3 +349,22 @@ function clearFilterFields() {
     tempField.value !== "" && (tempField.value = "");
   });
 }
+
+/**
+ * Metoda koja poništava filter uslove za sve vidljive lejere. Ujedno prazni vrijednosti polja za pretragu.
+ */
+function ponistiFilter() {
+  clearFilterFields();
+  map.getLayers().forEach(function (layer) {
+    if (layer instanceof ol.layer.Image) {
+      console.log("Lejer", layer.values_.name);
+      if (layer.get("visible")) {
+        let params = layer.getSource().getParams();
+        params.CQL_FILTER = "INCLUDE";
+        layer.getSource().updateParams(params);
+      }
+    }
+  });
+}
+
+document.querySelector("#btnPonistiFilter").addEventListener("click", ponistiFilter);
