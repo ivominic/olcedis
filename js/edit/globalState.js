@@ -24,6 +24,9 @@ function skrivanjeUnosDupliranjeTS(blnValue) {
 function dodatnaPodesavanjaNaPromjenuLejera(lejer) {
   prikazDugmadiZaUnosBrisanje(lejer && lejer !== Podsloj.Pod && lejer !== Podsloj.NelegalniPotrosac);
   skrivanjeUnosDupliranjeTS(lejer && [Podsloj.TS10, Podsloj.TS35, Podsloj.TS110].includes(lejer) && blnIsChange);
+  if (!lejer) {
+    document.querySelector("#btnSacuvaj").style.display = "none";
+  }
 }
 
 let blnIsChange = false;
