@@ -120,7 +120,7 @@ function sacuvaj() {
     if (odabraniLejerUnos === "potrosaci") {
       dodajPoljaOdabranomGpxPotrosac();
       //select.getFeatures().clear();
-      selectGpxFeature = null;
+      //selectGpxFeature = null;
       return false;
     }
   }
