@@ -203,6 +203,22 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divReadNpStanjeVt").style.display = "none";
   document.querySelector("#divReadNpStatusPotrosaca").style.display = "none";
   document.querySelector("#divReadNpTipBrojila").style.display = "none";
+
+  //Poslovni objekti
+  document.querySelector("#divReadPoAdresa").style.display = "none";
+  document.querySelector("#divReadPoBrojKatastarskeParcele").style.display = "none";
+  document.querySelector("#divReadPoGodIzg").style.display = "none";
+  document.querySelector("#divReadPoImeKatastarskeOpstine").style.display = "none";
+  document.querySelector("#divReadPoKatastar").style.display = "none";
+  document.querySelector("#divReadPoNadleznost").style.display = "none";
+  document.querySelector("#divReadPoName").style.display = "none";
+  document.querySelector("#divReadPoNapomena").style.display = "none";
+  document.querySelector("#divReadPoObimPrava").style.display = "none";
+  document.querySelector("#divReadPoObjekat").style.display = "none";
+  document.querySelector("#divReadPoOpstina").style.display = "none";
+  document.querySelector("#divReadPoPovrsina").style.display = "none";
+  document.querySelector("#divReadPoRegion").style.display = "none";
+  document.querySelector("#divReadPoVlasnistvo").style.display = "none";
 }
 
 function prikaziAtributDivStubove(napon) {
@@ -445,6 +461,23 @@ function prikaziAtributDivNelegalniPotrosac() {
   document.querySelector("#divReadNpStanjeVt").style.display = "flex";
   document.querySelector("#divReadNpStatusPotrosaca").style.display = "flex";
   document.querySelector("#divReadNpTipBrojila").style.display = "flex";
+}
+
+function prikaziAtributDivPoslovniObjekti() {
+  document.querySelector("#divReadPoAdresa").style.display = "flex";
+  document.querySelector("#divReadPoBrojKatastarskeParcele").style.display = "flex";
+  document.querySelector("#divReadPoGodIzg").style.display = "flex";
+  document.querySelector("#divReadPoImeKatastarskeOpstine").style.display = "flex";
+  document.querySelector("#divReadPoKatastar").style.display = "flex";
+  document.querySelector("#divReadPoNadleznost").style.display = "flex";
+  document.querySelector("#divReadPoName").style.display = "flex";
+  document.querySelector("#divReadPoNapomena").style.display = "flex";
+  document.querySelector("#divReadPoObimPrava").style.display = "flex";
+  document.querySelector("#divReadPoObjekat").style.display = "flex";
+  document.querySelector("#divReadPoOpstina").style.display = "flex";
+  document.querySelector("#divReadPoPovrsina").style.display = "flex";
+  document.querySelector("#divReadPoRegion").style.display = "flex";
+  document.querySelector("#divReadPoVlasnistvo").style.display = "flex";
 }
 
 function ddlLejerChange() {

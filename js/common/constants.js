@@ -29,6 +29,7 @@ const Lejeri = {
   Potrosac: "view_potrosaci",
   POD: "view_pod",
   NelegalniPotrosac: "nelegalni_potrosac",
+  PoslovniObjekat: "poslovni_objekti",
 };
 
 const Podsloj = {
@@ -46,6 +47,7 @@ const Podsloj = {
   TS35: "trafostanica35",
   TS110: "trafostanica110",
   NelegalniPotrosac: "nelegalni_potrosac",
+  PoslovniObjekat: "poslovni_objekti",
 };
 
 const StatusPoruke = {

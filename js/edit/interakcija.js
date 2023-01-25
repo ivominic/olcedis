@@ -173,6 +173,11 @@ function prikazPanelaAtributa(sloj) {
     document.querySelector("#napon").value = filePowerLevel;
     document.querySelector("#ddl_sloj_podataka").value = Podsloj.NelegalniPotrosac;
     prikaziAtributDivNelegalniPotrosac();
+  } else if (sloj === Podsloj.PoslovniObjekat) {
+    odabraniLejerUnos = Podsloj.PoslovniObjekat;
+    document.querySelector("#napon").value = filePowerLevel;
+    document.querySelector("#ddl_sloj_podataka").value = Podsloj.PoslovniObjekat;
+    prikaziAtributDivPoslovniObjekti();
   }
 
   if (blnShowAttribute) {

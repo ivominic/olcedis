@@ -54,6 +54,9 @@ function ddlLejerNaziv(el) {
   if (elId.startsWith("nelegalni_potrosac")) {
     return Podsloj.NelegalniPotrosac;
   }
+  if (elId.startsWith("poslovni_objekti")) {
+    return Podsloj.PoslovniObjekat;
+  }
 
   if (elId.startsWith("trafostanic") || elId.startsWith("temp_trafostanic")) {
     let prenosOdnos = el.properties.prenos_odnos;
@@ -132,5 +135,8 @@ function prikazAtributaWmsLejer(objekat) {
   }
   if (objekat.ddlLejer === Podsloj.NelegalniPotrosac) {
     prikaziPoljaWmsNelegalniPotrosac(objekat);
+  }
+  if (objekat.ddlLejer === Podsloj.PoslovniObjekat) {
+    prikaziPoljaWmsPoslovniObjekat(objekat);
   }
 }
