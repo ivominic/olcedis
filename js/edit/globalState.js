@@ -25,6 +25,13 @@ function dodatnaPodesavanjaNaPromjenuLejera(lejer) {
   prikazDugmadiZaUnosBrisanje(lejer && lejer !== Podsloj.Pod && lejer !== Podsloj.NelegalniPotrosac);
   skrivanjeUnosDupliranjeTS(lejer && [Podsloj.TS10, Podsloj.TS35, Podsloj.TS110].includes(lejer) && blnIsChange);
   if (!lejer) {
+    document.querySelector("#btnIzbrisi").style.display = "inline";
+    document.querySelector("#btnDupliraj").style.display = "inline";
+    document.querySelector("#btnSacuvaj").style.display = "none";
+  }
+  if (lejer === Podsloj.PoslovniObjekat) {
+    document.querySelector("#btnIzbrisi").style.display = "none";
+    document.querySelector("#btnDupliraj").style.display = "none";
     document.querySelector("#btnSacuvaj").style.display = "none";
   }
 }
