@@ -88,7 +88,6 @@ document.querySelector("#confirmOdustani").addEventListener("click", confirmOdus
 let blnPocetniStub = false,
   blnZavrsniStub = false;
 
-
 /**Paljenje i gašenje lejera */
 document.querySelector("#lejer_stubovi").addEventListener("click", prikazLejeraStubovi);
 document.querySelector("#lejer_vodovi").addEventListener("click", prikazLejeraVodovi);
@@ -100,6 +99,7 @@ document.querySelector("#lejer_potrosac").addEventListener("click", prikazLejera
 document.querySelector("#lejer_nelegalni_potrosac").addEventListener("click", prikazLejeraNelegalniPotrosac);
 document.querySelector("#lejer_pod").addEventListener("click", prikazLejeraPod);
 document.querySelector("#lejer_validations").addEventListener("click", prikazLejeraValidations);
+document.querySelector("#lejer_poslovni_objekat").addEventListener("click", prikazLejeraPoslovniObjekat);
 
 function prikazLejeraStubovi() {
   wmsStubovi.setVisible(!wmsStubovi.getVisible());
@@ -147,5 +147,10 @@ function prikazLejeraPod() {
 
 function prikazLejeraValidations() {
   wmsValidations.setVisible(!wmsValidations.getVisible());
+  zatvoriHamburger();
+}
+
+function prikazLejeraPoslovniObjekat() {
+  wmsPoslovniObjekti.setVisible(!wmsPoslovniObjekti.getVisible());
   zatvoriHamburger();
 }
