@@ -86,6 +86,12 @@ $("#topNav").children().prop("disabled", true);
 function prikazPanelaAtributa(sloj) {
   console.log("prikazPanelAtributa", sloj);
   let blnPronadjenSloj = false;
+  if (sloj === Podsloj.TS10 && selektovaniWmsObjekat?.properties?.tip === "RP") {
+    sloj = Podsloj.Rasklopiste10;
+  }
+  if (sloj === Podsloj.TS35 && selektovaniWmsObjekat?.properties?.tip === "RP") {
+    sloj = Podsloj.Rasklopiste35;
+  }
   for (i = 0; i < document.querySelector("#ddl_sloj_podataka").options.length; i++) {
     console.log(document.querySelector("#ddl_sloj_podataka").options[i].value);
     if (document.querySelector("#ddl_sloj_podataka").options[i].value === sloj) {
@@ -136,11 +142,23 @@ function prikazPanelaAtributa(sloj) {
     document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = Podsloj.TS35;
     prikaziAtributDivTrafostanice(akcijaLejerNivo);
+  } else if (sloj === Podsloj.Rasklopiste35) {
+    odabraniLejerUnos = "trafostanice";
+    akcijaLejerNivo = NaponskiNivo.String35kV;
+    document.querySelector("#napon").value = akcijaLejerNivo;
+    document.querySelector("#ddl_sloj_podataka").value = Podsloj.Rasklopiste35;
+    prikaziAtributDivTrafostanice(akcijaLejerNivo);
   } else if (sloj === "Trafostanica1004" || sloj === Podsloj.TS10) {
     odabraniLejerUnos = "trafostanice";
     akcijaLejerNivo = NaponskiNivo.String10kV;
     document.querySelector("#napon").value = akcijaLejerNivo;
     document.querySelector("#ddl_sloj_podataka").value = Podsloj.TS10;
+    prikaziAtributDivTrafostanice(akcijaLejerNivo);
+  } else if (sloj === Podsloj.Rasklopiste10) {
+    odabraniLejerUnos = "trafostanice";
+    akcijaLejerNivo = NaponskiNivo.String10kV;
+    document.querySelector("#napon").value = akcijaLejerNivo;
+    document.querySelector("#ddl_sloj_podataka").value = Podsloj.Rasklopiste10;
     prikaziAtributDivTrafostanice(akcijaLejerNivo);
   } else if (sloj === "Trafostanica110x" || sloj === Podsloj.TS110) {
     odabraniLejerUnos = "trafostanice";

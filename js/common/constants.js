@@ -48,6 +48,8 @@ const Podsloj = {
   TS110: "trafostanica110",
   NelegalniPotrosac: "nelegalni_potrosac",
   PoslovniObjekat: "poslovni_objekti",
+  Rasklopiste10: "rasklopiste10",
+  Rasklopiste35: "rasklopiste35",
 };
 
 const StatusPoruke = {
