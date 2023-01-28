@@ -41,20 +41,10 @@ async function insertObjekataIzGpx() {
 
   if (postojiNeobradjenaTacka) {
     console.log("Upozorenje", "Nisu obradjeni svi objekti iz fajla za uvoz.");
-    poruka(StatusPoruke.Upozorenje, UnosPoruke.NisuObradjeniSviZaUvoz);
+
     unosUspjeh = false;
+    isUnprocessed = true;
     return false;
-  } else {
-    //TODO: Unijeti sve nizove u bazu (pozvati servis za svaki od nizova)
-    await insertAllObjects(
-      stuboviArrayFinal,
-      vodoviArrayFinal,
-      trafostaniceArrayFinal,
-      podoviArrayFinal,
-      prikljucnaMjestaArrayFinal,
-      potrosaciArrayFinal,
-      nkroArrayFinal
-    );
   }
 }
 
@@ -77,15 +67,70 @@ async function finalnaPotvrdaUnosa() {
   }
   unosUspjeh = true;
   unosPostojeObjekti = true;
-  if (nizWmsZaPomjeranje.length > 0) {
-    pomjeranjeObjekataVodaWS();
-  } else {
-    await kmlConnectionLog(kmlLinksArray);
-    await insertObjekataIzGpx();
-    await brisanjeWmsObjekata();
+
+  let jsonDataArray = [];
+  nizWmsZaPomjeranje.forEach((el) => {
+    jsonDataArray.push({ stariObjekat: el[0], novaGeometrija: el[1] });
+  });
+  let pomjeranje_objekta = JSON.stringify({
+    objects: jsonDataArray,
+    korisnik: globalUsername,
+    group_id: globalTimestamp,
+  });
+
+  let objekti_za_azuriranje = { objekti: JSON.stringify(kmlLinksArray), group_id: globalTimestamp };
+
+  await insertObjekataIzGpx();
+  let object_control = [
+    { temp_stubovi: JSON.stringify(stuboviArrayFinal) },
+    { temp_vodovi: JSON.stringify(vodoviArrayFinal) },
+    { temp_trafostanice: JSON.stringify(trafostaniceArrayFinal) },
+    { temp_pod: JSON.stringify(podoviArrayFinal) },
+    { temp_prikljucno_mjesto: JSON.stringify(prikljucnaMjestaArrayFinal) },
+    { temp_potrosaci: JSON.stringify(potrosaciArrayFinal) },
+    { temp_nkro: JSON.stringify(nkroArrayFinal) },
+    { group_id: globalTimestamp },
+  ];
+
+  let brisanje_objekta = {
+    korisnik: globalUsername,
+    objekti: JSON.stringify(nizWmsZaBrisanje),
+    group_id: globalTimestamp,
+  };
+
+  if (isUnprocessed && nizWmsZaPomjeranje.length === 0) {
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.NisuObradjeniSviZaUvoz);
+    resetovanjeNizovaNakonGreske();
+    return false;
   }
 
-  Promise.all(promiseArray).then(function () {
+  if (
+    nizWmsZaPomjeranje.length +
+      kmlLinksArray.length +
+      stuboviArrayFinal.length +
+      vodoviArrayFinal.length +
+      trafostaniceArrayFinal.length +
+      podoviArrayFinal.length +
+      prikljucnaMjestaArrayFinal.length +
+      potrosaciArrayFinal.length +
+      nkroArrayFinal.length +
+      nizWmsZaBrisanje.length ===
+    0
+  ) {
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.NemaObjekataZaObradu);
+    resetovanjeNizovaNakonGreske();
+    return false;
+  }
+
+  serviceWrap(
+    objekti_za_azuriranje,
+    object_control,
+    brisanje_objekta,
+    pomjeranje_objekta,
+    JSON.stringify(stuboviArrayFinal)
+  );
+
+  /*Promise.all(promiseArray).then(function () {
     console.log("Kompletiran unos podataka", finalImportMessage);
     if (finalImportMessage) {
       poruka(StatusPoruke.Greska, finalImportMessage);
@@ -94,7 +139,7 @@ async function finalnaPotvrdaUnosa() {
       poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
       resetovanjeNakonUspjeha();
     }
-  });
+  });*/
 
   console.log("Finalno features", gpxFeatures);
 }
@@ -107,6 +152,7 @@ function resetovanjeNizovaNakonGreske() {
   prikljucnaMjestaArrayFinal.length = 0;
   potrosaciArrayFinal.length = 0;
   nkroArrayFinal.length = 0;
+  isUnprocessed = false;
 }
 
 function resetovanjeNakonUspjeha() {
@@ -132,4 +178,5 @@ function resetovanjeNakonUspjeha() {
   izvodNapojneTrafostanice = "";
 
   blnIsChange = false;
+  isUnprocessed = false;
 }

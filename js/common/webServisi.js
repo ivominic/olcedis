@@ -793,3 +793,35 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
     },
   });
 }
+
+/**
+ * Web servis koji se poziva na finalnu potvrdu akcije i koji šalje sve obrađene podatke sa klijentske strane ka bazi.
+ * @param {*} objekti_za_azuriranje
+ * @param {*} object_control
+ * @param {*} brisanje_objekta
+ * @param {*} pomjeranje_objekta
+ */
+async function serviceWrap(objekti_za_azuriranje, object_control, brisanje_objekta, pomjeranje_objekta, stubovi) {
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/service_wrap";
+  console.log("WRAP   ", object_control);
+  $.ajax({
+    url: urlServisa,
+    data: {
+      objekti_za_azuriranje: objekti_za_azuriranje,
+      "object_control": object_control,
+      brisanje_objekta: brisanje_objekta,
+      pomjeranje_objekta: pomjeranje_objekta,
+    },
+    type: "POST",
+    success: function (data) {
+      console.log("success WRAP", data);
+      resetovanjeNakonUspjeha();
+      poruka(StatusPoruke.Uspjeh, data);
+    },
+    error: function (x, y, z) {
+      resetovanjeNizovaNakonGreske();
+      poruka(StatusPoruke.Greska, JSON.parse(x.responseText).response);
+      console.log("error WRAP", x);
+    },
+  });
+}
