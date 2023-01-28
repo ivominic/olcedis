@@ -808,7 +808,7 @@ async function serviceWrap(objekti_za_azuriranje, object_control, brisanje_objek
     url: urlServisa,
     data: {
       objekti_za_azuriranje: objekti_za_azuriranje,
-      "object_control": object_control,
+      object_control: object_control,
       brisanje_objekta: brisanje_objekta,
       pomjeranje_objekta: pomjeranje_objekta,
     },
@@ -816,7 +816,7 @@ async function serviceWrap(objekti_za_azuriranje, object_control, brisanje_objek
     success: function (data) {
       console.log("success WRAP", data);
       resetovanjeNakonUspjeha();
-      poruka(StatusPoruke.Uspjeh, data);
+      poruka(StatusPoruke.Uspjeh, data.response);
     },
     error: function (x, y, z) {
       resetovanjeNizovaNakonGreske();
