@@ -210,6 +210,8 @@ function prikaziPoljaOdabranogGpxStuba() {
   document.querySelector("#opstina").value = selectGpxFeature.values_.opstina;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
 
+  setujDdlVrijednost("#nosaci_izolatora", selectGpxFeature.values_.tip_nosac_izol);
+
   if (selectGpxFeature.values_.napon === NaponskiNivo.String04kV) {
     setujDdlVrijednost("#tip_stub", selectGpxFeature.values_.tip);
     setujDdlVrijednost("#rasvjeta_stub", selectGpxFeature.values_.rasvjeta);
@@ -342,6 +344,7 @@ function izmijeniAtributeWmsStuba(objekat) {
   objekat.properties.pog_sprem = document.querySelector("#pog_sprem").value;
   objekat.properties.opstina = document.querySelector("#opstina").value;
   objekat.properties.napon = document.querySelector("#napon").value;
+  objekat.properties.vlasnistvo = document.querySelector("#vlasnistvo").value;
 
   if (objekat.properties.napon === NaponskiNivo.String04kV) {
     objekat.properties.tip = document.querySelector("#tip_stub").value;
@@ -388,6 +391,5 @@ function izmijeniAtributeWmsStuba(objekat) {
     objekat.properties["10vod"] = document.querySelector("#vod_10").value;
   }
 
-  //setujDdlVrijednost("#vlasnistvo", objekat.properties.vlasnistvo);
   return objekat;
 }

@@ -26,7 +26,7 @@ function stubArrayElement(el, action, wizard, serialNo) {
     nad_visina: el.values_.nad_visina,
     vod_10: el.values_.vod10, //Jovanu je polje 10vod - vidjeti može li se json poslati ovako ili da mijenjamo naziv
     desetvod: el.values_.desetvod,
-    tip_nosac_izol: el.values_.tip_nosac_izol,
+    tip_nosac_izol: el.values_.tip_nosac_izol + "/" + el.values_.tip_izolatora,
     vlasnistvo: el.values_.vlasnistvo,
     tip: el.values_.tip,
     visina: el.values_.visina,

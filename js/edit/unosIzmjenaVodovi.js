@@ -121,6 +121,9 @@ function prikaziPoljaWmsVoda(objekat) {
   document.querySelector("#god_izgr").value = objekat.properties.god_izg;
   document.querySelector("#rac_duzina").value = objekat.properties.rac_duzina;
   document.querySelector("#duzina").value = objekat.properties.duzina;
+  document.querySelector("#izvod_napojne").value = objekat.properties.izvod_napojne;
+  document.querySelector("#naziv_napojne").value = objekat.properties.naziv_napojne;
+  document.querySelector("#sifra_napojne").value = objekat.properties.sifra_napojne;
 
   if (objekat.properties.napon === NaponskiNivo.String04kV) {
     document.querySelector("#rasvjeta_vod").value = objekat.properties.rasvjeta;
@@ -161,6 +164,7 @@ function izmijeniAtributeWmsVoda(objekat) {
   objekat.properties.god_izg = document.querySelector("#god_izgr").value;
   objekat.properties.rac_duzina = document.querySelector("#rac_duzina").value;
   objekat.properties.duzina = document.querySelector("#duzina").value;
+  objekat.properties.vlasnistvo = document.querySelector("#vlasnistvo").value;
 
   if (objekat.properties.napon === NaponskiNivo.String04kV) {
     objekat.properties.rasvjeta = document.querySelector("#rasvjeta_vod").value;
@@ -187,6 +191,5 @@ function izmijeniAtributeWmsVoda(objekat) {
     objekat.properties.sifra_dionice = document.querySelector("#sifra_dionice").value;
   }
 
-  //setujDdlVrijednost("#vlasnistvo", objekat.properties.vlasnistvo);
   return objekat;
 }

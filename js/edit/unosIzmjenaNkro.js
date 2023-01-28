@@ -61,7 +61,7 @@ function izmijeniAtributeWmsNKRO(objekat) {
   objekat.properties.vrata = document.querySelector("#vrata").value;
   objekat.properties.br_izvoda = document.querySelector("#br_izvoda").value;
   objekat.properties.br_prikljucaka = document.querySelector("#br_prikljucaka").value;
+  objekat.properties.vlasnistvo = document.querySelector("#vlasnistvo").value;
 
   return objekat;
-  //setujDdlVrijednost("#vlasnistvo", objekat.properties.vlasnistvo);
 }
