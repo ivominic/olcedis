@@ -100,6 +100,7 @@ document.querySelector("#lejer_nelegalni_potrosac").addEventListener("click", pr
 document.querySelector("#lejer_pod").addEventListener("click", prikazLejeraPod);
 document.querySelector("#lejer_validations").addEventListener("click", prikazLejeraValidations);
 document.querySelector("#lejer_poslovni_objekat").addEventListener("click", prikazLejeraPoslovniObjekat);
+document.querySelector("#lejer_odbijeni").addEventListener("click", prikazLejeraOdbijeneValidacije);
 
 function prikazLejeraStubovi() {
   wmsStubovi.setVisible(!wmsStubovi.getVisible());
@@ -152,5 +153,10 @@ function prikazLejeraValidations() {
 
 function prikazLejeraPoslovniObjekat() {
   wmsPoslovniObjekti.setVisible(!wmsPoslovniObjekti.getVisible());
+  zatvoriHamburger();
+}
+
+function prikazLejeraOdbijeneValidacije() {
+  wmsOdbijeni.setVisible(!wmsOdbijeni.getVisible());
   zatvoriHamburger();
 }

@@ -194,6 +194,23 @@ let wmsPoslovniObjekti = new ol.layer.Image({
   }),
 });
 
+let layernameOdbijeni = "view_odbijeni",
+  fulllayernameOdbijeni = "geonode:view_odbijeni",
+  layertitleOdbijeni = "view_odbijeni";
+
+let wmsOdbijeni = new ol.layer.Image({
+  title: layertitleOdbijeni,
+  name: layernameOdbijeni,
+  source: new ol.source.ImageWMS({
+    url: wmsUrl,
+    params: {
+      LAYERS: fulllayernameOdbijeni,
+    },
+    ratio: 1,
+    serverType: "geoserver",
+  }),
+});
+
 map.addLayer(wmsStubovi);
 map.addLayer(wmsVodovi);
 map.addLayer(wmsTrafostanicePoligoni);
@@ -205,9 +222,11 @@ map.addLayer(wmsPOD);
 map.addLayer(wmsNelegalniPotrosaci);
 map.addLayer(wmsValidations);
 map.addLayer(wmsPoslovniObjekti);
+map.addLayer(wmsOdbijeni);
 wmsValidations.setVisible(false);
 wmsNelegalniPotrosaci.setVisible(false);
 wmsPoslovniObjekti.setVisible(false);
+wmsOdbijeni.setVisible(false);
 
 /**Dio za filtriranje lejera koji se pošalju sa mape map_energetika */
 
