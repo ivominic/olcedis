@@ -24,7 +24,6 @@ function dodajPoljaGpxStubovi() {
       el.set("napon", document.querySelector("#napon").value);
 
       if (el.values_.napon === NaponskiNivo.String04kV) {
-        el.set("tip", document.querySelector("#tip_stub").value);
         el.set("rasvjeta", document.querySelector("#rasvjeta_stub").value);
         el.set("vrsta_namjena", document.querySelector("#vrsta_namjena_stub_04").value);
         el.set("vrsta_materijal", document.querySelector("#vrsta_materijal_stub_04").value);
@@ -68,6 +67,7 @@ function dodajPoljaGpxStubovi() {
         el.set("10vod", document.querySelector("#vod_10").value);
       }
 
+      el.set("tip", document.querySelector("#tip_stub").value);
       el.set("broj", document.querySelector("#broj").value);
       el.set("nad_visina", document.querySelector("#nad_visina").value);
       el.set("visina", document.querySelector("#visina").value);
@@ -104,7 +104,6 @@ function dodajPoljaGpxStubovi() {
 
 function dodajPoljaOdabranomGpxStubu() {
   if (filePowerLevel == NaponskiNivo.Numeric04kV) {
-    selectGpxFeature.set("tip", document.querySelector("#tip_stub").value);
     selectGpxFeature.set("rasvjeta", document.querySelector("#rasvjeta_stub").value);
     selectGpxFeature.set("vrsta_namjena", document.querySelector("#vrsta_namjena_stub_04").value);
     selectGpxFeature.set("vrsta_materijal", document.querySelector("#vrsta_materijal_stub_04").value);
@@ -181,6 +180,7 @@ function dodajPoljaOdabranomGpxStubu() {
   selectGpxFeature.set("sifra_napojne", sifraNapojneTrafostanice);
   selectGpxFeature.set("naziv_napojne", nazivNapojneTrafostanice);
   selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
+  selectGpxFeature.set("tip", document.querySelector("#tip_stub").value);
   selectGpxFeature.set("vlasnik", ""); //TODO: Ovo izmijeniti
   selectGpxFeature.set("korisnik", globalUsername); //TODO: Ovo izmijeniti
 
@@ -363,9 +363,9 @@ function izmijeniAtributeWmsStuba(objekat) {
   objekat.properties.opstina = document.querySelector("#opstina").value;
   objekat.properties.napon = document.querySelector("#napon").value;
   objekat.properties.vlasnistvo = document.querySelector("#vlasnistvo").value;
+  objekat.properties.tip = document.querySelector("#tip_stub").value;
 
   if (objekat.properties.napon === NaponskiNivo.String04kV) {
-    objekat.properties.tip = document.querySelector("#tip_stub").value;
     objekat.properties.rasvjeta = document.querySelector("#rasvjeta_stub").value;
     objekat.properties.vrsta_namjena = document.querySelector("#vrsta_namjena_stub_04").value;
     objekat.properties.vrsta_materijal = document.querySelector("#vrsta_materijal_stub_04").value;
