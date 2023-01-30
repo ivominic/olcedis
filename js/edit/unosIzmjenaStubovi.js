@@ -289,8 +289,14 @@ function prikaziAtributeWmsStuba(objekat) {
     setujDdlVrijednost("#vrsta_drvenog_stub_04", objekat.properties.vrsta_drvenog);
     setujDdlVrijednost("#izolator_vrsta_stub_04", objekat.properties.izolator_vrsta);
     setujDdlVrijednost("#izolator_funkcija_stub_04", objekat.properties.izolator_funkcija);
-    setujDdlVrijednost("#tip_izolatora_stub_04", objekat.properties.tip_izolatora);
-    setujDdlVrijednost("#nosaci_izolatora_stub_04", objekat.properties.tip_nosac_izol);
+    if (objekat.properties.tip_nosac_izol.includes(" / ")) {
+      let tempNizSplit = objekat.properties.tip_nosac_izol.split(" / ");
+      setujDdlVrijednost("#tip_izolatora_stub_04", tempNizSplit[0]);
+      setujDdlVrijednost("#nosaci_izolatora_stub_04", tempNizSplit[1]);
+    } else {
+      setujDdlVrijednost("#tip_izolatora_stub_04", objekat.properties.tip_izolatora);
+      setujDdlVrijednost("#nosaci_izolatora_stub_04", objekat.properties.tip_nosac_izol);
+    }
     setujDdlVrijednost("#odvodnik_prenapona_stub_04", objekat.properties.odvodnik_prenapona);
     setujDdlVrijednost("#uzemljivac_stub_04", objekat.properties.uzemljivac);
     setujDdlVrijednost("#optika_stub_04", objekat.properties.optika);
@@ -302,8 +308,14 @@ function prikaziAtributeWmsStuba(objekat) {
     setujDdlVrijednost("#vrsta_drvenog_stub_10", objekat.properties.vrsta_drvenog);
     setujDdlVrijednost("#izolator_vrsta_stub_10", objekat.properties.izolator_vrsta);
     setujDdlVrijednost("#izolator_funkcija_stub_10", objekat.properties.izolator_funkcija);
-    setujDdlVrijednost("#tip_izolatora_stub_10", objekat.properties.tip_izolatora);
-    setujDdlVrijednost("#nosaci_izolatora_stub_10", objekat.properties.tip_nosac_izol);
+    if (objekat.properties.tip_nosac_izol.includes(" / ")) {
+      let tempNizSplit = objekat.properties.tip_nosac_izol.split(" / ");
+      setujDdlVrijednost("#tip_izolatora_stub_10", tempNizSplit[0]);
+      setujDdlVrijednost("#nosaci_izolatora_stub_10", tempNizSplit[1]);
+    } else {
+      setujDdlVrijednost("#tip_izolatora_stub_10", objekat.properties.tip_izolatora);
+      setujDdlVrijednost("#nosaci_izolatora_stub_10", objekat.properties.tip_nosac_izol);
+    }
     setujDdlVrijednost("#odvodnik_prenapona_stub_10", objekat.properties.odvodnik_prenapona);
     setujDdlVrijednost("#uzemljivac_stub_10", objekat.properties.uzemljivac);
     setujDdlVrijednost("#prikljucak_otcjep_stub_10", objekat.properties.prikljucak_otcjep);
@@ -316,8 +328,14 @@ function prikaziAtributeWmsStuba(objekat) {
     setujDdlVrijednost("#vrsta_drvenog_stub_35", objekat.properties.vrsta_drvenog);
     setujDdlVrijednost("#izolator_vrsta_stub_35", objekat.properties.izolator_vrsta);
     setujDdlVrijednost("#izolator_funkcija_stub_35", objekat.properties.izolator_funkcija);
-    setujDdlVrijednost("#tip_izolatora_stub_35", objekat.properties.tip_izolatora);
-    setujDdlVrijednost("#nosaci_izolatora_stub_35", objekat.properties.tip_nosac_izol);
+    if (objekat.properties.tip_nosac_izol.includes(" / ")) {
+      let tempNizSplit = objekat.properties.tip_nosac_izol.split(" / ");
+      setujDdlVrijednost("#tip_izolatora_stub_35", tempNizSplit[0]);
+      setujDdlVrijednost("#nosaci_izolatora_stub_35", tempNizSplit[1]);
+    } else {
+      setujDdlVrijednost("#tip_izolatora_stub_35", objekat.properties.tip_izolatora);
+      setujDdlVrijednost("#nosaci_izolatora_stub_35", objekat.properties.tip_nosac_izol);
+    }
     setujDdlVrijednost("#odvodnik_prenapona_stub_35", objekat.properties.odvodnik_prenapona);
     setujDdlVrijednost("#uzemljivac_stub_35", objekat.properties.uzemljivac);
     setujDdlVrijednost("#optika_stub_35", objekat.properties.optika);
