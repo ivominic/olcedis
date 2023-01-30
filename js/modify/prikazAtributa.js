@@ -139,4 +139,7 @@ function prikazAtributaWmsLejer(objekat) {
   if (objekat.ddlLejer === Podsloj.PoslovniObjekat) {
     prikaziPoljaWmsPoslovniObjekat(objekat);
   }
+  if (objekat.ddlLejer === Podsloj.Odbijeni) {
+    prikaziPoljaWmsOdbijeni(objekat);
+  }
 }

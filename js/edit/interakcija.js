@@ -196,6 +196,11 @@ function prikazPanelaAtributa(sloj) {
     document.querySelector("#napon").value = filePowerLevel;
     document.querySelector("#ddl_sloj_podataka").value = Podsloj.PoslovniObjekat;
     prikaziAtributDivPoslovniObjekti();
+  } else if (sloj === Podsloj.Odbijeni) {
+    odabraniLejerUnos = Podsloj.Odbijeni;
+    document.querySelector("#napon").value = filePowerLevel;
+    document.querySelector("#ddl_sloj_podataka").value = Podsloj.Odbijeni;
+    prikaziAtributDivOdbijeni();
   }
 
   if (blnShowAttribute) {

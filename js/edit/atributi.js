@@ -219,6 +219,12 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divReadPoPovrsina").style.display = "none";
   document.querySelector("#divReadPoRegion").style.display = "none";
   document.querySelector("#divReadPoVlasnistvo").style.display = "none";
+
+  //Odbijene validacije
+  document.querySelector("#divReadOdbijeniName").style.display = "none";
+  document.querySelector("#divReadOdbijeniDatumAzuriranja").style.display = "none";
+  document.querySelector("#divReadOdbijeniTip").style.display = "none";
+  document.querySelector("#divReadOdbijeniKorisnik").style.display = "none";
 }
 
 function prikaziAtributDivStubove(napon) {
@@ -478,6 +484,16 @@ function prikaziAtributDivPoslovniObjekti() {
   document.querySelector("#divReadPoPovrsina").style.display = "flex";
   document.querySelector("#divReadPoRegion").style.display = "flex";
   document.querySelector("#divReadPoVlasnistvo").style.display = "flex";
+}
+
+function prikaziAtributDivOdbijeni() {
+  document.querySelector("#divUnosNazivNapojne").style.display = "flex";
+  document.querySelector("#divUnosSifraNapojne").style.display = "flex";
+  document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
+  document.querySelector("#divReadOdbijeniName").style.display = "flex";
+  document.querySelector("#divReadOdbijeniDatumAzuriranja").style.display = "flex";
+  document.querySelector("#divReadOdbijeniTip").style.display = "flex";
+  document.querySelector("#divReadOdbijeniKorisnik").style.display = "flex";
 }
 
 function ddlLejerChange() {

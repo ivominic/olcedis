@@ -29,7 +29,7 @@ function dodatnaPodesavanjaNaPromjenuLejera(lejer) {
     document.querySelector("#btnDupliraj").style.display = "inline";
     document.querySelector("#btnSacuvaj").style.display = "none";
   }
-  if (lejer === Podsloj.PoslovniObjekat) {
+  if (lejer === Podsloj.PoslovniObjekat || lejer === Podsloj.Odbijeni) {
     document.querySelector("#btnIzbrisi").style.display = "none";
     document.querySelector("#btnDupliraj").style.display = "none";
     document.querySelector("#btnSacuvaj").style.display = "none";

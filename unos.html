@@ -422,6 +422,7 @@
               <option value="pod">Pod</option>
               <option value="nelegalni_potrosac" disabled>Nelegalni potrošač</option>
               <option value="poslovni_objekti" disabled>Poslovni objekat</option>
+              <option value="view_odbijeni" disabled>Odbijene validacije</option>
             </select>
           </div>
           <div class="flex-row-desno pb-8" id="divUnosNazivNapojne">
@@ -1246,6 +1247,22 @@
             <label for="po_vlasnistvo">Vlasništvo:</label>
             <input type="text" id="po_vlasnistvo" readonly class="disabledInput" />
           </div>
+          <div class="flex-row-desno pb-8" id="divReadOdbijeniName">
+            <label for="odbijeni_name">Naziv:</label>
+            <input type="text" id="odbijeni_name" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadOdbijeniDatumAzuriranja">
+            <label for="odbijeni_datum_azuriranja">Datum ažuriranja:</label>
+            <input type="text" id="odbijeni_datum_azuriranja" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadOdbijeniTip">
+            <label for="odbijeni_tip">Tip objekta:</label>
+            <input type="text" id="odbijeni_tip" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadOdbijeniKorisnik">
+            <label for="odbijeni_korisnik">Tip objekta:</label>
+            <input type="text" id="odbijeni_korisnik" readonly class="disabledInput" />
+          </div>
         </div>
       </div>
       <div class="items-padd">
@@ -1636,6 +1653,7 @@
     <script src="js/edit/sifra_dionice.js"></script>
     <script src="js/edit/nelegalni_potrosac.js"></script>
     <script src="js/edit/poslovni_objekti.js"></script>
+    <script src="js/edit/odbijeni_validacija.js"></script>
     <script src="js/edit/import_web_services.js"></script>
     <script src="js/edit/interakcija.js"></script>
   </body>
