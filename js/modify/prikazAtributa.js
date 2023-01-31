@@ -57,6 +57,9 @@ function ddlLejerNaziv(el) {
   if (elId.startsWith("poslovni_objekti")) {
     return Podsloj.PoslovniObjekat;
   }
+  if (elId.startsWith("view_odbijeni")) {
+    return Podsloj.Odbijeni;
+  }
 
   if (elId.startsWith("trafostanic") || elId.startsWith("temp_trafostanic")) {
     let prenosOdnos = el.properties.prenos_odnos;

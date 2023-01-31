@@ -228,6 +228,10 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divReadOdbijeniDatumAzuriranja").style.display = "none";
   document.querySelector("#divReadOdbijeniTip").style.display = "none";
   document.querySelector("#divReadOdbijeniKorisnik").style.display = "none";
+
+  document.querySelector("#divUnosBrNnvKablovski").style.display = "none";
+  document.querySelector("#divUnosBr10kVVodovaKablovski").style.display = "none";
+  document.querySelector("#divUnosBr35kVVodovaKablovski").style.display = "none";
 }
 
 function prikaziAtributDivStubove(napon) {
