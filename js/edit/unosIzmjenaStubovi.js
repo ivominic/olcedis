@@ -75,9 +75,22 @@ function dodajPoljaGpxStubovi() {
       el.set("br_izol_faza", document.querySelector("#br_izol_faza").value);
       el.set("uzemljivac_otpor", document.querySelector("#uzemljivac_otpor").value);
       el.set("br_pmo", document.querySelector("#br_pmo").value);
-      el.set("br_nnv", document.querySelector("#br_nnv").value);
-      el.set("br_10kv_vodova", document.querySelector("#br_10kv_vodova").value);
-      el.set("br_35kv_vodova", document.querySelector("#br_35kv_vodova").value);
+      el.set(
+        "br_nnv",
+        document.querySelector("#br_nnv").value + " / " + document.querySelector("#br_nnv_kablovski").value
+      );
+      el.set(
+        "br_10kv_vodova",
+        document.querySelector("#br_10kv_vodova").value +
+          " / " +
+          document.querySelector("#br_10kv_vodova_kablovski").value
+      );
+      el.set(
+        "br_35kv_vodova",
+        document.querySelector("#br_35kv_vodova").value +
+          " / " +
+          document.querySelector("#br_35kv_vodova_kablovski").value
+      );
       el.set("pog_sprem", document.querySelector("#pog_sprem").value);
       el.set("vlasnistvo", document.querySelector("#vlasnistvo").value);
       el.set("opstina", document.querySelector("#opstina").value);
@@ -170,9 +183,18 @@ function dodajPoljaOdabranomGpxStubu() {
   selectGpxFeature.set("br_izol_faza", document.querySelector("#br_izol_faza").value);
   selectGpxFeature.set("uzemljivac_otpor", document.querySelector("#uzemljivac_otpor").value);
   selectGpxFeature.set("br_pmo", document.querySelector("#br_pmo").value);
-  selectGpxFeature.set("br_nnv", document.querySelector("#br_nnv").value);
-  selectGpxFeature.set("br_10kv_vodova", document.querySelector("#br_10kv_vodova").value);
-  selectGpxFeature.set("br_35kv_vodova", document.querySelector("#br_35kv_vodova").value);
+  selectGpxFeature.set(
+    "br_nnv",
+    document.querySelector("#br_nnv").value + " / " + document.querySelector("#br_nnv_kablovski").value
+  );
+  selectGpxFeature.set(
+    "br_10kv_vodova",
+    document.querySelector("#br_10kv_vodova").value + " / " + document.querySelector("#br_10kv_vodova_kablovski").value
+  );
+  selectGpxFeature.set(
+    "br_35kv_vodova",
+    document.querySelector("#br_35kv_vodova").value + " / " + document.querySelector("#br_35kv_vodova_kablovski").value
+  );
   selectGpxFeature.set("pog_sprem", document.querySelector("#pog_sprem").value);
   selectGpxFeature.set("vlasnistvo", document.querySelector("#vlasnistvo").value);
   selectGpxFeature.set("opstina", document.querySelector("#opstina").value);
@@ -203,9 +225,24 @@ function prikaziPoljaOdabranogGpxStuba() {
   document.querySelector("#br_izol_faza").value = selectGpxFeature.values_.br_izol_faza;
   document.querySelector("#uzemljivac_otpor").value = selectGpxFeature.values_.uzemljivac_otpor;
   document.querySelector("#br_pmo").value = selectGpxFeature.values_.br_pmo;
-  document.querySelector("#br_nnv").value = selectGpxFeature.values_.br_nnv;
-  document.querySelector("#br_10kv_vodova").value = selectGpxFeature.values_.br_10kv_vodova;
-  document.querySelector("#br_35kv_vodova").value = selectGpxFeature.values_.br_35kv_vodova;
+  if (selectGpxFeature.values_.br_nnv?.includes(" / ")) {
+    document.querySelector("#br_nnv").value = selectGpxFeature.values_.br_nnv.split(" / ")[0];
+    document.querySelector("#br_nnv_kablovski").value = selectGpxFeature.values_.br_nnv.split(" / ")[1];
+  } else {
+    document.querySelector("#br_nnv").value = selectGpxFeature.values_.br_nnv;
+  }
+  if (selectGpxFeature.values_.br_10kv_vodova?.includes(" / ")) {
+    document.querySelector("#br_10kv_vodova").value = selectGpxFeature.values_.br_10kv_vodova.split(" / ")[0];
+    document.querySelector("#br_10kv_vodova_kablovski").value = selectGpxFeature.values_.br_10kv_vodova.split(" / ")[1];
+  } else {
+    document.querySelector("#br_10kv_vodova").value = selectGpxFeature.values_.br_10kv_vodova;
+  }
+  if (selectGpxFeature.values_.br_35kv_vodova?.includes(" / ")) {
+    document.querySelector("#br_35kv_vodova").value = selectGpxFeature.values_.br_35kv_vodova.split(" / ")[0];
+    document.querySelector("#br_35kv_vodova_kablovski").value = selectGpxFeature.values_.br_35kv_vodova.split(" / ")[1];
+  } else {
+    document.querySelector("#br_35kv_vodova").value = selectGpxFeature.values_.br_35kv_vodova;
+  }
   document.querySelector("#pog_sprem").value = selectGpxFeature.values_.pog_sprem;
   document.querySelector("#opstina").value = selectGpxFeature.values_.opstina;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
@@ -274,9 +311,24 @@ function prikaziAtributeWmsStuba(objekat) {
   document.querySelector("#br_izol_faza").value = objekat.properties.br_izol_faza;
   document.querySelector("#uzemljivac_otpor").value = objekat.properties.uzemljivac_otpor;
   document.querySelector("#br_pmo").value = objekat.properties.br_pmo;
-  document.querySelector("#br_nnv").value = objekat.properties.br_nnv;
-  document.querySelector("#br_10kv_vodova").value = objekat.properties.br_10kv_vodova;
-  document.querySelector("#br_35kv_vodova").value = objekat.properties.br_35kv_vodova;
+  if (objekat.properties.br_nnv?.includes(" / ")) {
+    document.querySelector("#br_nnv").value = objekat.properties.br_nnv.split(" / ")[0];
+    document.querySelector("#br_nnv_kablovski").value = objekat.properties.br_nnv.split(" / ")[1];
+  } else {
+    document.querySelector("#br_nnv").value = objekat.properties.br_nnv;
+  }
+  if (objekat.properties.br_10kv_vodova?.includes(" / ")) {
+    document.querySelector("#br_10kv_vodova").value = objekat.properties.br_10kv_vodova.split(" / ")[0];
+    document.querySelector("#br_10kv_vodova_kablovski").value = objekat.properties.br_10kv_vodova.split(" / ")[1];
+  } else {
+    document.querySelector("#br_10kv_vodova").value = objekat.properties.br_10kv_vodova;
+  }
+  if (objekat.properties.br_35kv_vodova?.includes(" / ")) {
+    document.querySelector("#br_35kv_vodova").value = objekat.properties.br_35kv_vodova.split(" / ")[0];
+    document.querySelector("#br_35kv_vodova_kablovski").value = objekat.properties.br_35kv_vodova.split(" / ")[1];
+  } else {
+    document.querySelector("#br_35kv_vodova").value = objekat.properties.br_35kv_vodova;
+  }
   document.querySelector("#pog_sprem").value = objekat.properties.pog_sprem;
   document.querySelector("#opstina").value = objekat.properties.opstina;
   document.querySelector("#napon").value = objekat.properties.napon;
@@ -289,7 +341,7 @@ function prikaziAtributeWmsStuba(objekat) {
     setujDdlVrijednost("#vrsta_drvenog_stub_04", objekat.properties.vrsta_drvenog);
     setujDdlVrijednost("#izolator_vrsta_stub_04", objekat.properties.izolator_vrsta);
     setujDdlVrijednost("#izolator_funkcija_stub_04", objekat.properties.izolator_funkcija);
-    if (objekat.properties.tip_nosac_izol.includes(" / ")) {
+    if (objekat.properties.tip_nosac_izol?.includes(" / ")) {
       let tempNizSplit = objekat.properties.tip_nosac_izol.split(" / ");
       setujDdlVrijednost("#tip_izolatora_stub_04", tempNizSplit[0]);
       setujDdlVrijednost("#nosaci_izolatora_stub_04", tempNizSplit[1]);
@@ -308,7 +360,7 @@ function prikaziAtributeWmsStuba(objekat) {
     setujDdlVrijednost("#vrsta_drvenog_stub_10", objekat.properties.vrsta_drvenog);
     setujDdlVrijednost("#izolator_vrsta_stub_10", objekat.properties.izolator_vrsta);
     setujDdlVrijednost("#izolator_funkcija_stub_10", objekat.properties.izolator_funkcija);
-    if (objekat.properties.tip_nosac_izol.includes(" / ")) {
+    if (objekat.properties.tip_nosac_izol?.includes(" / ")) {
       let tempNizSplit = objekat.properties.tip_nosac_izol.split(" / ");
       setujDdlVrijednost("#tip_izolatora_stub_10", tempNizSplit[0]);
       setujDdlVrijednost("#nosaci_izolatora_stub_10", tempNizSplit[1]);
@@ -328,7 +380,7 @@ function prikaziAtributeWmsStuba(objekat) {
     setujDdlVrijednost("#vrsta_drvenog_stub_35", objekat.properties.vrsta_drvenog);
     setujDdlVrijednost("#izolator_vrsta_stub_35", objekat.properties.izolator_vrsta);
     setujDdlVrijednost("#izolator_funkcija_stub_35", objekat.properties.izolator_funkcija);
-    if (objekat.properties.tip_nosac_izol.includes(" / ")) {
+    if (objekat.properties.tip_nosac_izol?.includes(" / ")) {
       let tempNizSplit = objekat.properties.tip_nosac_izol.split(" / ");
       setujDdlVrijednost("#tip_izolatora_stub_35", tempNizSplit[0]);
       setujDdlVrijednost("#nosaci_izolatora_stub_35", tempNizSplit[1]);
@@ -356,9 +408,12 @@ function izmijeniAtributeWmsStuba(objekat) {
   objekat.properties.br_izol_faza = document.querySelector("#br_izol_faza").value;
   objekat.properties.uzemljivac_otpor = document.querySelector("#uzemljivac_otpor").value;
   objekat.properties.br_pmo = document.querySelector("#br_pmo").value;
-  objekat.properties.br_nnv = document.querySelector("#br_nnv").value;
-  objekat.properties.br_10kv_vodova = document.querySelector("#br_10kv_vodova").value;
-  objekat.properties.br_35kv_vodova = document.querySelector("#br_35kv_vodova").value;
+  objekat.properties.br_nnv =
+    document.querySelector("#br_nnv").value + " / " + document.querySelector("#br_nnv_kablovski").value;
+  objekat.properties.br_10kv_vodova =
+    document.querySelector("#br_10kv_vodova").value + " / " + document.querySelector("#br_10kv_vodova_kablovski").value;
+  objekat.properties.br_35kv_vodova =
+    document.querySelector("#br_35kv_vodova").value + " / " + document.querySelector("#br_35kv_vodova_kablovski").value;
   objekat.properties.pog_sprem = document.querySelector("#pog_sprem").value;
   objekat.properties.opstina = document.querySelector("#opstina").value;
   objekat.properties.napon = document.querySelector("#napon").value;

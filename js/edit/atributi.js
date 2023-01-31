@@ -55,8 +55,11 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosRasvjetaStub").style.display = "none";
   document.querySelector("#divUnosBrPmo").style.display = "none";
   document.querySelector("#divUnosBrNnv").style.display = "none";
+  document.querySelector("#divUnosBrNnvKablovski").style.display = "none";
   document.querySelector("#divUnosBr10kVVodova").style.display = "none";
+  document.querySelector("#divUnosBr10kVVodovaKablovski").style.display = "none";
   document.querySelector("#divUnosBr35kVVodova").style.display = "none";
+  document.querySelector("#divUnosBr35kVVodovaKablovski").style.display = "none";
   document.querySelector("#divUnosPogSprem").style.display = "none";
   document.querySelector("#divUnosVlasnistvo").style.display = "none";
   document.querySelector("#divUnosOpstina").style.display = "none";
@@ -245,6 +248,7 @@ function prikaziAtributDivStubove(napon) {
     document.querySelector("#divUnosOptikaStub04").style.display = "flex";
     document.querySelector("#divUnosBrPmo").style.display = "flex";
     document.querySelector("#divUnosBrNnv").style.display = "flex";
+    document.querySelector("#divUnosBrNnvKablovski").style.display = "flex";
     document.querySelector("#divUnosMaterijalStub04").style.display = "flex";
   }
   if (napon === NaponskiNivo.String10kV) {
@@ -258,7 +262,10 @@ function prikaziAtributDivStubove(napon) {
     document.querySelector("#divUnosUzemljivacStub10").style.display = "flex";
     document.querySelector("#divUnosNnVodStub10").style.display = "flex";
     document.querySelector("#divUnosRastavljacStub10").style.display = "flex";
+    document.querySelector("#divUnosBrNnv").style.display = "flex";
+    document.querySelector("#divUnosBrNnvKablovski").style.display = "flex";
     document.querySelector("#divUnosBr10kVVodova").style.display = "flex";
+    document.querySelector("#divUnosBr10kVVodovaKablovski").style.display = "flex";
     document.querySelector("#divUnosMaterijalStub10").style.display = "flex";
   }
   if (napon === NaponskiNivo.String35kV) {
@@ -273,7 +280,10 @@ function prikaziAtributDivStubove(napon) {
     document.querySelector("#divUnosOptikaStub35").style.display = "flex";
     document.querySelector("#divUnosRastavljacStub35").style.display = "flex";
     document.querySelector("#divUnos10KvVod").style.display = "flex";
+    document.querySelector("#divUnosBr10kVVodova").style.display = "flex";
+    document.querySelector("#divUnosBr10kVVodovaKablovski").style.display = "flex";
     document.querySelector("#divUnosBr35kVVodova").style.display = "flex";
+    document.querySelector("#divUnosBr35kVVodovaKablovski").style.display = "flex";
     document.querySelector("#divUnosMaterijalStub35").style.display = "flex";
   }
   document.querySelector("#divUnosGps").style.display = "flex";

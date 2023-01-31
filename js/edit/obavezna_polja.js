@@ -72,6 +72,9 @@ function provjeraObaveznostiStubovi(sloj) {
     if (document.querySelector("#br_nnv").value === "") {
       isFilled = borderChange(document.querySelector("#br_nnv"));
     }
+    if (document.querySelector("#br_nnv_kablovski").value === "") {
+      isFilled = borderChange(document.querySelector("#br_nnv_kablovski"));
+    }
     if (document.querySelector("#vrsta_materijal_stub_04").value === "") {
       isFilled = borderChange(document.querySelector("#vrsta_materijal_stub_04"));
     }
@@ -82,8 +85,17 @@ function provjeraObaveznostiStubovi(sloj) {
     if (document.querySelector("#vrsta_namjena_stub_10").value === "") {
       isFilled = borderChange(document.querySelector("#vrsta_namjena_stub_10"));
     }
+    if (document.querySelector("#br_nnv").value === "") {
+      isFilled = borderChange(document.querySelector("#br_nnv"));
+    }
+    if (document.querySelector("#br_nnv_kablovski").value === "") {
+      isFilled = borderChange(document.querySelector("#br_nnv_kablovski"));
+    }
     if (document.querySelector("#br_10kv_vodova").value === "") {
       isFilled = borderChange(document.querySelector("#br_10kv_vodova"));
+    }
+    if (document.querySelector("#br_10kv_vodova_kablovski").value === "") {
+      isFilled = borderChange(document.querySelector("#br_10kv_vodova_kablovski"));
     }
     if (document.querySelector("#nn_vod_stub_10").value === "") {
       isFilled = borderChange(document.querySelector("#nn_vod_stub_10"));
@@ -101,8 +113,17 @@ function provjeraObaveznostiStubovi(sloj) {
     if (document.querySelector("#optika_stub_35").value === "") {
       isFilled = borderChange(document.querySelector("#optika_stub_35"));
     }
+    if (document.querySelector("#br_10kv_vodova").value === "") {
+      isFilled = borderChange(document.querySelector("#br_10kv_vodova"));
+    }
+    if (document.querySelector("#br_10kv_vodova_kablovski").value === "") {
+      isFilled = borderChange(document.querySelector("#br_10kv_vodova_kablovski"));
+    }
     if (document.querySelector("#br_35kv_vodova").value === "") {
       isFilled = borderChange(document.querySelector("#br_35kv_vodova"));
+    }
+    if (document.querySelector("#br_35kv_vodova_kablovski").value === "") {
+      isFilled = borderChange(document.querySelector("#br_35kv_vodova_kablovski"));
     }
     if (document.querySelector("#vrsta_materijal_stub_35").value === "") {
       isFilled = borderChange(document.querySelector("#vrsta_materijal_stub_35"));

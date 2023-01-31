@@ -11,8 +11,13 @@ function popuniKontrole(odgovor) {
   document.querySelector("#rasp_prov").value = atributi["rasp_prov"];
   document.querySelector("#br_izol_faza").value = atributi["br_izol_faza"];
   document.querySelector("#uzemljivac_otpor").value = atributi["uzemljivac_otpor"];
-  document.querySelector("#br_pmo").value = atributi["br_pmo"];
-  document.querySelector("#br_nnv").value = atributi["br_nnv"];
+  document.querySelector("#br_pmo").value = atributi["br_pmo"];  
+  if (atributi["br_nnv"]?.includes(" / ")) {
+    document.querySelector("#br_nnv").value = atributi["br_nnv"].split(" / ")[0];
+    document.querySelector("#br_nnv_kablovski").value = atributi["br_nnv"].split(" / ")[1];
+  } else {
+    document.querySelector("#br_nnv").value = atributi["br_nnv"];
+  }
   document.querySelector("#pog_sprem").value = atributi["pog_sprem"];
   document.querySelector("#opstina").value = atributi["opstina"];
   document.querySelector("#napon").value = atributi["napon"];
