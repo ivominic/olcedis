@@ -34,6 +34,11 @@ function dodatnaPodesavanjaNaPromjenuLejera(lejer) {
     document.querySelector("#btnDupliraj").style.display = "none";
     document.querySelector("#btnSacuvaj").style.display = "none";
   }
+  if (lejer === Podsloj.Pod) {
+    document.querySelector("#btnIzbrisi").style.display = "none";
+    document.querySelector("#btnDupliraj").style.display = "inline";
+    document.querySelector("#btnSacuvaj").style.display = "none";
+  }
 }
 
 let blnIsChange = false;
