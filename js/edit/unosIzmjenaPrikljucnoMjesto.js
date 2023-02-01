@@ -14,6 +14,7 @@ function dodajPoljaOdabranomGpxPM() {
   selectGpxFeature.set("naziv_napojne", nazivNapojneTrafostanice);
   selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
   selectGpxFeature.set("korisnik", globalUsername);
+  selectGpxFeature.set("skriveni_id_pm", Date.now());
   selectGpxFeature.set("vlasnik", "");
   poruka(StatusPoruke.Uspjeh, UnosPoruke.UspjehAzurirani);
 }

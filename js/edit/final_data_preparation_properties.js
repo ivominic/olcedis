@@ -197,6 +197,7 @@ function prikljucnoMjestoArrayElementProperties(el, action) {
     geohash_id_no: el.properties.geohash_id_no,
     posjeduje_sliku: el.properties.posjeduje_sliku,
     originalId: el.properties.originalId,
+    skriveni_id_pm: el?.properties?.skriveni_id_pm,
   };
   return item;
 }
