@@ -228,6 +228,7 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divReadOdbijeniDatumAzuriranja").style.display = "none";
   document.querySelector("#divReadOdbijeniTip").style.display = "none";
   document.querySelector("#divReadOdbijeniKorisnik").style.display = "none";
+  document.querySelector("#divReadOdbijeniNapon").style.display = "none";
 
   document.querySelector("#divUnosBrNnvKablovski").style.display = "none";
   document.querySelector("#divUnosBr10kVVodovaKablovski").style.display = "none";
@@ -508,6 +509,7 @@ function prikaziAtributDivOdbijeni() {
   document.querySelector("#divReadOdbijeniDatumAzuriranja").style.display = "flex";
   document.querySelector("#divReadOdbijeniTip").style.display = "flex";
   document.querySelector("#divReadOdbijeniKorisnik").style.display = "flex";
+  document.querySelector("#divReadOdbijeniNapon").style.display = "flex";
 }
 
 function ddlLejerChange() {
