@@ -86,7 +86,7 @@ function klikNaVektore(browserEvent) {
       if (!provjeraPostojanjaElementaDdla(document.querySelector("#prik_mjesto"), el.values_?.skriveni_id_pm)) {
         //console.log("el za provjeru duplikata", el);
         //console.log("el.geometry.coordinates", el.values_.geometry.flatCoordinates);
-        nizKoordinataPrikljucnihMjesta[el.values_.id] = el.values_.geometry.flatCoordinates;
+        nizKoordinataPrikljucnihMjesta[el.values_.skriveni_id_pm] = el.values_.geometry.flatCoordinates;
         $("#prik_mjesto").append(
           $("<option>", {
             value: el.values_?.skriveni_id_pm,
@@ -733,7 +733,7 @@ function klikNaRastereZaOdabirPrikljucnogMjesta(browserEvent) {
 
           odgovor.features.forEach(function (el) {
             //console.log("el.geometry.coordinates", el.geometry.coordinates);
-            nizKoordinataPrikljucnihMjesta[el.properties.id] = el.geometry.coordinates;
+            nizKoordinataPrikljucnihMjesta[el.properties.skriveni_id_pm] = el.geometry.coordinates;
             tempNiz.push(el);
           });
         }
