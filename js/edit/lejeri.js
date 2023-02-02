@@ -237,6 +237,33 @@ function cqlZaWmsLejer(wmsLejer, filterCql) {
   wmsLejer.getSource().updateParams(params);
 }
 
+/**
+ * Ukoliko se preda u url-u parametar lejer=odbijeni treba ukloniti sve lejere sa mape i prikazati samo odbijene validcije
+ */
+function prikazLejeraOdbijenihValidacija() {
+  document.querySelector("#lejer_stubovi").checked = false;
+  document.querySelector("#lejer_vodovi").checked = false;
+  document.querySelector("#lejer_trafostanice").checked = false;
+  document.querySelector("#lejer_trafostanice_poligoni").checked = false;
+  document.querySelector("#lejer_prikljucno_mjesto").checked = false;
+  document.querySelector("#lejer_nkro").checked = false;
+  document.querySelector("#lejer_potrosac").checked = false;
+  document.querySelector("#lejer_pod").checked = false;
+
+  document.querySelector("#lejer_odbijeni").checked = true;
+
+  wmsStubovi.setVisible(false);
+  wmsVodovi.setVisible(false);
+  wmsTrafostanicePoligoni.setVisible(false);
+  wmsTrafostanice.setVisible(false);
+  wmsPotrosaci.setVisible(false);
+  wmsPrikljucnoMjesto.setVisible(false);
+  wmsNKRO.setVisible(false);
+  wmsPOD.setVisible(false);
+
+  wmsOdbijeni.setVisible(true);
+}
+
 function pocetniFilter() {
   let url = new URL(location.href);
   let cql_param = unescape(url.searchParams.get("cql_param"));
@@ -244,6 +271,11 @@ function pocetniFilter() {
   let cql_nivo = unescape(url.searchParams.get("cql_nivo"));
   let inactive_layers = unescape(url.searchParams.get("inactive_layers"));
   let geohash_test = unescape(url.searchParams.get("geohash_id"));
+  let odbijeneValidacije = unescape(url.searchParams.get("lejer"));
+
+  if (odbijeneValidacije === "odbijeni") {
+    prikazLejeraOdbijenihValidacija();
+  }
 
   if (cql_opstina === "null") {
     cql_opstina = "";
