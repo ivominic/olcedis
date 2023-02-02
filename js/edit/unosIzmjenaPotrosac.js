@@ -169,7 +169,8 @@ function prikaziPoljaWmsPotrosac(objekat) {
 }
 
 function izmijeniAtributeWmsPotrosac(objekat) {
-  objekat.properties.name = document.querySelector("#name").value;
+  podaciZaPretplatniBroj(document.querySelector("#pretplatni_br").value, objekat);
+  /*objekat.properties.name = document.querySelector("#name").value;
   objekat.properties.id = document.querySelector("#id").value;
   objekat.properties.naziv_napojne = document.querySelector("#naziv_napojne").value;
   objekat.properties.sifra_napojne = document.querySelector("#sifra_napojne").value;
@@ -179,7 +180,7 @@ function izmijeniAtributeWmsPotrosac(objekat) {
   objekat.properties.adresa_mm = document.querySelector("#adresa_mm").value;
   objekat.properties.prik_mjesto = document.querySelector("#prik_mjesto").value;
   objekat.properties.pretplatni_br = document.querySelector("#pretplatni_br").value;
-  objekat.properties.br_brojila = document.querySelector("#br_brojila").value;
+  objekat.properties.br_brojila = document.querySelector("#br_brojila").value;*/
 
   return objekat;
 }
@@ -218,6 +219,63 @@ function izbrisiFeatureIzVektora(elBrisanje) {
       elBrisanje = null;
       vectorSource.clear();
       vectorSource.addFeatures(nizZaBrisanje);
+    }
+  });
+}
+
+//TODO: zamijeniti šifru napojne TS sa vrijednošću iz objekta koji se mijenja
+function azuriranjePojedinacnogPotrosaca(jsonPretplatnikArray, objekat) {
+  jsonPretplatnik = jsonPretplatnikArray[0];
+  let poklapanjeTs = true;
+  console.log("ŠIFRA NAPOJNE", jsonPretplatnik);
+  console.log(sifraNapojneTrafostanice, objekat.properties.sifra_napojne);
+  let tekstHtml = "";
+  tekstHtml += "<li>" + jsonPretplatnik.sifra + " - " + jsonPretplatnik.naziv_potrosaca + "</li>";
+  jsonPretplatnik.naziv_potrosaca === "Nema podatka" && (ispravno = false);
+  if (document.querySelector("#sifra_napojne").value !== jsonPretplatnik.sifra_trafostanice) {
+    poklapanjeTs = false;
+    porukaNepoklapanjeTs +=
+      "<li>" +
+      jsonPretplatnik.naziv_potrosaca +
+      " - " +
+      jsonPretplatnik.sifra +
+      " - šifra TS: " +
+      jsonPretplatnik.sifra_trafostanice +
+      "</li>";
+  }
+  tekstHtml = "<ul style='text-align:left'>" + tekstHtml + "</ul>";
+
+  Swal.fire({
+    title: "Da li želite da ažurirate objekat podacima sljedećeg potrošača?",
+    //icon: "info",
+    html: tekstHtml,
+    showDenyButton: true,
+    confirmButtonText: `Da`,
+    denyButtonText: `Ne`,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      if (!poklapanjeTs) {
+        Swal.fire(
+          `Pretplatnikova šifra trafostanice u bilingu ne odgovara odabranoj TS (${sifraNapojneTrafostanice}):`,
+          porukaNepoklapanjeTs,
+          "error"
+        );
+        return false;
+      }
+      objekat.properties.name = document.querySelector("#name").value;
+      objekat.properties.prik_mjesto = document.querySelector("#prik_mjesto").value;
+
+      objekat.properties.id = jsonPretplatnik.id;
+      objekat.properties.naziv = jsonPretplatnik.naziv_potrosaca;
+      objekat.properties.prik_kabal = jsonPretplatnik.provodnik_spolja + " " + jsonPretplatnik.presjek_spolja;
+      objekat.properties.pod = jsonPretplatnik.pod_na_mm;
+      objekat.properties.status = jsonPretplatnik.status;
+      objekat.properties.adresa_mm = jsonPretplatnik.adresa_mjesta_mjerenja;
+      objekat.properties.pretplatni_br = jsonPretplatnik.sifra;
+      objekat.properties.br_brojila = jsonPretplatnik.broj_brojila;
+      objekat.properties.korisnik = globalUsername;
+      dodajObjekatZaIzmjenu(objekat);
+      poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
     }
   });
 }

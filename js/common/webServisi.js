@@ -561,6 +561,33 @@ function podaciZaSpisakPotrosaca(nizPretplatnihBrojeva) {
 }
 
 /**
+ * Metoda koja za jedan pretplatni broj vrši ažuriranje pretplatnika
+ * @param {} noviPretplatniBroj
+ */
+function podaciZaPretplatniBroj(noviPretplatniBroj, objekat) {
+  if (!noviPretplatniBroj) {
+    poruka(StatusPoruke.Upozorenje, GlobalPoruke.NijeZadatPretplatniBroj);
+    return false;
+  }
+
+  let urlServisa =
+    wsServerOriginLocation + "/novi_portal/api/get_consumer_data?pretplatni_brojevi=" + noviPretplatniBroj;
+  urlServisa += "&t=" + Date.now();
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "POST",
+    success: function (data) {
+      azuriranjePojedinacnogPotrosaca(data, objekat);
+    },
+    error: function (x, y, z) {
+      console.log("Greska", x.responseJSON["error"]);
+      poruka(StatusPoruke.Greska, x.responseJSON["error"]);
+    },
+  });
+}
+
+/**
  * Metoda koja setuje vrijednost geoserverToken promjenljive, koja se koristi za pozive drugih web servisa.
  */
 function tokenGeoserver() {
@@ -782,7 +809,7 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
       temp_stubovi: JSON.stringify(stubovi),
       temp_vodovi: JSON.stringify(vodovi),
       temp_trafostanice: JSON.stringify(trafostanice),
-      temp_pod: JSON.stringify(podovi),
+      temp_pod: JSON.stringify([]),//zamijenjen niz podovi praznim nizom
       temp_prikljucno_mjesto: JSON.stringify(prikljucna_mjesta),
       temp_potrosaci: JSON.stringify(potrosaci),
       temp_nkro: JSON.stringify(nkro),

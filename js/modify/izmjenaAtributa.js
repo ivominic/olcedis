@@ -51,7 +51,7 @@ function izmjenaAtributaWmsLejer(objekat) {
     dodajObjekatZaIzmjenu(izmijeniAtributeWmsPM(objekat));
   }
   if (objekat.ddlLejer === Podsloj.Potrosac) {
-    dodajObjekatZaIzmjenu(izmijeniAtributeWmsPotrosac(objekat));
+    izmijeniAtributeWmsPotrosac(objekat); //dodajObjekatZaIzmjenu se poziva u okviru success dijela poziva servisa
   }
   if (objekat.ddlLejer === Podsloj.Pod) {
     dodajObjekatZaIzmjenu(izmijeniAtributeWmsPod(objekat));
