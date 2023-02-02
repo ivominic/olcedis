@@ -83,13 +83,13 @@ function klikNaVektore(browserEvent) {
   nizGpxTacakaZaObradu.forEach((el) => {
     //console.log("feature za priključno mjesto", el);
     if (el.values_.lejer === Podsloj.PrikljucnoMjesto) {
-      if (!provjeraPostojanjaElementaDdla(document.querySelector("#prik_mjesto"), el.values_.id)) {
+      if (!provjeraPostojanjaElementaDdla(document.querySelector("#prik_mjesto"), el.values_?.skriveni_id_pm)) {
         //console.log("el za provjeru duplikata", el);
         //console.log("el.geometry.coordinates", el.values_.geometry.flatCoordinates);
         nizKoordinataPrikljucnihMjesta[el.values_.id] = el.values_.geometry.flatCoordinates;
         $("#prik_mjesto").append(
           $("<option>", {
-            value: el.values_.id,
+            value: el.values_?.skriveni_id_pm,
             text: el.values_.id,
           })
         );
@@ -741,7 +741,7 @@ function klikNaRastereZaOdabirPrikljucnogMjesta(browserEvent) {
         tempNiz.forEach((el) => {
           $(prik_mjesto).append(
             $("<option>", {
-              value: el.properties.id,
+              value: el.properties.skriveni_id_pm,
               text: "prikljucno mjesto:" + el.properties.id,
             })
           );
