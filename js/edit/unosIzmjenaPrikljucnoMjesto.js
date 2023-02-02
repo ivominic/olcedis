@@ -47,7 +47,7 @@ function prikaziPoljaWmsPM(objekat) {
   document.querySelector("#napon").value = objekat.properties.napon;
   document.querySelector("#id").value = objekat.properties.id;
   document.querySelector("#osiguraci").value = objekat.properties.osiguraci;
-  document.querySelector("#tip_pm").value = objekat.properties.tip_pm;
+  document.querySelector("#tip_pm").value = objekat.properties.tip;
 
   setujDdlVrijednost("#vlasnistvo", objekat.properties.vlasnistvo);
 }
@@ -57,7 +57,8 @@ function izmijeniAtributeWmsPM(objekat) {
   objekat.properties.napon = document.querySelector("#napon").value;
   objekat.properties.id = document.querySelector("#id").value;
   objekat.properties.osiguraci = document.querySelector("#osiguraci").value;
-  objekat.properties.tip_pm = document.querySelector("#tip_pm").value;
+  objekat.properties.tip = document.querySelector("#tip_pm").value;
+  objekat.properties.vlasnistvo = document.querySelector("#vlasnistvo").value;
 
   return objekat;
 }
