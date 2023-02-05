@@ -143,7 +143,16 @@ function prikaziPoljaOdabranogGpxPotrosac() {
   document.querySelector("#prik_kabal").value = selectGpxFeature.values_.prik_kabal;
   document.querySelector("#pod").value = selectGpxFeature.values_.pod;
   document.querySelector("#adresa_mm").value = selectGpxFeature.values_.adresa_mm;
-  document.querySelector("#prik_mjesto").value = selectGpxFeature.values_.prik_mjesto;
+  if (selectGpxFeature.values_.prik_mjesto) {
+    $("#prik_mjesto").empty();
+    $("#prik_mjesto").append(
+      $("<option>", {
+        value: selectGpxFeature.values_.prik_mjesto,
+        text: "prikljucno mjesto:" + selectGpxFeature.values_.prik_mjesto,
+      })
+    );
+  }
+  //document.querySelector("#prik_mjesto").value = selectGpxFeature.values_.prik_mjesto;
   document.querySelector("#pretplatni_br").value = selectGpxFeature.values_.pretplatni_br;
   document.querySelector("#br_brojila").value = selectGpxFeature.values_.br_brojila;
 }
@@ -162,7 +171,16 @@ function prikaziPoljaWmsPotrosac(objekat) {
   document.querySelector("#prik_kabal").value = objekat.properties.prik_kabal;
   document.querySelector("#pod").value = objekat.properties.pod;
   document.querySelector("#adresa_mm").value = objekat.properties.adresa_mm;
-  document.querySelector("#prik_mjesto").value = objekat.properties.prik_mjesto;
+  if (objekat.properties.prik_mjesto) {
+    $("#prik_mjesto").empty();
+    $("#prik_mjesto").append(
+      $("<option>", {
+        value: objekat.properties.prik_mjesto,
+        text: "prikljucno mjesto:" + objekat.properties.prik_mjesto,
+      })
+    );
+  }
+  //document.querySelector("#prik_mjesto").value = objekat.properties.prik_mjesto;
   document.querySelector("#naziv_nn_izvod").value = objekat.properties.naziv_nn_izvod;
   document.querySelector("#pretplatni_br").value = objekat.properties.pretplatni_br;
   document.querySelector("#br_brojila").value = objekat.properties.br_brojila;
