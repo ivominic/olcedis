@@ -236,6 +236,9 @@ select.on("select", function (e) {
   if (!selectGpxFeature) {
     return false;
   }
+  document.querySelector("#naziv_napojne").value = sifraNapojneTrafostanice;
+  document.querySelector("#sifra_napojne").value = nazivNapojneTrafostanice;
+  document.querySelector("#izvod_napojne").value = izvodNapojneTrafostanice;
   if (selectGpxFeature.values_.lejer) {
     //Popuni polja vrijednostima
     console.log("ulazi ovdje", selectGpxFeature.get("lejer"));

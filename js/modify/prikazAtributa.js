@@ -108,6 +108,9 @@ function prikazAtributaWmsLejer(objekat) {
   document.querySelector("#ddl_sloj_podataka").classList.add("disabledInput");
   document.querySelector("#ddl_sloj_podataka").disabled = true;
   console.log("WMS OBJEKAT", objekat);
+  document.querySelector("#naziv_napojne").value = objekat?.properties?.naziv_napojne;
+  document.querySelector("#sifra_napojne").value = objekat?.properties?.sifra_napojne;
+  document.querySelector("#izvod_napojne").value = objekat?.properties?.izvod_napojne;
   originalnaGeometrijaWmsVoda = objekat.geometry;
   document.querySelector("#ddl_sloj_podataka").value = objekat.ddlLejer;
   ddlLejerChange();
