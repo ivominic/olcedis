@@ -195,8 +195,7 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
     osiguraci: el.values_.osiguraci,
     napon: el.values_.napon,
     vlasnistvo: el.values_.vlasnistvo,
-    //tip: el.values_.tip,
-    tip: el.values_.tip_pm,
+    tip: el.values_.tip,
     id: el.values_.id, //Vidjeti šta ovdje predajem
     opstina: el.values_.opstina,
     gps: el.values_.gps,
@@ -216,7 +215,6 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
     lejer: "prikljucno_mjesto",
     skriveni_id_pm: el.values_.skriveni_id_pm,
   };
-  console.log("Priključno mjesto finalno", item);
   prikljucnaMjestaArrayFinal.push(item);
   return item;
 }

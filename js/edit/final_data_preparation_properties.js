@@ -181,7 +181,6 @@ function prikljucnoMjestoArrayElementProperties(el, action) {
     napon: el.properties.napon,
     vlasnistvo: el.properties.vlasnistvo,
     tip: el.properties.tip,
-    tip: el.properties.tip_pm,
     id: el.properties.id, //Vidjeti šta ovdje predajem
     opstina: el.properties.opstina,
     gps: el.properties.gps,
