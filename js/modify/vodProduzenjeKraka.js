@@ -261,9 +261,11 @@ function potvrdaProduzenjaKraka() {
 
     //Ukoliko se modifikuje geometrija istog voda, ukloniti i iz vekstorskog sloja za prikaz.
     let idxObj = nizZaVektorAzuriranje.findIndex((object) => {
-      return object.id === noviVod.fid_1;
+      return object.values_.id === noviVod.fid_1;
     });
-    nizZaVektorAzuriranje.splice(idxObj, 1);
+    if (idxObj >= 0) {
+      nizZaVektorAzuriranje.splice(idxObj, 1);
+    }
 
     nizZaVektorAzuriranje.push(feature);
     vektorObjektiZaAzuriranje.getSource().clear();
