@@ -54,6 +54,10 @@ function klikNaRastereZaPomjeranjeObjekta(browserEvent) {
               if (brojLejera === 0) {
                 tempNiz.forEach((el) => {
                   console.log("el čitanje", el);
+                  if (!provjeraPravaUnosIzmjena(globalUsername, globalVlasnik, el.properties.vlasnik)) {
+                    map.un("singleclick", klikNaRastereZaPomjeranjeObjekta);
+                    return false;
+                  }
                   if (el.id.split(".")[0] === "vodovi") {
                     nizPocetnihVodova.push(el.properties.originalId);
                   }
