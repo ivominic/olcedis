@@ -170,6 +170,7 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosOsiguraci").style.display = "none";
   document.querySelector("#divUnosTipPM").style.display = "none";
 
+  document.querySelector("#divUnosPotrosacIme").style.display = "none";
   document.querySelector("#divUnosPrikKabal").style.display = "none";
   document.querySelector("#divUnosPod").style.display = "none";
   document.querySelector("#divUnosAdresaMm").style.display = "none";
@@ -434,6 +435,7 @@ function prikaziAtributDivPotrosac() {
   document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
   document.querySelector("#divUnosName").style.display = "flex";
   document.querySelector("#divUnosGps").style.display = "flex";
+  document.querySelector("#divUnosPotrosacIme").style.display = "flex";
   document.querySelector("#divUnosPrikKabal").style.display = "flex";
   document.querySelector("#divUnosPod").style.display = "flex";
   document.querySelector("#divUnosAdresaMm").style.display = "flex";

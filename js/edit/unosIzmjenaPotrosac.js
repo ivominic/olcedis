@@ -141,6 +141,7 @@ function prikaziPoljaOdabranogGpxPotrosac() {
   document.querySelector("#naziv_napojne").value = selectGpxFeature.values_.naziv_napojne;
   document.querySelector("#sifra_napojne").value = selectGpxFeature.values_.sifra_napojne;
   document.querySelector("#izvod_napojne").value = selectGpxFeature.values_.izvod_napojne;
+  document.querySelector("#potrosac_ime").value = selectGpxFeature.values_.naziv;
   document.querySelector("#prik_kabal").value = selectGpxFeature.values_.prik_kabal;
   document.querySelector("#naziv_nn_izvod").value = selectGpxFeature.values_.naziv_nn_izvod;
   document.querySelector("#pod").value = selectGpxFeature.values_.pod;
@@ -170,6 +171,7 @@ function prikaziPoljaWmsPotrosac(objekat) {
   document.querySelector("#naziv_napojne").value = objekat.properties.naziv_napojne;
   document.querySelector("#sifra_napojne").value = objekat.properties.sifra_napojne;
   document.querySelector("#izvod_napojne").value = objekat.properties.izvod_napojne;
+  document.querySelector("#potrosac_ime").value = objekat.properties.naziv;
   document.querySelector("#prik_kabal").value = objekat.properties.prik_kabal;
   document.querySelector("#pod").value = objekat.properties.pod;
   document.querySelector("#adresa_mm").value = objekat.properties.adresa_mm;
