@@ -88,6 +88,7 @@ function prikazPanelaAtributa(sloj) {
   //TODO: Provjeriti odakle šalje string "Potrošač" i "Priključno mjesto" kao sloj
   if (sloj === "Potrošač") sloj = Podsloj.Potrosac;
   if (sloj === "Priključno mjesto") sloj = Podsloj.PrikljucnoMjesto;
+  if (sloj === "POD") sloj = Podsloj.Pod;
   let blnPronadjenSloj = false;
   if (sloj === Podsloj.TS10 && selektovaniWmsObjekat?.properties?.tip === "RP") {
     sloj = Podsloj.Rasklopiste10;

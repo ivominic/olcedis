@@ -115,12 +115,13 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
                 vectorSource.addFeatures([noviEl]);
               }
 
-              let ddlTemp = document.querySelector("#prik_mjesto").value;
+              //TODO: Ukloniti i metodu generisanjeGpxPodaIzGeometrije
+              /*let ddlTemp = document.querySelector("#prik_mjesto").value;
               generisanjeGpxPodaIzGeometrije(
                 nizKoordinataPrikljucnihMjesta[ddlTemp][0],
                 nizKoordinataPrikljucnihMjesta[ddlTemp][1],
                 jsonPretplatnik
-              );
+              );*/
             }
           });
           poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
