@@ -97,22 +97,6 @@ function klikNaVektore(browserEvent) {
     }
   });
 
-  if (vectorSource) {
-    vectorSource.getFeatures().forEach(function (el) {
-      if (odabirPrikljucnogMjestaSaMapeVektor) {
-        //odabirPrikljucnogMjestaSaMapeVektor = false;
-        console.log("PRIKLJUČNOMJESTO", potrosacZaKogSeBiraPrikljucnoMjesto, el.ol_uid);
-        if (el.ol_uid === potrosacZaKogSeBiraPrikljucnoMjesto) {
-          potrosacZaKogSeBiraPrikljucnoMjesto = "";
-          selectGpxFeature = el;
-          select.getFeatures().clear();
-          select.getFeatures().push(selectGpxFeature);
-          console.log("Odabrani feature priključnog mjesta", selectGpxFeature);
-        }
-      }
-    });
-  }
-
   if (!odabirSaMape) {
     if (nizGpxTacakaZaObradu.length > 1) {
       document.querySelector("#divPrethodniObjekat").style.display = "none";
@@ -274,6 +258,18 @@ select.on("select", function (e) {
     }
   }
   odabirSaMape = false;
+
+  if (potrosacZaKogSeBiraPrikljucnoMjesto !== "") {
+    vectorSource?.getFeatures()?.forEach(function (el) {
+      //odabirPrikljucnogMjestaSaMapeVektor = false;
+      if (el.ol_uid === potrosacZaKogSeBiraPrikljucnoMjesto) {
+        potrosacZaKogSeBiraPrikljucnoMjesto = "";
+        selectGpxFeature = el;
+      }
+    });
+    select.getFeatures().clear();
+    select.getFeatures().push(selectGpxFeature);
+  }
 });
 
 var modifyV = new ol.interaction.Modify({
@@ -1000,6 +996,7 @@ function odabirPrikljucnogMjestaZaUnosPotrosaca() {
   potrosacZaKogSeBiraPrikljucnoMjesto = "";
   if (selectGpxFeature) {
     potrosacZaKogSeBiraPrikljucnoMjesto = selectGpxFeature.ol_uid;
+    console.log("PRVA VRIJEDNOST PM", potrosacZaKogSeBiraPrikljucnoMjesto);
   }
   map.removeInteraction(draw);
   map.removeInteraction(modify);
