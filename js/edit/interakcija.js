@@ -85,6 +85,9 @@ $("#topNav").children().prop("disabled", true);
 
 function prikazPanelaAtributa(sloj) {
   console.log("prikazPanelAtributa", sloj);
+  //TODO: Provjeriti odakle šalje string "Potrošač" i "Priključno mjesto" kao sloj
+  if (sloj === "Potrošač") sloj = Podsloj.Potrosac;
+  if (sloj === "Priključno mjesto") sloj = Podsloj.PrikljucnoMjesto;
   let blnPronadjenSloj = false;
   if (sloj === Podsloj.TS10 && selektovaniWmsObjekat?.properties?.tip === "RP") {
     sloj = Podsloj.Rasklopiste10;
@@ -246,7 +249,7 @@ function noviNkro() {
   prikazPanelaAtributa("NKRO");
 }
 function novoPrikljucnoMjesto() {
-  prikazPanelaAtributa("Priključno mjesto");
+  prikazPanelaAtributa("prikljucno_mjesto");
 }
 
 /**Povezivanje kontrola sa akcijama */
