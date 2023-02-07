@@ -107,6 +107,7 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
               noviEl.set("naziv_napojne", nazivNapojneTrafostanice);
               noviEl.set("izvod_napojne", izvodNapojneTrafostanice);
               noviEl.set("napon", document.querySelector("#napon").value);
+              noviEl.set("naziv_nn_izvod", document.querySelector("#naziv_nn_izvod").value);
               noviEl.set("korisnik", globalUsername);
               noviEl.set("vlasnik", "");
               if (boolAdd) {
@@ -141,6 +142,7 @@ function prikaziPoljaOdabranogGpxPotrosac() {
   document.querySelector("#sifra_napojne").value = selectGpxFeature.values_.sifra_napojne;
   document.querySelector("#izvod_napojne").value = selectGpxFeature.values_.izvod_napojne;
   document.querySelector("#prik_kabal").value = selectGpxFeature.values_.prik_kabal;
+  document.querySelector("#naziv_nn_izvod").value = selectGpxFeature.values_.naziv_nn_izvod;
   document.querySelector("#pod").value = selectGpxFeature.values_.pod;
   document.querySelector("#adresa_mm").value = selectGpxFeature.values_.adresa_mm;
   if (selectGpxFeature.values_.prik_mjesto) {

@@ -238,6 +238,7 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
     pod: el.values_.pod,
     adresa_mm: el.values_.adresa_mm,
     prik_mjesto: el.values_.prik_mjesto,
+    skriveni_id_pm: el.values_.prik_mjesto,
     naziv: el.values_.naziv,
     naziv_nn_izvod: el.values_.naziv_nn_izvod,
     pretplatni_br: el.values_.pretplatni_br,

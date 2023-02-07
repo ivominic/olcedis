@@ -218,6 +218,7 @@ function potrosacArrayElementProperties(el, action) {
     pod: el.properties.pod,
     adresa_mm: el.properties.adresa_mm,
     prik_mjesto: el.properties.prik_mjesto,
+    skriveni_id_pm: el.properties.prik_mjesto,
     naziv: el.properties.naziv,
     naziv_nn_izvod: el.properties.naziv_nn_izvod,
     pretplatni_br: el.properties.pretplatni_br,
