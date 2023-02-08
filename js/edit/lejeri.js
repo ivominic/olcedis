@@ -34,8 +34,8 @@ let wmsVodovi = new ol.layer.Image({
   }),
 });
 
-let layernameTS = "trafostanice",
-  fulllayernameTS = "geonode:trafostanice",
+let layernameTS = "view_trafostanice",
+  fulllayernameTS = "geonode:view_trafostanice",
   layertitleTS = "trafostanice";
 let tipGeometrijeTS = point;
 

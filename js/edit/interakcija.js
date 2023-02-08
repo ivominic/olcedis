@@ -85,9 +85,6 @@ $("#topNav").children().prop("disabled", true);
 
 function prikazPanelaAtributa(sloj) {
   console.log("prikazPanelAtributa", sloj);
-  //TODO: Provjeriti odakle šalje string "Potrošač" i "Priključno mjesto" kao sloj
-  if (sloj === "Potrošač") sloj = Podsloj.Potrosac;
-  if (sloj === "Priključno mjesto") sloj = Podsloj.PrikljucnoMjesto;
   if (sloj === "POD") sloj = Podsloj.Pod;
   let blnPronadjenSloj = false;
   if (sloj === Podsloj.TS10 && selektovaniWmsObjekat?.properties?.tip === "RP") {
@@ -180,6 +177,7 @@ function prikazPanelaAtributa(sloj) {
     document.querySelector("#napon").value = filePowerLevel;
     document.querySelector("#ddl_sloj_podataka").value = Podsloj.PrikljucnoMjesto;
     prikaziAtributDivPrikljucnoMjesto();
+    //TODO: Izbrisati potrošač iz if uslova, predavao se iz selekcijaMapa.js prikazPodatakaIzGpxTacaka()
   } else if (sloj === "Potrošač" || sloj === Podsloj.Potrosac) {
     odabraniLejerUnos = "potrosaci";
     document.querySelector("#napon").value = filePowerLevel;

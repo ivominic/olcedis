@@ -444,15 +444,15 @@ function prikazPodatakaIzGpxTacaka() {
     prikazPanelaAtributa(pomLejer);
   } else if (selectGpxFeature.get("lejer") === "prikljucno_mjesto") {
     prikaziPoljaOdabranogGpxPM();
-    let pomLejer = "Priključno mjesto";
+    let pomLejer = Podsloj.PrikljucnoMjesto;
     prikazPanelaAtributa(pomLejer);
   } else if (selectGpxFeature.get("lejer") === "pod") {
     prikaziPoljaOdabranogGpxPod();
-    let pomLejer = "POD";
+    let pomLejer =  Podsloj.Pod;
     prikazPanelaAtributa(pomLejer);
   } else if (selectGpxFeature.get("lejer") === "potrosac") {
     prikaziPoljaOdabranogGpxPotrosac();
-    let pomLejer = "Potrošač";
+    let pomLejer = Podsloj.Potrosac;
     prikazPanelaAtributa(pomLejer);
   }
 }
@@ -747,7 +747,7 @@ function klikNaRastereZaOdabirPrikljucnogMjesta(browserEvent) {
         });
         odabirPrikljucnogMjestaSaMape = false;
         //Ukloniti metodu koja se poziva na klik
-        map.un("singleclick", klikNaRastereZaOdabirPrikljucnogMjesta);
+        //map.un("singleclick", klikNaRastereZaOdabirPrikljucnogMjesta);
       });
   }
 }
@@ -1005,7 +1005,7 @@ function odabirPrikljucnogMjestaZaUnosPotrosaca() {
   odabirSaMape = true;
   nizKoordinataPrikljucnihMjesta = {};
   $(prik_mjesto).empty();
-  map.on("singleclick", klikNaRastereZaOdabirPrikljucnogMjesta);
+  map.once("singleclick", klikNaRastereZaOdabirPrikljucnogMjesta);
 }
 
 /**

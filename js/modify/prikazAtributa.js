@@ -61,7 +61,7 @@ function ddlLejerNaziv(el) {
     return Podsloj.Odbijeni;
   }
 
-  if (elId.startsWith("trafostanic") || elId.startsWith("temp_trafostanic")) {
+  if (elId.includes("trafostanic")) {
     let prenosOdnos = el.properties.prenos_odnos;
     if (globalNaponskiNivoPrenosOdnos(prenosOdnos) === "0.4") {
       return Podsloj.TS10;

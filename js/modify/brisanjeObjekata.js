@@ -11,6 +11,9 @@ function dodajObjekatZaBrisanje(objekat) {
   if (objekatId.includes("view_potrosaci")) {
     objekatId = `potrosaci.${objekat.properties.originalId}`;
   }
+  if (objekatId.includes("view_trafostanice")) {
+    objekatId = `trafostanice.${objekat.properties?.originalId}`;
+  }
   nizWmsZaBrisanje.forEach((item) => {
     if (item[0] === temp_geohash) {
       item[1].push(objekatId);
