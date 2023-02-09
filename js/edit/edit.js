@@ -390,8 +390,9 @@ function izbrisi() {
             });
         } else {
           let nizZaBrisanje = vectorSource.getFeatures();
+          let olUid = select?.getFeatures()?.array_[0]?.ol_uid;
           vectorSource.getFeatures().forEach(function (el, index, nizZaBrisanje) {
-            if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
+            if (el.ol_uid == olUid) {
               nizZaBrisanje.splice(index, 1);
               select.getFeatures().array_.splice(0, 1);
               selectGpxFeature = null;
@@ -400,8 +401,20 @@ function izbrisi() {
             }
           });
 
+          let idxObj = gpxFeatures.findIndex((object) => {
+            return object.ol_uid === olUid;
+          });
+          if (idxObj >= 0) {
+            gpxFeatures.splice(idxObj, 1);
+          }
+
+          //TODO: Provjeriti da li je dovoljno ovo da se podesi nakon brisanja gpx tačke
+          document.querySelector("#divPrethodniObjekat").style.display = "none";
+          document.querySelector("#divSljedeciObjekat").style.display = "none";
+          nizGpxTacakaZaObradu.length = 0;
+
           //TODO: Dodao ovaj blok koda za uklanjanje dugmadi next/prev kod brisanja gpx tačke. Ali ne radi kako trevba.
-          if (nizGpxTacakaZaObradu.length) {
+          /*if (nizGpxTacakaZaObradu.length) {
             console.log("nizGpxTacakaZaObradu", nizGpxTacakaZaObradu.length);
             nizGpxTacakaZaObradu.splice(indexGpxTacakaZaObradu, 1);
             console.log("nizGpxTacakaZaObradu", nizGpxTacakaZaObradu.length);
@@ -419,7 +432,7 @@ function izbrisi() {
                 document.querySelector("#divSljedeciObjekat").style.display = "flex";
               }
             }
-          }
+          }*/
         }
       } else {
         dodajObjekatZaBrisanje(selektovaniWmsObjekat);
