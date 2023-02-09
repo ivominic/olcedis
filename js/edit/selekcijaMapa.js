@@ -405,12 +405,12 @@ function prikazPodatakaIzGpxTacaka() {
   console.log("gpx vrijednost", selectGpxFeature.get("name"));
   if (selectGpxFeature.get("lejer") === "stubovi") {
     prikaziPoljaOdabranogGpxStuba();
-    let pomLejer = "Stub 35KV";
+    let pomLejer = Podsloj.Stub35;
     if (selectGpxFeature.get("napon") === "10") {
-      pomLejer = "Stub 10KV";
+      pomLejer = Podsloj.Stub10;
     }
     if (selectGpxFeature.get("napon") === "0.4") {
-      pomLejer = "Stub 04KV";
+      pomLejer = Podsloj.Stub04;
     }
     prikazPanelaAtributa(pomLejer);
   } else if (selectGpxFeature.get("lejer") === "trafostanice") {
@@ -418,29 +418,29 @@ function prikazPodatakaIzGpxTacaka() {
     let pomLejer = selectGpxFeature.get("ddl_sloj_podataka");
     if (!pomLejer) {
       //TODO: MISLIM DA KOMPLETAN OVAJ IF TREBA UKLONITI
-      pomLejer = "trafostanica35";
+      pomLejer = Podsloj.TS35;
       if (selectGpxFeature.get("napon") === "10") {
-        pomLejer = "trafostanica10";
+        pomLejer = Podsloj.TS10;
       }
       if (selectGpxFeature.get("napon") === "0.4") {
-        pomLejer = "trafostanica10";
+        pomLejer = Podsloj.TS10;
       }
     }
     prikazPanelaAtributa(pomLejer);
   } else if (selectGpxFeature.get("lejer") === "vodovi") {
     //Ovo će trebati za poseban wfs lejer za iscrtane vodove
     prikaziPoljaOdabranogVoda();
-    let pomLejer = "Vod 35KV";
+    let pomLejer = Podsloj.Vod35;
     if (selectGpxFeature.get("napon") === "10") {
-      pomLejer = "Vod 10KV";
+      pomLejer = Podsloj.Vod10;
     }
     if (selectGpxFeature.get("napon") === "0.4") {
-      pomLejer = "Vod 04KV";
+      pomLejer = Podsloj.Vod04;
     }
     prikazPanelaAtributa(pomLejer);
   } else if (selectGpxFeature.get("lejer") === "nkro") {
     prikaziPoljaOdabranogGpxNKRO();
-    let pomLejer = "NKRO";
+    let pomLejer = Podsloj.Nkro;
     prikazPanelaAtributa(pomLejer);
   } else if (selectGpxFeature.get("lejer") === "prikljucno_mjesto") {
     prikaziPoljaOdabranogGpxPM();
@@ -448,7 +448,7 @@ function prikazPodatakaIzGpxTacaka() {
     prikazPanelaAtributa(pomLejer);
   } else if (selectGpxFeature.get("lejer") === "pod") {
     prikaziPoljaOdabranogGpxPod();
-    let pomLejer =  Podsloj.Pod;
+    let pomLejer = Podsloj.Pod;
     prikazPanelaAtributa(pomLejer);
   } else if (selectGpxFeature.get("lejer") === "potrosac") {
     prikaziPoljaOdabranogGpxPotrosac();

@@ -218,37 +218,37 @@ function prikazPanelaAtributa(sloj) {
 }
 
 function noviStub35() {
-  prikazPanelaAtributa("Stub 35KV");
+  prikazPanelaAtributa(Podsloj.Stub35);
 }
 function noviStub10() {
-  prikazPanelaAtributa("Stub 10KV");
+  prikazPanelaAtributa(Podsloj.Stub10);
 }
 function noviStub04() {
-  prikazPanelaAtributa("Stub 04KV");
+  prikazPanelaAtributa(Podsloj.Stub04);
 }
 function noviVod35() {
-  prikazPanelaAtributa("Vod 35KV");
+  prikazPanelaAtributa(Podsloj.Vod35);
 }
 function noviVod10() {
-  prikazPanelaAtributa("Vod 10KV");
+  prikazPanelaAtributa(Podsloj.Vod10);
 }
 function noviVod04() {
-  prikazPanelaAtributa("Vod 04KV");
+  prikazPanelaAtributa(Podsloj.Vod04);
 }
 function novaTrafostanica35x() {
-  prikazPanelaAtributa("Trafostanica35x");
+  prikazPanelaAtributa(Podsloj.TS35);
 }
 function novaTrafostanica1004() {
-  prikazPanelaAtributa("Trafostanica1004");
+  prikazPanelaAtributa(Podsloj.TS10);
 }
 function novaTrafostanica110x() {
-  prikazPanelaAtributa("Trafostanica110x");
+  prikazPanelaAtributa(Podsloj.TS110);
 }
 function noviNkro() {
-  prikazPanelaAtributa("NKRO");
+  prikazPanelaAtributa(Podsloj.Nkro);
 }
 function novoPrikljucnoMjesto() {
-  prikazPanelaAtributa("prikljucno_mjesto");
+  prikazPanelaAtributa(Podsloj.PrikljucnoMjesto);
 }
 
 /**Povezivanje kontrola sa akcijama */
