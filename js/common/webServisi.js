@@ -854,7 +854,7 @@ async function serviceWrap(objekti_za_azuriranje, object_control, brisanje_objek
     },
     error: function (x, y, z) {
       resetovanjeNizovaNakonGreske();
-      poruka(StatusPoruke.Greska, JSON.parse(x.responseText).response);
+      poruka(StatusPoruke.Greska, x.responseText);
       console.log("error WRAP", x);
     },
   });
