@@ -15,7 +15,8 @@ function dodajPoljaOdabranomGpxPotrosac() {
   }
 }
 
-function dupliraj() {
+//TODO: Ova funkcija se ne koristi
+function duplirajPotrosace() {
   //Ovo razraditi za kreiranje pojedinačnih gpx potrošača
   vectorSource.getFeatures().forEach(function (el) {
     if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {

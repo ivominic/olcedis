@@ -446,7 +446,8 @@ function dupliraj() {
         feature.values_.id = timestamp;
         provjeraWfsPrikljucnaMjesta(feature, timestamp);
       } else {
-        vectorSource.addFeature(el.clone());
+        vectorSource.addFeature(feature);
+        gpxFeatures.push(feature);
       }
     }
   });
