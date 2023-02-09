@@ -71,7 +71,6 @@ function geometrijaTrafostaniceCentar(sifraTS) {
     data: "",
     type: "GET",
     success: function (data) {
-      console.log("detalji trafostanica, odgovor servisa", data);
       if (data) {
         let wkt = data[0].the_geom;
         wkt = wkt.replace(")", "").replace("((", "(");
@@ -146,7 +145,6 @@ function detaljiTrafostanica(sifraTS) {
 function pretragaTrafostanicaGpx(sifraTS) {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice?sifra=" + sifraTS;
   urlServisa += "&t=" + Date.now();
-  console.log("url pretragaTrafostanicaGpx", urlServisa);
   $("#ddlIzvodNapojneTrafostanice").empty();
   $("#ddlIzvodNapojneTrafostanice").append(
     $("<option>", {
@@ -159,7 +157,6 @@ function pretragaTrafostanicaGpx(sifraTS) {
     data: "",
     type: "GET",
     success: function (data) {
-      console.log("pretraga trafostanica, odgovor servisa", data);
       if (data && data.ts) {
         sifraNapojneTrafostanice = data.ts.sifra;
         nazivNapojneTrafostanice = data.ts.naziv;
@@ -732,7 +729,6 @@ async function availableLayersPerPowerLevel(powerLevel) {
     data: "",
     type: "POST",
     success: function (data) {
-      console.log("DATA spisakLejeraZaNaponskiNivo", data);
       fillDdl("ddl_sloj_podataka", "", "Izaberite vrijednost");
       data.slojevi.forEach((item) => {
         fillDdl("ddl_sloj_podataka", item.slug, item.naziv);
@@ -762,7 +758,6 @@ function sifreDionicaVodova(nazivTs, sifraTs, izvodTs) {
     data: "",
     type: "GET",
     success: function (data) {
-      console.log("DATA sifreDionicaVodova", data);
       let array = [];
       data.dionice.forEach((item) => {
         fillDdl("sifra_dionice", item.sifra_dionice, item.sifra_dionice);
