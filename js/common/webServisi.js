@@ -26,12 +26,14 @@ function neupareneTrafostanice(sifraNapojne, izvodNapojne) {
           })
         );
         data.neuparene.forEach(function (vrijednost) {
-          $("#ddlTrafostanice").append(
-            $("<option>", {
-              value: vrijednost.sifra_biling,
-              text: vrijednost.naziv_trafostanice,
-            })
-          );
+          if (vrijednost.enabled) {
+            $("#ddlTrafostanice").append(
+              $("<option>", {
+                value: vrijednost.sifra_biling,
+                text: vrijednost.naziv_trafostanice,
+              })
+            );
+          }
         });
         popuniPoljaTrafostaniceWS();
       }
@@ -809,7 +811,7 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
       temp_stubovi: JSON.stringify(stubovi),
       temp_vodovi: JSON.stringify(vodovi),
       temp_trafostanice: JSON.stringify(trafostanice),
-      temp_pod: JSON.stringify([]),//zamijenjen niz podovi praznim nizom
+      temp_pod: JSON.stringify([]), //zamijenjen niz podovi praznim nizom
       temp_prikljucno_mjesto: JSON.stringify(prikljucna_mjesta),
       temp_potrosaci: JSON.stringify(potrosaci),
       temp_nkro: JSON.stringify(nkro),
