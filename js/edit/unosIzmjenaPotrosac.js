@@ -78,6 +78,23 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
         let selFeature = select.getFeatures().array_[0];
         select.getFeatures().clear();
 
+        //PROVJERA koja ne dozvoljava višestruki unos istog pretplatnika.
+        let nadjeniPretplatnik = "";
+        nizPretplatnika.forEach((jsonPretplatnik) => {
+          gpxFeatures.forEach((element) => {
+            if (jsonPretplatnik.sifra == element.values_.pretplatni_br) {
+              nadjeniPretplatnik = jsonPretplatnik.sifra;
+            }
+          });
+        });
+        if (nadjeniPretplatnik) {
+          poruka(
+            StatusPoruke.Upozorenje,
+            "Pretplatnik sa pretplatnim brojem " + nadjeniPretplatnik + " je već sačuvan."
+          );
+          return false;
+        }
+
         nizPretplatnika.forEach((jsonPretplatnik) => {
           console.log("Pojedinačni niz pretplatnika", jsonPretplatnik);
           vectorSource.getFeatures().forEach(function (el) {
