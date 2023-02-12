@@ -8,11 +8,12 @@ function dodajPoljaOdabranomGpxPotrosac() {
     poruka(StatusPoruke.Upozorenje, UnosPoruke.UnijetiBrojevePotrosaca);
     return false;
   }
-  if (selectGpxFeature.get("lejer") === undefined || selectGpxFeature.get("lejer") === "potrosac") {
+  podaciZaSpisakPotrosaca(pretplatniBrojevi);
+  /*if (selectGpxFeature.get("lejer") === undefined || selectGpxFeature.get("lejer") === "potrosac") {
     podaciZaSpisakPotrosaca(pretplatniBrojevi);
   } else {
     poruka(StatusPoruke.Upozorenje, UnosPoruke.PokusajKreiranjaPotrosaca + selectGpxFeature.get("lejer"));
-  }
+  }*/
 }
 
 //TODO: Ova funkcija se ne koristi
