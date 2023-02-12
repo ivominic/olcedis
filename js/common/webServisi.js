@@ -845,11 +845,11 @@ async function serviceWrap(objekti_za_azuriranje, object_control, brisanje_objek
     success: function (data) {
       console.log("success WRAP", data);
       resetovanjeNakonUspjeha();
-      poruka(StatusPoruke.Uspjeh, data.response);
+      poruka(StatusPoruke.Uspjeh, data.response.replace(/"/g, ""));
     },
     error: function (x, y, z) {
       resetovanjeNizovaNakonGreske();
-      poruka(StatusPoruke.Greska, x.responseText);
+      poruka(StatusPoruke.Greska, x.responseText.replace(/"/g, ""));
       console.log("error WRAP", x);
     },
   });

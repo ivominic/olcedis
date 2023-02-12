@@ -13,6 +13,8 @@ function dodaj() {
   document.querySelector("#ddl_sloj_podataka").classList.remove("disabledInput");
   document.querySelector("#ddl_sloj_podataka").disabled = false;
 
+  selektovaniWmsObjekat = null; //TODO: Dodato da se izbjegne poruka o nemate prava, kad se klikne plus, uklanja se wms objekat
+
   ponovnoPunjenjeSifreDionice();
   ddlLejerChange();
 
@@ -342,7 +344,8 @@ function potvrdaNapojneTrafostaniceUnos() {
   enableMenija();
   readRadius();
   if (!isEditable) {
-    showConnectForm();
+    //TODO: Vratiti
+    //showConnectForm();
   }
   sifreDionicaVodova(nazivNapojneTrafostanice, sifraNapojneTrafostanice, izvodNapojneTrafostanice);
   availableLayersPerPowerLevel(filePowerLevel);

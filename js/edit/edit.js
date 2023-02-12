@@ -50,6 +50,10 @@ function sacuvaj() {
   console.log("Administracija sacuvaj()");
   let odabraniSloj = document.querySelector("#ddl_sloj_podataka").value;
   vodNaponskiNivoPrijeOdabira = document.querySelector("#napon").value;
+  if (selektovaniWmsObjekat && selectGpxFeature) {
+    console.log("PRAZNI WMS OBJEKAT!!!!!!! Provjeriti ovaj slučaj.");
+    selektovaniWmsObjekat = null;
+  }
   if (selektovaniWmsObjekat) {
     if (odabraniSloj === Podsloj.Pod) {
       poruka(StatusPoruke.Upozorenje, UnosPoruke.NijeMoguceMijenjatiPod);
