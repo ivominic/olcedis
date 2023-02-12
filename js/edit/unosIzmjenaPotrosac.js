@@ -27,6 +27,22 @@ function duplirajPotrosace() {
   });
 }
 
+/**
+ * Metoda koja provjerava da li su uneseni dupli pretplatnici.
+ * @returns
+ */
+function finalProvjeraDuplih() {
+  let retVal = "";
+  for (let i = 1; i++; i < potrosaciArrayFinal.length) {
+    for (let j = 0; j++; j < i) {
+      if (potrosaciArrayFinal[i].pretplatni_br === potrosaciArrayFinal[j].pretplatni_br) {
+        retVal = potrosaciArrayFinal[i].pretplatni_br;
+      }
+    }
+  }
+  return retVal;
+}
+
 function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
   if (select.getFeatures().array_[0] === undefined) {
     poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabratiGpxTacku);
@@ -77,23 +93,6 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
       } else {
         let selFeature = select.getFeatures().array_[0];
         select.getFeatures().clear();
-
-        //PROVJERA koja ne dozvoljava višestruki unos istog pretplatnika.
-        let nadjeniPretplatnik = "";
-        nizPretplatnika.forEach((jsonPretplatnik) => {
-          gpxFeatures.forEach((element) => {
-            if (jsonPretplatnik.sifra == element.values_.pretplatni_br) {
-              nadjeniPretplatnik = jsonPretplatnik.sifra;
-            }
-          });
-        });
-        if (nadjeniPretplatnik) {
-          poruka(
-            StatusPoruke.Upozorenje,
-            "Pretplatnik sa pretplatnim brojem " + nadjeniPretplatnik + " je već sačuvan."
-          );
-          return false;
-        }
 
         nizPretplatnika.forEach((jsonPretplatnik) => {
           console.log("Pojedinačni niz pretplatnika", jsonPretplatnik);
