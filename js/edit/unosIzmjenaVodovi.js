@@ -56,6 +56,7 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("originalId", new Date().getTime());
   ucrtaniVod.set("vlasnik", "");
   ucrtaniVod.set("korisnik", globalUsername);
+  poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
 }
 
 function prikaziPoljaOdabranogVoda() {
