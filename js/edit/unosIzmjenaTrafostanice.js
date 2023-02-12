@@ -54,6 +54,7 @@ function prikaziPoljaOdabraneGpxTrafostanice() {
   document.querySelector("#read_fid_1").value = selectGpxFeature.values_.fid_1;
   document.querySelector("#name").value = selectGpxFeature.values_.name;
   document.querySelector("#read_celije_10").value = selectGpxFeature.values_.celije_10;
+  document.querySelector("#read_name").value = selectGpxFeature.values_.name;
   document.querySelector("#read_izvod_celija").value = selectGpxFeature.values_.izvod_celija;
   document.querySelector("#read_funkcija").value = selectGpxFeature.values_.funkcija;
   document.querySelector("#read_br_nn_izvoda").value = selectGpxFeature.values_.br_nn_izvoda;
@@ -176,7 +177,7 @@ function prikaziPoljaWmsTrafostanice(objekat) {
 }
 
 function izmijeniAtributeWmsTrafostanice(objekat) {
-  objekat.properties.name = document.querySelector("#name").value;
+  objekat.properties.name = document.querySelector("#read_name").value;
   objekat.properties.celije_10 = document.querySelector("#read_celije_10").value;
   objekat.properties.izvod_celija = document.querySelector("#read_izvod_celija").value;
   objekat.properties.funkcija = document.querySelector("#read_funkcija").value;

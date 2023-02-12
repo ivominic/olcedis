@@ -367,7 +367,7 @@ function prikaziAtributDivTrafostanice(napon) {
   //Read only polja za trafostanice. Kasnije dodato.
   document.querySelector("#divUnosGps").style.display = "flex";
 
-  document.querySelector("#divReadName").style.display = "flex";
+  //document.querySelector("#divReadName").style.display = "flex";
   document.querySelector("#divReadFunkcija").style.display = "flex";
   document.querySelector("#divReadGeohashId").style.display = "flex";
   document.querySelector("#divReadGeohashIdNo").style.display = "flex";
@@ -395,7 +395,7 @@ function prikaziAtributDivTrafostanice(napon) {
   document.querySelector("#divReadInstSnagaT1").style.display = "flex";
   document.querySelector("#divReadInstSnagaT2").style.display = "flex";
   document.querySelector("#divReadInstSnagaT3").style.display = "flex";
-  document.querySelector("#divReadInstSnagaT4").style.display = "flex";
+  //document.querySelector("#divReadInstSnagaT4").style.display = "flex";
   document.querySelector("#divReadProjekSnaga").style.display = "flex";
 }
 

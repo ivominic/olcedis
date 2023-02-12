@@ -428,6 +428,7 @@ function popuniPoljaTrafostanice(odgovor) {
   document.querySelector("#ddlTrafostanice").value = atributi["ddlTrafostanice"];
   document.querySelector("#read_fid_1").value = atributi["fid_1"];
   document.querySelector("#read_celije_10").value = atributi["celije_10"];
+  document.querySelector("#read_name").value = atributi["name"];
   document.querySelector("#read_izvod_celija").value = atributi["izvod_celija"];
   document.querySelector("#read_funkcija").value = atributi["funkcija"];
   document.querySelector("#read_br_nn_izvoda").value = atributi["br_nn_izvoda"];
