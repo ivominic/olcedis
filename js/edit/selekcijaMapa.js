@@ -131,6 +131,9 @@ function sljedeciObjekatGpx() {
       select.getFeatures().push(nizGpxTacakaZaObradu[indexGpxTacakaZaObradu]);
       //Za prikaz atributa stuba
       selectGpxFeature = nizGpxTacakaZaObradu[indexGpxTacakaZaObradu];
+      if (!selectGpxFeature.get("lejer")) {
+        poruka(StatusPoruke.Uspjeh, UnosPoruke.NeobradjenaGpxTacka);
+      }
       prikazPodatakaIzGpxTacaka();
     } else {
       indexGpxTacakaZaObradu--;
@@ -175,6 +178,9 @@ function prethodniObjekatGpx() {
       select.getFeatures().push(nizGpxTacakaZaObradu[indexGpxTacakaZaObradu]);
       //Za prikaz atributa stuba
       selectGpxFeature = nizGpxTacakaZaObradu[indexGpxTacakaZaObradu];
+      if (!selectGpxFeature.get("lejer")) {
+        poruka(StatusPoruke.Uspjeh, UnosPoruke.NeobradjenaGpxTacka);
+      }
       prikazPodatakaIzGpxTacaka();
     } else {
       indexGpxTacakaZaObradu++;
