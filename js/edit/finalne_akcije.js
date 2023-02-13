@@ -81,6 +81,11 @@ async function finalnaPotvrdaUnosa() {
   let objekti_za_azuriranje = { objekti: JSON.stringify(kmlLinksArray), group_id: globalTimestamp };
 
   await insertObjekataIzGpx();
+  let pretplatniBrojDupli = finalProvjeraDuplih();
+  if (pretplatniBrojDupli) {
+    poruka(StatusPoruke.Upozorenje, "Pretplatnik sa pretplatnim brojem " + pretplatniBrojDupli + " je već sačuvan.");
+    return false;
+  }
   let object_control = [
     { temp_stubovi: JSON.stringify(stuboviArrayFinal) },
     { temp_vodovi: JSON.stringify(vodoviArrayFinal) },

@@ -33,8 +33,8 @@ function duplirajPotrosace() {
  */
 function finalProvjeraDuplih() {
   let retVal = "";
-  for (let i = 1; i++; i < potrosaciArrayFinal.length) {
-    for (let j = 0; j++; j < i) {
+  for (let i = 1; i < potrosaciArrayFinal.length; i++) {
+    for (let j = 0; j < i; j++) {
       if (potrosaciArrayFinal[i].pretplatni_br === potrosaciArrayFinal[j].pretplatni_br) {
         retVal = potrosaciArrayFinal[i].pretplatni_br;
       }
@@ -142,6 +142,8 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
               );*/
             }
           });
+          selectGpxFeature = null;
+          select.getFeatures().clear();
           poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
         });
       }
