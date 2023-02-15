@@ -232,6 +232,7 @@ select.on("select", function (e) {
   if (selectGpxFeature.values_.lejer) {
     //Popuni polja vrijednostima
     console.log("ulazi ovdje", selectGpxFeature.get("lejer"));
+    //TODO: Mislim da se ovaj uslov može isključiti za priključno mjesto vektor
     if (!odabirSaMape && !odabirPrikljucnogMjestaSaMapeVektor) {
       console.log("Prošao PM");
       prikazPodatakaIzGpxTacaka();
@@ -733,27 +734,24 @@ function klikNaRastereZaOdabirPrikljucnogMjesta(browserEvent) {
       .then(function (json) {
         let odgovor = JSON.parse(json);
         if (odgovor.features.length > 0) {
-          console.log(odgovor.features);
+          odabirPrikljucnogMjestaSaMape = false;
+          //map.un("singleclick", klikNaRastereZaOdabirPrikljucnogMjesta);
           odabirSaMape = false;
 
           odgovor.features.forEach(function (el) {
-            //console.log("el.geometry.coordinates", el.geometry.coordinates);
             nizKoordinataPrikljucnihMjesta[el.properties.skriveni_id_pm] = el.geometry.coordinates;
             tempNiz.push(el);
           });
         }
 
         tempNiz.forEach((el) => {
-          $(prik_mjesto).append(
+          $("#prik_mjesto").append(
             $("<option>", {
               value: el.properties.skriveni_id_pm,
               text: "prikljucno mjesto:" + el.properties.id,
             })
           );
         });
-        odabirPrikljucnogMjestaSaMape = false;
-        //Ukloniti metodu koja se poziva na klik
-        //map.un("singleclick", klikNaRastereZaOdabirPrikljucnogMjesta);
       });
   }
 }
@@ -1002,16 +1000,16 @@ function odabirPrikljucnogMjestaZaUnosPotrosaca() {
   potrosacZaKogSeBiraPrikljucnoMjesto = "";
   if (selectGpxFeature) {
     potrosacZaKogSeBiraPrikljucnoMjesto = selectGpxFeature.ol_uid;
-    console.log("PRVA VRIJEDNOST PM", potrosacZaKogSeBiraPrikljucnoMjesto);
   }
   map.removeInteraction(draw);
   map.removeInteraction(modify);
   odabirPrikljucnogMjestaSaMape = true;
   odabirPrikljucnogMjestaSaMapeVektor = true;
   odabirSaMape = true;
+  blnShowAttribute = false;
   nizKoordinataPrikljucnihMjesta = {};
-  $(prik_mjesto).empty();
-  map.once("singleclick", klikNaRastereZaOdabirPrikljucnogMjesta);
+  $("#prik_mjesto").empty();
+  //map.on("singleclick", klikNaRastereZaOdabirPrikljucnogMjesta);
 }
 
 /**
@@ -1021,6 +1019,7 @@ function odabirPrikljucnogMjestaZaUnosPotrosaca() {
 function odabirSvihRasterObjekataKlik(browserEvent) {
   console.log("odabirSvihRasterObjekataKlik");
   if (odabirPrikljucnogMjestaSaMape) {
+    klikNaRastereZaOdabirPrikljucnogMjesta(browserEvent);
     odabirPrikljucnogMjestaSaMape = false;
     return false;
   }
@@ -1070,6 +1069,73 @@ function odabirSvihRasterObjekataKlik(browserEvent) {
               }
             });
         }
+      }
+    }
+  });
+}
+
+/**
+ * Odabir objekta na koji se nadovezuje dio mreže koji se unosi.
+ * Poziva se samo ako nije odabrano da se unosi dio mreže koji ne treba povezivati sa postojećom mrežom (unos ostrva).
+ */
+function odabirPocetnePoveznice() {
+  console.log("Pozvano!!");
+  map.removeInteraction(draw);
+  map.removeInteraction(modify);
+  odabirSaMape = true;
+  blnShowAttribute = false;
+  console.log("Pozvano2");
+  $("#ddlPocetnaPoveznica").empty();
+  console.log("Pozvano3");
+  map.on("singleclick", klikNaRastereZaPocetnuPoveznicu);
+}
+
+function klikNaRastereZaPocetnuPoveznicu(browserEvent) {
+  let coordinate = browserEvent.coordinate;
+  let pixel = map.getPixelFromCoordinate(coordinate);
+  let brojLejera = 0;
+  let tempNiz = [];
+  map.forEachLayerAtPixel(pixel, function (layer) {
+    if (layer instanceof ol.layer.Image && layer.get("visible")) {
+      console.log(layer.values_.name);
+      brojLejera++;
+      let url = layer
+        .getSource()
+        .getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
+          INFO_FORMAT: "application/json",
+          feature_count: "5",
+        });
+      if (url) {
+        fetch(url)
+          .then(function (response) {
+            return response.text();
+          })
+          .then(function (json) {
+            brojLejera--;
+            let odgovor = JSON.parse(json);
+            if (odgovor.features.length > 0) {
+              odabirSaMape = false;
+              odgovor.features.forEach(function (el) {
+                tempNiz.push(el);
+              });
+            }
+
+            if (brojLejera === 0) {
+              tempNiz.forEach((el) => {
+                let newId = el.id.split(".")[0] + "." + el.properties.originalId;
+                let newText = el.id.split(".")[0] + "." + el.properties.name + "-" + el.properties.originalId;
+
+                $("#ddlPocetnaPoveznica").append(
+                  $("<option>", {
+                    value: newId,
+                    text: newText,
+                  })
+                );
+              });
+              //Ukloniti metodu koja se poziva na klik
+              map.un("singleclick", klikNaRastereZaPocetnuPoveznicu);
+            }
+          });
       }
     }
   });

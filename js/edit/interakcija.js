@@ -211,10 +211,9 @@ function prikazPanelaAtributa(sloj) {
     console.log("Akcija atributi", akcija);
     console.log("PRikaz 6", odabirSaMape);
     blnShowAttribute && showDiv("#atributiDiv");
-  }
-  if (!blnPronadjenSloj) {
-    poruka(StatusPoruke.Upozorenje, UnosPoruke.NePripadaNivou);
-    console.log("NIJE PRONAĐEN LEJER");
+    if (!blnPronadjenSloj) {
+      poruka(StatusPoruke.Upozorenje, UnosPoruke.NePripadaNivou);
+    }
   }
   console.log("akcijaLejerNivo", akcijaLejerNivo);
 }
@@ -305,6 +304,7 @@ document.querySelector("#btnKrajnjaTackaPoveznica").addEventListener("click", od
 document.querySelector("#btnBliskiObjekatKml").addEventListener("click", odabirTackePovezivanjaKmla);
 document.querySelector("#btnPotvrdiKmlPoveznicu").addEventListener("click", saveKmlConnection);
 
+document.querySelector("#btnMapaOdabirPoveznice").addEventListener("click", odabirPocetnePoveznice);
 document.querySelector("#btnOdabirNapojneTrafostanice").addEventListener("click", odabirNapojneTrafostaniceUnos);
 document.querySelector("#btnPotvrdiNapojnuTrafostanicu").addEventListener("click", potvrdaNapojneTrafostaniceUnos);
 document.querySelector("#txtSifraNapojneTrafostanice").addEventListener("keyup", promjenaSifreNapojneTrafostanice);
@@ -397,7 +397,6 @@ function enableMenija() {
   }
 }
 
-document.querySelector("#chkShowGpsFields").addEventListener("click", showGpsFields);
 /**
  * Method that show input fields for entering gps number of points that needs to be connected to selected element.
  * This overrides default behavior of connecting to nearest gps point.
@@ -416,3 +415,21 @@ function showGpsFields() {
     document.querySelector("#txtKrajnjaTackaVodovi").value = "";
   }
 }
+document.querySelector("#chkShowGpsFields").addEventListener("click", showGpsFields);
+
+/**
+ * Metoda koja prikazuje/skriva polja za odabir početne poveznice, na formi za odavir napojne TS i izvoda.
+ */
+function prikazPoljaPoveznice() {
+  document
+    .querySelector("#chkUnosPocetnePoveznice")
+    .setAttribute("checked", !document.querySelector("#chkUnosPocetnePoveznice").checked);
+  if (document.querySelector("#chkUnosPocetnePoveznice").checked) {
+    document.querySelector("#btnMapaOdabirPoveznice").style.visibility = "hidden";
+    document.querySelector("#ddlPocetnaPoveznica").style.visibility = "hidden";
+  } else {
+    document.querySelector("#btnMapaOdabirPoveznice").style.visibility = "visible";
+    document.querySelector("#ddlPocetnaPoveznica").style.visibility = "visible";
+  }
+}
+document.querySelector("#chkUnosPocetnePoveznice").addEventListener("click", prikazPoljaPoveznice);
