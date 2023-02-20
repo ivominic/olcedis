@@ -127,6 +127,7 @@ const UnosPoruke = {
   NemaObjekataZaObradu: "Ne postoje objekti koje je potrebno obraditi",
   NePripadaNivou: "Objekat ne pripada odabranom naponskom nivou",
   OdabratiIzvodTS: "Potrebno je odabrati izvod trafostanice",
+  OdabratiPoveznicu: "Potrebno je odabrati objekat mreže na koji se vrši povezivanje",
   NedozvoljenoPomjeranjeKmlTacke: "Nije dozvoljeno pomjeranje kml tačke.",
   NedozvoljenaIzmjenaGeometrijeLinije: "Nije dozvoljeno mijenjati geometriju voda, osim u krajnjim tačkama.",
   NedozvoljenPomjerajTacka1: "Tačka ne može biti pomjerena više od ",

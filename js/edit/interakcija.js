@@ -327,10 +327,18 @@ function odabirNapojneTrafostaniceUnos() {
 
 function potvrdaNapojneTrafostaniceUnos() {
   let izvod = document.querySelector("#ddlIzvodNapojneTrafostanice").value;
+  if (
+    !document.querySelector("#chkUnosPocetnePoveznice").checked &&
+    !document.querySelector("#ddlPocetnaPoveznica").value
+  ) {
+    poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabratiPoveznicu);
+    return false;
+  }
   if (izvod === "") {
     poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabratiIzvodTS);
     return false;
   }
+
   selektovaniWmsObjekat = null;
   sifraNapojneTrafostanice = document.querySelector("#txtSifraNapojneTrafostanice").value;
   nazivNapojneTrafostanice = document.querySelector("#txtNazivNapojneTrafostanice").value;
@@ -425,11 +433,11 @@ function prikazPoljaPoveznice() {
     .querySelector("#chkUnosPocetnePoveznice")
     .setAttribute("checked", !document.querySelector("#chkUnosPocetnePoveznice").checked);
   if (document.querySelector("#chkUnosPocetnePoveznice").checked) {
-    document.querySelector("#btnMapaOdabirPoveznice").style.visibility = "hidden";
-    document.querySelector("#ddlPocetnaPoveznica").style.visibility = "hidden";
+    document.querySelector("#btnMapaOdabirPoveznice").style.display = "none";
+    document.querySelector("#ddlPocetnaPoveznica").style.display = "none";
   } else {
-    document.querySelector("#btnMapaOdabirPoveznice").style.visibility = "visible";
-    document.querySelector("#ddlPocetnaPoveznica").style.visibility = "visible";
+    document.querySelector("#btnMapaOdabirPoveznice").style.display = "inherit";
+    document.querySelector("#ddlPocetnaPoveznica").style.display = "inherit";
   }
 }
 document.querySelector("#chkUnosPocetnePoveznice").addEventListener("click", prikazPoljaPoveznice);
