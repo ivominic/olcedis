@@ -110,7 +110,7 @@ function klikNaVektore(browserEvent) {
     document.querySelector("#divSljedeciObjekat").style.display = "none";
   }
 
-  if (nizGpxTacakaZaObradu.length === 0) {
+  if (nizGpxTacakaZaObradu.length === 0 || odabirPrikljucnogMjestaSaMape) {
     map.on("singleclick", odabirSvihRasterObjekataKlik);
   }
 }
