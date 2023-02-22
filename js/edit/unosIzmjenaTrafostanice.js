@@ -45,7 +45,10 @@ function dodajPoljaOdabranojGpxTrafostanici() {
   selectGpxFeature.set("projek_snaga", document.querySelector("#read_projek_snaga").value);
   selectGpxFeature.set("korisnik", globalUsername);
   selectGpxFeature.set("vlasnik", "");
-  console.log("selectGpxFeature trafostanica", selectGpxFeature);
+
+  if (!isEditable) {
+    dodajSacuvaniKmlFeature(selectGpxFeature);
+  }
   poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
 }
 

@@ -285,14 +285,11 @@ var modifyV = new ol.interaction.Modify({
 });
 
 modifyV.on("modifyend", function (e) {
-  let featureName = e.features.getArray()[0].values_.name;
-
-  console.log("select m", e.features.getArray()[0].values_);
-  console.log("ime tačke m", e.features.getArray()[0].values_.name);
+  let featureName = e?.features?.getArray()[0]?.values_?.name;
   //console.log("koordinate", e.selected[0].values_.geometry.flatCoordinates);
   //let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
-  let position = e.features.getArray()[0].values_.geometry.flatCoordinates;
-  let coordinates = e.features.getArray()[0].values_.geometry.clone();
+  let position = e?.features?.getArray()[0]?.values_?.geometry?.flatCoordinates;
+  let coordinates = e?.features?.getArray()[0]?.values_?.geometry?.clone();
   console.log("koordinate m", position);
   let pocetniElement;
   nizKml.forEach((el) => {
@@ -328,8 +325,8 @@ modifyV.on("modifyend", function (e) {
     let original;
     originalKmlLines.forEach((item) => {
       console.log("ITEM", item);
-      console.log(e.features.getArray()[0].ol_uid, item.ol_uid);
-      if (e.features.getArray()[0].ol_uid === item.ol_uid) {
+      console.log(e?.features?.getArray()[0]?.ol_uid, item?.ol_uid);
+      if (e?.features?.getArray()[0]?.ol_uid === item?.ol_uid) {
         original = item;
       }
     });

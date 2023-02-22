@@ -16,6 +16,11 @@ function dodajPoljaOdabranomGpxNKRO() {
   selectGpxFeature.set("sifra_napojne", sifraNapojneTrafostanice);
   selectGpxFeature.set("naziv_napojne", nazivNapojneTrafostanice);
   selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
+
+  if (!isEditable) {
+    dodajSacuvaniKmlFeature(selectGpxFeature);
+  }
+
   poruka(StatusPoruke.Uspjeh, UnosPoruke.UspjehAzurirani);
 }
 

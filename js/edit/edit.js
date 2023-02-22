@@ -375,16 +375,17 @@ function izbrisi() {
         poruka(StatusPoruke.Upozorenje, UnosPoruke.OdabranLejerAzuriranje);
         return false;
       }
-      //console.log("WMS objekat za brisanje", selektovaniWmsObjekat);
       if (select.getFeatures().array_.length) {
-        //console.log("Lejer vektorskog objekta", select.getFeatures().array_[0].values_.lejer);
         if (select.getFeatures().array_[0].values_.lejer === "vodovi") {
           let nizZaBrisanje = nizVodovaGpx;
           vektorKreiraniPonovo
             .getSource()
             .getFeatures()
             .forEach(function (el, index, nizZaBrisanje) {
-              if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
+              if (el.ol_uid == select.getFeatures().array_[0]?.ol_uid) {
+                if (!isEditable) {
+                  ukloniSacuvaniKmlFeature(select.getFeatures().array_[0]);
+                }
                 nizZaBrisanje.splice(index, 1);
                 select.getFeatures().array_.splice(0, 1);
                 selectGpxFeature = null;
@@ -397,6 +398,9 @@ function izbrisi() {
           let olUid = select?.getFeatures()?.array_[0]?.ol_uid;
           vectorSource.getFeatures().forEach(function (el, index, nizZaBrisanje) {
             if (el.ol_uid == olUid) {
+              if (!isEditable) {
+                ukloniSacuvaniKmlFeature(el);
+              }
               nizZaBrisanje.splice(index, 1);
               select.getFeatures().array_.splice(0, 1);
               selectGpxFeature = null;

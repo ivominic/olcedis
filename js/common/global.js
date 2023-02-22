@@ -260,6 +260,24 @@ let vectorStyleAzuriranje = new ol.style.Style({
   image: circleAzuriranje,
 });
 
+let fillKmlAzuriranje = new ol.style.Fill({
+  color: "rgba(0,255,0,0.8)",
+});
+let strokeKmlAzuriranje = new ol.style.Stroke({
+  color: "#00FF00",
+  width: 8,
+});
+let circleKmlAzuriranje = new ol.style.Circle({
+  radius: 8,
+  fill: fillKmlAzuriranje,
+  stroke: strokeKmlAzuriranje,
+});
+let vectorStyleKmlAzuriranje = new ol.style.Style({
+  fill: fillKmlAzuriranje,
+  stroke: strokeKmlAzuriranje,
+  image: circleKmlAzuriranje,
+});
+
 let neobradjenaTacka = new ol.style.Circle({
   radius: 7,
   fill: new ol.style.Fill({ color: "rgba(0, 255, 255, 0.8)" }),
@@ -382,6 +400,13 @@ let vectorKmlFocusedObject = new ol.layer.Vector({
   style: vectorStyleKreirani,
 });
 map.addLayer(vectorKmlFocusedObject);
+
+let vektorKmlAzuriranje = new ol.layer.Vector({
+  id: "kml_azuriranje",
+  source: new ol.source.Vector({}),
+  style: vectorStyleKmlAzuriranje,
+});
+map.addLayer(vektorKmlAzuriranje);
 
 let vektorObjektiZaAzuriranje = new ol.layer.Vector({
   id: "azuriranje",
@@ -777,6 +802,38 @@ function wktGeometrije(feature) {
     return wktgeom;
   } else {
     return geom;
+  }
+}
+
+/**
+ * Metoda koja dodaje obrađeni feature, u slučaju kml fajla, u lejer koji ih prikazuje zelenom bojom, kao oznaku da
+ * je objekat sačuvan/obrađen. Napravljeno jer je bilo problema sa promjenom boje kml feature-ima.
+ * @param {*} savedFeature - feature koji treba dodati u lejer za prikaz na mapi.
+ */
+function dodajSacuvaniKmlFeature(savedFeature) {
+  console.log("SAVED", savedFeature);
+  let format = new ol.format.WKT();
+  let feature = format.readFeature(format.writeGeometry(savedFeature.getGeometry()), {});
+  feature.set("temp_id", savedFeature.ol_uid);
+  let nizPostojecihFeaturea = vektorKmlAzuriranje.getSource().getFeatures();
+  nizPostojecihFeaturea.push(feature);
+  vektorKmlAzuriranje.getSource().clear();
+  vektorKmlAzuriranje.getSource().addFeatures(nizPostojecihFeaturea);
+}
+
+/**
+ * Metoda koja, prilikom brisanja kml objekta, provjerava da li se već nalazio u prikazu obrađenih i uklanja ga, ako jeste.
+ * @param {*} deletedFeature
+ */
+function ukloniSacuvaniKmlFeature(deletedFeature) {
+  let nizPostojecihFeaturea = vektorKmlAzuriranje.getSource().getFeatures();
+  let idxObj = nizPostojecihFeaturea.findIndex((object) => {
+    return object.values_.temp_id === deletedFeature.ol_uid;
+  });
+  if (idxObj >= 0) {
+    nizPostojecihFeaturea.splice(idxObj, 1);
+    vektorKmlAzuriranje.getSource().clear();
+    vektorKmlAzuriranje.getSource().addFeatures(nizPostojecihFeaturea);
   }
 }
 

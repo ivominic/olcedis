@@ -132,6 +132,9 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
                 gpxFeatures.push(noviEl);
                 vectorSource.addFeatures([noviEl]);
               }
+              if (!isEditable) {
+                dodajSacuvaniKmlFeature(noviEl);
+              }
 
               //TODO: Ukloniti i metodu generisanjeGpxPodaIzGeometrije
               /*let ddlTemp = document.querySelector("#prik_mjesto").value;

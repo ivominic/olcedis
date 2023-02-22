@@ -203,11 +203,12 @@ function dodajPoljaOdabranomGpxStubu() {
   selectGpxFeature.set("naziv_napojne", nazivNapojneTrafostanice);
   selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
   selectGpxFeature.set("tip", document.querySelector("#tip_stub").value);
-  selectGpxFeature.set("vlasnik", ""); //TODO: Ovo izmijeniti
-  selectGpxFeature.set("korisnik", globalUsername); //TODO: Ovo izmijeniti
+  selectGpxFeature.set("vlasnik", "");
+  selectGpxFeature.set("korisnik", globalUsername);
 
-  console.log("obrađeni fajl", selectGpxFeature);
-
+  if (!isEditable) {
+    dodajSacuvaniKmlFeature(selectGpxFeature);
+  }
   poruka(StatusPoruke.Uspjeh, UnosPoruke.UspjehAzurirani);
 }
 

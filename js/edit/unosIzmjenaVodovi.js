@@ -56,6 +56,10 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("originalId", new Date().getTime());
   ucrtaniVod.set("vlasnik", "");
   ucrtaniVod.set("korisnik", globalUsername);
+
+  if (!isEditable) {
+    dodajSacuvaniKmlFeature(ucrtaniVod);
+  }
   poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
 }
 

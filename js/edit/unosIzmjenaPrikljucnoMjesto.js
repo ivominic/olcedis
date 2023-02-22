@@ -16,6 +16,11 @@ function dodajPoljaOdabranomGpxPM() {
   selectGpxFeature.set("korisnik", globalUsername);
   selectGpxFeature.set("skriveni_id_pm", Date.now());
   selectGpxFeature.set("vlasnik", "");
+
+  if (!isEditable) {
+    dodajSacuvaniKmlFeature(selectGpxFeature);
+  }
+
   poruka(StatusPoruke.Uspjeh, UnosPoruke.UspjehAzurirani);
 }
 
