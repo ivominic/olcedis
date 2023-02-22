@@ -40,6 +40,7 @@ let blnSpajanjeVodova = false;
 let sifraNapojneTrafostanice = "";
 let nazivNapojneTrafostanice = "";
 let izvodNapojneTrafostanice = "";
+let globalPocetnaPoveznica = ""; // Ako je prazno, unosi se ostrvo, inače sprovesti kontrolu konektivnosti i geohas_no
 let geometrijaNapojneTrafostanice = "";
 let geohashNapojneTrafostanice = "";
 let blnZavrsenoUparivanjeTrafostanica = false; //Wizard, true ako su uparene sve trafostanice. Setuje se, a ne koristi.

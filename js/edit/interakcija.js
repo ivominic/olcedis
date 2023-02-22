@@ -339,6 +339,10 @@ function potvrdaNapojneTrafostaniceUnos() {
     return false;
   }
 
+  if (!document.querySelector("#chkUnosPocetnePoveznice").checked) {
+    globalPocetnaPoveznica = document.querySelector("#ddlPocetnaPoveznica").value;
+  }
+
   selektovaniWmsObjekat = null;
   sifraNapojneTrafostanice = document.querySelector("#txtSifraNapojneTrafostanice").value;
   nazivNapojneTrafostanice = document.querySelector("#txtNazivNapojneTrafostanice").value;

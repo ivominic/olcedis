@@ -128,12 +128,17 @@ async function finalnaPotvrdaUnosa() {
     return false;
   }
 
+  let pocetna_tacka = {
+    pocetna_tacka: globalPocetnaPoveznica,
+  };
+
   serviceWrap(
     objekti_za_azuriranje,
     object_control,
     brisanje_objekta,
     pomjeranje_objekta,
-    JSON.stringify(stuboviArrayFinal)
+    JSON.stringify(stuboviArrayFinal),
+    pocetna_tacka
   );
 
   /*Promise.all(promiseArray).then(function () {
@@ -182,6 +187,8 @@ function resetovanjeNakonUspjeha() {
   sifraNapojneTrafostanice = "";
   nazivNapojneTrafostanice = "";
   izvodNapojneTrafostanice = "";
+
+  globalPocetnaPoveznica = "";
 
   blnIsChange = false;
   isUnprocessed = false;
