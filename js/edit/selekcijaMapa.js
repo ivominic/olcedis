@@ -15,11 +15,8 @@ function klikNaRastere(browserEvent) {
   if (akcija === "atributi") {
     map.forEachLayerAtPixel(pixel, function (layer) {
       if (layer instanceof ol.layer.Image) {
-        console.log(layer);
         let title = layer.get("title");
-        console.log("title", title);
         let vidljivost = layer.get("visible");
-        console.log("vidljivost", vidljivost);
         if (vidljivost) {
           let url = layer
             .getSource()
@@ -81,11 +78,8 @@ function klikNaVektore(browserEvent) {
   });
 
   nizGpxTacakaZaObradu.forEach((el) => {
-    //console.log("feature za priključno mjesto", el);
     if (el.values_.lejer === Podsloj.PrikljucnoMjesto) {
       if (!provjeraPostojanjaElementaDdla(document.querySelector("#prik_mjesto"), el.values_?.skriveni_id_pm)) {
-        //console.log("el za provjeru duplikata", el);
-        //console.log("el.geometry.coordinates", el.values_.geometry.flatCoordinates);
         nizKoordinataPrikljucnihMjesta[el.values_.skriveni_id_pm] = el.values_.geometry.flatCoordinates;
         $("#prik_mjesto").append(
           $("<option>", {
@@ -153,7 +147,6 @@ function sljedeciObjekatGpx() {
           document.querySelector("#divPrethodniObjekat").style.float = "left";
         }
         selektovaniWmsObjekat = nizSelektovanihObjekata[indexGpxTacakaZaObradu];
-        console.log("Pozvati metodu za prikaz podataka");
         prikazAtributaWmsLejer(selektovaniWmsObjekat);
       } else {
         indexGpxTacakaZaObradu--;
@@ -221,7 +214,6 @@ select.on("select", function (e) {
   //console.log("select target", e.target.getFeatures().array_[0].values_.name);
   console.log("select target", e.target.getFeatures());
   selectGpxFeature = e.target.getFeatures().array_[0];
-  console.log("gpx feature", selectGpxFeature);
   //if (selectGpxFeature.hasOwnProperty("lejer")) {
   if (!selectGpxFeature) {
     return false;
@@ -234,7 +226,6 @@ select.on("select", function (e) {
     console.log("ulazi ovdje", selectGpxFeature.get("lejer"));
     //TODO: Mislim da se ovaj uslov može isključiti za priključno mjesto vektor
     if (!odabirSaMape && !odabirPrikljucnogMjestaSaMapeVektor) {
-      console.log("Prošao PM");
       prikazPodatakaIzGpxTacaka();
     }
     odabirPrikljucnogMjestaSaMapeVektor = false;
@@ -247,7 +238,6 @@ select.on("select", function (e) {
         //Kml vodovi imaju definisan name property.
         //TODO: Dodati uslov da se ova provjera sprovodi samo ako lejer nije definisan, tj za nove objekte.
         if (!isEditable) {
-          console.log("SELECT GXP FEATURE", selectGpxFeature);
           extractKmlFeatureEndPoints(selectGpxFeature).forEach(function (feature) {
             objectNearKmlFeature(selectGpxFeature, feature, "stubovi");
             objectNearKmlFeature(selectGpxFeature, feature, "trafostanice");
@@ -286,11 +276,9 @@ var modifyV = new ol.interaction.Modify({
 
 modifyV.on("modifyend", function (e) {
   let featureName = e?.features?.getArray()[0]?.values_?.name;
-  //console.log("koordinate", e.selected[0].values_.geometry.flatCoordinates);
   //let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
   let position = e?.features?.getArray()[0]?.values_?.geometry?.flatCoordinates;
   let coordinates = e?.features?.getArray()[0]?.values_?.geometry?.clone();
-  console.log("koordinate m", position);
   let pocetniElement;
   nizKml.forEach((el) => {
     if (el.name === featureName) {
@@ -1076,14 +1064,11 @@ function odabirSvihRasterObjekataKlik(browserEvent) {
  * Poziva se samo ako nije odabrano da se unosi dio mreže koji ne treba povezivati sa postojećom mrežom (unos ostrva).
  */
 function odabirPocetnePoveznice() {
-  console.log("Pozvano!!");
   map.removeInteraction(draw);
   map.removeInteraction(modify);
   odabirSaMape = true;
   blnShowAttribute = false;
-  console.log("Pozvano2");
   $("#ddlPocetnaPoveznica").empty();
-  console.log("Pozvano3");
   map.on("singleclick", klikNaRastereZaPocetnuPoveznicu);
 }
 
