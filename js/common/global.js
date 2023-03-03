@@ -890,7 +890,7 @@ function prikaziSliku(n) {
   slikeIndex += n;
   slikeIndex < 0 && (slikeIndex = slikeUrl.length - 1);
   slikeIndex >= slikeUrl.length && (slikeIndex = 0);
-  document.querySelector("#imgModal").src = slikeUrl[slikeIndex];
+  document.querySelector("#imgModal").src = slikeUrl[slikeIndex].url;
 }
 
 /**Funkcija koja prolazi kroz nizove tačaka, linija i polgiona i kreira CQL uslov u zavisnosti od odabranih opcija */

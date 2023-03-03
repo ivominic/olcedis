@@ -143,7 +143,6 @@ function restartovanje() {
   document.querySelector("#tip").value = "";
   document.querySelector("#dodavanjeSlike").value = "";
   slikaUrl = "";
-  opisSlike = "";
   slikeUrl = [];
 
   isprazniGeometrije();

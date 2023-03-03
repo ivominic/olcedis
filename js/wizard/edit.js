@@ -3,7 +3,6 @@ let layername = "trafostanice",
   fulllayername = "geonode:trafostanice",
   layertitle = "Trafostanice";
 let tipGeometrije = point;
-let opisSlike = "";
 let vrijednostPocetneTacke = 0,
   vrijednostKrajnjeTacke = 0;
 
@@ -150,7 +149,6 @@ function restartovanje() {
   document.querySelector("#tip").value = "";
   document.querySelector("#dodavanjeSlike").value = "";
   slikaUrl = "";
-  opisSlike = "";
   slikeUrl = [];
 
   isprazniGeometrije();

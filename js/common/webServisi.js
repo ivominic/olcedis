@@ -468,7 +468,6 @@ function prikazFotografija(lejer, id) {
       //akcija = "slika";
       document.querySelector("#modalFotografija").style.display = "block";
       prikaziSliku(0);
-      document.querySelector("#naslovFotografija").innerHTML = opisSlike;
 
       document.querySelector("#zatvoriModalFotografija").onclick = function () {
         document.querySelector("#modalFotografija").style.display = "none";
