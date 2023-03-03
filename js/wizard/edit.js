@@ -501,9 +501,7 @@ function onMouseClick(browserEvent) {
               .then(function (json) {
                 let odgovor = JSON.parse(json);
                 if (odgovor.features.length > 0) {
-                  if (akcija == "slika") {
-                    prikazFotografija(title, odgovor.features[0][0].id);
-                  }
+                  //TODO: Provjeriti, ovo može da se ukloni - kompletan else blok
                 }
               });
           }

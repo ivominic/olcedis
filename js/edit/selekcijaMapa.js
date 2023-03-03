@@ -8,42 +8,6 @@ let nizPocetnihTacakaVoda = [],
   nizKrajnjihTacakaKml = [];
 let nizTacakaLinije = [];
 
-function klikNaRastere(browserEvent) {
-  let coordinate = browserEvent.coordinate;
-  let pixel = map.getPixelFromCoordinate(coordinate);
-  console.log("akcija", akcija);
-  if (akcija === "atributi") {
-    map.forEachLayerAtPixel(pixel, function (layer) {
-      if (layer instanceof ol.layer.Image) {
-        let title = layer.get("title");
-        let vidljivost = layer.get("visible");
-        if (vidljivost) {
-          let url = layer
-            .getSource()
-            .getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:3857", {
-              INFO_FORMAT: "application/json",
-            });
-          if (url) {
-            fetch(url)
-              .then(function (response) {
-                //restartovanje();
-                return response.text();
-              })
-              .then(function (json) {
-                let odgovor = JSON.parse(json);
-                if (odgovor.features.length > 0) {
-                  if (akcija == "slika") {
-                    prikazFotografija(title, odgovor.features[0][0].id);
-                  }
-                }
-              });
-          }
-        }
-      }
-    });
-  }
-}
-
 function klikNaVektore(browserEvent) {
   console.log("klikNaVektore");
   nizGpxTacakaZaObradu.length = 0;
