@@ -50,6 +50,8 @@ function restart() {
 }
 
 function slika() {
+  let splitedData = selektovaniWmsObjekat.id.split(".");
+  prikazFotografija(splitedData[0],splitedData[1]);
   //testPromjena();
   slikeIndex = 0;
   slikeUrl = [];
