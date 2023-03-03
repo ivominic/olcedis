@@ -19,6 +19,7 @@ function neupareneTrafostanice(sifraNapojne, izvodNapojne) {
     type: "GET",
     success: function (data) {
       if (data) {
+        $("#ddlTrafostanice").empty();
         $("#ddlTrafostanice").append(
           $("<option>", {
             text: "Izaberite vrijednost",
