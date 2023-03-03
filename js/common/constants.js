@@ -154,6 +154,7 @@ const UnosPoruke = {
   NijeProduzenKrakVoda: "Nije produžen krak voda.",
   TsNijeZaBrisanje: "Trafostanice naponskog nivoa 110/X kV i 35/X kV nije moguće brisati.",
   NeobradjenaGpxTacka: "Selektovan je objekat za koji podaci nisu sačuvani.",
+  NePostojiFotografija: "Za odabrani objekat ne postoji fotografija u sistemu.",
 };
 
 const GlobalPoruke = {

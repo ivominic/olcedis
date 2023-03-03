@@ -50,14 +50,14 @@ function restart() {
 }
 
 function slika() {
-  let splitedData = selektovaniWmsObjekat.id.split(".");
-  prikazFotografija(splitedData[0],splitedData[1]);
-  //testPromjena();
-  slikeIndex = 0;
-  slikeUrl = [];
-  akcija = "slika";
-  setujAktivnu("#slika");
-  //showDiv("#odabirPoveznicaDiv");
+  if (selektovaniWmsObjekat) {
+    let splitedData = selektovaniWmsObjekat.id.split(".");
+    prikazFotografija(splitedData[0], splitedData[1]);
+    slikeIndex = 0;
+    slikeUrl = [];
+    //akcija = "slika";
+    setujAktivnu("#slika");
+  }
 }
 
 function crtajTacku() {

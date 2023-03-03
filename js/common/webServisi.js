@@ -452,18 +452,22 @@ function procitajVlasnika(username) {
  * @param {id objekta} id
  */
 function prikazFotografija(lejer, id) {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/slike?tip_objekta=" + lejer + "&id_objekta=" + id + "&access_token=" + geoserverToken;
+  let urlServisa =
+    wsServerOriginLocation +
+    "/novi_portal/api/slike?tip_objekta=" +
+    lejer +
+    "&id_objekta=" +
+    id +
+    "&access_token=" +
+    geoserverToken;
   urlServisa += "&t=" + Date.now();
-  console.log(urlServisa);
   $.ajax({
     url: urlServisa,
     data: "",
     type: "GET",
     success: function (data) {
-      console.log("response", data);
       for (let i = 0; i < data.length; i++) {
         slikeUrl[i] = data[i];
-        console.log(i, slikeUrl[i]);
       }
       //akcija = "slika";
       document.querySelector("#modalFotografija").style.display = "block";
@@ -474,7 +478,7 @@ function prikazFotografija(lejer, id) {
       };
     },
     error: function (x, y, z) {
-      console.log("greška popuniDdlAtributima", x.responseText);
+      poruka(StatusPoruke.Upozorenje, UnosPoruke.NePostojiFotografija);
     },
   });
 }
