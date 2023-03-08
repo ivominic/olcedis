@@ -155,6 +155,9 @@ const UnosPoruke = {
   TsNijeZaBrisanje: "Trafostanice naponskog nivoa 110/X kV i 35/X kV nije moguće brisati.",
   NeobradjenaGpxTacka: "Selektovan je objekat za koji podaci nisu sačuvani.",
   NePostojiFotografija: "Za odabrani objekat ne postoji fotografija u sistemu.",
+  KmlDaLiPovezivati: "Da li je potrebno odabrani objekat usaglasiti sa postojećom mrežom?",
+  KmlDaLiPovezivatiOpis:
+    "Pod usaglašavanjem se podrazumijeva da vlasnik postojeće mreže istu prilagodi geodetskom snimku.",
 };
 
 const GlobalPoruke = {

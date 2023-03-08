@@ -178,6 +178,8 @@ select.on("select", function (e) {
   //console.log("select target", e.target.getFeatures().array_[0].values_.name);
   console.log("select target", e.target.getFeatures());
   selectGpxFeature = e.target.getFeatures().array_[0];
+  //Da ne može da odabere drugi kml objekat i spoji sa objektima iz prvog
+  closeDiv("#odabirBliskogObjektaKmlDiv");
   //if (selectGpxFeature.hasOwnProperty("lejer")) {
   if (!selectGpxFeature) {
     return false;
@@ -200,8 +202,8 @@ select.on("select", function (e) {
         document.querySelector("#name").value = selectGpxFeature.values_.name;
         //Kad se klikne na kml objekat da provjeri da li postoji u blizini objekat na koji treba biti povezan.
         //Kml vodovi imaju definisan name property.
-        //TODO: Dodati uslov da se ova provjera sprovodi samo ako lejer nije definisan, tj za nove objekte.
-        if (!isEditable) {
+        if (!(isEditable || selectGpxFeature.values_.hasOwnProperty("kml_povezati"))) {
+          $("#ddlObjekatZaPovezivanje").empty();
           extractKmlFeatureEndPoints(selectGpxFeature).forEach(function (feature) {
             objectNearKmlFeature(selectGpxFeature, feature, "stubovi");
             objectNearKmlFeature(selectGpxFeature, feature, "trafostanice");
@@ -565,16 +567,6 @@ function odabirKrajnjeTackeVoda() {
   selektovaniDdlZaPovezivanjeVoda = "#ddlKrajnjaTackaVodovi";
   nizKrajnjihTacakaVoda.length = 0;
   $(selektovaniDdlZaPovezivanjeVoda).empty();
-  map.on("singleclick", klikNaRastereZaVodove);
-}
-
-function odabirTackePovezivanjaKmla() {
-  map.removeInteraction(draw);
-  map.removeInteraction(modify);
-  odabirSaMape = true;
-  selektovaniDdlZaPovezivanjeVoda = "#ddlObjekatZaPovezivanje";
-  //nizKrajnjihTacakaKml.length = 0;//Nepotrebno
-  $(ddlObjekatZaPovezivanje).empty();
   map.on("singleclick", klikNaRastereZaVodove);
 }
 

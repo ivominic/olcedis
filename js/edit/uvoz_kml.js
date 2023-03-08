@@ -78,6 +78,50 @@ function distanceFromKmlPoints() {
 }
 
 /**
+ * Popup sa pitanjem da li se želi povezivanje kml objekta sa ostatkom mreže. Poziva se ako u blizini kml objekta postoje
+ * objekti postojeće mreže
+ */
+function povezivanjeKmlObjektaSaOstatkomMreze() {
+  console.trace();
+  Swal.fire({
+    title: UnosPoruke.KmlDaLiPovezivati,
+    text: UnosPoruke.KmlDaLiPovezivatiOpis,
+    //icon: "info",
+    position: "top-end",
+    showDenyButton: true,
+    confirmButtonText: `Da`,
+    denyButtonText: `Ne`,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      showDiv("#odabirBliskogObjektaKmlDiv");
+    } else if (result.isDenied) {
+      selectGpxFeature.values_.kml_povezati = false;
+    }
+  });
+}
+
+/**
+ * Metoda koja provjerava da li je lista feature-a za povezivanje sa kml prazna i ako jeste, prikazuje alert sa pitanjem
+ * da li se želi izvršiti povezivanje sa ostatkom mreže i puni listu. Ako lista nije prazna, samo dodaje feture u listu,
+ * jer je pitanje već postavljeno.
+ * @param {*} features
+ */
+function dodavanjeObjekataZaPovezivanje(features) {
+  let ddl = document.querySelector("#ddlObjekatZaPovezivanje");
+  if (ddl.length === 0) {
+    povezivanjeKmlObjektaSaOstatkomMreze();
+  }
+  features.forEach(function (feature) {
+    $(ddl).append(
+      $("<option>", {
+        value: feature.id,
+        text: feature.id,
+      })
+    );
+  });
+}
+
+/**
  * Zooms to location, asks user if object needs to be connected to existing network and shows form for picking objects.
  * @param {Linestring containing end point that feature is made of} originalFeature
  * @param {Feature uploaded from kml file} feature
@@ -125,10 +169,10 @@ function objectNearKmlFeature(originalFeature, feature, layerName) {
       data: {},
       success: function (response) {
         if (response.features.length) {
-          feature.values_.kml_povezati = true;
-          originalFeature.values_.kml_povezati = true;
+          //feature.values_.kml_povezati = true;
+          //originalFeature.values_.kml_povezati = true;
+          dodavanjeObjekataZaPovezivanje(response.features);
           console.log("DISJOINT FEATURES", response.features);
-          console.log(feature, response.features[0]);
         }
       },
       fail: function (jqXHR, textStatus) {
@@ -238,9 +282,10 @@ function showConnectForm() {
     });
   }
   if (isFlaggedForConnection) {
+    console.trace();
     Swal.fire({
-      title: "Da li je potrebno crveno označenu tačku usaglasiti sa postojećom mrežom?",
-      text: "Pod usaglašavanjem se podrazumijeva da vlasnik postojeće mreže istu prilagodi geodetskom snimku.",
+      title: UnosPoruke.KmlDaLiPovezivati,
+      text: UnosPoruke.KmlDaLiPovezivatiOpis,
       //icon: "info",
       position: "top-end",
       showDenyButton: true,
@@ -251,7 +296,8 @@ function showConnectForm() {
         $(ddlObjekatZaPovezivanje).empty();
         showDiv("#odabirBliskogObjektaKmlDiv");
       } else if (result.isDenied) {
-        saveKmlConnection(true);
+        //saveKmlConnection(true);
+        selectGpxFeature.values_.kml_povezati = false;
       }
     });
     isFlaggedForConnection = false;
@@ -260,20 +306,20 @@ function showConnectForm() {
   }
 }
 
-function saveKmlConnection(isSkipping) {
-  console.log("isSkipping", isSkipping);
+/**
+ * Metoda koja se poziva u trenutku kada se potvrdi povezivanje kml objekata sa ostatkom mreže
+ */
+function saveKmlConnection() {
   console.log("kmlFeature", kmlFeature);
   console.log("ddl za povezivanje", document.querySelector("#ddlObjekatZaPovezivanje").value);
   let oldObject = document.querySelector("#ddlObjekatZaPovezivanje").value.split(".");
-  if (isSkipping !== true) {
-    //TODO: Ovdje popuniti niz veza. Provjeriti da li u nazivu postoji tačka.
-    kmlLinksArray.push({
-      new_object_id: kmlFeature.get("originalId"),
-      old_object_id: oldObject[1],
-      old_object_type: oldObject[0],
-    });
-  }
-  showConnectForm();
+  selectGpxFeature.values_.kml_povezati = true;
+  selectGpxFeature.values_.objekat_za_korigovanje = document.querySelector("#ddlObjekatZaPovezivanje").value;
+  kmlLinksArray.push({
+    new_object_id: selectGpxFeature.get("originalId"),
+    old_object_id: oldObject[1],
+    old_object_type: oldObject[0],
+  });
 }
 
 /**
@@ -341,57 +387,4 @@ function extractKmlFeatureEndPoints(el) {
     kmlEndPoints.push(el.values_.geometry);
   }
   return kmlEndPoints;
-}
-
-/**
- * Add attributes to line imported from kml file. No need to create line from points
- */
-function addAttributesPowerLine() {}
-
-function showConnectFormNew(featureArray) {
-  let isFlaggedForConnection = false;
-  featureArray.forEach(function (el) {
-    if (el.values_.kml_povezati) {
-      let position = el.values_.geometry.flatCoordinates;
-      //nizTacakaLinije.push([position[0], position[1], position[2]]);
-      if (!isFlaggedForConnection) {
-        el.values_.kml_povezati = false;
-        isFlaggedForConnection = true;
-        kmlFeature = el;
-        map.getView().setCenter(position);
-        map.getView().setZoom(20);
-
-        let feature = new ol.Feature({
-          geometry: new ol.geom.Point([position[0], position[1]]),
-        });
-        let features = [];
-        features.push(feature);
-        let tempFeatureArray = [];
-        tempFeatureArray.push(el);
-        vectorKmlFocusedObject.getSource().clear();
-        vectorKmlFocusedObject.setSource(new ol.source.Vector({ features: features }));
-      }
-    }
-  });
-  if (isFlaggedForConnection) {
-    Swal.fire({
-      title: "Da li je potrebno crveno označenu tačku usaglasiti sa postojećom mrežom?",
-      text: "Pod usaglašavanjem se podrazumijeva da vlasnik postojeće mreže istu prilagodi geodetskom snimku.",
-      //icon: "info",
-      position: "top-end",
-      showDenyButton: true,
-      confirmButtonText: `Da`,
-      denyButtonText: `Ne`,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        $(ddlObjekatZaPovezivanje).empty();
-        showDiv("#odabirBliskogObjektaKmlDiv");
-      } else if (result.isDenied) {
-        saveKmlConnection(true);
-      }
-    });
-    isFlaggedForConnection = false;
-  } else {
-    closeDiv("#odabirBliskogObjektaKmlDiv");
-  }
 }

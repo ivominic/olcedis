@@ -303,7 +303,6 @@ document.querySelector("#btnPotvrdiPoveznica").addEventListener("click", potvrda
 document.querySelector("#btnPocetnaTackaPoveznica").addEventListener("click", odabirPocetneTackeVoda);
 document.querySelector("#btnKrajnjaTackaPoveznica").addEventListener("click", odabirKrajnjeTackeVoda);
 
-document.querySelector("#btnBliskiObjekatKml").addEventListener("click", odabirTackePovezivanjaKmla);
 document.querySelector("#btnPotvrdiKmlPoveznicu").addEventListener("click", saveKmlConnection);
 
 document.querySelector("#btnMapaOdabirPoveznice").addEventListener("click", odabirPocetnePoveznice);
