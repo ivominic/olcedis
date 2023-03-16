@@ -137,7 +137,6 @@ async function finalnaPotvrdaUnosa() {
     object_control,
     brisanje_objekta,
     pomjeranje_objekta,
-    JSON.stringify(stuboviArrayFinal),
     pocetna_tacka
   );
 

@@ -835,7 +835,7 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
  * @param {*} brisanje_objekta
  * @param {*} pomjeranje_objekta
  */
-async function serviceWrap(objekti_za_azuriranje, object_control, brisanje_objekta, pomjeranje_objekta, stubovi) {
+async function serviceWrap(objekti_za_azuriranje, object_control, brisanje_objekta, pomjeranje_objekta, pocetna_tacka) {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/service_wrap";
   console.log("WRAP   ", object_control);
   $.ajax({
@@ -845,6 +845,7 @@ async function serviceWrap(objekti_za_azuriranje, object_control, brisanje_objek
       object_control: object_control,
       brisanje_objekta: brisanje_objekta,
       pomjeranje_objekta: pomjeranje_objekta,
+      pocetna_tacka: pocetna_tacka,
     },
     type: "POST",
     success: function (data) {
