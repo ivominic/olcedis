@@ -15,6 +15,8 @@ function dodajWmsObjekte() {
     wfsUrl +
     "?version=1.0.0&request=GetFeature&typeName=" +
     fulllayernameS +
+    "," +
+    fulllayernameTS +
     "&outputformat=application/json&cql_filter=" +
     formiraniFilter +
     "&access_token=" +
