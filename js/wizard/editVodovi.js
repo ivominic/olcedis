@@ -162,12 +162,7 @@ function povezivanjeVodova(pocetna, features) {
               }
             }
             //Poziv metode za provjeru presjeka sa trafostanicama
-            if (
-              nadredjenaLinijaFeature &&
-              podredjenaLinijaFeature &&
-              nadredjenaLinijaFeature !== undefined &&
-              podredjenaLinijaFeature !== undefined
-            ) {
+            if (nadredjenaLinijaFeature && podredjenaLinijaFeature) {
               presjekVodovaSaTrafostanicama(nadredjenaLinijaFeature, podredjenaLinijaFeature);
             }
           }

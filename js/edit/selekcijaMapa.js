@@ -820,7 +820,7 @@ function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
       }
     }
   } else {
-    if (pocetna && pocetna !== undefined && pocetna.length && krajnja && krajnja !== undefined && krajnja.length) {
+    if (pocetna?.length && krajnja?.length) {
       //Ako su selektovani i nadređeni i podređeni objekat
       if (
         turf.distance(turf.point(pocetna), turf.point(nizTacakaLinije[0]), options) >
@@ -833,7 +833,7 @@ function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
         nizTacakaLinije.unshift(pocetna);
       }
     } else {
-      if (pocetna && pocetna !== undefined && pocetna.length) {
+      if (pocetna?.length) {
         if (
           turf.distance(turf.point(pocetna), turf.point(nizTacakaLinije[0]), options) >
           turf.distance(turf.point(pocetna), turf.point(nizTacakaLinije[nizTacakaLinije.length - 1]), options)
@@ -843,7 +843,7 @@ function pridruzivanjeKoordinataNizuVoda(pocetna, krajnja) {
           nizTacakaLinije.unshift(pocetna);
         }
       }
-      if (krajnja && krajnja !== undefined && krajnja.length) {
+      if (krajnja?.length) {
         if (
           turf.distance(turf.point(krajnja), turf.point(nizTacakaLinije[0]), options) >
           turf.distance(turf.point(krajnja), turf.point(nizTacakaLinije[nizTacakaLinije.length - 1]), options)

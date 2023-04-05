@@ -70,12 +70,7 @@ function povezivanjeNnVodovaTopDown(pocetna, features) {
               }
             }
 
-            if (
-              nadredjenaLinijaFeature &&
-              podredjenaLinijaFeature &&
-              nadredjenaLinijaFeature !== undefined &&
-              podredjenaLinijaFeature !== undefined
-            ) {
+            if (nadredjenaLinijaFeature && podredjenaLinijaFeature) {
               presjekVodovaSaPODovima(nadredjenaLinijaFeature, podredjenaLinijaFeature);
             }
           }
