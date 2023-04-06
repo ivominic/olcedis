@@ -43,8 +43,9 @@ function provjeriTrafostanice() {
     let tempNazivTs = "";
     trafostaniceZaWS += selektovaneTrafostaniceFeatures[i].values_.originalId + ",";
     option = document.createElement("option");
-    selektovaneTrafostaniceFeatures[i].values_.id_biling !== undefined &&
-      (tempNazivTs = "-" + selektovaneTrafostaniceFeatures[i].values_.id_biling);
+    if (selektovaneTrafostaniceFeatures[i].values_?.id_biling) {
+      tempNazivTs = "-" + selektovaneTrafostaniceFeatures[i].values_.id_biling;
+    }
     option.text = selektovaneTrafostaniceFeatures[i].values_.naziv + tempNazivTs;
     option.value = selektovaneTrafostaniceFeatures[i].values_.originalId;
     document.querySelector("#ddlPovezivanjeTSselektovane").appendChild(option);

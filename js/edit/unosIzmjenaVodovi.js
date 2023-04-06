@@ -64,12 +64,7 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
 }
 
 function prikaziPoljaOdabranogVoda() {
-  //Ovdje kao prikazi iz data u slučaju trafostanica
-  if (selectGpxFeature.values_.gps !== undefined) {
-    document.querySelector("#gps").value = selectGpxFeature.values_.gps;
-  } else {
-    document.querySelector("#gps").value = "";
-  }
+  document.querySelector("#gps").value = selectGpxFeature.values_.gps ?? "";
   console.log("vod feature", selectGpxFeature);
   document.querySelector("#name").value = selectGpxFeature.values_.name;
   document.querySelector("#fid_1").value = selectGpxFeature.values_.fid_1;
@@ -112,11 +107,7 @@ function prikaziPoljaOdabranogVoda() {
 }
 
 function prikaziPoljaWmsVoda(objekat) {
-  if (objekat.properties.gps !== undefined) {
-    document.querySelector("#gps").value = objekat.properties.gps;
-  } else {
-    document.querySelector("#gps").value = "";
-  }
+  document.querySelector("#gps").value = objekat.properties.gps ?? "";
   document.querySelector("#name").value = objekat.properties.name;
   document.querySelector("#fid_1").value = objekat.properties.fid_1;
   document.querySelector("#napon").value = objekat.properties.napon;

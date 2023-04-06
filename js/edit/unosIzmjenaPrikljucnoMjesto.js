@@ -25,11 +25,7 @@ function dodajPoljaOdabranomGpxPM() {
 }
 
 function prikaziPoljaOdabranogGpxPM() {
-  if (selectGpxFeature.values_.gps !== undefined) {
-    document.querySelector("#gps").value = selectGpxFeature.values_.gps;
-  } else {
-    document.querySelector("#gps").value = "";
-  }
+  document.querySelector("#gps").value = selectGpxFeature.values_.gps ?? "";
   document.querySelector("#name").value = selectGpxFeature.values_.name;
   document.querySelector("#vlasnistvo").value = selectGpxFeature.values_.vlasnistvo;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
@@ -41,12 +37,7 @@ function prikaziPoljaOdabranogGpxPM() {
 }
 
 function prikaziPoljaWmsPM(objekat) {
-  if (objekat.properties.gps !== undefined) {
-    document.querySelector("#gps").value = objekat.properties.gps;
-  } else {
-    document.querySelector("#gps").value = "";
-  }
-
+  document.querySelector("#gps").value = objekat.properties.gps ?? "";
   document.querySelector("#name").value = objekat.properties.name;
   document.querySelector("#vlasnistvo").value = objekat.properties.vlasnistvo;
   document.querySelector("#napon").value = objekat.properties.napon;

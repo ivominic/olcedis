@@ -197,7 +197,8 @@ select.on("select", function (e) {
     odabirPrikljucnogMjestaSaMapeVektor = false;
   } else {
     if (!odabirSaMape) {
-      if (selectGpxFeature.values_.name !== undefined) {
+      document.querySelector("#gps").value = "";
+      if (selectGpxFeature.values_.hasOwnProperty("name")) {
         document.querySelector("#gps").value = selectGpxFeature.values_.name;
         document.querySelector("#name").value = selectGpxFeature.values_.name;
         //Kad se klikne na kml objekat da provjeri da li postoji u blizini objekat na koji treba biti povezan.
@@ -215,8 +216,6 @@ select.on("select", function (e) {
           });
           showConnectForm();
         }
-      } else {
-        document.querySelector("#gps").value = "";
       }
     }
   }

@@ -336,11 +336,10 @@ let kreiranjeLabeleZaGpxTacke = function () {
       image: kmlDisconnectedPoint,
     });
 
-    if (feature.values_.lejer && feature.values_.lejer !== undefined) {
+    if (feature.values_?.lejer) {
       return [styleObradjeni];
     } else if (feature.values_.lejer) {
       //Postaviti uslov za koji će prikazati crvenu boju
-
       return [styleKmlDisconnected];
     } else {
       return [styleNeobradjeni];

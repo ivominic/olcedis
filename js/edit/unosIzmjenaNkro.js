@@ -25,11 +25,7 @@ function dodajPoljaOdabranomGpxNKRO() {
 }
 
 function prikaziPoljaOdabranogGpxNKRO() {
-  if (selectGpxFeature.values_.gps !== undefined) {
-    document.querySelector("#gps").value = selectGpxFeature.values_.gps;
-  } else {
-    document.querySelector("#gps").value = "";
-  }
+  document.querySelector("#gps").value = selectGpxFeature.values_.gps ?? "";
   document.querySelector("#name").value = selectGpxFeature.values_.name;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
   document.querySelector("#id").value = selectGpxFeature.values_.id;
@@ -42,11 +38,7 @@ function prikaziPoljaOdabranogGpxNKRO() {
 }
 
 function prikaziPoljaWmsNKRO(objekat) {
-  if (objekat.properties.gps !== undefined) {
-    document.querySelector("#gps").value = objekat.properties.gps;
-  } else {
-    document.querySelector("#gps").value = "";
-  }
+  document.querySelector("#gps").value = objekat.properties.gps ?? "";
   document.querySelector("#name").value = objekat.properties.name;
   document.querySelector("#napon").value = objekat.properties.napon;
   document.querySelector("#id").value = objekat.properties.id;

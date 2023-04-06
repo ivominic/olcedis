@@ -102,10 +102,9 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
             if (el.get("lejer")) {
               noviEl = el.clone();
               boolAdd = true;
-              console.log("elemenat koji ima lejer", noviEl);
-              console.log("elemenat lejer", el.get("lejer"));
+              console.log("elemenat koji ima lejer", noviEl, el.get("lejer"));
             }
-            if (el !== undefined && el.ol_uid == selFeature.ol_uid) {
+            if (el?.ol_uid == selFeature.ol_uid) {
               //vectorSource.addFeature(el.clone());
               //TODO: Dodijeliti vrijednosti el feature-u iz jsonPretplatnik objekta
               noviEl.set("wizard", 0);
@@ -155,11 +154,7 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
 }
 
 function prikaziPoljaOdabranogGpxPotrosac() {
-  if (selectGpxFeature.values_.gps !== undefined) {
-    document.querySelector("#gps").value = selectGpxFeature.values_.gps;
-  } else {
-    document.querySelector("#gps").value = "";
-  }
+  document.querySelector("#gps").value = selectGpxFeature.values_.gps ?? "";
   document.querySelector("#name").value = selectGpxFeature.values_.name;
   document.querySelector("#id").value = selectGpxFeature.values_.id;
   document.querySelector("#naziv_napojne").value = selectGpxFeature.values_.naziv_napojne;
@@ -185,11 +180,7 @@ function prikaziPoljaOdabranogGpxPotrosac() {
 }
 
 function prikaziPoljaWmsPotrosac(objekat) {
-  if (objekat.properties.gps !== undefined) {
-    document.querySelector("#gps").value = objekat.properties.gps;
-  } else {
-    document.querySelector("#gps").value = "";
-  }
+  document.querySelector("#gps").value = objekat.properties.gps ?? "";
   document.querySelector("#name").value = objekat.properties.name;
   document.querySelector("#id").value = objekat.properties.id;
   document.querySelector("#naziv_napojne").value = objekat.properties.naziv_napojne;
@@ -258,8 +249,7 @@ function izbrisiFeatureIzVektora(elBrisanje) {
   let nizZaBrisanje = vectorSource.getFeatures();
   //console.log("selektovani objekat", select.getFeatures().array_[0]);
   vectorSource.getFeatures().forEach(function (el, index, nizZaBrisanje) {
-    //TODO: Uslov zamijeniti sa !!elBrisanje && el.ol_uid...
-    if (elBrisanje !== undefined && elBrisanje !== null && el.ol_uid == elBrisanje.ol_uid) {
+    if (el.ol_uid == elBrisanje?.ol_uid) {
       nizZaBrisanje.splice(index, 1);
       select.getFeatures().array_.splice(0, 1);
       elBrisanje = null;

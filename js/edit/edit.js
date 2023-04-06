@@ -458,7 +458,7 @@ function dupliraj() {
   }
 
   vectorSource.getFeatures().forEach(function (el) {
-    if (select.getFeatures().array_[0] !== undefined && el.ol_uid == select.getFeatures().array_[0].ol_uid) {
+    if (el.ol_uid == select.getFeatures()?.array_[0]?.ol_uid) {
       select.getFeatures().clear(); //Da bi uklonili stil selektovane tačke
       let feature = el.clone();
       let timestamp = Date.now();
