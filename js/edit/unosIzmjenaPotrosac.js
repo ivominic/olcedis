@@ -207,18 +207,6 @@ function prikaziPoljaWmsPotrosac(objekat) {
 
 function izmijeniAtributeWmsPotrosac(objekat) {
   podaciZaPretplatniBroj(document.querySelector("#pretplatni_br").value, objekat);
-  /*objekat.properties.name = document.querySelector("#name").value;
-  objekat.properties.id = document.querySelector("#id").value;
-  objekat.properties.naziv_napojne = document.querySelector("#naziv_napojne").value;
-  objekat.properties.sifra_napojne = document.querySelector("#sifra_napojne").value;
-  objekat.properties.izvod_napojne = document.querySelector("#izvod_napojne").value;
-  objekat.properties.prik_kabal = document.querySelector("#prik_kabal").value;
-  objekat.properties.pod = document.querySelector("#pod").value;
-  objekat.properties.adresa_mm = document.querySelector("#adresa_mm").value;
-  objekat.properties.prik_mjesto = document.querySelector("#prik_mjesto").value;
-  objekat.properties.pretplatni_br = document.querySelector("#pretplatni_br").value;
-  objekat.properties.br_brojila = document.querySelector("#br_brojila").value;*/
-
   return objekat;
 }
 
@@ -237,24 +225,6 @@ function parsiranjeProvjeraPotrosaca(nizObjekataPotrosaca) {
       Swal.fire("Potvrđeno!", "", "success");
     } else if (result.isDenied) {
       Swal.fire("Odbijeno", "", "error");
-    }
-  });
-}
-
-function izbrisiFeatureIzVektora(elBrisanje) {
-  if (elBrisanje === undefined) {
-    poruka(StatusPoruke.Upozorenje, UnosPoruke.SelektovatiObjekatZaBrisanje);
-    return false;
-  }
-  let nizZaBrisanje = vectorSource.getFeatures();
-  //console.log("selektovani objekat", select.getFeatures().array_[0]);
-  vectorSource.getFeatures().forEach(function (el, index, nizZaBrisanje) {
-    if (el.ol_uid == elBrisanje?.ol_uid) {
-      nizZaBrisanje.splice(index, 1);
-      select.getFeatures().array_.splice(0, 1);
-      elBrisanje = null;
-      vectorSource.clear();
-      vectorSource.addFeatures(nizZaBrisanje);
     }
   });
 }
