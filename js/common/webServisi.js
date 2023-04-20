@@ -20,20 +20,10 @@ function neupareneTrafostanice(sifraNapojne, izvodNapojne) {
     success: function (data) {
       if (data) {
         $("#ddlTrafostanice").empty();
-        $("#ddlTrafostanice").append(
-          $("<option>", {
-            text: "Izaberite vrijednost",
-            value: "",
-          })
-        );
+        fillDdl("ddlTrafostanice", "", "Izaberite vrijednost");
         data.neuparene.forEach(function (vrijednost) {
           if (vrijednost.enabled) {
-            $("#ddlTrafostanice").append(
-              $("<option>", {
-                value: vrijednost.sifra_biling,
-                text: vrijednost.naziv_trafostanice,
-              })
-            );
+            fillDdl("ddlTrafostanice", vrijednost.sifra_biling, vrijednost.naziv_trafostanice);
           }
         });
         popuniPoljaTrafostaniceWS();
@@ -147,12 +137,7 @@ function pretragaTrafostanicaGpx(sifraTS) {
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice?sifra=" + sifraTS;
   urlServisa += "&t=" + Date.now();
   $("#ddlIzvodNapojneTrafostanice").empty();
-  $("#ddlIzvodNapojneTrafostanice").append(
-    $("<option>", {
-      value: "",
-      text: "",
-    })
-  );
+  fillDdl("ddlIzvodNapojneTrafostanice", "", "");
   $.ajax({
     url: urlServisa,
     data: "",
@@ -169,20 +154,10 @@ function pretragaTrafostanicaGpx(sifraTS) {
         }
 
         $("#ddlIzvodNapojneTrafostanice").empty();
-        $("#ddlIzvodNapojneTrafostanice").append(
-          $("<option>", {
-            value: "",
-            text: "",
-          })
-        );
+        fillDdl("ddlIzvodNapojneTrafostanice", "", "");
 
         data.ts.izvodi.forEach(function (vrijednost) {
-          $("#ddlIzvodNapojneTrafostanice").append(
-            $("<option>", {
-              value: vrijednost,
-              text: vrijednost,
-            })
-          );
+          fillDdl("ddlIzvodNapojneTrafostanice", vrijednost, vrijednost);
         });
       } else {
         poruka(StatusPoruke.Upozorenje, GlobalPoruke.NemaPodatakaZaTS);
@@ -213,23 +188,13 @@ function pretragaTrafostanica(sifraTS) {
         nazivNapojneTrafostanice = data.ts.naziv;
         data.ts.izvodi.forEach(function (vrijednost) {
           izvodNapojneTrafostanice = vrijednost; //Dodao u poslednjim izmjenama
-          $("#uparivanjeTxtNazivIzvodaTS").append(
-            $("<option>", {
-              value: vrijednost,
-              text: vrijednost,
-            })
-          );
+          fillDdl("uparivanjeTxtNazivIzvodaTS", vrijednost, vrijednost);
         });
         //Za vodove
         document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = data.ts.naziv;
         document.querySelector("#uparivanjeTxtSifraTS").textContent = data.ts.sifra;
         data.ts.izvodi.forEach(function (vrijednost) {
-          $("#uparivanjeTxtNazivIzvodaTSVod").append(
-            $("<option>", {
-              value: vrijednost,
-              text: vrijednost,
-            })
-          );
+          fillDdl("uparivanjeTxtNazivIzvodaTSVod", vrijednost, vrijednost);
         });
         //trafostaniceIzBilingaZaUparivanje(nizSelektovanihOriginalId);
       }
@@ -294,12 +259,7 @@ function trafostaniceIzBilingaZaUparivanje(
       izvodNapojneTrafostanice = data.naziv_izvoda;
 
       document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = data.naziv_napojne;
-      $("#uparivanjeTxtNazivIzvodaTS").append(
-        $("<option>", {
-          value: data.naziv_izvoda,
-          text: data.naziv_izvoda,
-        })
-      );
+      fillDdl("uparivanjeTxtNazivIzvodaTS", data.naziv_izvoda, data.naziv_izvoda);
 
       data.uparene.forEach(function (vrijednost) {
         for (let i = 0; i < document.querySelector("#ddlPovezivanjeTSselektovane").length; i++) {
@@ -309,11 +269,10 @@ function trafostaniceIzBilingaZaUparivanje(
         }
       });
       data.predlog.forEach(function (vrijednost) {
-        $("#ddlPovezivanjeTSpronadjene").append(
-          $("<option>", {
-            value: vrijednost.sifra_biling,
-            text: vrijednost.sifra_biling + " - " + vrijednost.naziv_trafostanice,
-          })
+        fillDdl(
+          "ddlPovezivanjeTSpronadjene",
+          vrijednost.sifra_biling,
+          vrijednost.sifra_biling + " - " + vrijednost.naziv_trafostanice
         );
       });
       if (izvodOdabraneNapojneTS && data.predlog.length === 0 && data.uparene.length === 0) {
@@ -518,11 +477,10 @@ function vodoviIzBilingaZaUparivanje(nizVodova) {
       console.log("responseVodovi", data);
 
       data.predlog.forEach(function (vrijednost) {
-        $("#ddlPovezivanjeVodovaPronadjene").append(
-          $("<option>", {
-            value: vrijednost.sifra_dionice,
-            text: vrijednost.sifra_dionice + " - " + vrijednost.naziv_dionice,
-          })
+        fillDdl(
+          "ddlPovezivanjeVodovaPronadjene",
+          vrijednost.sifra_dionice,
+          vrijednost.sifra_dionice + " - " + vrijednost.naziv_dionice
         );
       });
     },
