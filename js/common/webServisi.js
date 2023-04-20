@@ -763,6 +763,7 @@ function sifreDionicaVodova(nazivTs, sifraTs, izvodTs) {
     data: "",
     type: "GET",
     success: function (data) {
+      fillDdl("sifra_dionice", "", "Izaberite vrijednost");
       let array = [];
       data.dionice.forEach((item) => {
         fillDdl("sifra_dionice", item.sifra_dionice, item.sifra_dionice);
