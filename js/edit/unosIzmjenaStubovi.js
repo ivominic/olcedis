@@ -22,6 +22,7 @@ function dodajPoljaGpxStubovi() {
       el.set("gps", el.values_.name);
       el.set("name", document.querySelector("#name").value);
       el.set("napon", document.querySelector("#napon").value);
+      el.set("naziv_rastavljaca", document.querySelector("#naziv_rastavljaca").value);
 
       if (el.values_.napon === NaponskiNivo.String04kV) {
         el.set("rasvjeta", document.querySelector("#rasvjeta_stub").value);
@@ -243,6 +244,7 @@ function prikaziPoljaOdabranogGpxStuba() {
   document.querySelector("#pog_sprem").value = selectGpxFeature.values_.pog_sprem;
   document.querySelector("#opstina").value = selectGpxFeature.values_.opstina;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
+  document.querySelector("#naziv_rastavljaca").value = selectGpxFeature.values_.naziv_rastavljaca;
 
   setujDdlVrijednost("#nosaci_izolatora", selectGpxFeature.values_.tip_nosac_izol);
 
@@ -325,6 +327,7 @@ function prikaziAtributeWmsStuba(objekat) {
   document.querySelector("#pog_sprem").value = objekat.properties.pog_sprem;
   document.querySelector("#opstina").value = objekat.properties.opstina;
   document.querySelector("#napon").value = objekat.properties.napon;
+  document.querySelector("#naziv_rastavljaca").value = objekat.properties.naziv_rastavljaca;
 
   if (objekat.properties.napon === NaponskiNivo.String04kV) {
     setujDdlVrijednost("#tip_stub", objekat.properties.tip);
@@ -412,6 +415,7 @@ function izmijeniAtributeWmsStuba(objekat) {
   objekat.properties.napon = document.querySelector("#napon").value;
   objekat.properties.vlasnistvo = document.querySelector("#vlasnistvo").value;
   objekat.properties.tip = document.querySelector("#tip_stub").value;
+  objekat.properties.naziv_rastavljaca = document.querySelector("#naziv_rastavljaca").value;
 
   if (objekat.properties.napon === NaponskiNivo.String04kV) {
     objekat.properties.rasvjeta = document.querySelector("#rasvjeta_stub").value;

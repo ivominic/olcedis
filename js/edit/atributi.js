@@ -75,6 +75,7 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosRastavljac").style.display = "none";
   document.querySelector("#divUnosRastavljacStub10").style.display = "none";
   document.querySelector("#divUnosRastavljacStub35").style.display = "none";
+  document.querySelector("#divUnosNazivRastavljaca").style.display = "none";
   document.querySelector("#divUnos10KvVod").style.display = "none";
   document.querySelector("#divUnosMaterijalStub04").style.display = "none";
   document.querySelector("#divUnosMaterijalStub10").style.display = "none";
@@ -303,6 +304,7 @@ function prikaziAtributDivStubove(napon) {
   document.querySelector("#divUnosRasporedProvodnika").style.display = "flex";
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
   document.querySelector("#divUnosNapon").style.display = "flex";
+  document.querySelector("#divUnosNazivRastavljaca").style.display = "flex";
 }
 
 function prikaziAtributDivVodove(napon) {
