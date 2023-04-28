@@ -263,14 +263,14 @@ function setupOsmMap(){
 }
 
 function setupSateliteMap(){
-  map.getLayers().setAt(0, sateliteBaseMap);
+  map.getLayers().setAt(0, satelitBaseMap);
   clearMapLayerStyles();
   document.querySelector("#sateliteMapDiv").className = "col-4 activeMap";
   document.querySelector("#lejeriDiv").className = "lejeri-stil-satelite";
 }
 
 function setupTopoMap(){
-  map.getLayers().setAt(0, topoMap);
+  map.getLayers().setAt(0, ortofotoBaseMap);
   clearMapLayerStyles();
   document.querySelector("#topoMapDiv").className = "col-4 activeMap";
   document.querySelector("#lejeriDiv").className = "lejeri-stil-topo";
