@@ -2,42 +2,36 @@
   border-bottom: 1px solid #c1c1c1;
 } */
 
-body[data-leftbar-size="condensed"]
-  .left-side-menu
-  #sidebar-menu
-  > ul
-  > li
-  > a
-  svg {
+body[data-leftbar-size="condensed"] .left-side-menu #sidebar-menu > ul > li > a svg {
   width: 20px !important;
   height: 20px !important;
   margin-left: 4px !important;
 }
 
-body[data-leftbar-size="condensed"]
-  .left-side-menu
-  #sidebar-menu
-  > ul
-  > li
-  > a
-  i {
+body[data-leftbar-size="condensed"] .left-side-menu #sidebar-menu > ul > li > a i {
   font-size: 1.1rem !important;
 }
 
 body[data-leftbar-size="condensed"] .content-page {
   margin-left: 54px !important;
 }
-.left-side-menu{
+.left-side-menu {
   z-index: 999 !important;
 }
 
 .content-page {
   padding: 0px !important;
 }
-.irs--round .irs-bar:before, .irs--round .irs-from:before, .irs--round .irs-single:before, .irs--round .irs-to:before {
+.irs--round .irs-bar:before,
+.irs--round .irs-from:before,
+.irs--round .irs-single:before,
+.irs--round .irs-to:before {
   border-top-color: #b7322c;
 }
-.irs--round .irs-bar, .irs--round .irs-from, .irs--round .irs-single, .irs--round .irs-to {
+.irs--round .irs-bar,
+.irs--round .irs-from,
+.irs--round .irs-single,
+.irs--round .irs-to {
   background-color: #b7322c;
 }
 .irs--round .irs-handle {
@@ -125,7 +119,7 @@ a[aria-expanded="true"] i {
   background-color: #fff !important;
 }
 
-.ol-control{
+.ol-control {
   background-color: transparent !important;
 }
 .ol-overviewmap {
@@ -148,7 +142,7 @@ a[aria-expanded="true"] i {
   cursor: pointer;
   margin-right: 2px;
 }
-.inlineCheck{
+.inlineCheck {
   display: inline-block;
   transform: translateY(4px);
 }
@@ -192,15 +186,15 @@ a[aria-expanded="true"] i {
 }
 
 .activeLi a {
-  color: #b7322c !important
+  color: #b7322c !important;
 }
 
 .activeLi i {
-  color: #b7322c !important
+  color: #b7322c !important;
 }
 
-.activeLi .feather{
-  color: #b7322c !important
+.activeLi .feather {
+  color: #b7322c !important;
 }
 
 /* .activeLi:hover {
@@ -219,7 +213,7 @@ a[aria-expanded="true"] i {
 .attributeIcon {
   color: white !important;
   background-color: #b7322c;
-  border-color:#b7322c;
+  border-color: #b7322c;
   font-size: 1.3rem;
   border-radius: 10px;
 }
@@ -234,18 +228,19 @@ a[aria-expanded="true"] i {
   background-color: #b7322c;
 }
 
-body[data-leftbar-size=condensed] .left-side-menu #sidebar-menu>ul>li:hover>a{
+body[data-leftbar-size="condensed"] .left-side-menu #sidebar-menu > ul > li:hover > a {
   color: #b7322c !important;
 }
 
-.nav-second-level li a:focus, .nav-second-level li a:hover {
+.nav-second-level li a:focus,
+.nav-second-level li a:hover {
   color: #b7322c !important;
 }
 
 .attribute_card {
   margin-bottom: 0 !important;
 }
-.form-switch .form-check-input{
+.form-switch .form-check-input {
   background-color: white;
 }
 
@@ -255,10 +250,10 @@ body[data-leftbar-size=condensed] .left-side-menu #sidebar-menu>ul>li:hover>a{
 
 a.active {
   background-color: white !important;
-  color: #B7322F !important;
+  color: #b7322f !important;
 }
 
-.sidenav{
+.sidenav {
   background-color: white !important;
 }
 
@@ -274,7 +269,7 @@ div.btn-container {
   padding-left: 6px;
 }
 
-.tooltip{
+.tooltip {
   opacity: 1;
 }
 
@@ -284,7 +279,7 @@ div.btn-container i {
   top: -9px;
 }
 
-.btn-success{
+.btn-success {
   background-color: #288203 !important;
   background: #288203;
   border: 1px solid #288203;
@@ -358,24 +353,18 @@ label {
   margin: 0px;
 }
 
-.btn-color-mode-switch
-  input[type="checkbox"]:checked
-  + label.btn-color-mode-switch-inner {
+.btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner {
   background: #eceef0;
   color: black;
 }
 
-.btn-color-mode-switch
-  input[type="checkbox"]:checked
-  + label.btn-color-mode-switch-inner:after {
+.btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner:after {
   content: attr(data-on);
   left: 68px;
   background: #00acc1;
 }
 
-.btn-color-mode-switch
-  input[type="checkbox"]:checked
-  + label.btn-color-mode-switch-inner:before {
+.btn-color-mode-switch input[type="checkbox"]:checked + label.btn-color-mode-switch-inner:before {
   content: attr(data-off);
   right: auto;
   left: 20px;
@@ -523,40 +512,40 @@ p.by a {
 }
 
 .lejeri-stil {
-  background: url('../../administracija/olcedis/img/osm-layer.png');
+  background: url("../../olcedis/img/osm-layer.png");
   border-radius: 8px;
   border: 2px solid white;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.lejeri-stil:hover .text-layer{
-display: block !important;
+.lejeri-stil:hover .text-layer {
+  display: block !important;
 }
 
 .lejeri-stil-satelite {
-  background: url('../../administracija/olcedis/img/satellite-layer.png');
+  background: url("../../olcedis/img/satellite-layer.png");
   border-radius: 8px;
   border: 2px solid white;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.lejeri-stil-satelite:hover .text-layer{
+.lejeri-stil-satelite:hover .text-layer {
   display: block !important;
-  }
+}
 
 .lejeri-stil-topo {
-  background: url('../../administracija/olcedis/img/topo-layer.png');
+  background: url("../../olcedis/img/topo-layer.png");
   border-radius: 8px;
   border: 2px solid white;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.lejeri-stil-topo:hover .text-layer{
+.lejeri-stil-topo:hover .text-layer {
   display: block !important;
-  }
+}
 
 #chooseLayerContainer {
   position: absolute;
@@ -581,26 +570,26 @@ display: block !important;
   transition: ease-in-out 0.2s !important;
 }
 
-#osmMapDiv{
+#osmMapDiv {
   cursor: pointer;
 }
-#sateliteMapDiv{
+#sateliteMapDiv {
   cursor: pointer;
 }
-#topoMapDiv{
+#topoMapDiv {
   cursor: pointer;
 }
 
-.activeMap img{
+.activeMap img {
   border: 2px solid #00acc1;
   border-radius: 11px;
 }
 
-.activeMap span{
+.activeMap span {
   color: #00acc1;
 }
 
-.modal-left{
+.modal-left {
   position: fixed;
   width: 400px;
   top: 68px;
@@ -609,10 +598,10 @@ display: block !important;
   z-index: 99;
   border-left: 1px solid #38414a;
   left: -400px;
-  transition: all .2s ease-out;
+  transition: all 0.2s ease-out;
 }
 
-.modal-center{
+.modal-center {
   position: fixed;
   overflow: hidden;
   width: auto;
@@ -621,11 +610,11 @@ display: block !important;
   background-color: #ffffff;
   z-index: 99;
   left: 466px;
-  transition: all .2s ease-out;
+  transition: all 0.2s ease-out;
   overflow-y: auto;
   display: none;
 }
-.form-check i{
+.form-check i {
   cursor: pointer;
 }
 
