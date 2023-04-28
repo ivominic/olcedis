@@ -523,7 +523,7 @@ p.by a {
 }
 
 .lejeri-stil {
-  background: url('../img/osm-layer.png');
+  background: url('../../administracija/olcedis/img/osm-layer.png');
   border-radius: 8px;
   border: 2px solid white;
   background-repeat: no-repeat;
@@ -535,7 +535,7 @@ display: block !important;
 }
 
 .lejeri-stil-satelite {
-  background: url('../img/satellite-layer.png');
+  background: url('../../administracija/olcedis/img/satellite-layer.png');
   border-radius: 8px;
   border: 2px solid white;
   background-repeat: no-repeat;
@@ -547,7 +547,7 @@ display: block !important;
   }
 
 .lejeri-stil-topo {
-  background: url('../img/topo-layer.png');
+  background: url('../../administracija/olcedis/img/topo-layer.png');
   border-radius: 8px;
   border: 2px solid white;
   background-repeat: no-repeat;

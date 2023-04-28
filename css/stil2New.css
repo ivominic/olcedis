@@ -170,6 +170,10 @@ a.active {
   color: #ca2129;
 }
 
+.koordinate {
+  width: 170px;
+}
+
 /* Ne prikazuje hamburger na desnoj strani, koji se pojavljuje na malim ekranima */
 .topnav .icon {
   display: none;
@@ -180,6 +184,11 @@ a.active {
 }
 #logo:hover {
   background: transparent;
+}
+
+.ol-scale-bar {
+  bottom: 13px !important;
+  right: 33px !important;
 }
 
 .dropdown .dropbtn {
