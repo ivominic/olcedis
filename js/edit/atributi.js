@@ -68,6 +68,7 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosPrikljucakOtcjepStub10").style.display = "none";
   document.querySelector("#divUnosPrikljucakOtcjepStub35").style.display = "none";
   document.querySelector("#divUnosOptikaStub04").style.display = "none";
+  document.querySelector("#divUnosOptikaStub10").style.display = "none";
   document.querySelector("#divUnosOptikaStub35").style.display = "none";
   document.querySelector("#divUnosNnVod").style.display = "none";
   document.querySelector("#divUnosNnVodStub").style.display = "none";

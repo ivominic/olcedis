@@ -378,10 +378,15 @@ function promjenaSifreNapojneTrafostanice() {
 }
 
 function disableMenija() {
-  let pocetnaDiv = document.getElementsByClassName("pocetni-div");
+  let pocetnaDiv = document.querySelector("#topNav");
   if (pocetnaDiv) {
-    pocetnaDiv[0].style.opacity = "0.3";
+    pocetnaDiv.style.opacity = "0.3";
   }
+  let leftSideMenu = document.getElementsByClassName("left-side-menu");
+  if(leftSideMenu) {
+    leftSideMenu[0].style.opacity = "0.3";
+  }
+
   let akcija = document.getElementsByClassName("akcija");
   kontroleZaDisable = akcija;
   for (i = 0; i < akcija.length; i++) {
@@ -392,13 +397,33 @@ function disableMenija() {
   for (i = 0; i < dropdown.length; i++) {
     dropdown[i].style.display = "none";
   }
+  document.querySelector("#handButton").style.cursor = "not-allowed";
+  document.querySelector("#handButton").style.pointerEvents = "none";
+  document.querySelector("#layerMenu").style.cursor = "not-allowed";
+  document.querySelector("#layerMenu").style.pointerEvents = "none";
+  document.querySelector("#dodajMenu").style.cursor = "not-allowed";
+  document.querySelector("#dodajMenu").style.pointerEvents = "none";
+  document.querySelector("#potvrdaMenu").style.cursor = "not-allowed";
+  document.querySelector("#potvrdaMenu").style.pointerEvents = "none";
+
+  let sideMenu = document.querySelector("#side-menu").getElementsByTagName("li");
+  for (let i = 0; i < sideMenu.length; i++) {
+    sideMenu[i].style.cursor = "not-allowed";
+    sideMenu[i].style.pointerEvents = "none";
+  }
 }
 
 function enableMenija() {
-  let pocetnaDiv = document.getElementsByClassName("pocetni-div");
+  let pocetnaDiv = document.querySelector("#topNav");
   if (pocetnaDiv) {
-    pocetnaDiv[0].style.opacity = "1";
+    pocetnaDiv.style.opacity = "1";
   }
+
+  let leftSideMenu = document.getElementsByClassName("left-side-menu");
+  if(leftSideMenu) {
+    leftSideMenu[0].style.opacity = "1";
+  }
+
   let akcija = document.getElementsByClassName("akcija");
   for (i = 0; i < akcija.length; i++) {
     akcija[i].style.cursor = "pointer";
@@ -407,6 +432,20 @@ function enableMenija() {
   let dropdown = document.getElementsByClassName("dropdown-content");
   for (i = 0; i < dropdown.length; i++) {
     dropdown[i].style.removeProperty("display");
+  }
+  document.querySelector("#handButton").style.cursor = "pointer";
+  document.querySelector("#handButton").style.pointerEvents = "all";
+  document.querySelector("#layerMenu").style.cursor = "pointer";
+  document.querySelector("#layerMenu").style.pointerEvents = "all";
+  document.querySelector("#dodajMenu").style.cursor = "pointer";
+  document.querySelector("#dodajMenu").style.pointerEvents = "all";
+  document.querySelector("#potvrdaMenu").style.cursor = "pointer";
+  document.querySelector("#potvrdaMenu").style.pointerEvents = "all";
+
+  let sideMenu = document.querySelector("#side-menu").getElementsByTagName("li");
+  for (let i = 0; i < sideMenu.length; i++) {
+    sideMenu[i].style.cursor = "pointer";
+    sideMenu[i].style.pointerEvents = "all";
   }
 }
 

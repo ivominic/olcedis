@@ -253,9 +253,9 @@ a.active {
   color: #b7322f !important;
 }
 
-.sidenav {
+/* .sidenav {
   background-color: white !important;
-}
+} */
 
 .form-check-input:checked {
   background-color: #b7322c !important;
