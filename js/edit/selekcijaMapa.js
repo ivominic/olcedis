@@ -599,7 +599,7 @@ function klikNaRastereZaVodove(browserEvent) {
       console.log(layer.values_.name);
       //let title = layer.get("title");
       let vidljivost = layer.get("visible");
-      if (vidljivost) {
+      if (vidljivost && layer.values_.name !== Lejeri.Vodovi) {
         brojLejera++;
         let url = layer
           .getSource()

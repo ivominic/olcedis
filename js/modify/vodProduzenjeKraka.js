@@ -18,7 +18,7 @@ function vodEditGeometrije(browserEvent) {
   let pixel = map.getPixelFromCoordinate(coordinate);
   map.forEachLayerAtPixel(pixel, function (layer) {
     let vidljivost = layer.get("visible");
-    if (layer instanceof ol.layer.Image && layer.values_.name === "vodovi" && vidljivost) {
+    if (layer instanceof ol.layer.Image && layer.values_.name === Lejeri.Vodovi && vidljivost) {
       let url = layer
         .getSource()
         .getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
