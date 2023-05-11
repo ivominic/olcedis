@@ -240,13 +240,13 @@ var modifyV = new ol.interaction.Modify({
 });
 
 modifyV.on("modifyend", function (e) {
-  let featureName = e?.features?.getArray()[0]?.values_?.name;
+  let featureId = e?.features?.getArray()[0]?.values_?.originalId;
   //let position = ol.proj.transform(e.features.getArray()[0].values_.geometry.flatCoordinates, "EPSG:3857", "EPSG:4326");
   let position = e?.features?.getArray()[0]?.values_?.geometry?.flatCoordinates;
-  let coordinates = e?.features?.getArray()[0]?.values_?.geometry?.clone();
+  //let coordinates = e?.features?.getArray()[0]?.values_?.geometry?.clone();
   let pocetniElement;
   nizKml.forEach((el) => {
-    if (el.name === featureName) {
+    if (el.originalId === featureId) {
       pocetniElement = el;
       //pocetniElement = ol.proj.transform(el, "EPSG:3857", "EPSG:4326");
     }
@@ -919,10 +919,9 @@ function klikNapojnaTrafostanicaMapa(browserEvent) {
         let odgovor = JSON.parse(json);
         map.un("singleclick", klikNapojnaTrafostanicaMapa);
         if (
-          odgovor.features[0].properties.id_billing !== null &&
-          odgovor.features[0].properties.id_billing !== "null" &&
-          odgovor.features[0].properties.id_billing.length >= 6 &&
-          odgovor.features[0].properties.id_billing.length <= 8
+          odgovor.features[0]?.properties?.id_billing !== null &&
+          odgovor.features[0]?.properties?.id_billing?.length >= 6 &&
+          odgovor.features[0]?.properties?.id_billing?.length <= 8
         ) {
           pretragaTrafostanicaGpx(odgovor.features[0].properties.id_billing);
         } else {
