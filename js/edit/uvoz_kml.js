@@ -310,7 +310,6 @@ function showConnectForm() {
  * Metoda koja se poziva u trenutku kada se potvrdi povezivanje kml objekata sa ostatkom mreže
  */
 function saveKmlConnection() {
-  console.log("kmlFeature", kmlFeature);
   console.log("ddl za povezivanje", document.querySelector("#ddlObjekatZaPovezivanje").value);
   let oldObject = document.querySelector("#ddlObjekatZaPovezivanje").value.split(".");
   selectGpxFeature.values_.kml_povezati = true;
@@ -320,6 +319,7 @@ function saveKmlConnection() {
     old_object_id: oldObject[1],
     old_object_type: oldObject[0],
   });
+  closeDiv("#odabirBliskogObjektaKmlDiv");
 }
 
 /**
