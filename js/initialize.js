@@ -23,18 +23,19 @@ $("#exampleModal").on("hidden.bs.modal", function () {
 
 //Events on click
 document.querySelector("#drawButton").addEventListener("click", showDrawModal);
-document.querySelector("#restart").addEventListener("click", restartWindow);
+// document.querySelector("#restart").addEventListener("click", restartWindow);
 document
   .querySelector("#btnDownloadMapData")
   .addEventListener("click", downloadDrawnData);
   document.querySelector("#osmMapDiv").addEventListener("click", setupOsmMap);
   document.querySelector("#sateliteMapDiv").addEventListener("click", setupSateliteMap);
   document.querySelector("#topoMapDiv").addEventListener("click", setupTopoMap);
+  document.querySelector("#bezPodlogeDiv").addEventListener("click", setupBezPodlogeMap);
   document.querySelector("#lejeriDiv").addEventListener("click",openMenuForLayers);
 
 function showDrawModal() {
   closeModal();
-  document.querySelector("#drawButtonli").className = "activeLi";
+  document.querySelector("#drawButton").className = "active";
   document.querySelector("#right-bar-modal").style.right = "0";
 }
 
@@ -45,8 +46,8 @@ function showAttributeModal() {
 }
 
 function closeModal() {
-  document.querySelector("#drawButtonli").className = "";
-  document.querySelector("#attributeButtonli").className = "";
+  document.querySelector("#drawButton").className = "";
+  document.querySelector("#atributi").className = "";
 
   // map.removeInteraction(drawTraceInteraction);
   // map.removeInteraction(snapTraceInteraction);
@@ -276,10 +277,18 @@ function setupTopoMap(){
   document.querySelector("#lejeriDiv").className = "lejeri-stil-topo";
 }
 
+function setupBezPodlogeMap(){
+  map.getLayers().setAt(0, bezBaseMap);
+  clearMapLayerStyles();
+  document.querySelector("#bezPodlogeDiv").className = "col-4 activeMap";
+  document.querySelector("#lejeriDiv").className = "lejeri-stil-bez-podloge";
+}
+
 function clearMapLayerStyles(){
   document.querySelector("#osmMapDiv").className = "col-4";
   document.querySelector("#sateliteMapDiv").className = "col-4";
   document.querySelector("#topoMapDiv").className = "col-4";
+  document.querySelector("#bezPodlogeDiv").className = "col-4";
 }
 
 function openMenuForLayers(){

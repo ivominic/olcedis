@@ -12,6 +12,10 @@
  */
 function prikazAtributaSelektovanihObjekata() {
   console.log("prikazAtributaSelektovanihObjekata", nizSelektovanihObjekata);
+  let messageElement = document.querySelector("#atributeMessage");
+  if(messageElement){
+    messageElement.style.display = "none";
+  }
   //TODO: Ne dozvoliti izmjenu/brisanje potrošača, nelegalnih potrošača i svih temp_ tabela
   nizSelektovanihObjekata.forEach((el) => {
     el.ddlLejer = ddlLejerNaziv(el);

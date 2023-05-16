@@ -267,7 +267,7 @@ document.querySelector("#poligon").addEventListener("click", crtajPoligon);
 document.querySelector("#brisanje").addEventListener("click", brisanje);
 document.querySelector("#pretraga").addEventListener("click", pretraga);
 document.querySelector("#potvrda").addEventListener("click", finalnaPotvrdaUnosa);
-document.querySelector("#restart").addEventListener("click", restart);
+// document.querySelector("#restart").addEventListener("click", restart);
 document.querySelector("#podloga_osm").addEventListener("click", osmPodloga);
 document.querySelector("#podloga_satelit").addEventListener("click", satelitPodloga);
 document.querySelector("#podloga_ortofoto").addEventListener("click", ortofotoPodloga);

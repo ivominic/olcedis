@@ -1,9 +1,9 @@
 /** Modul koji sadrži sve poruke i konstante koje se koriste u projektu */
 
+// const wsServerOriginLocation = location.origin;
+// const domainUrl = location.origin;
 const wsServerOriginLocation = location.origin;
 const domainUrl = location.origin;
-//const wsServerOriginLocation = "https://razvojgis.cedis.me";
-//const domainUrl = "https://razvojgis.cedis.me";
 const wmsUrl = domainUrl + "/geoserver/geonode/wms";
 const wfsUrl = domainUrl + "/geoserver/geonode/wfs";
 const imageUrl = domainUrl + "/slike/";

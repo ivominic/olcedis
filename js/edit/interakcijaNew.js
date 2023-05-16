@@ -267,7 +267,7 @@ document.querySelector("#poligon").addEventListener("click", crtajPoligon);
 document.querySelector("#brisanje").addEventListener("click", brisanje);
 document.querySelector("#pretraga").addEventListener("click", pretraga);
 document.querySelector("#potvrda").addEventListener("click", finalnaPotvrdaUnosa);
-document.querySelector("#restart").addEventListener("click", restart);
+// document.querySelector("#restart").addEventListener("click", restart);
 // document.querySelector("#podloga_osm").addEventListener("click", osmPodloga);
 // document.querySelector("#podloga_satelit").addEventListener("click", satelitPodloga);
 // document.querySelector("#podloga_ortofoto").addEventListener("click", ortofotoPodloga);
@@ -280,19 +280,29 @@ function closeAllDivs() {
   closeDiv("#odabirCvorovaVodaDiv");
   closeDiv("#odabirObjektaZaPomjeranjeDiv");
   closeDiv("#atributiDiv");
+  document.querySelector("#vodDodvanjeObjektaBtn").className = "";
+  document.querySelector("#vodPomjeranjeObjektaBtn").className = "";
+  document.querySelector("#vodProduzenjeKrakaBtn").className = "";
+  document.querySelector("#izmjenaVodaDiv").className = "";
 }
 
 document.querySelector("#vodDodvanjeObjektaBtn").addEventListener("click", function () {
   closeAllDivs();
   showDiv("#odabirCvorovaVodaDiv");
+  document.querySelector("#vodDodvanjeObjektaBtn").className = "active";
+  document.querySelector("#izmjenaVodaDiv").className = "active";
 });
 document.querySelector("#vodPomjeranjeObjektaBtn").addEventListener("click", function () {
   closeAllDivs();
   showDiv("#odabirObjektaZaPomjeranjeDiv");
+  document.querySelector("#vodPomjeranjeObjektaBtn").className = "active";
+  document.querySelector("#izmjenaVodaDiv").className = "active";
 });
 document.querySelector("#vodProduzenjeKrakaBtn").addEventListener("click", function () {
   closeAllDivs();
   map.on("singleclick", vodEditGeometrije);
+  document.querySelector("#vodProduzenjeKrakaBtn").className = "active";
+  document.querySelector("#izmjenaVodaDiv").className = "active";
 });
 document.querySelector("#ddl_sloj_podataka").addEventListener("click", ddlLejerChange);
 document.querySelector("#btnPrethodniObjekat").addEventListener("click", prethodniObjekatGpx);

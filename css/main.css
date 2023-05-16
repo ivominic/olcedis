@@ -228,8 +228,9 @@ a[aria-expanded="true"] i {
   background-color: #b7322c;
 }
 
-body[data-leftbar-size="condensed"] .left-side-menu #sidebar-menu > ul > li:hover > a {
-  color: #b7322c !important;
+
+body[data-leftbar-size="condensed"] .left-side-menu #sidebar-menu > ul > li:hover > a .active {
+  color:white !important;
 }
 
 .nav-second-level li a:focus,
@@ -249,8 +250,67 @@ body[data-leftbar-size="condensed"] .left-side-menu #sidebar-menu > ul > li:hove
 }
 
 a.active {
+  background-color: #ca2129 !important;
+  color: white !important;
+}
+
+.navbar-custom .topnav-menu .nav-link {
+  color: white;
+}
+
+.nav-second-level li a:focus, .nav-second-level li .active:hover{
+  color: white !important;
+}
+
+.nav-second-level2  li a:focus, .nav-second-level2 li .active:hover{
+  color: white !important;
+}
+
+body[data-leftbar-size=condensed] .left-side-menu #sidebar-menu>ul>#izmjenaVodaDiv:hover>a {
+  width: calc(190px + 322px);
+}
+
+#side-menu li.active .editIcon{
+  color: #ca2129;
+}
+
+.inputClass{
   background-color: white !important;
-  color: #b7322f !important;
+  border: 1px solid #c1c1c1  !important;
+  color: #909090 !important;
+}
+
+.rowEnd {
+  justify-content: end !important;
+}
+
+.btn-outline-success {
+  color: #288203 !important;
+  border-color: #288203 !important;
+}
+
+
+.btn-outline-success:hover {
+  color: #fff !important;
+  background-color: #288203;
+  border-color: #288203;
+}
+
+#izmjenaVodaDiv.active .izmjenaVodaFirst {
+  background-color: #ca2129 !important;
+  color: white !important;
+}
+
+#izmjenaVodaDiv.active .editIcon {
+  color: white !important;
+}
+
+.rowEnd label{
+  margin-right: 10px;
+}
+
+#pretragaDiv select{
+  width: 188px !important;
 }
 
 /* .sidenav {
@@ -547,13 +607,25 @@ p.by a {
   display: block !important;
 }
 
+.lejeri-stil-bez-podloge{
+  background: url("../../olcedis/img/bezPodloge.JPG");
+  border-radius: 8px;
+  border: 2px solid white;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.lejeri-stil-bez-podloge:hover .text-layer {
+  display: block !important;
+}
+
 #chooseLayerContainer {
   position: absolute;
   bottom: 11px;
   left: 172px;
   width: 13rem;
-  height: 5rem;
-  padding: 10px;
+  height: 10rem;
+  padding: 11px;
 }
 .layerSelectionText {
   color: #70757a;
