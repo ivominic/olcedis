@@ -175,6 +175,7 @@ function dodajPoljaOdabranomGpxStubu() {
   selectGpxFeature.set("wizard", 0);
   selectGpxFeature.set("lejer", "stubovi");
   selectGpxFeature.set("fid_1", document.querySelector("#fid_1").value);
+  selectGpxFeature.set("naziv_rastavljaca", document.querySelector("#naziv_rastavljaca").value);
   selectGpxFeature.set("gps", document.querySelector("#gps").value);
   selectGpxFeature.set("name", document.querySelector("#name").value);
   selectGpxFeature.set("broj", document.querySelector("#broj").value);

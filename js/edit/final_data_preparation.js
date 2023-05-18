@@ -47,6 +47,7 @@ function stubArrayElement(el, action, wizard, serialNo) {
     nn_vod: el.values_.nn_vod,
     pog_sprem: el.values_.pog_sprem,
     vrsta_materijal: el.values_.vrsta_materijal,
+    naziv_rastavljaca: el.values_.naziv_rastavljaca,
     geohash_id: "", //Provjeriti da li treba da se šalje
     geohash_id_no: "", //Provjeriti da li treba da se šalje
     korisnik: globalUsername,

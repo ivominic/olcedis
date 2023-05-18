@@ -132,13 +132,7 @@ async function finalnaPotvrdaUnosa() {
     pocetna_tacka: globalPocetnaPoveznica,
   };
 
-  serviceWrap(
-    objekti_za_azuriranje,
-    object_control,
-    brisanje_objekta,
-    pomjeranje_objekta,
-    pocetna_tacka
-  );
+  serviceWrap(objekti_za_azuriranje, object_control, brisanje_objekta, pomjeranje_objekta, pocetna_tacka);
 
   /*Promise.all(promiseArray).then(function () {
     console.log("Kompletiran unos podataka", finalImportMessage);

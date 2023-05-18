@@ -48,6 +48,7 @@ function stubArrayElementProperties(el, action) {
     nn_vod: el.properties.nn_vod,
     pog_sprem: el.properties.pog_sprem,
     vrsta_materijal: el.properties.vrsta_materijal,
+    naziv_rastavljaca: el.properties.naziv_rastavljaca,
     korisnik: globalUsername,
     sifra_napojne: el.properties.sifra_napojne,
     naziv_napojne: el.properties.naziv_napojne,
