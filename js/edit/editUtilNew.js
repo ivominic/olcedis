@@ -7,10 +7,10 @@ function setujAktivnu(element) {
     );
     return false;
   }
-  let els = document.querySelectorAll(".active");
-  for (let i = 0; i < els.length; i++) {
-    els[i].classList.remove("active");
-  }
+  // let els = document.querySelectorAll(".active");
+  // for (let i = 0; i < els.length; i++) {
+  //   els[i].classList.remove("active");
+  // }
   closeDiv("#pretragaDiv");
   closeDiv("#atributiDiv");
   if (element === "#atributi" || element === "#dodaj") {
