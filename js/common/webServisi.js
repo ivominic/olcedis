@@ -34,7 +34,6 @@ function neupareneTrafostanice(sifraNapojne, izvodNapojne) {
     },
   });
 }
-//neupareneTrafostanice("EKLICE", "Vazdušni Kličevo");
 
 /**
  * Metoda koja za predatu šifru iz bilinga trafostanice vrati geometriju trafostanice
@@ -79,7 +78,7 @@ function geometrijaTrafostaniceCentar(sifraTS) {
 }
 
 /**
- * Metoda koja za predatu šifru iz bilinga trafostanice vrati geometriju trafostanice
+ * Metoda koja za predatu šifru iz bilinga trafostanice popuni polja atributima trafostanice
  * @param {id_billing vrijednost iz GIS-a} sifraTS
  */
 function popuniPoljaTrafostaniceWS() {
@@ -100,31 +99,6 @@ function popuniPoljaTrafostaniceWS() {
     error: function (x, y, z) {
       console.log("greška popuniDdlAtributima", x.responseText);
       return retval;
-    },
-  });
-}
-
-/**
- * Metoda koja za predatu šifru iz bilinga trafostanice vrati sva polja
- * @param {id_billing vrijednost iz GIS-a} sifraTS
- */
-function detaljiTrafostanica(sifraTS) {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice_data?sifra=" + sifraTS;
-  urlServisa += "&t=" + Date.now();
-  $.ajax({
-    url: urlServisa,
-    data: "",
-    type: "GET",
-    success: function (data) {
-      console.log("detalji trafostanica, odgovor servisa", data);
-      if (data) {
-        document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = data.naziv;
-        document.querySelector("#uparivanjeTxtSifraTS").textContent = data.sifra;
-      }
-    },
-    error: function (x, y, z) {
-      //alert(x.responseText +"  " +x.status);
-      console.log("greška popuniDdlAtributima", x.responseText);
     },
   });
 }
@@ -187,7 +161,7 @@ function pretragaTrafostanica(sifraTS) {
         sifraNapojneTrafostanice = data.ts.sifra;
         nazivNapojneTrafostanice = data.ts.naziv;
         data.ts.izvodi.forEach(function (vrijednost) {
-          izvodNapojneTrafostanice = vrijednost; //Dodao u poslednjim izmjenama
+          izvodNapojneTrafostanice = vrijednost;
           fillDdl("uparivanjeTxtNazivIzvodaTS", vrijednost, vrijednost);
         });
         //Za vodove
@@ -196,7 +170,6 @@ function pretragaTrafostanica(sifraTS) {
         data.ts.izvodi.forEach(function (vrijednost) {
           fillDdl("uparivanjeTxtNazivIzvodaTSVod", vrijednost, vrijednost);
         });
-        //trafostaniceIzBilingaZaUparivanje(nizSelektovanihOriginalId);
       }
     },
     error: function (x, y, z) {
@@ -276,10 +249,7 @@ function trafostaniceIzBilingaZaUparivanje(
         );
       });
       if (izvodOdabraneNapojneTS && data.predlog.length === 0 && data.uparene.length === 0) {
-        poruka(
-          "Upozorenje",
-          "Nije pronađena nijedna trafostanica u tehničkoj bazi podataka koja zadovoljava zadate uslove."
-        );
+        poruka(StatusPoruke.Upozorenje, WizardPoruke.NijePronadjenaTs);
       }
       if (data.naziv_izvoda) {
         document.querySelector("#wizardHeader").innerText = treciKorakWizarda;
@@ -302,8 +272,6 @@ function trafostaniceIzBilingaZaUparivanje(
       } else {
         poruka(StatusPoruke.Greska, x.responseJSON["error"]);
       }
-
-      //TODO: onemogućiti dalji nastavak rada na mapi - pošto se radi o nepoklapanju broja trafostanica ili nekoj sličnoj grešci
     },
   });
 }
@@ -332,7 +300,6 @@ function nnGeometrijaTrafostanica(sifraOdabraneNapojneTS, nazivOdabranaNapojneTS
     data: "",
     type: "GET",
     success: function (data) {
-      console.log("ODGOVOR SERVISA nnGeometrijaTrafostanica", data);
       geometrijaNapojneTrafostanice = data.geometrija_napojne;
       geohashNapojneTrafostanice = data.geohash_napojne;
       provjeriVodIzTrafostanice();
@@ -341,42 +308,6 @@ function nnGeometrijaTrafostanica(sifraOdabraneNapojneTS, nazivOdabranaNapojneTS
       poruka(StatusPoruke.Greska, x.responseJSON["error"]);
     },
   });
-}
-
-/**
- * Metoda koja za lejer i geometriju vrati generisan geohash
- * @param {Naziv lejera} lejer
- * @param {WKT zapis geometrije objekta} wkt
- */
-function generisiGeohashId(lejer, wkt) {
-  let retval = "";
-  console.log("Geohash ID", lejer, wkt);
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/geohash_id";
-  let podaciForme = new FormData();
-  podaciForme.append("tip_objekta", lejer);
-  podaciForme.append("geometry", wkt);
-  let xhr = new XMLHttpRequest();
-  xhr.open("POST", urlServisa, true);
-  xhr.timeout = 10000000;
-  xhr.ontimeout = function () {
-    alert("Akcija je prekinuta jer je trajala predugo.");
-  };
-  xhr.send(podaciForme);
-  //openModalSpinner();
-
-  xhr.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      if (this.status === 200) {
-        let jsonResponse = JSON.parse(xhr.responseText);
-        retval = jsonResponse["geohash_id"];
-        //closeModalSpinner();
-      } else {
-        console.log(xhr.statusText);
-        //closeModalSpinner();
-      }
-      return retval;
-    }
-  };
 }
 
 /**
@@ -467,14 +398,12 @@ function vodoviIzBilingaZaUparivanje(nizVodova) {
   let stringNiz = "[" + nizVodova.join(",") + "]";
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/upari_vodove?vodovi=" + stringNiz + dodatniParametriWS;
   urlServisa += "&t=" + Date.now();
-  //$("#ddlPovezivanjeTSpronadjene").empty();
   $.ajax({
     url: urlServisa,
     data: "",
     type: "POST",
     success: function (data) {
       $("#ddlPovezivanjeTSpronadjene").empty();
-      console.log("responseVodovi", data);
 
       data.predlog.forEach(function (vrijednost) {
         fillDdl(
@@ -489,7 +418,6 @@ function vodoviIzBilingaZaUparivanje(nizVodova) {
         document.querySelector("#btnOdabirNapojneTS").style.display = "inline-block";
       }
       poruka(StatusPoruke.Greska, x.responseJSON["error"]);
-      //TODO: onemogućiti dalji nastavak rada na mapi - pošto se radi o nepoklapanju broja trafostanica ili nekoj sličnoj grešci
     },
   });
 }
@@ -567,57 +495,6 @@ function tokenGeoserver() {
   });
 }
 tokenGeoserver();
-
-/**
- * Metoda koja za predati username (logovanog korisnika) vrati true ili false u zavisnosti da li ima pravo pristupa
- * @param {} username
- */
-function pravaPristupaStranici(username) {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/pravo_pristupa_unos?username=" + username;
-  $.ajax({
-    url: urlServisa,
-    data: "",
-    type: "GET",
-    success: function (data) {
-      return data.pristup;
-    },
-    error: function (x, y, z) {
-      console.log("greška provjeraPristupaStranici", x.responseText);
-      return false;
-    },
-  });
-}
-
-/**
- * Metoda koja poziva servis za ažuriranje objekata, kada je pokrenut import iz kml fajla.
- * @param {*} objects
- */
-async function kmlConnectionLog(objects) {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/objekti_za_azuriranje";
-  promiseArray.push(
-    fetch(urlServisa, {
-      method: "POST",
-      body: JSON.stringify({ objekti: JSON.stringify(objects), group_id: globalTimestamp }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((res) => {
-        if (res.status !== 200) {
-          finalImportMessage += "Ažuriranje objekata nije izvršeno.\n";
-          unosUspjeh = false;
-        }
-        return res.text();
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch(status, (err) => {
-        finalImportMessage += "Ažuriranje objekata nije izvršeno.\n";
-        return console.log(status, err);
-      })
-  );
-}
 
 /**
  * Metoda koja vraća username logovanog korisnika
@@ -761,7 +638,6 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
     poruka(StatusPoruke.Upozorenje, GlobalPoruke.NemaIzmjena);
     return false;
   }
-  let retval = true;
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/object_control";
   console.log("stubovi insert all objects   ", JSON.stringify(stubovi));
   $.ajax({
@@ -808,7 +684,6 @@ async function serviceWrap(objekti_za_azuriranje, object_control, brisanje_objek
     },
     type: "POST",
     success: function (data) {
-      console.log("success WRAP", data);
       resetovanjeNakonUspjeha();
       poruka(StatusPoruke.Uspjeh, data.response.replace(/"/g, ""));
     },

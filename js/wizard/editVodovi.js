@@ -264,7 +264,6 @@ function poveziVodove() {
     document.querySelector("#ddlPovezivanjeVodovaPronadjene").length === 0
   ) {
     poruka(StatusPoruke.Uspjeh, WizardPoruke.UspjesnoUpareniVodovi);
-    blnZavrsenoUparivanjeVodova = true;
   }
 }
 

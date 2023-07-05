@@ -191,7 +191,6 @@ function poveziTS() {
     document.querySelector("#ddlPovezivanjeTSselektovane").length === 1 &&
     document.querySelector("#ddlPovezivanjeTSpronadjene").length === 0
   ) {
-    blnZavrsenoUparivanjeTrafostanica = true;
     prikaziCetvrtuFormuWizarda();
   }
   //TODO: Dodati da se predaje i izvod trafostanice, prilikom slanja podataka ka web servisu

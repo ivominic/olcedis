@@ -2,11 +2,11 @@
  * Modul koji sadrži sve promjenljive koje se koriste na globalnom nivou u aplikaciji / wizardu kao i opšte metode
  */
 
-let dozvoljeniPomjeraj = 0.01; //0.01km - deset metara je dozvoljeo pomjeriti tačke iz gpx fajlova prije uvoza u bazu
+let dozvoljeniPomjeraj = 0.01; //0.01km - deset metara je dozvoljeno pomjeriti tačke iz gpx fajlova prije uvoza u bazu
 let kmlRadius = 2; //Radijus (u metrima) za koji se vrši provjera da li postoje objekti koji bi, potencijalno,
 //trebali biti povezani na geometriju iz kml fajla, koja se smatra apsolutno preciznom
 let minGpsPointName = 0,
-  maxGpsPointName = 0; //min i max gps vrijednost tačaka koje formiraju jedan vod (krajnje tačke voda iz fajla)
+  maxGpsPointName = 0; //min i max gps vrijednost (name property) tačaka koje formiraju jedan vod (krajnje tačke voda iz fajla)
 let globalUsername = ""; //Username korisnika aplikacije
 let globalVlasnik = ""; //Username vlasnika za korisnika aplikacije
 let geoserverToken = ""; //Promjenljiva koja čuva token za wfs servise
@@ -32,7 +32,7 @@ let kmlFeature,
 let kmlLinksArray = []; //Niz objekata koje je potrebno povezati sa ostatkom mreže
 let blnDodijeljenoGpxProperties = false; //Promjenljiva koja označava da li su svim podacima iz gpx-a dodijeljeni atributi
 let selectGpxFeature; //Feature iz gpx-a koji se selektuje
-let naponskiNivoNapojneTrafostanice = ""; //Prenos-odnos: ova promjenljiva se setuje, ali se nigdje ne koristi.
+let naponskiNivoNapojneTrafostanice = ""; //Prenos-odnos
 let odabraniNaponskiNivo = "",
   filePowerLevel = "",
   vodNaponskiNivoPrijeOdabira = "";
@@ -43,18 +43,7 @@ let izvodNapojneTrafostanice = "";
 let globalPocetnaPoveznica = ""; // Ako je prazno, unosi se ostrvo, inače sprovesti kontrolu konektivnosti i geohas_no
 let geometrijaNapojneTrafostanice = "";
 let geohashNapojneTrafostanice = "";
-let blnZavrsenoUparivanjeTrafostanica = false; //Wizard, true ako su uparene sve trafostanice. Setuje se, a ne koristi.
-let blnZavrsenoUparivanjeVodova = false; //Wizard, true ako su upareni svi vodovi.
 let nizSelektovanihTrafostanicaOriginalId = []; //Wizard, niz vrijednosti original_id polja trafostanica iz zahvata
-let nizSelektovanihPotrosacaOriginalId = []; //Wizard, niz vrijednosti originalId polja potrošači iz zahvata - ovo je null - moguće da je nepotrebno
-
-let nizTrafostanicaZaWebServis = []; //Wizard, niz u koji će se dodavati svi zapisi za trafostanice koje je potebno upariti.
-//Ne koristi se. Izmjene se odnose na polja: originalId, sifra napojne trafostanice, izvod napojne trafostanice i naziv napojne trafostanice
-let nizVodovaZaWebServis = []; //Wizard, niz u koji će se dodati svi vodovi za unos u bazu, sa geohash_id vrijednostima nadređenog
-let nizPotrosacaZaWebServis = []; //Wizard, niz u koji će se dodati svi potrošači za unos u bazu, sa geohash_id vrijednostima nadređenog
-//Ne koristi se
-let nizTrafostanicaGeohashZaWebServis = []; //Wizard, niz u koji će se dodavati sve trafostanice sa novim geohash_id_no (no = nadređeni objekat)
-//Ne koristi se
 
 let blnTopDown = false; //Wizard, za niskonaponsku mrežu, određuje da li će se raditi top-down ili bottom-up uparivanje
 let odabirSaMape = false; //Promjenljiva koja označava da li je u toku funkcionalnost odabira vrijednosti sa mape
@@ -428,11 +417,11 @@ map.addLayer(vektorObjektiZaBrisanje);
 function globalNaponskiNivoPrenosOdnos(nivo) {
   let retVal = "";
   if (["10/04", "10/0,4", "10/0,69", "6/0,4", "35/0.4", "35/0,4"].includes(nivo)) {
-    retVal = "0.4";
+    retVal = NaponskiNivo.String04kV;
   } else if (["10/10", "35/10", "35/6", "110/10"].includes(nivo)) {
-    retVal = "10";
+    retVal = NaponskiNivo.String10kV;
   } else if (["110/35", "35/35"].includes(nivo)) {
-    retVal = "35";
+    retVal = NaponskiNivo.String35kV;
   }
   return retVal;
 }
@@ -453,14 +442,11 @@ function globalCqlZaNaponskiNivo(nivo, sloj) {
   });
 
   retVal = "(" + retVal + ")";
-  if (sloj === "trafostanice" || sloj === "vodovi" || sloj === "view_potrosaci") {
-    if (nivo === "35") {
-      retVal += " AND napon='35'";
-    } else if (nivo === "10") {
-      retVal += " AND napon='10'";
-    } else if (nivo === "0.4") {
-      retVal += " AND napon='0.4'";
-    }
+  if (
+    [Lejeri.Trafostanice, Lejeri.Vodovi, Lejeri.Potrosac].includes(sloj) &&
+    [NaponskiNivo.String04kV, NaponskiNivo.String10kV, NaponskiNivo.String35kV].includes(nivo)
+  ) {
+    retVal += " AND napon='" + nivo + "'";
   }
   return retVal;
 }
@@ -795,9 +781,7 @@ function wktGeometrije(feature) {
   let geom = feature.Geometry;
   if (!geom) {
     geom = feature.getGeometry();
-    console.log("editUtil.js wktGeometrije geom", geom);
     let wktgeom = format.writeGeometry(geom);
-    console.log("wkt geom", wktgeom);
     return wktgeom;
   } else {
     return geom;
@@ -836,7 +820,7 @@ function ukloniSacuvaniKmlFeature(deletedFeature) {
   }
 }
 
-/**Kreiranje vektorskih lejera za snaponvanje */
+/**Kreiranje vektorskih lejera za snapovanje */
 function kreirajVektorLejerZaSnap(olCollection) {
   return new ol.layer.Vector({
     source: new ol.source.Vector({

@@ -1,7 +1,5 @@
 /** Modul koji sadrži sve poruke i konstante koje se koriste u projektu */
 
-// const wsServerOriginLocation = location.origin;
-// const domainUrl = location.origin;
 const wsServerOriginLocation = location.origin;
 const domainUrl = location.origin;
 const wmsUrl = domainUrl + "/geoserver/geonode/wms";
@@ -99,6 +97,7 @@ const WizardPoruke = {
   OdabirNapojneTS: "Odaberite napojnu trafostanicu",
   ZavrsniStubVodaJe: "Završni stub voda je ",
   PocetniStubVodaJe: "Početni stub voda je ",
+  NijePronadjenaTs: "Nije pronađena nijedna trafostanica u tehničkoj bazi podataka koja zadovoljava zadate uslove.",
 };
 
 const UnosPoruke = {
