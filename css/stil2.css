@@ -108,10 +108,10 @@ body {
 
 .pocetni-div {
   height: 50px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 60;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 60;
 }
 
 .ol-zoom {
@@ -291,7 +291,6 @@ a.active {
   margin: 16px 0;
 }
 
-
 /* Na ekranima manjim od 600px skriva sve ikonice osim prve i prikazuje hamburger (icon) */
 @media screen and (max-width: 1150px) {
   .topnav a:not(:first-child),
@@ -359,7 +358,7 @@ a.active {
     margin: 16px 0;
   }
 
-  .sadrzaj-scroll{
+  .sadrzaj-scroll {
     max-height: 350px !important;
   }
 }
@@ -520,9 +519,9 @@ a.active {
 }
 
 .sadrzaj-scroll {
-    overflow-y: scroll;
-    height: auto;
-    max-height: 450px !important;
+  overflow-y: scroll;
+  height: auto;
+  max-height: 450px !important;
 }
 
 .style-2::-webkit-scrollbar-track {
@@ -1064,8 +1063,8 @@ html[xmlns] .clearfix {
 }
 
 .povezivanjevodovadiv {
-  height: 220px;
-  overflow: hidden;
+  height: 245px;
+  overflow: auto;
 }
 
 .labelapoveznicakrajnja {
