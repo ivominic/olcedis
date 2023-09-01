@@ -159,12 +159,6 @@
                 </a>
               </li>
 
-              <li id="photoMenu">
-                <a href="#" data-bs-toggle="collapse" id="slika">
-                  <i data-feather="camera"></i>
-                  <span> Fotografija </span>
-                </a>
-              </li>
 
               <li id="izmjenaVodaDiv">
                 <a href="#" data-bs-toggle="collapse" class="izmjenaVodaFirst">
@@ -1033,7 +1027,7 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeAllDivs('#odabirObjektaZaPomjeranjeDiv')">&times;</a>
       </div>
       <div class="items-padd">
-        <div class="pr-8 sadrzaj-scroll style-2 povezivanjevodovadiv">
+        <div class="pr-8 sadrzaj-scroll style-2 povezivanjevodovadiv heightNew">
           <div class="row mb-3 mt-1">
             <div class="col-lg-2">
               <label for="ddlPocetniCvorVodovi">Objekat:</label>
@@ -2063,6 +2057,11 @@
           >
             <i class="far fa-copy"></i> Dupliraj
           </button>
+          <div id="photoMenu" style="display: inline-flex;">
+            <button id="slika" class="btn btn-secondary" title="Prikaz fotografije">
+              <i data-feather="camera" style="width: 18px;height: 20px;"></i>
+            </button>
+          </div>
         </div>
         <button type="button" class="btn btn-success mr-8" id="btnSacuvaj" title="Čuvanje podataka">
           <i class="fas fa-check-circle"></i> Sačuvaj

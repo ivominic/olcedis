@@ -257,6 +257,11 @@ a.active {
   box-shadow: none !important;
 }
 
+.heightNew{
+  height: 100% !important;
+  padding-bottom: 10px;
+}
+
 /* Prikaz dropdown sadržaja na hover */
 .dropdown:hover .dropdown-content {
   display: block;

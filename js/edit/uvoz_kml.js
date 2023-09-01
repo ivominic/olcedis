@@ -82,6 +82,7 @@ function distanceFromKmlPoints() {
  * objekti postojeće mreže
  */
 function povezivanjeKmlObjektaSaOstatkomMreze() {
+  console.log("Usao u povezivanjeKmlObjektaSaOstatkomMreze");
   console.trace();
   Swal.fire({
     title: UnosPoruke.KmlDaLiPovezivati,
@@ -93,6 +94,7 @@ function povezivanjeKmlObjektaSaOstatkomMreze() {
     denyButtonText: `Ne`,
   }).then((result) => {
     if (result.isConfirmed) {
+      closeDiv('#atributiDiv');
       showDiv("#odabirBliskogObjektaKmlDiv");
     } else if (result.isDenied) {
       selectGpxFeature.values_.kml_povezati = false;
@@ -283,6 +285,7 @@ function showConnectForm() {
   }
   if (isFlaggedForConnection) {
     console.trace();
+    console.log("Usao u isFlaggedForConnection");
     Swal.fire({
       title: UnosPoruke.KmlDaLiPovezivati,
       text: UnosPoruke.KmlDaLiPovezivatiOpis,
@@ -294,6 +297,7 @@ function showConnectForm() {
     }).then((result) => {
       if (result.isConfirmed) {
         $(ddlObjekatZaPovezivanje).empty();
+        closeDiv('#atributiDiv');
         showDiv("#odabirBliskogObjektaKmlDiv");
       } else if (result.isDenied) {
         //saveKmlConnection(true);

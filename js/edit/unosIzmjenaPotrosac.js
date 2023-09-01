@@ -231,6 +231,7 @@ function parsiranjeProvjeraPotrosaca(nizObjekataPotrosaca) {
 
 //TODO: zamijeniti šifru napojne TS sa vrijednošću iz objekta koji se mijenja
 function azuriranjePojedinacnogPotrosaca(jsonPretplatnikArray, objekat) {
+  let porukaNepoklapanjeTs = "";
   jsonPretplatnik = jsonPretplatnikArray[0];
   let poklapanjeTs = true;
   console.log("ŠIFRA NAPOJNE", jsonPretplatnik);
