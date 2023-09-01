@@ -495,3 +495,10 @@ function prikazPoljaPoveznice() {
   }
 }
 document.querySelector("#chkUnosPocetnePoveznice").addEventListener("click", prikazPoljaPoveznice);
+
+document.querySelector("#pregled").addEventListener("click", clickOnInformation);
+function clickOnInformation(){
+document.querySelector("#pregled").className = "active";
+akcija = "information";
+document.querySelector("#right-bar-modal-attribute").style.right = "0px";
+}

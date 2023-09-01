@@ -7,70 +7,99 @@ let nizPocetnihTacakaVoda = [],
   nizKrajnjihTacakaVoda = [],
   nizKrajnjihTacakaKml = [];
 let nizTacakaLinije = [];
+let promiseArrayNew = [];
+let odgovorJson = [];
 
-function klikNaVektore(browserEvent) {
-  console.log("klikNaVektore");
+async function klikNaVektore(browserEvent) {
+  console.log("Akcija: " + akcija);
   nizGpxTacakaZaObradu.length = 0;
   indexGpxTacakaZaObradu = 0;
-  //Sledeća komanda (clear()) je izazivala grešku kod selekcije gpx tačke nakon što se ukloni jedna gpx tačka
-  //Provjeriti da li njeno uklanjanje iz metode nešto remeti.
-  //select.getFeatures().clear();
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
-  map.forEachFeatureAtPixel(pixel, function (feature) {
-    console.log("feature", feature);
-    //selektovaniWmsObjekat = null;
-    //nizGpxTacakaZaObradu.push(feature);
-    if (
-      (feature.values_.name || feature.values_.lejer) &&
-      !["brisanje", "azuriranje"].includes(feature.values_.lejer)
-    ) {
-      //To avoid dark blue dot that represents selected feature
-      nizGpxTacakaZaObradu.push(feature);
-      selektovaniWmsObjekat = null;
-      blnIsChange = false;
-      //Izvukao iznad if uslova, jer gpx koji postane TS nema name i nije prikazivao atribute
-      if (selektovaniDdlZaPovezivanjeVoda !== "") {
-        $(selektovaniDdlZaPovezivanjeVoda).append(
-          $("<option>", {
-            value: feature.values_.name,
-            text: feature.values_.name,
-          })
-        );
-      }
-    }
-  });
 
-  nizGpxTacakaZaObradu.forEach((el) => {
-    if (el.values_.lejer === Podsloj.PrikljucnoMjesto) {
-      if (!provjeraPostojanjaElementaDdla(document.querySelector("#prik_mjesto"), el.values_?.skriveni_id_pm)) {
-        nizKoordinataPrikljucnihMjesta[el.values_.skriveni_id_pm] = el.values_.geometry.flatCoordinates;
-        $("#prik_mjesto").append(
-          $("<option>", {
-            value: el.values_?.skriveni_id_pm,
-            text: el.values_.id,
-          })
-        );
+  if(akcija === "information") {
+    let atributesAccordion = document.querySelector("#atributesAccordion");
+    atributesAccordion.innerHTML = "";
+    map.forEachLayerAtPixel(pixel, function (layer) {
+      var title = layer.get("title");
+      var vidljivost = layer.get("visible");
+      var fullName = layer.get("fullName");
+      if (layer instanceof ol.layer.Image) {
+        if (vidljivost) {
+          let url = layer.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
+              INFO_FORMAT: "application/json",
+              feature_count: "50"});
+          if (url) {
+            fetch(url)
+              .then(function (response) {
+                return response.text();
+              })
+              .then(function (json) {
+                let odgovor = JSON.parse(json);
+                if (odgovor.features.length > 0) {
+                  popuniInformacije(odgovor, title);
+                }
+              });
+          }
+        }
       }
-    }
-  });
-
-  if (!odabirSaMape) {
-    if (nizGpxTacakaZaObradu.length > 1) {
-      document.querySelector("#divPrethodniObjekat").style.display = "none";
-      document.querySelector("#divSljedeciObjekat").style.display = "flex";
+    });
+  } else {
+    map.forEachFeatureAtPixel(pixel, function (feature) {
+      console.log("feature", feature);
+      //selektovaniWmsObjekat = null;
+      //nizGpxTacakaZaObradu.push(feature);
+      if (
+        (feature.values_.name || feature.values_.lejer) &&
+        !["brisanje", "azuriranje"].includes(feature.values_.lejer)
+      ) {
+        //To avoid dark blue dot that represents selected feature
+        nizGpxTacakaZaObradu.push(feature);
+        selektovaniWmsObjekat = null;
+        blnIsChange = false;
+        //Izvukao iznad if uslova, jer gpx koji postane TS nema name i nije prikazivao atribute
+        if (selektovaniDdlZaPovezivanjeVoda !== "") {
+          $(selektovaniDdlZaPovezivanjeVoda).append(
+            $("<option>", {
+              value: feature.values_.name,
+              text: feature.values_.name,
+            })
+          );
+        }
+      }
+    });
+    nizGpxTacakaZaObradu.forEach((el) => {
+      if (el.values_.lejer === Podsloj.PrikljucnoMjesto) {
+        if (!provjeraPostojanjaElementaDdla(document.querySelector("#prik_mjesto"), el.values_?.skriveni_id_pm)) {
+          nizKoordinataPrikljucnihMjesta[el.values_.skriveni_id_pm] = el.values_.geometry.flatCoordinates;
+          $("#prik_mjesto").append(
+            $("<option>", {
+              value: el.values_?.skriveni_id_pm,
+              text: el.values_.id,
+            })
+          );
+        }
+      }
+    });
+  
+    if (!odabirSaMape) {
+      if (nizGpxTacakaZaObradu.length > 1) {
+        document.querySelector("#divPrethodniObjekat").style.display = "none";
+        document.querySelector("#divSljedeciObjekat").style.display = "flex";
+      } else {
+        document.querySelector("#divPrethodniObjekat").style.display = "none";
+        document.querySelector("#divSljedeciObjekat").style.display = "none";
+      }
     } else {
       document.querySelector("#divPrethodniObjekat").style.display = "none";
       document.querySelector("#divSljedeciObjekat").style.display = "none";
     }
-  } else {
-    document.querySelector("#divPrethodniObjekat").style.display = "none";
-    document.querySelector("#divSljedeciObjekat").style.display = "none";
+  
+    if (nizGpxTacakaZaObradu.length === 0 || odabirPrikljucnogMjestaSaMape) {
+      map.on("singleclick", odabirSvihRasterObjekataKlik);
+    }
   }
 
-  if (nizGpxTacakaZaObradu.length === 0 || odabirPrikljucnogMjestaSaMape) {
-    map.on("singleclick", odabirSvihRasterObjekataKlik);
-  }
 }
 
 function sljedeciObjekatGpx() {
@@ -994,7 +1023,6 @@ function odabirSvihRasterObjekataKlik(browserEvent) {
                 odabirSaMape = false;
                 odgovor.features.forEach(function (el) {
                   nizSelektovanihObjekata.push(el);
-                  console.log("el", el);
                 });
               }
 

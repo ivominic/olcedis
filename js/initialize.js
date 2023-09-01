@@ -48,7 +48,7 @@ function showAttributeModal() {
 function closeModal() {
   document.querySelector("#drawButton").className = "";
   document.querySelector("#atributi").className = "";
-
+  document.querySelector("#pregled").className = "";
   // map.removeInteraction(drawTraceInteraction);
   // map.removeInteraction(snapTraceInteraction);
   // map.removeInteraction(guidedSnapInteraction);
@@ -57,9 +57,9 @@ function closeModal() {
   map.removeInteraction(draw);
   map.removeInteraction(modify);
 
-  document.querySelector("#right-bar-modal").style.right = "-355px";
-  document.querySelector("#right-bar-modal-2").style.right = "-355px";
-  document.querySelector("#right-bar-modal-attribute").style.right = "-355px";
+  document.querySelector("#right-bar-modal").style.right = "-455px";
+  document.querySelector("#right-bar-modal-2").style.right = "-455px";
+  document.querySelector("#right-bar-modal-attribute").style.right = "-455px";
 }
 
 function pointColor(color) {

@@ -546,3 +546,74 @@ function enableDisableFields(value) {
     document.querySelector("#divUnosSifraDionice").getElementsByClassName("fontB")[0].innerHTML = "*";
   }
 }
+
+let globalCollapseCounter = 0;
+function popuniInformacije(odgovor, title) {
+  let atributesAccordion = document.querySelector("#atributesAccordion");
+  for (let i = 0; i < odgovor.features.length; i++) {
+    globalCollapseCounter += 1;
+    let id = "";
+    let gisodsjek = "";
+    let button = "";
+    let metapodaci = odgovor.features[i]["properties"];
+    let element_id = odgovor.features[i]['id'];
+    let objekat = element_id.split(".");
+    let metaObject = "";
+    for (let key in metapodaci) {
+      let finalKey = key;
+      if(key === "id"){
+        id = metapodaci[key];
+      }
+      let finalValue = "";
+      if(metapodaci[key] && metapodaci[key]!== "null"){
+        finalValue = metapodaci[key];
+      }
+      metaObject+= "<li class=\"list-group-item d-flex justify-content-between align-items-center\" style='font-size: 15px;'>\n" +
+        "" + finalKey + "<span class=\"badge attribute_value\" style='white-space: inherit;font-size: 15px;'>" + finalValue + "</span> </li>";
+      
+    }
+    if(!id){
+      id= objekat[1];
+    }
+    
+    let collapseAtribute = "collapseAtribute" + globalCollapseCounter;
+    atributesAccordion.insertAdjacentHTML('beforeend', '<div class="card mb-0 cardClass">\n' +
+      '            <div class="card-header">\n' +
+      '              <h5 class="m-0 position-relative">\n' +
+      '                <a\n' +
+      '                  class="custom-accordion-title text-reset collapsed d-block"\n' +
+      '                  data-bs-toggle="collapse"\n' +
+      '                  href="#' + collapseAtribute + '"\n' +
+      '                  aria-expanded="false"\n' +
+      '                  aria-controls="' + collapseAtribute + '">\n' +
+      '                  \n' +
+      '                  <span>' + title + ' - ' + id + '</span>' +
+      '<i class="mdi mdi-chevron-down accordion-arrow"></i>\n' +
+      '                </a>\n' + button +
+      '              </h5>\n' +
+      '            </div>\n' +
+      '\n' +
+      '            <div id="' + collapseAtribute + '" class="collapse"\n' +
+      '                 >\n' +
+      '              <div class="card-body">\n' +
+      '\n' +
+      '                <div class="attributeTable">\n' +
+      '                  <div class="row">\n' +
+      '                    <div class="col-xl-12">\n' +
+      '                      <div class="card attribute_card">\n' +
+      '                        <div class="card-body">\n' +
+      '                          <ul class="list-group">\n' + metaObject +
+      '                          </ul>\n' +
+      '                        </div>\n' +
+      ' \n' +
+      '                      </div>\n' +
+      '\n' +
+      '                    </div>\n' +
+      '\n' +
+      '                  </div>\n' +
+      '                </div>\n' +
+      '              </div>\n' +
+      '            </div>\n' +
+      '          </div>');
+  }
+}
