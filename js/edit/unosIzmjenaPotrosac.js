@@ -230,6 +230,13 @@ function parsiranjeProvjeraPotrosaca(nizObjekataPotrosaca) {
 }
 
 //TODO: zamijeniti šifru napojne TS sa vrijednošću iz objekta koji se mijenja
+/**
+ * Metoda koja vrši ažuriranje pojedinačnog potrošača.
+ * Vrši se provjera da li je objekat tipa potrošač i ne dozvoljava se ažuriranje
+ * istim pretplatnim brojem kojim je ažuriran drugi potrošač.
+ * @param {*} jsonPretplatnikArray
+ * @param {*} objekat
+ */
 function azuriranjePojedinacnogPotrosaca(jsonPretplatnikArray, objekat) {
   let porukaNepoklapanjeTs = "";
   jsonPretplatnik = jsonPretplatnikArray[0];
@@ -269,6 +276,7 @@ function azuriranjePojedinacnogPotrosaca(jsonPretplatnikArray, objekat) {
         );
         return false;
       }
+
       objekat.properties.name = document.querySelector("#name").value;
       objekat.properties.prik_mjesto = document.querySelector("#prik_mjesto").value;
 
@@ -281,8 +289,35 @@ function azuriranjePojedinacnogPotrosaca(jsonPretplatnikArray, objekat) {
       objekat.properties.pretplatni_br = jsonPretplatnik.sifra;
       objekat.properties.br_brojila = jsonPretplatnik.broj_brojila;
       objekat.properties.korisnik = globalUsername;
+
+      if (provjeraPostojanjaPotrosacaZaAzuriranje(objekat)) {
+        poruka(StatusPoruke.Greska, UnosPoruke.PostojiAzuriranPotrosac);
+        return false;
+      }
       dodajObjekatZaIzmjenu(objekat);
       poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
     }
   });
+}
+
+/**
+ * Metoda koja za zadati objekat, provjerava da li je potrošač. Ukoliko jeste, provjerava da li je taj potrošač već ažuriran.
+ * Ukoliko jeste, uklanja prethodni zapis i dodaje novo ažuriranje.
+ * Nakon toga vrši provjeru da li je već ažuriran neki drugi potrošač pretplatnim brojem kojim se pokušava trenutno ažuriranje.
+ * U tom slučaju, funkcija vraća vrijednost true, što treba da onemogući trenutno ažuriranje.
+ * @param {*} objekat - objekat koji se dodaje nizu za ažuriranje.
+ * @returns - false ako je moguće nastaviti ažuriranje, true ako treba prekinuti proces.
+ */
+function provjeraPostojanjaPotrosacaZaAzuriranje(objekat) {
+  let retVal = false;
+  if (objekat.ddlLejer === Podsloj.Potrosac) {
+    nizWmsZaIzmjenu = nizWmsZaIzmjenu.filter((item) => {
+      return objekat.properties.fid_1 !== item.fid_1;
+    });
+
+    retVal = nizWmsZaIzmjenu.some(
+      (item) => objekat.properties.fid_1 !== item.fid_1 && objekat.properties.pretplatni_br === item.pretplatni_br
+    );
+  }
+  return retVal;
 }

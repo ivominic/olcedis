@@ -689,7 +689,7 @@ function poruka(naslov, tekst) {
   } else {
     Swal.fire({
       icon: "error",
-      title: naslov,
+      title: tekst,
       text: tekst,
     });
   }

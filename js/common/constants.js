@@ -175,4 +175,5 @@ const GlobalPoruke = {
   NijeOdabranaNapojnaTS: "Nije odabrana napojna trafostanica",
   NijeZadatPretplatniBroj: "Nije zadat nijedan pretplatni broj.",
   NemaIzmjena: "Nema izmijenjenih objekata.",
+  PostojiAzuriranPotrosac: "Već ste ažurirali drugog potrošača ovim pretplatnim brojem.",
 };

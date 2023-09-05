@@ -335,26 +335,25 @@ function pripremaZaAzuriranjeWmsObjekta(el) {
   }
   let item;
   console.log("Lejer ažuriranje", lejer);
-  if (lejer === "stubovi") {
+  if (lejer === Lejeri.Stubovi) {
     item = stubArrayElementProperties(el, "U");
     stuboviArrayFinal.push(item);
-  } else if (lejer === "trafostanice") {
+  } else if (lejer === Lejeri.Trafostanice) {
     item = trafostanicaArrayElementProperties(el, "U");
     trafostaniceArrayFinal.push(item);
-  } else if (lejer === "nkro") {
+  } else if (lejer === Lejeri.NKRO) {
     item = nkroArrayElementProperties(el, "U");
     nkroArrayFinal.push(item);
-  } else if (lejer === "potrosac" || lejer === "view_potrosaci") {
-    //Ovo dodao jer se ovaj lejer prikazuje iz view-a
+  } else if (lejer === Podsloj.Potrosac || lejer === Lejeri.Potrosac) {
     item = potrosacArrayElementProperties(el, "U");
     potrosaciArrayFinal.push(item);
-  } else if (lejer === "pod" || lejer === Lejeri.POD) {
+  } else if (lejer === Podsloj.Pod || lejer === Lejeri.POD) {
     item = podArrayElementProperties(el, "U");
     podoviArrayFinal.push(item);
-  } else if (lejer === "prikljucno_mjesto") {
+  } else if (lejer === Lejeri.PrikljucnoMjesto) {
     item = prikljucnoMjestoArrayElementProperties(el, "U");
     prikljucnaMjestaArrayFinal.push(item);
-  } else if (lejer === "vodovi") {
+  } else if (lejer === Lejeri.Vodovi) {
     item = vodArrayElementProperties(el, "U");
     vodoviArrayFinal.push(item);
   }
