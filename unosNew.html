@@ -104,7 +104,7 @@
 
             <li id="potvrdaMenu" style="margin-left: 2px">
               <button class="button-menu-mobile waves-effect waves-light" id="potvrda" data-bs-toggle="tooltip"
-              data-bs-trigger="hover" data-bs-placement="bottom" data-bs-original-title="Potvrda">
+              data-bs-trigger="hover" data-bs-placement="bottom" data-bs-original-title="Pošalji na validaciju">
                 <i data-feather="check-square" style="transform: translateY(-3px); color: white"></i>
               </button>
             </li>
@@ -153,10 +153,29 @@
               </li>
 
               <li>
-                <a href="#" data-bs-toggle="collapse" id="brisanje">
+                <a href="#" data-bs-toggle="collapse" id="brisanjeDiv">
                   <i data-feather="trash-2"></i>
                   <span> Brisanje </span>
+                  <span class="menu-arrow"></span>
                 </a>
+                <div class="collapse" id="sidebarCrm10">
+                  <ul class="nav-second-level2">
+
+                    <li>
+                      <a href="#" class="dropdown-item" id="brisanje">
+                        <i data-feather="delete" style="width: 16px;"></i>
+                        <span>  Ukloni nacrtano </span>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="#" class="dropdown-item" id="brisanjeViseObjekata">
+                        <i data-feather="trash" style="width: 16px;"></i>
+                        <span>  Izbriši više objekata </span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </li>
 
 
@@ -2384,6 +2403,72 @@
         </div>
       </div>
     </div>
+
+    <div class="navIncident" id="navDelete">
+      <div id="barStatistic" class="progress mb-1" style="height: 7px;background-color:white;">
+        <div class="bar progress-bar progress-bar-striped progress-bar-animated bg-danger" style="width: 33.3333%;" id="progressBarStatistic"></div>
+      </div>
+      <ul class="nav nav-pills bg-light nav-justified mb-2">
+        <li class="nav-item">
+          <a href="#account-2" onclick="statisticMap()" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2 active">
+            <i class="mdi mdi-pencil-box-outline me-1"></i>
+            <span class="d-none d-sm-inline">Nacrtajte oblast</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#selectTable" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2" id="inputStatisticLi" onclick="statisticData()">
+            <i class="mdi mdi-form-select me-1"></i>
+            <span class="d-none d-sm-inline">Izaberite lejer</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#statisticResult" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2" id="resultStatistic">
+            <i class="mdi mdi-check-underline me-1"></i>
+            <span class="d-none d-sm-inline">Rezultat</span>
+          </a>
+        </li>
+        <div style="display: block;">
+          <button class="btn btn-danger" onclick="closeStatisticReport()" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-trigger="hover" title="" data-bs-original-title="Ugasite brisanje" style="height: 100%"><i class="fas fa-times"></i></button>
+        </div>
+      </ul>
+  
+      <div class="tab-content" id="tab-content-statistic">
+        <div class="tab-pane" id="selectTable">
+          <div class="row">
+            <h4 class="mb-3">Izaberite lejer</h4>
+            <div class="col-lg-12">
+              <select class="form-select" id="brisanjeLejer">
+                <option value="stubovi">Stubovi</option>
+                <option value="vodovi">Vodovi</option>
+                <option value="view_trafostanice">Trafostanice</option>
+                <option value="trafostanice_poligoni">Trafostanice poligoni</option>
+                <option value="prikljucno_mjesto">Priključno mjesto</option>
+                <option value="nkro">NKRO</option>
+                <option value="view_potrosaci">Potrošač</option>
+                <option value="nelegalni_potrosac">Nelegalni potrošač</option>
+                <option value="view_pod">POD</option>
+                <option value="validations">Validacija</option>
+                <option value="poslovni_objekti">Poslovni objekat</option>
+                <option value="view_odbijeni">Odbijene validacije</option>
+              </select>
+            </div>
+            <ul class="list-inline wizard mb-0 mt-3">
+              <li class="list-inline-item float-end" id="nextStatistic">
+                <a href="javascript: void(0);" class="btn btn-info">Dalje</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+  
+        <div class="tab-pane" id="statisticResult">
+          <ul class="nav nav-tabs nav-bordered" id="statisticsUl">
+          </ul>
+          <div class="tab-content" style="display: block" id="statisticsContent">
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Modal spinner za ajax request-->
     <div id="fadeSpinner"></div>
     <div id="modalSpinner">
