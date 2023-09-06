@@ -273,6 +273,9 @@ a.active {
   left: 0;
   right: 0;
 }
+.swal2-container{
+  z-index: 99999999999 !important;
+}
 
 .tab-content {
   display: none;

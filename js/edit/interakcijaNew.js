@@ -503,7 +503,6 @@ document.querySelector("#right-bar-modal-attribute").style.right = "0px";
 }
 
 document.querySelector("#nextStatistic").addEventListener("click", nextStatistic);
-document.querySelector("#resultStatistic").addEventListener("click",resultStatistics);
 
 /**
  * Metoda koja prikazuje wizzard za brisanje više objekata
@@ -518,13 +517,13 @@ function clickOnDeleteMultipleFeatures(){
 
 function statisticMap() {
   document.querySelector("#tab-content-statistic").style.display = "none";
-  document.querySelector("#progressBarStatistic").style.width = "33.33%";
+  document.querySelector("#progressBarStatistic").style.width = "50.00%";
 }
 
 function statisticData() {
   closeModal();
   document.querySelector("#tab-content-statistic").style.display = "block";
-  document.querySelector("#progressBarStatistic").style.width = "66.66%";
+  document.querySelector("#progressBarStatistic").style.width = "100%";
 }
 
 function closeStatisticReport(){
@@ -532,37 +531,39 @@ function closeStatisticReport(){
   closeModal();
 }
 
-function resultStatistics(){
-  document.querySelector("#tab-content-statistic").style.display = "block";
-  document.querySelector("#progressBarStatistic").style.width = "100.00%";
-}
-
 function nextStatistic(){
-  console.log(drawGeom);
-  let tekstFiltera = "INTERSECTS(Geometry, GeomFromText('" + drawGeom + "', 4326)) ";
-  let nazivLejera = "geonode:" + "stubovi";
-  const wktFormat = new ol.format.WKT();
-  // let format = new ol.format.WKT();
-  // let geometry = format.readGeometry(drawGeom);
-  // let polygon = new ol.geom.Polygon([geometry.getCoordinates()]);
-  // console.log(polygon);
-  // let wktPoligon = format.writeGeometry(polygon);
-  // console.log(wktPoligon);
+  let lejer = document.querySelector("#brisanjeLejer").value;
+  let tekstFiltera = "INTERSECTS(Geometry," + drawGeom + ") ";
+  let nazivLejera = "geonode:" + lejer;
   $.ajax({
     method: "POST",
     url: wfsUrl,
     data: {
       access_token: geoserverToken,
       service: "WFS",
+      version: "1.0.0",
       request: "GetFeature",
       typeName: nazivLejera,
       outputFormat: "application/json",
-      srsname: "EPSG:3857",
+      srsname: "EPSG:4326",
       CQL_FILTER: tekstFiltera,
     },
     success: function (response) {
-      console.log(response);
-
+      let features = response.features;
+      //Provjeravamo ima li pravo za brisanje svih featura
+      for(let i=0;i< features.length;i++){
+        if (!provjeraPravaUnosIzmjena(globalUsername, globalVlasnik, features[i].properties.vlasnik)) {
+          return false;
+        }
+      }
+      // Dodajemo objekat za brisanje
+      for(let i=0;i< features.length;i++){
+        dodajObjekatZaBrisanje(features[i]);
+      }
+      document.querySelector("#navDelete").style.display = "none";
+      featureLineOverlay.getSource().clear();
+      featurePointOverlay.getSource().clear();
+      featurePolygonOverlay.getSource().clear();
     },
     fail: function (jqXHR, textStatus) {
       console.log("Request failed: " + textStatus);
