@@ -294,6 +294,7 @@ function azuriranjePojedinacnogPotrosaca(jsonPretplatnikArray, objekat) {
         poruka(StatusPoruke.Greska, UnosPoruke.PostojiAzuriranPotrosac);
         return false;
       }
+      potrosaciArrayFinal.push(item);
       dodajObjekatZaIzmjenu(objekat);
       poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
     }
@@ -318,6 +319,16 @@ function provjeraPostojanjaPotrosacaZaAzuriranje(objekat) {
     retVal = nizWmsZaIzmjenu.some(
       (item) => objekat.properties.fid_1 !== item.fid_1 && objekat.properties.pretplatni_br === item.pretplatni_br
     );
+
+    potrosaciArrayFinal = potrosaciArrayFinal.filter((item) => {
+      return objekat.properties.fid_1 !== item.fid_1;
+    });
+
+    if(!retval) {
+      retVal = potrosaciArrayFinal.some(
+        (item) => objekat.properties.fid_1 !== item.fid_1 && objekat.properties.pretplatni_br === item.pretplatni_br
+      );
+    }
   }
   return retVal;
 }

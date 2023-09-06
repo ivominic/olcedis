@@ -264,7 +264,7 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
     lejer: "potrosac",
   };
   console.log("Potrošači finalno", item);
-  potrosaciArrayFinal.push(item);
+  //potrosaciArrayFinal.push(item);
   return item;
 }
 
