@@ -2420,12 +2420,6 @@
             <span class="d-none d-sm-inline">Izaberite lejer</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="#statisticResult" data-bs-toggle="tab" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2" id="resultStatistic">
-            <i class="mdi mdi-check-underline me-1"></i>
-            <span class="d-none d-sm-inline">Rezultat</span>
-          </a>
-        </li>
         <div style="display: block;">
           <button class="btn btn-danger" onclick="closeStatisticReport()" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-trigger="hover" title="" data-bs-original-title="Ugasite brisanje" style="height: 100%"><i class="fas fa-times"></i></button>
         </div>
