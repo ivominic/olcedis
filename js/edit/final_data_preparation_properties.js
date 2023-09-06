@@ -346,7 +346,9 @@ function pripremaZaAzuriranjeWmsObjekta(el) {
     nkroArrayFinal.push(item);
   } else if (lejer === Podsloj.Potrosac || lejer === Lejeri.Potrosac) {
     item = potrosacArrayElementProperties(el, "U");
-    //potrosaciArrayFinal.push(item);
+    if (!provjeraPostojanjaPotrosacaZaAzuriranjeSaGeometrijom(item)) {
+      potrosaciArrayFinal.push(item);
+    }
   } else if (lejer === Podsloj.Pod || lejer === Lejeri.POD) {
     item = podArrayElementProperties(el, "U");
     podoviArrayFinal.push(item);

@@ -294,7 +294,7 @@ function azuriranjePojedinacnogPotrosaca(jsonPretplatnikArray, objekat) {
         poruka(StatusPoruke.Greska, UnosPoruke.PostojiAzuriranPotrosac);
         return false;
       }
-      potrosaciArrayFinal.push(item);
+      potrosaciArrayFinal.push(objekat);
       dodajObjekatZaIzmjenu(objekat);
       poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
     }
@@ -319,16 +319,26 @@ function provjeraPostojanjaPotrosacaZaAzuriranje(objekat) {
     retVal = nizWmsZaIzmjenu.some(
       (item) => objekat.properties.fid_1 !== item.fid_1 && objekat.properties.pretplatni_br === item.pretplatni_br
     );
-
-    potrosaciArrayFinal = potrosaciArrayFinal.filter((item) => {
-      return objekat.properties.fid_1 !== item.fid_1;
-    });
-
-    if(!retval) {
-      retVal = potrosaciArrayFinal.some(
-        (item) => objekat.properties.fid_1 !== item.fid_1 && objekat.properties.pretplatni_br === item.pretplatni_br
-      );
-    }
   }
+  return retVal;
+}
+
+/**
+ * Metoda koja se poziva prije dodavanja item-a u potrosaciArrayFinal.
+ * @param {*} objekat
+ * @returns
+ */
+function provjeraPostojanjaPotrosacaZaAzuriranjeSaGeometrijom(objekat) {
+  let retVal = false;
+  potrosaciArrayFinal = potrosaciArrayFinal.filter((item) => {
+    return objekat.fid_1 !== item.fid_1 && objekat.fid_1 !== item.properties?.fid_1;
+  });
+
+  retVal = potrosaciArrayFinal.some(
+    (item) =>
+      (objekat.fid_1 !== item.fid_1 && objekat.pretplatni_br === item.pretplatni_br) ||
+      (objekat.fid_1 !== item.properties?.fid_1 && objekat.pretplatni_br === item.properties?.pretplatni_br)
+  );
+
   return retVal;
 }
