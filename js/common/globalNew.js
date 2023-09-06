@@ -52,7 +52,8 @@ let odabirPrikljucnogMjestaSaMape = false,
 let potrosacZaKogSeBiraPrikljucnoMjesto; //Privremena promjenjljiva, da bi se vratili na potrošača, automatski, nakon selekcije priključnog mjesta sa mape
 let blnShowAttribute = false; //Promjenljiva koja označava da li je potrebno prikazati modal atributi
 let nizKoordinataPrikljucnihMjesta = {}; //Čuva koordinate nakon odabira priključnog mjesta kod unosa novog potrošača
-
+let statisticDraw = false;
+let drawGeom = "";
 let draw,
   modify,
   cqlFilter = "",

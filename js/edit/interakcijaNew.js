@@ -501,3 +501,71 @@ document.querySelector("#pregled").className = "active";
 akcija = "information";
 document.querySelector("#right-bar-modal-attribute").style.right = "0px";
 }
+
+document.querySelector("#nextStatistic").addEventListener("click", nextStatistic);
+document.querySelector("#resultStatistic").addEventListener("click",resultStatistics);
+
+/**
+ * Metoda koja prikazuje wizzard za brisanje više objekata
+ */
+document.querySelector("#brisanjeViseObjekata").addEventListener("click",clickOnDeleteMultipleFeatures )
+function clickOnDeleteMultipleFeatures(){
+  statisticDraw = true;
+  document.querySelector("#navDelete").style.display = "block";
+  closeModal();
+  document.querySelector("#right-bar-modal").style.right = "0";
+}
+
+function statisticMap() {
+  document.querySelector("#tab-content-statistic").style.display = "none";
+  document.querySelector("#progressBarStatistic").style.width = "33.33%";
+}
+
+function statisticData() {
+  closeModal();
+  document.querySelector("#tab-content-statistic").style.display = "block";
+  document.querySelector("#progressBarStatistic").style.width = "66.66%";
+}
+
+function closeStatisticReport(){
+  document.querySelector("#navDelete").style.display = "none";
+  closeModal();
+}
+
+function resultStatistics(){
+  document.querySelector("#tab-content-statistic").style.display = "block";
+  document.querySelector("#progressBarStatistic").style.width = "100.00%";
+}
+
+function nextStatistic(){
+  console.log(drawGeom);
+  let tekstFiltera = "INTERSECTS(Geometry, GeomFromText('" + drawGeom + "', 4326)) ";
+  let nazivLejera = "geonode:" + "stubovi";
+  const wktFormat = new ol.format.WKT();
+  // let format = new ol.format.WKT();
+  // let geometry = format.readGeometry(drawGeom);
+  // let polygon = new ol.geom.Polygon([geometry.getCoordinates()]);
+  // console.log(polygon);
+  // let wktPoligon = format.writeGeometry(polygon);
+  // console.log(wktPoligon);
+  $.ajax({
+    method: "POST",
+    url: wfsUrl,
+    data: {
+      access_token: geoserverToken,
+      service: "WFS",
+      request: "GetFeature",
+      typeName: nazivLejera,
+      outputFormat: "application/json",
+      srsname: "EPSG:3857",
+      CQL_FILTER: tekstFiltera,
+    },
+    success: function (response) {
+      console.log(response);
+
+    },
+    fail: function (jqXHR, textStatus) {
+      console.log("Request failed: " + textStatus);
+    },
+  });
+}

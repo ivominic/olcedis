@@ -262,6 +262,27 @@ a.active {
   padding-bottom: 10px;
 }
 
+.navIncident {
+  position: absolute;
+  top: 75px;
+  z-index: 9999999999;
+  width: 800px;
+  display: none;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.tab-content {
+  display: none;
+  background-color: white;
+  margin-left: 0px;
+  padding: 28px 23px;
+  overflow-y: auto;
+  max-height: 75vh;
+}
+
 /* Prikaz dropdown sadržaja na hover */
 .dropdown:hover .dropdown-content {
   display: block;

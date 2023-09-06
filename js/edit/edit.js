@@ -229,6 +229,13 @@ function podesiInterakciju() {
       type: polygon,
       freehand: blnFreeHandDraw,
     });
+
+    draw.on("drawend", function(e){
+      if(statisticDraw){
+        document.querySelector("#inputStatisticLi").click();
+        drawGeom = wktGeometrije(e.feature);
+      }
+    });
     modify = new ol.interaction.Modify({
       features: featuresPolygon,
       deleteCondition: function (event) {
