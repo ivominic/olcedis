@@ -56,10 +56,14 @@ function download(data, filename) {
 }
 
 function downloadDrawnData() {
-  if (featurePolygonOverlay.getSource().getFeatures().length) {
-    let text = new ol.format.GeoJSON().writeFeatures(featurePolygonOverlay.getSource().getFeatures(), {
+  let polygonData = featurePolygonOverlay.getSource().getFeatures();
+  let lineData = featureLineOverlay.getSource().getFeatures();
+  let pointData = featurePointOverlay.getSource().getFeatures();
+  let finalData = [];
+  finalData = finalData.concat(polygonData, lineData, pointData);
+  if (finalData.length > 0) {
+    let text = new ol.format.GeoJSON().writeFeatures(finalData, {
       dataProjection: "EPSG:4326",
-      featureProjection: "EPSG:3857",
     });
     download(text, "draw.json");
   } else {
