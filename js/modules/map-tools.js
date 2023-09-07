@@ -23,7 +23,7 @@ function redoMoveMap(){
 function pocetniPrikazMape(){
   indexUndoRedoNiza = 0;
   pomjerajUndoRedo = true;
-  map.getView().setCenter(nizKoordinataMove[indexUndoRedoNiza]);
+  map.getView().setCenter([19.26, 42.56]);
   map.getView().setZoom(nizNivoaZuma[indexUndoRedoNiza]);
 }
 

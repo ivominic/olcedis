@@ -47,7 +47,7 @@ function showAttributeModal() {
 
 function closeModal() {
   document.querySelector("#drawButton").className = "";
-  document.querySelector("#atributi").className = "";
+  // document.querySelector("#atributi").className = "";
   document.querySelector("#pregled").className = "";
   // map.removeInteraction(drawTraceInteraction);
   // map.removeInteraction(snapTraceInteraction);
