@@ -12,7 +12,7 @@ function dodaj() {
   setujAktivnu("#dodaj");
   document.querySelector("#ddl_sloj_podataka").classList.remove("disabledInput");
   document.querySelector("#ddl_sloj_podataka").disabled = false;
-
+  document.querySelector("#divOdabirSloja").style.display = "flex";
   selektovaniWmsObjekat = null; //TODO: Dodato da se izbjegne poruka o nemate prava, kad se klikne plus, uklanja se wms objekat
 
   ponovnoPunjenjeSifreDionice();

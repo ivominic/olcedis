@@ -11,26 +11,35 @@ document.querySelector("#snapNKRO").addEventListener("click", snapNKRO);
 document.querySelector("#snapPrikljucnoMjesto").addEventListener("click", snapPrikljucnoMjesto);
 document.querySelector("#snapPotrosac").addEventListener("click", snapPotrosac);
 document.querySelector("#snapPOD").addEventListener("click", snapPOD);
-function snapStub35() {
+async function snapStub35() {
+  await setupMainSnap();
   citajExtent("stubovi", 35);
   if(document.querySelector("#snapStub35")) {
     document.querySelector("#snapStub35").className = "dropdown-item active";
   }
-  setupMainSnap();
+  if(document.querySelector("#stuboviMain")) {
+    document.querySelector("#stuboviMain").className = "dropdown-item active";
+  }
 }
-function snapStub10Kv() {
+async function snapStub10Kv() {
+  await setupMainSnap();
   citajExtent("stubovi", 10);
   if(document.querySelector("#snapStub10Kv")) {
     document.querySelector("#snapStub10Kv").className = "dropdown-item active";
   }
-  setupMainSnap();
+  if(document.querySelector("#stuboviMain")) {
+    document.querySelector("#stuboviMain").className = "dropdown-item active";
+  }
 }
-function snapStub04Kv() {
+async function snapStub04Kv() {
+  await setupMainSnap();
   citajExtent("stubovi", 0.4);
   if(document.querySelector("#snapStub04Kv")) {
     document.querySelector("#snapStub04Kv").className = "dropdown-item active";
   }
-  setupMainSnap();
+  if(document.querySelector("#stuboviMain")) {
+    document.querySelector("#stuboviMain").className = "dropdown-item active";
+  }
 }
 function snapVod35() {
   citajExtent("vodovi", 35);
@@ -41,60 +50,105 @@ function snapVod10Kv() {
 function snapVod04Kv() {
   citajExtent("vodovi", 0.4);
 }
-function snapTrafostanica110() {
+async function snapTrafostanica110() {
+  await setupMainSnap();
   citajExtent("trafostanice", 110);
   if(document.querySelector("#snapTrafostanica110")) {
     document.querySelector("#snapTrafostanica110").className = "dropdown-item active";
   }
-  setupMainSnap();
+  if(document.querySelector("#trafostaniceMain")) {
+    document.querySelector("#trafostaniceMain").className = "dropdown-item active";
+  }
 }
-function snapTrafostanica35() {
+async function snapTrafostanica35() {
+  await setupMainSnap();
   citajExtent("trafostanice", 35);
   if(document.querySelector("#snapTrafostanica35")) {
     document.querySelector("#snapTrafostanica35").className = "dropdown-item active";
   }
-  setupMainSnap();
+  if(document.querySelector("#trafostaniceMain")) {
+    document.querySelector("#trafostaniceMain").className = "dropdown-item active";
+  }
 }
-function snapTrafostanica10Kv() {
+async function snapTrafostanica10Kv() {
+  await setupMainSnap();
   citajExtent("trafostanice", 10);
   if(document.querySelector("#snapTrafostanica10Kv")) {
     document.querySelector("#snapTrafostanica10Kv").className = "dropdown-item active";
   }
-  setupMainSnap();
+  if(document.querySelector("#trafostaniceMain")) {
+    document.querySelector("#trafostaniceMain").className = "dropdown-item active";
+  }
 }
-function snapNKRO() {
+async function snapNKRO() {
+  await setupMainSnap();
   citajExtent("nkro", 0);
   if(document.querySelector("#snapNKRO")) {
     document.querySelector("#snapNKRO").className = "dropdown-item active";
   }
-  setupMainSnap();
 }
-function snapPrikljucnoMjesto() {
+async function snapPrikljucnoMjesto() {
+  await setupMainSnap();
   citajExtent("prikljucno_mjesto", 0);
   if(document.querySelector("#snapPrikljucnoMjesto")) {
     document.querySelector("#snapPrikljucnoMjesto").className = "dropdown-item active";
   }
-  setupMainSnap();
 }
-function snapPotrosac() {
+async function snapPotrosac() {
+  await setupMainSnap();
   citajExtent("view_potrosaci", 0);
   if(document.querySelector("#snapPotrosac")) {
     document.querySelector("#snapPotrosac").className = "dropdown-item active";
   }
-  setupMainSnap();
 }
-function snapPOD() {
+async function snapPOD() {
+  await setupMainSnap();
   citajExtent("view_pod", 0);
   if(document.querySelector("#snapPOD")) {
     document.querySelector("#snapPOD").className = "dropdown-item active";
   }
-  setupMainSnap();
 }
 
-function setupMainSnap(){
+async function setupMainSnap(){
  if(document.querySelector("#snapDiv")){
   document.querySelector("#snapDiv").className = "active";
  }
+ if(document.querySelector("#snapPOD")) {
+  document.querySelector("#snapPOD").className = "dropdown-item";
+}
+if(document.querySelector("#snapPotrosac")) {
+  document.querySelector("#snapPotrosac").className = "dropdown-item";
+}
+if(document.querySelector("#snapPrikljucnoMjesto")) {
+  document.querySelector("#snapPrikljucnoMjesto").className = "dropdown-item";
+}
+if(document.querySelector("#snapNKRO")) {
+  document.querySelector("#snapNKRO").className = "dropdown-item";
+}
+if(document.querySelector("#snapTrafostanica10Kv")) {
+  document.querySelector("#snapTrafostanica10Kv").className = "dropdown-item";
+}
+if(document.querySelector("#snapTrafostanica35")) {
+  document.querySelector("#snapTrafostanica35").className = "dropdown-item";
+}
+if(document.querySelector("#snapTrafostanica110")) {
+  document.querySelector("#snapTrafostanica110").className = "dropdown-item";
+}
+if(document.querySelector("#snapStub35")) {
+  document.querySelector("#snapStub35").className = "dropdown-item";
+}
+if(document.querySelector("#snapStub10Kv")) {
+  document.querySelector("#snapStub10Kv").className = "dropdown-item";
+}
+if(document.querySelector("#snapStub04Kv")) {
+  document.querySelector("#snapStub04Kv").className = "dropdown-item";
+}
+if(document.querySelector("#stuboviMain")) {
+  document.querySelector("#stuboviMain").className = "dropdown-item";
+}
+if(document.querySelector("#trafostaniceMain")) {
+  document.querySelector("#trafostaniceMain").className = "dropdown-item";
+}
 }
 
 /**

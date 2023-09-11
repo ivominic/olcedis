@@ -39,6 +39,20 @@ function dodatnaPodesavanjaNaPromjenuLejera(lejer) {
     document.querySelector("#btnDupliraj").style.display = "inline";
     document.querySelector("#btnSacuvaj").style.display = "none";
   }
+  provjeraAtributi();
+}
+
+function provjeraAtributi(){
+  if(nizSelektovanihObjekata.length === 0){
+    document.querySelector("#btnIzbrisi").style.display = "none";
+    document.querySelector("#btnDupliraj").style.display = "none";
+    document.querySelector("#btnSacuvaj").style.display = "none";
+    document.querySelector("#slika").style.display = "none";
+    document.querySelector("#divOdabirSloja").style.display = "none";
+  } else {
+    document.querySelector("#slika").style.display = "inline-block";
+    document.querySelector("#divOdabirSloja").style.display = "flex";
+  } 
 }
 
 let blnIsChange = false;
