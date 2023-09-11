@@ -263,7 +263,11 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
     wizard: wizard,
     lejer: "potrosac",
   };
-  console.log("Potrošači finalno", item);
+  //Korisnici koji vrše unos, često imaju bolju sliku u nazivu nn izvoda.
+  //Ako je ovo polje popunjeno, tu vrijednost treba proslijediti.
+  if (document.querySelector("#naziv_nn_izvod").value.trim()) {
+    item.naziv_nn_izvod = document.querySelector("#naziv_nn_izvod").value.trim();
+  }
   if (!provjeraPostojanjaPotrosacaZaAzuriranjeSaGeometrijom(item)) {
     potrosaciArrayFinal.push(item);
   }

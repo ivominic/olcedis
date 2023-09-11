@@ -241,6 +241,11 @@ function potrosacArrayElementProperties(el, action) {
     posjeduje_sliku: el.properties.posjeduje_sliku,
     originalId: el.properties.originalId,
   };
+  //Korisnici koji vrše unos, često imaju bolju sliku u nazivu nn izvoda.
+  //Ako je ovo polje popunjeno, tu vrijednost treba proslijediti.
+  if (document.querySelector("#naziv_nn_izvod").value.trim()) {
+    item.naziv_nn_izvod = document.querySelector("#naziv_nn_izvod").value.trim();
+  }
   return item;
 }
 
