@@ -41,14 +41,26 @@ async function snapStub04Kv() {
     document.querySelector("#stuboviMain").className = "dropdown-item active";
   }
 }
-function snapVod35() {
+async function snapVod35() {
+  await setupMainSnap();
   citajExtent("vodovi", 35);
+  if(document.querySelector("#snapVod35")) {
+    document.querySelector("#snapVod35").className = "dropdown-item active";
+  }
 }
-function snapVod10Kv() {
+async function snapVod10Kv() {
+  await setupMainSnap();
   citajExtent("vodovi", 10);
+  if(document.querySelector("#snapVod10Kv")) {
+    document.querySelector("#snapVod10Kv").className = "dropdown-item active";
+  }
 }
-function snapVod04Kv() {
+async function snapVod04Kv() {
+  await setupMainSnap();
   citajExtent("vodovi", 0.4);
+  if(document.querySelector("#snapVod04Kv")) {
+    document.querySelector("#snapVod04Kv").className = "dropdown-item active";
+  }
 }
 async function snapTrafostanica110() {
   await setupMainSnap();
@@ -148,6 +160,15 @@ if(document.querySelector("#stuboviMain")) {
 }
 if(document.querySelector("#trafostaniceMain")) {
   document.querySelector("#trafostaniceMain").className = "dropdown-item";
+}
+if(document.querySelector("#snapVod35")) {
+  document.querySelector("#snapVod35").className = "dropdown-item";
+}
+if(document.querySelector("#snapVod10Kv")) {
+  document.querySelector("#snapVod10Kv").className = "dropdown-item";
+}
+if(document.querySelector("#snapVod04Kv")) {
+  document.querySelector("#snapVod04Kv").className = "dropdown-item";
 }
 }
 
