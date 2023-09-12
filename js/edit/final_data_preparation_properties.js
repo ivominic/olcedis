@@ -4,7 +4,6 @@
  * Preparing JSON object from feature
  * @param {* Feature of element for insert} el
  * @param {* "I" for insert, "U" for update} action
-
  */
 function stubArrayElementProperties(el, action) {
   let tempVlasnik = el.properties.vlasnik;
@@ -23,7 +22,7 @@ function stubArrayElementProperties(el, action) {
     prikljucak_otcjep: el.properties.prikljucak_otcjep,
     br_pmo: el.properties.br_pmo,
     nad_visina: el.properties.nad_visina,
-    vod_10: el.properties.vod10, //Jovanu je polje 10vod - vidjeti može li se json poslati ovako ili da mijenjamo naziv
+    vod_10: el.properties.vod10,
     desetvod: el.properties["10vod"],
     tip_nosac_izol: el.properties.tip_izolatora + " / " + el.properties.tip_nosac_izol,
     vlasnistvo: el.properties.vlasnistvo,
@@ -56,7 +55,7 @@ function stubArrayElementProperties(el, action) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: 0,
-    lejer: "stubovi",
+    lejer: Lejeri.Stubovi,
     posjeduje_sliku: el.properties.posjeduje_sliku,
     originalId: el.properties.originalId,
   };
@@ -156,7 +155,7 @@ function trafostanicaArrayElementProperties(el, action) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: 0,
-    lejer: "trafostanice",
+    lejer: Lejeri.Trafostanice,
     geohash_id: el.properties.geohash_id,
     geohash_id_no: el.properties.geohash_id_no,
     posjeduje_sliku: el.properties.posjeduje_sliku,
@@ -192,7 +191,7 @@ function prikljucnoMjestoArrayElementProperties(el, action) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: 0,
-    lejer: "prikljucno_mjesto",
+    lejer: Podsloj.PrikljucnoMjesto,
     geohash_id: el.properties.geohash_id,
     geohash_id_no: el.properties.geohash_id_no,
     posjeduje_sliku: el.properties.posjeduje_sliku,
@@ -235,7 +234,7 @@ function potrosacArrayElementProperties(el, action) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: 0,
-    lejer: "potrosac",
+    lejer: Podsloj.Potrosac,
     geohash_id: el.properties.geohash_id,
     geohash_id_no: el.properties.geohash_id_no,
     posjeduje_sliku: el.properties.posjeduje_sliku,
@@ -281,7 +280,7 @@ function podArrayElementProperties(el, action) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: 0,
-    lejer: "pod",
+    lejer: Podsloj.Pod,
     geohash_id: el.properties.geohash_id,
     geohash_id_no: el.properties.geohash_id_no,
     posjeduje_sliku: el.properties.posjeduje_sliku,
@@ -321,7 +320,7 @@ function nkroArrayElementProperties(el, action) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: 0,
-    lejer: "nkro",
+    lejer: Podsloj.Nkro,
     geohash_id: el.properties.geohash_id,
     geohash_id_no: el.properties.geohash_id_no,
     posjeduje_sliku: el.properties.posjeduje_sliku,
@@ -339,7 +338,6 @@ function pripremaZaAzuriranjeWmsObjekta(el) {
     lejer = el.id_.split(".")[0];
   }
   let item;
-  console.log("Lejer ažuriranje", lejer);
   if (lejer === Lejeri.Stubovi) {
     item = stubArrayElementProperties(el, "U");
     stuboviArrayFinal.push(item);

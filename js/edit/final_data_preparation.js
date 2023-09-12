@@ -59,9 +59,8 @@ function stubArrayElement(el, action, wizard, serialNo) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
-    lejer: "stubovi",
+    lejer: Lejeri.Stubovi,
   };
-  console.log("Stubovi finalno", item);
   stuboviArrayFinal.push(item);
   return item;
 }
@@ -115,7 +114,6 @@ function vodArrayElement(el, action, wizard, serialNo) {
     akcija: action,
     wizard: wizard,
   };
-  console.log("Vodovi finalno", item);
   vodoviArrayFinal.push(item);
   return item;
 }
@@ -171,9 +169,8 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
-    lejer: "trafostanice",
+    lejer: Lejeri.Trafostanice,
   };
-  console.log("Trafostanice finalno", item);
   trafostaniceArrayFinal.push(item);
   return item;
 }
@@ -213,7 +210,7 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
-    lejer: "prikljucno_mjesto",
+    lejer: Podsloj.PrikljucnoMjesto,
     skriveni_id_pm: el.values_.skriveni_id_pm,
   };
   prikljucnaMjestaArrayFinal.push(item);
@@ -261,7 +258,7 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
-    lejer: "potrosac",
+    lejer: Podsloj.Potrosac,
   };
   //Korisnici koji vrše unos, često imaju bolju sliku u nazivu nn izvoda.
   //Ako je ovo polje popunjeno, tu vrijednost treba proslijediti.
@@ -315,9 +312,8 @@ function podArrayElement(el, action, wizard, serialNo) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
-    lejer: "pod",
+    lejer: Podsloj.Pod,
   };
-  console.log("Podovi finalno", item);
   podoviArrayFinal.push(item);
   return item;
 }
@@ -361,9 +357,8 @@ function nkroArrayElement(el, action, wizard, serialNo) {
     vlasnik: tempVlasnik,
     akcija: action,
     wizard: wizard,
-    lejer: "nkro",
+    lejer: Lejeri.NKRO,
   };
-  console.log("Nkro finalno", item);
   nkroArrayFinal.push(item);
   return item;
 }
