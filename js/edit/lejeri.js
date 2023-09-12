@@ -291,28 +291,27 @@ function pocetniFilter() {
   if (inactive_layers !== "null" && inactive_layers !== "") {
     let arr = inactive_layers.split(",");
     arr.forEach((el) => {
-      console.log("niz inaktivnih elemenata", el);
-      if (el === "8") {
+      if (el === "stubovi") {
         document.querySelector("#lejer_stubovi").click();
         //wmsStubovi.setVisible(false);
-      } else if (el === "9") {
+      } else if (el === "vodovi") {
         document.querySelector("#lejer_vodovi").click();
         //wmsVodovi.setVisible(false);
-      } else if (el === "10") {
+      } else if (el === "trafostanice" || el === "trafostanice_poligoni") {
         document.querySelector("#lejer_trafostanice").click();
         document.querySelector("#lejer_trafostanice_poligoni").click();
         //wmsTrafostanice.setVisible(false);
         //wmsTrafostanicePoligoni.setVisible(false);
-      } else if (el === "11") {
+      } else if (el === "prikljucno_mjesto") {
         document.querySelector("#lejer_prikljucno_mjesto").click();
         //wmsPrikljucnoMjesto.setVisible(false);
-      } else if (el === "12") {
+      } else if (el === "potrosac" || el === "view_potrosaci") {
         document.querySelector("#lejer_potrosac").click();
         //wmsPotrosaci.setVisible(false);
-      } else if (el === "13") {
+      } else if (el === "pod" || el === "view_pod") {
         document.querySelector("#lejer_pod").click();
         //wmsPOD.setVisible(false);
-      } else if (el === "14") {
+      } else if (el === "nkro") {
         document.querySelector("#lejer_nkro").click();
         //wmsNKRO.setVisible(false);
       }
