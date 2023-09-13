@@ -64,6 +64,9 @@ function ddlLejerNaziv(el) {
   if (elId.startsWith("view_odbijeni")) {
     return Podsloj.Odbijeni;
   }
+  if (elId.startsWith("view_solari")) {
+    return Podsloj.Solari;
+  }
 
   if (elId.includes("trafostanic")) {
     let prenosOdnos = el.properties.prenos_odnos;
@@ -139,6 +142,9 @@ function prikazAtributaWmsLejer(objekat) {
   }
   if (objekat.ddlLejer === "potrosac") {
     prikaziPoljaWmsPotrosac(objekat);
+  }
+  if (objekat.ddlLejer === "solari") {
+    prikaziPoljaWmsSolari(objekat);
   }
   if (objekat.ddlLejer === "pod") {
     prikaziPoljaWmsPod(objekat);

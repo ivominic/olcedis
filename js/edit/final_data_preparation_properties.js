@@ -253,6 +253,53 @@ function potrosacArrayElementProperties(el, action) {
  * @param {* Feature of element for insert} el
  * @param {* "I" for insert, "U" for update} action
  */
+ function solariArrayElementProperties(el, action) {
+  let tempVlasnik = el.properties.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
+  let item = {
+    fid_1: el.properties.fid_1,
+    Geometry: wkt3Du2D(prepareGeometryWms(el)),
+    name: el.properties.name,
+    fid: el.properties.fid,
+    prik_kabal: el.properties.prik_kabal,
+    pod: el.properties.pod,
+    adresa_mm: el.properties.adresa_mm,
+    prik_mjesto: el.properties.prik_mjesto,
+    skriveni_id_pm: el.properties.prik_mjesto,
+    naziv: el.properties.naziv,
+    naziv_nn_izvod: el.properties.naziv_nn_izvod,
+    pretplatni_br: el.properties.pretplatni_br,
+    br_brojila: el.properties.br_brojila,
+    napon: el.properties.napon,
+    opstina: el.properties.opstina,
+    gps: el.properties.gps,
+    korisnik: globalUsername,
+    sifra_napojne: el.properties.sifra_napojne,
+    naziv_napojne: el.properties.naziv_napojne,
+    izvod_napojne: el.properties.izvod_napojne,
+    status: el.properties.status,
+    vlasnik: tempVlasnik,
+    akcija: action,
+    wizard: 0,
+    lejer: Podsloj.Solari,
+    geohash_id: el.properties.geohash_id,
+    geohash_id_no: el.properties.geohash_id_no,
+    posjeduje_sliku: el.properties.posjeduje_sliku,
+    originalId: el.properties.originalId,
+  };
+  //Korisnici koji vrše unos, često imaju bolju sliku u nazivu nn izvoda.
+  //Ako je ovo polje popunjeno, tu vrijednost treba proslijediti.
+  if (document.querySelector("#naziv_nn_izvod").value.trim()) {
+    item.naziv_nn_izvod = document.querySelector("#naziv_nn_izvod").value.trim();
+  }
+  return item;
+}
+
+/**
+ * Preparing JSON object from feature
+ * @param {* Feature of element for insert} el
+ * @param {* "I" for insert, "U" for update} action
+ */
 function podArrayElementProperties(el, action) {
   let tempVlasnik = el.properties.vlasnik;
   action === "I" && (tempVlasnik = globalUsername);
@@ -352,6 +399,12 @@ function pripremaZaAzuriranjeWmsObjekta(el) {
     if (!provjeraPostojanjaPotrosacaZaAzuriranjeSaGeometrijom(item)) {
       potrosaciArrayFinal.push(item);
     }
+  } else if (lejer === Podsloj.Solari || lejer === Lejeri.Solari) {
+    item = solariArrayElementProperties(el, "U");
+    solariArrayFinal.push(item);
+    // if (!provjeraPostojanjaPotrosacaZaAzuriranjeSaGeometrijom(item)) {
+    //   potrosaciArrayFinal.push(item);
+    // }
   } else if (lejer === Podsloj.Pod || lejer === Lejeri.POD) {
     item = podArrayElementProperties(el, "U");
     podoviArrayFinal.push(item);

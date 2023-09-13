@@ -9,6 +9,8 @@ const point = "Point",
   lineString = "LineString",
   polygon = "Polygon";
 
+  const workspace = "geonode:";
+
 const NaponskiNivo = {
   String04kV: "0.4",
   String10kV: "10",
@@ -31,6 +33,8 @@ const Lejeri = {
   NelegalniPotrosac: "nelegalni_potrosac",
   PoslovniObjekat: "poslovni_objekti",
   Odbijeni: "view_odbijeni",
+  Solari: "view_solari",
+  Validacija: "validations"
 };
 
 const Podsloj = {
@@ -52,6 +56,8 @@ const Podsloj = {
   NelegalniPotrosac: "nelegalni_potrosac",
   PoslovniObjekat: "poslovni_objekti",
   Odbijeni: "view_odbijeni",
+  Solari: "solari",
+  Validacija: "validations"
 };
 
 const StatusPoruke = {

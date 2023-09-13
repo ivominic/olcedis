@@ -78,14 +78,14 @@ function sacuvaj() {
       poruka(StatusPoruke.Upozorenje, UnosPoruke.PopunitiObaveznaPolja);
       return false;
     }
-    if (odabraniLejerUnos === "stubovi") {
+    if (odabraniLejerUnos === Lejeri.Stubovi) {
       if (selectGpxFeature) {
         dodajPoljaOdabranomGpxStubu();
         sledecaGpxTacka();
       }
       return false;
     }
-    if (odabraniLejerUnos === "vodovi") {
+    if (odabraniLejerUnos === Lejeri.Vodovi) {
       if (selectGpxFeature?.get("lejer") === "vodovi") {
         dodajPoljaUcrtanomVodu(selectGpxFeature);
       } else {
@@ -104,23 +104,23 @@ function sacuvaj() {
       selectGpxFeature = null;
       return false;
     }
-    if (odabraniLejerUnos === "trafostanice") {
+    if (odabraniLejerUnos === Lejeri.Trafostanice) {
       dodajPoljaOdabranojGpxTrafostanici();
       select.getFeatures().clear();
       selectGpxFeature = null;
       return false;
     }
-    if (odabraniLejerUnos === "nkro") {
+    if (odabraniLejerUnos === Lejeri.NKRO) {
       dodajPoljaOdabranomGpxNKRO();
       sledecaGpxTacka();
       return false;
     }
-    if (odabraniLejerUnos === "prikljucno_mjesto") {
+    if (odabraniLejerUnos === Lejeri.PrikljucnoMjesto) {
       dodajPoljaOdabranomGpxPM();
       sledecaGpxTacka();
       return false;
     }
-    if (odabraniLejerUnos === "pod") {
+    if (odabraniLejerUnos === Podsloj.Pod) {
       dodajPoljaOdabranomGpxPod();
       select.getFeatures().clear();
       selectGpxFeature = null;
@@ -132,8 +132,12 @@ function sacuvaj() {
       //selectGpxFeature = null;
       return false;
     }
+    if (odabraniLejerUnos === Podsloj.Solari) {
+      dodajPoljaOdabranomGpxSolari();
+      return false;
+    }
   }
-}
+} 
 
 /** Sve podešava na početne vrijednosti*/
 function restartovanje() {

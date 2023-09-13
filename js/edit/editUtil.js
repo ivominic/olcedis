@@ -107,6 +107,7 @@ document.querySelector("#lejer_pod").addEventListener("click", prikazLejeraPod);
 document.querySelector("#lejer_validations").addEventListener("click", prikazLejeraValidations);
 document.querySelector("#lejer_poslovni_objekat").addEventListener("click", prikazLejeraPoslovniObjekat);
 document.querySelector("#lejer_odbijeni").addEventListener("click", prikazLejeraOdbijeneValidacije);
+document.querySelector("#lejer_solari").addEventListener("click", prikazLejeraSolari);
 
 function prikazLejeraStubovi() {
   wmsStubovi.setVisible(!wmsStubovi.getVisible());
@@ -164,5 +165,10 @@ function prikazLejeraPoslovniObjekat() {
 
 function prikazLejeraOdbijeneValidacije() {
   wmsOdbijeni.setVisible(!wmsOdbijeni.getVisible());
+  zatvoriHamburger();
+}
+
+function prikazLejeraSolari() {
+  wmsSolari.setVisible(!wmsSolari.getVisible());
   zatvoriHamburger();
 }

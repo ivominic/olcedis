@@ -528,6 +528,19 @@
                         ></i>
                       </div>
                     </div>
+
+                    <div class="col-lg-12 mb-2">
+                      <div class="form-check form-switch">
+                        <input type="checkbox" class="form-check-input" id="lejer_solari" checked/>
+                        <label class="form-check-label" for="solari">Solari</label>
+                        <i
+                          class="mdi mdi-map-legend"
+                          data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-original-title="Legenda"
+                          style="float: right;scale: 1.7;"
+                          onclick="setupImageLegend('view_solari')"
+                        ></i>
+                      </div>
+                    </div>
                   <hr style="margin-bottom: 10px;">
                     <div class="col-lg-12 mb-2">
                       <div class="form-check form-switch">
@@ -1195,6 +1208,7 @@
               <option value="prikljucno_mjesto">Priključno mjesto</option>
               <option value="potrosac">Potrošač</option>
               <option value="pod">Pod</option>
+              <option value="solari">Solari</option>
               <option value="nelegalni_potrosac" disabled>Nelegalni potrošač</option>
               <option value="poslovni_objekti" disabled>Poslovni objekat</option>
               <option value="view_odbijeni" disabled>Odbijene validacije</option>
@@ -2140,6 +2154,7 @@
               <option value="nkro">NKRO</option>
               <option value="prikljucno_mjesto">Priključno mjesto</option>
               <option value="view_potrosaci">Potrošači</option>
+              <option value="view_solari">Solari</option>
               <option value="pod">POD</option>
               <option value="nelegalni_potrosac">Nelegalni potrošači</option>
             </select>
@@ -2522,6 +2537,7 @@
     <script src="js/edit/unosIzmjenaNkro.js"></script>
     <script src="js/edit/unosIzmjenaPod.js"></script>
     <script src="js/edit/unosIzmjenaPotrosac.js"></script>
+    <script src="js/edit/unosIzmjenaSolari.js"></script>
     <script src="js/edit/unosIzmjenaPrikljucnoMjesto.js"></script>
     <script src="js/edit/unosIzmjenaStubovi.js"></script>
     <script src="js/edit/unosIzmjenaTrafostanice.js"></script>

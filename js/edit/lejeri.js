@@ -1,6 +1,6 @@
-let layernameS = "stubovi",
-  fulllayernameS = "geonode:stubovi",
-  layertitleS = "stubovi";
+let layernameS = Lejeri.Stubovi,
+  fulllayernameS = workspace + Lejeri.Stubovi,
+  layertitleS = Lejeri.Stubovi;
 let tipGeometrijeS = point;
 
 let wmsStubovi = new ol.layer.Image({
@@ -16,9 +16,9 @@ let wmsStubovi = new ol.layer.Image({
   }),
 });
 
-let layernameVodovi = "vodovi",
-  fulllayernameVodovi = "geonode:vodovi",
-  layertitleVodovi = "vodovi";
+let layernameVodovi = Lejeri.Vodovi,
+  fulllayernameVodovi = workspace + Lejeri.Vodovi,
+  layertitleVodovi = Lejeri.Vodovi;
 let tipGeometrijeVodovi = lineString;
 
 let wmsVodovi = new ol.layer.Image({
@@ -70,9 +70,9 @@ let wmsTrafostanicePoligoni = new ol.layer.Image({
   }),
 });
 
-let layernamePotrosaci = "view_potrosaci",
-  fulllayernamePotrosaci = "geonode:view_potrosaci",
-  layertitlePotrosaci = "view_potrosaci";
+let layernamePotrosaci = Lejeri.Potrosac,
+  fulllayernamePotrosaci = workspace + Lejeri.Potrosac,
+  layertitlePotrosaci = Lejeri.Potrosac;
 let tipGeometrijePotrosaci = point;
 
 let wmsPotrosaci = new ol.layer.Image({
@@ -88,9 +88,9 @@ let wmsPotrosaci = new ol.layer.Image({
   }),
 });
 
-let layernameNelegalniPotrosaci = "nelegalni_potrosac",
-  fulllayernameNelegalniPotrosaci = "geonode:nelegalni_potrosac",
-  layertitleNelegalniPotrosaci = "nelegalni_potrosac";
+let layernameNelegalniPotrosaci = Lejeri.NelegalniPotrosac,
+  fulllayernameNelegalniPotrosaci = workspace + Lejeri.NelegalniPotrosac,
+  layertitleNelegalniPotrosaci = Lejeri.NelegalniPotrosac;
 let tipGeometrijeNelegalniPotrosaci = point;
 
 let wmsNelegalniPotrosaci = new ol.layer.Image({
@@ -106,9 +106,9 @@ let wmsNelegalniPotrosaci = new ol.layer.Image({
   }),
 });
 
-let layernamePrikljucnoMjesto = "prikljucno_mjesto",
-  fulllayernamePrikljucnoMjesto = "geonode:prikljucno_mjesto",
-  layertitlePrikljucnoMjesto = "prikljucno_mjesto";
+let layernamePrikljucnoMjesto = Lejeri.PrikljucnoMjesto,
+  fulllayernamePrikljucnoMjesto = workspace + Lejeri.PrikljucnoMjesto,
+  layertitlePrikljucnoMjesto = Lejeri.PrikljucnoMjesto;
 let tipGeometrijePrikljucnoMjesto = point;
 
 let wmsPrikljucnoMjesto = new ol.layer.Image({
@@ -124,9 +124,9 @@ let wmsPrikljucnoMjesto = new ol.layer.Image({
   }),
 });
 
-let layernameNKRO = "nkro",
-  fulllayernameNKRO = "geonode:nkro",
-  layertitleNKRO = "nkro";
+let layernameNKRO =  Lejeri.NKRO,
+  fulllayernameNKRO = workspace + Lejeri.NKRO,
+  layertitleNKRO = Lejeri.NKRO;
 let tipGeometrijeNKRO = point;
 
 let wmsNKRO = new ol.layer.Image({
@@ -142,9 +142,9 @@ let wmsNKRO = new ol.layer.Image({
   }),
 });
 
-let layernamePOD = "view_pod",
-  fulllayernamePOD = "geonode:view_pod",
-  layertitlePOD = "view_pod";
+let layernamePOD = Lejeri.POD,
+  fulllayernamePOD = workspace + Lejeri.POD,
+  layertitlePOD = Lejeri.POD;
 let tipGeometrijePOD = point;
 
 let wmsPOD = new ol.layer.Image({
@@ -160,9 +160,9 @@ let wmsPOD = new ol.layer.Image({
   }),
 });
 
-let layernameValidations = "validations",
-  fulllayernameValidations = "geonode:validations",
-  layertitleValidations = "validations";
+let layernameValidations = Lejeri.Validacija,
+  fulllayernameValidations = workspace + Lejeri.Validacija,
+  layertitleValidations = Lejeri.Validacija;
 
 let wmsValidations = new ol.layer.Image({
   title: layertitleValidations,
@@ -177,9 +177,9 @@ let wmsValidations = new ol.layer.Image({
   }),
 });
 
-let layernamePoslovniObjekti = "poslovni_objekti",
-  fulllayernamePoslovniObjekti = "geonode:poslovni_objekti",
-  layertitlePoslovniObjekti = "poslovni_objekti";
+let layernamePoslovniObjekti = Lejeri.PoslovniObjekat,
+  fulllayernamePoslovniObjekti = workspace + Lejeri.PoslovniObjekat,
+  layertitlePoslovniObjekti = Lejeri.PoslovniObjekat;
 
 let wmsPoslovniObjekti = new ol.layer.Image({
   title: layertitlePoslovniObjekti,
@@ -194,9 +194,9 @@ let wmsPoslovniObjekti = new ol.layer.Image({
   }),
 });
 
-let layernameOdbijeni = "view_odbijeni",
-  fulllayernameOdbijeni = "geonode:view_odbijeni",
-  layertitleOdbijeni = "view_odbijeni";
+let layernameOdbijeni = Lejeri.Odbijeni,
+  fulllayernameOdbijeni = workspace + Lejeri.Odbijeni,
+  layertitleOdbijeni = Lejeri.Odbijeni;
 
 let wmsOdbijeni = new ol.layer.Image({
   title: layertitleOdbijeni,
@@ -211,6 +211,23 @@ let wmsOdbijeni = new ol.layer.Image({
   }),
 });
 
+let layernameSolari = Lejeri.Solari,
+  fulllayernameSolari = workspace + Lejeri.Solari,
+  layertitleSolari = Lejeri.Solari;
+
+  let wmsSolari = new ol.layer.Image({
+    title: layertitleSolari,
+    name: layernameSolari,
+    source: new ol.source.ImageWMS({
+      url: wmsUrl,
+      params: {
+        LAYERS: fulllayernameSolari,
+      },
+      ratio: 1,
+      serverType: "geoserver",
+    }),
+  });
+
 map.addLayer(wmsStubovi);
 map.addLayer(wmsVodovi);
 map.addLayer(wmsTrafostanicePoligoni);
@@ -223,6 +240,8 @@ map.addLayer(wmsNelegalniPotrosaci);
 map.addLayer(wmsValidations);
 map.addLayer(wmsPoslovniObjekti);
 map.addLayer(wmsOdbijeni);
+map.addLayer(wmsSolari);
+
 wmsValidations.setVisible(false);
 wmsNelegalniPotrosaci.setVisible(false);
 wmsPoslovniObjekti.setVisible(false);

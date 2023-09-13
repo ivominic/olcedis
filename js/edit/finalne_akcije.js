@@ -19,7 +19,11 @@ async function insertObjekataIzGpx() {
     } else if (el.get("lejer") === "potrosac") {
       //console.log("potrosaci", el);
       potrosacArrayElement(el, "I", 0, iterator);
-    } else if (el.get("lejer") === "pod") {
+    } else if (el.get("lejer") === "solari") {
+      //console.log("potrosaci", el);
+      solariArrayElement(el, "I", 0, iterator);
+    }
+     else if (el.get("lejer") === "pod") {
       //console.log("pod", el);
       podArrayElement(el, "I", 0, iterator);
     } else if (el.get("lejer") === "prikljucno_mjesto") {
@@ -95,6 +99,7 @@ async function finalnaPotvrdaUnosa() {
     { temp_prikljucno_mjesto: JSON.stringify(prikljucnaMjestaArrayFinal) },
     { temp_potrosaci: JSON.stringify(potrosaciArrayFinal) },
     { temp_nkro: JSON.stringify(nkroArrayFinal) },
+    { temp_solari: JSON.stringify(solariArrayFinal)},
     { group_id: globalTimestamp },
   ];
 
@@ -119,6 +124,7 @@ async function finalnaPotvrdaUnosa() {
       podoviArrayFinal.length +
       prikljucnaMjestaArrayFinal.length +
       potrosaciArrayFinal.length +
+      solariArrayFinal.length + 
       nkroArrayFinal.length +
       nizWmsZaBrisanje.length ===
     0
@@ -156,6 +162,7 @@ function resetovanjeNizovaNakonGreske() {
   prikljucnaMjestaArrayFinal.length = 0;
   potrosaciArrayFinal.length = 0;
   nkroArrayFinal.length = 0;
+  solariArrayFinal.length = 0;
   isUnprocessed = false;
 }
 

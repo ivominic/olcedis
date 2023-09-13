@@ -451,6 +451,34 @@ function podaciZaSpisakPotrosaca(nizPretplatnihBrojeva) {
 }
 
 /**
+ * Metoda koja za predati niz pretplatnih brojeva vrati sve podatke o korisnicima
+ * @param {} nizPretplatnihBrojeva
+ */
+ function podaciZaSpisakSolari(nizPretplatnihBrojeva) {
+  //Niz id-jeva vodova
+  if (nizPretplatnihBrojeva.length === 0) {
+    poruka(StatusPoruke.Upozorenje, GlobalPoruke.NijeZadatPretplatniBroj);
+    return false;
+  }
+
+  let urlServisa =
+    wsServerOriginLocation + "/novi_portal/api/get_consumer_data?pretplatni_brojevi=" + nizPretplatnihBrojeva;
+  urlServisa += "&t=" + Date.now();
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "POST",
+    success: function (data) {
+      kreiranjePojedinacnihGpxSolari(data);
+    },
+    error: function (x, y, z) {
+      console.log("Greska", x.responseJSON["error"]);
+      poruka(StatusPoruke.Greska, x.responseJSON["error"]);
+    },
+  });
+}
+
+/**
  * Metoda koja za jedan pretplatni broj vrši ažuriranje pretplatnika
  * @param {} noviPretplatniBroj
  */
@@ -469,6 +497,29 @@ function podaciZaPretplatniBroj(noviPretplatniBroj, objekat) {
     type: "POST",
     success: function (data) {
       azuriranjePojedinacnogPotrosaca(data, objekat);
+    },
+    error: function (x, y, z) {
+      console.log("Greska", x.responseJSON["error"]);
+      poruka(StatusPoruke.Greska, x.responseJSON["error"]);
+    },
+  });
+}
+
+function podaciZaPretplatniBrojSolari(noviPretplatniBroj, objekat) {
+  if (!noviPretplatniBroj) {
+    poruka(StatusPoruke.Upozorenje, GlobalPoruke.NijeZadatPretplatniBroj);
+    return false;
+  }
+
+  let urlServisa =
+    wsServerOriginLocation + "/novi_portal/api/get_consumer_data?pretplatni_brojevi=" + noviPretplatniBroj;
+  urlServisa += "&t=" + Date.now();
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "POST",
+    success: function (data) {
+      azuriranjePojedinacnogSolari(data, objekat);
     },
     error: function (x, y, z) {
       console.log("Greska", x.responseJSON["error"]);
@@ -654,7 +705,6 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
     },
     type: "POST",
     success: function (data) {
-      console.log("success wizard unos", data);
       poruka(StatusPoruke.Uspjeh, data);
     },
     error: function (x, y, z) {

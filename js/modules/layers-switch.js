@@ -167,6 +167,7 @@ if(checkedValue){
   document.querySelector("#lejer_validations").checked = true;
   document.querySelector("#lejer_poslovni_objekat").checked = true;
   document.querySelector("#lejer_odbijeni").checked = true;
+  document.querySelector("#lejer_solari").checked = true;
   wmsStubovi.setVisible(true);
   wmsVodovi.setVisible(true);
   wmsTrafostanice.setVisible(true);
@@ -179,6 +180,7 @@ if(checkedValue){
   wmsValidations.setVisible(true);
   wmsPoslovniObjekti.setVisible(true);
   wmsOdbijeni.setVisible(true);
+  wmsSolari.setVisible(true);
 } else {
   document.querySelector("#lejer_stubovi").checked = false;
   document.querySelector("#lejer_vodovi").checked = false;
@@ -192,6 +194,7 @@ if(checkedValue){
   document.querySelector("#lejer_validations").checked = false;
   document.querySelector("#lejer_poslovni_objekat").checked = false;
   document.querySelector("#lejer_odbijeni").checked = false;
+  document.querySelector("#lejer_solari").checked = false;
   wmsStubovi.setVisible(false);
   wmsVodovi.setVisible(false);
   wmsTrafostanice.setVisible(false);
@@ -204,6 +207,7 @@ if(checkedValue){
   wmsValidations.setVisible(false);
   wmsPoslovniObjekti.setVisible(false);
   wmsOdbijeni.setVisible(false);
+  wmsSolari.setVisible(false);
  }
 }
 

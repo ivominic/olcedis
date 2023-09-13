@@ -279,6 +279,62 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
  * @param {* "0" if web service is not call from wizard form, "1" else} wizard
  * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
  */
+ function solariArrayElement(el, action, wizard, serialNo) {
+  let tempVlasnik = el.values_.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
+  let item = {
+    fid_1: el.values_.fid_1,
+    Geometry: wkt3Du2D(wktGeometrije(el)),
+    name: el.values_.name,
+    fid: el.values_.fid,
+    prik_kabal: el.values_.prik_kabal,
+    pod: el.values_.pod,
+    adresa_mm: el.values_.adresa_mm,
+    prik_mjesto: el.values_.prik_mjesto,
+    skriveni_id_pm: el.values_.prik_mjesto,
+    naziv: el.values_.naziv,
+    naziv_nn_izvod: el.values_.naziv_nn_izvod,
+    pretplatni_br: el.values_.pretplatni_br,
+    br_brojila: el.values_.br_brojila,
+    napon: el.values_.napon,
+    opstina: el.values_.opstina,
+    gps: el.values_.gps,
+    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
+    geohash_id: "", //Provjeriti da li treba da se šalje
+    geohash_id_no: "", //Provjeriti da li treba da se šalje
+    korisnik: globalUsername,
+    katastar: "",
+    posjeduje_sliku: "NE",
+    originalId: new Date().getTime() + "" + serialNo, //el.values_.originalId,
+    sifra_napojne: el.values_.sifra_napojne,
+    naziv_napojne: el.values_.naziv_napojne,
+    izvod_napojne: el.values_.izvod_napojne,
+    status: el.values_.status,
+    vlasnik: tempVlasnik,
+    akcija: action,
+    wizard: wizard,
+    lejer: Podsloj.Solari,
+  };
+  //Korisnici koji vrše unos, često imaju bolju sliku u nazivu nn izvoda.
+  //Ako je ovo polje popunjeno, tu vrijednost treba proslijediti.
+  if (document.querySelector("#naziv_nn_izvod").value.trim()) {
+    item.naziv_nn_izvod = document.querySelector("#naziv_nn_izvod").value.trim();
+  }
+  // if (!provjeraPostojanjaZaAzuriranjeSaGeometrijomSolari(item)) {
+  //   solariArrayFinal.push(item);
+  // }
+  solariArrayFinal.push(item);
+
+  return item;
+}
+
+/**
+ * Preparing JSON object from feature
+ * @param {* Feature of element for insert} el
+ * @param {* "I" for insert, "U" for update} action
+ * @param {* "0" if web service is not call from wizard form, "1" else} wizard
+ * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
+ */
 function podArrayElement(el, action, wizard, serialNo) {
   let tempVlasnik = el.values_.vlasnik;
   action === "I" && (tempVlasnik = globalUsername);

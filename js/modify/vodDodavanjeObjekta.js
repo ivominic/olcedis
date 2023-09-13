@@ -178,21 +178,24 @@ function finalnaObradaGpxTacakaZaAzuriranjeVoda(vodId, prvaTacka, drugaTacka) {
   podoviArrayFinal.length = 0;
   prikljucnaMjestaArrayFinal.length = 0;
   potrosaciArrayFinal.length = 0;
+  solariArrayFinal.length = 0;
   nkroArrayFinal.length = 0;
   gpxFeatures.forEach((el) => {
     iterator++;
     console.log("finalno lejer", el.get("lejer"));
-    if (el.get("lejer") === "stubovi") {
+    if (el.get("lejer") === Lejeri.Stubovi) {
       nizObjekataZaDodavanjeVodu.push(stubArrayElement(el, "I", 0, iterator));
-    } else if (el.get("lejer") === "trafostanice") {
+    } else if (el.get("lejer") === Lejeri.Trafostanice) {
       nizObjekataZaDodavanjeVodu.push(trafostanicaArrayElement(el, "I", 0, iterator));
-    } else if (el.get("lejer") === "nkro") {
+    } else if (el.get("lejer") === Lejeri.NKRO) {
       nizObjekataZaDodavanjeVodu.push(nkroArrayElement(el, "I", 0, iterator));
-    } else if (el.get("lejer") === "potrosac") {
+    } else if (el.get("lejer") === Podsloj.Potrosac) {
       nizObjekataZaDodavanjeVodu.push(potrosacArrayElement(el, "I", 0, iterator));
-    } else if (el.get("lejer") === "pod") {
+    } else if (el.get("lejer") === Podsloj.Solari) {
+      nizObjekataZaDodavanjeVodu.push(solariArrayElement(el, "I", 0, iterator));
+    } else if (el.get("lejer") === Podsloj.Pod) {
       nizObjekataZaDodavanjeVodu.push(podArrayElement(el, "I", 0, iterator));
-    } else if (el.get("lejer") === "prikljucno_mjesto") {
+    } else if (el.get("lejer") === Podsloj.PrikljucnoMjesto) {
       nizObjekataZaDodavanjeVodu.push(prikljucnoMjestoArrayElement(el, "I", 0, iterator));
     } else if (el.get("lejer") === undefined) {
       postojiNeobradjenaTacka = true;

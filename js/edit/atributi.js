@@ -448,6 +448,23 @@ function prikaziAtributDivPotrosac() {
   document.querySelector("#divUnosNaziv").style.display = "none";
 }
 
+function prikaziAtributDivSolari() {
+  document.querySelector("#divUnosNazivNapojne").style.display = "flex";
+  document.querySelector("#divUnosSifraNapojne").style.display = "flex";
+  document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
+  document.querySelector("#divUnosName").style.display = "flex";
+  document.querySelector("#divUnosGps").style.display = "flex";
+  document.querySelector("#divUnosPotrosacIme").style.display = "flex";
+  document.querySelector("#divUnosPrikKabal").style.display = "flex";
+  document.querySelector("#divUnosPod").style.display = "flex";
+  document.querySelector("#divUnosAdresaMm").style.display = "flex";
+  document.querySelector("#divUnosPrikMjesto").style.display = "flex";
+  document.querySelector("#divUnosNazivNnIzvod").style.display = "flex";
+  document.querySelector("#divUnosPretplatniBr").style.display = "flex";
+  document.querySelector("#divUnosBrBrojila").style.display = "flex";
+  document.querySelector("#divUnosNaziv").style.display = "none";
+}
+
 function prikaziAtributDivPod() {
   document.querySelector("#divUnosNazivNapojne").style.display = "flex";
   document.querySelector("#divUnosSifraNapojne").style.display = "flex";

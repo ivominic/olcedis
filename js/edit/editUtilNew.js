@@ -7,10 +7,10 @@ function setujAktivnu(element) {
     );
     return false;
   }
-  // let els = document.querySelectorAll(".active");
-  // for (let i = 0; i < els.length; i++) {
-  //   els[i].classList.remove("active");
-  // }
+  let els = document.querySelectorAll(".active");
+  for (let i = 0; i < els.length; i++) {
+    els[i].classList.remove("active");
+  }
   closeDiv("#pretragaDiv");
   closeDiv("#atributiDiv");
   if (element === "#atributi" || element === "#dodaj") {
@@ -107,6 +107,7 @@ document.querySelector("#lejer_pod").addEventListener("click", prikazLejeraPod);
 document.querySelector("#lejer_validations").addEventListener("click", prikazLejeraValidations);
 document.querySelector("#lejer_poslovni_objekat").addEventListener("click", prikazLejeraPoslovniObjekat);
 document.querySelector("#lejer_odbijeni").addEventListener("click", prikazLejeraOdbijeneValidacije);
+document.querySelector("#lejer_solari").addEventListener("click", prikazLejeraSolari);
 
 function prikazLejeraStubovi() {
   wmsStubovi.setVisible(!wmsStubovi.getVisible());
@@ -164,5 +165,10 @@ function prikazLejeraPoslovniObjekat() {
 
 function prikazLejeraOdbijeneValidacije() {
   wmsOdbijeni.setVisible(!wmsOdbijeni.getVisible());
+  zatvoriHamburger();
+}
+
+function prikazLejeraSolari() {
+  wmsSolari.setVisible(!wmsSolari.getVisible());
   zatvoriHamburger();
 }

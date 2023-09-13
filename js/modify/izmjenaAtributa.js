@@ -53,6 +53,9 @@ function izmjenaAtributaWmsLejer(objekat) {
   if (objekat.ddlLejer === Podsloj.Potrosac) {
     izmijeniAtributeWmsPotrosac(objekat); //dodajObjekatZaIzmjenu se poziva u okviru success dijela poziva servisa
   }
+  if (objekat.ddlLejer === Podsloj.Solari) {
+    izmijeniAtributeWmsSolari(objekat);
+  }
   if (objekat.ddlLejer === Podsloj.Pod) {
     dodajObjekatZaIzmjenu(izmijeniAtributeWmsPod(objekat));
   }
