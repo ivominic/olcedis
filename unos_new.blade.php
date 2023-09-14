@@ -1529,6 +1529,18 @@
             <label for="pretplatni_br">Pretplatni broj: <b class="fontB">*</b></label>
             <input type="text" id="pretplatni_br" />
           </div>
+          <div class="flex-row-desno pb-8" id="divSnagaElektrane">
+            <label for="snaga_elektrane">Snaga elektrane: </label>
+            <input type="text" id="snaga_elektrane" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divVlasnistvo">
+            <label for="vlasnistvoSolari">Vlasništvo: </label>
+            <input type="text" id="vlasnistvoSolari" readonly class="disabledInput"/>
+          </div>
+          <div class="flex-row-desno pb-8" id="divLegalan">
+            <label for="legalan">Legalan: </label>
+            <input type="text" id="legalan" readonly class="disabledInput"/>
+          </div>
           <div class="flex-row-desno pb-8" id="divUnosBrBrojila">
             <label for="br_brojila">Broj brojila: </label>
             <input type="text" id="br_brojila" readonly class="disabledInput" />

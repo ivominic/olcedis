@@ -166,6 +166,9 @@ function prikaziPoljaOdabranogGpxSolari() {
     );
   }
   //document.querySelector("#prik_mjesto").value = selectGpxFeature.values_.prik_mjesto;
+  document.querySelector("#snaga_elektrane").value = selectGpxFeature.values_.snaga_elektrane;
+  document.querySelector("#vlasnistvoSolari").value = selectGpxFeature.values_.vlasnistvo;
+  document.querySelector("#legalan").value = selectGpxFeature.values_.legalan;
   document.querySelector("#pretplatni_br").value = selectGpxFeature.values_.pretplatni_br;
   document.querySelector("#br_brojila").value = selectGpxFeature.values_.br_brojila;
 }
@@ -194,6 +197,9 @@ function prikaziPoljaWmsSolari(objekat) {
   // document.querySelector("#naziv_nn_izvod").value = objekat.properties.naziv_nn_izvod;
   document.querySelector("#pretplatni_br").value = objekat.properties.pretplatni_br;
   document.querySelector("#br_brojila").value = objekat.properties.br_brojila;
+  document.querySelector("#snaga_elektrane").value = objekat.properties.snaga_elektrane;
+  document.querySelector("#vlasnistvoSolari").value = objekat.properties.vlasnistvo;
+  document.querySelector("#legalan").value = objekat.properties.legalan;
 }
 
 function izmijeniAtributeWmsSolari(objekat) {
@@ -232,8 +238,6 @@ function azuriranjePojedinacnogSolari(jsonPretplatnikArray, objekat) {
   let porukaNepoklapanjeTs = "";
   jsonPretplatnik = jsonPretplatnikArray[0];
   let poklapanjeTs = true;
-  console.log("ŠIFRA NAPOJNE", jsonPretplatnik);
-  console.log(sifraNapojneTrafostanice, objekat.properties.sifra_napojne);
   let tekstHtml = "";
   tekstHtml += "<li>" + jsonPretplatnik.sifra + " - " + jsonPretplatnik.naziv_potrosaca + "</li>";
   jsonPretplatnik.naziv_potrosaca === "Nema podatka" && (ispravno = false);
@@ -280,6 +284,9 @@ function azuriranjePojedinacnogSolari(jsonPretplatnikArray, objekat) {
       objekat.properties.pretplatni_br = jsonPretplatnik.sifra;
       objekat.properties.br_brojila = jsonPretplatnik.broj_brojila;
       objekat.properties.korisnik = globalUsername;
+      objekat.properties.snaga_elektrane = document.querySelector("#snaga_elektrane").value;
+      objekat.properties.vlasnistvo = document.querySelector("#vlasnistvoSolari").value;
+      objekat.properties.legalan = document.querySelector("#legalan").value;
 
       if (provjeraPostojanjaZaAzuriranjeSolari(objekat)) {
         poruka(StatusPoruke.Greska, UnosPoruke.PostojiAzuriranPotrosac);

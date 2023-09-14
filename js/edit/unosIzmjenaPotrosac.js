@@ -125,6 +125,9 @@ function kreiranjePojedinacnihGpxPotrosaca(nizPretplatnika) {
               noviEl.set("izvod_napojne", izvodNapojneTrafostanice);
               noviEl.set("napon", document.querySelector("#napon").value);
               noviEl.set("naziv_nn_izvod", document.querySelector("#naziv_nn_izvod").value);
+              noviEl.set("snaga_elektrane", document.querySelector("#snaga_elektrane").value);
+              noviEl.set("vlasnistvo", document.querySelector("#vlasnistvoSolari").value);
+              noviEl.set("legalan", document.querySelector("#legalan").value);
               noviEl.set("korisnik", globalUsername);
               noviEl.set("vlasnik", "");
               if (boolAdd) {

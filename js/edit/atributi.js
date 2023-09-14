@@ -179,7 +179,9 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosNazivNnIzvod").style.display = "none";
   document.querySelector("#divUnosPretplatniBr").style.display = "none";
   document.querySelector("#divUnosBrBrojila").style.display = "none";
-
+  document.querySelector("#divVlasnistvo").style.display = "none";
+  document.querySelector("#divSnagaElektrane").style.display = "none";
+  document.querySelector("#divLegalan").style.display = "none";
   document.querySelector("#divUnosMontaza").style.display = "none";
   document.querySelector("#divUnosVrata").style.display = "none";
   document.querySelector("#divUnosBrIzvoda").style.display = "none";
@@ -462,6 +464,9 @@ function prikaziAtributDivSolari() {
   document.querySelector("#divUnosNazivNnIzvod").style.display = "flex";
   document.querySelector("#divUnosPretplatniBr").style.display = "flex";
   document.querySelector("#divUnosBrBrojila").style.display = "flex";
+  document.querySelector("#divSnagaElektrane").style.display = "flex";
+  document.querySelector("#divVlasnistvo").style.display = "flex";
+  document.querySelector("#divLegalan").style.display = "flex";
   document.querySelector("#divUnosNaziv").style.display = "none";
 }
 
