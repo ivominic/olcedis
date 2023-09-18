@@ -6,40 +6,29 @@ async function insertObjekataIzGpx() {
   gpxFeatures.forEach((el) => {
     iterator++;
     console.log("finalno lejer", el.get("lejer"));
-    //if (el.hasOwnProperty("lejer") && el.get("lejer") === "stubovi") {
-    if (el.get("lejer") === "stubovi") {
-      //console.log("stubovi", el);
+    if (el.get("lejer") === Lejeri.Stubovi) {
       stubArrayElement(el, "I", 0, iterator);
-    } else if (el.get("lejer") === "trafostanice") {
-      //console.log("trafostanice", el);
+    } else if (el.get("lejer") === Lejeri.Trafostanice) {
       trafostanicaArrayElement(el, "I", 0, iterator);
-    } else if (el.get("lejer") === "nkro") {
-      //console.log("nkro", el);
+    } else if (el.get("lejer") === Lejeri.NKRO) {
       nkroArrayElement(el, "I", 0, iterator);
-    } else if (el.get("lejer") === "potrosac") {
-      //console.log("potrosaci", el);
+    } else if (el.get("lejer") === Podsloj.Potrosac) {
       potrosacArrayElement(el, "I", 0, iterator);
-    } else if (el.get("lejer") === "solari") {
-      //console.log("potrosaci", el);
+    } else if (el.get("lejer") === Podsloj.Solari) {
       solariArrayElement(el, "I", 0, iterator);
-    }
-     else if (el.get("lejer") === "pod") {
-      //console.log("pod", el);
+    } else if (el.get("lejer") === Podsloj.Pod) {
       podArrayElement(el, "I", 0, iterator);
-    } else if (el.get("lejer") === "prikljucno_mjesto") {
-      //console.log("prikljucno_mjesto", el);
+    } else if (el.get("lejer") === Lejeri.PrikljucnoMjesto) {
       prikljucnoMjestoArrayElement(el, "I", 0, iterator);
     } else if (el.get("lejer") === undefined) {
       console.log("nedefinisani", el);
       postojiNeobradjenaTacka = true;
-    } else if (el.get("lejer") === "vodovi") {
-      //console.log("vodovi", el);
+    } else if (el.get("lejer") === Lejeri.Vodovi) {
       vodArrayElement(el, "I", 0, iterator);
     }
   });
 
   nizVodovaGpx.forEach((el) => {
-    console.log("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
     vodArrayElement(el, "I", 0);
   });
 
@@ -99,7 +88,7 @@ async function finalnaPotvrdaUnosa() {
     { temp_prikljucno_mjesto: JSON.stringify(prikljucnaMjestaArrayFinal) },
     { temp_potrosaci: JSON.stringify(potrosaciArrayFinal) },
     { temp_nkro: JSON.stringify(nkroArrayFinal) },
-    { temp_solari: JSON.stringify(solariArrayFinal)},
+    { temp_solari: JSON.stringify(solariArrayFinal) },
     { group_id: globalTimestamp },
   ];
 
@@ -124,7 +113,7 @@ async function finalnaPotvrdaUnosa() {
       podoviArrayFinal.length +
       prikljucnaMjestaArrayFinal.length +
       potrosaciArrayFinal.length +
-      solariArrayFinal.length + 
+      solariArrayFinal.length +
       nkroArrayFinal.length +
       nizWmsZaBrisanje.length ===
     0
