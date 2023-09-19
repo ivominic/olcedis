@@ -5,7 +5,6 @@ async function insertObjekataIzGpx() {
   let iterator = 0;
   gpxFeatures.forEach((el) => {
     iterator++;
-    console.log("finalno lejer", el.get("lejer"));
     if (el.get("lejer") === Lejeri.Stubovi) {
       stubArrayElement(el, "I", 0, iterator);
     } else if (el.get("lejer") === Lejeri.Trafostanice) {
@@ -72,7 +71,6 @@ async function finalnaPotvrdaUnosa() {
   });
 
   let objekti_za_azuriranje = { objekti: JSON.stringify(kmlLinksArray), group_id: globalTimestamp };
-
   await insertObjekataIzGpx();
   let pretplatniBrojDupli = finalProvjeraDuplih();
   if (pretplatniBrojDupli) {

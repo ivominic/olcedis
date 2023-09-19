@@ -114,6 +114,9 @@ function kreiranjePojedinacnihGpxSolari(nizPretplatnika) {
               noviEl.set("naziv_napojne", nazivNapojneTrafostanice);
               noviEl.set("izvod_napojne", izvodNapojneTrafostanice);
               noviEl.set("napon", document.querySelector("#napon").value);
+              noviEl.set("snaga_elektrane", document.querySelector("#snaga_elektrane").value);
+              noviEl.set("legalan", document.querySelector("#legalan").value);
+              noviEl.set("vlasnistvo", document.querySelector("#vlasnistvoSolari").value);
               noviEl.set("naziv_nn_izvod", document.querySelector("#naziv_nn_izvod").value);
               noviEl.set("korisnik", globalUsername);
               noviEl.set("vlasnik", "");

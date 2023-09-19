@@ -15,6 +15,8 @@ function obaveznaPolja(sloj) {
     return provjeraObaveznostiPotrosac();
   } else if (sloj === Podsloj.Pod) {
     return provjeraObaveznostiPod();
+  } else if(sloj === Podsloj.Solari) {
+    return provjeraObaveznostiSolari(); 
   }
 }
 
@@ -265,6 +267,29 @@ function provjeraObaveznostiPotrosac() {
   if (document.querySelector("#pretplatni_br").value === "") {
     isFilled = borderChange(document.querySelector("#pretplatni_br"));
   }
+  return isFilled;
+}
+
+function provjeraObaveznostiSolari(){
+  let isFilled = true;
+  if (document.querySelector("#name").value === "") {
+    isFilled = borderChange(document.querySelector("#name"));
+  }
+  if (document.querySelector("#pretplatni_br").value === "") {
+    isFilled = borderChange(document.querySelector("#pretplatni_br"));
+  }
+  if(document.querySelector("#snaga_elektrane").value === ""){
+    isFilled = borderChange(document.querySelector("#snaga_elektrane"));
+  }
+
+  if(document.querySelector("#vlasnistvoSolari").value === ""){
+    isFilled = borderChange(document.querySelector("#vlasnistvoSolari"));
+  }
+
+  if(document.querySelector("#legalan").value === ""){
+    isFilled = borderChange(document.querySelector("#legalan"));
+  }
+
   return isFilled;
 }
 
