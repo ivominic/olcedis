@@ -8,11 +8,14 @@ function dodajObjekatZaBrisanje(objekat) {
   let temp_geohash = objekat.properties.geohash_id_no;
   let blnDodaoObjekat = false;
   let objekatId = objekat.id;
-  if (objekatId.includes("view_potrosaci")) {
+  if (objekatId.includes(Lejeri.Potrosac)) {
     objekatId = `potrosaci.${objekat.properties.originalId}`;
   }
   if (objekatId.includes("view_trafostanice")) {
     objekatId = `trafostanice.${objekat.properties?.originalId}`;
+  }
+  if (objekatId.includes(Lejeri.Solari)) {
+    objekatId = `${Podsloj.Solari}.${objekat.properties?.originalId}`;
   }
   nizWmsZaBrisanje.forEach((item) => {
     if (item[0] === temp_geohash) {
