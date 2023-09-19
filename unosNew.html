@@ -1532,16 +1532,24 @@
             <input type="text" id="pretplatni_br" />
           </div>
           <div class="flex-row-desno pb-8" id="divSnagaElektrane">
-            <label for="snaga_elektrane">Snaga elektrane: </label>
-            <input type="text" id="snaga_elektrane" readonly class="disabledInput"/>
+            <label for="snaga_elektrane">Snaga elektrane: <b class="fontB">*</b></label>
+            <input type="text" id="snaga_elektrane"/>
           </div>
           <div class="flex-row-desno pb-8" id="divVlasnistvo">
-            <label for="vlasnistvoSolari">Vlasništvo: </label>
-            <input type="text" id="vlasnistvoSolari" readonly class="disabledInput"/>
+            <label for="vlasnistvoSolari">Vlasništvo: <b class="fontB">*</b></label>
+            <select id="vlasnistvoSolari" class="select-css">
+              <option></option>
+              <option value="Projekat EPCG (Solar gradnja)">Projekat EPCG (Solar gradnja)</option>
+              <option value="Individualni vlasnik">Individualni vlasnik</option>
+            </select>
           </div>
           <div class="flex-row-desno pb-8" id="divLegalan">
-            <label for="legalan">Legalan: </label>
-            <input type="text" id="legalan" readonly class="disabledInput"/>
+            <label for="legalan">Legalan: <b class="fontB">*</b></label>
+            <select id="legalan" class="select-css">
+              <option value=""></option>
+              <option value="Da">Da</option>
+              <option value="Ne">Ne</option>
+            </select>
           </div>
           <div class="flex-row-desno pb-8" id="divUnosBrBrojila">
             <label for="br_brojila">Broj brojila: </label>
