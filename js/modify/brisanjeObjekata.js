@@ -15,7 +15,7 @@ function dodajObjekatZaBrisanje(objekat) {
     objekatId = `trafostanice.${objekat.properties?.originalId}`;
   }
   if (objekatId.includes(Lejeri.Solari)) {
-    objekatId = `${Podsloj.Solari}.${objekat.properties?.originalId}`;
+    objekatId = `${Lejeri.Solari}.${objekat.properties?.originalId}`;
   }
   nizWmsZaBrisanje.forEach((item) => {
     if (item[0] === temp_geohash) {
