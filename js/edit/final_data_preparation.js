@@ -279,7 +279,7 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
  * @param {* "0" if web service is not call from wizard form, "1" else} wizard
  * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
  */
- function solariArrayElement(el, action, wizard, serialNo) {
+function solariArrayElement(el, action, wizard, serialNo) {
   let tempVlasnik = el.values_.vlasnik;
   action === "I" && (tempVlasnik = globalUsername);
   let item = {
@@ -323,10 +323,9 @@ function potrosacArrayElement(el, action, wizard, serialNo) {
   if (document.querySelector("#naziv_nn_izvod").value.trim()) {
     item.naziv_nn_izvod = document.querySelector("#naziv_nn_izvod").value.trim();
   }
-  // if (!provjeraPostojanjaZaAzuriranjeSaGeometrijomSolari(item)) {
-  //   solariArrayFinal.push(item);
-  // }
-  solariArrayFinal.push(item);
+  if (!provjeraPostojanjaZaAzuriranjeSaGeometrijomSolari(item)) {
+    solariArrayFinal.push(item);
+  }
 
   return item;
 }

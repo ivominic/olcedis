@@ -141,7 +141,6 @@ function kreiranjePojedinacnihGpxSolari(nizPretplatnika) {
           select.getFeatures().clear();
           poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
         });
-        console.log(gpxFeatures)
       }
     }
   });
@@ -303,9 +302,9 @@ function azuriranjePojedinacnogSolari(jsonPretplatnikArray, objekat) {
 }
 
 /**
- * Metoda koja za zadati objekat, provjerava da li je potrošač. Ukoliko jeste, provjerava da li je taj potrošač već ažuriran.
+ * Metoda koja za zadati objekat, provjerava da li je solar. Ukoliko jeste, provjerava da li je taj solar već ažuriran.
  * Ukoliko jeste, uklanja prethodni zapis i dodaje novo ažuriranje.
- * Nakon toga vrši provjeru da li je već ažuriran neki drugi potrošač pretplatnim brojem kojim se pokušava trenutno ažuriranje.
+ * Nakon toga vrši provjeru da li je već ažuriran neki drugi solar pretplatnim brojem kojim se pokušava trenutno ažuriranje.
  * U tom slučaju, funkcija vraća vrijednost true, što treba da onemogući trenutno ažuriranje.
  * @param {*} objekat - objekat koji se dodaje nizu za ažuriranje.
  * @returns - false ako je moguće nastaviti ažuriranje, true ako treba prekinuti proces.

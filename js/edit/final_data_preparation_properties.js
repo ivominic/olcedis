@@ -253,7 +253,7 @@ function potrosacArrayElementProperties(el, action) {
  * @param {* Feature of element for insert} el
  * @param {* "I" for insert, "U" for update} action
  */
- function solariArrayElementProperties(el, action) {
+function solariArrayElementProperties(el, action) {
   let tempVlasnik = el.properties.vlasnik;
   action === "I" && (tempVlasnik = globalUsername);
   let item = {
@@ -404,10 +404,9 @@ function pripremaZaAzuriranjeWmsObjekta(el) {
     }
   } else if (lejer === Podsloj.Solari || lejer === Lejeri.Solari) {
     item = solariArrayElementProperties(el, "U");
-    solariArrayFinal.push(item);
-    // if (!provjeraPostojanjaPotrosacaZaAzuriranjeSaGeometrijom(item)) {
-    //   potrosaciArrayFinal.push(item);
-    // }
+    if (!provjeraPostojanjaZaAzuriranjeSaGeometrijomSolari(item)) {
+      solariArrayFinal.push(item);
+    }
   } else if (lejer === Podsloj.Pod || lejer === Lejeri.POD) {
     item = podArrayElementProperties(el, "U");
     podoviArrayFinal.push(item);
