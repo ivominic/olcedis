@@ -416,7 +416,7 @@ modifyV.on("modifyend", function (e) {
     };
     let distanca = turf.distance(distancaOd, distancaDo, mjera);
     console.log("distanca", distanca);
-    if (distanca > dozvoljeniPomjeraj) {
+    if (distanca > dozvoljeniPomjeraj && !radiusBezOgranicenja) {
       e.features.getArray()[0].getGeometry().setCoordinates(pocetnaTacka.flatCoordinates);
       poruka(
         "Upozorenje",

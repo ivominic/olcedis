@@ -118,8 +118,6 @@ function vodArrayElement(el, action, wizard, serialNo) {
   return item;
 }
 
-//TODO: Made procedures for other layers
-
 /**
  * Preparing JSON object from feature
  * @param {* Feature of element for insert} el

@@ -426,7 +426,6 @@ function izbrisi() {
             gpxFeatures.splice(idxObj, 1);
           }
 
-          //TODO: Provjeriti da li je dovoljno ovo da se podesi nakon brisanja gpx tačke
           document.querySelector("#divPrethodniObjekat").style.display = "none";
           document.querySelector("#divSljedeciObjekat").style.display = "none";
           nizGpxTacakaZaObradu.length = 0;

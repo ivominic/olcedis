@@ -127,14 +127,6 @@ function kreiranjePojedinacnihGpxSolari(nizPretplatnika) {
               if (!isEditable) {
                 dodajSacuvaniKmlFeature(noviEl);
               }
-
-              //TODO: Ukloniti i metodu generisanjeGpxPodaIzGeometrije
-              /*let ddlTemp = document.querySelector("#prik_mjesto").value;
-              generisanjeGpxPodaIzGeometrije(
-                nizKoordinataPrikljucnihMjesta[ddlTemp][0],
-                nizKoordinataPrikljucnihMjesta[ddlTemp][1],
-                jsonPretplatnik
-              );*/
             }
           });
           selectGpxFeature = null;

@@ -17,18 +17,20 @@ async function klikNaVektore(browserEvent) {
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
 
-  if(akcija === "information") {
+  if (akcija === "information") {
     let atributesAccordion = document.querySelector("#atributesAccordion");
     atributesAccordion.innerHTML = "";
     map.forEachLayerAtPixel(pixel, function (layer) {
-      var title = layer.get("title");
-      var vidljivost = layer.get("visible");
-      var fullName = layer.get("fullName");
+      let title = layer.get("title");
+      let vidljivost = layer.get("visible");
       if (layer instanceof ol.layer.Image) {
         if (vidljivost) {
-          let url = layer.getSource().getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
+          let url = layer
+            .getSource()
+            .getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
               INFO_FORMAT: "application/json",
-              feature_count: "50"});
+              feature_count: "50",
+            });
           if (url) {
             fetch(url)
               .then(function (response) {
@@ -81,7 +83,7 @@ async function klikNaVektore(browserEvent) {
         }
       }
     });
-  
+
     if (!odabirSaMape) {
       if (nizGpxTacakaZaObradu.length > 1) {
         document.querySelector("#divPrethodniObjekat").style.display = "none";
@@ -94,12 +96,11 @@ async function klikNaVektore(browserEvent) {
       document.querySelector("#divPrethodniObjekat").style.display = "none";
       document.querySelector("#divSljedeciObjekat").style.display = "none";
     }
-  
+
     if (nizGpxTacakaZaObradu.length === 0 || odabirPrikljucnogMjestaSaMape) {
       map.on("singleclick", odabirSvihRasterObjekataKlik);
     }
   }
-
 }
 
 function sljedeciObjekatGpx() {
@@ -217,9 +218,6 @@ select.on("select", function (e) {
   document.querySelector("#sifra_napojne").value = sifraNapojneTrafostanice;
   document.querySelector("#izvod_napojne").value = izvodNapojneTrafostanice;
   if (selectGpxFeature.values_.lejer) {
-    //Popuni polja vrijednostima
-    console.log("ulazi ovdje", selectGpxFeature.get("lejer"));
-    //TODO: Mislim da se ovaj uslov može isključiti za priključno mjesto vektor
     if (!odabirSaMape && !odabirPrikljucnogMjestaSaMapeVektor) {
       prikazPodatakaIzGpxTacaka();
     }
@@ -294,7 +292,7 @@ modifyV.on("modifyend", function (e) {
       };
       let distanca = turf.distance(distancaOd, distancaDo, mjera);
       console.log("distanca", distanca);
-      if (distanca > dozvoljeniPomjeraj) {
+      if (distanca > dozvoljeniPomjeraj && !radiusBezOgranicenja) {
         e.features.getArray()[0].getGeometry().setCoordinates(pocetnaTacka.flatCoordinates);
         poruka(
           "Upozorenje",
@@ -350,7 +348,7 @@ modifyV.on("modifyend", function (e) {
       let distancaOd = turf.point([coordinates[0][0], coordinates[0][1]]);
       let distancaDo = turf.point([original.coordinates[0][0], original.coordinates[0][1]]);
       let distanca = turf.distance(distancaOd, distancaDo, mjera);
-      if (distanca > dozvoljeniPomjeraj) {
+      if (distanca > dozvoljeniPomjeraj && !radiusBezOgranicenja) {
         isViolatedAllowedDistance = true;
       }
     }
@@ -364,7 +362,7 @@ modifyV.on("modifyend", function (e) {
         original.coordinates[coordinateLength - 1][1],
       ]);
       let distanca = turf.distance(distancaOd, distancaDo, mjera);
-      if (distanca > dozvoljeniPomjeraj) {
+      if (distanca > dozvoljeniPomjeraj && !radiusBezOgranicenja) {
         isViolatedAllowedDistance = true;
       }
     }
@@ -381,11 +379,6 @@ modifyV.on("modifyend", function (e) {
 });
 
 function prikazPodatakaIzGpxTacaka() {
-  console.log("prikaz podataka iz GPX tačke", selectGpxFeature.get("lejer"));
-  //sakrijSvaPoljaAtributDiv();
-  //if (selectGpxFeature.hasOwnProperty("lejer")) {
-  //console.log("prikaz podataka iz GPX tačke", selectGpxFeature.get("lejer"));
-  //prikazPanelaAtributa se nalazi u fajlu interakcija.js
   document.querySelector("#gps").value = selectGpxFeature.get("name");
   document.querySelector("#name").value = selectGpxFeature.get("name");
   console.log("gpx vrijednost", selectGpxFeature.get("name"));

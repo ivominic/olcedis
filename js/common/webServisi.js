@@ -327,12 +327,11 @@ function procitajVlasnika(username) {
     })
     .then(function (json) {
       let odgovor = JSON.parse(json);
-      if (odgovor && odgovor.owner) {
-        globalVlasnik = odgovor.owner.owner;
-      }
+      globalVlasnik = odgovor?.owner?.owner;
+      radiusBezOgranicenja = odgovor?.radius;
     })
     .catch((error) => {
-      console.log("Bez vlasnika", username);
+      console.log("Bez vlasnika", username, error);
     });
 }
 
@@ -454,7 +453,7 @@ function podaciZaSpisakPotrosaca(nizPretplatnihBrojeva) {
  * Metoda koja za predati niz pretplatnih brojeva vrati sve podatke o korisnicima
  * @param {} nizPretplatnihBrojeva
  */
- function podaciZaSpisakSolari(nizPretplatnihBrojeva) {
+function podaciZaSpisakSolari(nizPretplatnihBrojeva) {
   //Niz id-jeva vodova
   if (nizPretplatnihBrojeva.length === 0) {
     poruka(StatusPoruke.Upozorenje, GlobalPoruke.NijeZadatPretplatniBroj);
