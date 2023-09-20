@@ -9,6 +9,7 @@ let minGpsPointName = 0,
   maxGpsPointName = 0; //min i max gps vrijednost (name property) tačaka koje formiraju jedan vod (krajnje tačke voda iz fajla)
 let globalUsername = ""; //Username korisnika aplikacije
 let globalVlasnik = ""; //Username vlasnika za korisnika aplikacije
+let radiusBezOgranicenja = false; //Ukoliko servis vlasnik vrati radius true, za korisnika ne važi ograničenje pomjeraja objekta na mapi
 let geoserverToken = ""; //Promjenljiva koja čuva token za wfs servise
 let isEditable = true; //Promjenljiva koja definiše da li je dozvoljeno pomjeranje objekata iz fajla. Za kml nije dozvoljeno.
 let isUnprocessed = false; //Promjenljiva koja prati da li ima neobrađenih objekata
