@@ -58,6 +58,73 @@ function stubArrayElementProperties(el, action) {
     lejer: Lejeri.Stubovi,
     posjeduje_sliku: el.properties.posjeduje_sliku,
     originalId: el.properties.originalId,
+    most: el.properties.most
+  };
+  return item;
+}
+
+
+/**
+ * Preparing JSON object from feature
+ * @param {* Feature of element for insert} el
+ * @param {* "I" for insert, "U" for update} action
+ */
+ function prikljucnaKonzolaArrayElementProperties(el, action) {
+  let tempVlasnik = el.properties.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
+  let item = {
+    //fid_1: el.properties.fid_1,
+    Geometry: wkt3Du2D(prepareGeometryWms(el)),
+    name: el.properties.name,
+    izvod_id: el.properties.izvod_id,
+    pog_sprem: el.properties.pog_sprem,
+    uzemljivac: el.properties.uzemljivac,
+    //fid: el.properties.fid,
+    br_izol_faza: el.properties.br_izol_faza,
+    uzemljivac: el.properties.uzemljivac,
+    broj: el.properties.broj,
+    napon: el.properties.napon,
+    vrsta_namjena: el.properties.vrsta_namjena,
+    rasvjeta: el.properties.rasvjeta,
+    prikljucak_otcjep: el.properties.prikljucak_otcjep,
+    br_pmo: el.properties.br_pmo,
+    nad_visina: el.properties.nad_visina,
+    vod_10: el.properties.vod10,
+    desetvod: el.properties["10vod"],
+    tip_nosac_izol: el.properties.tip_izolatora + " / " + el.properties.tip_nosac_izol,
+    vlasnistvo: el.properties.vlasnistvo,
+    tip: el.properties.tip,
+    visina: el.properties.visina,
+    optika: el.properties.optika,
+    opstina: el.properties.opstina,
+    izolator_funkcija: el.properties.izolator_funkcija,
+    odvodnik_prenapona: el.properties.odvodnik_prenapona,
+    vrsta_drvenog: el.properties.vrsta_drvenog,
+    br_nnv: el.properties.br_nnv,
+    br_10kv_vodova: el.properties.br_10kv_vodova,
+    br_35kv_vodova: el.properties.br_35kv_vodova,
+    gps: el.properties.gps,
+    rastavljac: el.properties.rastavljac,
+    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
+    izolator_vrsta: el.properties.izolator_vrsta,
+    uzemljivac_otpor: el.properties.uzemljivac_otpor,
+    geohash_id: el.properties.geohash_id,
+    geohash_id_no: el.properties.geohash_id_no,
+    rasp_prov: el.properties.rasp_prov,
+    nn_vod: el.properties.nn_vod,
+    pog_sprem: el.properties.pog_sprem,
+    vrsta_materijal: el.properties.vrsta_materijal,
+    naziv_rastavljaca: el.properties.naziv_rastavljaca,
+    korisnik: globalUsername,
+    sifra_napojne: el.properties.sifra_napojne,
+    naziv_napojne: el.properties.naziv_napojne,
+    izvod_napojne: el.properties.izvod_napojne,
+    vlasnik: tempVlasnik,
+    akcija: action,
+    wizard: 0,
+    lejer: Lejeri.PrikljucnaKonzola,
+    posjeduje_sliku: el.properties.posjeduje_sliku,
+    originalId: el.properties.originalId,
   };
   return item;
 }
@@ -416,6 +483,9 @@ function pripremaZaAzuriranjeWmsObjekta(el) {
   } else if (lejer === Lejeri.Vodovi) {
     item = vodArrayElementProperties(el, "U");
     vodoviArrayFinal.push(item);
+  } else if(lejer === Lejeri.PrikljucnaKonzola) {
+    item = prikljucnaKonzolaArrayElementProperties(el, "U");
+    prikljucnaKonzolaArrayFinal.push(item);
   }
 
   return item;

@@ -69,6 +69,7 @@ function dodajPoljaGpxStubovi() {
       }
 
       el.set("tip", document.querySelector("#tip_stub").value);
+      el.set("most", document.querySelector("#most").value);
       el.set("broj", document.querySelector("#broj").value);
       el.set("nad_visina", document.querySelector("#nad_visina").value);
       el.set("visina", document.querySelector("#visina").value);
@@ -205,6 +206,7 @@ function dodajPoljaOdabranomGpxStubu() {
   selectGpxFeature.set("naziv_napojne", nazivNapojneTrafostanice);
   selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
   selectGpxFeature.set("tip", document.querySelector("#tip_stub").value);
+  selectGpxFeature.set("most", document.querySelector("#most").value);
   selectGpxFeature.set("vlasnik", "");
   selectGpxFeature.set("korisnik", globalUsername);
 
@@ -246,6 +248,7 @@ function prikaziPoljaOdabranogGpxStuba() {
   document.querySelector("#opstina").value = selectGpxFeature.values_.opstina;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
   document.querySelector("#naziv_rastavljaca").value = selectGpxFeature.values_.naziv_rastavljaca;
+  document.querySelector("#most").value = selectGpxFeature.values_.most;
 
   setujDdlVrijednost("#nosaci_izolatora", selectGpxFeature.values_.tip_nosac_izol);
 
@@ -329,6 +332,7 @@ function prikaziAtributeWmsStuba(objekat) {
   document.querySelector("#opstina").value = objekat.properties.opstina;
   document.querySelector("#napon").value = objekat.properties.napon;
   document.querySelector("#naziv_rastavljaca").value = objekat.properties.naziv_rastavljaca;
+  document.querySelector("#most").value = objekat.properties.most;
 
   if (objekat.properties.napon === NaponskiNivo.String04kV) {
     setujDdlVrijednost("#tip_stub", objekat.properties.tip);
@@ -416,6 +420,7 @@ function izmijeniAtributeWmsStuba(objekat) {
   objekat.properties.napon = document.querySelector("#napon").value;
   objekat.properties.vlasnistvo = document.querySelector("#vlasnistvo").value;
   objekat.properties.tip = document.querySelector("#tip_stub").value;
+  objekat.properties.most = document.querySelector("#most").value;
   objekat.properties.naziv_rastavljaca = document.querySelector("#naziv_rastavljaca").value;
 
   if (objekat.properties.napon === NaponskiNivo.String04kV) {

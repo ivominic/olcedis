@@ -180,6 +180,7 @@ function finalnaObradaGpxTacakaZaAzuriranjeVoda(vodId, prvaTacka, drugaTacka) {
   potrosaciArrayFinal.length = 0;
   solariArrayFinal.length = 0;
   nkroArrayFinal.length = 0;
+  prikljucnaKonzolaArrayFinal.length = 0;
   gpxFeatures.forEach((el) => {
     iterator++;
     console.log("finalno lejer", el.get("lejer"));

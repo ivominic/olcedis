@@ -130,8 +130,12 @@ function pretragaTrafostanicaGpx(sifraTS) {
         $("#ddlIzvodNapojneTrafostanice").empty();
         fillDdl("ddlIzvodNapojneTrafostanice", "", "");
 
+        $("#izvod_id").empty();
+        fillDdl("izvod_id", "", "");
+
         data.ts.izvodi.forEach(function (vrijednost) {
           fillDdl("ddlIzvodNapojneTrafostanice", vrijednost, vrijednost);
+          fillDdl("izvod_id", vrijednost, vrijednost);
         });
       } else {
         poruka(StatusPoruke.Upozorenje, GlobalPoruke.NemaPodatakaZaTS);

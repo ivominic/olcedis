@@ -136,6 +136,10 @@ function sacuvaj() {
       dodajPoljaOdabranomGpxSolari();
       return false;
     }
+    if(odabraniLejerUnos === Lejeri.PrikljucnaKonzola || odabraniLejerUnos === "prikljucna_konzola") {
+      dodajPoljaOdabranomGpxPrikljucnaKonzola();
+      return false;
+    }
   }
 } 
 

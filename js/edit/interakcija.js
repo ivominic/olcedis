@@ -191,6 +191,11 @@ function prikazPanelaAtributa(sloj) {
     document.querySelector("#napon").value = filePowerLevel;
     document.querySelector("#ddl_sloj_podataka").value = Podsloj.Solari;
     prikaziAtributDivSolari();
+  } else if (sloj === "prikljucna_konzola" || sloj === Podsloj.PrikljucnaKonzola) {
+    odabraniLejerUnos = "prikljucna_konzola";
+    document.querySelector("#napon").value = filePowerLevel;
+    document.querySelector("#ddl_sloj_podataka").value = Podsloj.PrikljucnaKonzola;
+    prikaziAtributDivPrikljucnaKonzola();
   } else if (sloj === "POD" || sloj === Podsloj.Pod) {
     odabraniLejerUnos = "pod";
     document.querySelector("#napon").value = filePowerLevel;

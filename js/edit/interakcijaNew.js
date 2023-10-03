@@ -211,6 +211,11 @@ function prikazPanelaAtributa(sloj) {
     document.querySelector("#napon").value = filePowerLevel;
     document.querySelector("#ddl_sloj_podataka").value = Podsloj.Odbijeni;
     prikaziAtributDivOdbijeni();
+  } else if (sloj === Podsloj.PrikljucnaKonzola || sloj === "prikljucna_konzola") {
+    odabraniLejerUnos = Podsloj.PrikljucnaKonzola;
+    document.querySelector("#napon").value = filePowerLevel;
+    document.querySelector("#ddl_sloj_podataka").value = Podsloj.PrikljucnaKonzola;
+    prikaziAtributDivPrikljucnaKonzola();
   }
 
   if (blnShowAttribute) {

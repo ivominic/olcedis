@@ -87,7 +87,8 @@ let stuboviArrayFinal = [],
   potrosaciArrayFinal = [],
   podoviArrayFinal = [],
   prikljucnaMjestaArrayFinal = [],
-  solariArrayFinal = []; //Nizovi za unos u bazu - finalni korak
+  solariArrayFinal = [],
+  prikljucnaKonzolaArrayFinal = []; //Nizovi za unos u bazu - finalni korak
 
 /**Definisanje podloga */
 let osmBaseMap = new ol.layer.Tile({

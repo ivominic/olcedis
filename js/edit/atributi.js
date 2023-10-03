@@ -50,6 +50,10 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosUzemljivacStub10").style.display = "none";
   document.querySelector("#divUnosUzemljivacStub35").style.display = "none";
   document.querySelector("#divUnosOtporUzemljivaca").style.display = "none";
+  document.querySelector("#divUzemljivacPrikljucnaKonzola").style.display = "none";
+  document.querySelector("#divPogSpremPrikljucnaKonzola").style.display = "none";
+  document.querySelector("#divIzvodi").style.display = "none";
+  document.querySelector("#divMost").style.display = "none";
   document.querySelector("#divUnosOptika").style.display = "none";
   document.querySelector("#divUnosRasvjeta").style.display = "none";
   document.querySelector("#divUnosRasvjetaStub").style.display = "none";
@@ -307,6 +311,7 @@ function prikaziAtributDivStubove(napon) {
   document.querySelector("#divUnosVlasnistvo").style.display = "flex";
   document.querySelector("#divUnosNapon").style.display = "flex";
   document.querySelector("#divUnosNazivRastavljaca").style.display = "flex";
+  document.querySelector("#divMost").style.display = "flex";
 }
 
 function prikaziAtributDivVodove(napon) {
@@ -468,6 +473,14 @@ function prikaziAtributDivSolari() {
   document.querySelector("#divVlasnistvo").style.display = "flex";
   document.querySelector("#divLegalan").style.display = "flex";
   document.querySelector("#divUnosNaziv").style.display = "none";
+}
+
+function prikaziAtributDivPrikljucnaKonzola(){
+  document.querySelector("#divUnosBrBrojila").style.display = "flex";
+  document.querySelector("#divUnosNaziv").style.display = "none";
+  document.querySelector("#divUzemljivacPrikljucnaKonzola").style.display = "flex";
+  document.querySelector("#divPogSpremPrikljucnaKonzola").style.display = "flex";
+  document.querySelector("#divIzvodi").style.display = "flex";
 }
 
 function prikaziAtributDivPod() {

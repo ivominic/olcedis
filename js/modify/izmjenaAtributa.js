@@ -56,6 +56,9 @@ function izmjenaAtributaWmsLejer(objekat) {
   if (objekat.ddlLejer === Podsloj.Solari) {
     izmijeniAtributeWmsSolari(objekat);
   }
+  if (objekat.ddlLejer === Podsloj.PrikljucnaKonzola) {
+    izmijeniAtributeWmsPrikljucnaKonzola(objekat);
+  }
   if (objekat.ddlLejer === Podsloj.Pod) {
     dodajObjekatZaIzmjenu(izmijeniAtributeWmsPod(objekat));
   }

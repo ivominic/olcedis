@@ -158,4 +158,7 @@ function prikazAtributaWmsLejer(objekat) {
   if (objekat.ddlLejer === Podsloj.Odbijeni) {
     prikaziPoljaWmsOdbijeni(objekat);
   }
+  if(objekat.ddlLejer === Podsloj.PrikljucnaKonzola){
+    prikaziAtributeWmsPrikljucnaKonzola(objekat);
+  }
 }

@@ -490,6 +490,14 @@
 
                     <div class="col-lg-12 mb-2">
                       <div class="form-check form-switch">
+                        <input type="checkbox" class="form-check-input" id="lejer_prikljucna_konzola" checked />
+                        <label class="form-check-label" for="lejer_prikljucna_konzola">Prikljucna konzola</label>
+                        <i class="mdi mdi-map-legend" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-original-title="Legenda" style="float: right;scale: 1.7;" onclick="setupImageLegend('prikljucna_konzola')"></i>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-12 mb-2">
+                      <div class="form-check form-switch">
                         <input type="checkbox" class="form-check-input" id="lejer_validations" />
                         <label class="form-check-label" for="lejer_validations">Validacija</label>
                         <i
@@ -1206,6 +1214,7 @@
               <option value="prikljucno_mjesto">Priključno mjesto</option>
               <option value="potrosac">Potrošač</option>
               <option value="solari">Solari</option>
+              <option value="prikljucna_konzola">Priključna konzola</option>
               <option value="pod">Pod</option>
               <option value="nelegalni_potrosac" disabled>Nelegalni potrošač</option>
               <option value="poslovni_objekti" disabled>Poslovni objekat</option>
@@ -1311,6 +1320,14 @@
           <div class="flex-row-desno pb-8" id="divUnosVrstaDrvenogStuba10">
             <label for="vrsta_drvenog_stub_10">Vrsta drvenog stuba:</label>
             <select id="vrsta_drvenog_stub_10" class="select-css"></select>
+          </div>
+          <div class="flex-row-desno pb-8" id="divMost">
+            <label>Most:</label>
+            <select id="most" class="select-css">
+              <option>Izaberite vrijednost</option>
+              <option value="Da">Da</option>
+              <option value="Ne">Ne</option>
+            </select>
           </div>
           <div class="flex-row-desno pb-8" id="divUnosVrstaDrvenogStuba35">
             <label for="vrsta_drvenog_stub_35">Vrsta drvenog stuba:</label>
@@ -1432,6 +1449,24 @@
             <label for="uzemljivac_otpor">Otpor uzemljivača:</label>
             <input type="text" id="uzemljivac_otpor" />
           </div>
+          <div class="flex-row-desno pb-8" id="divUzemljivacPrikljucnaKonzola">
+            <label for="uzemljivac_otpor">Uzemljivač:</label>
+            <select id="uzemljivac_prikljucna_konzola" class="select-css">
+            </select>
+          </div>
+
+          <div class="flex-row-desno pb-8" id="divPogSpremPrikljucnaKonzola">
+            <label>Pog spremnost:</label>
+            <select id="pog_sprem_prikljucna_konzola" class="select-css">
+            </select>
+          </div>
+
+          <div class="flex-row-desno pb-8" id="divIzvodi">
+            <label>Izvod:</label>
+            <select id="izvod_id" class="select-css">
+            </select>
+          </div>
+          
           <div class="flex-row-desno pb-8" id="divUnosOptika">
             <label for="optika">Optika:</label>
             <select id="optika" class="select-css"></select>
@@ -2557,6 +2592,7 @@
     <script src="../../administracija/olcedis/js/edit/unosIzmjenaPotrosac.js"></script>
     <script src="../../administracija/olcedis/js/edit/unosIzmjenaSolari.js"></script>
     <script src="../../administracija/olcedis/js/edit/unosIzmjenaPrikljucnoMjesto.js"></script>
+    <script src="../../administracija/olcedis/js/edit/unosIzmjenaPrikljucnaKonzola.js"></script>
     <script src="../../administracija/olcedis/js/edit/unosIzmjenaStubovi.js"></script>
     <script src="../../administracija/olcedis/js/edit/unosIzmjenaTrafostanice.js"></script>
     <script src="../../administracija/olcedis/js/edit/unosIzmjenaVodovi.js"></script>

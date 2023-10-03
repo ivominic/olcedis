@@ -88,7 +88,8 @@ let stuboviArrayFinal = [],
   potrosaciArrayFinal = [],
   podoviArrayFinal = [],
   prikljucnaMjestaArrayFinal = [],
-  solariArrayFinal = []; //Nizovi za unos u bazu - finalni korak
+  solariArrayFinal = [],
+  prikljucnaKonzolaArrayFinal = []; //Nizovi za unos u bazu - finalni korak
 
 /**Definisanje podloga */
 let osmBaseMap = new ol.layer.Tile({
@@ -582,8 +583,9 @@ function popuniListeZaTrafostanice(napon) {
  */
 function popuniListeZaPrikljucnaMjesta() {
   popuniDdlAtributima("#osiguraci", "prikljucno_mjesto", "osiguraci", "", "");
-
   popuniDdlAtributima("#pretraga_osiguraci", "prikljucno_mjesto", "osiguraci", "", "");
+  popuniDdlAtributima("#uzemljivac_prikljucna_konzola", "prikljucna_konzola", "uzemljivac", "napon", "10"); 
+  popuniDdlAtributima("#pog_sprem_prikljucna_konzola", "prikljucna_konzola", "pog_sprem", "napon", "10");
 }
 
 /**

@@ -34,7 +34,8 @@ const Lejeri = {
   PoslovniObjekat: "poslovni_objekti",
   Odbijeni: "view_odbijeni",
   Solari: "view_solari",
-  Validacija: "validations"
+  Validacija: "validations",
+  PrikljucnaKonzola: "prikljucna_konzola"
 };
 
 const Podsloj = {
@@ -57,7 +58,8 @@ const Podsloj = {
   PoslovniObjekat: "poslovni_objekti",
   Odbijeni: "view_odbijeni",
   Solari: "solari",
-  Validacija: "validations"
+  Validacija: "validations",
+  PrikljucnaKonzola: "prikljucna_konzola"
 };
 
 const StatusPoruke = {

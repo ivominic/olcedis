@@ -24,6 +24,8 @@ async function insertObjekataIzGpx() {
       postojiNeobradjenaTacka = true;
     } else if (el.get("lejer") === Lejeri.Vodovi) {
       vodArrayElement(el, "I", 0, iterator);
+    } else if (el.get("lejer") === Lejeri.PrikljucnaKonzola) {
+      prikljucnaKonzolaArrayElement(el, "I", 0, iterator);
     }
   });
 
@@ -88,6 +90,7 @@ async function finalnaPotvrdaUnosa() {
     { temp_nkro: JSON.stringify(nkroArrayFinal) },
     { temp_solari: JSON.stringify(solariArrayFinal) },
     { group_id: globalTimestamp },
+    { temp_prikljucna_konzola: JSON.stringify(prikljucnaKonzolaArrayFinal) },
   ];
 
   let brisanje_objekta = {
@@ -102,6 +105,8 @@ async function finalnaPotvrdaUnosa() {
     return false;
   }
 
+  console.log("Lista je", prikljucnaKonzolaArrayFinal);
+
   if (
     nizWmsZaPomjeranje.length +
       kmlLinksArray.length +
@@ -113,6 +118,7 @@ async function finalnaPotvrdaUnosa() {
       potrosaciArrayFinal.length +
       solariArrayFinal.length +
       nkroArrayFinal.length +
+      prikljucnaKonzolaArrayFinal.length +
       nizWmsZaBrisanje.length ===
     0
   ) {
@@ -150,6 +156,7 @@ function resetovanjeNizovaNakonGreske() {
   potrosaciArrayFinal.length = 0;
   nkroArrayFinal.length = 0;
   solariArrayFinal.length = 0;
+  prikljucnaKonzolaArrayFinal.length = 0;
   isUnprocessed = false;
 }
 

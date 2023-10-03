@@ -160,6 +160,24 @@ let wmsPOD = new ol.layer.Image({
   }),
 });
 
+let layernamePrikljucnaKoznola = Lejeri.PrikljucnaKonzola,
+  fulllayernamePrikljucnaKonzola = workspace + Lejeri.PrikljucnaKonzola,
+  layertitlePrikljucnaKonzola = Lejeri.PrikljucnaKonzola;
+let tipGeometrijePrikljucnaKonzola = point;
+
+let wmsPrikljucnaKonzola = new ol.layer.Image({
+  title: layertitlePrikljucnaKonzola,
+  name: layernamePrikljucnaKoznola,
+  source: new ol.source.ImageWMS({
+    url: wmsUrl,
+    params: {
+      LAYERS: fulllayernamePrikljucnaKonzola,
+    },
+    ratio: 1,
+    serverType: "geoserver",
+  }),
+});
+
 let layernameValidations = Lejeri.Validacija,
   fulllayernameValidations = workspace + Lejeri.Validacija,
   layertitleValidations = Lejeri.Validacija;
@@ -241,6 +259,7 @@ map.addLayer(wmsValidations);
 map.addLayer(wmsPoslovniObjekti);
 map.addLayer(wmsOdbijeni);
 map.addLayer(wmsSolari);
+map.addLayer(wmsPrikljucnaKonzola);
 
 wmsValidations.setVisible(false);
 wmsNelegalniPotrosaci.setVisible(false);

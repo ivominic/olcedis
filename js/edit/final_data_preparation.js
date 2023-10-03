@@ -17,6 +17,7 @@ function stubArrayElement(el, action, wizard, serialNo) {
     //fid: el.values_.fid,
     br_izol_faza: el.values_.br_izol_faza,
     uzemljivac: el.values_.uzemljivac,
+    most: el.values_.most,
     broj: el.values_.broj,
     napon: el.values_.napon,
     vrsta_namjena: el.values_.vrsta_namjena,
@@ -62,6 +63,56 @@ function stubArrayElement(el, action, wizard, serialNo) {
     lejer: Lejeri.Stubovi,
   };
   stuboviArrayFinal.push(item);
+  return item;
+}
+
+
+function prikljucnaKonzolaArrayElement(el, action, wizard, serialNo) {
+  let tempVlasnik = el.values_.vlasnik;
+  action === "I" && (tempVlasnik = globalUsername);
+  let item = {
+    //fid_1: el.values_.fid_1,
+    Geometry: wkt3Du2D(wktGeometrije(el)),
+    name: el.values_.name,
+    izvod_id: el.values_.izvod_id,
+    pog_sprem: el.values_.pog_sprem,
+    uzemljivac: el.values_.uzemljivac,
+    br_izol_faza: el.values_.br_izol_faza,
+    broj: el.values_.broj,
+    napon: el.values_.napon,
+    vrsta_namjena: el.values_.vrsta_namjena,
+    rasvjeta: el.values_.rasvjeta,
+    prikljucak_otcjep: el.values_.prikljucak_otcjep,
+    br_pmo: el.values_.br_pmo,
+    nad_visina: el.values_.nad_visina,
+    vod_10: el.values_.vod10, //Jovanu je polje 10vod - vidjeti može li se json poslati ovako ili da mijenjamo naziv
+    desetvod: el.values_.desetvod,
+    tip_nosac_izol: el.values_.tip_izolatora + " / " + el.values_.tip_nosac_izol,
+    vlasnistvo: el.values_.vlasnistvo,
+    tip: el.values_.tip,
+    visina: el.values_.visina,
+    optika: el.values_.optika,
+    opstina: el.values_.opstina,
+    gps: el.values_.gps,
+    rastavljac: el.values_.rastavljac,
+    datum_azuriranja: "", //Jovan će popuniti na serverskoj strani
+    izolator_vrsta: el.values_.izolator_vrsta,
+    vrsta_materijal: el.values_.vrsta_materijal,
+    naziv_rastavljaca: el.values_.naziv_rastavljaca,
+    geohash_id: "", //Provjeriti da li treba da se šalje
+    geohash_id_no: "", //Provjeriti da li treba da se šalje
+    korisnik: globalUsername,
+    posjeduje_sliku: "NE",
+    originalId: parseInt(new Date().getTime() + "" + serialNo), //el.values_.originalId,
+    sifra_napojne: el.values_.sifra_napojne,
+    naziv_napojne: el.values_.naziv_napojne,
+    izvod_napojne: el.values_.izvod_napojne,
+    vlasnik: tempVlasnik,
+    akcija: action,
+    wizard: wizard,
+    lejer: Lejeri.PrikljucnaKonzola,
+  };
+  prikljucnaKonzolaArrayFinal.push(item);
   return item;
 }
 
