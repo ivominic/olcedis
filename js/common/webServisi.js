@@ -132,10 +132,36 @@ function pretragaTrafostanicaGpx(sifraTS) {
 
         $("#izvod_id").empty();
         fillDdl("izvod_id", "", "");
+        izvodFill(sifraTS);
 
         data.ts.izvodi.forEach(function (vrijednost) {
           fillDdl("ddlIzvodNapojneTrafostanice", vrijednost, vrijednost);
-          fillDdl("izvod_id", vrijednost, vrijednost);
+          // fillDdl("izvod_id", vrijednost, vrijednost);
+        });
+      } else {
+        poruka(StatusPoruke.Upozorenje, GlobalPoruke.NemaPodatakaZaTS);
+      }
+    },
+    error: function (x, y, z) {
+      console.log("greška popuniDdlAtributima", x.responseText);
+    },
+  });
+}
+
+function izvodFill(sifraTS) {
+  let urlServisa = wsServerOriginLocation + "/novi_portal/api/izvodi_napojne_ts?sifra_napojne=" + sifraTS.toUpperCase();
+  urlServisa += "&t=" + Date.now();
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "GET",
+    success: function (data) {
+      console.log("evo ih izvodi:", data);
+      if (data && data.izvodi) {
+        $("#izvod_id").empty();
+        fillDdl("izvod_id", "", "");
+        data.izvodi.forEach(function (vrijednost) {
+          fillDdl("izvod_id", vrijednost.id, vrijednost.naziv);
         });
       } else {
         poruka(StatusPoruke.Upozorenje, GlobalPoruke.NemaPodatakaZaTS);

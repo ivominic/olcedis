@@ -476,6 +476,10 @@ function prikaziAtributDivSolari() {
 }
 
 function prikaziAtributDivPrikljucnaKonzola(){
+  document.querySelector("#divUnosNazivNapojne").style.display = "flex";
+  document.querySelector("#divUnosSifraNapojne").style.display = "flex";
+  document.querySelector("#divUnosIzvodNapojne").style.display = "flex";
+  document.querySelector("#divUnosName").style.display = "flex";
   document.querySelector("#divUnosBrBrojila").style.display = "flex";
   document.querySelector("#divUnosNaziv").style.display = "none";
   document.querySelector("#divUzemljivacPrikljucnaKonzola").style.display = "flex";

@@ -82,7 +82,6 @@ function prikaziPoljaOdabranogGpxPrikljucnaKonzola() {
 function prikaziAtributeWmsPrikljucnaKonzola(objekat) {
   document.querySelector("#gps").value = objekat.properties.gps ?? "";
   document.querySelector("#name").value = objekat.properties.name;
-  document.querySelector("#pog_sprem").value = objekat.properties.pog_sprem;
   document.querySelector("#opstina").value = objekat.properties.opstina;
   document.querySelector("#napon").value = objekat.properties.napon;
   document.querySelector("#naziv_rastavljaca").value = objekat.properties.naziv_rastavljaca;
@@ -95,7 +94,6 @@ function izmijeniAtributeWmsPrikljucnaKonzola(objekat) {
   objekat.properties.name = document.querySelector("#name").value;
   objekat.properties.uzemljivac = document.querySelector("#uzemljivac_prikljucna_konzola").value;
   objekat.properties.pog_sprem = document.querySelector("#pog_sprem_prikljucna_konzola").value;
-  objekat.properties.pog_sprem = document.querySelector("#pog_sprem").value;
   objekat.properties.opstina = document.querySelector("#opstina").value;
   objekat.properties.napon = document.querySelector("#napon").value;
   objekat.properties.vlasnistvo = document.querySelector("#vlasnistvo").value;
