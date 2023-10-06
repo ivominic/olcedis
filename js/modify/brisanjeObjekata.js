@@ -17,6 +17,9 @@ function dodajObjekatZaBrisanje(objekat) {
   if (objekatId.includes(Lejeri.Solari)) {
     objekatId = `${Lejeri.Solari}.${objekat.properties?.originalId}`;
   }
+  if(objekatId.includes(Lejeri.Solari)){
+     objekatId = "solari." + objekatId.split(".")[1];
+  }
   nizWmsZaBrisanje.forEach((item) => {
     if (item[0] === temp_geohash) {
       item[1].push(objekatId);
