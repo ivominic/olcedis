@@ -590,10 +590,11 @@ function readSignedUser() {
       globalUsername = data.response;
       document.querySelector("#userName").textContent = globalUsername;
       //Lejer se filtrira tek nakon čitanja usera
-      let params = wmsOdbijeni.getSource().getParams();
-      params.CQL_FILTER = "korisnik = '" + globalUsername + "'";
-      wmsOdbijeni.getSource().updateParams(params);
-
+      if(typeof wmsOdbijeni !== 'undefined') {
+        let params = wmsOdbijeni.getSource().getParams();
+        params.CQL_FILTER = "korisnik = '" + globalUsername + "'";
+        wmsOdbijeni.getSource().updateParams(params);
+      }
       procitajVlasnika(globalUsername);
     },
     error: function (x, y, z) {
