@@ -33,66 +33,12 @@
     <div class="pocetni-div">
       <div class="topnav" id="topNav">
         <span>
-          <a href="#" id="logo"><img src="../../novi_portal/olcedis/img/logo.png" alt="Theme-logo" style="max-width: 100px" /></a>
+          <a href="#" id="logo"
+            ><img src="../../administracija/olcedis/img/logo.png" alt="Theme-logo" style="max-width: 100px"
+          /></a>
         </span>
         <div class="dropdownDiv">
           <a href="#" class="active tooltip" id="pan" data-tool="Pan"><i class="far fa-hand-paper"></i></a>
-          <!--<div class="dropdown" id="dodaj">
-            <button class="dropbtn">
-              <i class="far fa-plus-square"></i>
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-              <a href="#" id="noviStub35">Stub 35KV</a>
-              <a href="#" id="noviStub10Kv">Stub 10KV</a>
-              <a href="#" id="noviVod35">Vod 35KV</a>
-              <a href="#" id="noviVod10Kv">Vod 10KV</a>
-              <a href="#" id="novaTrafostanica35">Trafostanica 35KV</a>
-              <a href="#" id="novaTrafostanica10Kv">Trafostanica 10KV</a>
-              <a href="#" id="noviNKRO">NKRO</a>
-              <a href="#" id="novoPrikljucnoMjesto">Priključno mjesto</a>
-              <a href="#" id="noviPotrosac">Potrošač</a>
-              <a href="#" id="noviPOD">POD</a>
-            </div>
-          </div>
-          <div class="dropdown" id="izmijeni">
-            <button class="dropbtn">
-              <i class="fas fa-edit"></i>
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-              <a href="#" id="editStub35">Stub 35KV</a>
-              <a href="#" id="editStub10Kv">Stub 10KV</a>
-              <a href="#" id="editVod35">Vod 35KV</a>
-              <a href="#" id="editVod10Kv">Vod 10KV</a>
-              <a href="#" id="editTrafostanica35">Trafostanica 35KV</a>
-              <a href="#" id="editTrafostanica10Kv">Trafostanica 10KV</a>
-              <a href="#" id="editNKRO">NKRO</a>
-              <a href="#" id="editPrikljucnoMjesto">Priključno mjesto</a>
-              <a href="#" id="editPotrosac">Potrošač</a>
-              <a href="#" id="editPOD">POD</a>
-            </div>
-          </div>
-          <div class="dropdown" id="snap">
-            <button class="dropbtn">
-              <i class="fas fa-link"></i>
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-              <a href="#" id="snapStub35">Stub 35KV</a>
-              <a href="#" id="snapStub10Kv">Stub 10KV</a>
-              <a href="#" id="snapVod35">Vod 35KV</a>
-              <a href="#" id="snapVod10Kv">Vod 10KV</a>
-              <a href="#" id="snapTrafostanica35">Trafostanica 35KV</a>
-              <a href="#" id="snapTrafostanica10Kv">Trafostanica 10KV</a>
-              <a href="#" id="snapNKRO">NKRO</a>
-              <a href="#" id="snapPrikljucnoMjesto">Priključno mjesto</a>
-              <a href="#" id="snapPotrosac">Potrošač</a>
-              <a href="#" id="snapPOD">POD</a>
-            </div>
-          </div>
-          <a href="#" id="atributi" class="tooltip" data-tool="Atributi"><i class="fas fa-info-circle"></i></a>
-          <a href="#" id="slika" class="tooltip" data-tool="Fotografija"><i class="fas fa-camera-retro"></i></a>-->
           <div class="dropdown" id="crtanje">
             <button class="dropbtn">
               <i class="fas fa-pencil-alt"></i>
@@ -107,38 +53,13 @@
           <a href="#" id="brisanje" class="tooltip" data-tool="Uklanjanje"
             ><i class="fas fa-eraser" aria-hidden="true"></i
           ></a>
+          <a href="#" id="pojedinacniSelect" class="tooltip" data-tool="Pojedinačni odabir"
+            ><i class="fas fa-map-pin" aria-hidden="true"></i
+          ></a>
           <a href="#" id="wizard" class="tooltip" data-tool="Wizard">W</a>
-          <!--<div class="dropdown">
-            <button class="dropbtn" id="izmjeneGeometrija">
-              <i class="fas fa-tasks"></i>
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-              <a href="#" id="selekcijaPocetnogStuba">Početni stub</a>
-              <a href="#" id="selekcijaZavrsnogStuba">Krajnji stub</a>
-              <a href="#" id="dijeljenjeVoda">Dijeljenje voda</a>
-              <a href="#" id="spajanjeVoda">Spajanje voda</a>
-              <a href="#" id="selekecijaPoligon">Selekcija poligonom</a>
-            </div>
-          </div>
-          <div class="dropdown">
-            <button class="dropbtn" id="meniTS">TS<i class="fa fa-caret-down"></i></button>
-            <div class="dropdown-content">
-              <a href="#" id="selekcijaNapojneTrafostanice">Napojna trafostanica</a>
-              <a href="#" id="selekecijaTrafostanicaPoligon">Selekcija poligonom</a>
-              <a href="#" id="uparivanjeTrafostanica">Uparivanje trafostanica</a>
-            </div>
-          </div>
-          <div class="dropdown">
-            <button class="dropbtn" id="bilingUparivanje">
-              <i class="fas fa-arrows-alt-h"></i>
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-              <a href="#" id="bilingTrafostanice">Biling - trafostanice</a>
-              <a href="#" id="logickeVeze">Logičke veze</a>
-            </div>
-          </div>-->
+          <a href="#" id="download" class="tooltip" data-tool="Preuzimanje maske"
+            ><i class="fa fa-download" aria-hidden="true"></i
+          ></a>
           <a href="#" id="pretraga" class="tooltip" data-tool="Pretraga"
             ><i class="fa fa-search" aria-hidden="true"></i
           ></a>
@@ -148,33 +69,67 @@
               <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-              <a href="#" id="podloga_osm">OSM</a>
-              <a href="#" id="podloga_satelit">Satelit</a>
-              <a href="#" id="podloga_ortofoto">Ortofoto</a>
-              <a href="#" id="lejer_stubovi">Stubovi</a>
-              <a href="#" id="lejer_vodovi">Vodovi</a>
-              <a href="#" id="lejer_trafostanice">Trafostanice</a>
-              <a href="#" id="lejer_prikljucno_mjesto">Prikljucno mjesto</a>
-              <a href="#" id="lejer_nkro">NKRO</a>
-              <a href="#" id="lejer_potrosac">Potrošač</a>
-              <a href="#" id="lejer_pod">POD</a>
+              <a href="#" class="akcija"
+                ><input type="radio" name="layer1" class="radioClass" id="podloga_osm" checked="true" /> Open Street Map
+              </a>
+              <a href="#" class="akcija"
+                ><input type="radio" name="layer1" class="radioClass" id="podloga_satelit" /> Satelit</a
+              >
+              <a href="#" class="akcija"
+                ><input type="radio" name="layer1" class="radioClass" id="podloga_ortofoto" /> Ortofoto</a
+              >
+              <a href="#" class="akcija"
+                ><input type="radio" name="layer1" class="radioClass" id="podloga_bez" /> Bez podloge</a
+              >
+              <a href="#" class="akcija"
+                ><input type="checkbox" name="" class="radioClass" id="lejer_stubovi" checked="true" /> Stubovi</a
+              >
+              <a href="#" class="akcija"
+                ><input type="checkbox" name="" class="radioClass" id="lejer_vodovi" checked="true" /> Vodovi</a
+              >
+              <a href="#" class="akcija"
+                ><input type="checkbox" name="" class="radioClass" id="lejer_trafostanice" checked="true" />
+                Trafostanice</a
+              >
+              <a href="#" class="akcija"
+                ><input type="checkbox" name="" class="radioClass" id="lejer_trafostanice_poligoni" checked="true" />
+                Trafostanice poligoni</a
+              >
+              <a href="#" class="akcija"
+                ><input type="checkbox" name="" class="radioClass" id="lejer_prikljucno_mjesto" checked="true" />
+                Prikljucno mjesto</a
+              >
+              <a href="#" class="akcija"
+                ><input type="checkbox" name="" class="radioClass" id="lejer_nkro" checked="true" /> NKRO</a
+              >
+              <a href="#" class="akcija"
+                ><input type="checkbox" name="" class="radioClass" id="lejer_potrosac" checked="true" /> Potrošač</a
+              >
+              <a href="#" class="akcija"
+                ><input type="checkbox" name="" class="radioClass" id="lejer_pod" checked="true" />POD</a
+              >
+              <a href="#" class="akcija"
+                ><input
+                  type="checkbox"
+                  name=""
+                  class="radioClass"
+                  id="lejer_nelegalni_potrosac"
+                  checked="true"
+                />Nelegalni potrošač</a
+              >
+              <a href="#" class="akcija"
+                ><input type="checkbox" name="" class="radioClass" id="lejer_validations" />Validacija</a
+              >
             </div>
           </div>
-          <!--<div class="dropdown">
-            <button class="dropbtn">
-              <i class="fas fa-download"></i>
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-              <a href="#" id="shp">SHP</a>
-              <a href="#" id="kml">KML</a>
-              <a href="#" id="excel">Excel</a>
-            </div>
-          </div>-->
           <a href="#" id="restart" class="tooltip" data-tool="Restart"
             ><i class="fa fa-repeat" aria-hidden="true"></i
           ></a>
           <a href="naslovnaStranaUrl" id="home" class="tooltip" data-tool="Početna"><i class="fas fa-home"></i></a>
+          <a id="userUrl" class="akcija" style="padding: 3px 16px">
+            <i class="fas fa-user" style="font-size: 20px"> </i>
+            <span style="display: block; font-size: 11px" id="userName"></span
+          ></a>
           <a href="javascript:void(0);" class="icon" onclick="zatvoriHamburger()">&#9776;</a>
         </div>
       </div>
@@ -182,7 +137,7 @@
 
     <div id="map" class="map"></div>
 
-    <div id="atributiDiv" class="sidenav draggable">
+    <div id="atributiDiv" class="sidenav">
       <div class="titleAndClose">
         <h1>Atributi</h1>
         <a href="javascript:void(0)" class="closebtn" onclick="closeDiv('#atributiDiv')">&times;</a>
@@ -200,10 +155,6 @@
           <div class="flex-row pb-8">
             <label for="sifra">Šifra:</label>
             <input type="text" id="sifra" />
-          </div>
-          <div class="flex-row pb-8">
-            <label for="pripadnost">Pripadnost:</label>
-            <input type="text" id="pripadnost" />
           </div>
           <div class="flex-row pb-8">
             <label for="tip">Tip stuba:</label>
@@ -270,7 +221,7 @@
             <select id="rasvjeta" class="select-css"></select>
           </div>
           <div class="flex-row pb-8">
-            <label for="br_pmo">Broj mjernih ormara:</label>
+            <label for="br_pom">Broj mjernih ormara:</label>
             <input type="text" id="br_pmo" />
           </div>
           <div class="flex-row pb-8">
@@ -316,66 +267,17 @@
       </div>
       <div class="d-flex-end items-padd-sm">
         <button type="button" class="btn mr-8" id="btnSacuvaj"><i class="fas fa-check-circle"></i> Sačuvaj</button>
-        <!--<button type="button" class="btn" id="btnPonisti"><i class="fas fa-undo-alt"></i> Poništi</button>-->
         <button type="button" class="btn" id="btnIzbrisi"><i class="fas fa-trash"></i> Izbriši</button>
       </div>
     </div>
 
-    <div id="pretragaDiv" class="sidenav draggable">
+    <div id="pretragaDiv" class="sidenav">
       <div class="titleAndClose">
         <h1>Pretraga</h1>
         <a href="javascript:void(0)" class="closebtn" onclick="closeDiv('#pretragaDiv')">&times;</a>
       </div>
-      <!--<div class="items-padd">
-        <div class="flex-row mb-16 pb-16 border-bottom">
-          <div>
-            <label class="container">
-              Udaljenost od tačke
-              <input type="checkbox" id="pretragaTacke" />
-              <span class="checkmark"></span>
-            </label>
-          </div>
-          <div>
-            <input type="number" id="pretragaTackeUdaljenost" />
-          </div>
-        </div>
-        <div class="flex-row mb-16 pb-16 border-bottom">
-          <label class="container">
-            Linija presijeca
-            <input type="checkbox" id="pretragaLinije" />
-            <span class="checkmark"></span>
-          </label>
-        </div>
-        <div class="flex-row mb-16 pb-16 border-bottom">
-          <div>
-            <label class="container">
-              Poligon obuhvata
-              <input type="checkbox" id="pretragaPoligonObuhvata" />
-              <span class="checkmark"></span>
-            </label>
-          </div>
-          <div>
-            <label class="container">
-              Poligon presijeca
-              <input type="checkbox" id="pretragaPoligonPresijeca" />
-              <span class="checkmark"></span>
-            </label>
-          </div>
-        </div>
-      </div>-->
       <div class="items-padd">
         <div class="pr-8 sadrzaj-scroll style-2">
-          <!--<div class="flex-row pb-8">
-            <label for="ddl_vektor">Lejer:</label>
-            <select id="ddl_vektor" class="select-css">
-              <option value=""></option>
-              <option value="stubovi">Stubovi</option>
-              <option value="vodovi">Vodovi</option>
-              <option value="trafostanice">Trafostanice</option>
-              <option value="prikljucno_mjesto">Priključno mjesto</option>
-              <option value="nkro">NKRO</option>
-            </select>
-          </div>-->
           <div class="flex-row pb-8">
             <label for="ddl_pretraga_napon">Napon:</label>
             <select id="ddl_pretraga_napon" class="select-css">
@@ -385,10 +287,6 @@
               <option value="0.4">0.4kV</option>
             </select>
           </div>
-          <!--<div class="flex-row pb-8">
-            <label for="pretraga_opstina">Opština:</label>
-            <select id="pretraga_opstina" class="select-css"></select>
-          </div>-->
           <div class="flex-row pb-8">
             <label for="pretraga_layer_name">Layer name:</label>
             <input type="text" id="pretraga_layer_name" />
@@ -397,6 +295,33 @@
       </div>
       <div class="d-flex-end items-padd-sm">
         <button type="button" class="btn" id="btnFilter"><i class="fas fa-search"></i> Filtriranje</button>
+      </div>
+    </div>
+
+    <div id="odabirObjektaZaDodavanjeWizardDiv" class="sidenav">
+      <div class="titleAndClose">
+        <h1>Odabir objekta za dodavanje</h1>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeDiv('#odabirObjektaZaDodavanjeWizardDiv')"
+          >&times;</a
+        >
+      </div>
+      <div class="items-padd">
+        <div class="pr-8 sadrzaj-scroll style-2 povezivanjevodovadiv">
+          <div class="flex-row pb-8">
+            <label for="ddlObjekatZaDodavanje">Objekat:</label>
+            <select class="select-css selectStart" id="ddlObjekatZaDodavanjeWizard"></select>
+            <a class="tooltip markerButton" data-tool="Odaberite na mapi" id="tool411">
+              <button class="dugmeodabirmapa" id="btnObjekatZaDodavanjeWizard">
+                <i class="fas fa-map-marker-alt"></i>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex-end items-padd-sm">
+        <button type="button" class="btn mr-8" id="btnPotvrdiObjekatZaDodavanjeWizard">
+          <i class="fas fa-check-circle"></i> Potvrdi
+        </button>
       </div>
     </div>
 
@@ -431,7 +356,7 @@
     <div class="razmjera" id="razmjera"></div>
     <div class="koordinate" id="koordinate"></div>
 
-    <div id="wizardDiv" class="sidenav draggable">
+    <div id="wizardDiv" class="sidenav">
       <div class="titleAndClose">
         <h1 id="wizardHeader">Uparivanje trafostanica</h1>
         <a href="javascript:void(0)" class="closebtn" onclick="closeDiv('#wizardDiv')">&times;</a>
@@ -494,6 +419,7 @@
       </div>
     </div>
 
+
     <script type="text/javascript">
       const citajSlikeUrl = "urlZaCitanjeFotografija",
         izbrisiZapisUrl = "urlZaBrisanjeZapisa",
@@ -522,6 +448,6 @@
     <script src="../../novi_portal/olcedis/js/common/webServisiUnosIzmjena.js"></script>
     <script src="../../novi_portal/olcedis/js/wizard/niskonaponski.js"></script>
     <script src="../../novi_portal/olcedis/js/wizard/poligonSelect.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/editWebServisi.js"></script>
+
   </body>
 </html>
