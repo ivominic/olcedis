@@ -447,6 +447,9 @@
     <script src="../../novi_portal/olcedis/js/wizard/tok.js"></script>
     <script src="../../novi_portal/olcedis/js/common/webServisiUnosIzmjena.js"></script>
     <script src="../../novi_portal/olcedis/js/wizard/niskonaponski.js"></script>
+    <script src="../../novi_portal/olcedis/js/wizard/polygonMask.js"></script>
+    <script src="../../novi_portal/olcedis/js/wizard/wizard_preparation.js"></script>
+    <script src="../../novi_portal/olcedis/js/wizard/pojedinacniSelect.js"></script>
     <script src="../../novi_portal/olcedis/js/wizard/poligonSelect.js"></script>
 
   </body>
