@@ -526,6 +526,5 @@
     <script src="../../novi_portal/olcedis/js/common/webServisiUnosIzmjena.js"></script>
     <script src="../../novi_portal/olcedis/js/wizard/niskonaponski.js"></script>
     <script src="../../novi_portal/olcedis/js/wizard/poligonSelect.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/editWebServisi.js"></script>
   </body>
 </html>
