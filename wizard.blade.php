@@ -175,6 +175,10 @@
             ><i class="fa fa-repeat" aria-hidden="true"></i
           ></a>
           <a href="naslovnaStranaUrl" id="home" class="tooltip" data-tool="Početna"><i class="fas fa-home"></i></a>
+          <a id="userUrl" class="akcija" style="padding: 3px 16px">
+            <i class="fas fa-user" style="font-size: 20px"> </i>
+            <span style="display: block; font-size: 11px" id="userName"></span
+          ></a>
           <a href="javascript:void(0);" class="icon" onclick="zatvoriHamburger()">&#9776;</a>
         </div>
       </div>
