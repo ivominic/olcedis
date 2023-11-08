@@ -148,7 +148,7 @@ document.querySelector("#restart").addEventListener("click", restart);
 document.querySelector("#podloga_osm").addEventListener("click", osmPodloga);
 document.querySelector("#podloga_satelit").addEventListener("click", satelitPodloga);
 document.querySelector("#podloga_ortofoto").addEventListener("click", ortofotoPodloga);
-document.querySelector("#podloga_bez").addEventListener("click", bezPodloga);
+//document.querySelector("#podloga_bez").addEventListener("click", bezPodloga);
 //Ovo otkomentarisati za snap
 
 document.querySelector("#confirmPotvrdi").addEventListener("click", confirmPotvrdi);
@@ -184,13 +184,12 @@ function selekcijaZavrsnogStuba() {
 document.querySelector("#lejer_stubovi").addEventListener("click", prikazLejeraStubovi);
 document.querySelector("#lejer_vodovi").addEventListener("click", prikazLejeraVodovi);
 document.querySelector("#lejer_trafostanice").addEventListener("click", prikazLejeraTrafostanice);
-document.querySelector("#lejer_trafostanice_poligoni").addEventListener("click", prikazLejeraTrafostanice);
 document.querySelector("#lejer_prikljucno_mjesto").addEventListener("click", prikazLejeraPrikljucnoMjesto);
 document.querySelector("#lejer_nkro").addEventListener("click", prikazLejeraNkro);
 document.querySelector("#lejer_potrosac").addEventListener("click", prikazLejeraPotrosac);
-document.querySelector("#lejer_nelegalni_potrosac").addEventListener("click", prikazLejeraNelegalniPotrosac);
+//document.querySelector("#lejer_nelegalni_potrosac").addEventListener("click", prikazLejeraNelegalniPotrosac);
 document.querySelector("#lejer_pod").addEventListener("click", prikazLejeraPod);
-document.querySelector("#lejer_validations").addEventListener("click", prikazLejeraValidations);
+//document.querySelector("#lejer_validations").addEventListener("click", prikazLejeraValidations);
 
 function prikazLejeraStubovi() {
   wmsStubovi.setVisible(!wmsStubovi.getVisible());
