@@ -41,6 +41,8 @@ function stubArrayElement(el, action, wizard, serialNo) {
     br_35kv_vodova: el.values_.br_35kv_vodova,
     gps: el.values_.gps,
     rastavljac: el.values_.rastavljac,
+    naziv_rastavljaca: el.values_.naziv_rastavljaca,
+    most: el.values_.most,
     datum_azuriranja: el.values_.datum_azuriranja,
     izolator_vrsta: el.values_.izolator_vrsta,
     uzemljivac_otpor: el.values_.uzemljivac_otpor,
