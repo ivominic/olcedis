@@ -136,12 +136,12 @@ function sacuvaj() {
       dodajPoljaOdabranomGpxSolari();
       return false;
     }
-    if(odabraniLejerUnos === Lejeri.PrikljucnaKonzola || odabraniLejerUnos === "prikljucna_konzola") {
+    if (odabraniLejerUnos === Lejeri.PrikljucnaKonzola || odabraniLejerUnos === "prikljucna_konzola") {
       dodajPoljaOdabranomGpxPrikljucnaKonzola();
       return false;
     }
   }
-} 
+}
 
 /** Sve podešava na početne vrijednosti*/
 function restartovanje() {
@@ -238,8 +238,8 @@ function podesiInterakciju() {
       freehand: blnFreeHandDraw,
     });
 
-    draw.on("drawend", function(e){
-      if(statisticDraw){
+    draw.on("drawend", function (e) {
+      if (statisticDraw) {
         document.querySelector("#inputStatisticLi").click();
         drawGeom = wktGeometrije(e.feature);
       }
@@ -391,26 +391,25 @@ function izbrisi() {
       }
       if (select.getFeatures().array_.length) {
         if (select.getFeatures().array_[0].values_.lejer === "vodovi") {
-          let nizZaBrisanje = nizVodovaGpx;
           vektorKreiraniPonovo
             .getSource()
             .getFeatures()
-            .forEach(function (el, index, nizZaBrisanje) {
+            .forEach(function (el, index) {
               if (el.ol_uid == select.getFeatures().array_[0]?.ol_uid) {
                 if (!isEditable) {
                   ukloniSacuvaniKmlFeature(select.getFeatures().array_[0]);
                 }
-                nizZaBrisanje.splice(index, 1);
+                nizVodovaGpx.splice(index, 1);
                 select.getFeatures().array_.splice(0, 1);
                 selectGpxFeature = null;
                 vektorKreiraniPonovo.getSource().clear();
-                vektorKreiraniPonovo.getSource().addFeatures(nizZaBrisanje);
+                vektorKreiraniPonovo.getSource().addFeatures(nizVodovaGpx);
               }
             });
         } else {
           let nizZaBrisanje = vectorSource.getFeatures();
           let olUid = select?.getFeatures()?.array_[0]?.ol_uid;
-          vectorSource.getFeatures().forEach(function (el, index, nizZaBrisanje) {
+          vectorSource.getFeatures().forEach(function (el, index) {
             if (el.ol_uid == olUid) {
               if (!isEditable) {
                 ukloniSacuvaniKmlFeature(el);
