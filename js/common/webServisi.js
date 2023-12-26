@@ -590,7 +590,7 @@ function readSignedUser() {
       globalUsername = data.response;
       document.querySelector("#userName").textContent = globalUsername;
       //Lejer se filtrira tek nakon čitanja usera
-      if(typeof wmsOdbijeni !== 'undefined') {
+      if (typeof wmsOdbijeni !== "undefined") {
         let params = wmsOdbijeni.getSource().getParams();
         params.CQL_FILTER = "korisnik = '" + globalUsername + "'";
         wmsOdbijeni.getSource().updateParams(params);
@@ -731,6 +731,8 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
       temp_prikljucno_mjesto: JSON.stringify(prikljucna_mjesta),
       temp_potrosaci: JSON.stringify(potrosaci),
       temp_nkro: JSON.stringify(nkro),
+      temp_solari: JSON.stringify([]),
+      temp_prikljucna_konzola: JSON.stringify([]),
       group_id: globalTimestamp,
     },
     type: "POST",

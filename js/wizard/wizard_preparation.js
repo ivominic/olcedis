@@ -328,3 +328,104 @@ function nkroArrayElement(el, action, wizard, serialNo) {
   };
   nkroArrayFinal.push(item);
 }
+
+/**
+ * Preparing JSON object from feature
+ * @param {* Feature of element for insert} el
+ * @param {* "I" for insert, "U" for update} action
+ * @param {* "0" if web service is not call from wizard form, "1" else} wizard
+ * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
+ */
+function solariArrayElement(el, action, wizard, serialNo) {
+  let item = {
+    fid_1: el.values_.fid_1,
+    Geometry: wkt3Du2D(wktGeometrije(el)),
+    name: el.values_.name,
+    fid: el.values_.fid,
+    prik_kabal: el.values_.prik_kabal,
+    pod: el.values_.pod,
+    adresa_mm: el.values_.adresa_mm,
+    prik_mjesto: el.values_.prik_mjesto,
+    skriveni_id_pm: el.values_.prik_mjesto,
+    naziv: el.values_.naziv,
+    naziv_nn_izvod: el.values_.naziv_nn_izvod,
+    snaga_elektrane: el.values_.snaga_elektrane,
+    vlasnistvo: el.values_.vlasnistvo,
+    legalan: el.values_.legalan,
+    pretplatni_br: el.values_.pretplatni_br,
+    br_brojila: el.values_.br_brojila,
+    napon: el.values_.napon,
+    opstina: el.values_.opstina,
+    gps: el.values_.gps,
+    datum_azuriranja: el.values_.datum_azuriranja,
+    geohash_id: el.values_.geohash_id,
+    geohash_id_no: el.values_.geohash_id_no,
+    korisnik: globalUsername,
+    katastar: el.values_.katastar,
+    posjeduje_sliku: el.values_.posjeduje_sliku,
+    originalId: el.values_.originalId,
+    sifra_napojne: el.values_.sifra_napojne,
+    naziv_napojne: el.values_.naziv_napojne,
+    izvod_napojne: el.values_.izvod_napojne,
+    status: el.values_.status,
+    vlasnik: el.values_.vlasnik,
+    akcija: action,
+    wizard: wizard,
+    lejer: Podsloj.Solari,
+  };
+
+  solariArrayFinal.push(item);
+}
+
+/**
+ * Preparing JSON object from feature
+ * @param {* Feature of element for insert} el
+ * @param {* "I" for insert, "U" for update} action
+ * @param {* "0" if web service is not call from wizard form, "1" else} wizard
+ * @param {* Serial number inside gpx/kml file. Used to generate unique originalId with timestamp} serialNo
+ */
+function prikljucnaKonzolaArrayElement(el, action, wizard, serialNo) {
+  let item = {
+    //fid_1: el.values_.fid_1,
+    Geometry: wkt3Du2D(wktGeometrije(el)),
+    name: el.values_.name,
+    izvod_id: el.values_.izvod_id,
+    pog_sprem: el.values_.pog_sprem,
+    uzemljivac: el.values_.uzemljivac,
+    br_izol_faza: el.values_.br_izol_faza,
+    broj: el.values_.broj,
+    napon: el.values_.napon,
+    vrsta_namjena: el.values_.vrsta_namjena,
+    rasvjeta: el.values_.rasvjeta,
+    prikljucak_otcjep: el.values_.prikljucak_otcjep,
+    br_pmo: el.values_.br_pmo,
+    nad_visina: el.values_.nad_visina,
+    vod_10: el.values_.vod10,
+    desetvod: el.values_.desetvod,
+    tip_nosac_izol: el.values_.tip_izolatora + " / " + el.values_.tip_nosac_izol,
+    vlasnistvo: el.values_.vlasnistvo,
+    tip: el.values_.tip,
+    visina: el.values_.visina,
+    optika: el.values_.optika,
+    opstina: el.values_.opstina,
+    gps: el.values_.gps,
+    rastavljac: el.values_.rastavljac,
+    datum_azuriranja: el.values_.datum_azuriranja,
+    izolator_vrsta: el.values_.izolator_vrsta,
+    vrsta_materijal: el.values_.vrsta_materijal,
+    naziv_rastavljaca: el.values_.naziv_rastavljaca,
+    geohash_id: el.values_.geohash_id,
+    geohash_id_no: el.values_.geohash_id_no,
+    korisnik: globalUsername,
+    posjeduje_sliku: el.values_.posjeduje_sliku,
+    originalId: el.values_.originalId,
+    sifra_napojne: el.values_.sifra_napojne,
+    naziv_napojne: el.values_.naziv_napojne,
+    izvod_napojne: el.values_.izvod_napojne,
+    vlasnik: el.values_.vlasnik,
+    akcija: action,
+    wizard: wizard,
+    lejer: Lejeri.PrikljucnaKonzola,
+  };
+  prikljucnaKonzolaArrayFinal.push(item);
+}
