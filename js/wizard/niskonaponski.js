@@ -128,11 +128,28 @@ function povezivanjeNnVodovaTopDown(pocetna, features) {
   presjekVodovaSaPotrosacimaPocetni();
   presjekVodovaSaPodIPrikljMj();
   prekidZbogNepovezanostiObjekataNn();
+  presjekVodovaSaStubovima();
   console.log("VODOVI", selektovaniVodoviFeatures);
   console.log("PODOVI", selektovaniPODoviFeatures);
   console.log("POTROSACI", selektovaniPotrosaciFeatures);
   console.log("PM", selektovanaPrikljucnaMjestaFeatures);
   console.log("KRAJ");
+}
+
+/**Metoda koja će svim stubovima dati da je geohash_id_no vrijednost iz voda koji je siječe.*/
+function presjekVodovaSaStubovima() {
+  let writer = new ol.format.GeoJSON();
+
+  for (let j = 0; j < selektovaniVodoviFeatures.length; j++) {
+    for (let i = 0; i < selektovaniStuboviFeatures.length; i++) {
+      let stubGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaniStuboviFeatures[i].getGeometry()));
+      let vodGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaniVodoviFeatures[j].getGeometry()));
+      if (turf.pointToLineDistance(stubGeometrija, vodGeometrija, { units: "kilometers" }) === 0) {        
+        selektovaniStuboviFeatures[i].akcija = "Izmjena";
+        selektovaniStuboviFeatures[i].values_.geohash_id_no = selektovaniVodoviFeatures[j].values_.geohash_id;
+      }
+    }
+  }
 }
 
 /**Metoda koja će svim trafostanicama dati da je geohash_id_no vrijednost iz voda koji je siječe.

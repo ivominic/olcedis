@@ -214,9 +214,6 @@ function konacniUpisIzmjena() {
     selektovaniStuboviFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
     selektovaniStuboviFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
     stubArrayElement(selektovaniStuboviFeatures[i], "U", 1, iterator);
-    /*if (selektovaniStuboviFeatures[i].akcija && selektovaniStuboviFeatures[i].akcija === "Izmjena") {
-      
-    }*/
   }
 
   insertAllObjects(

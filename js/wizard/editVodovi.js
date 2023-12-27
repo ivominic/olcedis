@@ -97,6 +97,7 @@ function povezivanjeVodova(pocetna, features) {
 
   //Metoda koja svim trafostanicama daje geohash_id_no voda koji je presijeca
   presjekVodovaSaTrafostanicamaPrviKorak();
+  presjekVodovaSaStubovima();
 
   if (!pocetna || pocetna === undefined) {
     //napraviti geometriju iz promjenljivih: geometrijaNapojneTrafostanice i geohashNapojneTrafostanice
@@ -386,6 +387,35 @@ function presjekVodovaSaTrafostanicamaPrviKorak() {
           selektovaneTrafostaniceFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
           selektovaneTrafostaniceFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
           selektovaneTrafostaniceFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
+        }
+      }
+    }
+  }
+}
+
+/**Metoda koja će svim stubovima dati da je geohash_id_no vrijednost iz voda koji je siječe. */
+function presjekVodovaSaStubovima() {
+  let writer = new ol.format.GeoJSON();
+
+  for (let j = 0; j < selektovaniVodoviFeatures.length; j++) {
+    for (let i = 0; i < selektovaniStuboviFeatures.length; i++) {
+      let stubGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaniStuboviFeatures[i].getGeometry()));
+      let vodGeometrija = writer.writeFeatureObject(new ol.Feature(selektovaniVodoviFeatures[j].getGeometry()));
+      if (stubGeometrija.geometry.type === "Point") {
+        if (turf.pointToLineDistance(stubGeometrija, vodGeometrija, { units: "kilometers" }) === 0) {
+          selektovaniStuboviFeatures[i].akcija = "Izmjena";
+          selektovaniStuboviFeatures[i].values_.geohash_id_no = selektovaniVodoviFeatures[j].values_.geohash_id;
+          selektovaniStuboviFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
+          selektovaniStuboviFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
+          selektovaniStuboviFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
+        }
+      } else {
+        if (turf.lineIntersect(vodGeometrija, stubGeometrija)) {
+          selektovaniStuboviFeatures[i].akcija = "Izmjena";
+          selektovaniStuboviFeatures[i].values_.geohash_id_no = selektovaniVodoviFeatures[j].values_.geohash_id;
+          selektovaniStuboviFeatures[i].values_.sifra_napojne = sifraNapojneTrafostanice;
+          selektovaniStuboviFeatures[i].values_.naziv_napojne = nazivNapojneTrafostanice;
+          selektovaniStuboviFeatures[i].values_.izvod_napojne = izvodNapojneTrafostanice;
         }
       }
     }
