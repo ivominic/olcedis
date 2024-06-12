@@ -97,7 +97,7 @@ const WizardPoruke = {
   OdabratiZavrsniStub: "Potrebno je odabrati završni stub.",
   PocetniStubVodaUvoz: "Odaberite početni stub voda koji želite da uvezete.",
   ZavrsniStubVodaUvoz: "Odaberite završni stub voda koji želite da uvezete.",
-  PostojeneNepovezaniVodovi: "Postoje nepovezani vodovi",
+  PostojeneNepovezaniVodovi: "Vodovi nisu dobro iscrtani",
   OdabratiVodObaSistema: "Potrebno je odabrati vodove iz oba sistema",
   DodatObjekat: "Uspješno dodat objekat",
   NijeDodatObjekat: "Nije dodat objekat",

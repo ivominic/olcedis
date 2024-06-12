@@ -607,8 +607,14 @@ function popuniInformacije(odgovor, title) {
       if(metapodaci[key] && metapodaci[key]!== "null"){
         finalValue = metapodaci[key];
       }
-      metaObject+= "<li class=\"list-group-item d-flex justify-content-between align-items-center\" style='font-size: 15px;'>\n" +
+
+      if(key === "datum_azuriranja_wizard") {
+        metaObject= "<li class=\"list-group-item d-flex justify-content-between align-items-center\" style='font-size: 15px;color: #6161bb;'>\n" +
+        "" + finalKey + "<span class=\"badge attribute_value\" style='white-space: inherit;font-size: 15px;color: white !important;background-color: #6161bb;'>" + finalValue + "</span> </li>" + metaObject;
+      } else {
+        metaObject+= "<li class=\"list-group-item d-flex justify-content-between align-items-center\" style='font-size: 15px;'>\n" +
         "" + finalKey + "<span class=\"badge attribute_value\" style='white-space: inherit;font-size: 15px;'>" + finalValue + "</span> </li>";
+      }
       
     }
     if(!id){

@@ -719,6 +719,7 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
     poruka(StatusPoruke.Upozorenje, GlobalPoruke.NemaIzmjena);
     return false;
   }
+  openModalSpinner();
   let urlServisa = wsServerOriginLocation + "/novi_portal/api/object_control";
   console.log("stubovi insert all objects   ", JSON.stringify(stubovi));
   $.ajax({
@@ -737,9 +738,11 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
     },
     type: "POST",
     success: function (data) {
+      closeModalSpinner();
       poruka(StatusPoruke.Uspjeh, data);
     },
     error: function (x, y, z) {
+      closeModalSpinner();
       poruka(StatusPoruke.Greska, JSON.parse(x.responseText).response);
     },
   });
