@@ -1081,13 +1081,15 @@ function klikNaRastereZaPocetnuPoveznicu(browserEvent) {
               tempNiz.forEach((el) => {
                 let newId = el.id.split(".")[0] + "." + el.properties.originalId;
                 let newText = el.id.split(".")[0] + "." + el.properties.name + "-" + el.properties.originalId;
+                if(el.id.split(".")[0] !== "trafostanice_poligoni"){
+                  $("#ddlPocetnaPoveznica").append(
+                    $("<option>", {
+                      value: newId,
+                      text: newText,
+                    })
+                  );
+                }
 
-                $("#ddlPocetnaPoveznica").append(
-                  $("<option>", {
-                    value: newId,
-                    text: newText,
-                  })
-                );
               });
               //Ukloniti metodu koja se poziva na klik
               map.un("singleclick", klikNaRastereZaPocetnuPoveznicu);

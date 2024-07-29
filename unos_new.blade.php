@@ -655,7 +655,7 @@
 
     <!-- Right Sidebar Drawing -->
     <!-- Right Sidebar Attribute -->
-    <div class="right-bar" id="right-bar-modal-attribute" style="width: 450px;">
+    <div class="right-bar" id="right-bar-modal-attribute" style="width: 650px;">
       <div data-simplebar class="h-100">
         <div class="row">
           <div class="col-lg-12">

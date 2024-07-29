@@ -59,7 +59,7 @@ function closeModal() {
 
   document.querySelector("#right-bar-modal").style.right = "-455px";
   document.querySelector("#right-bar-modal-2").style.right = "-455px";
-  document.querySelector("#right-bar-modal-attribute").style.right = "-455px";
+  document.querySelector("#right-bar-modal-attribute").style.right = "-650px";
 }
 
 function pointColor(color) {
