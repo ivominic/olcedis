@@ -161,6 +161,12 @@ function resetovanjeNizovaNakonGreske() {
 }
 
 function resetovanjeNakonUspjeha() {
+  let view = map.getView();
+  let center = view.getCenter();
+  let zoom = view.getZoom();
+  localStorage.setItem('mapCenter', JSON.stringify(center));
+  localStorage.setItem('mapZoom', zoom);
+  location.reload(true);
   resetovanjeNizovaNakonGreske();
   availableLayersPerPowerLevel("");
   vectorSource && vectorSource.clear();

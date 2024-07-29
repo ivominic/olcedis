@@ -984,3 +984,18 @@ function excelDownload() {
   zatvoriHamburger();
   wfsDownload("excel2007");
 }
+
+window.onload = function() {
+  if(map){
+    var savedCenter = localStorage.getItem('mapCenter');
+    var savedZoom = localStorage.getItem('mapZoom');
+    if (savedCenter && savedZoom) {
+        var center = JSON.parse(savedCenter);
+        var zoom = parseInt(savedZoom, 10);
+        map.getView().setCenter(center);
+        map.getView().setZoom(zoom);
+        localStorage.removeItem("mapCenter");
+        localStorage.removeItem("mapZoom");
+    }
+  }
+};
