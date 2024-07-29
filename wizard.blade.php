@@ -424,7 +424,7 @@
       </div>
     </div>
 
-    <div class="right-bar" id="right-bar-modal-attribute" style="width: 450px;display: none">
+    <div class="right-bar" id="right-bar-modal-attribute" style="width: 650px;display: none">
       <div data-simplebar class="h-100">
         <div class="row" style="padding: 0px !important;">
           <div class="col-lg-12">
