@@ -39,6 +39,11 @@
         </span>
         <div class="dropdownDiv">
           <a href="#" class="active tooltip" id="pan" data-tool="Pan"><i class="far fa-hand-paper"></i></a>
+
+          <a id="pregledButtonli" href="#" class="tooltip" data-tool="Pregled atributa">
+              <i class="fas fa-info"></i>
+            </a>
+      
           <div class="dropdown" id="crtanje">
             <button class="dropbtn">
               <i class="fas fa-pencil-alt"></i>
@@ -419,6 +424,25 @@
       </div>
     </div>
 
+    <div class="right-bar" id="right-bar-modal-attribute" style="width: 450px;display: none">
+      <div data-simplebar class="h-100">
+        <div class="row" style="padding: 0px !important;">
+          <div class="col-lg-12">
+            <h2 class="titleDraw">Pregled</h2>
+            <i class="fas fa-times closeMenu" onclick="closeAtributes()"></i>
+          </div>
+
+          <div class="col-lg-12">
+            <div class="accordion custom-accordion" id="atributesAccordion" style="overflow: auto;width: 100%;height: 85vh;">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- end slimscroll-menu-->
+    </div>
+
 
     <script type="text/javascript">
       const citajSlikeUrl = "urlZaCitanjeFotografija",
@@ -451,6 +475,7 @@
     <script src="../../novi_portal/olcedis/js/wizard/wizard_preparation.js"></script>
     <script src="../../novi_portal/olcedis/js/wizard/pojedinacniSelect.js"></script>
     <script src="../../novi_portal/olcedis/js/wizard/poligonSelect.js"></script>
+    <script src="../../novi_portal/olcedis/js/wizard/atributi.js"></script>
 
   </body>
 </html>

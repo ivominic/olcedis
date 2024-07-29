@@ -449,6 +449,36 @@ function onMouseClick(browserEvent) {
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
   console.log("jeste selekcija ts", blnSelekcijaNapojneTS);
+  if(akcija === "information" && document.querySelector("#atributesAccordion")){
+    let atributesAccordion = document.querySelector("#atributesAccordion");
+    atributesAccordion.innerHTML = "";
+    map.forEachLayerAtPixel(pixel, function (layer) {
+      let title = layer.get("title");
+      let vidljivost = layer.get("visible");
+      if (layer instanceof ol.layer.Image) {
+        if (vidljivost) {
+          let url = layer
+            .getSource()
+            .getFeatureInfoUrl(browserEvent.coordinate, map.getView().getResolution(), "EPSG:4326", {
+              INFO_FORMAT: "application/json",
+              feature_count: "50",
+            });
+          if (url) {
+            fetch(url)
+              .then(function (response) {
+                return response.text();
+              })
+              .then(function (json) {
+                let odgovor = JSON.parse(json);
+                if (odgovor.features.length > 0) {
+                  popuniInformacije(odgovor, title);
+                }
+              });
+          }
+        }
+      }
+    });
+  }
   if (blnSelekcijaNapojneTS) {
     //blnSelekcijaNapojneTS = false;
     let url = wmsTrafostanice
