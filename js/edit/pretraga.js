@@ -242,8 +242,18 @@ function filtriranje() {
   } else {
     cqlFilter = prostorniFilter + atributniFilter;
   }
+  let naponNivo = document.querySelector("#ddl_pretraga_napon").value;
+  if(naponNivo){
+    if(cqlFilter === ""){
+      cqlFilter += "napon ILIKE '%" + naponNivo + "%'";
+    } else if(cqlFilter !== ""){
+      cqlFilter += " AND napon ILIKE '%" + naponNivo + "%'";
+    }
+  }
+
   console.log("CQL FILTER", cqlFilter);
   if (cqlFilter === "") {
+    ponistiFilter();
     return false;
   }
 
