@@ -292,9 +292,246 @@
               <option value="0.4">0.4kV</option>
             </select>
           </div>
-          <div class="flex-row pb-8">
-            <label for="pretraga_layer_name">Layer name:</label>
-            <input type="text" id="pretraga_layer_name" />
+
+          <div class="flex-row rowEnd pb-8">
+            <label for="ddlLejer">Lejer:</label>
+            <select id="ddlLejer" class="select-css inputClass">
+              <option value="">Izaberite sloj podataka</option>
+              <option value="stubovi">Stubovi</option>
+              <option value="vodovi">Vodovi</option>
+              <option value="trafostanice">Trafostanice</option>
+              <option value="nkro">NKRO</option>
+              <option value="prikljucno_mjesto">Priključno mjesto</option>
+              <option value="view_potrosaci">Potrošači</option>
+              <option value="view_solari">Solari</option>
+              <option value="pod">POD</option>
+              <option value="nelegalni_potrosac">Nelegalni potrošači</option>
+            </select>
+          </div>
+
+          <div class="flex-row rowEnd pb-8" id="divPretragaNazivNapojneTS">
+            <label for="pretraga_naziv_napojne_ts">Naziv napojne TS:</label>
+            <input type="text" id="pretraga_naziv_napojne_ts" class="inputClass" />
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaSifraNapojneTS">
+            <label for="pretraga_sifra_napojne_ts">Šifra napojne TS:</label>
+            <input type="text" id="pretraga_sifra_napojne_ts" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaIzvodNapojneTS">
+            <label for="pretraga_izvod_napojne_ts">Ime izvoda u TS:</label>
+            <input type="text" id="pretraga_izvod_napojne_ts" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaGps">
+            <label for="pretraga_gps">GPS:</label>
+            <input type="text" id="pretraga_gps" class="inputClass" />
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaBroj">
+            <label for="pretraga_broj">Broj:</label>
+            <input type="text" id="pretraga_broj" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaTip">
+            <label for="pretraga_tip">Tip:</label>
+            <select id="pretraga_tip" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaNamjena">
+            <label for="pretraga_vrsta_namjena">Namjena:</label>
+            <select id="pretraga_vrsta_namjena" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaMaterijal">
+            <label for="pretraga_vrsta_materijal">Materijal:</label>
+            <select id="pretraga_vrsta_materijal" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaVrstaDrvenogStuba">
+            <label for="pretraga_vrsta_drvenog">Vrsta drvenog stuba:</label>
+            <select id="pretraga_vrsta_drvenog" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaNadmorskaVisina">
+            <label for="pretraga_nad_visina">Nadmorska visina (m):</label>
+            <input type="number" id="pretraga_nad_visina" class="inputClass" />
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaVisina">
+            <label for="pretraga_visina">Visina (m):</label>
+            <input type="number" id="pretraga_visina" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaRasporedProvodnika">
+            <label for="pretraga_rasp_prov">Raspored provodnika:</label>
+            <input type="text" id="pretraga_rasp_prov" class="inputClass" />
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaIzolatorVrsta">
+            <label for="pretraga_izolator_vrsta">Vrsta izolatora:</label>
+            <select id="pretraga_izolator_vrsta" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaIzolatorFunkcija">
+            <label for="pretraga_izolator_funkcija">Vrsta izolatora po funkciji:</label>
+            <select id="pretraga_izolator_funkcija" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaBrIzolFaza">
+            <label for="pretraga_br_izol_faza">Broj izolatora po fazi:</label>
+            <input type="text" id="pretraga_br_izol_faza" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaTipIzolatora">
+            <label for="pretraga_tip_nosac_izol">Tip izolatora:</label>
+            <select id="pretraga_tip_nosac_izol" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaOdvodnikPrenapona">
+            <label for="pretraga_odvodnik_prenapona">Tip odvodnika prenapona:</label>
+            <select id="pretraga_odvodnik_prenapona" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaUzemljivac">
+            <label for="pretraga_uzemljivac">Uzemljivač:</label>
+            <select id="pretraga_uzemljivac" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaOtporUzemljivaca">
+            <label for="pretraga_uzemljivac_otpor">Otpor uzemljivača:</label>
+            <input type="text" id="pretraga_uzemljivac_otpor" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaOptika">
+            <label for="pretraga_optika">Optika:</label>
+            <select id="pretraga_optika" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaRasvjeta">
+            <label for="pretraga_rasvjeta">Javna rasvjeta:</label>
+            <select id="pretraga_rasvjeta" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaBrPmo">
+            <label for="pretraga_br_pmo">Broj mjernih ormara:</label>
+            <input type="text" id="pretraga_br_pmo" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaBrNnv">
+            <label for="pretraga_br_nnv">Broj NN vodova:</label>
+            <input type="text" id="pretraga_br_nnv" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaPogSprem">
+            <label for="pretraga_pog_sprem">Pogonska spremnost:</label>
+            <input type="text" id="pretraga_pog_sprem" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaVlasnistvo">
+            <label for="pretraga_vlasnistvo">Vlasnistvo:</label>
+            <select id="pretraga_vlasnistvo" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaNapon">
+            <label for="pretraga_napon">Napon:</label>
+            <input type="text" id="pretraga_napon" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaPrikljucakOtcjep">
+            <label for="pretraga_prikljucak_otcjep">10kV kabal(prikljucak/otcjep):</label>
+            <select id="pretraga_prikljucak_otcjep" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaNnVod">
+            <label for="pretraga_nn_vod">NN vod :</label>
+            <select id="pretraga_nn_vod" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaRastavljac">
+            <label for="pretraga_rastavljac">Rastavljač:</label>
+            <select id="pretraga_rastavljac" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretraga10KvVod">
+            <label for="pretraga_10_vod">10 kV vod:</label>
+            <select id="pretraga_10_vod" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaNaziv">
+            <label for="pretraga_naziv">Naziv:</label>
+            <input type="text" id="pretraga_naziv" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaTs">
+            <label for="pretraga_ts">Vod se napaja iz TS:</label>
+            <input type="text" id="pretraga_ts" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaBrFaza">
+            <label for="pretraga_br_faza">Broj faza:</label>
+            <select id="pretraga_br_faza" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaVrsta">
+            <label for="pretraga_vrsta">Vrsta:</label>
+            <select id="pretraga_vrsta" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaPresjek">
+            <label for="pretraga_presjek">Presjek voda (mm2):</label>
+            <select id="pretraga_presjek" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaBrSpojnica">
+            <label for="pretraga_br_spojnica">Broj spojnica:</label>
+            <input type="text" id="pretraga_br_spojnica" class="inputClass" />
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaGodIzgr">
+            <label for="pretraga_god_izg">Godina izgradnje:</label>
+            <input type="text" id="pretraga_god_izg" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaUzePresjek">
+            <label for="pretraga_uze_presjek">Zaštitno uže presjek mm2:</label>
+            <select id="pretraga_uze_presjek" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaUze">
+            <label for="pretraga_uze">Zaštitno uže materijal:</label>
+            <select id="pretraga_uze" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaBrNnIzvoda">
+            <label for="pretraga_br_nn_izvoda">Broj NN izvoda:</label>
+            <input type="text" id="pretraga_br_nn_izvoda" class="inputClass" />
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaCelije10">
+            <label for="pretraga_celije_10">Broj 10 kV ćelija:</label>
+            <input type="text" id="pretraga_celije_10" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaProjekSnaga">
+            <label for="pretraga_projek_snaga">Projektovana snaga:</label>
+            <input type="text" id="pretraga_projek_snaga" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaInstSnaga1">
+            <label for="pretraga_inst_snaga_t1">Snaga T1 (kVA):</label>
+            <select id="pretraga_inst_snaga_t1" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaInstSnaga2">
+            <label for="pretraga_inst_snaga_t2">Snaga T2 (kVA):</label>
+            <select id="pretraga_inst_snaga_t2" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaInstSnaga3">
+            <label for="pretraga_inst_snaga_t3">Snaga T3 (kVA):</label>
+            <select id="pretraga_inst_snaga_t3" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaInstSnaga4">
+            <label for="pretraga_inst_snaga_t4">Snaga T4 (kVA):</label>
+            <select id="pretraga_inst_snaga_t4" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaPrenosOdnos">
+            <label for="pretraga_prenos_odnos">Prenosni odnos:</label>
+            <select id="pretraga_prenos_odnos" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaIzvodCelija">
+            <label for="pretraga_izvod_celija">Izvod u napojnoj TS:</label>
+            <input type="text" id="pretraga_izvod_celija" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaFunkcija">
+            <label for="pretraga_funkcija">Funkcija objekta:</label>
+            <select id="pretraga_funkcija" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaIdBilling">
+            <label for="pretraga_id_billing">Identifikacioni broj (Biling):</label>
+            <input type="text" id="pretraga_id_billing" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaId">
+            <label for="pretraga_id">Id:</label>
+            <input type="text" id="pretraga_id" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaOsiguraci">
+            <label for="pretraga_osiguraci">Osigurači:</label>
+            <select id="pretraga_osiguraci" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaMontaza">
+            <label for="pretraga_montaza">Montaža:</label>
+            <select id="pretraga_montaza" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaVrata">
+            <label for="pretraga_vrata">Vrata:</label>
+            <select id="pretraga_vrata" class="select-css inputClass"></select>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaBrIzvoda">
+            <label for="pretraga_br_izvoda">Broj izvoda:</label>
+            <input type="text" id="pretraga_br_izvoda" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaBrPrikljucaka">
+            <label for="pretraga_br_prikljucaka">Broj priključaka:</label>
+            <input type="text" id="pretraga_br_prikljucaka" class="inputClass"/>
           </div>
         </div>
       </div>
