@@ -1,8 +1,8 @@
 /**Metode i promjenljive koje su vezane za konkretan lejer - trafostanice, kao i metode za obradu podataka trafostanica
  * kroz uvodne forme - odabir napojne trafostanice i slično*/
 
-let layernameTS = "trafostanice",
-  fulllayernameTS = "geonode:trafostanice",
+let layernameTS = "view_trafostanice",
+  fulllayernameTS = "geonode:view_trafostanice",
   layertitleTS = "trafostanice";
 let tipGeometrijeTS = point;
 let opisSlikeTS = "";
