@@ -184,6 +184,7 @@ function selekcijaZavrsnogStuba() {
 document.querySelector("#lejer_stubovi").addEventListener("click", prikazLejeraStubovi);
 document.querySelector("#lejer_vodovi").addEventListener("click", prikazLejeraVodovi);
 document.querySelector("#lejer_trafostanice").addEventListener("click", prikazLejeraTrafostanice);
+document.querySelector("#lejer_trafostanice_poligoni").addEventListener("click", prikazLejeraTrafostanicePoligoni);
 document.querySelector("#lejer_prikljucno_mjesto").addEventListener("click", prikazLejeraPrikljucnoMjesto);
 document.querySelector("#lejer_nkro").addEventListener("click", prikazLejeraNkro);
 document.querySelector("#lejer_potrosac").addEventListener("click", prikazLejeraPotrosac);

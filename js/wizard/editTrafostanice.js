@@ -9,6 +9,26 @@ let opisSlikeTS = "";
 
 let nizSelektovanihOriginalId = [];
 
+let layernameTSpoligoni = "trafostanice_poligoni",
+  fulllayernameTSpoligoni = "geonode:trafostanice_poligoni",
+  layertitleTSpoligoni = "trafostanice_poligoni";
+let tipGeometrijeTSpoligoni = polygon;
+
+let wmsTrafostanicePoligoni = new ol.layer.Image({
+  title: layertitleTSpoligoni,
+  name: layernameTSpoligoni,
+  source: new ol.source.ImageWMS({
+    url: wmsUrl,
+    params: {
+      LAYERS: fulllayernameTSpoligoni,
+    },
+    ratio: 1,
+    serverType: "geoserver",
+  }),
+});
+
+map.addLayer(wmsTrafostanicePoligoni);
+
 let wmsTrafostanice = new ol.layer.Image({
   title: layertitleTS,
   name: layernameTS,
