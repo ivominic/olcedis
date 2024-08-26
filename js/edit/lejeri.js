@@ -246,9 +246,9 @@ let layernameSolari = Lejeri.Solari,
     }),
   });
 
+map.addLayer(wmsTrafostanicePoligoni);
 map.addLayer(wmsStubovi);
 map.addLayer(wmsVodovi);
-map.addLayer(wmsTrafostanicePoligoni);
 map.addLayer(wmsTrafostanice);
 map.addLayer(wmsPotrosaci);
 map.addLayer(wmsPrikljucnoMjesto);
