@@ -151,30 +151,18 @@
                 </a>
               </li>
 
-              <li>
-                <a href="#" data-bs-toggle="collapse" id="brisanjeDiv">
-                  <i data-feather="trash-2"></i>
-                  <span> Brisanje </span>
-                  <span class="menu-arrow"></span>
+              <li id="brisanjeDiv">
+                <a id="brisanje" style="width: calc(190px + 120px);">
+                  <i class="mdi mdi-eraser" style="scale: 1.4;"></i>
+                  <span> Brisanje-Poligon/Linija/Tacka </span>
                 </a>
-                <div class="collapse" id="sidebarCrm10">
-                  <ul class="nav-second-level2">
+              </li>
 
-                    <li>
-                      <a href="#" class="dropdown-item" id="brisanje">
-                        <i data-feather="delete" style="width: 16px;"></i>
-                        <span>  Ukloni nacrtano </span>
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#" class="dropdown-item" id="brisanjeViseObjekata">
-                        <i data-feather="trash" style="width: 16px;"></i>
-                        <span>  Izbriši više objekata </span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+              <li>
+                <a id="brisanjeViseObjekata" style="width: calc(190px + 120px);">
+                  <i data-feather="trash" style="width: 16px;"></i>
+                  <span>  Masovno brisanje objekata </span>
+                </a>
               </li>
 
               <li id="izmjenaVodaDiv">
