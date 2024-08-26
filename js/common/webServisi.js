@@ -595,6 +595,12 @@ function readSignedUser() {
         params.CQL_FILTER = "korisnik = '" + globalUsername + "'";
         wmsOdbijeni.getSource().updateParams(params);
       }
+
+      if(typeof wmsValidations !== "undefined"){
+        let params = wmsValidations.getSource().getParams();
+        params.CQL_FILTER = "korisnik = '" + globalUsername + "'";
+        wmsValidations.getSource().updateParams(params);
+      }
       procitajVlasnika(globalUsername);
     },
     error: function (x, y, z) {
