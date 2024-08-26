@@ -54,7 +54,7 @@ function popuniInformacije(odgovor, title) {
     let collapseAtribute = "collapseAtribute" + globalCollapseCounter;
       atributesAccordion.insertAdjacentHTML('beforeend', '<div class="wrap-collabsible">' +
       '<input id="' + collapseAtribute + '" class="toggle checkMain" type="checkbox">' +
-     '<label for="' + collapseAtribute + '" class="lbl-toggle"><span>' + title + ' - ' + id + '</span></label>' +
+     '<label for="' + collapseAtribute + '" class="lbl-toggle"><span>' + title + ' - GIS ID:' + id + '</span></label>' +
       '<div class="collapsible-content">' +
         '<div class="content-inner">' +
           '<ul class="list-group" style="height: 50vh;overflow-x: hidden;overflow-y: scroll;">' + metaObject +
