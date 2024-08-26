@@ -270,6 +270,14 @@ body[data-leftbar-size=condensed] .left-side-menu #sidebar-menu>ul>#izmjenaVodaD
   width: calc(190px + 322px);
 }
 
+body[data-leftbar-size=condensed] .left-side-menu #sidebar-menu>ul>#brisanjeDiv:hover>a{
+  width: calc(190px + 120px);
+}
+
+body[data-leftbar-size=condensed] .left-side-menu #sidebar-menu>ul>#masovnoBrisanjeDiv:hover>a{
+  width: calc(190px + 120px);
+}
+
 #side-menu li.active .editIcon{
   color: #ca2129;
 }
