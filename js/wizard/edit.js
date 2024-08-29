@@ -570,6 +570,16 @@ function filtriranje() {
   }
 
   if (tempLejerZaFilter) {
+    map.getLayers().forEach(function (layer) {
+      if (layer instanceof ol.layer.Image) {
+        if (layer.get("visible")) {
+          let params = layer.getSource().getParams();
+          params.CQL_FILTER = "1=2";
+          layer.getSource().updateParams(params);
+        }
+      }
+    });
+
     let params = tempLejerZaFilter.getSource().getParams();
     params.CQL_FILTER = cqlFilter;
     tempLejerZaFilter.getSource().updateParams(params);

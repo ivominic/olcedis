@@ -188,7 +188,8 @@ function povezivanjeVodova(pocetna, features) {
       if (nizTrenutnihVodova.length == 0) {
         if (nizSvihGeometrija.length > 0) {
           blnOnemogucitiWizard = true;
-          poruka(StatusPoruke.Upozorenje, WizardPoruke.PostojeneNepovezaniVodovi);
+          blnCevrtiKorakBilling = true;
+          // poruka(StatusPoruke.Upozorenje, WizardPoruke.PostojeneNepovezaniVodovi);
           alert(WizardPoruke.PostojeneNepovezaniVodovi); //TODO: ukloniti kad se riješi da prethodna poruka stoji dok se ne klikne
 
           prekidWizarda();

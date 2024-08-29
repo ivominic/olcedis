@@ -6,6 +6,7 @@ let treciKorakWizarda = "Uparivanje trafostanica";
 let cetvrtiKorakWizarda = "Uparivanje vodova";
 let blnOnemogucitiWizard = false; //Promjenljiva koja pokazuje da li treba blokirati wizard zbog nepoklapanja podataka
 let blnPrikazPorukeOPrekidu = true; //Promjenljiva dobija vrijednost false, nakon prikaza prve poruke o prekidu
+let blnCevrtiKorakBilling = false;
 
 document.querySelector("#wizard").addEventListener("click", prikazWizardForme);
 document.querySelector("#btnWizardNext").addEventListener("click", wizardNext);
@@ -120,6 +121,7 @@ function wizardNext() {
 
 /** Provjerava ispunjenost uslova prije prikaza četvrte forme wizard-a. */
 function prikaziCetvrtuFormuWizarda() {
+  blnCevrtiKorakBilling = false;
   if (
     document.querySelector("#ddlPovezivanjeTSselektovane").length > 1 ||
     document.querySelector("#ddlPovezivanjeTSpronadjene").length > 0
@@ -138,22 +140,24 @@ function prikaziCetvrtuFormuWizarda() {
     povezivanjeVodova(featureNapojnaTrafostanica, selektovaniVodoviFeatures);
 
     //Dodavanje selektovanih vodova u listu za uparivanje
-    let option = document.createElement("option");
-    option.text = "Odaberite vod";
-    option.value = "";
-    document.querySelector("#ddlPovezivanjeVodovaSelektovane").appendChild(option);
-    let nizSelektovanihVodovaOriginalId = [];
-    for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
-      nizSelektovanihVodovaOriginalId.push(selektovaniVodoviFeatures[i].values_.originalId);
-      if (!selektovaniVodoviFeatures[i].values_.sifra_dionice) {
-        //Ne prikazujemo vodove koji imaju popunjenu šifru dionice
-        option = document.createElement("option");
-        option.text = selektovaniVodoviFeatures[i].values_.name + "-" + selektovaniVodoviFeatures[i].values_.originalId;
-        option.value = selektovaniVodoviFeatures[i].values_.originalId;
-        document.querySelector("#ddlPovezivanjeVodovaSelektovane").appendChild(option);
+    if(!blnCevrtiKorakBilling){
+      let option = document.createElement("option");
+      option.text = "Odaberite vod";
+      option.value = "";
+      document.querySelector("#ddlPovezivanjeVodovaSelektovane").appendChild(option);
+      let nizSelektovanihVodovaOriginalId = [];
+      for (let i = 0; i < selektovaniVodoviFeatures.length; i++) {
+        nizSelektovanihVodovaOriginalId.push(selektovaniVodoviFeatures[i].values_.originalId);
+        if (!selektovaniVodoviFeatures[i].values_.sifra_dionice) {
+          //Ne prikazujemo vodove koji imaju popunjenu šifru dionice
+          option = document.createElement("option");
+          option.text = selektovaniVodoviFeatures[i].values_.name + "-" + selektovaniVodoviFeatures[i].values_.originalId;
+          option.value = selektovaniVodoviFeatures[i].values_.originalId;
+          document.querySelector("#ddlPovezivanjeVodovaSelektovane").appendChild(option);
+        }
       }
+      vodoviIzBilingaZaUparivanje(nizSelektovanihVodovaOriginalId);
     }
-    vodoviIzBilingaZaUparivanje(nizSelektovanihVodovaOriginalId);
   }
 }
 
