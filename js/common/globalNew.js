@@ -517,8 +517,8 @@ function popuniListeZaStubove(napon) {
   popuniDdlAtributima("#pretraga_vlasnistvo", "stubovi", "vlasnistvo", "napon", napon);
   popuniDdlAtributima("#pretraga_prikljucak_otcjep", "stubovi", "prikljucak_otcjep", "napon", napon);
   popuniDdlAtributima("#pretraga_nn_vod", "stubovi", "nn_vod", "", "");
-  popuniDdlAtributima("#pretraga_rastavljac", "stubovi", "rastavljac", "napon", napon);
-  popuniDdlAtributima("#pretraga_10_vod", "stubovi", "10_vod", "napon", napon);
+  popuniDdlAtributima("#pretraga_rastavljac", "stubovi", "rastavljac", "napon", "10");
+  popuniDdlAtributima("#pretraga_10_vod", "stubovi", "10_vod", "napon", "35");
 }
 
 /**
@@ -552,8 +552,8 @@ function popuniListeZaVodove(napon) {
   popuniDdlAtributima("#pretraga_vrsta_materijal", "vodovi", "materijal", "napon", napon);
   popuniDdlAtributima("#pretraga_rasvjeta", "vodovi", "rasvjeta", "", "");
   popuniDdlAtributima("#pretraga_pog_sprem", "vodovi", "pog_sprem", "napon", napon);
-  popuniDdlAtributima("#pretraga_uze_presjek", "vodovi", "uze_presjek", "napon", napon);
-  popuniDdlAtributima("#pretraga_uze", "vodovi", "uze", "napon", napon);
+  popuniDdlAtributima("#pretraga_uze_presjek", "vodovi", "uze_presjek", "napon", "35");
+  popuniDdlAtributima("#pretraga_uze", "vodovi", "uze", "napon", "35");
 }
 
 /**
@@ -569,13 +569,13 @@ function popuniListeZaTrafostanice(napon) {
   popuniDdlAtributima("#inst_snaga_t3", "trafostanice", "inst_snaga_t3", "napon", napon);
   popuniDdlAtributima("#inst_snaga_t4", "trafostanice", "inst_snaga_t4", "napon", napon);
 
-  popuniDdlAtributima("#pretraga_funkcija", "trafostanice", "funkcija", "napon", napon);
+  popuniDdlAtributima("#pretraga_funkcija", "trafostanice", "funkcija", "", "");
   popuniDdlAtributima("#pretraga_tip", "trafostanice", "tip", "napon", napon);
-  popuniDdlAtributima("#pretraga_prenos_odnos", "trafostanice", "prenos_odnos", "napon", napon);
-  popuniDdlAtributima("#pretraga_inst_snaga_t1", "trafostanice", "inst_snaga_t1", "napon", napon);
-  popuniDdlAtributima("#pretraga_inst_snaga_t2", "trafostanice", "inst_snaga_t2", "napon", napon);
-  popuniDdlAtributima("#pretraga_inst_snaga_t3", "trafostanice", "inst_snaga_t3", "napon", napon);
-  popuniDdlAtributima("#pretraga_inst_snaga_t4", "trafostanice", "inst_snaga_t4", "napon", napon);
+  popuniDdlAtributima("#pretraga_prenos_odnos", "trafostanice", "prenos_odnos", "", "");
+  popuniDdlAtributima("#pretraga_inst_snaga_t1", "trafostanice", "inst_snaga_t1", "", "");
+  popuniDdlAtributima("#pretraga_inst_snaga_t2", "trafostanice", "inst_snaga_t2", "", "");
+  popuniDdlAtributima("#pretraga_inst_snaga_t3", "trafostanice", "inst_snaga_t3", "", "");
+  popuniDdlAtributima("#pretraga_inst_snaga_t4", "trafostanice", "inst_snaga_t4", "", "");
 }
 
 /**
@@ -753,11 +753,31 @@ function popuniDdlAtributima(ddl, objekat, atribut, key_param, value_param) {
           );
         });
       });
+      if(ddl === "#pretraga_inst_snaga_t1" || ddl === "#pretraga_inst_snaga_t2" || ddl === "#pretraga_inst_snaga_t3" || ddl === "#pretraga_funkcija"){
+        checkAndSetupList(ddl);
+      }
     },
     error: function (x, y, z) {
       //alert(x.responseText +"  " +x.status);
       console.log("greška popuniDdlAtributima", x.responseText);
     },
+  });
+}
+
+function checkAndSetupList(ddl){
+  let selectElement = document.querySelector(ddl);
+  let seenValues = new Set();
+  let uniqueOptions = [];
+  for (var i = 0; i < selectElement.options.length; i++) {
+    let option = selectElement.options[i];
+    if (!seenValues.has(option.value)) {
+      seenValues.add(option.value);
+      uniqueOptions.push(option);
+    }
+  }
+  selectElement.innerHTML = "";
+  uniqueOptions.forEach(function(option) {
+    selectElement.appendChild(option);
   });
 }
 

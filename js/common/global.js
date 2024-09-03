@@ -748,12 +748,32 @@ function popuniDdlAtributima(ddl, objekat, atribut, key_param, value_param) {
           );
         });
       });
+      if(ddl === "#pretraga_inst_snaga_t1" || ddl === "#pretraga_inst_snaga_t2" || ddl === "#pretraga_inst_snaga_t3" || ddl === "#pretraga_funkcija"){
+        checkAndSetupList(ddl);
+      }
     },
     error: function (x, y, z) {
       //alert(x.responseText +"  " +x.status);
       console.log("greška popuniDdlAtributima", x.responseText);
     },
   });
+}
+
+function checkAndSetupList(ddl){
+let selectElement = document.querySelector(ddl);
+let seenValues = new Set();
+let uniqueOptions = [];
+for (var i = 0; i < selectElement.options.length; i++) {
+  let option = selectElement.options[i];
+  if (!seenValues.has(option.value)) {
+    seenValues.add(option.value);
+    uniqueOptions.push(option);
+  }
+}
+selectElement.innerHTML = "";
+uniqueOptions.forEach(function(option) {
+  selectElement.appendChild(option);
+});
 }
 
 /**Funkcije za setovanje podloga */
