@@ -1682,3 +1682,15 @@ html[xmlns] .clearfix {
 .swal2-container {
   z-index: 99999999999 !important;
 }
+
+.btn-success {
+  background-color: #288203 !important;
+  background: #288203;
+  border: 1px solid #288203;
+}
+
+.btn-success:hover {
+  color: #fff;
+  background: #288203 !important;
+  border-color: #288203;
+}

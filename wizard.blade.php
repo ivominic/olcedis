@@ -569,7 +569,10 @@
         </div>
       </div>
       <div class="d-flex-end items-padd-sm">
-        <button type="button" class="btn" id="btnFilter"><i class="fas fa-search"></i> Filtriranje</button>
+      <button type="button" class="btn btn-danger waves-effect mr-8" id="btnPonistiFilter">
+          <i class="icon-close" style="transform: translateY(1px);"></i> Poništi filter
+        </button>
+        <button type="button" class="btn btn-success" id="btnFilter"><i class="fas fa-search"></i> Filtriranje</button>
       </div>
     </div>
 

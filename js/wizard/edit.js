@@ -611,6 +611,25 @@ function ponistiFilter() {
   });
 }
 
+document.querySelector("#btnPonistiFilter").addEventListener("click", ponistiFilterMain);
+function ponistiFilterMain() {
+  tempLejerZaFilter = null;
+  clearFilterFields();
+  map.getLayers().forEach(function (layer) {
+    if (layer instanceof ol.layer.Image) {
+      console.log("Lejer", layer.values_.name);
+      if (layer.get("visible")) {
+        let params = layer.getSource().getParams();
+        params.CQL_FILTER = "INCLUDE";
+        layer.getSource().updateParams(params);
+      }
+    }
+  });
+  document.querySelector("#ddlLejer").value = "";
+  document.querySelector("#ddl_pretraga_napon").value = "";
+  sakrijSvaPoljaPretrage();
+}
+
 let nizPoljaZaPretragu = [
   { id: "pretraga_naziv_napojne_ts", field: "naziv_napojne", numeric: false, ddl: false },
   { id: "pretraga_sifra_napojne_ts", field: "sifra_napojne", numeric: false, ddl: false },
