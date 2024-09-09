@@ -65,6 +65,7 @@ function vodEditGeometrije(browserEvent) {
   map.addInteraction(snap);
 
   modifyVod.on("modifyend", function (e) {
+    document.querySelector("#btnPotvrdiProduzenjeKraka").style.display = "none";
     console.log("MODIFY VOD END - features", e.features.getArray()[0]);
     trenutnoModifikovaniVod = "";
 
@@ -138,6 +139,7 @@ function vodEditGeometrije(browserEvent) {
       return false;
     }
 
+    document.querySelector("#btnPotvrdiProduzenjeKraka").style.display = "block";
     trenutnoModifikovaniVod = e.features.getArray()[0];
     //vodArrayValuesProperties(e.features.getArray()[0], "U");
   });

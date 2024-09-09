@@ -312,6 +312,7 @@ document.querySelector("#vodProduzenjeKrakaBtn").addEventListener("click", funct
   map.on("singleclick", vodEditGeometrije);
   document.querySelector("#vodProduzenjeKrakaBtn").className = "active";
   document.querySelector("#izmjenaVodaDiv").className = "active";
+  document.querySelector("#btnPotvrdiProduzenjeKraka").style.display = "none";
 });
 document.querySelector("#ddl_sloj_podataka").addEventListener("click", ddlLejerChange);
 document.querySelector("#btnPrethodniObjekat").addEventListener("click", prethodniObjekatGpx);
