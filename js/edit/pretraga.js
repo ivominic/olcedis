@@ -391,6 +391,11 @@ function ponistiFilterMain() {
   });
   document.querySelector("#ddlLejer").value = "";
   document.querySelector("#ddl_pretraga_napon").value = "";
+  document.querySelector("#pretragaTackeUdaljenost").value = "";
+  document.querySelector("#pretragaTacke").checked = false;
+  document.querySelector("#pretragaLinije").checked = false;
+  document.querySelector("#pretragaPoligonObuhvata").checked = false;
+  document.querySelector("#pretragaPoligonPresijeca").checked = false;
   sakrijSvaPoljaPretrage();
 }
 

@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="css/slika.css" />
     <link rel="stylesheet" href="css/ol.css" />
     <link rel="stylesheet" href="css/sweetalert2.min.css" />
-
+    <link href="libs/ion-rangeslider/css/ion.rangeSlider.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/icons.min.css" rel="stylesheet" type="text/css" />
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
@@ -32,113 +33,145 @@
   <body>
     <div class="pocetni-div">
       <div class="topnav" id="topNav">
-        <span>
-          <a href="#" id="logo"><img src="img/logo.png" alt="Theme-logo" style="max-width: 100px" /></a>
-        </span>
+        <button class="button-menu-mobile waves-effect waves-light">
+          <i class="fe-menu"></i>
+        </button>
+        <a href="#" class="active tooltip" id="pan" data-tool="Pan" style="float: none; width: 70px;font-size: 24px;padding: 15px 21px;"><i class="far fa-hand-paper"></i></a>
+        
+        <button class="button-menu-mobile waves-effect waves-light" id="layerMenu" onclick="showModalLeft()">
+          <i class="fe-layers"></i>
+        </button>
+        <a href="#" id="wizard" class="tooltip" data-tool="Wizard" style="float: none; width: 70px;font-size: 24px;padding: 15px 21px;">W</a>
+        
         <div class="dropdownDiv">
-          <a href="#" class="active tooltip" id="pan" data-tool="Pan"><i class="far fa-hand-paper"></i></a>
-
-            <a id="pregledButtonli" href="#" class="tooltip" data-tool="Pregled atributa">
-              <i class="fas fa-info"></i>
-            </a>
-
-          <div class="dropdown" id="crtanje">
-            <button class="dropbtn">
-              <i class="fas fa-pencil-alt"></i>
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-              <a href="#" id="marker">Tačka</a>
-              <a href="#" id="linija">Linija</a>
-              <a href="#" id="poligon">Poligon</a>
-            </div>
-          </div>
-          <a href="#" id="brisanje" class="tooltip" data-tool="Uklanjanje"
-            ><i class="fas fa-eraser" aria-hidden="true"></i
-          ></a>
-          <a href="#" id="pojedinacniSelect" class="tooltip" data-tool="Pojedinačni odabir"
-            ><i class="fas fa-map-pin" aria-hidden="true"></i
-          ></a>
-          <a href="#" id="wizard" class="tooltip" data-tool="Wizard">W</a>
-          <a href="#" id="download" class="tooltip" data-tool="Preuzimanje maske"
-            ><i class="fa fa-download" aria-hidden="true"></i
-          ></a>
-          <a href="#" id="pretraga" class="tooltip" data-tool="Pretraga"
-            ><i class="fa fa-search" aria-hidden="true"></i
-          ></a>
-          <div class="dropdown">
-            <button class="dropbtn">
-              <i class="fab fa-buffer"></i>
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-content">
-              <a href="#" class="akcija"
-                ><input type="radio" name="layer1" class="radioClass" id="podloga_osm" checked="true" /> Open Street Map
-              </a>
-              <a href="#" class="akcija"
-                ><input type="radio" name="layer1" class="radioClass" id="podloga_satelit" /> Satelit</a
-              >
-              <a href="#" class="akcija"
-                ><input type="radio" name="layer1" class="radioClass" id="podloga_ortofoto" /> Ortofoto</a
-              >
-              <a href="#" class="akcija"
-                ><input type="radio" name="layer1" class="radioClass" id="podloga_bez" /> Bez podloge</a
-              >
-              <a href="#" class="akcija"
-                ><input type="checkbox" name="" class="radioClass" id="lejer_stubovi" checked="true" /> Stubovi</a
-              >
-              <a href="#" class="akcija"
-                ><input type="checkbox" name="" class="radioClass" id="lejer_vodovi" checked="true" /> Vodovi</a
-              >
-              <a href="#" class="akcija"
-                ><input type="checkbox" name="" class="radioClass" id="lejer_trafostanice" checked="true" />
-                Trafostanice</a
-              >
-              <a href="#" class="akcija"
-                ><input type="checkbox" name="" class="radioClass" id="lejer_trafostanice_poligoni" checked="true" />
-                Trafostanice poligoni</a
-              >
-              <a href="#" class="akcija"
-                ><input type="checkbox" name="" class="radioClass" id="lejer_prikljucno_mjesto" checked="true" />
-                Prikljucno mjesto</a
-              >
-              <a href="#" class="akcija"
-                ><input type="checkbox" name="" class="radioClass" id="lejer_nkro" checked="true" /> NKRO</a
-              >
-              <a href="#" class="akcija"
-                ><input type="checkbox" name="" class="radioClass" id="lejer_potrosac" checked="true" /> Potrošač</a
-              >
-              <a href="#" class="akcija"
-                ><input type="checkbox" name="" class="radioClass" id="lejer_pod" checked="true" />POD</a
-              >
-              <a href="#" class="akcija"
-                ><input
-                  type="checkbox"
-                  name=""
-                  class="radioClass"
-                  id="lejer_nelegalni_potrosac"
-                  checked="true"
-                />Nelegalni potrošač</a
-              >
-              <a href="#" class="akcija"
-                ><input type="checkbox" name="" class="radioClass" id="lejer_validations" />Validacija</a
-              >
-            </div>
-          </div>
-          <a href="#" id="restart" class="tooltip" data-tool="Restart"
-            ><i class="fa fa-repeat" aria-hidden="true"></i
-          ></a>
-          <a href="naslovnaStranaUrl" id="home" class="tooltip" data-tool="Početna"><i class="fas fa-home"></i></a>
-          <a id="userUrl" class="akcija" style="padding: 3px 16px">
-            <i class="fas fa-user" style="font-size: 20px"> </i>
-            <span style="display: block; font-size: 11px" id="userName"></span
-          ></a>
+          <a href="naslovnaStranaUrl" id="home" class="tooltip" data-tool="Početna" style="display: none;"><i class="fas fa-home"></i></a>
+          <a id="userUrl" class="akcija" style="display: inline-block;padding: 11px 16px;">
+            <img src="/img/users/user-3.png" alt="user-image" class="rounded-circle">
+            <span style="display: inline-block; font-size: 12px;line-height: 0px !important;transform: translateY(-10px);" id="userName"></span>
+          </a>
           <a href="javascript:void(0);" class="icon" onclick="zatvoriHamburger()">&#9776;</a>
         </div>
       </div>
     </div>
 
+    <div class="left-side-menu">
+      <div class="h-100" data-simplebar>
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+          <ul id="side-menu">
+
+            <li style="min-height: 52px;">
+              <a id="pregledButtonli">
+                <i class="mdi mdi-information-variant" style="font-size: 1.1rem !important;"></i>
+                <span> Pregled atributa </span>
+              </a>
+            </li>
+
+            <li id="crtanje" style="min-height: 52px;">
+              <a>
+                <i class="fas fa-pen" style="font-size: 1.1rem;"></i>
+                <span>  Crtanje </span>
+              </a>
+              <div class="collapse" id="sidebarCrm1">
+                <ul class="nav-second-level" style="width: 230px;">
+                  <li>
+                    <a id="marker" style="width: 100%;background-color: transparent;">
+                      <span class="nav-second-span"> Tačka  </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a id="linija" style="width: 100%;background-color: transparent;">
+                      <span class="nav-second-span"> Linija  </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a id="poligon" style="width: 100%;background-color: transparent;">
+                      <span class="nav-second-span"> Poligon  </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <li style="min-height: 52px;">
+              <a id="brisanje">
+                <i class="mdi mdi-eraser"  style="font-size: 1.4rem !important;"></i>
+                <span> Brisanje-Poligon/Linija/Tacka </span>
+              </a>
+            </li>
+
+            <li style="min-height: 52px;">
+              <a id="pojedinacniSelect">
+                <i class="fas fa-map-pin" style="font-size: 1.2rem;"></i>
+                <span> Pojedinačni odabir </span>
+              </a>
+            </li>
+
+            <li style="min-height: 52px;">
+              <a id="download">
+                <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important;height: 20px !important; margin-left: 4px !important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span> Preuzimanje maske </span>
+              </a>
+            </li>
+
+            <li style="min-height: 55px;">
+              <a id="pretraga">
+                <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important;height: 20px !important; margin-left: 4px !important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <span> Pretraga </span>
+              </a>
+            </li>
+
+            <li style="min-height: 55px;">
+              <a id="restart">
+                <i class="fa fa-repeat" style="font-size: 1.1rem;"></i>
+                <span> Restart </span>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+        <!-- End Sidebar -->
+        <div class="clearfix"></div>
+      </div>
+      <!-- Sidebar -left -->
+    </div>
+
     <div id="map" class="map"></div>
+
+    <div id="lejeriDiv" class="lejeri-stil">
+      <div class="text-layer" style="display: none">
+        <i class="fab fa-buffer" style="width: 1rem"></i><span> Layers</span>
+      </div>
+    </div>
+
+    <div
+    id="chooseLayerContainer"
+    class="choose-layer-stil fadeIn animated"
+    style="display: none"
+    onmouseleave="closeMenuForLayers()"
+  >
+    <div class="row text-center" style="padding: 0px !important;">
+      <div class="col-4 activeMap" id="osmMapDiv">
+        <img src="img/osm.png" class="img-fluid" width="45px"/>
+        <span class="layerSelectionText">OSM</span>
+      </div>
+
+      <div class="col-4" id="sateliteMapDiv">
+        <img src="img/satelite_item.png" class="img-fluid" width="45px"/>
+        <span class="layerSelectionText">Satelit</span>
+      </div>
+
+      <div class="col-4" id="topoMapDiv">
+        <img src="img/topo.png" class="img-fluid" width="45px"/>
+        <span class="layerSelectionText">Ortofoto</span>
+      </div>
+
+      <div class="col-4" id="bezPodlogeDiv" style="margin-top: 13px;cursor: pointer;">
+        <img src="img/without_map.png" class="img-fluid" width="45px"/>
+        <span class="layerSelectionText">Bez podloge</span>
+      </div>
+    </div>
+  </div>
 
     <div id="atributiDiv" class="sidenav">
       <div class="titleAndClose">
@@ -679,13 +712,157 @@
       <!-- end slimscroll-menu-->
     </div>
 
+    <div class="modal-left" id="modal-left">
+      <div class="row" style="padding: 0px !important;display: grid;">
+        <div class="col-lg-12">
+          <h2 class="titleDraw">Lejeri</h2>
+          <i class="fas fa-times closeMenu" onclick="closeModalLeft()"></i>
+        </div>
+        <div class="col-lg-12" style="padding: 20px 18px 0px 20px">
+
+          <input type="text" id="range_15" value="100" min="0" max="100" />
+          <div class="row mt-2" style="padding: 0px !important;margin-left: 12px;">
+            <div class="col-lg-12 mb-2" style="width: 100%;margin-top: 10px;">
+              <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" id="lejer_stubovi" checked />
+                <label class="form-check-label" for="lejer_stubovi">Stubovi</label>
+                <i class="mdi mdi-map-legend" style="float: right;scale: 1.7;" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-original-title="Legenda" onclick="setupImageLegend('stubovi')"></i>
+              </div>
+            </div>
+
+            <div class="col-lg-12 mb-2">
+              <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" id="lejer_vodovi" checked />
+                <label class="form-check-label" for="lejer_vodovi">Vodovi</label>
+                <i class="mdi mdi-map-legend" style="float: right;scale: 1.7;" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-original-title="Legenda" onclick="setupImageLegend('vodovi')"></i>
+              </div>
+            </div>
+
+            <div class="col-lg-12 mb-2">
+              <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" id="lejer_trafostanice" checked />
+                <label class="form-check-label" for="lejer_trafostanice">Trafostanice</label>
+                <i
+                  class="mdi mdi-map-legend"
+                  style="float: right;scale: 1.7;"
+                  onclick="setupImageLegend('view_trafostanice')"
+                  data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-original-title="Legenda"
+                ></i>
+              </div>
+            </div>
+
+            <div class="col-lg-12 mb-2">
+              <div class="form-check form-switch">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="lejer_trafostanice_poligoni"
+                  checked
+                />
+                <label class="form-check-label" for="lejer_trafostanice_poligoni"
+                  >Trafostanice poligoni</label
+                >
+                <i
+                  class="mdi mdi-map-legend"
+                  style="float: right;scale: 1.7;"
+                  onclick="setupImageLegend('trafostanice_poligoni')"
+                  data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-original-title="Legenda"
+                ></i>
+              </div>
+            </div>
+
+            <div class="col-lg-12 mb-2">
+              <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" id="lejer_prikljucno_mjesto" checked />
+                <label class="form-check-label" for="lejer_prikljucno_mjesto">Priključno mjesto</label>
+                <i
+                  class="mdi mdi-map-legend"
+                  style="float: right;scale: 1.7;"
+                  onclick="setupImageLegend('prikljucno_mjesto')"
+                  data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-original-title="Legenda"
+                ></i>
+              </div>
+            </div>
+
+            <div class="col-lg-12 mb-2">
+              <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" id="lejer_nkro" checked />
+                <label class="form-check-label" for="lejer_nkro">NKRO</label>
+                <i class="mdi mdi-map-legend" style="float: right;scale: 1.7;" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-original-title="Legenda" onclick="setupImageLegend('nkro')"></i>
+              </div>
+            </div>
+
+            <div class="col-lg-12 mb-2">
+              <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" id="lejer_potrosac" checked />
+                <label class="form-check-label" for="lejer_potrosac">Potrošač</label>
+                <i
+                  class="mdi mdi-map-legend"
+                  style="float: right;scale: 1.7;"
+                  data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-original-title="Legenda"
+                  onclick="setupImageLegend('view_potrosaci')"
+                ></i>
+              </div>
+            </div>
+
+            <div class="col-lg-12 mb-2">
+              <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" id="lejer_nelegalni_potrosac" />
+                <label class="form-check-label" for="lejer_nelegalni_potrosac"
+                  >Nelegalni potrošač</label
+                >
+                <i
+                  class="mdi mdi-map-legend"
+                  style="float: right;scale: 1.7;"
+                  data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-original-title="Legenda"
+                  onclick="setupImageLegend('nelegalni_potrosac')"
+                ></i>
+              </div>
+            </div>
+
+            <div class="col-lg-12 mb-2">
+              <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" id="lejer_pod" checked />
+                <label class="form-check-label" for="lejer_pod">POD</label>
+                <i class="mdi mdi-map-legend" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-original-title="Legenda" style="float: right;scale: 1.7;" onclick="setupImageLegend('view_pod')"></i>
+              </div>
+            </div>
+
+
+            <div class="col-lg-12 mb-2">
+              <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" id="lejer_validations" />
+                <label class="form-check-label" for="lejer_validations">Validacija</label>
+                <i
+                  class="mdi mdi-map-legend"
+                  data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-original-title="Legenda"
+                  style="float: right;scale: 1.7;"
+                  onclick="setupImageLegend('validations')"
+                ></i>
+              </div>
+            </div>
+
+          <hr style="color: #e5e8eb;background-color: currentColor; border: 0;opacity: 1;height: 1px;">
+            <div class="col-lg-12 mb-2">
+              <div class="form-check form-switch">
+                <input type="checkbox" class="form-check-input" id="checkAllLayers" />
+                <label class="form-check-label" for="checkAllLayers">Uključi sve</label>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script type="text/javascript">
       const citajSlikeUrl = "urlZaCitanjeFotografija",
         izbrisiZapisUrl = "urlZaBrisanjeZapisa",
         sacuvajZapisUrl = "urlZaCuvanjeZapisa",
         naslovnaStranaUrl = "urlZaCuvanjeZapisa";
     </script>
-
+   <script src="libs/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
+   <script src="js/pages/range-sliders.init.js"></script>
     <script src="js/common/constants.js"></script>
     <script src="js/common/global.js"></script>
     <script src="js/plugin/turf.min.js"></script>
