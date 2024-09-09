@@ -227,7 +227,7 @@ function azuriranjeWebService(vodId, prvaTacka, drugaTacka, nizObjekataZaDodavan
       if (data.includes("reška")) {
         poruka(StatusPoruke.Greska, data);
       } else {
-        poruka(StatusPoruke.Uspjeh, data);
+        poruka(StatusPoruke.Uspjeh, "Tačkasti objekat je uspješno umetnut i poslat na validaciju.");
       }
       availableLayersPerPowerLevel("");
       vectorSource.clear();
