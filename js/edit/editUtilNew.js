@@ -38,6 +38,8 @@ function closeDiv(nazivDiva) {
     console.log("Na zatvaranje diva se isključuje mogućnost odabira voda sa mape.");
     odabirSaMape = false;
     map.un("singleclick", vodEditGeometrije);
+    document.querySelector("#vodProduzenjeKrakaBtn").className = "";
+    document.querySelector("#izmjenaVodaDiv").className = "";
   }
   if(document.querySelector("#atributi")){
     document.querySelector("#atributi").className = "";
