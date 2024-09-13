@@ -307,6 +307,7 @@ function closeModalLeft(){
 }
 
 function showModalLeft(){
+  closeAllDivs();
   document.querySelector("#layerMenu").className = "activeLi";
   document.querySelector("#handButton").className = "";
   document.querySelector("#modal-left").style.left = "unset";

@@ -25,6 +25,7 @@ function isprazniNizoveDodatnihObjekataWizard() {
 }
 
 function prikazFormeZaOdabirWizard() {
+  closeAllDivs();
   showDiv("#odabirObjektaZaDodavanjeWizardDiv");
 }
 

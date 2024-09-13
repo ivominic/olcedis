@@ -121,6 +121,7 @@ function openMenuForLayers(){
   }
 
   function showModalLeft(){
+    closeAllDivs();
     document.querySelector("#layerMenu").className = "button-menu-mobile waves-effect waves-light active";
     document.querySelector("#pan").className = "tooltip";
     document.querySelector("#modal-left").style.left = "70px";

@@ -129,12 +129,20 @@ function atributi() {
 }
 
 function pretraga() {
+  closeAllDivs();
   akcija = "pretraga";
   setujAktivnu("#pretraga");
 }
 
 function restart() {
   location.reload(true);
+}
+
+function closeAllDivs(){
+  document.querySelector("#modal-left").style.left = "-400px";
+  closeDiv('#pretragaDiv');
+  closeDiv('#odabirObjektaZaDodavanjeWizardDiv');
+  closeDiv('#wizardDiv');
 }
 
 /**Povezivanje kontrola sa akcijama */

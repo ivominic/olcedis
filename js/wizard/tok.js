@@ -22,6 +22,7 @@ function prikazWizardForme() {
   map.removeInteraction(draw);
   map.removeInteraction(modify);
 
+  closeAllDivs();
   document.querySelector("#wizardHeader").innerText = prviKorakWizarda;
   document.querySelector("#divWizardOdabirNaponskogNivoa").style.display = "block";
   document.querySelector("#uparivanjeTxtNazivTrafostanice").textContent = "";

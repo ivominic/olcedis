@@ -33,6 +33,7 @@ function izmijeni() {
 }
 
 function atributi() {
+  closeAllDivs();
   akcija = "atributi";
   blnShowAttribute = true;
   setujAktivnu("#atributi");
@@ -41,6 +42,7 @@ function atributi() {
 }
 
 function pretraga() {
+  closeAllDivs();
   akcija = "pretraga";
   setujAktivnu("#pretraga");
 }
@@ -289,6 +291,8 @@ function closeAllDivs() {
   closeDiv("#odabirCvorovaVodaDiv");
   closeDiv("#odabirObjektaZaPomjeranjeDiv");
   closeDiv("#atributiDiv");
+  closeDiv('#pretragaDiv');
+  closeModalLeft();
   document.querySelector("#vodDodvanjeObjektaBtn").className = "";
   document.querySelector("#vodPomjeranjeObjektaBtn").className = "";
   document.querySelector("#vodProduzenjeKrakaBtn").className = "";
@@ -511,6 +515,8 @@ function clickOnInformation(){
 document.querySelector("#pregled").className = "active";
 akcija = "information";
 document.querySelector("#right-bar-modal-attribute").style.right = "0px";
+document.querySelector("#right-bar-modal").style.right = "-650px";
+document.querySelector("#drawButton").className = "";
 }
 
 document.querySelector("#nextStatistic").addEventListener("click", nextStatistic);
