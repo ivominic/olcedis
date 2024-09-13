@@ -761,7 +761,6 @@
                   type="checkbox"
                   class="form-check-input"
                   id="lejer_trafostanice_poligoni"
-                  checked
                 />
                 <label class="form-check-label" for="lejer_trafostanice_poligoni"
                   >Trafostanice poligoni</label

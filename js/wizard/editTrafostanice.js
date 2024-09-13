@@ -27,6 +27,7 @@ let wmsTrafostanicePoligoni = new ol.layer.Image({
   }),
 });
 
+wmsTrafostanicePoligoni.setVisible(false);
 map.addLayer(wmsTrafostanicePoligoni);
 
 let wmsTrafostanice = new ol.layer.Image({

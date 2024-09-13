@@ -215,8 +215,44 @@ function prikazLejeraTrafostanice() {
   zatvoriHamburger();
 }
 function prikazLejeraTrafostanicePoligoni() {
+  if(!wmsTrafostanicePoligoni.getVisible()){
+    getGeoIds();
+  } else {
+    let params = wmsTrafostanice.getSource().getParams();
+    params.CQL_FILTER = "INCLUDE";
+    wmsTrafostanice.getSource().updateParams(params);
+  }
+
   wmsTrafostanicePoligoni.setVisible(!wmsTrafostanicePoligoni.getVisible());
   zatvoriHamburger();
+}
+
+
+function getGeoIds() {
+  $.ajax({
+      url: wfsUrl,
+      type: 'GET',
+      dataType: 'json',
+      data: {
+          service: 'WFS',
+          version: '1.0.0',
+          request: 'GetFeature',
+          typeName: 'geonode:trafostanice_poligoni',
+          outputFormat: 'application/json'
+      },
+      success: function(response) {
+        const geoIds = response.features.map(feature => feature.properties.fid_1);
+        if (geoIds.length > 0) {
+            const cqlFilter = `fid_1 IN (${geoIds.join(',')})`;
+            let params = wmsTrafostanice.getSource().getParams();
+            params.CQL_FILTER = cqlFilter;
+            wmsTrafostanice.getSource().updateParams(params);
+        }
+      },
+      error: function(xhr, status, error) {
+          console.error("Error fetching geo_ids:", error);
+      }
+  });
 }
 
 function prikazLejeraPrikljucnoMjesto() {

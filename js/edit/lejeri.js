@@ -261,6 +261,7 @@ map.addLayer(wmsOdbijeni);
 map.addLayer(wmsSolari);
 map.addLayer(wmsPrikljucnaKonzola);
 
+wmsTrafostanicePoligoni.setVisible(false);
 wmsValidations.setVisible(false);
 wmsNelegalniPotrosaci.setVisible(false);
 wmsPoslovniObjekti.setVisible(false);
