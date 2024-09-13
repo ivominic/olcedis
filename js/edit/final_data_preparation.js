@@ -275,12 +275,25 @@ function prikljucnoMjestoArrayElement(el, action, wizard, serialNo) {
  */
 function potrosacArrayElement(el, action, wizard, serialNo) {
   let tempVlasnik = el.values_.vlasnik;
+  let fid_1= "";
+  if(el.values_.fid_1) {
+    fid_1 = el.values_.fid_1;
+  }
+
+  if(!fid_1 && el.values_.fid) {
+   fid_1 = el.values_.fid;
+  }
+
+  if(!fid_1) {
+    fid_1 = el.values_.pretplatni_br;
+   }
+
   action === "I" && (tempVlasnik = globalUsername);
   let item = {
-    fid_1: el.values_.fid_1,
+    fid_1: fid_1,
     Geometry: wkt3Du2D(wktGeometrije(el)),
     name: el.values_.name,
-    fid: el.values_.fid,
+    fid: fid_1,
     prik_kabal: el.values_.prik_kabal,
     pod: el.values_.pod,
     adresa_mm: el.values_.adresa_mm,

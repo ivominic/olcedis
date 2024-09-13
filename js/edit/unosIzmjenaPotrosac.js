@@ -325,9 +325,11 @@ function provjeraPostojanjaPotrosacaZaAzuriranje(objekat) {
  */
 function provjeraPostojanjaPotrosacaZaAzuriranjeSaGeometrijom(objekat) {
   let retVal = false;
-  potrosaciArrayFinal = potrosaciArrayFinal.filter((item) => {
-    return objekat.fid_1 !== item.fid_1 && objekat.fid_1 !== item.properties?.fid_1;
-  });
+  if(objekat.fid_1){
+    potrosaciArrayFinal = potrosaciArrayFinal.filter((item) => {
+      return objekat.fid_1 !== item.fid_1 && objekat.fid_1 !== item.properties?.fid_1;
+    });
+  }
 
   retVal = potrosaciArrayFinal.some(
     (item) =>
