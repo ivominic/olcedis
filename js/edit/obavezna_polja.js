@@ -17,6 +17,8 @@ function obaveznaPolja(sloj) {
     return provjeraObaveznostiPod();
   } else if(sloj === Podsloj.Solari) {
     return provjeraObaveznostiSolari(); 
+  } else if(sloj === Podsloj.Rasklopiste10) {
+    return provjeraObaveznostiRasklopiste(); 
   }
 }
 
@@ -312,6 +314,14 @@ function provjeraObaveznostiPod() {
 }
 
 function provjeraObaveznostiTS() {
+  let isFilled = true;
+  if (document.querySelector("#ddlTrafostanice").value === "") {
+    isFilled = borderChange(document.querySelector("#ddlTrafostanice"));
+  }
+  return isFilled;
+}
+
+function provjeraObaveznostiRasklopiste() {
   let isFilled = true;
   if (document.querySelector("#ddlTrafostanice").value === "") {
     isFilled = borderChange(document.querySelector("#ddlTrafostanice"));

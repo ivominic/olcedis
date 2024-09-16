@@ -377,13 +377,11 @@ let vektorKreiraniVodovi = new ol.layer.Vector({
   source: new ol.source.Vector({}),
   style: vectorStyleKreirani,
 });
-map.addLayer(vektorKreiraniVodovi);
 
 let vektorKreiraniPonovo = new ol.layer.Vector({
   source: new ol.source.Vector({}),
   style: vectorStyleKreiranPonovo,
 });
-map.addLayer(vektorKreiraniPonovo);
 
 let vectorKmlFocusedObject = new ol.layer.Vector({
   source: new ol.source.Vector({
@@ -391,28 +389,24 @@ let vectorKmlFocusedObject = new ol.layer.Vector({
   }),
   style: vectorStyleKreirani,
 });
-map.addLayer(vectorKmlFocusedObject);
 
 let vektorKmlAzuriranje = new ol.layer.Vector({
   id: "kml_azuriranje",
   source: new ol.source.Vector({}),
   style: vectorStyleKmlAzuriranje,
 });
-map.addLayer(vektorKmlAzuriranje);
 
 let vektorObjektiZaAzuriranje = new ol.layer.Vector({
   id: "azuriranje",
   source: new ol.source.Vector({}),
   style: vectorStyleAzuriranje,
 });
-map.addLayer(vektorObjektiZaAzuriranje);
 
 let vektorObjektiZaBrisanje = new ol.layer.Vector({
   id: "brisanje",
   source: new ol.source.Vector({}),
   style: vectorStyleBrisanje,
 });
-map.addLayer(vektorObjektiZaBrisanje);
 
 /**
  * Metoda koja za naponski nivo trafostanice vraća odgovarajući nivo naponskog voda

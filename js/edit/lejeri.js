@@ -260,6 +260,12 @@ map.addLayer(wmsPoslovniObjekti);
 map.addLayer(wmsOdbijeni);
 map.addLayer(wmsSolari);
 map.addLayer(wmsPrikljucnaKonzola);
+map.addLayer(vektorObjektiZaAzuriranje);
+map.addLayer(vektorKmlAzuriranje);
+map.addLayer(vectorKmlFocusedObject);
+map.addLayer(vektorKreiraniPonovo);
+map.addLayer(vektorKreiraniVodovi);
+map.addLayer(vektorObjektiZaBrisanje);
 
 wmsTrafostanicePoligoni.setVisible(false);
 wmsValidations.setVisible(false);

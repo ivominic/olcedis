@@ -139,6 +139,8 @@ function popuniKontroleIzTrafostanice(data) {
 }
 
 function prikaziPoljaWmsTrafostanice(objekat) {
+  $("#ddlTrafostanice").empty();
+  fillDdl("ddlTrafostanice", objekat.properties.id_billing, objekat.properties.naziv);
   document.querySelector("#read_fid_1").value = objekat.properties.fid_1;
   document.querySelector("#read_name").value = objekat.properties.name;
   document.querySelector("#read_celije_10").value = objekat.properties.celije_10;
