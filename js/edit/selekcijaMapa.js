@@ -570,6 +570,7 @@ function sledecaGpxTacka() {
 }
 
 function odabirPocetneTackeVoda() {
+  document.querySelector("#btnPocetnaTackaPoveznica").className = "dugmeodabirmapa greenClass";
   map.removeInteraction(draw);
   map.removeInteraction(modify);
   odabirSaMape = true;
@@ -581,6 +582,7 @@ function odabirPocetneTackeVoda() {
 }
 
 function odabirKrajnjeTackeVoda() {
+  document.querySelector("#btnKrajnjaTackaPoveznica").className = "dugmeodabirmapa greenClass";
   map.removeInteraction(draw);
   map.removeInteraction(modify);
   odabirSaMape = true;
@@ -612,6 +614,8 @@ function potvrdaUnosaVoda() {
 }
 
 function klikNaRastereZaVodove(browserEvent) {
+  document.querySelector("#btnPocetnaTackaPoveznica").className = "dugmeodabirmapa";
+  document.querySelector("#btnKrajnjaTackaPoveznica").className = "dugmeodabirmapa";
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
   let brojLejera = 0;
