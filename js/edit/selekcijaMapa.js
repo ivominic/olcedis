@@ -1043,6 +1043,7 @@ function odabirSvihRasterObjekataKlik(browserEvent) {
  * Poziva se samo ako nije odabrano da se unosi dio mreže koji ne treba povezivati sa postojećom mrežom (unos ostrva).
  */
 function odabirPocetnePoveznice() {
+  document.querySelector("#btnMapaOdabirPoveznice").className = "dugmeodabirmapa greenClass";
   map.removeInteraction(draw);
   map.removeInteraction(modify);
   odabirSaMape = true;
@@ -1052,6 +1053,7 @@ function odabirPocetnePoveznice() {
 }
 
 function klikNaRastereZaPocetnuPoveznicu(browserEvent) {
+  document.querySelector("#btnMapaOdabirPoveznice").className = "dugmeodabirmapa";
   let coordinate = browserEvent.coordinate;
   let pixel = map.getPixelFromCoordinate(coordinate);
   let brojLejera = 0;

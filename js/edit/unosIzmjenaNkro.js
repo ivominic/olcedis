@@ -46,7 +46,8 @@ function prikaziPoljaWmsNKRO(objekat) {
   document.querySelector("#vrata").value = objekat.properties.vrata;
   document.querySelector("#br_izvoda").value = objekat.properties.br_izvoda;
   document.querySelector("#br_prikljucaka").value = objekat.properties.br_prikljucaka;
-
+  document.querySelector("#vrsta_materijal").value = objekat.properties.materijal;
+  document.querySelector("#pog_sprem").value = objekat.properties.pog_sprem;
   setujDdlVrijednost("#vlasnistvo", objekat.properties.vlasnistvo);
 }
 
