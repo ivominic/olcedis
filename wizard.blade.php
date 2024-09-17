@@ -42,6 +42,11 @@
         <button class="button-menu-mobile waves-effect waves-light" id="layerMenu" onclick="showModalLeft()">
           <i class="fe-layers"></i>
         </button>
+
+        <a href="#" id="pretraga" class="tooltip" data-tool="Filtriranje" style="float: none; width: 70px;font-size: 24px;padding: 15px 21px;">
+          <svg xmlns="http://www.w3.org/2000/svg" style="width: 24px !important;height: 24px !important;transform: translateY(2px);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </a>
+        
         <a href="#" id="wizard" class="tooltip" data-tool="Wizard" style="float: none; width: 70px;font-size: 24px;padding: 15px 21px;">W</a>
         
         <div class="dropdownDiv">
@@ -113,13 +118,6 @@
               <a id="download">
                 <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important;height: 20px !important; margin-left: 4px !important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-download"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 <span> Preuzimanje maske </span>
-              </a>
-            </li>
-
-            <li style="min-height: 55px;">
-              <a id="pretraga">
-                <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px !important;height: 20px !important; margin-left: 4px !important;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                <span> Pretraga </span>
               </a>
             </li>
 

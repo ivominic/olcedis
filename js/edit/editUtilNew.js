@@ -44,8 +44,8 @@ function closeDiv(nazivDiva) {
   if(document.querySelector("#atributi")){
     document.querySelector("#atributi").className = "";
   }
-  if(document.querySelector("#pretraga")){
-    document.querySelector("#pretraga").className = "";
+  if(document.querySelector("#pretragaMenu")){
+    document.querySelector("#pretragaMenu").className = "";
   }
 }
 

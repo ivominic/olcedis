@@ -64,6 +64,10 @@ function closeDiv(nazivDiva) {
   if (blnShowAttribute && nazivDiva === "#atributiDiv") {
     blnShowAttribute = false;
   }
+
+  if(nazivDiva === "#pretragaDiv"){
+   document.querySelector("#pretraga").className = "tooltip";
+  }
 }
 
 function showDiv(nazivDiva) {
@@ -132,6 +136,7 @@ function pretraga() {
   closeAllDivs();
   akcija = "pretraga";
   setujAktivnu("#pretraga");
+  document.querySelector("#pretraga").className = "tooltip active";
 }
 
 function restart() {

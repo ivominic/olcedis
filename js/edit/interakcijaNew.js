@@ -44,7 +44,9 @@ function atributi() {
 function pretraga() {
   closeAllDivs();
   akcija = "pretraga";
-  setujAktivnu("#pretraga");
+  showDiv("#pretragaDiv");
+  document.querySelector("#pretragaMenu").className = "activeLi";
+  document.querySelector("#handButton").className = "";
 }
 
 function restart() {

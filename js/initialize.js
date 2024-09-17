@@ -301,6 +301,7 @@ function closeMenuForLayers(){
 
 function closeModalLeft(){
   document.querySelector("#layerMenu").className = "";
+  document.querySelector("#pretragaMenu").className = "";
   document.querySelector("#handButton").className = "activeLi";
   document.querySelector("#modal-center").style.display = "none";
   document.querySelector("#modal-left").style.left = "-400px";
