@@ -569,6 +569,14 @@ function nextStatistic(){
     },
     success: function (response) {
       let features = response.features;
+      if(features && features.length == 0){
+        Swal.fire({
+          icon: "error",
+          title: "Obavještenje",
+          text: "Objekti koje ste izabrali nisu selektovani.",
+        });
+        return false;
+      }
       //Provjeravamo ima li pravo za brisanje svih featura
       for(let i=0;i< features.length;i++){
         if (!provjeraPravaUnosIzmjena(globalUsername, globalVlasnik, features[i].properties.vlasnik)) {
