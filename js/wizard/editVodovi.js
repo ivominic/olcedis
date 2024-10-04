@@ -39,21 +39,31 @@ function vodoviUpoligonu(napon) {
   if (params.CQL_FILTER && params.CQL_FILTER.length > 0) {
     formiraniFilter += " AND (" + params.CQL_FILTER + ")";
   }
-  formiraniFilter = encodeURIComponent(formiraniFilter);
+  // formiraniFilter = encodeURIComponent(formiraniFilter);
   console.log("filter za cql", formiraniFilter);
-  let urlZaFilter =
-    wfsUrl +
-    "?version=1.0.0&request=GetFeature&typeName=" +
-    fulllayernameVodovi +
-    "&outputformat=application/json&cql_filter=" +
-    formiraniFilter +
-    "&access_token=" +
-    geoserverToken;
+  let urlZaFilter = wfsUrl;
 
+    // let urlZaFilter =
+    // wfsUrl +
+    // "?version=1.0.0&request=GetFeature&typeName=" +
+    // fulllayernameVodovi +
+    // "&outputformat=application/json&cql_filter=" +
+    // formiraniFilter +
+    // "&access_token=" +
+    // geoserverToken;
   $.ajax({
     method: "POST",
     url: urlZaFilter,
-    data: {},
+    data: {
+      version: "1.0.0",
+      access_token: geoserverToken,
+      service: "WFS",
+      request: "GetFeature",
+      typeName: fulllayernameVodovi,
+      outputFormat: "application/json",
+      srsname: "EPSG:3857",
+      CQL_FILTER: formiraniFilter,
+    },
     success: function (response) {
       selektovaniVodoviFeatures = new ol.format.GeoJSON().readFeatures(response);
       nizWizardDodatniVodovi.forEach((el) => {

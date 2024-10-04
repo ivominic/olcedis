@@ -70,7 +70,7 @@ function izmjenaAtributaWmsLejer(objekat) {
  */
 function izmjenaAtributaSvihObjekata() {
   //TODO: CALL WEB SERVICE
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/object_control";
+  let urlServisa = wsServerOriginLocation + "/portal/api/object_control";
   $.ajax({
     url: urlServisa,
     data: {

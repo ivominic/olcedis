@@ -213,7 +213,7 @@ function finalnaObradaGpxTacakaZaAzuriranjeVoda(vodId, prvaTacka, drugaTacka) {
 
 //TODO: Pozvati servis koji će Jovan napraviti - ili će kroz neki od postojećih servisa biti realizovano.
 function azuriranjeWebService(vodId, prvaTacka, drugaTacka, nizObjekataZaDodavanjeVodu) {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/dodavanje_objekta_vodu";
+  let urlServisa = wsServerOriginLocation + "/portal/api/dodavanje_objekta_vodu";
   $.ajax({
     url: urlServisa,
     data: {

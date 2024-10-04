@@ -54,7 +54,7 @@ function cudTrafostanica(feature, akcija, wizard) {
   podaciForme.append("naziv_napojne", feature.naziv_napojne);
 
   $.ajax({
-    url: wsServerOriginLocation + "/novi_portal/api/trafostanice_store",
+    url: wsServerOriginLocation + "/portal/api/trafostanice_store",
     method: "post",
     data: podaciForme,
     processData: false,
@@ -115,7 +115,7 @@ function cudVod(feature, akcija, wizard) {
   podaciForme.append("fid", feature.fid);
 
   $.ajax({
-    url: wsServerOriginLocation + "/novi_portal/api/vodovi_store",
+    url: wsServerOriginLocation + "/portal/api/vodovi_store",
     method: "post",
     data: podaciForme,
     processData: false,
@@ -192,7 +192,7 @@ function cudStub(feature, akcija, wizard) {
   podaciForme.append("fid", feature.fid);
 
   $.ajax({
-    url: wsServerOriginLocation + "/novi_portal/api/stubovi_store",
+    url: wsServerOriginLocation + "/portal/api/stubovi_store",
     method: "post",
     data: podaciForme,
     processData: false,
@@ -244,7 +244,7 @@ function cudPotrosac(feature, akcija, wizard) {
   podaciForme.append("fid", feature.fid);
 
   $.ajax({
-    url: wsServerOriginLocation + "/novi_portal/api/potrosaci_store",
+    url: wsServerOriginLocation + "/portal/api/potrosaci_store",
     method: "post",
     data: podaciForme,
     processData: false,
@@ -296,7 +296,7 @@ function cudNKRO(feature, akcija, wizard) {
   podaciForme.append("fid", feature.fid);
 
   $.ajax({
-    url: wsServerOriginLocation + "/novi_portal/api/nkro_store",
+    url: wsServerOriginLocation + "/portal/api/nkro_store",
     method: "post",
     data: podaciForme,
     processData: false,
@@ -344,7 +344,7 @@ function cudPrikljucnoMjesto(feature, akcija, wizard) {
   podaciForme.append("fid", feature.fid);
 
   $.ajax({
-    url: wsServerOriginLocation + "/novi_portal/api/prikljucno_mjesto_store",
+    url: wsServerOriginLocation + "/portal/api/prikljucno_mjesto_store",
     method: "post",
     data: podaciForme,
     processData: false,
@@ -398,7 +398,7 @@ function cudPOD(feature, akcija, wizard) {
   podaciForme.append("fid", feature.fid);
 
   $.ajax({
-    url: wsServerOriginLocation + "/novi_portal/api/pod_store",
+    url: wsServerOriginLocation + "/portal/api/pod_store",
     method: "post",
     data: podaciForme,
     processData: false,

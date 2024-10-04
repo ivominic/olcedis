@@ -14,13 +14,13 @@
     <script src="https://kit.fontawesome.com/324033e9e1.js" crossorigin="anonymous"></script>
     <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
     <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,requestAnimationFrame,Element.prototype.classList,URL"></script>
-    <link rel="stylesheet" href="../../novi_portal/olcedis/css/util.css" />
-    <link rel="stylesheet" href="../../novi_portal/olcedis/css/stil2.css" />
-    <link rel="stylesheet" href="../../novi_portal/olcedis/css/slika.css" />
-    <link rel="stylesheet" href="../../novi_portal/olcedis/css/ol.css" />
-    <link rel="stylesheet" href="../../novi_portal/olcedis/css/sweetalert2.min.css" />
-    <link href="../../novi_portal/olcedis/libs/ion-rangeslider/css/ion.rangeSlider.min.css" rel="stylesheet" type="text/css" />
-    <link href="../../novi_portal/olcedis/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../../portal/olcedis/css/util.css" />
+    <link rel="stylesheet" href="../../portal/olcedis/css/stil2.css" />
+    <link rel="stylesheet" href="../../portal/olcedis/css/slika.css" />
+    <link rel="stylesheet" href="../../portal/olcedis/css/ol.css" />
+    <link rel="stylesheet" href="../../portal/olcedis/css/sweetalert2.min.css" />
+    <link href="../../portal/olcedis/libs/ion-rangeslider/css/ion.rangeSlider.min.css" rel="stylesheet" type="text/css" />
+    <link href="../../portal/olcedis/css/icons.min.css" rel="stylesheet" type="text/css" />
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -28,7 +28,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="../../novi_portal/olcedis/js/ol.js"></script>
+    <script src="../../portal/olcedis/js/ol.js"></script>
   </head>
 
   <body>
@@ -52,7 +52,7 @@
         <div class="dropdownDiv">
           <a href="naslovnaStranaUrl" id="home" class="tooltip" data-tool="Početna" style="display: none;"><i class="fas fa-home"></i></a>
           <a id="userUrl" class="akcija" style="display: inline-block;padding: 11px 16px;">
-            <img src="../../novi_portal/olcedis/img/users/user-3.png" alt="user-image" class="rounded-circle">
+            <img src="../../portal/olcedis/img/users/user-3.png" alt="user-image" class="rounded-circle">
             <span style="display: inline-block; font-size: 12px;line-height: 0px !important;transform: translateY(-10px);" id="userName"></span>
           </a>
           <a href="javascript:void(0);" class="icon" onclick="zatvoriHamburger()">&#9776;</a>
@@ -152,22 +152,22 @@
   >
     <div class="row text-center" style="padding: 0px !important;">
       <div class="col-4 activeMap" id="osmMapDiv">
-        <img src="../../novi_portal/olcedis/img/osm.png" class="img-fluid" width="45px"/>
+        <img src="../../portal/olcedis/img/osm.png" class="img-fluid" width="45px"/>
         <span class="layerSelectionText">OSM</span>
       </div>
 
       <div class="col-4" id="sateliteMapDiv">
-        <img src="../../novi_portal/olcedis/img/satelite_item.png" class="img-fluid" width="45px"/>
+        <img src="../../portal/olcedis/img/satelite_item.png" class="img-fluid" width="45px"/>
         <span class="layerSelectionText">Satelit</span>
       </div>
 
       <div class="col-4" id="topoMapDiv">
-        <img src="../../novi_portal/olcedis/img/topo.png" class="img-fluid" width="45px"/>
+        <img src="../../portal/olcedis/img/topo.png" class="img-fluid" width="45px"/>
         <span class="layerSelectionText">Ortofoto</span>
       </div>
 
       <div class="col-4" id="bezPodlogeDiv" style="margin-top: 13px;cursor: pointer;">
-        <img src="../../novi_portal/olcedis/img/without_map.png" class="img-fluid" width="45px"/>
+        <img src="../../portal/olcedis/img/without_map.png" class="img-fluid" width="45px"/>
         <span class="layerSelectionText">Bez podloge</span>
       </div>
     </div>
@@ -627,7 +627,7 @@
     <!-- Modal spinner za ajax request-->
     <div id="fadeSpinner"></div>
     <div id="modalSpinner">
-      <img src="../../novi_portal/olcedis/img/loading.gif" alt="Loading..." />
+      <img src="../../portal/olcedis/img/loading.gif" alt="Loading..." />
     </div>
     <div class="razmjera" id="razmjera"></div>
     <div class="koordinate" id="koordinate"></div>
@@ -863,33 +863,33 @@
         naslovnaStranaUrl = "urlZaCuvanjeZapisa";
     </script>
 
-    <script src="../../novi_portal/olcedis/libs/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
-    <script src="../../novi_portal/olcedis/js/pages/range-sliders.init.js"></script>
-    <script src="../../novi_portal/olcedis/js/common/constants.js"></script>
-    <script src="../../novi_portal/olcedis/js/common/global.js"></script>
-    <script src="../../novi_portal/olcedis/js/plugin/turf.min.js"></script>
-    <script src="../../novi_portal/olcedis/js/plugin/ol.js"></script>
-    <script src="../../novi_portal/olcedis/js/plugin/sweetalert2.all.min.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/editUtil.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/edit.js"></script>
+    <script src="../../portal/olcedis/libs/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
+    <script src="../../portal/olcedis/js/pages/range-sliders.init.js"></script>
+    <script src="../../portal/olcedis/js/common/constants.js"></script>
+    <script src="../../portal/olcedis/js/common/global.js"></script>
+    <script src="../../portal/olcedis/js/plugin/turf.min.js"></script>
+    <script src="../../portal/olcedis/js/plugin/ol.js"></script>
+    <script src="../../portal/olcedis/js/plugin/sweetalert2.all.min.js"></script>
+    <script src="../../portal/olcedis/js/wizard/editUtil.js"></script>
+    <script src="../../portal/olcedis/js/wizard/edit.js"></script>
     <!--<script src="js/snap.js"></script>-->
-    <script src="../../novi_portal/olcedis/js/wizard/kreiranjeVoda.js"></script>
-    <script src="../../novi_portal/olcedis/js/common/webServisi.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/editTrafostanice.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/editStubovi.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/editVodovi.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/editPotrosaci.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/editNKRO.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/editPrikljucnoMjesto.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/editPOD.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/tok.js"></script>
-    <script src="../../novi_portal/olcedis/js/common/webServisiUnosIzmjena.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/niskonaponski.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/polygonMask.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/wizard_preparation.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/pojedinacniSelect.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/poligonSelect.js"></script>
-    <script src="../../novi_portal/olcedis/js/wizard/atributi.js"></script>
+    <script src="../../portal/olcedis/js/wizard/kreiranjeVoda.js"></script>
+    <script src="../../portal/olcedis/js/common/webServisi.js"></script>
+    <script src="../../portal/olcedis/js/wizard/editTrafostanice.js"></script>
+    <script src="../../portal/olcedis/js/wizard/editStubovi.js"></script>
+    <script src="../../portal/olcedis/js/wizard/editVodovi.js"></script>
+    <script src="../../portal/olcedis/js/wizard/editPotrosaci.js"></script>
+    <script src="../../portal/olcedis/js/wizard/editNKRO.js"></script>
+    <script src="../../portal/olcedis/js/wizard/editPrikljucnoMjesto.js"></script>
+    <script src="../../portal/olcedis/js/wizard/editPOD.js"></script>
+    <script src="../../portal/olcedis/js/wizard/tok.js"></script>
+    <script src="../../portal/olcedis/js/common/webServisiUnosIzmjena.js"></script>
+    <script src="../../portal/olcedis/js/wizard/niskonaponski.js"></script>
+    <script src="../../portal/olcedis/js/wizard/polygonMask.js"></script>
+    <script src="../../portal/olcedis/js/wizard/wizard_preparation.js"></script>
+    <script src="../../portal/olcedis/js/wizard/pojedinacniSelect.js"></script>
+    <script src="../../portal/olcedis/js/wizard/poligonSelect.js"></script>
+    <script src="../../portal/olcedis/js/wizard/atributi.js"></script>
 
   </body>
 </html>

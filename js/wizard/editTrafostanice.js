@@ -83,19 +83,22 @@ function provjeriTrafostanice() {
  * @param {} napon
  */
 function trafostaniceUpoligonu(napon) {
-  let urlZaFilter =
-    wfsUrl +
-    "?version=1.0.0&request=GetFeature&typeName=" +
-    fulllayernameTS +
-    "&outputformat=application/json&cql_filter=" +
-    globalCqlZaNaponskiNivo(napon, "trafostanice") +
-    "&access_token=" +
-    geoserverToken;
+  let urlZaFilter = wfsUrl;
+  let cqlFilter = globalCqlZaNaponskiNivo(napon, "trafostanice");
 
   $.ajax({
     method: "POST",
     url: urlZaFilter,
-    data: {},
+    data: {
+      version: "1.0.0",
+      access_token: geoserverToken,
+      service: "WFS",
+      request: "GetFeature",
+      typeName: fulllayernameTS,
+      outputFormat: "application/json",
+      srsname: "EPSG:3857",
+      CQL_FILTER: cqlFilter,
+    },
     success: function (response) {
       selektovaneTrafostaniceFeatures = new ol.format.GeoJSON().readFeatures(response);
       nizWizardDodatneTrafostanice.forEach((el) => {

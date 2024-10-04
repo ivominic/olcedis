@@ -220,7 +220,7 @@ function radijusZaPomjeranjeKrajevaVoda(naponskiNivo) {
     poruka(StatusPoruke.Greska, UnosPoruke.PomjerajNemaNapon);
   }
   let urlServisa =
-    wsServerOriginLocation + "/novi_portal/api/get_radius?tip_fajla=gpx&napon=" + naponskiNivo.replace(",", ".");
+    wsServerOriginLocation + "/portal/api/get_radius?tip_fajla=gpx&napon=" + naponskiNivo.replace(",", ".");
   urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,

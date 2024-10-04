@@ -102,15 +102,36 @@ function potvrdaPomjeranjaObjekta() {
       nizWmsZaPomjeranje.push([postojeciObjekat, novaGeometrija]);
     }
     console.log("niz wms za pomjeranje", nizWmsZaPomjeranje);
+    showTablePomjeranjeObjekta();
     poruka(StatusPoruke.Uspjeh, UnosPoruke.PomjerenObjekat);
   }
+}
+
+function showTablePomjeranjeObjekta(){
+  let slanjeBody = document.querySelector("#slanjeBody");
+  slanjeBody.innerHTML = "";
+  if(nizWmsZaPomjeranje.length > 0){
+    nizWmsZaPomjeranje.forEach(function (resp){
+      slanjeBody.insertAdjacentHTML('beforeend', '<tr> <td>' + resp[0] + '</td><td><i class="fas fa-trash" onclick="removeElementPomjeranjeObjekta(\'' + resp[0] + '\')" style="cursor: pointer;"></i> </td></tr>');
+    });
+  } else {
+    slanjeBody.insertAdjacentHTML('beforeend', '<tr><td colspan="2" style="text-align: center;">Nema zapisa za slanje</td></tr>');
+  }
+}
+
+function removeElementPomjeranjeObjekta(elementId){
+  nizWmsZaPomjeranje = nizWmsZaPomjeranje.filter(function(resp) {
+    return resp[0].toString() !== elementId.toString();
+  });
+  console.log(nizWmsZaPomjeranje);
+  showTablePomjeranjeObjekta();
 }
 
 //TODO: Poziv servisa za slanje niza parova za pomjeranje.
 
 /** Poziv web servis za pomjeranje objekata na lokaciju gpx tačaka. Poziva se na finalnoj potvrdi akcija (ikonica dvostruki štrik) */
 async function pomjeranjeObjekataVodaWS() {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/pomjeranje_objekata";
+  let urlServisa = wsServerOriginLocation + "/portal/api/pomjeranje_objekata";
 
   let jsonDataArray = [];
   nizWmsZaPomjeranje.forEach((el) => {

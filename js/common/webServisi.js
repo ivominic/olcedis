@@ -8,7 +8,7 @@
 function neupareneTrafostanice(sifraNapojne, izvodNapojne) {
   let urlServisa =
     wsServerOriginLocation +
-    "/novi_portal/api/neuparene_za_napojnu?sifra_napojne=" +
+    "/portal/api/neuparene_za_napojnu?sifra_napojne=" +
     sifraNapojne +
     "&izvod_napojne=" +
     izvodNapojne;
@@ -40,7 +40,7 @@ function neupareneTrafostanice(sifraNapojne, izvodNapojne) {
  * @param {id_billing vrijednost iz GIS-a} sifraTS
  */
 async function geometrijaTrafostanice(sifraTS) {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice_data?sifra=" + sifraTS;
+  let urlServisa = wsServerOriginLocation + "/portal/api/trafostanice_data?sifra=" + sifraTS;
   urlServisa += "&t=" + Date.now();
   return $.ajax({
     url: urlServisa,
@@ -54,7 +54,7 @@ async function geometrijaTrafostanice(sifraTS) {
  * @param {id_billing vrijednost iz GIS-a} sifraTS
  */
 function geometrijaTrafostaniceCentar(sifraTS) {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice_data?sifra=" + sifraTS;
+  let urlServisa = wsServerOriginLocation + "/portal/api/trafostanice_data?sifra=" + sifraTS;
   urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
@@ -84,7 +84,7 @@ function geometrijaTrafostaniceCentar(sifraTS) {
 function popuniPoljaTrafostaniceWS() {
   let sifraTS = document.querySelector("#ddlTrafostanice").value;
   let retval = "";
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice_data?sifra=" + sifraTS;
+  let urlServisa = wsServerOriginLocation + "/portal/api/trafostanice_data?sifra=" + sifraTS;
   urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
@@ -108,7 +108,7 @@ function popuniPoljaTrafostaniceWS() {
  * @param {id_billing vrijednost iz GIS-a} sifraTS
  */
 function pretragaTrafostanicaGpx(sifraTS) {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice?sifra=" + sifraTS;
+  let urlServisa = wsServerOriginLocation + "/portal/api/trafostanice?sifra=" + sifraTS;
   urlServisa += "&t=" + Date.now();
   $("#ddlIzvodNapojneTrafostanice").empty();
   fillDdl("ddlIzvodNapojneTrafostanice", "", "");
@@ -149,7 +149,7 @@ function pretragaTrafostanicaGpx(sifraTS) {
 }
 
 function izvodFill(sifraTS) {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/izvodi_napojne_ts?sifra_napojne=" + sifraTS.toUpperCase();
+  let urlServisa = wsServerOriginLocation + "/portal/api/izvodi_napojne_ts?sifra_napojne=" + sifraTS.toUpperCase();
   urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
@@ -178,7 +178,7 @@ function izvodFill(sifraTS) {
  * @param {id_billing vrijednost iz GIS-a} sifraTS
  */
 function pretragaTrafostanica(sifraTS) {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/trafostanice?sifra=" + sifraTS;
+  let urlServisa = wsServerOriginLocation + "/portal/api/trafostanice?sifra=" + sifraTS;
   urlServisa += "&t=" + Date.now();
   $("#ddlPovezivanjeTSpronađene").empty();
   $.ajax({
@@ -244,7 +244,7 @@ function trafostaniceIzBilingaZaUparivanje(
   }
   let stringNiz = "[" + nizTS.join(",") + "]";
   let urlServisa =
-    wsServerOriginLocation + "/novi_portal/api/upari_trafostanice?trafostanice=" + stringNiz + dodatniParametriWS;
+    wsServerOriginLocation + "/portal/api/upari_trafostanice?trafostanice=" + stringNiz + dodatniParametriWS;
   urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
@@ -323,7 +323,7 @@ function nnGeometrijaTrafostanica(sifraOdabraneNapojneTS, nazivOdabranaNapojneTS
   }
   let stringNiz = "[]";
   let urlServisa =
-    wsServerOriginLocation + "/novi_portal/api/upari_trafostanice?trafostanice=" + stringNiz + dodatniParametriWS;
+    wsServerOriginLocation + "/portal/api/upari_trafostanice?trafostanice=" + stringNiz + dodatniParametriWS;
   urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
@@ -346,7 +346,7 @@ function nnGeometrijaTrafostanica(sifraOdabraneNapojneTS, nazivOdabranaNapojneTS
  * @param {Username korisnika aplikacije} username
  */
 function procitajVlasnika(username) {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/vlasnik";
+  let urlServisa = wsServerOriginLocation + "/portal/api/vlasnik";
   urlServisa += "?t=" + Date.now();
   urlServisa += "&user=" + username;
   globalVlasnik = "";
@@ -373,7 +373,7 @@ function procitajVlasnika(username) {
 function prikazFotografija(lejer, id) {
   let urlServisa =
     wsServerOriginLocation +
-    "/novi_portal/api/slike?tip_objekta=" +
+    "/portal/api/slike?tip_objekta=" +
     lejer +
     "&id_objekta=" +
     id +
@@ -425,7 +425,7 @@ function vodoviIzBilingaZaUparivanje(nizVodova) {
     return false;
   }
   let stringNiz = "[" + nizVodova.join(",") + "]";
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/upari_vodove?vodovi=" + stringNiz + dodatniParametriWS;
+  let urlServisa = wsServerOriginLocation + "/portal/api/upari_vodove?vodovi=" + stringNiz + dodatniParametriWS;
   urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
@@ -463,7 +463,7 @@ function podaciZaSpisakPotrosaca(nizPretplatnihBrojeva) {
   }
 
   let urlServisa =
-    wsServerOriginLocation + "/novi_portal/api/get_consumer_data?pretplatni_brojevi=" + nizPretplatnihBrojeva;
+    wsServerOriginLocation + "/portal/api/get_consumer_data?pretplatni_brojevi=" + nizPretplatnihBrojeva;
   urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
@@ -491,7 +491,7 @@ function podaciZaSpisakSolari(nizPretplatnihBrojeva) {
   }
 
   let urlServisa =
-    wsServerOriginLocation + "/novi_portal/api/get_consumer_data?pretplatni_brojevi=" + nizPretplatnihBrojeva;
+    wsServerOriginLocation + "/portal/api/get_consumer_data?pretplatni_brojevi=" + nizPretplatnihBrojeva;
   urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
@@ -518,7 +518,7 @@ function podaciZaPretplatniBroj(noviPretplatniBroj, objekat) {
   }
 
   let urlServisa =
-    wsServerOriginLocation + "/novi_portal/api/get_consumer_data?pretplatni_brojevi=" + noviPretplatniBroj;
+    wsServerOriginLocation + "/portal/api/get_consumer_data?pretplatni_brojevi=" + noviPretplatniBroj;
   urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
@@ -541,7 +541,7 @@ function podaciZaPretplatniBrojSolari(noviPretplatniBroj, objekat) {
   }
 
   let urlServisa =
-    wsServerOriginLocation + "/novi_portal/api/get_consumer_data?pretplatni_brojevi=" + noviPretplatniBroj;
+    wsServerOriginLocation + "/portal/api/get_consumer_data?pretplatni_brojevi=" + noviPretplatniBroj;
   urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
@@ -561,7 +561,7 @@ function podaciZaPretplatniBrojSolari(noviPretplatniBroj, objekat) {
  * Metoda koja setuje vrijednost geoserverToken promjenljive, koja se koristi za pozive drugih web servisa.
  */
 function tokenGeoserver() {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/geonode_login";
+  let urlServisa = wsServerOriginLocation + "/portal/api/geonode_login";
   $.ajax({
     url: urlServisa,
     data: "",
@@ -580,7 +580,7 @@ tokenGeoserver();
  * Metoda koja vraća username logovanog korisnika
  */
 function readSignedUser() {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/get_remote_user";
+  let urlServisa = wsServerOriginLocation + "/portal/api/get_remote_user";
   urlServisa += "?t=" + Date.now();
   $.ajax({
     url: urlServisa,
@@ -615,7 +615,7 @@ readSignedUser();
  * Metoda koja vraća dozvoljeni pomjeraj za gpx ili kml, u metrima
  */
 function readRadius() {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/get_radius";
+  let urlServisa = wsServerOriginLocation + "/portal/api/get_radius";
   if (isEditable) {
     urlServisa += "?tip_fajla=gpx";
   } else {
@@ -649,7 +649,7 @@ function readRadius() {
  */
 async function availableLayersPerPowerLevel(powerLevel) {
   $("#ddl_sloj_podataka").empty();
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/slojevi?nivo=" + powerLevel;
+  let urlServisa = wsServerOriginLocation + "/portal/api/slojevi?nivo=" + powerLevel;
   urlServisa += "&t=" + Date.now();
   $.ajax({
     url: urlServisa,
@@ -677,7 +677,7 @@ async function availableLayersPerPowerLevel(powerLevel) {
  */
 function sifreDionicaVodova(nazivTs, sifraTs, izvodTs) {
   $("#sifra_dionice").empty();
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/dionice?naziv_napojne_ts=" + nazivTs;
+  let urlServisa = wsServerOriginLocation + "/portal/api/dionice?naziv_napojne_ts=" + nazivTs;
   urlServisa += "&sifra_napojne_ts=" + sifraTs + "&izvod_napojne_ts=" + izvodTs;
   urlServisa += "&t=" + Date.now();
   $.ajax({
@@ -726,7 +726,7 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
     return false;
   }
   openModalSpinner();
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/object_control";
+  let urlServisa = wsServerOriginLocation + "/portal/api/object_control";
   console.log("stubovi insert all objects   ", JSON.stringify(stubovi));
   $.ajax({
     url: urlServisa,
@@ -762,7 +762,7 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
  * @param {*} pomjeranje_objekta
  */
 async function serviceWrap(objekti_za_azuriranje, object_control, brisanje_objekta, pomjeranje_objekta, pocetna_tacka) {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/service_wrap";
+  let urlServisa = wsServerOriginLocation + "/portal/api/service_wrap";
   console.log("WRAP   ", object_control);
   $.ajax({
     url: urlServisa,

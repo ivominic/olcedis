@@ -35,7 +35,7 @@ function dodajObjekatZaBrisanje(objekat) {
 
 /** Poziv web servis za brisanje objekata. Poziva se na finalnoj potvrdi akcija (ikonica dvostruki štrik) */
 async function brisanjeWmsObjekata() {
-  let urlServisa = wsServerOriginLocation + "/novi_portal/api/brisanje_objekta";
+  let urlServisa = wsServerOriginLocation + "/portal/api/brisanje_objekta";
 
   promiseArray.push(
     fetch(urlServisa, {

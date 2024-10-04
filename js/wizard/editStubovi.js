@@ -31,20 +31,22 @@ function stuboviUpoligonu(napon) {
   if (params.CQL_FILTER && params.CQL_FILTER.length > 0) {
     formiraniFilter += " AND (" + params.CQL_FILTER + ")";
   }
-  formiraniFilter = encodeURIComponent(formiraniFilter);
-  let urlZaFilter =
-    wfsUrl +
-    "?version=1.0.0&request=GetFeature&typeName=" +
-    fulllayernameS +
-    "&outputformat=application/json&cql_filter=" +
-    formiraniFilter +
-    "&access_token=" +
-    geoserverToken;
+  // formiraniFilter = encodeURIComponent(formiraniFilter);
+  let urlZaFilter = wfsUrl;
 
   $.ajax({
     method: "POST",
     url: urlZaFilter,
-    data: {},
+    data: {
+      version: "1.0.0",
+      access_token: geoserverToken,
+      service: "WFS",
+      request: "GetFeature",
+      typeName: fulllayernameS,
+      outputFormat: "application/json",
+      srsname: "EPSG:3857",
+      CQL_FILTER: formiraniFilter,
+    },
     success: function (response) {
       selektovaniStuboviFeatures = new ol.format.GeoJSON().readFeatures(response);
       if (selektovaniStuboviFeatures.length === 0) {
