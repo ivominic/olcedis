@@ -775,8 +775,15 @@ async function serviceWrap(objekti_za_azuriranje, object_control, brisanje_objek
     },
     type: "POST",
     success: function (data) {
-      resetovanjeNakonUspjeha();
-      poruka(StatusPoruke.Uspjeh, data.response.replace(/"/g, ""));
+      Swal.fire({
+        icon: "success",
+        title: data.response.replace(/"/g, ""),
+        showConfirmButton: true,
+      }).then((result) => {
+        resetovanjeNakonUspjeha();
+      });
+      // resetovanjeNakonUspjeha();
+      // poruka(StatusPoruke.Uspjeh, data.response.replace(/"/g, ""));
     },
     error: function (x, y, z) {
       resetovanjeNizovaNakonGreske();
