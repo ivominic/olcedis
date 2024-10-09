@@ -61,7 +61,7 @@ function vodoviUpoligonu(napon) {
       request: "GetFeature",
       typeName: fulllayernameVodovi,
       outputFormat: "application/json",
-      srsname: "EPSG:3857",
+      srsname: "EPSG:4326",
       CQL_FILTER: formiraniFilter,
     },
     success: function (response) {
@@ -200,6 +200,7 @@ function povezivanjeVodova(pocetna, features) {
           blnOnemogucitiWizard = true;
           blnCevrtiKorakBilling = true;
           // poruka(StatusPoruke.Upozorenje, WizardPoruke.PostojeneNepovezaniVodovi);
+          console.log("Preostali vodovi", nizSvihGeometrija);
           alert(WizardPoruke.PostojeneNepovezaniVodovi); //TODO: ukloniti kad se riješi da prethodna poruka stoji dok se ne klikne
 
           prekidWizarda();

@@ -96,7 +96,7 @@ function trafostaniceUpoligonu(napon) {
       request: "GetFeature",
       typeName: fulllayernameTS,
       outputFormat: "application/json",
-      srsname: "EPSG:3857",
+      srsname: "EPSG:4326",
       CQL_FILTER: cqlFilter,
     },
     success: function (response) {

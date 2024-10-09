@@ -44,7 +44,7 @@ function stuboviUpoligonu(napon) {
       request: "GetFeature",
       typeName: fulllayernameS,
       outputFormat: "application/json",
-      srsname: "EPSG:3857",
+      srsname: "EPSG:4326",
       CQL_FILTER: formiraniFilter,
     },
     success: function (response) {
