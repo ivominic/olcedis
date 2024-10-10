@@ -43,6 +43,7 @@ function popuniInformacije(odgovor, title) {
       }
 
       if(key === "datum_azuriranja_wizard") {
+        finalValue = finalValue.replace("Z", "");
         metaObject= "<li class=\"list-group-item d-flex justify-content-between align-items-center\" style='font-size: 15px;color: #6161bb;'>\n" +
         "" + finalKey + "<span class=\"badge " + extraAtributeClass + "\" style='white-space: inherit;font-size: 15px;" + datumExtraStyle + "'>" + finalValue + "</span> </li>" + metaObject;
       } else {
