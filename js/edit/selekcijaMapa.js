@@ -456,7 +456,8 @@ function selekcijaGpxPoligonom() {
   let pocetnaTacka, krajnjaTacka;
   for (let i = minValue; i <= maxValue; i++) {
     vectorSource.getFeatures().forEach(function (el) {
-      if (i === parseInt(el.values_.name)) {
+      let elementName = el.values_.name.replace(/[^\d]/g, '');
+      if (i === parseInt(elementName)) {
         featuresPolygon.array_.forEach(function (poligon_el) {
           if (poligon_el.getGeometry().intersectsExtent(el.getGeometry().getExtent())) {
             //selectedFeatures.push(features[i]);
@@ -507,7 +508,8 @@ function minGpxName(tacke) {
   let retval = 99999;
   if (tacke && tacke.length > 0) {
     tacke.forEach(function (el) {
-      parseInt(el.values_.name) < retval && (retval = parseInt(el.values_.name));
+      let elementName = el.values_.name.replace(/[^\d]/g, '');
+      parseInt(elementName) < retval && (retval = parseInt(elementName));
     });
   }
   return retval;
@@ -517,7 +519,8 @@ function maxGpxName(tacke) {
   let retval = 0;
   if (tacke && tacke.length > 0) {
     tacke.forEach(function (el) {
-      parseInt(el.values_.name) > retval && (retval = parseInt(el.values_.name));
+      let elementName = el.values_.name.replace(/[^\d]/g, '');
+      parseInt(elementName) > retval && (retval = parseInt(elementName));
     });
   }
   return retval;
@@ -986,6 +989,7 @@ function odabirSvihRasterObjekataKlik(browserEvent) {
   if (odabirPrikljucnogMjestaSaMape) {
     klikNaRastereZaOdabirPrikljucnogMjesta(browserEvent);
     odabirPrikljucnogMjestaSaMape = false;
+    odabirSaMape = false;
     return false;
   }
   if ([point, lineString, polygon].includes(akcija)) {
