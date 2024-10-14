@@ -742,6 +742,7 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
       temp_prikljucna_konzola: JSON.stringify([]),
       group_id: globalTimestamp,
     },
+    timeout: 7200000,
     type: "POST",
     success: function (data) {
       closeModalSpinner();
@@ -774,6 +775,7 @@ async function serviceWrap(objekti_za_azuriranje, object_control, brisanje_objek
       pocetna_tacka: pocetna_tacka,
     },
     type: "POST",
+    timeout: 7200000,
     success: function (data) {
       Swal.fire({
         icon: "success",
