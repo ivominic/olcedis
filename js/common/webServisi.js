@@ -740,6 +740,7 @@ async function insertAllObjects(stubovi, vodovi, trafostanice, podovi, prikljucn
       temp_nkro: JSON.stringify(nkro),
       temp_solari: JSON.stringify([]),
       temp_prikljucna_konzola: JSON.stringify([]),
+      wizard: 1,
       group_id: globalTimestamp,
     },
     timeout: 7200000,
