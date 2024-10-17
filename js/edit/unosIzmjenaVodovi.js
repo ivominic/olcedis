@@ -50,6 +50,7 @@ function dodajPoljaUcrtanomVodu(ucrtaniVod) {
   ucrtaniVod.set("br_faza", document.querySelector("#br_faza").value);
   ucrtaniVod.set("br_spojnica", document.querySelector("#br_spojnica").value);
   ucrtaniVod.set("god_izg", document.querySelector("#god_izgr").value);
+  ucrtaniVod.set("topologija_mreze", document.querySelector("#topologija_mreze").value);
   ucrtaniVod.set("rac_duzina", document.querySelector("#rac_duzina").value);
   ucrtaniVod.set("duzina", document.querySelector("#duzina").value);
   ucrtaniVod.set("sifra_dionice", document.querySelector("#sifra_dionice").value);
@@ -73,6 +74,7 @@ function prikaziPoljaOdabranogVoda() {
   document.querySelector("#br_faza").value = selectGpxFeature.values_.br_faza;
   document.querySelector("#br_spojnica").value = selectGpxFeature.values_.br_spojnica;
   document.querySelector("#god_izgr").value = selectGpxFeature.values_.god_izg;
+  document.querySelector("#topologija_mreze").value = selectGpxFeature.values_.topologija_mreze;
   document.querySelector("#rac_duzina").value = selectGpxFeature.values_.rac_duzina;
   document.querySelector("#duzina").value = selectGpxFeature.values_.duzina;
 
@@ -115,6 +117,7 @@ function prikaziPoljaWmsVoda(objekat) {
   document.querySelector("#br_faza").value = objekat.properties.br_faza;
   document.querySelector("#br_spojnica").value = objekat.properties.br_spojnica;
   document.querySelector("#god_izgr").value = objekat.properties.god_izg;
+  document.querySelector("#topologija_mreze").value = objekat.properties.topologija_mreze;
   document.querySelector("#rac_duzina").value = objekat.properties.rac_duzina;
   document.querySelector("#duzina").value = objekat.properties.duzina;
   document.querySelector("#izvod_napojne").value = objekat.properties.izvod_napojne;
@@ -158,6 +161,7 @@ function izmijeniAtributeWmsVoda(objekat) {
   objekat.properties.br_faza = document.querySelector("#br_faza").value;
   objekat.properties.br_spojnica = document.querySelector("#br_spojnica").value;
   objekat.properties.god_izg = document.querySelector("#god_izgr").value;
+  objekat.properties.topologija_mreze = document.querySelector("#topologija_mreze").value;
   objekat.properties.rac_duzina = document.querySelector("#rac_duzina").value;
   objekat.properties.duzina = document.querySelector("#duzina").value;
   objekat.properties.vlasnistvo = document.querySelector("#vlasnistvo").value;

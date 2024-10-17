@@ -47,12 +47,6 @@ function provjeraObaveznostiStubovi(sloj) {
   if (document.querySelector("#vlasnistvo").value === "") {
     isFilled = borderChange(document.querySelector("#vlasnistvo"));
   }
-  if (document.querySelector("#tip_stub").value === "") {
-    isFilled = borderChange(document.querySelector("#tip_stub"));
-  }
-  if (document.querySelector("#rasp_prov").value === "") {
-    isFilled = borderChange(document.querySelector("#rasp_prov"));
-  }
   if (document.querySelector("#pog_sprem").value === "") {
     isFilled = borderChange(document.querySelector("#pog_sprem"));
   }
@@ -95,12 +89,6 @@ function provjeraObaveznostiStubovi(sloj) {
     if (document.querySelector("#br_nnv_kablovski").value === "") {
       isFilled = borderChange(document.querySelector("#br_nnv_kablovski"));
     }
-    if (document.querySelector("#br_10kv_vodova").value === "") {
-      isFilled = borderChange(document.querySelector("#br_10kv_vodova"));
-    }
-    if (document.querySelector("#br_10kv_vodova_kablovski").value === "") {
-      isFilled = borderChange(document.querySelector("#br_10kv_vodova_kablovski"));
-    }
     if (document.querySelector("#nn_vod_stub_10").value === "") {
       isFilled = borderChange(document.querySelector("#nn_vod_stub_10"));
     }
@@ -120,15 +108,6 @@ function provjeraObaveznostiStubovi(sloj) {
     if (document.querySelector("#br_10kv_vodova").value === "") {
       isFilled = borderChange(document.querySelector("#br_10kv_vodova"));
     }
-    if (document.querySelector("#br_10kv_vodova_kablovski").value === "") {
-      isFilled = borderChange(document.querySelector("#br_10kv_vodova_kablovski"));
-    }
-    if (document.querySelector("#br_35kv_vodova").value === "") {
-      isFilled = borderChange(document.querySelector("#br_35kv_vodova"));
-    }
-    if (document.querySelector("#br_35kv_vodova_kablovski").value === "") {
-      isFilled = borderChange(document.querySelector("#br_35kv_vodova_kablovski"));
-    }
     if (document.querySelector("#vrsta_materijal_stub_35").value === "") {
       isFilled = borderChange(document.querySelector("#vrsta_materijal_stub_35"));
     }
@@ -143,12 +122,6 @@ function provjeraObaveznostiVodovi(sloj) {
   }
   if (document.querySelector("#vlasnistvo").value === "") {
     isFilled = borderChange(document.querySelector("#vlasnistvo"));
-  }
-  if (document.querySelector("#br_spojnica").value === "") {
-    isFilled = borderChange(document.querySelector("#br_spojnica"));
-  }
-  if (document.querySelector("#br_faza").value === "") {
-    isFilled = borderChange(document.querySelector("#br_faza"));
   }
   if (document.querySelector("#pog_sprem").value === "") {
     isFilled = borderChange(document.querySelector("#pog_sprem"));

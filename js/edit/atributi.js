@@ -10,6 +10,7 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosBroj").style.display = "none";
   document.querySelector("#divUnosTip").style.display = "none";
   document.querySelector("#divUnosTipStub").style.display = "none";
+  document.querySelector("#divTopologijaMreze").style.display = "none";
   document.querySelector("#divUnosNamjena").style.display = "none";
   document.querySelector("#divUnosNamjenaStub04").style.display = "none";
   document.querySelector("#divUnosNamjenaStub10").style.display = "none";
@@ -312,6 +313,7 @@ function prikaziAtributDivStubove(napon) {
   document.querySelector("#divUnosNapon").style.display = "flex";
   document.querySelector("#divUnosNazivRastavljaca").style.display = "flex";
   document.querySelector("#divMost").style.display = "flex";
+  document.querySelector("#divTopologijaMreze").style.display = "flex";
 }
 
 function prikaziAtributDivVodove(napon) {
@@ -352,6 +354,7 @@ function prikaziAtributDivVodove(napon) {
   document.querySelector("#divUnosGodIzgr").style.display = "flex";
   document.querySelector("#divUnosRacDuzina").style.display = "flex";
   document.querySelector("#divUnosDuzina").style.display = "flex";
+  document.querySelector("#divTopologijaMreze").style.display = "flex";
 }
 
 function prikaziAtributDivTrafostanice(napon) {
