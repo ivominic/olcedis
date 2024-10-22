@@ -32,6 +32,8 @@ function popuniInformacije(odgovor, title) {
         }
       } else if(key === "id"){
         id = metapodaci[key];
+      } else if(key === "most"){
+        finalKey = "Račva voda";
       }
       let finalValue = "/";
       let extraAtributeClass = "text-dark";

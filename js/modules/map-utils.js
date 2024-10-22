@@ -60,7 +60,7 @@ function downloadDrawnData() {
   let lineData = featureLineOverlay.getSource().getFeatures();
   let pointData = featurePointOverlay.getSource().getFeatures();
   let finalData = [];
-  finalData = finalData.concat(polygonData, lineData, pointData);
+  finalData = finalData.concat(polygonData, lineData, pointData, gpxFeatures);
   if (finalData.length > 0) {
     let text = new ol.format.GeoJSON().writeFeatures(finalData, {
       dataProjection: "EPSG:4326",

@@ -105,9 +105,6 @@ function provjeraObaveznostiStubovi(sloj) {
     if (document.querySelector("#optika_stub_35").value === "") {
       isFilled = borderChange(document.querySelector("#optika_stub_35"));
     }
-    if (document.querySelector("#br_10kv_vodova").value === "") {
-      isFilled = borderChange(document.querySelector("#br_10kv_vodova"));
-    }
     if (document.querySelector("#vrsta_materijal_stub_35").value === "") {
       isFilled = borderChange(document.querySelector("#vrsta_materijal_stub_35"));
     }
