@@ -55,6 +55,12 @@
       <div class="navbar-custom" id="topNav">
         <div class="container-fluid">
           <ul class="list-unstyled topnav-menu float-end mb-0">
+          <li class="dropdown d-none d-lg-inline-block" data-bs-toggle="tooltip"
+            data-bs-trigger="hover" data-bs-placement="bottom" data-bs-original-title="CEDIS portal">
+              <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" href="../portal">
+                      <img src="../../administracija/olcedis/img/logo.png" width="110px"/>
+              </a>
+            </li>
             <li class="dropdown d-none d-lg-inline-block" data-bs-toggle="tooltip"
             data-bs-trigger="hover" data-bs-placement="bottom" data-bs-original-title="Full screen">
               <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen" href="#">
@@ -337,6 +343,12 @@
                       <a href="#" id="excel"
                         ><i class="mdi mdi-checkbox-blank-circle-outline icons-xs"></i>
                         <span style="display: inline-block; margin-left: 1px"> EXCEL </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#" id="btnDownloadMapData"
+                        ><i class="mdi mdi-checkbox-blank-circle-outline icons-xs"></i>
+                        <span style="display: inline-block; margin-left: 1px"> JSON </span>
                       </a>
                     </li>
                   </ul>
@@ -890,19 +902,6 @@
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12" style="padding: 10px 32px">
-                  <button
-                    type="button"
-                    class="btn btn-danger waves-effect waves-light"
-                    style="width: 100%; text-align: left"
-                    id="btnDownloadMapData"
-                  >
-                    <span class="btn-label" style="padding: 0.6rem 0.9rem !important"><i class="fas fa-cloud-download-alt"></i></span
-                    >Preuzimanje iscrtanih podataka
-                  </button>
                 </div>
               </div>
             </div>
