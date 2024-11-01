@@ -433,6 +433,10 @@ function prikazPodatakaIzGpxTacaka() {
     prikaziPoljaOdabranogGpxPotrosac();
     let pomLejer = Podsloj.Potrosac;
     prikazPanelaAtributa(pomLejer);
+  } else if (selectGpxFeature.get("lejer") === "prikljucna_konzola") {
+    prikaziPoljaOdabranogGpxPrikljucnaKonzola();
+    let pomLejer = Podsloj.PrikljucnaKonzola;
+    prikazPanelaAtributa(pomLejer);
   }
 }
 

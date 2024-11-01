@@ -75,6 +75,9 @@ function prikaziPoljaOdabranogGpxPrikljucnaKonzola() {
   document.querySelector("#name").value = selectGpxFeature.values_.name;
   document.querySelector("#opstina").value = selectGpxFeature.values_.opstina;
   document.querySelector("#napon").value = selectGpxFeature.values_.napon;
+  document.querySelector("#uzemljivac_prikljucna_konzola").value = selectGpxFeature.values_.uzemljivac;
+  document.querySelector("#pog_sprem_prikljucna_konzola").value = selectGpxFeature.values_.pog_sprem;
+  document.querySelector("#izvod_id").value = selectGpxFeature.values_.izvod_id;
   setujDdlVrijednost("#nosaci_izolatora", selectGpxFeature.values_.tip_nosac_izol);
   setujDdlVrijednost("#vlasnistvo", selectGpxFeature.values_.vlasnistvo);
 }

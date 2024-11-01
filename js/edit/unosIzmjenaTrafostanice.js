@@ -33,7 +33,7 @@ function dodajPoljaOdabranojGpxTrafostanici() {
   selectGpxFeature.set("izvod_napojne", izvodNapojneTrafostanice);
   selectGpxFeature.set("prenos_odnos", document.querySelector("#read_prenos_odnos").value);
   selectGpxFeature.set("id_billing", document.querySelector("#read_id_billing").value);
-  selectGpxFeature.set("id", document.querySelector("#read_id_billing").value);
+  selectGpxFeature.set("id", document.querySelector("#ddlTrafostanice").value);
   selectGpxFeature.set("adresa", document.querySelector("#read_adresa").value);
   selectGpxFeature.set("tip", document.querySelector("#read_tip").value);
   selectGpxFeature.set("naziv", document.querySelector("#read_naziv").value);
@@ -45,7 +45,6 @@ function dodajPoljaOdabranojGpxTrafostanici() {
   selectGpxFeature.set("projek_snaga", document.querySelector("#read_projek_snaga").value);
   selectGpxFeature.set("korisnik", globalUsername);
   selectGpxFeature.set("vlasnik", "");
-
   if (!isEditable) {
     dodajSacuvaniKmlFeature(selectGpxFeature);
   }

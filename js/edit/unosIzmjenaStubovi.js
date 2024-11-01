@@ -254,9 +254,9 @@ function prikaziPoljaOdabranogGpxStuba() {
   document.querySelector("#topologija_mreze").value = selectGpxFeature.values_.topologija_mreze;
 
   setujDdlVrijednost("#nosaci_izolatora", selectGpxFeature.values_.tip_nosac_izol);
+  setujDdlVrijednost("#tip_stub", selectGpxFeature.values_.tip);
 
   if (selectGpxFeature.values_.napon === NaponskiNivo.String04kV) {
-    setujDdlVrijednost("#tip_stub", selectGpxFeature.values_.tip);
     setujDdlVrijednost("#rasvjeta_stub", selectGpxFeature.values_.rasvjeta);
     setujDdlVrijednost("#vrsta_namjena_stub_04", selectGpxFeature.values_.vrsta_namjena);
     setujDdlVrijednost("#vrsta_materijal_stub_04", selectGpxFeature.values_.vrsta_materijal);
@@ -297,7 +297,12 @@ function prikaziPoljaOdabranogGpxStuba() {
     setujDdlVrijednost("#optika_stub_35", selectGpxFeature.values_.optika);
     setujDdlVrijednost("#prikljucak_otcjep_stub_35", selectGpxFeature.values_.prikljucak_otcjep);
     setujDdlVrijednost("#rastavljac_stub_35", selectGpxFeature.values_.rastavljac);
-    setujDdlVrijednost("#vod_10", selectGpxFeature.values_["10vod"]);
+    if(selectGpxFeature.values_["10vod"]) {
+      setujDdlVrijednost("#vod_10", selectGpxFeature.values_["10vod"]);
+    }
+    if(selectGpxFeature.values_.desetvod){
+      setujDdlVrijednost("#vod_10", selectGpxFeature.values_.desetvod);
+    }
   }
 
   setujDdlVrijednost("#vlasnistvo", selectGpxFeature.values_.vlasnistvo);

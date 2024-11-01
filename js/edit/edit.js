@@ -306,7 +306,7 @@ dragAndDrop.on("addfeatures", function (event) {
     let tempTimestamp = new Date().getTime() + "_" + feature.ol_uid;
     feature.set("originalId", tempTimestamp);
     feature.set("isEditable", isEditable);
-    feature.set("napon", naponskiNivoNapojneTrafostanice);
+    // feature.set("napon", naponskiNivoNapojneTrafostanice);
     let position = feature.values_.geometry.flatCoordinates;
     nizKml.push({
       lat: position[1],

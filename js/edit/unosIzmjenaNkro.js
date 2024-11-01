@@ -33,6 +33,8 @@ function prikaziPoljaOdabranogGpxNKRO() {
   document.querySelector("#vrata").value = selectGpxFeature.values_.vrata;
   document.querySelector("#br_izvoda").value = selectGpxFeature.values_.br_izvoda;
   document.querySelector("#br_prikljucaka").value = selectGpxFeature.values_.br_prikljucaka;
+  document.querySelector("#vrsta_materijal").value = selectGpxFeature.values_.materijal;
+  document.querySelector("#pog_sprem").value = selectGpxFeature.values_.pog_sprem;
 
   setujDdlVrijednost("#vlasnistvo", selectGpxFeature.values_.vlasnistvo);
 }

@@ -607,6 +607,8 @@ function popuniInformacije(odgovor, title) {
         if(key === "fid_1") {
           id = metapodaci[key];
         }
+      } else if(key === "fid_1"){
+        id = metapodaci[key];
       } else if(key === "id"){
         id = metapodaci[key];
       } else if(key === "most"){
