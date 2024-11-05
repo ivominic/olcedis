@@ -571,7 +571,7 @@ ddlLejerChange(); //Inicijalno prikazivanje
 
 function enableDisableFields(value) {
   if ([Podsloj.TS10, Podsloj.TS35, Podsloj.TS110, Podsloj.Pod].includes(value)) {
-    document.querySelector("#name").classList.add("disabledInput");
+    // document.querySelector("#name").classList.add("disabledInput");
     document.querySelector("#pretplatni_br").classList.add("disabledInput");
     document.querySelector("#prik_mjesto").classList.add("disabledInput");
   } else {
