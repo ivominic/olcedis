@@ -65,6 +65,14 @@ function downloadDrawnData() {
     let text = new ol.format.GeoJSON().writeFeatures(finalData, {
       dataProjection: "EPSG:4326",
     });
+   
+    Swal.fire({
+      title: 'Pokrećemo opciju za preuzimanje podataka...',
+      text: 'Molimo vas sačekajte...',
+      showConfirmButton: false,
+      timer: 200
+    });
+
     download(text, "draw.json");
   } else {
     Swal.fire("Obaveštenje!", "Nema podataka za preuzimanje!", "error");
