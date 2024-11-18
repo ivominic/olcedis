@@ -52,9 +52,6 @@ function provjeraObaveznostiStubovi(sloj) {
   }
 
   if (sloj === Podsloj.Stub04) {
-    if (document.querySelector("#uzemljivac_stub_04").value === "") {
-      isFilled = borderChange(document.querySelector("#uzemljivac_stub_04"));
-    }
     if (document.querySelector("#vrsta_namjena_stub_04").value === "") {
       isFilled = borderChange(document.querySelector("#vrsta_namjena_stub_04"));
     }
@@ -77,9 +74,6 @@ function provjeraObaveznostiStubovi(sloj) {
       isFilled = borderChange(document.querySelector("#vrsta_materijal_stub_04"));
     }
   } else if (sloj === Podsloj.Stub10) {
-    if (document.querySelector("#uzemljivac_stub_10").value === "") {
-      isFilled = borderChange(document.querySelector("#uzemljivac_stub_10"));
-    }
     if (document.querySelector("#vrsta_namjena_stub_10").value === "") {
       isFilled = borderChange(document.querySelector("#vrsta_namjena_stub_10"));
     }
@@ -96,9 +90,6 @@ function provjeraObaveznostiStubovi(sloj) {
       isFilled = borderChange(document.querySelector("#vrsta_materijal_stub_10"));
     }
   } else if (sloj === Podsloj.Stub35) {
-    if (document.querySelector("#uzemljivac_stub_35").value === "") {
-      isFilled = borderChange(document.querySelector("#uzemljivac_stub_35"));
-    }
     if (document.querySelector("#vrsta_namjena_stub_35").value === "") {
       isFilled = borderChange(document.querySelector("#vrsta_namjena_stub_35"));
     }
@@ -149,9 +140,6 @@ function provjeraObaveznostiVodovi(sloj) {
     }
     if (document.querySelector("#tip_vod_10").value === "") {
       isFilled = borderChange(document.querySelector("#tip_vod_10"));
-    }
-    if (document.querySelector("#uze_vod_10").value === "") {
-      isFilled = borderChange(document.querySelector("#uze_vod_10"));
     }
     if (document.querySelector("#presjek_vod_10").value === "") {
       isFilled = borderChange(document.querySelector("#presjek_vod_10"));
