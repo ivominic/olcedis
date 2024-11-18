@@ -111,7 +111,7 @@ function povezivanjeKmlObjektaSaOstatkomMreze() {
 function dodavanjeObjekataZaPovezivanje(features) {
   let ddl = document.querySelector("#ddlObjekatZaPovezivanje");
   if (ddl.length === 0) {
-    povezivanjeKmlObjektaSaOstatkomMreze();
+    // povezivanjeKmlObjektaSaOstatkomMreze();
   }
   features.forEach(function (feature) {
     $(ddl).append(
