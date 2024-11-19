@@ -188,7 +188,7 @@ function prikaziPoljaWmsSolari(objekat) {
     );
   }
   //document.querySelector("#prik_mjesto").value = objekat.properties.prik_mjesto;
-  // document.querySelector("#naziv_nn_izvod").value = objekat.properties.naziv_nn_izvod;
+  document.querySelector("#naziv_nn_izvod").value = objekat.properties.naziv_nn_izvod;
   document.querySelector("#pretplatni_br").value = objekat.properties.pretplatni_br;
   document.querySelector("#br_brojila").value = objekat.properties.br_brojila;
   document.querySelector("#snaga_elektrane").value = objekat.properties.snaga_elektrane;
