@@ -178,7 +178,7 @@
               </li>
 
               <li id="izmjenaVodaDiv">
-                <a href="#" data-bs-toggle="collapse" class="izmjenaVodaFirst">
+                <a href="#sidebarCrm1" data-bs-toggle="collapse" class="izmjenaVodaFirst">
                   <i data-feather="edit" class="editIcon"></i>
                   <span> Izmjena Voda </span>
                   <span class="menu-arrow"></span>
@@ -208,7 +208,7 @@
               </li>
 
               <li>
-                <a href="#" data-bs-toggle="collapse" id="snapDiv">
+                <a href="#sidebarCrm2" data-bs-toggle="collapse" id="snapDiv">
                   <i data-feather="link"></i>
                   <span> Snap </span>
                   <span class="menu-arrow"></span>
@@ -320,7 +320,7 @@
               </li>
 
               <li>
-                <a href="#" data-bs-toggle="collapse">
+                <a href="#sidebarCrm3" data-bs-toggle="collapse">
                   <i data-feather="download"></i>
                   <span> Preuzimanje sa mape</span>
                   <span class="menu-arrow"></span>

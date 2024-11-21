@@ -706,6 +706,22 @@ p.by a {
   left: auto !important;
 }
 
+body[data-leftbar-size=default] .nav-second-level{
+  width: 100% !important;
+}
+
+body[data-leftbar-size=default] .nav-second-level span{
+  display: unset !important;
+}
+
+body[data-leftbar-size=default] .nav-second-level2 li a:focus {
+color: black !important;
+}
+
+body[data-leftbar-size=default] .nav-second-level2 a.active i{
+ color: white !important;
+}
+
 @media (max-width: 600px) {
   body[data-leftbar-size="condensed"] .content-page {
     margin-left: 0px !important;
