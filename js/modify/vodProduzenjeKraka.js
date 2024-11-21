@@ -276,6 +276,9 @@ function potvrdaProduzenjaKraka() {
     poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
     closeDiv("#potvrdaProduzenjaKrakaDiv");
     featureTekuciOverlay.getSource().clear();
+    setupMainSnap();
+    document.querySelector("#snapDiv").className = "";
+    featureSnapOverlay.getSource().clear();
   } else {
     poruka(StatusPoruke.Upozorenje, UnosPoruke.NijeProduzenKrakVoda);
   }
