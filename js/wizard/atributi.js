@@ -26,7 +26,7 @@ function popuniInformacije(odgovor, title) {
     let metaObject = "";
     for (let key in metapodaci) {
       let finalKey = key;
-      if((objekat[0] === "view_trafostanice" || objekat[0] === "trafostanice_poligoni" || objekat[0] === "view_potrosaci" || objekat[0] === "view_pod" || objekat[0] === "view_solari")){
+      if((objekat[0] === "trafostanice" || objekat[0] === "trafostanice_poligoni" || objekat[0] === "view_potrosaci" || objekat[0] === "view_pod" || objekat[0] === "view_solari")){
         if(key === "fid_1") {
           id = metapodaci[key];
         }

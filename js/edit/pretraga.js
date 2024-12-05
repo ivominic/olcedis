@@ -95,6 +95,8 @@ function sakrijSvaPoljaPretrage() {
   document.querySelector("#divPretragaVrata").style.display = "none";
   document.querySelector("#divPretragaBrIzvoda").style.display = "none";
   document.querySelector("#divPretragaBrPrikljucaka").style.display = "none";
+  document.querySelector("#divPretragaPretplatniBr").style.display = "none";
+  document.querySelector("#divPretragaBrBrojila").style.display = "none";
 }
 sakrijSvaPoljaPretrage();
 
@@ -211,6 +213,8 @@ function prikaziPretraguPotrosaci() {
   document.querySelector("#divPretragaTs").style.display = "flex";
   document.querySelector("#divPretragaId").style.display = "flex";
   document.querySelector("#divPretragaVlasnistvo").style.display = "flex";
+  document.querySelector("#divPretragaPretplatniBr").style.display = "flex";
+  document.querySelector("#divPretragaBrBrojila").style.display = "flex";
 }
 
 function prikaziPretraguPodovi() {
@@ -345,6 +349,8 @@ let nizPoljaZaPretragu = [
   { id: "pretraga_vrata", field: "vrata", numeric: false, ddl: false },
   { id: "pretraga_br_izvoda", field: "br_izvoda", numeric: false, ddl: false },
   { id: "pretraga_br_prikljucaka", field: "br_prikljucaka", numeric: false, ddl: false },
+  { id: "pretraga_pretplatni_br", field: "pretplatni_br", numeric: false, ddl: false },
+  { id: "pretraga_br_brojila", field: "br_brojila", numeric: false, ddl: false }
 ];
 
 /** Filtriranje po atributima */

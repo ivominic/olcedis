@@ -404,7 +404,7 @@
                         <i
                           class="mdi mdi-map-legend"
                           style="float: right;scale: 1.7;"
-                          onclick="setupImageLegend('view_trafostanice')"
+                          onclick="setupImageLegend('trafostanice')"
                           data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-original-title="Legenda"
                         ></i>
                       </div>
@@ -2331,6 +2331,14 @@
             <label for="pretraga_vlasnistvo">Vlasnistvo:</label>
             <select id="pretraga_vlasnistvo" class="select-css inputClass"></select>
           </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaPretplatniBr">
+            <label for="pretraga_pretplatni_br">Pretplatni broj:</label>
+            <input type="text" id="pretraga_pretplatni_br" class="inputClass"/>
+          </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaBrBrojila">
+            <label for="pretraga_br_brojila">Broj brojila:</label>
+            <input type="text" id="pretraga_br_brojila" class="inputClass"/>
+          </div>
           <div class="flex-row rowEnd pb-8" id="divPretragaNapon">
             <label for="pretraga_napon">Napon:</label>
             <input type="text" id="pretraga_napon" class="inputClass"/>
@@ -2522,7 +2530,7 @@
               <select class="form-select" id="brisanjeLejer">
                 <option value="stubovi">Stubovi</option>
                 <option value="vodovi">Vodovi</option>
-                <option value="view_trafostanice">Trafostanice</option>
+                <option value="trafostanice">Trafostanice</option>
                 <option value="trafostanice_poligoni">Trafostanice poligoni</option>
                 <option value="prikljucno_mjesto">Priključno mjesto</option>
                 <option value="nkro">NKRO</option>

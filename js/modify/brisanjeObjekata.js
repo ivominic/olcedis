@@ -11,7 +11,7 @@ function dodajObjekatZaBrisanje(objekat) {
   if (objekatId.includes(Lejeri.Potrosac)) {
     objekatId = `potrosaci.${objekat.properties.originalId}`;
   }
-  if (objekatId.includes("view_trafostanice")) {
+  if (objekatId.includes("trafostanice")) {
     objekatId = `trafostanice.${objekat.properties?.originalId}`;
   }
   if (objekatId.includes(Lejeri.Solari)) {
