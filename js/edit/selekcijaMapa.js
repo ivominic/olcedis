@@ -549,6 +549,8 @@ function sledecaGpxTacka() {
       select.getFeatures().push(selectGpxFeature);
       nijeOdabranaNovaTacka = false;
       prikazPodatakaIzGpxTacaka();
+      // Praznimo name za sledecu tacku svaki put
+      document.querySelector("#name").value = "";
     }
   });
 
