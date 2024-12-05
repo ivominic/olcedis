@@ -30,6 +30,9 @@ document.querySelector("#ddlLejer").addEventListener("change", function () {
   } else if (this.value === Lejeri.NelegalniPotrosac) {
     tempLejerZaFilter = wmsNelegalniPotrosaci;
     prikaziPretraguNelegalniPotrosaci();
+  } else if(this.value === Lejeri.Solari) {
+    tempLejerZaFilter = wmsSolari;
+    prikaziPretraguSolari();
   }
 });
 
@@ -213,6 +216,11 @@ function prikaziPretraguPotrosaci() {
   document.querySelector("#divPretragaTs").style.display = "flex";
   document.querySelector("#divPretragaId").style.display = "flex";
   document.querySelector("#divPretragaVlasnistvo").style.display = "flex";
+  document.querySelector("#divPretragaPretplatniBr").style.display = "flex";
+  document.querySelector("#divPretragaBrBrojila").style.display = "flex";
+}
+
+function prikaziPretraguSolari(){
   document.querySelector("#divPretragaPretplatniBr").style.display = "flex";
   document.querySelector("#divPretragaBrBrojila").style.display = "flex";
 }
