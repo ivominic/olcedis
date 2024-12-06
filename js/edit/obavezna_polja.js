@@ -17,7 +17,7 @@ function obaveznaPolja(sloj) {
     return provjeraObaveznostiPod();
   } else if(sloj === Podsloj.Solari) {
     return provjeraObaveznostiSolari(); 
-  } else if(sloj === Podsloj.Rasklopiste10) {
+  } else if(sloj === Podsloj.Rasklopiste10 || sloj === Podsloj.Rasklopiste35) {
     return provjeraObaveznostiRasklopiste(); 
   }
 }
