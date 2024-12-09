@@ -98,6 +98,7 @@ let blnPocetniStub = false,
 
 /**Paljenje i gašenje lejera */
 document.querySelector("#lejer_stubovi").addEventListener("click", prikazLejeraStubovi);
+document.querySelector("#lejer_prikljucna_konzola").addEventListener("click", prikazLejeraPrikljucnaKonzola);
 document.querySelector("#lejer_vodovi").addEventListener("click", prikazLejeraVodovi);
 document.querySelector("#lejer_trafostanice").addEventListener("click", prikazLejeraTrafostanice);
 document.querySelector("#lejer_trafostanice_poligoni").addEventListener("click", prikazLejeraTrafostanicePoligoni);
@@ -118,6 +119,12 @@ function prikazLejeraStubovi() {
 
 function prikazLejeraVodovi() {
   wmsVodovi.setVisible(!wmsVodovi.getVisible());
+  zatvoriHamburger();
+}
+
+
+function prikazLejeraPrikljucnaKonzola(){
+  wmsPrikljucnaKonzola.setVisible(!wmsPrikljucnaKonzola.getVisible());
   zatvoriHamburger();
 }
 
