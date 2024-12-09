@@ -225,19 +225,19 @@
                             <li>
                               <a href="#" id="snapStub35" class="dropdown-item">
                                 <i class="mdi mdi-checkbox-blank-circle-outline icons-xs" style="width: 18px;"></i>
-                                <span style="display: inline-block; margin-left: 1px"> Stub 35kV </span>
+                                <span style="display: inline-block; margin-left: 1px"> Stub 35 kV </span>
                               </a>
                             </li>
                             <li>
                               <a href="#" id="snapStub10Kv" class="dropdown-item">
                                 <i class="mdi mdi-checkbox-blank-circle-outline icons-xs" style="width: 18px;"></i>
-                                <span style="display: inline-block; margin-left: 1px"> Stub 10kV </span>
+                                <span style="display: inline-block; margin-left: 1px"> Stub 10 kV </span>
                               </a>
                             </li>
                             <li>
                               <a href="#" id="snapStub04Kv" class="dropdown-item"
                                 > <i class="mdi mdi-checkbox-blank-circle-outline icons-xs" style="width: 18px;"></i>
-                                <span style="display: inline-block; margin-left: 1px"> Stub 04kV</span>
+                                <span style="display: inline-block; margin-left: 1px"> Stub 04 kV</span>
                               </a>
                             </li>
                           </ul>
@@ -253,19 +253,19 @@
                           <li>
                             <a href="#" id="snapTrafostanica110" class="dropdown-item"
                               > <i class="mdi mdi-checkbox-blank-circle-outline icons-xs" style="width: 18px;"></i>
-                              <span style="display: inline-block; margin-left: 1px"> Trafostanica 110kV</span>
+                              <span style="display: inline-block; margin-left: 1px"> Trafostanica 110 kV</span>
                             </a>
                           </li>
                           <li>
                             <a href="#" id="snapTrafostanica35" class="dropdown-item"
                               > <i class="mdi mdi-checkbox-blank-circle-outline icons-xs" style="width: 18px;"></i>
-                              <span style="display: inline-block; margin-left: 1px"> Trafostanica 35kV</span>
+                              <span style="display: inline-block; margin-left: 1px"> Trafostanica 35 kV</span>
                             </a>
                           </li>
                           <li>
                             <a href="#" id="snapTrafostanica10Kv" class="dropdown-item"
                               > <i class="mdi mdi-checkbox-blank-circle-outline icons-xs" style="width: 18px;"></i>
-                              <span style="display: inline-block; margin-left: 1px"> Trafostanica 10kV</span>
+                              <span style="display: inline-block; margin-left: 1px"> Trafostanica 10 kV</span>
                             </a>
                           </li>
                         </ul>
@@ -275,19 +275,19 @@
                     <li>
                       <a href="#" id="snapVod35" class="dropdown-item"
                         > <i class="mdi mdi-checkbox-blank-circle-outline icons-xs" style="width: 18px;"></i>
-                        <span style="display: inline-block; margin-left: 1px"> Vod 35kV</span>
+                        <span style="display: inline-block; margin-left: 1px"> Vod 35 kV</span>
                       </a>
                     </li>
                     <li>
                       <a href="#" id="snapVod10Kv" class="dropdown-item"
                         > <i class="mdi mdi-checkbox-blank-circle-outline icons-xs" style="width: 18px;"></i>
-                        <span style="display: inline-block; margin-left: 1px"> Vod 10kV</span>
+                        <span style="display: inline-block; margin-left: 1px"> Vod 10 kV</span>
                       </a>
                     </li>
                     <li>
                       <a href="#" id="snapVod04Kv" class="dropdown-item"
                         > <i class="mdi mdi-checkbox-blank-circle-outline icons-xs" style="width: 18px;"></i>
-                        <span style="display: inline-block; margin-left: 1px"> Vod 04kV</span>
+                        <span style="display: inline-block; margin-left: 1px"> Vod 04 kV</span>
                       </a>
                     </li>
                     
@@ -1200,12 +1200,12 @@
             <label for="ddl_sloj_podataka">Tip objekta:</label>
             <select id="ddl_sloj_podataka" class="select-css">
               <option value="">Izaberite vrijednost</option>
-              <option value="stub04">Stub 0.4KV</option>
-              <option value="stub10">Stub 10KV</option>
-              <option value="stub35">Stub 35KV</option>
-              <option value="vod04">Vod 0.4KV</option>
-              <option value="vod10">Vod 10KV</option>
-              <option value="vod35">Vod 35KV</option>
+              <option value="stub04">Stub 0.4 kV</option>
+              <option value="stub10">Stub 10 kV</option>
+              <option value="stub35">Stub 35 kV</option>
+              <option value="vod04">Vod 0.4 kV</option>
+              <option value="vod10">Vod 10 kV</option>
+              <option value="vod35">Vod 35 kV</option>
               <option value="trafostanica10">Trafostanica 10/0.4</option>
               <option value="trafostanica35">Trafostanica 35/x</option>
               <option value="trafostanica110">Trafostanica 110/x</option>
@@ -1513,19 +1513,19 @@
             <input type="text" id="br_nnv_kablovski" />
           </div>
           <div class="flex-row-desno pb-8" id="divUnosBr10kVVodova">
-            <label for="br_10kv_vodova">Broj 10kV nadz. vodova:</label>
+            <label for="br_10kv_vodova">Broj 10 kV nadz. vodova:</label>
             <input type="text" id="br_10kv_vodova" />
           </div>
           <div class="flex-row-desno pb-8" id="divUnosBr10kVVodovaKablovski">
-            <label for="br_10kv_vodova_kablovski">Broj 10kV kabl. vodova:</label>
+            <label for="br_10kv_vodova_kablovski">Broj 10 kV kabl. vodova:</label>
             <input type="text" id="br_10kv_vodova_kablovski" />
           </div>
           <div class="flex-row-desno pb-8" id="divUnosBr35kVVodova">
-            <label for="br_35kv_vodova">Broj 35kV nadz. vodova:</label>
+            <label for="br_35kv_vodova">Broj 35 kV nadz. vodova:</label>
             <input type="text" id="br_35kv_vodova" />
           </div>
           <div class="flex-row-desno pb-8" id="divUnosBr35kVVodovaKablovski">
-            <label for="br_35kv_vodova_kablovski">Broj 35kV kabl. vodova:</label>
+            <label for="br_35kv_vodova_kablovski">Broj 35 kV kabl. vodova:</label>
             <input type="text" id="br_35kv_vodova_kablovski" />
           </div>
           <div class="flex-row-desno pb-8" id="divUnosPogSprem">
@@ -1602,15 +1602,15 @@
             <input type="text" id="napon" readonly class="disabledInput" />
           </div>
           <div class="flex-row-desno pb-8" id="divUnosPrikljucakOtcjep">
-            <label for="prikljucak_otcjep">10kV kabal(prikljucak/otcjep):</label>
+            <label for="prikljucak_otcjep">10 kV kabal(prikljucak/otcjep):</label>
             <select id="prikljucak_otcjep" class="select-css"></select>
           </div>
           <div class="flex-row-desno pb-8" id="divUnosPrikljucakOtcjepStub10">
-            <label for="prikljucak_otcjep_stub_10">10kV kabal(prikljucak/otcjep):</label>
+            <label for="prikljucak_otcjep_stub_10">10 kV kabal(prikljucak/otcjep):</label>
             <select id="prikljucak_otcjep_stub_10" class="select-css"></select>
           </div>
           <div class="flex-row-desno pb-8" id="divUnosPrikljucakOtcjepStub35">
-            <label for="prikljucak_otcjep_stub_35">10kV kabal(prikljucak/otcjep):</label>
+            <label for="prikljucak_otcjep_stub_35">10 kV kabal(prikljucak/otcjep):</label>
             <select id="prikljucak_otcjep_stub_35" class="select-css"></select>
           </div>
           <div class="flex-row-desno pb-8" id="divUnosNnVod">
@@ -2210,9 +2210,9 @@
             <label for="ddl_pretraga_napon">Napon:</label>
             <select id="ddl_pretraga_napon" class="select-css inputClass">
               <option value=""></option>
-              <option value="35">35kV</option>
-              <option value="10">10kV</option>
-              <option value="0.4">0.4kV</option>
+              <option value="35">35 kV</option>
+              <option value="10">10 kV</option>
+              <option value="0.4">0.4 kV</option>
             </select>
         </div>
 
@@ -2344,7 +2344,7 @@
             <input type="text" id="pretraga_napon" class="inputClass"/>
           </div>
           <div class="flex-row rowEnd pb-8" id="divPretragaPrikljucakOtcjep">
-            <label for="pretraga_prikljucak_otcjep">10kV kabal(prikljucak/otcjep):</label>
+            <label for="pretraga_prikljucak_otcjep">10 kV kabal(prikljucak/otcjep):</label>
             <select id="pretraga_prikljucak_otcjep" class="select-css inputClass"></select>
           </div>
           <div class="flex-row rowEnd pb-8" id="divPretragaNnVod">
