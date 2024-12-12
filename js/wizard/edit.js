@@ -688,7 +688,10 @@ let nizPoljaZaPretragu = [
   { id: "pretraga_br_izvoda", field: "br_izvoda", numeric: false, ddl: false },
   { id: "pretraga_br_prikljucaka", field: "br_prikljucaka", numeric: false, ddl: false },
   { id: "pretraga_pretplatni_br", field: "pretplatni_br", numeric: false, ddl: false },
-  { id: "pretraga_br_brojila", field: "br_brojila", numeric: false, ddl: false }
+  { id: "pretraga_br_brojila", field: "br_brojila", numeric: false, ddl: false },
+  { id: "pretraga_tip_trafostanica", field: "tip", numeric: false, ddl: false },
+  { id: "pretraga_tip_vodovi", field: "tip", numeric: false, ddl: false },
+  { id: "pretraga_vodovi_materijal", field: "materijal", numeric: false, ddl: false }
 ];
 
 function clearFilterFields() {
@@ -874,7 +877,7 @@ document.querySelector("#ddlLejer").addEventListener("change", function () {
   } else if (this.value === Lejeri.Potrosac) {
     tempLejerZaFilter = wmsPotrosaci;
     prikaziPretraguPotrosaci();
-  } else if (this.value === Lejeri.POD) {
+  } else if (this.value === Lejeri.POD || this.value === "pod") {
     tempLejerZaFilter = wmsPOD;
     prikaziPretraguPodovi();
   } else if (this.value === Lejeri.NelegalniPotrosac) {
@@ -947,6 +950,9 @@ function sakrijSvaPoljaPretrage() {
   document.querySelector("#divPretragaBrPrikljucaka").style.display = "none";
   document.querySelector("#divPretragaPretplatniBr").style.display = "none";
   document.querySelector("#divPretragaBrBrojila").style.display = "none";
+  document.querySelector("#divPretragaTrafostanicaTip").style.display = "none";
+  document.querySelector("#divPretragaVodoviTip").style.display = "none";
+  document.querySelector("#divPretragaVodoviMaterijal").style.display = "none";
 }
 
 function prikaziPretraguStubove() {
@@ -988,8 +994,8 @@ function prikaziPretraguVodove() {
   document.querySelector("#divPretragaIzvodNapojneTS").style.display = "flex";
   document.querySelector("#divPretragaGps").style.display = "flex";
   document.querySelector("#divPretragaNapon").style.display = "flex";
-  document.querySelector("#divPretragaTip").style.display = "flex";
-  document.querySelector("#divPretragaMaterijal").style.display = "flex";
+  document.querySelector("#divPretragaVodoviTip").style.display = "flex";
+  document.querySelector("#divPretragaVodoviMaterijal").style.display = "flex";
   document.querySelector("#divPretragaRasvjeta").style.display = "flex";
   document.querySelector("#divPretragaPogSprem").style.display = "flex";
   document.querySelector("#divPretragaVlasnistvo").style.display = "flex";
@@ -1009,7 +1015,7 @@ function prikaziPretraguTrafostanice() {
   document.querySelector("#divPretragaSifraNapojneTS").style.display = "flex";
   document.querySelector("#divPretragaIzvodNapojneTS").style.display = "flex";
   document.querySelector("#divPretragaGps").style.display = "flex";
-  document.querySelector("#divPretragaTip").style.display = "flex";
+  document.querySelector("#divPretragaTrafostanicaTip").style.display = "flex";
   document.querySelector("#divPretragaNaziv").style.display = "flex";
   document.querySelector("#divPretragaGodIzgr").style.display = "flex";
   document.querySelector("#divPretragaPogSprem").style.display = "flex";
@@ -1061,7 +1067,6 @@ function prikaziPretraguPotrosaci() {
   document.querySelector("#divPretragaGps").style.display = "flex";
   document.querySelector("#divPretragaTs").style.display = "flex";
   document.querySelector("#divPretragaId").style.display = "flex";
-  document.querySelector("#divPretragaVlasnistvo").style.display = "flex";
   document.querySelector("#divPretragaPretplatniBr").style.display = "flex";
   document.querySelector("#divPretragaBrBrojila").style.display = "flex";
 }

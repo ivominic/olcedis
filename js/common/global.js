@@ -751,6 +751,9 @@ function popuniDdlAtributima(ddl, objekat, atribut, key_param, value_param) {
       if(ddl === "#pretraga_inst_snaga_t1" || ddl === "#pretraga_inst_snaga_t2" || ddl === "#pretraga_inst_snaga_t3" || ddl === "#pretraga_funkcija"){
         checkAndSetupList(ddl);
       }
+      if(ddl === "#pretraga_prenos_odnos") {
+        $(ddl).append($("<option>", {value: "10/0,4",text: "10/0,4"}));
+      }
     },
     error: function (x, y, z) {
       //alert(x.responseText +"  " +x.status);
