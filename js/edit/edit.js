@@ -242,6 +242,7 @@ function podesiInterakciju() {
       if (statisticDraw) {
         document.querySelector("#inputStatisticLi").click();
         drawGeom = wktGeometrije(e.feature);
+        setupDeleteLayers();
       }
     });
     modify = new ol.interaction.Modify({
@@ -567,6 +568,95 @@ function wfsDownload(format) {
     }
   });
   return false;
+}
+
+async function setupDeleteLayers() {
+  let brisanjeLejer = document.querySelector("#brisanjeLejer");
+  brisanjeLejer.innerHTML = "";
+  const layers = map.getLayers().getArray();
+  for (const layer of layers) {
+    if (layer instanceof ol.layer.Image && layer.get("visible")) {
+        const nasaoLayer = await findIfLayerHasData(layer.values_.name);
+        if(nasaoLayer){
+          let titleLayer = await vratiTitleOdLejera(layer.values_.name);
+           let option = document.createElement("option");
+           option.value = layer.values_.name;
+           option.text =  titleLayer;
+           if(layer.values_.name == "validations" || layer.values_.name == "view_odbijeni") {
+           } else {
+            brisanjeLejer.appendChild(option);
+           }
+        }
+    }
+  }
+}
+
+async function findIfLayerHasData(lejer) {
+  const tekstFiltera = `INTERSECTS(Geometry, ${drawGeom})`;
+  const nazivLejera = `geonode:${lejer}`;
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      method: "POST",
+      url: wfsUrl,
+      data: {
+        access_token: geoserverToken,
+        service: "WFS",
+        version: "1.0.0",
+        request: "GetFeature",
+        typeName: nazivLejera,
+        outputFormat: "application/json",
+        srsname: "EPSG:4326",
+        CQL_FILTER: tekstFiltera,
+        maxFeatures: 1
+      },
+      success: function (response) {
+        const features = response.features;
+        if (features && features.length > 0) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      },
+      error: function (jqXHR, textStatus) {
+        console.error(`Error checking layer data: ${textStatus}`);
+        resolve(false); // Treat error as no data found
+      },
+    });
+  });
+}
+
+async function vratiTitleOdLejera(lejer){
+ if(lejer === "view_solari"){
+   return 'Solari';
+ } else if(lejer === "stubovi"){
+  return 'Stubovi';
+ } else if(lejer === "vodovi"){
+  return 'Vodovi';
+ } else if(lejer === "trafostanice"){
+  return 'Trafostanice';
+ } else if(lejer === "trafostanice_poligoni"){
+  return 'Trafostanice poligoni';
+ } else if(lejer === "prikljucno_mjesto"){
+  return 'Priključno mjesto';
+ } else if(lejer === "nkro"){
+  return 'NKRO';
+ } else if(lejer === "view_potrosaci"){
+  return 'Potrošač';
+ } else if(lejer === "nelegalni_potrosac"){
+  return 'Nelegalni potrošač';
+ } else if(lejer === "view_pod"){
+  return 'POD';
+ } else if(lejer === "validations"){
+  return 'Validacija';
+ } else if(lejer === "poslovni_objekti"){
+  return 'Poslovni objekat';
+ } else if(lejer === "view_odbijeni"){
+  return 'Odbijene validacije';
+ } else if(lejer === "prikljucna_konzola"){
+  return 'Priključna konzola';
+ } else {
+   return lejer;
+ }
 }
 
 /**Povezivanje kontrola koje zavise od lejera sa akcijama */

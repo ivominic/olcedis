@@ -2610,9 +2610,7 @@
                 <option value="nelegalni_potrosac">Nelegalni potrošač</option>
                 <option value="view_pod">POD</option>
                 <option value="solari">Solari</option>
-                <option value="validations">Validacija</option>
                 <option value="poslovni_objekti">Poslovni objekat</option>
-                <option value="view_odbijeni">Odbijene validacije</option>
               </select>
             </div>
             <ul class="list-inline wizard mb-0 mt-3">
