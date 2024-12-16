@@ -778,9 +778,13 @@ async function serviceWrap(objekti_za_azuriranje, object_control, brisanje_objek
     type: "POST",
     timeout: 7200000,
     success: function (data) {
+      let titleNovi = data.response.replace(/"/g, "");
+      if(btnVodProduzenjeKrajaPotvrdiBoolean) {
+        titleNovi = "Izmjene su uspješno poslate na validaciju.";
+      }
       Swal.fire({
         icon: "success",
-        title: data.response.replace(/"/g, ""),
+        title: titleNovi,
         showConfirmButton: true,
       }).then((result) => {
         resetovanjeNakonUspjeha();

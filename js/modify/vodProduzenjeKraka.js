@@ -8,6 +8,7 @@
  */
 
 let trenutnoModifikovaniVod;
+let btnVodProduzenjeKrajaPotvrdiBoolean = false;
 
 /**
  * Metoda koja obrađuje klik na mapu, za prikaz geometrije voda
@@ -138,7 +139,8 @@ function vodEditGeometrije(browserEvent) {
       );
       return false;
     }
-
+    document.querySelector("#potvrdaProduzenjaKrakaDiv").style.width = "500px";
+    document.querySelector("#produzenjeVodaPoruka").style.display = "none";
     document.querySelector("#btnPotvrdiProduzenjeKraka").style.display = "block";
     trenutnoModifikovaniVod = e.features.getArray()[0];
     //vodArrayValuesProperties(e.features.getArray()[0], "U");
@@ -273,7 +275,8 @@ function potvrdaProduzenjaKraka() {
     vektorObjektiZaAzuriranje.getSource().clear();
     vektorObjektiZaAzuriranje.getSource().addFeatures(nizZaVektorAzuriranje);
     blnIsChange = false;
-    poruka(StatusPoruke.Uspjeh, UnosPoruke.Uspjeh);
+    poruka(StatusPoruke.Uspjeh, "Krak dionice je uspješno pomjeren.");
+    btnVodProduzenjeKrajaPotvrdiBoolean = true;
     closeDiv("#potvrdaProduzenjaKrakaDiv");
     featureTekuciOverlay.getSource().clear();
     setupMainSnap();

@@ -259,6 +259,9 @@ select.on("select", function (e) {
     select.getFeatures().clear();
     select.getFeatures().push(selectGpxFeature);
   }
+  if(document.querySelector("#potvrdaProduzenjaKrakaDiv") && document.querySelector("#potvrdaProduzenjaKrakaDiv").style.width === "500px"){
+    document.querySelector("#potvrdaProduzenjaKrakaDiv").style.width = "0px";
+  }
 });
 
 var modifyV = new ol.interaction.Modify({

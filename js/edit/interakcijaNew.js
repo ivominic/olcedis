@@ -319,6 +319,7 @@ document.querySelector("#vodProduzenjeKrakaBtn").addEventListener("click", funct
   document.querySelector("#vodProduzenjeKrakaBtn").className = "active";
   document.querySelector("#izmjenaVodaDiv").className = "active";
   document.querySelector("#btnPotvrdiProduzenjeKraka").style.display = "none";
+  document.querySelector("#produzenjeVodaPoruka").style.display = "block";
 });
 document.querySelector("#ddl_sloj_podataka").addEventListener("click", ddlLejerChange);
 document.querySelector("#btnPrethodniObjekat").addEventListener("click", prethodniObjekatGpx);
