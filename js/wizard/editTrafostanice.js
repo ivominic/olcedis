@@ -109,8 +109,8 @@ function trafostaniceUpoligonu(napon) {
         blnNePostoji && selektovaneTrafostaniceFeatures.push(el);
       });
       if (selektovaneTrafostaniceFeatures.length === 0) {
-        // poruka(StatusPoruke.Upozorenje, WizardPoruke.NemaTS);
-        // return false; //TODO: Ukloniti
+        poruka(StatusPoruke.Upozorenje, "Potrebno je selektovati barem jednu TS kako bi se nastavila wizardizacija (napojnu TS nije potrebno selektovati).");
+        return false; //TODO: Ukloniti
       } else {
         if (selektovaniVodoviFeatures.length > 0) {
           provjeriTrafostanice();
