@@ -45,6 +45,7 @@ function dodatnaPodesavanjaNaPromjenuLejera(lejer) {
 function provjeraAtributi(){
   console.log("Provjera atributi", nizSelektovanihObjekata);
   if(akcija !== "dodaj"){
+    document.querySelector("#divUnosDdlTrafostanice").className = "flex-row-desno pb-8 trafostaniceTop trafostaniceLeft trafostaniceHide";
     if(nizSelektovanihObjekata.length === 0){
       document.querySelector("#btnIzbrisi").style.display = "none";
       document.querySelector("#btnDupliraj").style.display = "none";
@@ -56,6 +57,7 @@ function provjeraAtributi(){
       document.querySelector("#divOdabirSloja").style.display = "flex";
     } 
   } else {
+    document.querySelector("#divUnosDdlTrafostanice").className = "flex-row-desno pb-8 trafostaniceTop trafostaniceLeft";
     document.querySelector("#atributeMessage").style.display = "none";
   }
 }

@@ -246,6 +246,9 @@ function sakrijSvaPoljaAtributDiv() {
   if(document.querySelector("#spanUnosName")){
     document.querySelector("#spanUnosName").innerHTML = "Naziv";
   }
+  if(document.querySelector("#spanUnosNameBold")) {
+    document.querySelector("#spanUnosNameBold").style.display = "inline-block";
+  }
 }
 
 function prikaziAtributDivStubove(napon) {
@@ -415,6 +418,9 @@ function prikaziAtributDivTrafostanice(napon) {
   document.querySelector("#divReadProjekSnaga").style.display = "flex";
   if(document.querySelector("#spanUnosName")){
     document.querySelector("#spanUnosName").innerHTML = "Naziv GIS";
+  }
+  if(document.querySelector("#spanUnosNameBold")) {
+    document.querySelector("#spanUnosNameBold").style.display = "none";
   }
 }
 

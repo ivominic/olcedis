@@ -1279,3 +1279,9 @@ html[xmlns] .clearfix {
 .trafostaniceBottom{
   border-bottom: 1px solid red;
 }
+
+.trafostaniceHide{
+  height: 0px;
+  overflow: hidden;
+  padding-bottom: 0px;
+}
