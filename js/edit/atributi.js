@@ -242,6 +242,10 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divUnosBrNnvKablovski").style.display = "none";
   document.querySelector("#divUnosBr10kVVodovaKablovski").style.display = "none";
   document.querySelector("#divUnosBr35kVVodovaKablovski").style.display = "none";
+
+  if(document.querySelector("#spanUnosName")){
+    document.querySelector("#spanUnosName").innerHTML = "Naziv";
+  }
 }
 
 function prikaziAtributDivStubove(napon) {
@@ -409,6 +413,9 @@ function prikaziAtributDivTrafostanice(napon) {
   document.querySelector("#divReadInstSnagaT3").style.display = "flex";
   //document.querySelector("#divReadInstSnagaT4").style.display = "flex";
   document.querySelector("#divReadProjekSnaga").style.display = "flex";
+  if(document.querySelector("#spanUnosName")){
+    document.querySelector("#spanUnosName").innerHTML = "Naziv GIS";
+  }
 }
 
 function prikaziAtributDivPrikljucnoMjesto() {

@@ -1266,3 +1266,16 @@ html[xmlns] .clearfix {
   border-bottom-right-radius: 7px;
   padding: .5rem 1rem;
 }
+
+.trafostaniceLeft{
+  border-left: 1px solid red;
+  border-right: 1px solid red;
+}
+
+.trafostaniceTop{
+  border-top: 1px solid red;
+}
+
+.trafostaniceBottom{
+  border-bottom: 1px solid red;
+}
