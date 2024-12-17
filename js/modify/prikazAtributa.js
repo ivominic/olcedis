@@ -46,6 +46,9 @@ function ddlLejerNaziv(el) {
   if (elId.startsWith("nkro") || elId.startsWith("temp_nkro")) {
     return Podsloj.Nkro;
   }
+  if(elId.startsWith("prikljucna_konzola")) {
+    return Podsloj.PrikljucnaKonzola;
+  }
   if (elId.startsWith("priklj") || elId.startsWith("temp_priklj")) {
     return Podsloj.PrikljucnoMjesto;
   }
