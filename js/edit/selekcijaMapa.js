@@ -541,19 +541,33 @@ function sledecaGpxTacka() {
   document.querySelector("#divPrethodniObjekat").style.display = "none";
   vectorSource.getFeatures().forEach(function (el) {
     if (
-      selectGpxFeature &&
-      parseInt(el.values_.name) === parseInt(selectGpxFeature.values_.name) + 1 &&
+      selectGpxFeature && el.values_.gps &&
+      parseInt(el.values_.gps) === parseInt(selectGpxFeature.values_.gps) + 1 &&
       nijeOdabranaNovaTacka
     ) {
-      console.log("postojeći ", parseInt(selectGpxFeature.values_.name));
-      console.log("novi ", parseInt(el.values_.name));
+      console.log("postojeći ", parseInt(selectGpxFeature.values_.gps));
+      console.log("novi ", parseInt(el.values_.gps));
       selectGpxFeature = el;
       select.getFeatures().clear();
       select.getFeatures().push(selectGpxFeature);
       nijeOdabranaNovaTacka = false;
       prikazPodatakaIzGpxTacaka();
       // Praznimo name za sledecu tacku svaki put
-      document.querySelector("#name").value = "";
+      if(selectGpxFeature && !selectGpxFeature.values_.lejer){
+        document.querySelector("#name").value = "";
+      }
+    } else if(selectGpxFeature && el.values_.name && nijeOdabranaNovaTacka &&
+       parseInt(el.values_.name) === parseInt(selectGpxFeature.values_.gps) + 1) {
+      console.log("evo ga ", el.values_.name);
+      selectGpxFeature = el;
+      select.getFeatures().clear();
+      select.getFeatures().push(selectGpxFeature);
+      nijeOdabranaNovaTacka = false;
+      prikazPodatakaIzGpxTacaka();
+      // Praznimo name za sledecu tacku svaki put
+      if(selectGpxFeature && !selectGpxFeature.values_.lejer){
+        document.querySelector("#name").value = "";
+      }
     }
   });
 
