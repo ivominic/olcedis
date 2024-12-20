@@ -37,6 +37,8 @@ function dodajPoljaOdabranojGpxTrafostanici() {
   selectGpxFeature.set("adresa", document.querySelector("#read_adresa").value);
   selectGpxFeature.set("tip", document.querySelector("#read_tip").value);
   selectGpxFeature.set("naziv", document.querySelector("#read_naziv").value);
+  selectGpxFeature.set("ebs_sifra", document.querySelector("#ebs_sifra").value);
+  selectGpxFeature.set("sifra_trafoa", document.querySelector("#sifra_trafoa").value);
   selectGpxFeature.set("inst_snaga_t1", document.querySelector("#read_inst_snaga_t1").value);
   selectGpxFeature.set("inst_snaga_t2", document.querySelector("#read_inst_snaga_t2").value);
   selectGpxFeature.set("inst_snaga_t3", document.querySelector("#read_inst_snaga_t3").value);
@@ -86,6 +88,8 @@ function prikaziPoljaOdabraneGpxTrafostanice() {
   document.querySelector("#read_adresa").value = selectGpxFeature.values_.adresa;
   document.querySelector("#read_tip").value = selectGpxFeature.values_.tip;
   document.querySelector("#read_naziv").value = selectGpxFeature.values_.naziv;
+  document.querySelector("#ebs_sifra").value = selectGpxFeature.values_.ebs_sifra;
+  document.querySelector("#sifra_trafoa").value = selectGpxFeature.values_.sifra_trafoa;
   document.querySelector("#read_inst_snaga_t1").value = selectGpxFeature.values_.inst_snaga_t1;
   document.querySelector("#read_inst_snaga_t2").value = selectGpxFeature.values_.inst_snaga_t2;
   document.querySelector("#read_inst_snaga_t3").value = selectGpxFeature.values_.inst_snaga_t3;
@@ -172,6 +176,8 @@ function prikaziPoljaWmsTrafostanice(objekat) {
   document.querySelector("#read_adresa").value = objekat.properties.adresa;
   document.querySelector("#read_tip").value = objekat.properties.tip;
   document.querySelector("#read_naziv").value = objekat.properties.naziv;
+  document.querySelector("#ebs_sifra").value = objekat.properties.ebs_sifra;
+  document.querySelector("#sifra_trafoa").value = objekat.properties.sifra_trafoa;
   document.querySelector("#read_inst_snaga_t1").value = objekat.properties.inst_snaga_t1;
   document.querySelector("#read_inst_snaga_t2").value = objekat.properties.inst_snaga_t2;
   document.querySelector("#read_inst_snaga_t3").value = objekat.properties.inst_snaga_t3;
@@ -212,6 +218,8 @@ function izmijeniAtributeWmsTrafostanice(objekat) {
   objekat.properties.adresa = document.querySelector("#read_adresa").value;
   objekat.properties.tip = document.querySelector("#read_tip").value;
   objekat.properties.naziv = document.querySelector("#read_naziv").value;
+  objekat.properties.ebs_sifra = document.querySelector("#ebs_sifra").value;
+  objekat.properties.sifra_trafoa = document.querySelector("#sifra_trafoa").value;
   objekat.properties.inst_snaga_t1 = document.querySelector("#read_inst_snaga_t1").value;
   objekat.properties.inst_snaga_t2 = document.querySelector("#read_inst_snaga_t2").value;
   objekat.properties.inst_snaga_t3 = document.querySelector("#read_inst_snaga_t3").value;
@@ -255,6 +263,8 @@ function isprazniVrijednostiPoljaTrafostanice() {
   document.querySelector("#read_adresa").value = "";
   document.querySelector("#read_tip").value = "";
   document.querySelector("#read_naziv").value = "";
+  document.querySelector("#ebs_sifra").value = "";
+  document.querySelector("#sifra_trafoa").value = "";
   document.querySelector("#read_inst_snaga_t1").value = "";
   document.querySelector("#read_inst_snaga_t2").value = "";
   document.querySelector("#read_inst_snaga_t3").value = "";

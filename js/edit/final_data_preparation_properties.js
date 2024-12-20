@@ -195,6 +195,8 @@ function trafostanicaArrayElementProperties(el, action) {
     fid_1: el.properties.fid_1,
     Geometry: wkt3Du2D(prepareGeometryWms(el)),
     name: el.properties.name,
+    ebs_sifra: el.values_.ebs_sifra,
+    sifra_trafoa: el.values_.sifra_trafoa,
     fid: el.properties.fid,
     celije_10: el.properties.celije_10,
     prenos_odnos: el.properties.prenos_odnos,

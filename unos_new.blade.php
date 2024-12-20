@@ -1400,6 +1400,14 @@
             <label for="name"><span id="spanUnosName">Naziv</span>: <b class="fontB" id="spanUnosNameBold">*</b></label>
             <input type="text" id="name" />
           </div>
+          <div class="flex-row-desno pb-8" id="divEbsSifra">
+            <label for="ebs_sifra">EBS šifra:</label>
+            <input type="text" id="ebs_sifra" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divSifraTrafoa">
+            <label for="sifra_trafoa">Šifra trafoa:</label>
+            <input type="text" id="sifra_trafoa" />
+          </div>
           <div class="flex-row-desno pb-8" id="divUnosBroj">
             <label for="broj">Broj stuba:</label>
             <input type="text" id="broj" />

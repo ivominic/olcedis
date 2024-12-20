@@ -185,6 +185,8 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     fid_1: el.values_.fid_1,
     Geometry: wkt3Du2D(wktGeometrije(el)),
     name: el.values_.name,
+    ebs_sifra: el.values_.ebs_sifra,
+    sifra_trafoa: el.values_.sifra_trafoa,
     fid: el.values_.fid,
     celije_10: el.values_.celije_10,
     prenos_odnos: el.values_.prenos_odnos,

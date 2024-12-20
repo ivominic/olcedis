@@ -167,6 +167,8 @@ function sakrijSvaPoljaAtributDiv() {
   document.querySelector("#divReadInstSnagaT4").style.display = "none";
   document.querySelector("#divReadProjekSnaga").style.display = "none";
   document.querySelector("#divReadTabela").style.display = "none";
+  document.querySelector("#divEbsSifra").style.display = "none";
+  document.querySelector("#divSifraTrafoa").style.display = "none";
 
   document.querySelector("#divUnosBrVodCelVisiNap").style.display = "none";
   document.querySelector("#divUnosBrVodCelNiziNap").style.display = "none";
@@ -416,6 +418,8 @@ function prikaziAtributDivTrafostanice(napon) {
   document.querySelector("#divReadInstSnagaT3").style.display = "flex";
   //document.querySelector("#divReadInstSnagaT4").style.display = "flex";
   document.querySelector("#divReadProjekSnaga").style.display = "flex";
+  document.querySelector("#divEbsSifra").style.display = "flex";
+  document.querySelector("#divSifraTrafoa").style.display = "flex";
   if(document.querySelector("#spanUnosName")){
     document.querySelector("#spanUnosName").innerHTML = "Naziv GIS";
   }
