@@ -69,6 +69,7 @@ function sakrijSvaPoljaPretrage() {
   document.querySelector("#divPretraga10KvVod").style.display = "none";
 
   document.querySelector("#divPretragaNaziv").style.display = "none";
+  document.querySelector("#divPretragaNazivPotrosaca").style.display = "none";
   document.querySelector("#divPretragaTs").style.display = "none";
   document.querySelector("#divPretragaBrFaza").style.display = "none";
   document.querySelector("#divPretragaVrsta").style.display = "none";
@@ -216,8 +217,6 @@ function prikaziPretraguPotrosaci() {
   document.querySelector("#divPretragaSifraNapojneTS").style.display = "flex";
   document.querySelector("#divPretragaIzvodNapojneTS").style.display = "flex";
   document.querySelector("#divPretragaGps").style.display = "flex";
-  document.querySelector("#divPretragaTs").style.display = "flex";
-  document.querySelector("#divPretragaId").style.display = "flex";
   document.querySelector("#divPretragaPretplatniBr").style.display = "flex";
   document.querySelector("#divPretragaBrBrojila").style.display = "flex";
 }
@@ -232,19 +231,10 @@ function prikaziPretraguPodovi() {
   document.querySelector("#divPretragaSifraNapojneTS").style.display = "flex";
   document.querySelector("#divPretragaIzvodNapojneTS").style.display = "flex";
   document.querySelector("#divPretragaGps").style.display = "flex";
-  document.querySelector("#divPretragaTs").style.display = "flex";
-  document.querySelector("#divPretragaId").style.display = "flex";
-  document.querySelector("#divPretragaVlasnistvo").style.display = "flex";
 }
 
 function prikaziPretraguNelegalniPotrosaci() {
-  document.querySelector("#divPretragaNazivNapojneTS").style.display = "flex";
-  document.querySelector("#divPretragaSifraNapojneTS").style.display = "flex";
-  document.querySelector("#divPretragaIzvodNapojneTS").style.display = "flex";
-  document.querySelector("#divPretragaGps").style.display = "flex";
-  document.querySelector("#divPretragaTs").style.display = "flex";
-  document.querySelector("#divPretragaId").style.display = "flex";
-  document.querySelector("#divPretragaVlasnistvo").style.display = "flex";
+  document.querySelector("#divPretragaNazivPotrosaca").style.display = "flex";
 }
 
 /* Filter wms-a po prostornim i atributskim podacima*/
@@ -332,7 +322,8 @@ let nizPoljaZaPretragu = [
   { id: "pretraga_prikljucak_otcjep", field: "prikljucak_otcjep", numeric: false, ddl: false },
   { id: "pretraga_nn_vod", field: "nn_vod", numeric: false, ddl: false },
   { id: "pretraga_rastavljac", field: "rastavljac", numeric: false, ddl: false },
-  { id: "pretraga_10_vod", field: "10_vod", numeric: false, ddl: false },
+  { id: "pretraga_10_vod", field: "10vod", numeric: false, ddl: false },
+  { id: "pretraga_naziv_potrosaca", field: "naziv_potrosaca", numeric: false, ddl: false },
   { id: "pretraga_naziv", field: "naziv", numeric: false, ddl: false },
   { id: "pretraga_ts", field: "ts", numeric: false, ddl: false },
   { id: "pretraga_br_faza", field: "br_faza", numeric: false, ddl: false },
@@ -372,7 +363,11 @@ function kreiranjeCqlFilteraAtributi() {
 
   nizPoljaZaPretragu.forEach((el) => {
     let tempValue = document.querySelector("#" + el.id).value;
-    tempValue !== "" && (retVal += `${el.field} = '${tempValue}' AND `);
+    let elementName = el.field;
+    if(el.id === "pretraga_naziv" && tempLejerZaFilter && tempLejerZaFilter.get('title') === "stubovi") {
+       elementName = "name";
+    }
+    tempValue !== "" && (retVal += `${elementName} = '${tempValue}' AND `);
   });
 
   retVal.length > 5 && (retVal = retVal.substring(0, retVal.length - 5));

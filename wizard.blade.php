@@ -547,6 +547,10 @@
             <label for="pretraga_naziv">Naziv:</label>
             <input type="text" id="pretraga_naziv" class="inputClass"/>
           </div>
+          <div class="flex-row rowEnd pb-8" id="divPretragaNazivPotrosaca">
+            <label for="pretraga_naziv_potrosaca">Naziv potrošača:</label>
+            <input type="text" id="pretraga_naziv_potrosaca" class="inputClass"/>
+          </div>
           <div class="flex-row rowEnd pb-8" id="divPretragaTs">
             <label for="pretraga_ts">Vod se napaja iz TS:</label>
             <input type="text" id="pretraga_ts" class="inputClass"/>
