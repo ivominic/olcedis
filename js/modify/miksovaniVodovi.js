@@ -32,7 +32,14 @@ function dodajWmsObjekte() {
       let naziviVisestrukihStubova = provjeraVisestruktihStubova(stuboviZaDodavanje);
       if (naziviVisestrukihStubova) {
         console.log("Višestruki", naziviVisestrukihStubova);
-        poruka(StatusPoruke.Greska, UnosPoruke.VodVisestrukiStubovi + naziviVisestrukihStubova);
+        let uniqueFeatures = removeDuplicateFeatures(stuboviZaDodavanje);
+        // poruka(StatusPoruke.Greska, UnosPoruke.VodVisestrukiStubovi + naziviVisestrukihStubova);
+        let nizStubovaLinije = [];
+        uniqueFeatures.forEach((item) => {
+          nizStubovaLinije.push(item.values_.geometry.flatCoordinates);
+        });
+        objedinjavanjeNizovaGpxWms(nizStubovaLinije);
+        koordinateObjekataIzDdlova();
       } else {
         let nizStubovaLinije = [];
         stuboviZaDodavanje.forEach((item) => {
@@ -46,6 +53,19 @@ function dodajWmsObjekte() {
       console.log("Request failed: " + textStatus);
       poruka(StatusPoruke.Greska, UnosPoruke.ProblemCitanjeStubova);
     },
+  });
+}
+
+function removeDuplicateFeatures(features) {
+  const uniqueCoordinates = new Map();
+  return features.filter(feature => {
+      const coords = feature.getGeometry().getFlatCoordinates();
+      const key = `${coords[0]},${coords[1]}`;
+      if (uniqueCoordinates.has(key)) {
+          return false;
+      }
+      uniqueCoordinates.set(key, true);
+      return true;
   });
 }
 
