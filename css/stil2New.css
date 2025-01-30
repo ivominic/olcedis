@@ -1268,20 +1268,26 @@ html[xmlns] .clearfix {
 }
 
 .trafostaniceLeft{
-  border-left: 1px solid red;
-  border-right: 1px solid red;
+  border-left: 2px solid #ca2129;
+  border-right: 2px solid #ca2129;
 }
 
 .trafostaniceTop{
-  border-top: 1px solid red;
+  border-top: 2px solid #ca2129;
+  padding-top: 7px;
 }
 
 .trafostaniceBottom{
-  border-bottom: 1px solid red;
+  border-bottom: 2px solid #ca2129;
+  margin-bottom: 8px;
 }
 
 .trafostaniceHide{
   height: 0px;
   overflow: hidden;
   padding-bottom: 0px;
+}
+
+#atributiDiv .flex-row-desno {
+  padding-right: 10px;
 }

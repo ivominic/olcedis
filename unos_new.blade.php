@@ -1174,7 +1174,7 @@
         <h1>Atributi</h1>
         <a href="javascript:void(0)" class="closebtn" onclick="closeDiv('#atributiDiv')">&times;</a>
       </div>
-      <div class="items-padd">
+      <div class="items-padd" style="padding-right: 0px !important;">
         <div class="pr-8 sadrzaj-scroll style-2">
           <div
             class="flex-row pb-8"
@@ -1260,25 +1260,9 @@
             <label for="read_celije_10">Ćelije:</label>
             <input type="text" id="read_celije_10" readonly class="disabledInput" />
           </div>
-          <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadIzvodCelija">
-            <label for="read_izvod_celija">Izvod ćelija:</label>
-            <input type="text" id="read_izvod_celija" readonly class="disabledInput" />
-          </div>
-          <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadFunkcija">
-            <label for="read_funkcija">Funkcija:</label>
-            <input type="text" id="read_funkcija" readonly class="disabledInput" />
-          </div>
           <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadBrNnIzvoda">
             <label for="read_br_nn_izvoda">Broj nn izvoda:</label>
             <input type="text" id="read_br_nn_izvoda" readonly class="disabledInput" />
-          </div>
-          <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadGeohashId">
-            <label for="read_geohash_id">Geohash id:</label>
-            <input type="text" id="read_geohash_id" readonly class="disabledInput" />
-          </div>
-          <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadGeohashIdNo">
-            <label for="read_geohash_id_no">Geohash id no:</label>
-            <input type="text" id="read_geohash_id_no" readonly class="disabledInput" />
           </div>
           <div class="flex-row-desno pb-8" id="divReadBrVodCelNiziNap">
             <label for="read_br_vod_cel_nizi_nap">Br vod cel nizi nap:</label>
@@ -1288,53 +1272,17 @@
             <label for="read_br_vod_cel_visi_nap">Br vod cel viši nap:</label>
             <input type="text" id="read_br_vod_cel_visi_nap" readonly class="disabledInput" />
           </div>
-          <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadGodIzg">
-            <label for="read_god_izg">Godina izgradnje:</label>
-            <input type="text" id="read_god_izg" readonly class="disabledInput" />
-          </div>
           <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadVlasnistvo">
             <label for="read_vlasnistvo">Vlasništvo:</label>
             <input type="text" id="read_vlasnistvo" readonly class="disabledInput" />
-          </div>
-          <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadDatumAzuriranja">
-            <label for="read_datum_azuriranja">Datum ažuriranja:</label>
-            <input type="text" id="read_datum_azuriranja" readonly class="disabledInput" />
           </div>
           <div class="flex-row-desno pb-8" id="divReadNadVis">
             <label for="read_nad_vis">Nadmorska visina:</label>
             <input type="text" id="read_nad_vis" readonly class="disabledInput" />
           </div>
-          <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadGPS">
-            <label for="read_gps">GPS:</label>
-            <input type="text" id="read_gps" readonly class="disabledInput" />
-          </div>
-          <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadPogSprem">
-            <label for="read_pog_sprem">Pog sprem:</label>
-            <input type="text" id="read_pog_sprem" readonly class="disabledInput" />
-          </div>
           <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadNapon">
             <label for="read_napon">Napon:</label>
             <input type="text" id="read_napon" readonly class="disabledInput" />
-          </div>
-          <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadPosjedujeSliku">
-            <label for="read_posjeduje_sliku">Posjeduje sliku:</label>
-            <input type="text" id="read_posjeduje_sliku" readonly class="disabledInput" />
-          </div>
-          <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadOriginalId">
-            <label for="read_originalId">Original id:</label>
-            <input type="text" id="read_originalId" readonly class="disabledInput" />
-          </div>
-          <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadKorisnik">
-            <label for="read_korisnik">Korisnik:</label>
-            <input type="text" id="read_korisnik" readonly class="disabledInput" />
-          </div>
-          <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadVlasnik">
-            <label for="read_vlasnik">Vlasnik:</label>
-            <input type="text" id="read_vlasnik" readonly class="disabledInput" />
-          </div>
-          <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadKatastar">
-            <label for="read_katastar">Katastar:</label>
-            <input type="text" id="read_katastar" readonly class="disabledInput" />
           </div>
           <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadIdTrafostanice">
             <label for="read_id_trafostanice">Id trafostanice:</label>
@@ -1367,10 +1315,6 @@
           <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadIdBilling">
             <label for="read_id_billing">Id biling:</label>
             <input type="text" id="read_id_billing" readonly class="disabledInput" />
-          </div>
-          <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadProjekSnaga">
-            <label for="read_projek_snaga">Projektovana snaga:</label>
-            <input type="text" id="read_projek_snaga" readonly class="disabledInput" />
           </div>
           <div class="flex-row-desno pb-8 trafostaniceLeft" id="divReadAdresa">
             <label for="read_adresa">Adresa:</label>
@@ -1407,6 +1351,62 @@
           <div class="flex-row-desno pb-8" id="divSifraTrafoa">
             <label for="sifra_trafoa">Šifra trafoa:</label>
             <input type="text" id="sifra_trafoa" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadGPS">
+            <label for="read_gps">GPS:</label>
+            <input type="text" id="read_gps" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadIzvodCelija">
+            <label for="read_izvod_celija">Izvod ćelija:</label>
+            <input type="text" id="read_izvod_celija" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadFunkcija">
+            <label for="read_funkcija">Funkcija:</label>
+            <input type="text" id="read_funkcija" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadGeohashId">
+            <label for="read_geohash_id">Geohash id:</label>
+            <input type="text" id="read_geohash_id" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadGeohashIdNo">
+            <label for="read_geohash_id_no">Geohash id no:</label>
+            <input type="text" id="read_geohash_id_no" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadGodIzg">
+            <label for="read_god_izg">Godina izgradnje:</label>
+            <input type="text" id="read_god_izg" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadDatumAzuriranja">
+            <label for="read_datum_azuriranja">Datum ažuriranja:</label>
+            <input type="text" id="read_datum_azuriranja" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadPogSprem">
+            <label for="read_pog_sprem">Pog sprem:</label>
+            <input type="text" id="read_pog_sprem" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadPosjedujeSliku">
+            <label for="read_posjeduje_sliku">Posjeduje sliku:</label>
+            <input type="text" id="read_posjeduje_sliku" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadOriginalId">
+            <label for="read_originalId">Original id:</label>
+            <input type="text" id="read_originalId" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadKorisnik">
+            <label for="read_korisnik">Korisnik:</label>
+            <input type="text" id="read_korisnik" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadVlasnik">
+            <label for="read_vlasnik">Vlasnik:</label>
+            <input type="text" id="read_vlasnik" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadKatastar">
+            <label for="read_katastar">Katastar:</label>
+            <input type="text" id="read_katastar" readonly class="disabledInput" />
+          </div>
+          <div class="flex-row-desno pb-8" id="divReadProjekSnaga">
+            <label for="read_projek_snaga">Projektovana snaga:</label>
+            <input type="text" id="read_projek_snaga" readonly class="disabledInput" />
           </div>
           <div class="flex-row-desno pb-8" id="divUnosBroj">
             <label for="broj">Broj stuba:</label>

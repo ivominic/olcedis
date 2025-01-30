@@ -138,6 +138,7 @@ function popuniKontroleIzTrafostanice(data) {
     document.querySelector("#read_inst_snaga_t3").value = data.inst_snaga_t3;
     document.querySelector("#read_inst_snaga_t4").value = data.inst_snaga_t4;
     document.querySelector("#read_tabela").value = data.tabela;
+    document.querySelector("#name").value = data.name;
   }
 }
 
@@ -184,6 +185,7 @@ function prikaziPoljaWmsTrafostanice(objekat) {
   document.querySelector("#read_inst_snaga_t4").value = objekat.properties.inst_snaga_t4;
   document.querySelector("#read_tabela").value = objekat.properties.tabela;
   document.querySelector("#projek_snaga").value = objekat.properties.projek_snaga;
+  document.querySelector("#name").value = objekat.properties.name;
 }
 
 function izmijeniAtributeWmsTrafostanice(objekat) {
