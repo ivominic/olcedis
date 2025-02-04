@@ -137,7 +137,6 @@ function prikaziPretraguStubove() {
   document.querySelector("#divPretragaBrNnv").style.display = "flex";
   document.querySelector("#divPretragaNnVod").style.display = "flex";
   document.querySelector("#divPretragaRastavljac").style.display = "flex";
-  document.querySelector("#divPretraga10KvVod").style.display = "flex";
 }
 
 function prikaziPretraguVodove() {
