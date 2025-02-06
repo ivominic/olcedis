@@ -440,6 +440,10 @@ function prikazPodatakaIzGpxTacaka() {
     prikaziPoljaOdabranogGpxPrikljucnaKonzola();
     let pomLejer = Podsloj.PrikljucnaKonzola;
     prikazPanelaAtributa(pomLejer);
+  } else if (selectGpxFeature.get("lejer") === "solari") {
+    prikaziPoljaOdabranogGpxSolari();
+    let pomLejer = Podsloj.Solari;
+    prikazPanelaAtributa(pomLejer);
   }
 }
 
