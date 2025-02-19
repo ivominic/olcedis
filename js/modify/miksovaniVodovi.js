@@ -17,6 +17,14 @@ function dodajWmsObjekte() {
     fulllayernameS +
     "," +
     fulllayernameTS +
+    "," +
+    fulllayernamePotrosaci +
+    "," +
+    fulllayernamePrikljucnoMjesto +
+    "," +
+    fulllayernameNKRO +
+    "," +
+    fulllayernamePOD +
     "&outputformat=application/json&cql_filter=" +
     formiraniFilter +
     "&access_token=" +
