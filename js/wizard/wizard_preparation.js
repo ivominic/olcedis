@@ -161,6 +161,8 @@ function trafostanicaArrayElement(el, action, wizard, serialNo) {
     naziv_napojne: el.values_.naziv_napojne,
     izvod_napojne: el.values_.izvod_napojne,
     vlasnik: el.values_.vlasnik,
+    sifra_trafoa: el.values_.sifra_trafoa,
+    ebs_sifra: el.values_.ebs_sifra,
     akcija: action,
     wizard: wizard,
   };
