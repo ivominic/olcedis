@@ -54,7 +54,7 @@ function prikaziPoljaWmsNKRO(objekat) {
 }
 
 function izmijeniAtributeWmsNKRO(objekat) {
-  objekat.properties.name = document.querySelector("#napon").name;
+  objekat.properties.name = document.querySelector("#name").value;
   objekat.properties.napon = document.querySelector("#napon").value;
   objekat.properties.id = document.querySelector("#id").value;
   objekat.properties.montaza = document.querySelector("#montaza").value;
@@ -62,6 +62,7 @@ function izmijeniAtributeWmsNKRO(objekat) {
   objekat.properties.br_izvoda = document.querySelector("#br_izvoda").value;
   objekat.properties.br_prikljucaka = document.querySelector("#br_prikljucaka").value;
   objekat.properties.vlasnistvo = document.querySelector("#vlasnistvo").value;
+  objekat.properties.materijal = document.querySelector("#vrsta_materijal").value;
 
   return objekat;
 }
