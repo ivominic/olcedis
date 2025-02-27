@@ -13,6 +13,7 @@ let nizWizardDodatniVodovi = [],
   nizWizardDodatniPotrosaci = [],
   nizWizardDodatniPodovi = [],
   nizWizardDodatnaPrikljucnaMjesta = [];
+  let nizWizardDodatniStubovi = [];
 
 function isprazniNizoveDodatnihObjekataWizard() {
   nizDodatnihObjekataWizard.length = 0;
@@ -22,6 +23,7 @@ function isprazniNizoveDodatnihObjekataWizard() {
   nizWizardDodatniPotrosaci.length = 0;
   nizWizardDodatniPodovi.length = 0;
   nizWizardDodatnaPrikljucnaMjesta.length = 0;
+  nizWizardDodatniStubovi.length = 0;
 }
 
 function prikazFormeZaOdabirWizard() {
@@ -73,6 +75,12 @@ function potvrdaObjektaZaDodavanjeWizard() {
           objectId === elTemp.id_ && (blnNePostoji = false);
         });
         blnNePostoji && nizWizardDodatnaPrikljucnaMjesta.push(el);
+      }
+      if (tip === "stubovi") {
+        nizWizardDodatniStubovi.forEach((elTemp) => {
+          objectId === elTemp.id_ && (blnNePostoji = false);
+        });
+        blnNePostoji && nizWizardDodatniStubovi.push(el);
       }
     }
   });

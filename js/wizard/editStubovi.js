@@ -49,6 +49,13 @@ function stuboviUpoligonu(napon) {
     },
     success: function (response) {
       selektovaniStuboviFeatures = new ol.format.GeoJSON().readFeatures(response);
+      nizWizardDodatniStubovi.forEach((el) => {
+        let blnNePostoji = true;
+        selektovaniStuboviFeatures.forEach((elOld) => {
+          el.id_ === elOld.id_ && (blnNePostoji = false);
+        });
+        blnNePostoji && selektovaniStuboviFeatures.push(el);
+      });
       if (selektovaniStuboviFeatures.length === 0) {
         poruka(StatusPoruke.Upozorenje, WizardPoruke.NemaStub);
         return false; //TODO: Nepotrebno
