@@ -186,6 +186,7 @@ function prikaziPoljaWmsTrafostanice(objekat) {
   document.querySelector("#read_tabela").value = objekat.properties.tabela;
   document.querySelector("#projek_snaga").value = objekat.properties.projek_snaga;
   document.querySelector("#name").value = objekat.properties.name;
+  showTrafostaniceTBPNaziv(objekat.properties.id_billing);
 }
 
 function izmijeniAtributeWmsTrafostanice(objekat) {
@@ -273,4 +274,22 @@ function isprazniVrijednostiPoljaTrafostanice() {
   document.querySelector("#read_inst_snaga_t4").value = "";
   document.querySelector("#read_tabela").value = "";
   document.querySelector("#projek_snaga").value = "";
+}
+
+function showTrafostaniceTBPNaziv(sifra){
+  let urlServisa = wsServerOriginLocation + "/portal/api/trafostanice?sifra=" + sifra;
+  urlServisa += "&t=" + Date.now();
+  $.ajax({
+    url: urlServisa,
+    data: "",
+    type: "GET",
+    success: function (data) {
+      if (data && data.ts) {
+        document.querySelector("#read_naziv").value = data.ts.naziv;
+      }
+    },
+    error: function (x, y, z) {
+      console.log("greška popuniDdlAtributima", x.responseText);
+    },
+  });
 }
