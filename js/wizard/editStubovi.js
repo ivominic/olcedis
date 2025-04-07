@@ -59,6 +59,8 @@ function stuboviUpoligonu(napon) {
       if (selektovaniStuboviFeatures.length === 0) {
         poruka(StatusPoruke.Upozorenje, WizardPoruke.NemaStub);
         return false; //TODO: Nepotrebno
+      } else {
+        prikazZaWizardTabela();
       }
     },
     fail: function (jqXHR, textStatus) {

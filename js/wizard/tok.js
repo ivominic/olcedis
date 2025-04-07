@@ -312,3 +312,54 @@ function restartParametaraWizard() {
   $("#ddlPovezivanjeVodovaPronadjene").empty();
   $("#ddlPovezivanjeVodovaSelektovane").empty();
 }
+
+if(document.querySelector("#tableButton")){
+  document.querySelector("#tableButton").addEventListener("click", function (){
+    showDiv("#tabelarniPrikazWizardDiv");
+  });
+}
+function prikazZaWizardTabela(){
+  featureSnapOverlay.getSource().clear(); 
+  featureSnapOverlay.getSource().addFeatures(selektovaneTrafostaniceFeatures);
+  featureSnapOverlay.getSource().addFeatures(selektovaniVodoviFeatures);
+  featureSnapOverlay.getSource().addFeatures(selektovaniStuboviFeatures);
+
+  let slanjeBody = document.querySelector("#slanjeBody");
+  if(slanjeBody){
+    slanjeBody.innerHTML = "";
+    if(selektovaneTrafostaniceFeatures.length > 0 && selektovaniVodoviFeatures.length > 0 && selektovaniStuboviFeatures.length > 0){
+      selektovaneTrafostaniceFeatures.forEach(function (resp){
+        slanjeBody.insertAdjacentHTML('beforeend', '<tr> <td>' + resp.id_ + '</td><td><i class="fas fa-trash" onclick="removeElementPomjeranjeObjekta(\'' + resp.id_ + '\')" style="cursor: pointer;"></i> </td></tr>');
+      });
+
+      selektovaniVodoviFeatures.forEach(function (resp){
+        slanjeBody.insertAdjacentHTML('beforeend', '<tr> <td>' + resp.id_ + '</td><td><i class="fas fa-trash" onclick="removeElementPomjeranjeObjekta(\'' + resp.id_ + '\')" style="cursor: pointer;"></i> </td></tr>');
+      });
+
+      selektovaniStuboviFeatures.forEach(function (resp){
+        slanjeBody.insertAdjacentHTML('beforeend', '<tr> <td>' + resp.id_ + '</td><td><i class="fas fa-trash" onclick="removeElementPomjeranjeObjekta(\'' + resp.id_ + '\')" style="cursor: pointer;"></i> </td></tr>');
+      });
+
+    } else {
+      slanjeBody.insertAdjacentHTML('beforeend', '<tr><td colspan="2" style="text-align: center;">Nema zapisa za slanje</td></tr>');
+    }
+  }
+}
+
+function removeElementPomjeranjeObjekta(elementId){
+  console.log(elementId);
+  if(elementId.includes("trafostanice")) {
+    selektovaneTrafostaniceFeatures = selektovaneTrafostaniceFeatures.filter(function(resp) {
+      return resp.id_.toString() !== elementId.toString();
+    });
+  } else if(elementId.includes("vodovi")){
+    selektovaniVodoviFeatures = selektovaniVodoviFeatures.filter(function(resp) {
+      return resp.id_.toString() !== elementId.toString();
+    });
+  } else if(elementId.includes("stubovi")){
+    selektovaniStuboviFeatures = selektovaniStuboviFeatures.filter(function(resp) {
+      return resp.id_.toString() !== elementId.toString();
+    });
+  }
+  prikazZaWizardTabela();
+}

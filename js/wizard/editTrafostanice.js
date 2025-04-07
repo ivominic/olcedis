@@ -76,6 +76,7 @@ function provjeriTrafostanice() {
   trafostaniceZaWS = "[" + trafostaniceZaWS + "]";
 
   trafostaniceIzBilingaZaUparivanje(nizSelektovanihTrafostanicaOriginalId, "", "", "");
+  prikazZaWizardTabela();
 }
 
 /**

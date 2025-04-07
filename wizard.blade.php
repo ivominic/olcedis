@@ -131,6 +131,12 @@
               </a>
             </li>
 
+            <li style="min-height: 55px;">
+              <a id="tableButton">
+                <i class="mdi mdi-table-check" style="font-size: 1.5rem;"></i>
+                <span> Tabelarni prikaz </span>
+              </a>
+            </li>
           </ul>
         </div>
         <!-- End Sidebar -->
@@ -688,6 +694,31 @@
       </div>
     </div>
 
+    <div id="tabelarniPrikazWizardDiv" class="sidenav">
+      <div class="titleAndClose">
+        <h1>Tabelarni prikaz objekata za wizard</h1>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeDiv('#tabelarniPrikazWizardDiv')"
+          >&times;</a
+        >
+      </div>
+      <div class="items-padd">
+        <div class="pr-8 sadrzaj-scroll style-2 povezivanjevodovadiv">
+          <div class="flex-row pb-8">
+            <table class="table table-bordered table-centered mb-0 newTable">
+              <thead class="table-light">
+                <tr> 
+                  <th>ID</th>
+                  <th>Akcije</th>
+                </tr>
+              </thead>
+              <tbody id="slanjeBody">
+                <tr><td colspan="2" style="text-align: center;">Nema zapisa za slanje</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Modalna fotografija -->
     <div id="modalFotografija" class="modal">
       <span id="zatvoriModalFotografija" class="close">&times;</span>
