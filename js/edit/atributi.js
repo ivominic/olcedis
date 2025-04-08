@@ -628,6 +628,9 @@ function popuniInformacije(odgovor, title) {
         id = metapodaci[key];
       } else if(key === "id"){
         id = metapodaci[key];
+        if(id === "NULL"){
+          id = "";
+        }
       } else if(key === "most"){
         finalKey = "Račva voda";
       }
