@@ -782,6 +782,7 @@ async function serviceWrap(objekti_za_azuriranje, object_control, brisanje_objek
       brisanje_objekta: brisanje_objekta,
       pomjeranje_objekta: pomjeranje_objekta,
       pocetna_tacka: pocetna_tacka,
+      korisnik: globalUsername
     },
     type: "POST",
     timeout: 7200000,
