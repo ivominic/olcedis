@@ -335,7 +335,7 @@ document.querySelector("#btnPotvrdiKmlPoveznicu").addEventListener("click", save
 document.querySelector("#btnMapaOdabirPoveznice").addEventListener("click", odabirPocetnePoveznice);
 document.querySelector("#btnOdabirNapojneTrafostanice").addEventListener("click", odabirNapojneTrafostaniceUnos);
 document.querySelector("#btnPotvrdiNapojnuTrafostanicu").addEventListener("click", potvrdaNapojneTrafostaniceUnos);
-document.querySelector("#txtSifraNapojneTrafostanice").addEventListener("keyup", promjenaSifreNapojneTrafostanice);
+document.querySelector("#txtSifraNapojneTrafostanice").addEventListener("input", promjenaSifreNapojneTrafostanice);
 
 //Odabir priključnog mjesta za potrošače
 document.querySelector("#btnMapaPrikljucnoMjesto").addEventListener("click", odabirPrikljucnogMjestaZaUnosPotrosaca);

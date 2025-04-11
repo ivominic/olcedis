@@ -1,5 +1,5 @@
 /** Metode koje pozivaju Jovanove web servise */
-
+let globalNasaoIzvode = false;
 /**
  * Metoda koja za predatu šifru i izvod napojne trafostanice vrati spisak šifara svih neuparenih trafostanica. Ovim podacima popuniti listu iz koje se bira trafostanica koja se unosi u gis, a svi podaci se već nalaze u TBP. Na ovaj način neće biti moguće unijeti trafostanice koje nemaju napojnu (110kV)
  * @param {*} sifraNapojne
@@ -108,6 +108,7 @@ function popuniPoljaTrafostaniceWS() {
  * @param {id_billing vrijednost iz GIS-a} sifraTS
  */
 function pretragaTrafostanicaGpx(sifraTS) {
+  globalNasaoIzvode = false;
   let urlServisa = wsServerOriginLocation + "/portal/api/trafostanice?sifra=" + sifraTS;
   urlServisa += "&t=" + Date.now();
   $("#ddlIzvodNapojneTrafostanice").empty();
@@ -125,6 +126,10 @@ function pretragaTrafostanicaGpx(sifraTS) {
         if (data.ts.prenosni_odnos) {
           filePowerLevel = globalNaponskiNivoPrenosOdnos(data.ts.prenosni_odnos);
           console.log("prenosni odnos: " + data.ts.prenosni_odnos, "filePowerLevel: " + filePowerLevel);
+        }
+
+        if(data.ts && data.ts.izvodi && data.ts.izvodi.length > 0){
+          globalNasaoIzvode = true;
         }
 
         $("#ddlIzvodNapojneTrafostanice").empty();
@@ -162,6 +167,9 @@ function izvodFill(sifraTS) {
         fillDdl("izvod_id", "", "");
         data.izvodi.forEach(function (vrijednost) {
           fillDdl("izvod_id", vrijednost.id, vrijednost.naziv);
+          if(!globalNasaoIzvode){
+            fillDdl("ddlIzvodNapojneTrafostanice", vrijednost.naziv, vrijednost.naziv);
+          }
         });
       } else {
         poruka(StatusPoruke.Upozorenje, GlobalPoruke.NemaPodatakaZaTS);
