@@ -304,6 +304,18 @@ dragAndDrop.on("addfeatures", function (event) {
 
   blnDodijeljenoGpxProperties = false;
   event.features.forEach(function (feature) {
+    const geometry = feature.getGeometry();
+    if (geometry.getType() === 'Point') {
+      let coords = geometry.getCoordinates();
+      if(coords[0] && coords[1]) {
+        coords[0] = truncateToDecimals(coords[0], 6);
+        coords[1] = truncateToDecimals(coords[1], 6);
+        geometry.setCoordinates(coords);
+      }
+    }
+  });
+  
+  event.features.forEach(function (feature) {
     let tempTimestamp = new Date().getTime() + "_" + feature.ol_uid;
     feature.set("originalId", tempTimestamp);
     feature.set("isEditable", isEditable);
@@ -657,6 +669,11 @@ async function vratiTitleOdLejera(lejer){
  } else {
    return lejer;
  }
+}
+
+function truncateToDecimals(value, decimals = 6) {
+  const factor = Math.pow(10, decimals);
+  return Math.trunc(value * factor) / factor;
 }
 
 /**Povezivanje kontrola koje zavise od lejera sa akcijama */
